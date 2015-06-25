@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Master" id="2" measuredWidth="905" measuredHeight="505" dimmed="true">
+    <screen xsi:type="model:Screen" href="Master.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="6" x="10" y="65" measuredWidth="287" measuredHeight="27" dimmed="true">
+    <screen xsi:type="model:Screen" href="HeaderScheduler.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Accordion" id="8" x="10" y="104" width="247" height="377" text="Collections&#xA;-Movie 1&#xA;-Movie 2&#xA;-Timeblock&#xA;Shared&#xA;Scheduled&#xA;" measuredWidth="247" measuredHeight="377" selection="2">
+    <items x="0" y="2" width="247" height="25" text="Collections"/>
+    <items x="0" y="27" width="247" height="25" text="-Movie 1"/>
+    <items link="SchedulerDropAMovieIntoATimeblock.screen" x="0" y="52" width="247" height="25" text="-Movie 2"/>
+    <items x="0" y="77" width="247" height="25" text="-Timeblock"/>
+    <items x="0" y="327" width="247" height="25" text="Shared"/>
+    <items x="0" y="352" width="247" height="25" text="Scheduled"/>
+  </widgets>
+  <widgets xsi:type="model:Group" id="10" x="272" y="104" width="617" height="377" text="Calendar - Hours" measuredWidth="617" measuredHeight="377">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:TextField" id="12" x="282" y="232" width="597" text="Timeblock (Shuffled)" measuredWidth="597" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Tooltip" id="13" x="80" y="168" width="345" height="57" text="Pick a movie to shuffle and drag it" measuredWidth="345" measuredHeight="57" position="topLeft">
+    <font size="15px"/>
+  </widgets>
+  <widgets xsi:type="model:Note" id="14" x="121" y="257" text="Click on Movie 2 row to proceed" measuredWidth="187" measuredHeight="29" annotation="true">
+    <font/>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

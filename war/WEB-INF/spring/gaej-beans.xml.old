@@ -1,0 +1,54 @@
+<!--
+  ~ Copyright (c) 2011 Carman Consulting, Inc.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~   http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+
+	<!-- 
+	http://code.google.com/p/googleappengine/issues/detail?id=1381 
+	http://www.informit.com/guides/content.aspx?g=java&seqNum=507
+	-->
+	<bean lazy-init="true" id="persistenceManagerFactory" class="web.gae.spring.GaePersistenceManagerFactoryHelper" factory-method="getPersistenceManagerFactory">
+	</bean>
+	
+	<bean lazy-init="true" id="persistenceManagerFactoryProxy" class="org.springframework.orm.jdo.TransactionAwarePersistenceManagerFactoryProxy">
+		<property name="targetPersistenceManagerFactory" ref="persistenceManagerFactory" />
+		<property name="allowCreate" value="false" />
+	</bean>
+	
+	<bean lazy-init="true" id="transactionManager" class="org.springframework.orm.jdo.JdoTransactionManager">
+		<property name="persistenceManagerFactory" ref="persistenceManagerFactory" />
+	</bean>
+
+ 	<bean lazy-init="true" id="org.springframework.context.annotation.internalPersistenceAnnotationProcessor" 
+  		class="com.bsdroot.todo.web.gae.fixes.GaeFixInternalPersistenceAnnotationProcessor" />
+
+	<!--
+    ====================================================================================================================
+    JPA Configuration (tested only on GAEJ)
+    ====================================================================================================================
+    -->
+    <bean lazy-init="true" id="persistenceProvider" class="org.wicketopia.persistence.jpa.JpaPersistenceProvider">
+    </bean>
+
+        
+</beans>

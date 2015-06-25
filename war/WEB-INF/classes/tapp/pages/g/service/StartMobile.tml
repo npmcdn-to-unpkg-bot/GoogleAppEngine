@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html t:type="layout" t:title="SRM (${totalRows})" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd" xmlns:sec="http://www.springframework.org/security/tags" xmlns:p="tapestry:parameter">
+    <head>
+        <title>Service (${total})</title>
+        <!-- begin - iui stuff -->
+ 		<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+   		<link rel="stylesheet" href="/g/service/iui/iui.css" type="text/css" />
+   		<link rel="stylesheet" href="/g/service/iui/t/default/default-theme.css" type="text/css"/>
+   		<script type="application/x-javascript" src="/g/service/iui/iui.js"></script>
+        <!-- end - iui stuff -->
+    </head>
+    <body>
+	<div class="toolbar">
+      <h1 id="pageTitle"></h1>
+      <a id="backButton" class="button" href="#"></a>
+   	</div>
+  		<ul id="screen1" title="Screen 1" selected="true">
+		<!-- Reference: http://tapestry.apache.org/5.3/apidocs/org/apache/tapestry5/corelib/components/Loop.html -->
+		<t:loop source="ServiceRegistrys" value="ServiceRegistry" add="delete" include="id,description,lastAccessed,lastUpdated,service,endpoint,hit">
+			<li>
+				<a target="_new" href="http://${hostName}/go/${serviceRegistry.service}">${serviceRegistry.service}</a>
+				<span>${descriptionDetails}</span>${currentExcerpt}
+			</li>
+		</t:loop>
+		</ul>
+    </body>
+
+</html>

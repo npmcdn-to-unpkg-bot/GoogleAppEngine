@@ -1,0 +1,132 @@
+<!-- saved from url=(0029)http://ts.scigrp.com/bigtime/ -->
+<html scroll="NO" style="zoom: 100%; ">
+<head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<title>BigTime: Login</title>
+	<link rel="stylesheet" type="text/css" href="./BigTime  Login_files/text_mac.css">
+	<link rel="stylesheet" type="text/css" href="./BigTime  Login_files/body.css">
+	<link rel="SHORTCUT ICON" href="http://ts.scigrp.com/bigtime/favicon.ico">
+	
+	<script language="javascript" src="./BigTime  Login_files/ea_general.js"></script>
+	
+	<script language="javascript">
+	
+	function FN_BodyLoad() {
+	 
+	   try {
+	
+	      if (document.getElementsByName("fldUNM")[0].value=="") {
+	         document.getElementsByName("fldUNM")[0].focus()
+	      } else {
+	         document.getElementsByName("fldPWD")[0].focus()
+	      }
+	
+	   } catch(err) {}
+
+	   document.getElementById('frmLOGIN').submit();
+	}
+	
+	function FN_SubmitChangePWD() {
+	
+	
+	   try {
+	
+	      document.getElementById("frmLOGIN").action = document.getElementById("frmLOGIN").action + "?HTML=login_pwdchange.htm"
+	      document.getElementById("frmLOGIN").submit()
+	
+	   } catch(err) {
+	      try{EAGEN_Error("Error attempting to submit the change password request",err)}catch(err){}
+	   }
+	
+	}
+	
+	function FN_SubmitCR() {
+	
+	
+	   try {
+	
+	      document.getElementById("frmLOGIN").action = document.getElementById("frmLOGIN").action + "?WCI=ChallengeResponse&WCE=1"
+	      document.getElementById("frmLOGIN").submit()
+	
+	   } catch(err) {
+	      try{EAGEN_Error("Error attempting to submit the CR request",err)}catch(err){}
+	   }
+	
+	
+	}
+	
+	</script>
+	
+	<script src="chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/document_iterator.js"></script><script src="chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/find_proxy.js"></script><script src="chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/get_html_text.js"></script><script src="chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/global_constants.js"></script><script src="chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/name_injection_builder.js"></script><script src="chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/number_injection_builder.js"></script><script src="chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/string_finder.js"></script><meta name="document_iterator.js"><meta name="find_proxy.js"><meta name="get_html_text.js"><meta name="global_constants.js"><meta name="name_injection_builder.js"><meta name="number_injection_builder.js"><meta name="string_finder.js"><style type="text/css">.vimiumHUD, .vimiumHUD * {line-height: 100%;font-size: 11px;font-weight: normal;}.vimiumHUD {position: fixed;bottom: 0px;color: black;height: 13px;width: auto;max-width: 400px;min-width: 150px;text-align: left;background-color: #ebebeb;padding: 3px 3px 2px 3px;border: 1px solid #b3b3b3;border-radius: 4px 4px 0 0;font-family: Lucida Grande, Arial, Sans;z-index: 99999998;text-shadow: 0px 1px 2px #FFF;line-height: 1.0;opacity: 0;}.vimiumHUD a, .vimiumHUD a:hover {background: transparent;color: blue;text-decoration: underline;}.vimiumHUD a.close-button {float:right;font-family:courier new;font-weight:bold;color:#9C9A9A;text-decoration:none;padding-left:10px;margin-top:-1px;font-size:14px;}.vimiumHUD a.close-button:hover {color:#333333;cursor:default;-webkit-user-select:none;}</style>
+</head>
+
+<body onload="FN_BodyLoad()" scroll="NO">
+ 
+
+<table border="0" cellpadding="0" cellspacing="1" height="60%" width="100%">
+<tbody><tr><td valign="CENTER" align="CENTER">
+
+<table border="0" cellpadding="0" cellspacing="0" width="400">
+<tbody><tr></tr>
+   <tr><td class="info-title" width="400" height="40" background="./BigTime  Login_files/login_top.gif" style="padding-top:8px;padding-left:8px"><span class="info-title">
+      System Login
+   </span></td>
+</tr>
+<tr><td class="howdoi-body" background="./BigTime  Login_files/login_bk.gif" width="400">
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+<td width="200" valign="TOP"><span class="info-content">
+
+
+   Welcome to BigTime. Please login to the system before you continue.
+   <strong>Login options:</strong><br>
+   <a class="content-sm" href="javascript:FN_SubmitChangePWD()">1.  Change my password.</a><br>
+
+ 
+
+</span></td>
+
+<td width="200" valign="TOP" style="padding-left:10"><span class="info-content">
+
+   <form id="frmLOGIN" style="margin:0px" method="POST" action="http://ts.scigrp.com/bigtime/EAPSA.ASP">
+     
+
+   <strong>Your Login</strong><br>
+    
+   <input class="input-box-sm" name="fldUNM" type="PASSWORD" style="width: 180" tabindex="1" value=""><br>
+   <strong>Your Password:</strong> <a class="content-sm" href="javascript:FN_SubmitCR()">(forgot it?)</a><br>
+   <input class="input-box-sm" name="fldPWD" type="PASSWORD" style="width: 180" tabindex="2" value="">
+
+   <p style="width:180;margin-top:10;text-align:right">
+   <input name="cmdGO" type="IMAGE" src="./BigTime  Login_files/go.gif" align="ABSMIDDLE" tabindex="3">
+ 
+   </p>
+   </form>
+</span></td>
+
+</tr>
+</tbody></table>
+
+</td>
+
+</tr>
+<tr><td><img src="./BigTime  Login_files/login_btm.gif"></td></tr>
+</tbody></table>
+
+</td></tr></tbody></table>
+
+<br><br>
+<center>
+<img src="./BigTime  Login_files/ealogo.gif" border="0"> <br><br>
+<span class="content-sm">
+Copyright © 2002-2009, Edison's Attic, Inc.<br>
+(all rights reserved)<br><br>
+BigTime is from Edison's Attic<br>
+1 South Wacker Drive<br>
+Chicago, IL  60606<br><br>
+
+
+
+
+
+</span></center><div class="vimiumHUD" style="right: 150px; zoom: 100%; opacity: 0; display: none; ">Insert mode</div></body><span id="skype_highlighting_settings" display="none" autoextractnumbers="1"></span><object id="skype_plugin_object" location.href="http://ts.scigrp.com/bigtime/" location.hostname="ts.scigrp.com" style="position: absolute; visibility: hidden; left: -100px; top: -100px; " width="0" height="0" type="application/x-vnd.skype.toolbars.npplugin.4.2.0"></object></html>

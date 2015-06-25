@@ -1,0 +1,6 @@
+JCrasher (http://code.google.com/p/jcrasher/)
+(C) Copyright 2002-2007 Christoph Csallner and Yannis Smaragdakis.
+Generating for 34 public of total 45 methods and constructors 104 of 104 found test methods:
+app.controller.MovieHandler for 34 of 45: 104 of 104
+
+Run time: 465 ms.

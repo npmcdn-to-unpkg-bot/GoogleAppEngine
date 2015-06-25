@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:ng="http://angularjs.org" id="ng:app" lang="en">
+<head>
+    <!--
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+    -->
+    <!-- CDN https://developers.google.com/speed/libraries/devguide#angularjs -->
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.min.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular-sanitize.min.js"></script>
+    <script type="text/javascript" src="2skin.js"></script>
+</head>
+<body ng-app ng-controller="MyController">
+
+<div class="row-fluid">
+    <div class="span7">
+        <input style="margin-left:2px;margin-bottom:3px;width:46%;" type="text" ng-model="query" ng-change="search()" class="input-large search-query" placeholder="Enter ID followed by pixel value if any">
+        <i ng-show="query.length > 0" ng-click="resetSearch()" class="icon-remove"></i>
+    </div>
+</div>
+
+<br>This generally goes to .ascx file:<br>
+
+<!-- http://htmlentities.net/ -->
+<br>&lt;%@ Control Language=&quot;C#&quot; AutoEventWireup=&quot;true&quot; Inherits=&quot;DotNetNuke.UI.Skins.Skin&quot; %&gt;
+<br/>
+&lt;div id=&quot;PageWrapper&quot;&gt;
+
+<div ng-bind-html-unsafe="line1()"></div>
+
+&lt;/div&gt;<br>
+
+<br>This generally goes to skin.css file:<br>
+
+<div ng-bind-html-unsafe="line2()"></div>
+
+
+<!--
+<div data-ng-bind-html="rawHtml"></div>
+<div data-ng-bind-html-unsafe="sanitizedHtml"></div>
+<h1><span data-ng-bind-html-unsafe="rawHtml.getRawHTML()"></span></h1>
+<h1 data-ng-bind-html="rawHtml"></h1>
+
+<div>
+    <select ng-model="template" ng-options="t.name for t in templates">
+        <option value="">(blank)</option>
+    </select>
+    url of the template: <tt>{{template.url}}</tt>
+    <hr/>
+    <div ng-include src="template.url"></div>
+    <script>
+    var content = '<div id="infowindow_content" ng-include src="template.url"></div>';
+    console.log(content);
+    </script>
+</div>
+-->
+
+<h5>Rel {{1+2}} Build {{build}}</h5>
+
+</body>
+</html>

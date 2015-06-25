@@ -1,0 +1,15 @@
+CACHE MANIFEST
+#version 0.0.1 build 107 c0
+#javascript
+https://ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.min.js
+#movie.js #already specified in the FALLBACK below
+#others
+https://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.no-icons.min.css
+https://netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome.css
+
+FALLBACK:
+movie.js movie_offline.js
+
+#get from the network - for others that are not listed above (not cached)
+NETWORK:
+*

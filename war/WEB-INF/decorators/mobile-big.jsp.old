@@ -1,0 +1,20 @@
+<%@ taglib prefix="decorator" uri="http://www.opensymphony.com/sitemesh/decorator" %>  
+<%@ taglib prefix="page" uri="http://www.opensymphony.com/sitemesh/page" %>  
+<html>
+ 	<head>  
+		<title>  
+			<decorator:title />
+		</title>
+		<decorator:head />
+		<style>
+			* {font-size: 28pt;}
+		</style>
+	</head>
+  	<body>
+		<jsp:include page="/sgc/jsp/header.jsp"/>
+   		<div id="header">  
+    		<h2><a href="/sgc/jsp/staff.jsp">Management</a> Console</h2>
+   		</div>
+    	<decorator:body />
+  	</body>  
+ </html>

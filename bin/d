@@ -1,0 +1,3 @@
+#! /usr/bin/env bash
+
+cp appengine-web.xml.$1 ../war/WEB-INF/appengine-web.xml|./deploy_mac.sh

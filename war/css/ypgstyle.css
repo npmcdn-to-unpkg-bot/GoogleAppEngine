@@ -1,0 +1,209 @@
+#ex_header, #ex_navbar, #ex_middle, #ex_footer {
+  margin: 0 auto;
+  width: 100%;
+//  clear: both;
+  background-color: #ddd;
+}
+
+#ex_header h1, h2 {
+  margin: 0 0 0 10px;
+}
+
+#ex_header div {
+  display: inline;
+}
+
+#searhbox {
+  height:20px;
+}
+	
+#ex_banner_ads {
+  margin: 0 auto;
+//  clear: both;
+  background-color: #ddd;
+  width:100%;
+}
+
+#ex_banner_ads ads1, ads2 {
+	width:100%;
+}
+
+.ads1 * img, .ads2 * img {
+	width:50px;
+	height:50px;
+}
+
+#ex_footer h6{
+  margin: 0 0 0 10px;
+}
+
+#ex_navbar ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  width: 100%;
+  display: block;
+  background-color: #000;
+  float: left; 
+}
+
+#ex_navbar1 a:link {background: #000000; text-decoration: none}
+#ex_navbar1 a:visited {background: #FFCC00; text-decoration: none}
+#ex_navbar1 a:active {background: #FFCC00; text-decoration: none}
+#ex_navbar1 a:hover {background: #FFCC00; font-weight:bold; color: red;}
+
+#ex_navbar ul li {
+  float: left;
+  margin: 0 10px 0 0;
+  padding: 0 10px; 
+}
+
+#ex_navbar ul li a {
+  text-decoration: none;
+  color: #fff;
+}
+
+#ex_navbar ul li a:hover {
+  color: #ffc; 
+}
+
+#ex_middle {
+  background-color: #ccc;
+  width: 100%;
+  height: 1110px;
+}
+
+#ex_sidebar {
+  float: left;
+  width: 170px;	//don't forget to change floatdiv in the ypglayout.jsp too
+  height: 100%;
+  margin-right: 20px;
+  background-color: #fff;
+  font-size: 80%;
+}
+
+#ex_sidebar1 {
+  float: left;
+  width: 190px;
+  height: 100%;
+  margin-right: 20px;
+  background-color: #ccc;
+}
+
+#ex_sidebar h3, #ex_sidebar1 h3 {
+  margin: 10px 0 0 10px; 
+}
+
+#ex_main {
+  float: left;
+  width: 875px;	//will breaks accordion component, seems like it need absolute pixels width
+//  height: 1110px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: #eee;
+}
+
+#ex_main_smaller {
+  float: left;
+  width: 675px;	//if this is class, we could just inherit ex_main (minus 29 width of accordionGiftLelo's title')
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: #eee;
+}
+
+#ex_main1 {
+  width: 95%;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: #eee;
+}
+
+#hightable, #mediumtable, #lowtable, #highcolumn, #mediumcolumn, #lowcolumn {
+	width:100%;
+	border:1px;
+	border-style:solid;
+}
+
+#highcolumn {
+	width:35%;
+	height:200px;
+}
+
+#mediumcolumn {
+	width:238px;
+	height:100px;
+}
+
+#lowcolumn {
+	width:157px;
+	height:100px;
+}
+
+#lowlogo {
+	width:300px;
+	height:100px;
+}
+
+.clear {clear: both;}
+
+/** the topmost header */
+#nav-fixed {
+  	position: fixed;
+  	top: 0;
+  	left: 0;
+  	width: 80%;
+  	height: 30px;
+	z-index:10;
+	filter:alpha(opacity=60);
+	-moz-opacity:0.60;
+	-khtml-opacity: 0.60;
+	opacity: 0.60;
+}
+
+/** public member header */
+#ypgbody {
+	padding-top: 22px;	/** after the fixed header bar */
+}
+/** business owner header */
+#ypgbody1 {
+	padding-top: 20px;	/** after the fixed header bar */
+}
+
+/*
+http://www.ampsoft.net/webdesign-l/vertical-aligned-nav-list.html
+*/
+#nav-fixed li {
+  	height: 30px;
+  	margin-top: -10px;
+	background: black;
+	color: white;
+	float: left;
+	text-align: center;
+	line-height: 3em;
+}
+
+/** the language box */
+#nav-fixed select, #nav-fixed img {
+margin: 15px 5px 0px 2px; padding:0px; border: 1px solid #000;
+}
+
+/** the image of the search box */
+#nav-fixed img {
+margin: -5px 5px 0px 2px; padding:0px; border: 1px solid #000;
+}
+
+#nav-fixed .double-line {
+  line-height: 1.5em;
+}
+​
+#struts2 errors
+.errors {
+	background-color:#FFCCCC;
+	border:1px solid #CC0000;
+	width:400px;
+	margin-bottom:8px;
+}
+.errors li{ 
+	list-style: none; 
+}

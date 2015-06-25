@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+          "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<property name="dialect">
+			org.hibernate.dialect.MySQLDialect
+		</property>
+<!--
+		<property name="connection.url">
+			jdbc:mysql://192.168.25.200:3306/eol2dev?zeroDateTimeBehavior=convertToNull
+		</property>
+		<property name="connection.username">eol2dev</property>
+		<property name="connection.password">TheSecondPass02</property>
+-->
+ 		<property name="connection.url">
+			jdbc:mysql://localhost:3306/eol2?zeroDateTimeBehavior=convertToNull
+		</property>
+		<property name="connection.username">root</property>
+		<property name="connection.password">admin</property>
+		<property name="connection.driver_class">
+			com.mysql.jdbc.Driver
+		</property>
+		<property name="connection.autocommit">true</property>
+		<!-- Enable Hibernate's automatic session context management -->
+		<property name="current_session_context_class">thread</property>
+        <property name="hibernate.transaction.factory_class">
+                 org.hibernate.transaction.JDBCTransactionFactory</property>     
+		<!-- Disable the second-level cache -->
+		<property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
+		<!-- Echo all executed SQL to stdout -->
+		<property name="show_sql">true</property>
+		<!-- http://docs.jboss.org/hibernate/core/3.3/reference/en/html/session-configuration.html -->
+		<property name="hibernate.hbm2ddl.auto">create</property>
+
+        <mapping class="com.appspot.cloudserviceapi.eo.test.Activity" />
+        <mapping class="com.appspot.cloudserviceapi.eo.test.CdActivityDetails" />
+        <mapping class="com.appspot.cloudserviceapi.eo.test.ParentInput" />
+        <mapping class="com.appspot.cloudserviceapi.eo.test.Student" />
+        <mapping class="com.appspot.cloudserviceapi.eo.test.College" />
+        <mapping class="com.appspot.cloudserviceapi.eo.test.Subject" />
+        <mapping class="com.appspot.cloudserviceapi.eo.test.ProgramGoalsParentTarget" />
+        <mapping class="com.appspot.cloudserviceapi.eo.test.ProgramGoalsSchedule" />
+        
+
+	</session-factory>
+
+</hibernate-configuration>

@@ -1,0 +1,277 @@
+﻿<!DOCTYPE html>
+<html xmlns:ng="http://angularjs.org" id="ng-app" ng-app>
+<!--
+<html manifest="movie.appcache" xmlns:ng="http://angularjs.org" id="ng:app" ng-app lang="en">
+-->
+<head>
+    <!-- chrome://appcache-internals/ -->
+<!--     <meta http-equiv="X-UA-Compatible" content="IE=8">
+-->
+    <title>Cool App</title>
+    <meta charset="utf-8">
+    <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.no-icons.min.css" rel="stylesheet">
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome.css" rel="stylesheet">
+    <!-- didn't work!!! :(
+    <script type="text/javascript" src="../js/ui-bootstrap-tpls-0.3.0.min.js"></script>
+    -->
+    <!-- http://ajax.cdnjs.com/ajax/libs/galleria/1.2.9/galleria.min.js -->
+    <link href="../parse/css/tabs.css" rel="stylesheet">
+    <link href="../css/app.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: black;
+            margin:0 auto;
+        }
+        /*ul.play-link:hover, a.play-link:hover {*/
+            /*background-color: pink;*/
+        /*}*/
+        .galleria-container {
+            top: -31px;
+            height: 100%;
+        }
+        .galleria-image {
+            height: 100%;
+        }
+        /*.galleria-stage {*/
+            /*position: absolute;*/
+            /*top: 10px;*/
+            /*bottom: 145px;*/
+            /*left: 10px;*/
+            /*right: 10px;*/
+            /*overflow:hidden;*/
+        /*}*/
+        /*.galleria-thumbnails {*/
+            /*height: 100px;*/
+        /*}*/
+        #galleria0 { position: absolute; top:85px; width:99%; height:640px; background: #000 }
+        #galleria1 { position: absolute; top:85px; width:99%; height:640px; background: #000 }
+        #galleria2 { position: absolute; top:85px; width:99%; height:640px; background: #000 }
+    </style>
+    <script>
+        /** this has to be BEFOFE requireJS for it to work! */
+        var isIE = !!window.ActiveXObject;
+        if(isIE) {
+//            if ("http:" === document.location.protocol) {
+//                alert("IE browsers are not supported over plain old HTTP via Parse SDK. See https://www.parse.com/questions/internet-explorer-and-the-javascript-sdk for details.");
+//                //history.back();
+//            } else {
+//                window.location= "https://" + location.hostname + "/html/channel.htm";
+//            }
+        }
+    </script>
+    <script>var require = { urlArgs: 'a000' };</script>
+    <script type="text/javascript" src="../js/require.js" data-main="../js/main-channelshuffle"></script>
+</head>
+<body ng-controller="ctrlRead">
+<!--
+<body>
+-->
+<div id="fb-root"></div>
+<div class="row-fluid">
+    <div class="span6">
+        <div style="color:white" ng-show="!backendReady">
+            &nbsp;<img src="/images/ajax-loader-transbg.gif" class="loading-indicator" alt="loading" />
+            &nbsp;Processing (can be up to 20 seconds) ...<p>
+        </div>
+        <div id="mobilePlaybackMsg" style="color:#6e7183;" ng-cloak ng-show="backendReady">
+            &nbsp;<span id="releaseLabel">{{mRelease}}</span> {{mBuild}}<p>
+        </div>
+    </div>
+    <div class="span6">
+        <div style="color:#6e7183;" class="pull-right">
+            <span id=currentUser></span> <a href="javascript:logout();">Logout</a>
+        </div>
+    </div>
+</div>
+<ul class="play-link" id="globalnav">
+    <ul style="top:-6px;height:22px;">
+        <!--
+        <li><a href="#">My Folders</a></li>
+        -->
+        <li><a id="manageCollections" href="javascript:void(0);" onclick="location.href='/mcrud/movie.html?username=' + $.url().param('username') + '&amp;logintype=' + $.url().param('logintype');">Collections</a></li>
+        <li><a style="display:none;" id="manageShowtime" href="javascript:void(0);" onclick="location.href='/html/calendar.html?username=' + $.url().param('username') + '&amp;logintype=' + $.url().param('logintype');">Calendar</a></li>
+        <li>
+            <a style="display:none;" id="manageChannelsMain" href="javascript:void(0);" onclick="location.href='/html/channel.html?username=' + $.url().param('username') + '&amp;logintype=' + $.url().param('logintype');">Channel</a>
+            <a class="here" id="allChannels" href="javascript:history.go(0);">Play Now</a>
+            <a style="display:none;" id="manageChannelsImage" href="javascript:void(0);" onclick="handleChannelType(1, Parse.User.current().getUsername());$('#galleria0').css({'left':'-9999px'});$('#galleria1').css({'left':'5px'});$('#galleria2').css({'left':'-9999px'});"></a>
+            <a style="display:none;" id="manageChannelsData" href="javascript:void(0);" onclick="handleChannelType(2, Parse.User.current().getUsername());$('#galleria2').css({'left':'5px'});$('#galleria0').css({'left':'-9999px'});$('#galleria1').css({'left':'-9999px'});"></a>
+        </li>
+    </ul>
+</ul>
+<div style="position:absolute;margin-top:100px;margin-left:250px;" ng-cloak ng-hide="true">
+    ****** If you are seeing this, please make sure you enable the support of "Mixed Content" ******
+</div>
+<div ng-show="error_message" ng-bind-template="&nbsp;{{error_message}}"></div>
+
+<!--
+
+<div id="galleria" ng-repeat="item in $scope.pagedItems[$scope.currentPage]">
+    <img src="{{item.url}}" alt="{{item.title}} ({{item.description}})" />
+</div>
+<div id="galleria">
+    <img src="http://placekitten.com/200/200" alt="my description for this video" />
+    <img src="http://placekitten.com/225/200" alt="this is my dog..." />
+    <img src="http://placekitten.com/250/200" alt="my dog eating the cat" />
+    <img src="http://placekitten.com/275/200" alt="my r/c helicopter crashing..." />
+</div>
+-->
+<!--
+http://galleria.io/docs/references/faq/
+http://support.galleria.io/kb/getting-started/quick-start
+<div id="progress" style="position: absolute; top:90px; color:red;">&nbsp;Getting data ...</div>
+-->
+<div id="galleria">
+    <input id="playingOrsoon" type=hidden value="..." data-datetime="...">
+    <input id="i0" type=hidden value="..." data-description="...">
+    <input id="i1" type=hidden value="..." data-description="...">
+    <input id="i2" type=hidden value="..." data-description="...">
+    <input id="i3" type=hidden value="..." data-description="...">
+    <input id="i4" type=hidden value="..." data-description="...">
+    <input id="i5" type=hidden value="..." data-description="...">
+    <input id="i6" type=hidden value="..." data-description="...">
+    <input id="i7" type=hidden value="..." data-description="...">
+    <input id="i8" type=hidden value="..." data-description="...">
+    <input id="i9" type=hidden value="..." data-description="...">
+    <input id="i10" type=hidden value="..." data-description="...">
+    <input id="i11" type=hidden value="..." data-description="...">
+    <input id="i12" type=hidden value="..." data-description="...">
+    <input id="i13" type=hidden value="..." data-description="...">
+    <input id="i14" type=hidden value="..." data-description="...">
+    <input id="i15" type=hidden value="..." data-description="...">
+    <input id="i16" type=hidden value="..." data-description="...">
+    <input id="i17" type=hidden value="..." data-description="...">
+    <input id="i18" type=hidden value="..." data-description="...">
+    <input id="i19" type=hidden value="..." data-description="...">
+</div>
+<div id="galleria0">
+    <a id="v0" href="#"><span class="video"></span></a>
+    <a id="v1" href="#"><span class="video"></span></a>
+    <a id="v2" href="#"><span class="video"></span></a>
+    <a id="v3" href="#"><span class="video"></span></a>
+    <a id="v4" href="#"><span class="video"></span></a>
+    <a id="v5" href="#"><span class="video"></span></a>
+    <a id="v6" href="#"><span class="video"></span></a>
+    <a id="v7" href="#"><span class="video"></span></a>
+    <a id="v8" href="#"><span class="video"></span></a>
+    <a id="v9" href="#"><span class="video"></span></a>
+    <a id="v10" href="#"><span class="video"></span></a>
+    <a id="v11" href="#"><span class="video"></span></a>
+    <a id="v12" href="#"><span class="video"></span></a>
+    <a id="v13" href="#"><span class="video"></span></a>
+    <a id="v14" href="#"><span class="video"></span></a>
+    <a id="v15" href="#"><span class="video"></span></a>
+    <a id="v16" href="#"><span class="video"></span></a>
+    <a id="v17" href="#"><span class="video"></span></a>
+    <a id="v18" href="#"><span class="video"></span></a>
+    <a id="v19" href="#"><span class="video"></span></a>
+</div>
+
+<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ FUTURE ENHANCEMENTS !!! :-) $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+<div id="galleria1" style="left:-9999px">
+    <img id="img0" src="../images/cross.jpg" alt="image 0 of galleria1" />
+    <img id="img1" src="../images/cross.jpg" alt="image 1 of galleria1" />
+    <img id="img2" src="../images/cross.jpg" alt="image 2 of galleria1" />
+    <img id="img3" src="../images/cross.jpg" alt="image 3 of galleria1" />
+    <img id="img4" src="../images/cross.jpg" alt="image 4 of galleria1" />
+</div>
+<!-- http://support.galleria.io/kb/references/galleria-data -->
+<div id="galleria2" style="left:-9999px">
+    <a id="t0" href="//en.wikipedia.org/wiki/RSS"><img id="ti0" class="iframe" src="../images/rss1.png" alt="image 0 of galleria2"></a>
+    <a id="t1" href="//en.wikipedia.org/wiki/RSS"><img id="ti1" class="iframe" src="../images/rss1.png" alt="image 1 of galleria2"></a>
+    <a id="t2" href="//en.wikipedia.org/wiki/RSS"><img id="ti2" class="iframe" src="../images/rss1.png" alt="image 2 of galleria2"></a>
+    <a id="t3" href="//en.wikipedia.org/wiki/RSS"><img id="ti3" class="iframe" src="../images/rss1.png" alt="image 3 of galleria2"></a>
+    <a id="t4" href="//en.wikipedia.org/wiki/RSS"><img id="ti4" class="iframe" src="../images/rss1.png" alt="image 4 of galleria2"></a>
+</div>
+<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ FUTURE ENHANCEMENTS !!! :-) $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+
+<div id=’facebookfeedholder’></div>
+<script>
+	var gHeaderReleaseBuildTitle;
+    var col1;
+    var col2;
+    var col3;
+    var col4;
+    var col5;
+    var col6;
+    var entry;
+    function importGSS(json) {
+        for (i = 0; i < json.feed.entry.length; i++) {
+            entry = json.feed.entry[i];
+            col1 = entry.gsx$index && entry.gsx$index.$t;
+            col2 = entry.gsx$_cokwr && entry.gsx$_cokwr.$t;
+            col3 = entry.gsx$_cpzh4 && entry.gsx$_cpzh4.$t;
+            col4 = entry.gsx$_cre1l && entry.gsx$_cre1l.$t;
+            col5 = entry.gsx$_chk2m && entry.gsx$_chk2m.$t;
+            col6 = entry.gsx$_ciyn3 && entry.gsx$_ciyn3.$t;
+            if (col1 === 'header' &&
+                    col2 === 'release' &&
+                    col3 === 'build' &&
+                    col4 === 'title' &&
+                    col5 === 'text'
+                    ) {
+            	gHeaderReleaseBuildTitle = col6;
+                document.getElementById("releaseLabel").innerHTML = col6;
+                window.console && console.log("movie.html:gHeaderReleaseBuildTitle set [" + gHeaderReleaseBuildTitle + "]");
+            } else 
+            if (col1 && col2 && col3 && col4 && col5) {
+                window.console && console.log('[' + (i + 1) + '] = ' + '[' + col1 + '] ' + '[' + col2 + '] ' + '[' + col3 + '] ' + '[' + col4 + '] ' + '[' + col5 + '] ' + '[' + col6 + '] ');
+                if (col1 === 'manage' &&
+                        col2 === 'collections' &&
+                        col3 === 'main' &&
+                        col4 === 'title' &&
+                        col5 === 'text'
+                        ) {
+                    document.getElementById("manageCollections").innerHTML = col6;
+                } else if (col1 === 'manage' &&
+                        col2 === 'showtime' &&
+                        col3 === 'main' &&
+                        col4 === 'title' &&
+                        col5 === 'text'
+                        ) {
+                    document.getElementById("manageShowtime").innerHTML = col6;
+                    $("#manageShowtime").show();
+                } else if (col1 === 'manage' &&
+                        col2 === 'channels' &&
+                        col3 === 'main' &&
+                        col4 === 'title' &&
+                        col5 === 'text'
+                        ) {
+                    document.getElementById("manageChannelsMain").innerHTML = col6;
+                    $("#manageChannelsMain").show();
+                } else if (col1 === 'manage' &&
+                        col2 === 'channels' &&
+                        col3 === 'image' &&
+                        col4 === 'title' &&
+                        col5 === 'active' &&
+                        col6 === 'TRUE'
+                        ) {
+                    $("#manageChannelsImage").show();
+                } else if (col1 === 'manage' &&
+                        col2 === 'channels' &&
+                        col3 === 'data' &&
+                        col4 === 'title' &&
+                        col5 === 'active' &&
+                        col6 === 'TRUE'
+                        ) {
+                    $("#manageChannelsData").show();
+                } else if (col1 === 'manage' &&
+                        col2 === 'channels' &&
+                        col3 === 'image' &&
+                        col4 === 'title' &&
+                        col5 === 'text'
+                        ) {
+                    document.getElementById("manageChannelsImage").innerHTML = col6;
+                } else if (col1 === 'manage' &&
+                        col2 === 'channels' &&
+                        col3 === 'data' &&
+                        col4 === 'title' &&
+                        col5 === 'text'
+                        ) {
+                    document.getElementById("manageChannelsData").innerHTML = col6;
+                }
+            }
+        }
+    }
+</script>
+</body>
+</html>

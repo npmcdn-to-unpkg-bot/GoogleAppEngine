@@ -1,0 +1,119 @@
+.......................10.2 UserHandler:doUpdateItem item 'null' ...
+log4j:WARN No appenders could be found for logger (DataNucleus.JPA).
+log4j:WARN Please initialize the log4j system properly.
+log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
+E.10.2 UserHandler:doUpdateItem item 'User [key=null, id=null, name=null]' ...
+10.3 UserHandler:doUpdateItem user name = 'null'
+E.E.e.UserHandler:getUserByName ...
+E.e.e.e.UserHandler:getUserByName ...
+e.e.e.e.UserHandler:getUserByName ...
+E.E.E.E.e.E.
+e..e.e.e..e.e.e.E.e..e.e.e..e.e.e.E.e...UserHandler:getUserByName ...
+E.E.e.e.e.e.e.e.e.e.e.UserHandler:getUserByName ...
+E.UserHandler:getUserByName ...
+E..app.controller.MovieHandler added as crud service handler
+....
+...........migrateOwnedMovies: total movie migrated in the collection of user [null] = 0
+...UserHandler:getUserByName ...
+E.UserHandler:getUserByName ...
+e.UserHandler:getUserByName ...
+e...UserHandler:getUserByName ...
+e.UserHandler:getUserByName ...
+E..UserHandler:getUserByName ...
+e
+Time: 0.587
+There were 54 errors:
+1) test0(app.controller.MovieHandlerTest13)java.lang.ExceptionInInitializerError
+	at app.controller.UserHandler.getEntityManager(UserHandler.java:462)
+	at app.controller.UserHandler.merge(UserHandler.java:283)
+	at app.controller.UserHandler.doUpdateItem(UserHandler.java:433)
+	at app.controller.MovieHandler.saveParent(MovieHandler.java:237)
+	at app.controller.MovieHandlerTest13.test0(MovieHandlerTest13.java:32)
+2) test1(app.controller.MovieHandlerTest13)java.lang.NoClassDefFoundError: Could not initialize class com.appspot.cloudserviceapi.data.EMF
+	at app.controller.UserHandler.getEntityManager(UserHandler.java:462)
+	at app.controller.UserHandler.merge(UserHandler.java:283)
+	at app.controller.UserHandler.doUpdateItem(UserHandler.java:433)
+	at app.controller.MovieHandler.saveParent(MovieHandler.java:237)
+	at app.controller.MovieHandlerTest13.test1(MovieHandlerTest13.java:44)
+3) test0(app.controller.MovieHandlerTest14)java.lang.ClassCastException: java.lang.Object cannot be cast to app.model.Movie
+	at app.controller.MovieHandler.doCreateItem(MovieHandler.java:248)
+	at app.controller.MovieHandlerTest14.test0(MovieHandlerTest14.java:32)
+5) test1(app.controller.MovieHandlerTest14)java.lang.NoClassDefFoundError: Could not initialize class com.appspot.cloudserviceapi.data.EMF
+	at app.controller.UserHandler.getEntityManager(UserHandler.java:462)
+	at app.controller.UserHandler.getUserByName(UserHandler.java:201)
+	at app.controller.MovieHandler.getParent(MovieHandler.java:218)
+	at app.controller.MovieHandler.doCreateItem(MovieHandler.java:250)
+	at app.controller.MovieHandlerTest14.test1(MovieHandlerTest14.java:44)
+13) test0(app.controller.MovieHandlerTest15)java.lang.NoClassDefFoundError: Could not initialize class com.appspot.cloudserviceapi.data.EMF
+	at app.controller.UserHandler.getEntityManager(UserHandler.java:462)
+	at app.controller.UserHandler.getUserByName(UserHandler.java:201)
+	at app.controller.MovieHandler.getParent(MovieHandler.java:218)
+	at app.controller.MovieHandler.doGetItems(MovieHandler.java:306)
+	at app.controller.MovieHandlerTest15.test0(MovieHandlerTest15.java:31)
+14) test0(app.controller.MovieHandlerTest16)java.lang.NoClassDefFoundError: Could not initialize class com.appspot.cloudserviceapi.data.EMF
+	at app.controller.MovieHandler.getEntityManager(MovieHandler.java:979)
+	at app.controller.MovieHandler.getMovies(MovieHandler.java:434)
+	at app.controller.MovieHandler.doGetAllItems(MovieHandler.java:409)
+	at app.controller.MovieHandlerTest16.test0(MovieHandlerTest16.java:31)
+15) test0(app.controller.MovieHandlerTest17)java.lang.NoClassDefFoundError: Could not initialize class com.appspot.cloudserviceapi.data.EMF
+	at app.controller.MovieHandler.getEntityManager(MovieHandler.java:979)
+	at app.controller.MovieHandler.getMovies(MovieHandler.java:434)
+	at app.controller.MovieHandlerTest17.test0(MovieHandlerTest17.java:31)
+16) test0(app.controller.MovieHandlerTest18)java.lang.NoClassDefFoundError: Could not initialize class com.appspot.cloudserviceapi.data.EMF
+	at app.controller.MovieHandler.getEntityManager(MovieHandler.java:979)
+	at app.controller.MovieHandler.doGetItem(MovieHandler.java:689)
+	at app.controller.MovieHandlerTest18.test0(MovieHandlerTest18.java:32)
+18) test0(app.controller.MovieHandlerTest19)java.lang.ClassCastException: java.lang.Object cannot be cast to app.model.Movie
+	at app.controller.MovieHandler.doUpdateItem(MovieHandler.java:712)
+	at app.controller.MovieHandlerTest19.test0(MovieHandlerTest19.java:32)
+26) test0(app.controller.MovieHandlerTest20)java.lang.ClassCastException: java.lang.Object cannot be cast to app.model.Movie
+	at app.controller.MovieHandler.doDeleteItem(MovieHandler.java:995)
+	at app.controller.MovieHandlerTest20.test0(MovieHandlerTest20.java:32)
+34) test0(app.controller.MovieHandlerTest21)java.lang.NoClassDefFoundError: Could not initialize class com.appspot.cloudserviceapi.data.EMF
+	at app.controller.MovieHandler.getEntityManager(MovieHandler.java:979)
+	at app.controller.MovieHandler.doGetItem(MovieHandler.java:689)
+	at app.controller.MovieHandler.isOwner(MovieHandler.java:706)
+	at app.controller.MovieHandler.doDeleteItem(MovieHandler.java:813)
+	at app.controller.MovieHandlerTest21.test0(MovieHandlerTest21.java:32)
+36) test0(app.controller.MovieHandlerTest23)java.lang.NoClassDefFoundError: Could not initialize class com.appspot.cloudserviceapi.data.EMF
+	at app.controller.UserHandler.getEntityManager(UserHandler.java:462)
+	at app.controller.UserHandler.getUserByName(UserHandler.java:201)
+	at app.controller.MovieHandler.getParent(MovieHandler.java:218)
+	at app.controller.MovieHandler.purgeEvents(MovieHandler.java:927)
+	at app.controller.MovieHandlerTest23.test0(MovieHandlerTest23.java:31)
+37) test0(app.controller.MovieHandlerTest24)java.lang.NoClassDefFoundError: Could not initialize class com.appspot.cloudserviceapi.data.EMF
+	at app.controller.MovieHandler.getEntityManager(MovieHandler.java:979)
+	at app.controller.MovieHandler.doUpdateItemForAnyone(MovieHandler.java:764)
+	at app.controller.MovieHandlerTest24.test0(MovieHandlerTest24.java:32)
+47) test0(app.controller.MovieHandlerTest25)java.lang.NoClassDefFoundError: Could not initialize class com.appspot.cloudserviceapi.data.EMF
+	at app.controller.UserHandler.getEntityManager(UserHandler.java:462)
+	at app.controller.UserHandler.getUserByName(UserHandler.java:201)
+	at app.controller.MovieHandler.getParent(MovieHandler.java:218)
+	at app.controller.MovieHandler.handleCalendar(MovieHandler.java:877)
+	at app.controller.MovieHandlerTest25.test0(MovieHandlerTest25.java:31)
+48) test0(app.controller.MovieHandlerTest26)java.lang.NoClassDefFoundError: Could not initialize class com.appspot.cloudserviceapi.data.EMF
+	at app.controller.UserHandler.getEntityManager(UserHandler.java:462)
+	at app.controller.UserHandler.getUserByName(UserHandler.java:201)
+	at app.controller.MovieHandler.getParent(MovieHandler.java:218)
+	at app.controller.MovieHandler.purgePastEvents(MovieHandler.java:957)
+	at app.controller.MovieHandlerTest26.test0(MovieHandlerTest26.java:31)
+49) test0(app.controller.MovieHandlerTest33)java.lang.NoClassDefFoundError: Could not initialize class com.appspot.cloudserviceapi.data.EMF
+	at app.controller.UserHandler.getEntityManager(UserHandler.java:462)
+	at app.controller.UserHandler.getUserByName(UserHandler.java:201)
+	at app.controller.UserHandler.getUser(UserHandler.java:410)
+	at app.controller.MovieHandler.purgeScheduledMovies(MovieHandler.java:593)
+	at app.controller.MovieHandlerTest33.test0(MovieHandlerTest33.java:32)
+53) test0(app.controller.MovieHandlerTest34)java.lang.NoClassDefFoundError: Could not initialize class com.appspot.cloudserviceapi.data.EMF
+	at app.controller.UserHandler.getEntityManager(UserHandler.java:462)
+	at app.controller.UserHandler.getUserByName(UserHandler.java:201)
+	at app.controller.UserHandler.getUser(UserHandler.java:410)
+	at app.controller.MovieHandler.purgePastScheduledMovies(MovieHandler.java:637)
+	at app.controller.MovieHandlerTest34.test0(MovieHandlerTest34.java:31)
+
+FAILURES!!!
+Tests run: 104,  Failures: 0,  Errors: 54
+
+Suite name: JUnitAll
+Exceptions and Errors after filtering (E): 17
+Exceptions and Errors total (e):  54
+Run time: 726ms

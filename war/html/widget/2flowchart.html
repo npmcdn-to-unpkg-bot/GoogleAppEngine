@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Convert to Flow Chart</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <!--<script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>-->
+    <!--<script src="../../js/raphael-2.1.0.min.js"></script>-->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js"></script>
+    <script type="text/javascript" srboostrapc='../../jquery/purl.js'></script>
+    <!--Workaround for IE 8-->
+    <!--<script>-->
+        <!--//http://stackoverflow.com/questions/10919915/ie8-getprototypeof-method-->
+        <!--if (typeof Object.getPrototypeOf !== "function")-->
+            <!--Object.getPrototypeOf = "".__proto__ === String.prototype-->
+            <!--? function (object) {-->
+            <!--return object.__proto__;-->
+            <!--}-->
+            <!--: function (object) {-->
+            <!--// May break if the constructor has been tampered with-->
+            <!--return object.constructor.prototype;-->
+        <!--};-->
+    <!--</script>-->
+    <!--<script src="../../js/flowchart-1.2.5.js"></script>-->
+    <script src="../../js/flowchart-1.2.6.js"></script>
+</head>
+<body>
+<img src="/images/ajax-loader-sm-wait-transbg.gif" id="loading-indicator" alt="processing" />&nbsp;<span id="wait">Rendering, please wait ...</span>
+<div id="diagram"></div>
+<pre style="display:none;" id="text1">st=>start: Start:>http://www.google.com[blank]
+e=>end:>http://www.google.com
+op1=>operation: My Operation
+sub1=>subroutine: My Subroutine
+cond=>condition: Yes or No?:>http://www.google.com
+io=>inputoutput: catch something...
+
+st->op1->cond
+cond(yes)->io->e
+cond(no)->sub1->op1
+</pre>
+<script>
+//    $( document ).ready(function() {
+        $.get( $.url().param('url'), function( data ) {
+//            var data = $('#text1').text();
+//            alert( "1 2flowchart.html: Data Loaded [" + data + "]");
+//            alert( "2 2flowchart.html: Data Loaded [" + data + "]");
+            window.console && console.log('Tips *** Test with http://adrai.github.io/flowchart.js/ if there is any rendering issue ***');
+            window.console && console.log( "2flowchart.html: Data Loaded [" + data + "]");
+            var diagram = flowchart.parse(data);
+            diagram.drawSVG('diagram', {
+                'line-width': 3,
+                        'line-length': 50,
+                        'text-margin': 10,
+                        'font-size': 14,
+                        'font-color': 'black',
+                        'line-color': 'black',
+                        'element-color': 'black',
+                        'fill': 'white',
+                        'yes-text': 'yes',
+                        'no-text': 'no',
+                        'arrow-end': 'block'
+            });
+            $("#wait").hide();
+            $("#loading-indicator").hide();
+        });
+//    });
+</script>
+</body>
+</html>

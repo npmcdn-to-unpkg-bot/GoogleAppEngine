@@ -1,0 +1,20 @@
+/*http://stackoverflow.com/questions/9688768/jquery-mobile-multiple-data-filters-showing*/
+/*
+	WARNING: this css supposed to hide the "duplicated" list but it is buggy thus currently not used!
+*/
+
+/*hide all of the search filter forms*/
+/*#test .choice_list form.ui-listview-filter {
+    display : none;
+}
+*/
+
+/*show just the first search filter form*/
+/*#test .choice_list form.ui-listview-filter:nth-child(-n+3) {
+    display : block;
+}
+*/
+
+.ui-listview-filter, .ui-listview {
+	padding: 10px;	
+}

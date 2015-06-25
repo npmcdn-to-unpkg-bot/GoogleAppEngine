@@ -1,0 +1,227 @@
+<%@ taglib prefix="decorator" uri="http://www.opensymphony.com/sitemesh/decorator" %>  
+<html>
+	<head>  
+  		<title>  
+   			<decorator:title default="General" />
+  		</title>
+		<!-- http://www.smoothdivscroll.com/ -->  		
+		<!-- CSS -->
+		<link rel="stylesheet" type="text/css" href="/css/ypgstyle.css" />
+		<!-- the CSS for Smooth Div Scroll -->
+		<link rel="Stylesheet" type="text/css" href="/css/smoothDivScroll.css" />
+	
+		<!-- jQuery library - I get it from Google API's -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" type="text/javascript"></script>
+		<!-- jQuery UI widget factory -->
+		<!-- You can download it as a part of jQuery UI Core
+		 http://jqueryui.com/download -->
+		<script src="/js/jquery.ui.widget.js" type="text/javascript"></script>
+		
+		<!-- Smooth Div Scroll 1.1 - minified for faster loading-->
+		<script src="/js/jquery.smoothDivScroll-1.1-min.js" type="text/javascript"></script>
+
+<!-- Absolute Floating Menu http://www.jtricks.com/javascript/navigation/floating.html -->
+<script type="text/javascript" src="/js/floating-1.7.js">
+</script>   		
+	
+		<!-- Styles for my specific scrolling content -->
+		<style type="text/css">
+			#makeMeScrollable1, #makeMeScrollable2
+			{
+				width:100%;
+				height: 65px;
+				position: relative;
+			}
+			
+			#makeMeScrollable1 div.scrollableArea img, #makeMeScrollable2 div.scrollableArea img
+			{
+				width: 100px;
+				position: relative;
+				float: left;
+				margin: 0;
+				padding: 0;
+			}
+		</style>
+	
+  		<decorator:head />
+	  		
+		<script type="text/javascript">
+			//*** smoothdivscroll ***
+			// Initialize the plugin with no custom options
+			$(window).load(function() {
+				$("div#makeMeScrollable1").smoothDivScroll({ 
+					autoScroll: "onstart",
+					autoScrollDirection: "endlessloopright",
+					autoScrollStep: 1,
+					autoScrollInterval: 15,
+					startAtElementId: "startAtMe",
+					visibleHotSpots: "always"
+				});
+				$("div#makeMeScrollable2").smoothDivScroll({ 
+					autoScroll: "onstart",
+					autoScrollDirection: "endlessloopleft",
+					autoScrollStep: 1,
+					autoScrollInterval: 15,
+					startAtElementId: "startAtMe",
+					visibleHotSpots: "always"
+				});
+			});
+			//*** accordian ***
+/* 			$(document).ready(function() {
+					$("#accordionGiftLelo").msAccordion();
+//					$("#accordionGiftLelo").msAccordion({defaultid:3, autodelay:4});
+				}
+			)
+ */		</script>
+		<script type="text/javascript">
+			function resizeImg1(img, scroll, banner) {
+			    img.height = img.naturalHeight*3;
+			    img.width = img.naturalWidth*3;
+			    if(scroll) {
+			        img.height = img.naturalHeight;
+			        img.width = img.naturalWidth;
+					$("#imagepopup").attr("src","");
+					$("#imagepopup").attr("style", "display:none;position:absolute;top:200;left:300;z-index:30");
+					$('#'+banner).smoothDivScroll("startAutoScroll");
+				} else {
+					$("#imagepopup").attr("src",img.src);
+			    	$('#'+banner).smoothDivScroll("stopAutoScroll");
+					$("#imagepopup").attr("style", "display:inline;position:absolute;top:200;left:300;z-index:30");
+				}
+			}
+		</script>
+ 	</head>
+<body id="ypgbody" style="overflow-x: hidden;">
+
+<div id="example">
+	<jsp:include page="/gu/header.jsp"></jsp:include>
+
+  <div id="ex_navbar">
+	<div id="makeMeScrollable1">
+		<div class="scrollWrapper">
+			<div class="scrollableArea">
+				<img onmouseover="resizeImg1(this, false, 'makeMeScrollable1');" onmouseout="resizeImg1(this, true, 'makeMeScrollable1');" src="http://www.smoothdivscroll.com/images/demo/golf.jpg" alt="Demo image" id="startAtMe" />
+				<img onmouseover="resizeImg1(this, false, 'makeMeScrollable1');" onmouseout="resizeImg1(this, true, 'makeMeScrollable1');" src="http://www.smoothdivscroll.com/images/demo/field.jpg" alt="Demo image" />
+				<img onmouseover="resizeImg1(this, false, 'makeMeScrollable1');" onmouseout="resizeImg1(this, true, 'makeMeScrollable1');" src="http://www.smoothdivscroll.com/images/demo/gnome.jpg" alt="Demo image" />
+				<img onmouseover="resizeImg1(this, false, 'makeMeScrollable1');" onmouseout="resizeImg1(this, true, 'makeMeScrollable1');" src="http://www.smoothdivscroll.com/images/demo/pencils.jpg" alt="Demo image" />
+				<img onmouseover="resizeImg1(this, false, 'makeMeScrollable1');" onmouseout="resizeImg1(this, true, 'makeMeScrollable1');" src="http://www.smoothdivscroll.com/images/demo/river.jpg" alt="Demo image" />
+				<img onmouseover="resizeImg1(this, false, 'makeMeScrollable1');" onmouseout="resizeImg1(this, true, 'makeMeScrollable1');" src="http://www.smoothdivscroll.com/images/demo/train.jpg" alt="Demo image" />
+				<img onmouseover="resizeImg1(this, false, 'makeMeScrollable1');" onmouseout="resizeImg1(this, true, 'makeMeScrollable1');" src="http://www.smoothdivscroll.com/images/demo/leaf.jpg" alt="Demo image" />
+				<img onmouseover="resizeImg1(this, false, 'makeMeScrollable1');" onmouseout="resizeImg1(this, true, 'makeMeScrollable1');" src="http://www.smoothdivscroll.com/images/demo/dog.jpg" alt="Demo image" />
+				<img onmouseover="resizeImg1(this, false, 'makeMeScrollable1');" onmouseout="resizeImg1(this, true, 'makeMeScrollable1');" src="http://www.smoothdivscroll.com/images/demo/field.jpg" alt="Demo image" />
+				<img onmouseover="resizeImg1(this, false, 'makeMeScrollable1');" onmouseout="resizeImg1(this, true, 'makeMeScrollable1');" src="http://www.smoothdivscroll.com/images/demo/gnome.jpg" alt="Demo image" />
+				<img onmouseover="resizeImg1(this, false, 'makeMeScrollable1');" onmouseout="resizeImg1(this, true, 'makeMeScrollable1');" src="http://www.smoothdivscroll.com/images/demo/pencils.jpg" alt="Demo image" />
+				<img onmouseover="resizeImg1(this, false, 'makeMeScrollable1');" onmouseout="resizeImg1(this, true, 'makeMeScrollable1');" src="http://www.smoothdivscroll.com/images/demo/river.jpg" alt="Demo image" />
+				<img onmouseover="resizeImg1(this, false, 'makeMeScrollable1');" onmouseout="resizeImg1(this, true, 'makeMeScrollable1');" src="http://www.smoothdivscroll.com/images/demo/train.jpg" alt="Demo image" />
+				<img onmouseover="resizeImg1(this, false, 'makeMeScrollable1');" onmouseout="resizeImg1(this, true, 'makeMeScrollable1');" src="http://www.smoothdivscroll.com/images/demo/leaf.jpg" alt="Demo image" />
+				<img onmouseover="resizeImg1(this, false, 'makeMeScrollable1');" onmouseout="resizeImg1(this, true, 'makeMeScrollable1');" src="http://www.smoothdivscroll.com/images/demo/dog.jpg" alt="Demo image" />
+				<img onmouseover="resizeImg1(this, false, 'makeMeScrollable1');" onmouseout="resizeImg1(this, true, 'makeMeScrollable1');" src="http://www.smoothdivscroll.com/images/demo/field.jpg" alt="Demo image" />
+				<img onmouseover="resizeImg1(this, false, 'makeMeScrollable1');" onmouseout="resizeImg1(this, true, 'makeMeScrollable1');" src="http://www.smoothdivscroll.com/images/demo/gnome.jpg" alt="Demo image" />
+				<img onmouseover="resizeImg1(this, false, 'makeMeScrollable1');" onmouseout="resizeImg1(this, true, 'makeMeScrollable1');" src="http://www.smoothdivscroll.com/images/demo/pencils.jpg" alt="Demo image" />
+				<img onmouseover="resizeImg1(this, false, 'makeMeScrollable1');" onmouseout="resizeImg1(this, true, 'makeMeScrollable1');" src="http://www.smoothdivscroll.com/images/demo/river.jpg" alt="Demo image" />
+				<img onmouseover="resizeImg1(this, false, 'makeMeScrollable1');" onmouseout="resizeImg1(this, true, 'makeMeScrollable1');" src="http://www.smoothdivscroll.com/images/demo/train.jpg" alt="Demo image" />
+				<img onmouseover="resizeImg1(this, false, 'makeMeScrollable1');" onmouseout="resizeImg1(this, true, 'makeMeScrollable1');" src="http://www.smoothdivscroll.com/images/demo/leaf.jpg" alt="Demo image" />
+				<img onmouseover="resizeImg1(this, false, 'makeMeScrollable1');" onmouseout="resizeImg1(this, true, 'makeMeScrollable1');" src="http://www.smoothdivscroll.com/images/demo/dog.jpg" alt="Demo image" />
+
+			</div>
+		</div>
+	</div>
+  </div>
+  <div id="ex_navbar">
+	<div id="makeMeScrollable2">
+		<div class="scrollWrapper">
+			<div class="scrollableArea">
+				<img onmouseover="resizeImg1(this, false, 'makeMeScrollable2');" onmouseout="resizeImg1(this, true, 'makeMeScrollable2');" src="http://www.smoothdivscroll.com/images/demo/golf.jpg" alt="Demo image" id="startAtMe" />
+				<img onmouseover="resizeImg1(this, false, 'makeMeScrollable2');" onmouseout="resizeImg1(this, true, 'makeMeScrollable2');" src="http://www.smoothdivscroll.com/images/demo/field.jpg" alt="Demo image" />
+				<img onmouseover="resizeImg1(this, false, 'makeMeScrollable2');" onmouseout="resizeImg1(this, true, 'makeMeScrollable2');" src="http://www.smoothdivscroll.com/images/demo/gnome.jpg" alt="Demo image" />
+				<img onmouseover="resizeImg1(this, false, 'makeMeScrollable2');" onmouseout="resizeImg1(this, true, 'makeMeScrollable2');" src="http://www.smoothdivscroll.com/images/demo/pencils.jpg" alt="Demo image" />
+				<img onmouseover="resizeImg1(this, false, 'makeMeScrollable2');" onmouseout="resizeImg1(this, true, 'makeMeScrollable2');" src="http://www.smoothdivscroll.com/images/demo/river.jpg" alt="Demo image" />
+				<img onmouseover="resizeImg1(this, false, 'makeMeScrollable2');" onmouseout="resizeImg1(this, true, 'makeMeScrollable2');" src="http://www.smoothdivscroll.com/images/demo/train.jpg" alt="Demo image" />
+				<img onmouseover="resizeImg1(this, false, 'makeMeScrollable2');" onmouseout="resizeImg1(this, true, 'makeMeScrollable2');" src="http://www.smoothdivscroll.com/images/demo/leaf.jpg" alt="Demo image" />
+				<img onmouseover="resizeImg1(this, false, 'makeMeScrollable2');" onmouseout="resizeImg1(this, true, 'makeMeScrollable2');" src="http://www.smoothdivscroll.com/images/demo/dog.jpg" alt="Demo image" />
+				<img onmouseover="resizeImg1(this, false, 'makeMeScrollable2');" onmouseout="resizeImg1(this, true, 'makeMeScrollable2');" src="http://www.smoothdivscroll.com/images/demo/field.jpg" alt="Demo image" />
+				<img onmouseover="resizeImg1(this, false, 'makeMeScrollable2');" onmouseout="resizeImg1(this, true, 'makeMeScrollable2');" src="http://www.smoothdivscroll.com/images/demo/gnome.jpg" alt="Demo image" />
+				<img onmouseover="resizeImg1(this, false, 'makeMeScrollable2');" onmouseout="resizeImg1(this, true, 'makeMeScrollable2');" src="http://www.smoothdivscroll.com/images/demo/pencils.jpg" alt="Demo image" />
+				<img onmouseover="resizeImg1(this, false, 'makeMeScrollable2');" onmouseout="resizeImg1(this, true, 'makeMeScrollable2');" src="http://www.smoothdivscroll.com/images/demo/river.jpg" alt="Demo image" />
+				<img onmouseover="resizeImg1(this, false, 'makeMeScrollable2');" onmouseout="resizeImg1(this, true, 'makeMeScrollable2');" src="http://www.smoothdivscroll.com/images/demo/train.jpg" alt="Demo image" />
+				<img onmouseover="resizeImg1(this, false, 'makeMeScrollable2');" onmouseout="resizeImg1(this, true, 'makeMeScrollable2');" src="http://www.smoothdivscroll.com/images/demo/leaf.jpg" alt="Demo image" />
+				<img onmouseover="resizeImg1(this, false, 'makeMeScrollable2');" onmouseout="resizeImg1(this, true, 'makeMeScrollable2');" src="http://www.smoothdivscroll.com/images/demo/dog.jpg" alt="Demo image" />
+				<img onmouseover="resizeImg1(this, false, 'makeMeScrollable2');" onmouseout="resizeImg1(this, true, 'makeMeScrollable2');" src="http://www.smoothdivscroll.com/images/demo/field.jpg" alt="Demo image" />
+				<img onmouseover="resizeImg1(this, false, 'makeMeScrollable2');" onmouseout="resizeImg1(this, true, 'makeMeScrollable2');" src="http://www.smoothdivscroll.com/images/demo/gnome.jpg" alt="Demo image" />
+				<img onmouseover="resizeImg1(this, false, 'makeMeScrollable2');" onmouseout="resizeImg1(this, true, 'makeMeScrollable2');" src="http://www.smoothdivscroll.com/images/demo/pencils.jpg" alt="Demo image" />
+				<img onmouseover="resizeImg1(this, false, 'makeMeScrollable2');" onmouseout="resizeImg1(this, true, 'makeMeScrollable2');" src="http://www.smoothdivscroll.com/images/demo/river.jpg" alt="Demo image" />
+				<img onmouseover="resizeImg1(this, false, 'makeMeScrollable2');" onmouseout="resizeImg1(this, true, 'makeMeScrollable2');" src="http://www.smoothdivscroll.com/images/demo/train.jpg" alt="Demo image" />
+				<img onmouseover="resizeImg1(this, false, 'makeMeScrollable2');" onmouseout="resizeImg1(this, true, 'makeMeScrollable2');" src="http://www.smoothdivscroll.com/images/demo/leaf.jpg" alt="Demo image" />
+				<img onmouseover="resizeImg1(this, false, 'makeMeScrollable2');" onmouseout="resizeImg1(this, true, 'makeMeScrollable2');" src="http://www.smoothdivscroll.com/images/demo/dog.jpg" alt="Demo image" />
+			</div>
+		</div>
+	</div>
+  </div>
+
+<div id="floatdiv" style="  
+    position:absolute;  
+    width:170px;height:305px;top:10px;right:10px;  
+    padding:5px;background:#FFFFFF;  
+    border:2px solid #2266AA;  
+    z-index:100">
+	<jsp:include page="/gu/left.jsp"></jsp:include>
+</div>
+<div id="emptyWrapper" style="display:none;">
+</div>
+  
+<script type="text/javascript">  
+    floatingMenu.add('floatdiv',  
+        {  
+            // Represents distance from left or right browser window  
+            // border depending upon property used. Only one should be  
+            // specified.  
+            targetLeft: 0,  
+            //targetRight: 10,  
+  
+            // Represents distance from top or bottom browser window  
+            // border depending upon property used. Only one should be  
+            // specified.  
+            targetTop: 190,  
+            // targetBottom: 0,  
+  
+            // Uncomment one of those if you need centering on  
+            // X- or Y- axis.  
+            // centerX: true,  
+            // centerY: true,  
+  
+            // Remove this one if you don't want snap effect  
+            //snap: true  
+        });  
+
+    	$('#floatdiv').mouseenter(function() {
+    		//alert('1');
+    		$('#floatdiv').css('width','170px');	//don't forget to change floatdiv in the ypgstyle.css too
+    		$('#ex_sidebar').css('width','170px');	//don't forget to change floatdiv in the ypgstyle.css too
+    		//$('#floatdiv').show();
+    		$('#ex_sidebar').appendTo('#floatdiv');	//it is a moveTo in fact
+    	});
+    	$('#ex_sidebar').mouseleave(function() {
+    		//alert('2');
+    		$('#floatdiv').css('width','1px');
+    		$('#ex_sidebar').appendTo('#emptyWrapper');	//it is a moveTo in fact
+    	});
+</script>
+
+
+  <div id="ex_middle">
+
+			<decorator:body/>
+
+	<div>
+		<img id="imagepopup" src="" style="display:none"/>
+	</div>
+
+  </div>
+
+    <!-- make the middle region's background color expand -->
+    <div class="clear">
+		<jsp:include page="/gu/footer.jsp"></jsp:include>
+    </div>
+</div>
+</body>
+</html>

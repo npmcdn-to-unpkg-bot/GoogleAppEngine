@@ -1,0 +1,51 @@
+<html t:type="layout" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd" xmlns:sec="http://www.springframework.org/security/tags">
+ <head>
+ <title>Library</title>
+ </head>
+ <body>
+ 
+	<sec:ifNotGranted roles="ROLE_ADMIN, ROLE_SCI_ADMIN">
+		<div>Once saved, the data need couples of seconds to appear in the search (due to the background indexing process).</div>
+	</sec:ifNotGranted>
+ 	<form t:id="form" t:type="beaneditform" object="Social" exclude="platform,createdDate,wordCount,frequencyCount" action="POST">
+ 		<t:parameter name="id">
+ 			<!--
+	 		<label t:type="Label" for="id"/>
+	 		<input t:type="TextField" t:id="id" t:value="Social.id" />
+ 			* used as unique identifier in the system
+ 			-->
+ 			${Social.id}
+ 		</t:parameter>
+ 		<t:parameter name="similarity">
+ 			Similarity Pattern: ${Social.similarity}
+ 		</t:parameter>
+ 		<t:parameter name="wordcount">
+ 			Word Count: ${Social.wordcount}
+ 		</t:parameter>
+ 		<t:parameter name="frequencycount">
+ 			Frequency Count: ${Social.frequencycount}
+ 		</t:parameter> 		
+ 		<t:parameter name="platform">
+	 		<label t:type="Label" for="platform"/>
+	 		<input t:type="TextField" t:id="platform" t:value="Social.platform" />
+ 			* e.g. platform, classification or plain category
+ 		</t:parameter>
+ 		<t:parameter name="what">
+	 		<label t:type="Label" for="what"/>
+	 		<input style="width:35%;" t:type="TextField" t:id="what" t:value="Social.what" />
+ 			* primary key and must be unique
+ 		</t:parameter>
+ 		<t:parameter name="details">
+	 		<label t:type="Label" for="details"/>
+	 		<input t:type="TextArea" style="width:60%;height:290px;" t:mixins="maxlength" max="500" t:id="details" t:value="Social.details" />
+ 		</t:parameter>
+ 		<t:parameter name="lastUpdatedDate">
+ 			Last updated: ${Social.lastUpdatedDate}
+ 		</t:parameter>
+ 		<t:parameter name="lastAccessedDate">
+ 			Last client access: ${Social.lastAccessedDate}
+ 		</t:parameter>
+ 	</form>
+ 
+ </body>
+</html>

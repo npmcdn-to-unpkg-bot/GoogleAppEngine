@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="3869372472">
+    <data-source source="LOCAL" name="hibernate.cfg.xml" uuid="dbf3c5e2-041c-4d21-a7ec-cf585b214207">
+      <driver-ref>mysql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/struts</jdbc-url>
+      <user-name>postgres</user-name>
+      <user-password>dfdadfc5dfd9dfdedfcddfd8dfcfdfd9</user-password>
+      <libraries />
+    </data-source>
+  </component>
+</project>
+

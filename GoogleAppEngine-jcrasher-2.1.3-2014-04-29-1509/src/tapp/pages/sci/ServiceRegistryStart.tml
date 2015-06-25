@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html t:type="layout" t:title="SRM (${totalRows})" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd" xmlns:sec="http://www.springframework.org/security/tags" xmlns:p="tapestry:parameter">
+    <head>
+    	<!-- Spring 3 optimized for GAEJ released [b0002] -->
+        <title>Service</title>
+        <link rel="stylesheet" type="text/css" href="/css/table.css"/>
+        <style type="text/css">
+        	table.t-data-grid {
+        	    table-layout:fixed;
+        		width:100%;
+        	}
+        	.t-data-grid-pager {
+        		display: ${dataGridPagerDisplay}
+        	}
+        	/*
+        	.cke_skin_kama .cke_wrapper {
+        		display: inline;	// this does not work for some reason, thus editor.css is changed directly!:(
+        	}
+        	*/
+			.description, .detailsExcerpt {
+			    width:250px;
+				max-width:300px;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				-ms-text-overflow: ellipsis;
+			}
+			.id, .endpoint { width:150px;max-width:350px; word-wrap:break-word; }
+			.targ { width:100%; height:100%; }
+			.service { width:80px;max-width:100px; word-wrap:break-word; }
+		</style>
+		<script type="text/javascript" src='//ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.js'></script>
+		<script>
+			jQuery.noConflict();	//http://wiki.apache.org/tapestry/Tapestry5HowToIntegrateJQuery
+		
+			/** just for IE 9, courtesy of http://forum.jquery.com/topic/max-width-isn-t-set-in-ie */
+			var isIE = !!window.ActiveXObject;
+    		if(isIE) {
+				$(document).ready(function() {
+					//console.log("inside dom ready ...");
+					$('.description').each(function() {
+						//if ( $(this).width() === 330 ) {
+							$(this).css('width', '330px');
+							console.log("width set to 330px");
+						//}
+					});
+				});
+			}
+		</script>
+    </head>
+    <body>
+        <t:alerts/>
+       	<div>
+	        <h2 style="display:inline">Service Registry Manager (${totalRows})</h2>
+	        <!--
+	        <a href="${pageContext.request.contextPath}/j_spring_security_logout">Logout</a>
+	        &nbsp;&nbsp;&nbsp;*** Search is a very expensive operation - please use it cautiously so that we do not run out of daily free quota ***
+	        -->
+	        <span style="float:right;">User ID: ${loggedInUser} (${userAssignedRole})    <t:actionlink t:id="logout">Logout</t:actionlink></span>
+			<form style="display:${searchBoxDisplay};position:absolute;top:5px;right:0;margin:28px 10px 0 0;" action="/sci/jsp/search_service.jsp">
+				<img src="http://p.yusukekamiyamane.com/icons/search/fugue/icons/magnifier-medium-left.png" align="top" alt="Search"/> Search <input type="text" name="q" id="q" value="" style="font-size:12px;min-width:200px;margin:0 5px 0 2px;"/><a href='http://lucene.apache.org/java/2_9_1/queryparsersyntax.html'>?&#160;</a><a href='http://www.javaranch.com/journal/2004/04/Lucene.html'>Syntax</a>
+			</form>
+    	</div>
+                
+                <p>
+                <t:pagelink t:page="sci/ServiceRegistrySave" context="0">Create New</t:pagelink>&#160;&#160;&#160;
+				<t:pagelink t:page="g/app/templatestart" context="0" style="display:${geniusStartDisplay};">Genius</t:pagelink>
+                </p>
+
+                <t:form t:id="form">
+					<t:errors t:banner="${customErrorMessage}" />
+                </t:form>
+
+<div class="landscape"><div><h5>Landscape Mode: Sorted by last updated field (descending) by default</h5></div>
+<table t:id="landscapeSrGrid" rowClass="literal:myRowClass" t:type="grid" pagerPosition="both" source="ServiceRegistrys" row="ServiceRegistry" add="delete" rowsPerPage="15" include="id,service,description,lastAccessed,lastUpdated,endpoint,hit">
+					<t:parameter name="idCell">
+						<t:pagelink page="sci/ServiceRegistrySave" context="ServiceRegistry.id">${ServiceRegistry.id}</t:pagelink>
+					</t:parameter>
+					<p:serviceCell>
+	            		<a target="_new" href="http://${hostName}/go/${serviceRegistry.service}"><t:outputraw t:value="serviceRegistry.service" /></a>
+					</p:serviceCell>
+					<p:lastAccessedCell>
+						<t:output format="message:month_year" value="serviceRegistry.lastAccessed"/>
+					</p:lastAccessedCell>
+					<p:lastUpdatedCell>
+						${friendlyLastUpdatedTime}
+					</p:lastUpdatedCell>
+					<p:endpointCell>
+	            		<a target="_new" href="${serviceRegistry.endpoint}"><t:outputraw t:value="serviceRegistry.endpoint" /></a>
+					</p:endpointCell>
+					<p:descriptionCell>
+						<span style="width:200px;">${descriptionDetails}</span>${currentExcerpt}
+					</p:descriptionCell>
+					<t:parameter name="deleteCell">
+					<sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_SCI_ADMIN" style="display:${deleteActionDisplay};">
+						<!-- source: http://tapestry.1045711.n5.nabble.com/Tapestry-Forum-td2404216.html -->
+             			<t:actionlink t:id="delete" t:mixins="confirm" context="ServiceRegistry.id">Delete</t:actionlink>
+					</sec:ifAnyGranted>
+         			</t:parameter>
+				</table>
+</div>				
+
+<div class="portrait"><div><h5>Portrait Mode: Sorted by last accessed field (descending) by default</h5></div>
+				<table t:id="portraitSrGrid" rowClass="literal:myRowClass" t:type="grid" pagerPosition="both" source="ServiceRegistrys" row="ServiceRegistry" rowsPerPage="15" include="id,service,description,lastAccessed,hit">
+					<t:parameter name="idCell">
+						<t:pagelink page="sci/ServiceRegistrySave" context="ServiceRegistry.id">${ServiceRegistry.id}</t:pagelink>
+					</t:parameter>
+					<p:serviceCell>
+	            		<a target="_new" href="http://${hostName}/go/${serviceRegistry.service}"><t:outputraw t:value="serviceRegistry.service" /></a>
+					</p:serviceCell>
+					<p:lastAccessedCell>
+						<t:output format="message:month_year" value="serviceRegistry.lastAccessed"/>
+					</p:lastAccessedCell>
+					<p:endpointCell>
+	            		<a target="_new" href="${serviceRegistry.endpoint}"><t:outputraw t:value="serviceRegistry.endpoint" /></a>
+					</p:endpointCell>
+					<p:descriptionCell>
+						<span colspan="2">${descriptionDetails}</span>${currentExcerpt}
+					</p:descriptionCell>
+				</table>
+</div>				
+<p/><p/>Total Rows = ${totalRows} (Note: Not all rows in the registry will be displayed)<p/><br/>
+<form style="display:${runIndexDisplay};" t:type="form">
+    <t:submit t:id="compassForm" value="Run Index Now"/>
+</form>
+
+    </body>
+
+</html>

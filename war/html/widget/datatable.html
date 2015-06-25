@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!-- saved from url=(0076)http://datatables.net/release-datatables/examples/data_sources/js_array.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		
+		<link rel="shortcut icon" type="image/ico" href="http://www.datatables.net/media/images/favicon.ico">
+		
+		<title>DataTables example</title>
+		<style type="text/css" title="currentStyle">
+			@import "http://datatables.net/release-datatables/media/css/demo_page.css"; @import "/media/css/header.ccss";
+			@import "http://datatables.net/release-datatables/media/css/demo_table.css";
+		</style>
+		<script type="text/javascript" language="javascript" src="http://datatables.net/release-datatables/media/js/jquery.js"></script>
+		<script type="text/javascript" language="javascript" src="http://datatables.net/release-datatables/media/js/jquery.dataTables.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			/* Data set - can contain whatever information you want */
+			var aDataSet =
+//            [
+//				['Trident','Internet Explorer 4.0','Win 95+','4','X'],
+//				['Trident','Internet Explorer 5.0','Win 95+','5','C'],
+//				['Trident','Internet Explorer 5.5','Win 95+','5.5','A'],
+//				['Trident','Internet Explorer 6','Win 98+','6','A'],
+//				['Trident','Internet Explorer 7','Win XP SP2+','7','A'],
+//				['Trident','AOL browser (AOL desktop)','Win XP','6','A'],
+//				['Gecko','Firefox 1.0','Win 98+ / OSX.2+','1.7','A'],
+//				['Gecko','Firefox 1.5','Win 98+ / OSX.2+','1.8','A'],
+//				['Gecko','Firefox 2.0','Win 98+ / OSX.2+','1.8','A'],
+//				['Gecko','Firefox 3.0','Win 2k+ / OSX.3+','1.9','A'],
+//				['Gecko','Camino 1.0','OSX.2+','1.8','A'],
+//				['Gecko','Camino 1.5','OSX.3+','1.8','A'],
+//				['Gecko','Netscape 7.2','Win 95+ / Mac OS 8.6-9.2','1.7','A'],
+//				['Gecko','Netscape Browser 8','Win 98SE+','1.7','A'],
+//				['Gecko','Netscape Navigator 9','Win 98+ / OSX.2+','1.8','A'],
+//				['Gecko','Mozilla 1.0','Win 95+ / OSX.1+',1,'A'],
+//				['Gecko','Mozilla 1.1','Win 95+ / OSX.1+',1.1,'A'],
+//				['Gecko','Mozilla 1.2','Win 95+ / OSX.1+',1.2,'A'],
+//				['Gecko','Mozilla 1.3','Win 95+ / OSX.1+',1.3,'A'],
+//				['Gecko','Mozilla 1.4','Win 95+ / OSX.1+',1.4,'A'],
+//				['Gecko','Mozilla 1.5','Win 95+ / OSX.1+',1.5,'A'],
+//				['Gecko','Mozilla 1.6','Win 95+ / OSX.1+',1.6,'A'],
+//				['Gecko','Mozilla 1.7','Win 98+ / OSX.1+',1.7,'A'],
+//				['Gecko','Mozilla 1.8','Win 98+ / OSX.1+',1.8,'A'],
+//				['Gecko','Seamonkey 1.1','Win 98+ / OSX.2+','1.8','A'],
+//				['Gecko','Epiphany 2.20','Gnome','1.8','A'],
+//				['Webkit','Safari 1.2','OSX.3','125.5','A'],
+//				['Webkit','Safari 1.3','OSX.3','312.8','A'],
+//				['Webkit','Safari 2.0','OSX.4+','419.3','A'],
+//				['Webkit','Safari 3.0','OSX.4+','522.1','A'],
+//				['Webkit','OmniWeb 5.5','OSX.4+','420','A'],
+//				['Webkit','iPod Touch / iPhone','iPod','420.1','A'],
+//				['Webkit','S60','S60','413','A'],
+//				['Presto','Opera 7.0','Win 95+ / OSX.1+','-','A'],
+//				['Presto','Opera 7.5','Win 95+ / OSX.2+','-','A'],
+//				['Presto','Opera 8.0','Win 95+ / OSX.2+','-','A'],
+//				['Presto','Opera 8.5','Win 95+ / OSX.2+','-','A'],
+//				['Presto','Opera 9.0','Win 95+ / OSX.3+','-','A'],
+//				['Presto','Opera 9.2','Win 88+ / OSX.3+','-','A'],
+//				['Presto','Opera 9.5','Win 88+ / OSX.3+','-','A'],
+//				['Presto','Opera for Wii','Wii','-','A'],
+//				['Presto','Nokia N800','N800','-','A'],
+//				['Presto','Nintendo DS browser','Nintendo DS','8.5','C/A<sup>1</sup>'],
+//				['KHTML','Konqureror 3.1','KDE 3.1','3.1','C'],
+//				['KHTML','Konqureror 3.3','KDE 3.3','3.3','A'],
+//				['KHTML','Konqureror 3.5','KDE 3.5','3.5','A'],
+//				['Tasman','Internet Explorer 4.5','Mac OS 8-9','-','X'],
+//				['Tasman','Internet Explorer 5.1','Mac OS 7.6-9','1','C'],
+//				['Tasman','Internet Explorer 5.2','Mac OS 8-X','1','C'],
+//				['Misc','NetFront 3.1','Embedded devices','-','C'],
+//				['Misc','NetFront 3.4','Embedded devices','-','A'],
+//				['Misc','Dillo 0.8','Embedded devices','-','X'],
+//				['Misc','Links','Text only','-','X'],
+//				['Misc','Lynx','Text only','-','X'],
+//				['Misc','IE Mobile','Windows Mobile 6','-','C'],
+//				['Misc','PSP browser','PSP','-','C'],
+//				['Other browsers','All others','-','-','U']
+//			];
+
+//            [
+//				['Trident','Internet Explorer 4.0','Win 95+','4','X'],
+//				['Other browsers','All others','-','-','U']
+//			];
+
+//            "[ {
+// \n \"Period\":   1995,
+// \n\"Rate Ratio\": 0.90193,
+// \n\"CILo\": 0.87889,
+// \n\"CIHi\": 0.92557
+// \n},
+// \n{\n \"Period\":   1999,
+// \n\"Rate Ratio\":      1,
+// \n\"CILo\":      1,
+// \n\"CIHi\":      1
+// \n},
+// \n{\n \"Period\":   2003,
+// \n\"Rate Ratio\": 0.99041,
+// \n\"CILo\": 0.96688,
+// \n\"CIHi\": 1.0145
+// \n},
+// \n{\n \"Period\":   2007,
+// \n\"Rate Ratio\": 1.0959,
+// \n\"CILo\": 1.0709,
+// \n\"CIHi\": 1.1216 \n} ]";
+            [
+                ['Period',1995,'Rate Ratio',0.90193,'CILo',0.87889,'CIHi', 0.92557],
+                ['Period',1999,'Rate Ratio',1,'CILo',1,'CIHi', 1],
+                ['Period',2003,'Rate Ratio',0.99041,'CILo',1.0145,'CIHi', 1.0145],
+                ['Period',2007,'Rate Ratio',0.90193,'CILo',0.87889,'CIHi', 0.92557],
+                ['Period',1995,'Rate Ratio',0.90193,'CILo',0.87889,'CIHi', 0.92557],
+                ['Period',1995,'Rate Ratio',0.90193,'CILo',0.87889,'CIHi', 0.92557],
+                ['Period',1995,'Rate Ratio',0.90193,'CILo',0.87889,'CIHi', 0.92557],
+                ['Period',1995,'Rate Ratio',0.90193,'CILo',0.87889,'CIHi', 0.92557],
+                ['Period',1995,'Rate Ratio',0.90193,'CILo',0.87889,'CIHi', 0.92557],
+                ['Period',1995,'Rate Ratio',0.90193,'CILo',0.87889,'CIHi', 0.92557],
+                ['Period',1995,'Rate Ratio',0.90193,'CILo',0.87889,'CIHi', 0.92557],
+                ['Period',1995,'Rate Ratio',0.90193,'CILo',0.87889,'CIHi', 0.92557],
+                ['Period',1995,'Rate Ratio',0.90193,'CILo',0.87889,'CIHi', 0.92557],
+                ['Period',1995,'Rate Ratio',0.90193,'CILo',0.87889,'CIHi', 0.92557],
+                ['Period',1995,'Rate Ratio',1.0145,'CILo',0.87889,'CIHi', 0.92557],
+                ['Period',1995,'Rate Ratio',0.90193,'CILo',0.87889,'CIHi', 1.0145]
+            ];
+
+
+			$(document).ready(function() {
+				$('#dynamic').html( '<table cellpadding="0" cellspacing="0" border="0" class="display" id="example"></table>' );
+				$('#example').dataTable( {
+					"aaData": aDataSet,
+					"aoColumns": [
+						{ "sTitle": "Col 1"},
+						{ "sTitle": "Col 2"},
+                        { "sTitle": "Col 3"},
+                        { "sTitle": "Col 4"},
+                        { "sTitle": "Col 5"},
+                        { "sTitle": "Col 6"},
+                        { "sTitle": "Col 7"},
+                        { "sTitle": "Col 8"}
+
+//						{ "sTitle": "Engine" },
+//						{ "sTitle": "Browser" },
+//						{ "sTitle": "Platform" },
+//						{ "sTitle": "Version", "sClass": "center" },
+//						{ "sTitle": "Grade", "sClass": "center" }
+					]
+				} );	
+			} );
+		</script>
+	<body id="dt_example">
+		
+<script type="text/javascript">
+
+//(function(){
+//  var bsa = document.createElement('script');
+//     bsa.type = 'text/javascript';
+//     bsa.async = true;
+//     bsa.src = '//s3.buysellads.com/ac/bsa.js';
+//  (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);
+//})();
+
+</script>
+			<div class="full_width big">
+				DataTables dynamic creation example
+			</div>
+			
+			<h1>Live example</h1>
+			<div id="dynamic"><div id="example_wrapper" class="dataTables_wrapper" role="grid"><div id="example_length" class="dataTables_length"><label>Show <select size="1" name="example_length" aria-controls="example"><option value="10" selected="selected">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div><div class="dataTables_filter" id="example_filter"><label>Search: <input type="text" aria-controls="example"></label></div><table cellpadding="0" cellspacing="0" border="0" class="display dataTable" id="example" aria-describedby="example_info"><thead><tr role="row"><th class="sorting_asc" tabindex="0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Engine: activate to sort column descending" style="width: 122px;">Engine</th><th class="sorting" tabindex="0" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 144px;">Browser</th><th class="sorting" tabindex="0" rowspan="1" colspan="1" aria-label="Platform: activate to sort column ascending" style="width: 148px;">Platform</th><th class="center sorting" tabindex="0" rowspan="1" colspan="1" aria-label="Version: activate to sort column ascending" style="width: 134px;">Version</th><th class="center sorting" tabindex="0" rowspan="1" colspan="1" aria-label="Grade: activate to sort column ascending" style="width: 112px;">Grade</th></tr></thead><tbody role="alert" aria-live="polite" aria-relevant="all"><tr class="odd"><td class=" sorting_1">Gecko</td><td class="">Firefox 1.0</td><td class="">Win 98+ / OSX.2+</td><td class="center">1.7</td><td class="center">A</td></tr><tr class="even"><td class=" sorting_1">Gecko</td><td class="">Firefox 1.5</td><td class="">Win 98+ / OSX.2+</td><td class="center">1.8</td><td class="center">A</td></tr><tr class="odd"><td class=" sorting_1">Gecko</td><td class="">Firefox 2.0</td><td class="">Win 98+ / OSX.2+</td><td class="center">1.8</td><td class="center">A</td></tr><tr class="even"><td class=" sorting_1">Gecko</td><td class="">Firefox 3.0</td><td class="">Win 2k+ / OSX.3+</td><td class="center">1.9</td><td class="center">A</td></tr><tr class="odd"><td class=" sorting_1">Gecko</td><td class="">Camino 1.0</td><td class="">OSX.2+</td><td class="center">1.8</td><td class="center">A</td></tr><tr class="even"><td class=" sorting_1">Gecko</td><td class="">Camino 1.5</td><td class="">OSX.3+</td><td class="center">1.8</td><td class="center">A</td></tr><tr class="odd"><td class=" sorting_1">Gecko</td><td class="">Netscape 7.2</td><td class="">Win 95+ / Mac OS 8.6-9.2</td><td class="center">1.7</td><td class="center">A</td></tr><tr class="even"><td class=" sorting_1">Gecko</td><td class="">Netscape Browser 8</td><td class="">Win 98SE+</td><td class="center">1.7</td><td class="center">A</td></tr><tr class="odd"><td class=" sorting_1">Gecko</td><td class="">Netscape Navigator 9</td><td class="">Win 98+ / OSX.2+</td><td class="center">1.8</td><td class="center">A</td></tr><tr class="even"><td class=" sorting_1">Gecko</td><td class="">Mozilla 1.0</td><td class="">Win 95+ / OSX.1+</td><td class="center">1</td><td class="center">A</td></tr></tbody></table><div class="dataTables_info" id="example_info">Showing 1 to 10 of 57 entries</div><div class="dataTables_paginate paging_two_button" id="example_paginate"><a class="paginate_disabled_previous" tabindex="0" role="button" id="example_previous" aria-controls="example">Previous</a><a class="paginate_enabled_next" tabindex="0" role="button" id="example_next" aria-controls="example">Next</a></div></div></div>
+			<div class="spacer"></div>
+
+<a href="http://jsfiddle.net/bcoffe/s8JmF/178/">With Inverse Columns</a>
+
+</body>
+</html>

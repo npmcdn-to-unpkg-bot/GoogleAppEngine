@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<body ng-controller="ctrlRead">
+    <p>Please select one play mode: {{playMode}}</p>
+    <table>
+        <tr>
+            <td>Play All in Sequence</td><td><a href='javascript:void(0);' onclick="javascript:location.href='/html/channelall.html?username=' + $.url().param('username') + '&logintype=' + $.url().param('logintype');" alt="Collections">Play Now</a></td>
+            <td>
+                Play in Shuffle Mode
+            </td>
+
+        </tr>
+    </table>
+</body>
+</html>

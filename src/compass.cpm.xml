@@ -1,0 +1,29 @@
+<!DOCTYPE compass-core-configuration PUBLIC
+    "-//Compass/Compass Core Configuration DTD 2.2//EN"
+    "http://www.compass-project.org/dtd/compass-core-configuration-2.3.dtd">
+<compass-core-configuration>
+	<compass name="default">
+		<connection>
+		    <file path="gae://index"/>
+		</connection>
+		<!--
+		
+		<mapping resource="model.cpm.xml" />
+ 		-->
+		<mappings>
+		    <class name="com.appspot.cloudserviceapi.dto.Geniu" />
+		</mappings>
+
+		<!-- http://www.compass-project.org/docs/latest/reference/html/core-searchengine.html -->
+	    <searchEngine>
+	        <!--
+	        <analyzer name="deault" type="Snowball" snowballType="Lovins">
+	            <stopWords>
+	                <stopWord value="no" />
+	            </stopWords>
+	        </analyzer>
+	        -->
+	        <analyzer name="default" type="whitespace" />
+	    </searchEngine>
+	</compass>
+</compass-core-configuration>

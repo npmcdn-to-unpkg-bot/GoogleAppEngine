@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<datastore-indexes autoGenerate="true">
+    <!-- //don't index anything as they are costly
+	<datastore-index kind="ServiceRegistry" ancestor="false" source="manual">
+        <property name="id" direction="desc"/>
+        <property name="service" direction="asc"/>
+    </datastore-index>
+	<datastore-index kind="Settings" ancestor="false" source="manual">
+        <property name="pinCode" direction="asc"/>
+        <property name="recorded" direction="desc"/>
+    </datastore-index>
+    -->
+</datastore-indexes>

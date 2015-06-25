@@ -1,0 +1,5 @@
+Most costly methods:
+
+#PERF1
+
+. HTMLUtil.removeTags(myBean.getDescription()) in public String getDescriptionDetails() 1% (1974ms)

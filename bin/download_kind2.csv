@@ -1,0 +1,443 @@
+platform,what,details,key,platformValue
+Code,Screen orientation:iOS,https://catch.com/m/BuVEc/BrPDz7BE86X,,
+Java,Redirection:Java,"What is the difference between RequestDispatcher's forward(ServletRequest request, ServletResponse response) method and HttpServletResponse's sendRedirect(String location) method?
+
+http://www.jguru.com/faq/view.jsp?EID=1310997",,
+,Value Proposition:Wicket,Everything is Java,,
+,Start:Wicket,T extends WebApplication,,
+,Common ORM:Wicket,Hibernate,,
+,High Level Unit Test:Wicket,Wicket Tester,,
+,Main Concepts:Tapestry,"Components
+Pages
+Services
+Mixins
+Model",,
+,Value Proposition:Tapestry,Out of box CRUD,,
+,Start:Tapestry,"app.services.
+AppModule",,
+,Automatic Accessors:Tapestry,@Property in Tapestry page,,
+,Most Common UI:Tapestry,"t:type=""grid""
+t:type=""beaneditform""",,
+,Common ORM:Tapestry,Hibernate,,
+,Core Framework:Tapestry,Tapestry Core,,
+,Core IoC:Tapestry,Tapestry IoC,,
+,Value Proposition:HTML5,"Everyone believes in it, easier on hardware than competitors",,
+,Start:HTML5,index html,,
+,Most Common UI:HTML5,"<table>
+<div>
+",,
+,Object Dump:HTML5,console.log,,
+,Common DB:HTML5,Local Storage,,
+,Value Proposition:JQueryMobile,Turn your existing web app into mobile app easily,,
+,Start:JQueryMobile,document.ready(),,
+,Most Common UI:JQueryMobile,"<ul data-role=""listview"">",,
+,Main Navigation:JQueryMobile,"Nested list or <a href=""nextpage.html"" rel=""external"">",,
+,Common DB:JQueryMobile,WebSQL,,
+,Core Framework:JQueryMobile,JQuery,,
+,Main Concepts:iOS,"View (UI)
+View Controller (workflow)
+App Delegate (custom codes)
+Class (main reuse, optional)",,
+,Value Proposition:iOS,iPad is the market leader on tablet,,
+,Start:iOS,"main.m, MainWindow.xib, XCode Main Interface/Info.plist, applicationDidFinishLaunching: method",,
+,Default Constructor:iOS,[T alloc],,
+,Automatic Accessors:iOS,@property in T.h @synthesize in T.m,,
+,Method:iOS,"[[T alloc] init] Objective-C style
+
+function(...) typical C style",,
+,Method With Paramaters:iOS,"[[T alloc] initWithParameters:@""ViewController1"" bundle:nil]",,
+,Most Common UI:iOS,"UITableView
+UIView's CollageView",,
+,Main Navigation:iOS,UINavigationController pushViewController,,
+,Cell Accessory:iOS,"Disclosure Indicator - the usual right arrow
+Detail disclosure button
+Check mark",,
+CODE,Self Reference:iOS,"self (not implicit; has to specify it even if the codes is in the class itself).
+
+Exception seems like in the if(self = [super init]) { ...",,CODE
+,Method Parameter Check:iOS,Run time,,
+,Class Level Method:iOS,+,,
+,Instance Level Method:iOS,-,,
+,Object Dump:iOS,"NSLog(@""T: %@"", T)",,
+,Most Common Method:iOS,"viewDidLoad
+didFinishLaunchingWithOptions
+didSelectRowAtIndexPath
+",,
+,Most Common Event:iOS,"UITouch
+UIEvent",,
+,Native UI Builder:iOS,Interface Builder (UI design and making connections to the codes),,
+,Common ORM:iOS,CoreData,,
+,Common DB:iOS,SQLite,,
+,Core Framework:iOS,"UIKit (Cocoa Touch), Foundation and CoreGraphics (""Frameworks"" already installed on the device itself)",,
+,Core MVC:iOS,"TClass, TViewController and TAppDelegate (can be specified either in main(), .xib file or in the protocol of a class header)",,
+,Controllers:iOS,"Table view
+Detail view
+Split view
+Popover view
+Modal view",,
+,SplitView:iOS,UISplitView (iPad only),,
+,Popover:iOS,UIPopoverView (iPad only),,
+,Gestures:iOS,"Tap
+Touch and Hold
+Double Tap
+Swipe
+Flick
+Drag
+Pinch",,
+,Advanced:iOS,"Make phone call
+Send SMS text
+Access accelerometer
+Install application from App Store
+Camera
+Microphone
+Some OpenGL ES
+",,
+,Home Screen:iOS,Static icon only,,
+,Main Concepts:Android,"Overview:
+Every apps are expected to integrate with other apps/services.
+Apps are typically made up of Activities.
+
+Entities:
+Intent - 4 of them i.e. View, Edit, Search and Notify; its action can optionally include data
+
+Activity - an activity is a single action with a UI that performs a specific function for the user
+
+Services - an activity without a UI
+
+Broadcast Receivers - receivers of intents for notifications",,
+,Value Proposition:Android,Big market share,,
+,Start:Android,"A filter in AndroidManifest.xml file with ""android.intent.action.MAIN"" and ""android.intent.category.LAUNCHER"" settings advertises an activity as one that initiates an application e.g.
+
+<activity android:name="".FirstActivity"" android:label=""@string/app_name"">
+    <intent-filter>
+        <action android:name=""android.intent.action.MAIN"" />
+        <category android:name=""android.intent.category.LAUNCHER"" />
+    </intent-filter>
+...
+In java, the first method invoked is onCreate()",,
+,Default Constructor:Android,new T(),,
+,Method:Android,(new T()).init(),,
+,Method With Parameters:Android,"new T(""ViewController1"", null)",,
+,Most Common UI:Android,ListView,,
+,Main Navigation:Android,Invoke finish() in Activity method,,
+,Cell Accessory:Android,"Image: ImageView alligned right, text alligned left (Vice versa)",,
+,Self Reference:Android,this (implicit),,
+,Method Parameter Check:Android,Compile time,,
+,Class Level Method:Android,static,,
+,Instance Level Method:Android,N/A,,
+,Object Dump:Android,"System.out.println(""T: "" + T)",,
+,Most Common Event:Android,"onClick
+onTouch",,
+,Native UI Builder:Android,App Inventor (recently open sourced as at 8/2011),,
+,Common DB:Android,SQLite,,
+,Core MVC:Android,"Intent - an identifier to communicate purpose on the ensuing activity; can be an action name specified in android manifest file or the class name of Activity class (preferred)
+
+Activity - a  view container class (extends Activity) - controller that own view(s)
+
+View - view is set by setContentView() in an activity class, e.g. setContentView(R.layout.main)  which will force the runtime to look for a view defined in res/layout/main.xml resource file",,
+,Controllers:Android,"ListView
+FrameLayout
+LinearLayout
+TableLayout
+RelativeLayout",,
+,SplitView:Android,"Not available, but can be with Fragments",,
+,Popover:Android,Dialogue box with transparent background,,
+,Gestures:Android,"Tap
+Touch and Hold
+Double Tap
+Swipe
+Flick
+Drag
+Pinch",,
+,Advanced:Android,"Make phone call
+Send SMS text
+Access accelerometer
+Install application from Market
+Camera
+Microphone
+",,
+,Home Screen:Android,App Widgets,,
+,Value Proposition:WP7,Live Tiles,,
+,Most Common UI:WP7,Tiles,,
+,Home Screen:WP7,Live Tiles,,
+,Value Proposition:PhoneGap,Most matured hybrid platform,,
+,Start:PhoneGap,www/index.html,,
+,Method:PhoneGap,JavaScript style,,
+,Method With Parameters:PhoneGap,object.method,,
+,Most Common UI:PhoneGap,<table>/<div>,,
+,Native UI Builder:PhoneGap,"HTML UI applications (Dreamweaver, etc)",,
+,Core Framework:PhoneGap,HTML/JavaScript,,
+,Start:Titanium,app.js,,
+,Default Constructor:Titanium,Titanium.UI.createWindow({ }),,
+,Method:Titanium,JavaScript style,,
+,Most Common UI:Titanium,Window,,
+,Self Reference:Titanium,this,,
+,Native UI Builder:Titanium,"None available.
+
+Forced to do it programmatically ",,
+,Common DB:Titanium,SQLite,,
+,Core Framework:Titanium,Javascript,,
+,Start:GoogleTV,index html,,
+,Main Navigation:GoogleTV,tabGroup.open();,,
+,Home Screen:GoogleTV,App Widgets,,
+,Start:FiOSTV,lua_onLoad(),,
+,Most Common Method:FiOSTV,"lua_onKey(nKeyCode, nKeyType, nKeyState)",,
+,Home Screen:FiOSTV,IMG,,
+CODE,DSL,"Domain Specific Language
+
+a. Internal DSL e.g. Scala, Ruby On Rails (ROR), Ruby etc.
+b. External DSL e.g. Spring, ANT, Maven etc.",,CODE
+,Streaming:iOS,"http://mobile.tutsplus.com/tutorials/iphone/iphone-sdk-playing-video-with-the-mediaplayer-framework/
+
+-(void)initAndPlayMovie:(NSURL *)movieURL
+{
+    // Initialize a movie player object with the specified URL
+       MPMoviePlayerController *mp = [[MPMoviePlayerController alloc] initWithContentURL:movieURL];
+       if (mp)
+       {
+           [self.moviePlayer play];
+       }
+}",,
+,Main Concepts:Wicket,Java object represented as wicket:id in html; each T.java file has a corresponding T.html file,,
+,High Level Unit Test:Tapestry,Page Tester,,
+,Split View:Android,"No exact equivalence, but can be easily implemented using Fragment",,
+,Split View:iOS,UISplitView (iPad only),,
+,Import:iOS,"In main.m -
+
+#import <UIKit/UIKit.h>
+
+There is no need to import the Foundation framework, as it is already included by UIKit.",,
+,iOS:Protocol,"@interface className : superclassName <delegateProtocolClassName>
+
+e.g.
+
+@interface WorkbenchAppDelegate : NSObject <UIApplicationDelegate>",,
+,Forward Declaration:iOS,@protocol (for class that implement certain Frameworks protocol) and @class (for others),,
+,Namespace:Wicket,Java Package,,
+,Memory Management:Wicket,Garbage Collected,,
+,Production Version:Wicket,1.4,,
+,Flexible Pager:Wicket,"<div wicket:id=""navigator""></div>",,
+,Namespace:Tapestry,Java Package,,
+,Memory Management:Tapestry,Garbage Collected,,
+,Production Version:Tapestry,5.2,,
+,Flexible Pager:Tapestry,"t:type=""grid"" pagerPosition=""both""",,
+,Device Runtime:HTML5,WebKit,,
+,Production Version:HTML5,1,,
+,Application Context:HTML5,navigator,,
+,Production Version:JQueryMobile,1.0 Beta,,
+,Application Context:JQueryMobile,navigator,,
+,Design Patterns Used:iOS,"MVC, 
+Delegation, 
+Target-Action, 
+Managed Memory Model",,
+,Main View Class:iOS,UIView,,
+,Chromeless Window:iOS,UIWindow,,
+,Window Display Method:iOS,UIWindow makeKeyAndVisible,,
+,Namespace:iOS,"None (relying on the initials of each Class e.g. UIView, NSString etc)",,
+,Memory Management:iOS,Manual (alloc/release),,
+,Named Parameter:iOS,None (: is part of the method name),,
+,Device Runtime:iOS,Native iOS,,
+,Production Version:iOS,"4.3, 5.0 Beta 6",,
+,Custom Gesture:iOS,Yes,,
+,Base Class:iOS,NSObject (Optional),,
+,Base Class Method Inherited:iOS,init,,
+,Compiler Directive:iOS,@ (e.g. @interface),,
+,Application Context:iOS,UIApplication,,
+,Preprocessor Directive:iOS,# (e.g. #import),,
+,Network Class:iOS,NSURLConnection,,
+,Namespace:Android,Java Package,,
+,Memory Management:Android,Garbage Collected,,
+,Named Parameter:Android,None,,
+,Device Runtime:Android,Dalvik VM,,
+,Production Version:Android,Android 3.2 (API level 13),,
+,Custom Gesture:Android,Yes,,
+,Base Class:Android,Object (Implied),,
+,Base Class Method Inherited:Android,"hashCode, equals, toString",,
+,Compiler Directive:Android,None,,
+,Device Runtime:WP7,Silverlight or XNA (Game),,
+,Production Version:WP7,7.1,,
+,Production Version:PhoneGap,1.0.0,,
+,Application Context:PhoneGap,navigator,,
+,Production Version:GoogleTV,GoogleTV Addon - API Level 12,,
+,Production Version:FiOSTV,1.9,,
+,Packaging:iOS,info.plist (Default),,
+,Packaging:Android,AndroidManifest.xml,,
+,Search:Android,Search dialog and SearchView widget delivers search queries to a specific activity that performs searches,,
+,Flash Notification:Android,Toast Notification,,
+,Background Notification:Android,Status Bar Notification,,
+,Foreground Notification:Android,Dialog Notification,,
+,Packaging:GoogleTV,AndroidManifest.xml,,
+,Search:GoogleTV,Search dialog and SearchView widget delivers search queries to a specific activity that performs searches,,
+,Flash Notification:GoogleTV,Toast Notification,,
+,Background Notification:GoogleTV,Status Bar Notification,,
+,Foreground Notification:GoogleTV,Dialog Notification,,
+,Packaging:Wicket,web.xml,,
+,Packaging:Tapestry,web.xml,,
+,Flash Notification:Tapestry,Transient Alerts component of AlertManager,,
+,Form Spam Detection:Tapestry,Kaptcha / KaptchaField,,
+,Screen Abstraction:iOS,Point instead of raw pixel (e.g. 1 point in iPad is 2 x 1 pixel on iPhone 4),,
+,Screen Abstraction:Android,"Density-independent pixel (dp) - for UI layout
+Scale-independent pixel (sp) - for text
+
+Instead of using pixel (px), use density pixel (dp) to support multitude of Android phones with various screen resolutions and sizes. <mark>For text, you can also use dp instead of px</mark>. I have not seen sp used for text (yet).
+
+Also for Android 3.2 or above, please see http://developer.android.com/guide/practices/screens_support.html#DeclaringTabletLayouts",,
+,Action Bar:Android,User/application level bar (Honeycomb 3.0 or above only),,
+,Main View Class:Wicket,WebPage,,
+,Main View Class:Tapestry,App Package/Pages,,
+,Main View Class:HTML 5,HTML DOM (Document Object Model),,
+,Action Bar:iOS,"iOS does not really have equivalence for this, the closest is View controller's navigation bar",,
+,Search:iOS,"Spotlight search. Can either search entire iOS device, or specific application",,
+,Multiple Target:iOS,Universal App (iPhone and iPad),,
+,Top Bar:iOS,Status Bar (UIApplication),,
+,Bottom Bar:Android,Tab Bar,,
+,App Store Limit:iOS,Unknown (not published at any of Apple site),,
+,Prototyping:iOS,"Categories/""@interface T (PrivateMethods)"" (Objective-C 2.0+ and method only)",,
+,Multiple Target:Android,"Multiple APK (useful for cases in which your app cannot reach all desired devices with a single APK, not a preferred approach)",,
+,Top Bar:Android,Status Bar,,
+,App Store Limit:Android,". Android Market limit an APK to 50 MB
+. Your package name must be unique otherwise you will not be able to upload it",,
+,Prototyping:Android,None,,
+,Multiple Target:GoogleTV,Intel Atom (x86) and ARM,,
+,Programmatic Channel Control:GoogleTV,Yes,,
+,EPG:GoogleTV,No,,
+,Screen Abstraction:GoogleTV,720p or 1080p,,
+,Development Mode:Wicket,getResourceSettings().setResourcePollFrequency(Duration.ONE_SECOND) (.html only),,
+,Background Notification:iOS,Status Bar (iOS 5 only),,
+,Foreground Notification:iOS,"Modal dialog (iOS4), notification type (iOS5)",,
+,Main Container:iOS,Window (e.g. MainWindow.xib),,
+,Main Container:FiOSTV,Widget,,
+,IDE:iOS,XCode,,
+,IDE:Android,Eclipse,,
+,IDE:GoogleTV,Eclipse,,
+,IDE:iOS Web,Dashcode,,
+,IDE:FiOSTV,Iris,,
+,IDE Concepts:iOS,". Group is directory in XCode
+
+. Connections can be made between UI control and the source using IBAction or IBOutlet",,
+,IDE Shortcuts:iOS,"""Option + Click = class
+Cmd + Shift + F = search in workspace""",,
+,IDE Shortcuts:Android,"""Ctrl + Shift + T = class
+Ctrl + Shift + G = search used by""",,
+,Multimedia:iOS,scigrpservice.appspot.com/go?s=iosmultimedia,,
+,Closures:iOS,scigrpservice.appspot.com/go?s=iosblocks,,
+,Closures:Android,None (closest is like Java Generic types),,
+,Multiple Inheritence:iOS,None (can be supported using protocol),,
+,Multiple Inheritence:Android,None (supported with interface),,
+,Relative Path:iOS,[NSBundle mainBundle],,
+,UI Design:iOS,Tool (IB) or code,,
+,UI Design:Android,XML file,,
+,Submit Button Color:iOS,"Blue (iOS4), Green (iOS5)",,
+,Gestures:iOS Web,"Click
+Mouseover
+Double Click
+Hover
+",,
+,Most Common Event:iOS Web,"onClick, onLoad, etc. (Javascript events)",,
+,Most Common UI:iOS Web,"Widget
+WebApp",,
+,Native UI Builder:iOS Web,Dashcode itself,,
+,Production Version:iOS Web,3.0.2,,
+,Search:iOS Web,Search Field,,
+,Self Reference:iOS Web,this,,
+,Start Up:iOS Web,main.js/main.html,,
+,Value Proposition:iOS Web,Web Apps for iOS/Widgets for OS X,,
+,Full Exception:Java,"	public static String toString(Exception e) {
+		StringWriter sw = new StringWriter();
+		PrintWriter pw = new PrintWriter(sw);
+
+		e.printStackTrace(pw);
+
+		return sw.toString();
+	}",,
+,Error:iOS,"""unrecognized selector sent to instance"" e.g.
+
+2011-08-30 13:51:28.905 VideoBrowser[27268:207] *** Terminating app due to uncaught exception 'NSInvalidArgumentException', reason: '-[CustomMoviePlayerViewController setVideoFrame:]: unrecognized selector sent to instance 0x5b27b10'
+*** Call stack at first throw:
+
+It means the method does not exist!
+
+",,
+,Policy:Android,"AndroidManifest.xml (granting request access to network, camera, contacts etc)",,
+,Layout:iOS,T.nib (legacy) or T.xib,,
+,Layout:Android,main.xml,,
+,IDE Concepts:Android,"While there is no advanced tool based connection mapping between source codes and UI controls like iOS, Android's approach is to use specially notation known as @id+ to refer to a control in main.xml. To respond to UI events, one has to add a Java class to be the event (whatever that is like onClick) listener.",,
+,Access to UI Control:iOS,Connection between the attribute of the UI controls and their corresponding IBOutlet,,
+,Access to UI Control:Android,"In a button tag inside main.xml:
+...
+android:id=""""@+id/bAdd""""
+
+In Java:
+import android.widget.Button;
+...
+Button button = (Button)findViewById(R.id.bAdd);",,
+,Respond to UI Control:iOS,IBAction,,
+,Respond to UI Control:Android,"import android.view.View;
+...
+    Button button = (Button)findViewById(R.id.corky);
+    // Register the onClick listener with the implementation above
+    button.setOnClickListener(new View.OnClickListener() {
+       public void onClick(View v) {
+         // do something when the button is clicked
+       }
+    };",,
+,Display a View:iOS,"    [self presentModalViewController:_movieEditViewController animated:YES];
+    _movieEditViewController.delegate = self;
+    [self.view addSubview:_movieEditViewController.view];",,
+,Display a View:Android,"    Intent intent = new Intent(SecondActivity.class);
+    startActivity(intent);",,
+,Dismiss a View:iOS,"In the method say DONE button -
+
+    [delegate didDismissModalView];
+
+In the delegate (say the parent or caller view) -
+
+- (void)didDismissModalView {
+    // Dismiss the modal view controller
+    [self dismissModalViewControllerAnimated:YES];
+}",,
+,Dismiss a View:Android,"No need to do anything. By default, you can always go back (hit Back button) to the previous Activity unless you did a finish(); inside its onPause() method.",,
+,Clean URL:jQueryMobile,$.mobile.pushStateEnabled = true; (default),,
+,Pagination:jQueryMobile,pagination plugin,,
+,Background Notification:jQueryMobile,"$.mobile.loadingMessage = ""My custom message!"";",,
+,Custom Gesture:jQueryMobile,"Configurable swipe event thresholds
+
+scrollSupressionThreshold (default: 10px) – More than this horizontal displacement, and we will suppress scrolling
+durationThreshold (default: 1000ms) – More time than this, and it isn’t a swipe
+horizontalDistanceThreshold (default: 30px) – Swipe horizontal displacement must be more than this.
+verticalDistanceThreshold (default: 75px) – Swipe vertical displacement must be less than this.",,
+,Page Prefetch:jQueryMobile,"<a href=""foo/bar/baz"" data-prefetch>link text</a>
+
+Pages can also be pre-fetched programmatically by calling $.mobile.loadpage( url ). Pre-fetching links will naturally cause additional HTTP requests that may never be used, so it’s important to use this feature only in situations where it’s highly likely that a page will be visited.",,
+,Dismiss a View:jQueryMobile,"Please note that sequence of adding library does matter here.
+
+<script src=""/javascript/jquery.min.js""></script>
+<script type=""text/javascript"">
+    $(document).bind(""mobileinit"", function(){
+        $.mobile.page.prototype.options.addBackBtn= true;
+    });
+</script>
+<script src=""javascript/jquery.mobile.js"">
+</script>
+
+",,
+,List Filter:iOS,yes,,
+,List Filter:Android,yes,,
+,List Filter:jQueryMobile,"data-filter=""true""
+
+e.g.
+
+      <ul id=""mylist"" data-role=""listview"" data-filter=""true"" data-split-theme=""c"">",,
+,Segmented UI:iOS,UISegmentedControl,,
+,Segmented UI:jQueryMobile,Layout view,,
+,Main Concepts:jQueryMobile,"jQueryMobile (jqm) is the coolest framework I have seen. Using just data-role as an attribute in DOM element like div, ul etc, one can magically transform existing web portal into mobile friendly portal. 
+
+An option to selectively skip the transformation is also available using data-role=""none"".",,
+,List Handler:Android,onListItemClick() which has a parameter int position as one of its 4 parameters.,,
+,Text Input Hint:Android,EditText android:hint,,
+,Text Input Hint:HTML,"<input placeholder=""value"" />",,
+,Device Persistence:HTML,"With
+localStorage.setItem('variable_name',variable_value); you can save in local storage your variables.
+with
+variable_value = localStorage.getItem('variable_name'); you can get variable value",,
+,Native Interface:PhoneGap,". Between Objective-C and web, use SQLite",,
