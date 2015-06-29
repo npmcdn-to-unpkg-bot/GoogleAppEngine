@@ -24,42 +24,22 @@
     "maxAge" : 0
   },
   "methods" : {
-    "userendpoint.userEndpoint.listUser" : {
-      "path" : "user",
+    "userendpoint.userEndpoint.getUser" : {
+      "path" : "user/{id}",
       "httpMethod" : "GET",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "app.model.UserEndpoint.listUser",
+      "rosyMethod" : "app.model.UserEndpoint.getUser",
       "request" : {
         "parameters" : {
-          "cursor" : {
-            "type" : "string",
-            "required" : false
-          },
-          "limit" : {
-            "type" : "int32",
-            "required" : false
+          "id" : {
+            "type" : "int64",
+            "required" : true
           }
         },
         "body" : "empty"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "userendpoint.userEndpoint.insertUser" : {
-      "path" : "user",
-      "httpMethod" : "POST",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "app.model.UserEndpoint.insertUser",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
@@ -102,19 +82,39 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
-    "userendpoint.userEndpoint.getUser" : {
-      "path" : "user/{id}",
+    "userendpoint.userEndpoint.insertUser" : {
+      "path" : "user",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "app.model.UserEndpoint.insertUser",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "userendpoint.userEndpoint.listUser" : {
+      "path" : "user",
       "httpMethod" : "GET",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "app.model.UserEndpoint.getUser",
+      "rosyMethod" : "app.model.UserEndpoint.listUser",
       "request" : {
         "parameters" : {
-          "id" : {
-            "type" : "int64",
-            "required" : true
+          "cursor" : {
+            "type" : "string",
+            "required" : false
+          },
+          "limit" : {
+            "type" : "int32",
+            "required" : false
           }
         },
         "body" : "empty"
@@ -126,21 +126,6 @@
   },
   "descriptor" : {
     "schemas" : {
-      "CollectionResponse_User" : {
-        "id" : "CollectionResponse_User",
-        "type" : "object",
-        "properties" : {
-          "items" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "User"
-            }
-          },
-          "nextPageToken" : {
-            "type" : "string"
-          }
-        }
-      },
       "User" : {
         "id" : "User",
         "type" : "object",
@@ -192,14 +177,14 @@
           "name" : {
             "type" : "string"
           },
-          "parent" : {
-            "$ref" : "Key"
+          "complete" : {
+            "type" : "boolean"
           },
           "namespace" : {
             "type" : "string"
           },
-          "complete" : {
-            "type" : "boolean"
+          "parent" : {
+            "$ref" : "Key"
           }
         }
       },
@@ -264,14 +249,14 @@
             "type" : "string",
             "format" : "date-time"
           },
-          "url" : {
-            "type" : "string"
-          },
           "modified" : {
             "type" : "string",
             "format" : "date-time"
           },
           "title" : {
+            "type" : "string"
+          },
+          "url" : {
             "type" : "string"
           }
         }
@@ -428,10 +413,6 @@
         "id" : "Date",
         "type" : "object",
         "properties" : {
-          "time" : {
-            "type" : "string",
-            "format" : "int64"
-          },
           "hours" : {
             "type" : "integer"
           },
@@ -441,13 +422,14 @@
           "seconds" : {
             "type" : "integer"
           },
-          "year" : {
-            "type" : "integer"
+          "time" : {
+            "type" : "string",
+            "format" : "int64"
           },
           "month" : {
             "type" : "integer"
           },
-          "date" : {
+          "year" : {
             "type" : "integer"
           },
           "day" : {
@@ -455,20 +437,30 @@
           },
           "timezoneOffset" : {
             "type" : "integer"
+          },
+          "date" : {
+            "type" : "integer"
+          }
+        }
+      },
+      "CollectionResponse_User" : {
+        "id" : "CollectionResponse_User",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "User"
+            }
+          },
+          "nextPageToken" : {
+            "type" : "string"
           }
         }
       }
     },
     "methods" : {
-      "app.model.UserEndpoint.listUser" : {
-        "response" : {
-          "$ref" : "CollectionResponse_User"
-        }
-      },
-      "app.model.UserEndpoint.insertUser" : {
-        "request" : {
-          "$ref" : "User"
-        },
+      "app.model.UserEndpoint.getUser" : {
         "response" : {
           "$ref" : "User"
         }
@@ -486,9 +478,17 @@
           "$ref" : "User"
         }
       },
-      "app.model.UserEndpoint.getUser" : {
+      "app.model.UserEndpoint.insertUser" : {
+        "request" : {
+          "$ref" : "User"
+        },
         "response" : {
           "$ref" : "User"
+        }
+      },
+      "app.model.UserEndpoint.listUser" : {
+        "response" : {
+          "$ref" : "CollectionResponse_User"
         }
       }
     }

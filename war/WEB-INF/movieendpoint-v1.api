@@ -24,31 +24,6 @@
     "maxAge" : 0
   },
   "methods" : {
-    "movieendpoint.movieEndpoint.listMovie" : {
-      "path" : "movie",
-      "httpMethod" : "GET",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "app.model.MovieEndpoint.listMovie",
-      "request" : {
-        "parameters" : {
-          "cursor" : {
-            "type" : "string",
-            "required" : false
-          },
-          "limit" : {
-            "type" : "int32",
-            "required" : false
-          }
-        },
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
     "movieendpoint.movieEndpoint.getMovie" : {
       "path" : "movie/{id}",
       "httpMethod" : "GET",
@@ -65,38 +40,6 @@
           }
         },
         "body" : "empty"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "movieendpoint.movieEndpoint.insertMovie" : {
-      "path" : "movie",
-      "httpMethod" : "POST",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "app.model.MovieEndpoint.insertMovie",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "movieendpoint.movieEndpoint.updateMovie" : {
-      "path" : "movie",
-      "httpMethod" : "PUT",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "app.model.MovieEndpoint.updateMovie",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
@@ -122,25 +65,67 @@
       "response" : {
         "body" : "autoTemplate(backendResponse)"
       }
+    },
+    "movieendpoint.movieEndpoint.listMovie" : {
+      "path" : "movie",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "app.model.MovieEndpoint.listMovie",
+      "request" : {
+        "parameters" : {
+          "cursor" : {
+            "type" : "string",
+            "required" : false
+          },
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "movieendpoint.movieEndpoint.updateMovie" : {
+      "path" : "movie",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "app.model.MovieEndpoint.updateMovie",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "movieendpoint.movieEndpoint.insertMovie" : {
+      "path" : "movie",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "app.model.MovieEndpoint.insertMovie",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
     }
   },
   "descriptor" : {
     "schemas" : {
-      "CollectionResponse_Movie" : {
-        "id" : "CollectionResponse_Movie",
-        "type" : "object",
-        "properties" : {
-          "items" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "Movie"
-            }
-          },
-          "nextPageToken" : {
-            "type" : "string"
-          }
-        }
-      },
       "Movie" : {
         "id" : "Movie",
         "type" : "object",
@@ -202,14 +187,14 @@
             "type" : "string",
             "format" : "date-time"
           },
-          "url" : {
-            "type" : "string"
-          },
           "modified" : {
             "type" : "string",
             "format" : "date-time"
           },
           "title" : {
+            "type" : "string"
+          },
+          "url" : {
             "type" : "string"
           }
         }
@@ -231,14 +216,14 @@
           "name" : {
             "type" : "string"
           },
-          "parent" : {
-            "$ref" : "Key"
+          "complete" : {
+            "type" : "boolean"
           },
           "namespace" : {
             "type" : "string"
           },
-          "complete" : {
-            "type" : "boolean"
+          "parent" : {
+            "$ref" : "Key"
           }
         }
       },
@@ -419,10 +404,6 @@
         "id" : "Date",
         "type" : "object",
         "properties" : {
-          "time" : {
-            "type" : "string",
-            "format" : "int64"
-          },
           "hours" : {
             "type" : "integer"
           },
@@ -432,19 +413,23 @@
           "seconds" : {
             "type" : "integer"
           },
-          "year" : {
-            "type" : "integer"
+          "time" : {
+            "type" : "string",
+            "format" : "int64"
           },
           "month" : {
             "type" : "integer"
           },
-          "date" : {
+          "year" : {
             "type" : "integer"
           },
           "day" : {
             "type" : "integer"
           },
           "timezoneOffset" : {
+            "type" : "integer"
+          },
+          "date" : {
             "type" : "integer"
           }
         }
@@ -457,25 +442,37 @@
             "type" : "string"
           }
         }
+      },
+      "CollectionResponse_Movie" : {
+        "id" : "CollectionResponse_Movie",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Movie"
+            }
+          },
+          "nextPageToken" : {
+            "type" : "string"
+          }
+        }
       }
     },
     "methods" : {
-      "app.model.MovieEndpoint.listMovie" : {
-        "response" : {
-          "$ref" : "CollectionResponse_Movie"
-        }
-      },
       "app.model.MovieEndpoint.getMovie" : {
         "response" : {
           "$ref" : "Movie"
         }
       },
-      "app.model.MovieEndpoint.insertMovie" : {
-        "request" : {
-          "$ref" : "Movie"
-        },
+      "app.model.MovieEndpoint.removeMovie" : {
         "response" : {
           "$ref" : "Movie"
+        }
+      },
+      "app.model.MovieEndpoint.listMovie" : {
+        "response" : {
+          "$ref" : "CollectionResponse_Movie"
         }
       },
       "app.model.MovieEndpoint.updateMovie" : {
@@ -486,7 +483,10 @@
           "$ref" : "Movie"
         }
       },
-      "app.model.MovieEndpoint.removeMovie" : {
+      "app.model.MovieEndpoint.insertMovie" : {
+        "request" : {
+          "$ref" : "Movie"
+        },
         "response" : {
           "$ref" : "Movie"
         }
