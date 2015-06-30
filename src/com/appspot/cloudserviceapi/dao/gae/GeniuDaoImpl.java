@@ -107,11 +107,12 @@ public class GeniuDaoImpl extends GaeAbstractDaoImpl<Geniu> implements GeniuDao 
             checkMaxLength( "details", dto.getDetails(), 10000 );
             _ent.setProperty( "details", new Text( dto.getDetails() ));
 
-            if ( dto.getSimilarity() == null ) {
-                throw new DaoException("Value of column 'similarity' cannot be null");
-            }
-            checkMaxLength( "similarity", dto.getSimilarity(), 500 );
-            _ent.setProperty( "similarity", dto.getSimilarity());
+            //TODO too much cpu usage - to be implemented by external search engine
+//            if ( dto.getSimilarity() == null ) {
+//                throw new DaoException("Value of column 'similarity' cannot be null");
+//            }
+//            checkMaxLength( "similarity", dto.getSimilarity(), 500 );
+//            _ent.setProperty( "similarity", dto.getSimilarity());
 
             if ( dto.getCreatedDate() == null ) {
                 dto.setCreatedDate( new Date( System.currentTimeMillis()));
@@ -168,11 +169,12 @@ public class GeniuDaoImpl extends GaeAbstractDaoImpl<Geniu> implements GeniuDao 
             isUpdated = true;
         }
 
-        if ( dto.getSimilarity() != null ) {
-            checkMaxLength( "similarity", dto.getSimilarity(), 500 );
-            _ent.setProperty( "similarity", dto.getSimilarity());
-            isUpdated = true;
-        }
+        //TODO too much cpu usage - to be implemented by external search engine
+//        if ( dto.getSimilarity() != null ) {
+//            checkMaxLength( "similarity", dto.getSimilarity(), 500 );
+//            _ent.setProperty( "similarity", dto.getSimilarity());
+//            isUpdated = true;
+//        }
 
         if ( dto.getCreatedDate() != null ) {
 //            _ent.setProperty( "createdDate", date( dto.getCreatedDate() ));

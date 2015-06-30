@@ -33,6 +33,12 @@ AngularJS with Data-URI (data-ng-src)
 . Use http://lightning.gs/ to optimize your png to save data store storage
 . Please turn off PNG crush!
 
+Genius Service
+. To support delete action, add a Service Registry (SR) with a prefix "template:delete:[genius appId]" e.g.
+template:delete:genius
+template:delete:secured
+template:delete:social
+and the value of the SR entry will be the token (when a delete action is hit, a prompt will be shown "Please enter your token" to authorize further deletion)
 
 $$$$$$ Third-Party/OSS Integrations $$$$$$
 

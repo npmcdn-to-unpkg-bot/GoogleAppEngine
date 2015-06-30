@@ -130,7 +130,9 @@ implements Template, Cloneable, Serializable {
 
     public String getSimilarity() {
         //return similarity;
-    	return SimilarityManager.toSimilarPattern(SimilarityManager.getCommonToken(what)).toString();
+        //TODO too much cpu usage - to be implemented by external search engine
+//    	return SimilarityManager.toSimilarPattern(SimilarityManager.getCommonToken(what)).toString();
+    	return null;
     }
 
     public void setSimilarity( String _val) {
@@ -148,8 +150,9 @@ implements Template, Cloneable, Serializable {
 	
 	public long getFrequencyCount() {
 		//return frequencyCount;
-		return SimilarityManager.getAccumulatedFrequency(getSimilarity());	//TBD - time consuming!
-//		return 0L;
+        //TODO too much cpu usage - to be implemented by external search engine
+//		return SimilarityManager.getAccumulatedFrequency(getSimilarity());
+		return -1;
 	}
 
 	public void setFrequencyCount(long frequencyCount) {
@@ -157,8 +160,8 @@ implements Template, Cloneable, Serializable {
 	}
 
 	public void countFrequency() {
-		//TBD - should be moved to async task!
-		SimilarityManager.setAccumulatedFrequency(getSimilarity());		//commented out as it is a very time consuming calculation
+        //TODO too much cpu usage - to be implemented by external search engine
+//		SimilarityManager.setAccumulatedFrequency(getSimilarity());		//commented out as it is a very time consuming calculation
 	}
 
 	//=== tapestry can't handle java.sql.Date!!!

@@ -66,17 +66,26 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
-    "calendarendpoint.calendarEndpoint.insertCalendar" : {
+    "calendarendpoint.calendarEndpoint.listCalendar" : {
       "path" : "calendar",
-      "httpMethod" : "POST",
+      "httpMethod" : "GET",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "app.model.CalendarEndpoint.insertCalendar",
+      "rosyMethod" : "app.model.CalendarEndpoint.listCalendar",
       "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
+        "parameters" : {
+          "cursor" : {
+            "type" : "string",
+            "required" : false
+          },
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
@@ -98,26 +107,17 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
-    "calendarendpoint.calendarEndpoint.listCalendar" : {
+    "calendarendpoint.calendarEndpoint.insertCalendar" : {
       "path" : "calendar",
-      "httpMethod" : "GET",
+      "httpMethod" : "POST",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "app.model.CalendarEndpoint.listCalendar",
+      "rosyMethod" : "app.model.CalendarEndpoint.insertCalendar",
       "request" : {
-        "parameters" : {
-          "cursor" : {
-            "type" : "string",
-            "required" : false
-          },
-          "limit" : {
-            "type" : "int32",
-            "required" : false
-          }
-        },
-        "body" : "empty"
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
@@ -248,14 +248,14 @@
           "name" : {
             "type" : "string"
           },
+          "parent" : {
+            "$ref" : "Key"
+          },
           "complete" : {
             "type" : "boolean"
           },
           "namespace" : {
             "type" : "string"
-          },
-          "parent" : {
-            "$ref" : "Key"
           }
         }
       },
@@ -286,12 +286,9 @@
           "$ref" : "Calendar"
         }
       },
-      "app.model.CalendarEndpoint.insertCalendar" : {
-        "request" : {
-          "$ref" : "Calendar"
-        },
+      "app.model.CalendarEndpoint.listCalendar" : {
         "response" : {
-          "$ref" : "Calendar"
+          "$ref" : "CollectionResponse_Calendar"
         }
       },
       "app.model.CalendarEndpoint.updateCalendar" : {
@@ -302,9 +299,12 @@
           "$ref" : "Calendar"
         }
       },
-      "app.model.CalendarEndpoint.listCalendar" : {
+      "app.model.CalendarEndpoint.insertCalendar" : {
+        "request" : {
+          "$ref" : "Calendar"
+        },
         "response" : {
-          "$ref" : "CollectionResponse_Calendar"
+          "$ref" : "Calendar"
         }
       }
     }
