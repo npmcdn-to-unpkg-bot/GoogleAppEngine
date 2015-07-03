@@ -24,43 +24,17 @@
     "maxAge" : 0
   },
   "methods" : {
-    "calendarendpoint.calendarEndpoint.getCalendar" : {
-      "path" : "calendar/{id}",
-      "httpMethod" : "GET",
+    "calendarendpoint.calendarEndpoint.insertCalendar" : {
+      "path" : "calendar",
+      "httpMethod" : "POST",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "app.model.CalendarEndpoint.getCalendar",
+      "rosyMethod" : "app.model.CalendarEndpoint.insertCalendar",
       "request" : {
-        "parameters" : {
-          "id" : {
-            "type" : "int64",
-            "required" : true
-          }
-        },
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "calendarendpoint.calendarEndpoint.removeCalendar" : {
-      "path" : "calendar/{id}",
-      "httpMethod" : "DELETE",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "app.model.CalendarEndpoint.removeCalendar",
-      "request" : {
-        "parameters" : {
-          "id" : {
-            "type" : "int64",
-            "required" : true
-          }
-        },
-        "body" : "empty"
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
@@ -107,17 +81,43 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
-    "calendarendpoint.calendarEndpoint.insertCalendar" : {
-      "path" : "calendar",
-      "httpMethod" : "POST",
+    "calendarendpoint.calendarEndpoint.getCalendar" : {
+      "path" : "calendar/{id}",
+      "httpMethod" : "GET",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "app.model.CalendarEndpoint.insertCalendar",
+      "rosyMethod" : "app.model.CalendarEndpoint.getCalendar",
       "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "calendarendpoint.calendarEndpoint.removeCalendar" : {
+      "path" : "calendar/{id}",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "app.model.CalendarEndpoint.removeCalendar",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
@@ -276,12 +276,10 @@
       }
     },
     "methods" : {
-      "app.model.CalendarEndpoint.getCalendar" : {
-        "response" : {
+      "app.model.CalendarEndpoint.insertCalendar" : {
+        "request" : {
           "$ref" : "Calendar"
-        }
-      },
-      "app.model.CalendarEndpoint.removeCalendar" : {
+        },
         "response" : {
           "$ref" : "Calendar"
         }
@@ -299,10 +297,12 @@
           "$ref" : "Calendar"
         }
       },
-      "app.model.CalendarEndpoint.insertCalendar" : {
-        "request" : {
+      "app.model.CalendarEndpoint.getCalendar" : {
+        "response" : {
           "$ref" : "Calendar"
-        },
+        }
+      },
+      "app.model.CalendarEndpoint.removeCalendar" : {
         "response" : {
           "$ref" : "Calendar"
         }

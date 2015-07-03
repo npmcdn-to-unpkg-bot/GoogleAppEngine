@@ -85,11 +85,11 @@ public class ServiceRegistryServlet extends HttpServlet {
 		//=== if move pass beyond this, it is business as usual pal!
 		
 		String resp = null;
-		if(serviceName != null) {
+		if(serviceName != null && !serviceName.trim().equals("")) {
 			try {
 				if(sr == null) sr = (ServiceRegistry)r.findServiceRegistryByService(serviceName);
 				if(sr == null) {
-					resp = "<html>Sorry, no such service [" + serviceName + "] found in the registry.</html>";
+					resp = ":)";	//"<html>Sorry, no such service [" + serviceName + "] found in the registry.</html>";
 					response.getWriter().println(resp);
 				}
 				//TODO - this could be a target for the (future's) Java closure :)
@@ -225,7 +225,7 @@ public class ServiceRegistryServlet extends HttpServlet {
 				response.getWriter().println(StringUtil.toString(e));
 			}
 		} else {
-			resp = "<html>Service must be specified with request parameter \"s\". [" + serviceName + "]</html>";
+			resp = "";	//"<html>Service must be specified with request parameter \"s\". [" + serviceName + "]</html>";
 			response.getWriter().println(resp);
 		}
 	}
