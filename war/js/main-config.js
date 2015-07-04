@@ -9,7 +9,7 @@ var gEventArray = [];
 var gHref;
 var App = {
     major: '8',
-    minor: '0150ytdefine',
+    minor: '0151',
     header_index: 0,   //metadata header
     movie_index: 1,     //the real movies data
     login_url: '/ui/index.html',
@@ -62,13 +62,13 @@ typeof requirejs !== 'undefined' && requirejs.config({
         //===used by movie.html
         //bootstrap: '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min',
         //angular: '//ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular',  //latest as at 4/6/2014
+        //angular: '//ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular',
         //angular: '//ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular',    //with ability to turn off $sce!?
         angular: '//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular',    //with  net::ERR_CONNECTION_REFUSED
         angularSanitize: '//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-sanitize',    //http://stackoverflow.com/questions/19770156/how-to-output-html-through-angularjs-template
-//        angularAnimate: '//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-animate.min',
-//        angular: '//ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular',
-//        summernote: '../js/summernote',
-//        angularSummernote: '../js/angular-summernote.min',
+        //angularAnimate: '//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-animate.min',
+        //summernote: '../js/summernote',
+        //angularSummernote: '../js/angular-summernote.min',
 
         init: '../parse/init',  //cache and user initialization
         //===used by calendar.html
@@ -219,7 +219,7 @@ typeof requirejs !== 'undefined' && requirejs(
         'purl',
         //'parse', 'facebook',
         'angular',
-        'angularSanitize',
+        'angularSanitize',  //1.3 does not have this
         //'angularBootstrap',
 //        'angularAnimate',
 //        'summernote',
@@ -234,7 +234,7 @@ typeof requirejs !== 'undefined' && requirejs(
         purl,
         //Parse, facebook,
         angular,
-        angularSanitize,
+        angularSanitize,	//1.3 does not have this
         //angularBootstrap,
 //        angularAnimate,
 //        summernote,

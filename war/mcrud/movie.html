@@ -30,6 +30,8 @@
     <!-- References: http://cdnjs.com/libraries/twitter-bootstrap -->
     <!--<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/dropdown.min.js"></script> &lt;!&ndash; for the menu &ndash;&gt;-->
     <!--<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/collapse.min.js"></script> &lt;!&ndash; for the mobile/collapsed view &ndash;&gt;-->
+
+    <!--<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.js"></script>-->
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.js"></script>
     <script src="../js/ui-bootstrap-tpls-0.11.2.min.js"></script>
 
@@ -123,7 +125,7 @@
             });
             //swipe left and right support with LeapStrap
             document.body.addEventListener("leap-dual-swipe", function(event){
-                var gesture = event.gesture
+                var gesture = event.gesture;
                 assert(typeof gesture === 'undefined', 'movie.html: ' + gesture.type + " : " + gesture.direction);
                 //TODO to test the following!
                 setTimeout(function () {
@@ -134,10 +136,10 @@
 
         //        }
     </script>
-    <script>var require = { urlArgs: 'a003t3' };</script>
+    <script>var require = { urlArgs: 'a005a' };</script>
     <script type="text/javascript" src="../js/require.js" data-main="../js/main-movie"></script>
 </head>
-<body ng-controller="ctrlRead" class="leap-interactive" leap-disable-tap="true" leap-disable-hover="true">
+<body ng-controller="MovieController" class="leap-interactive" leap-disable-tap="true" leap-disable-hover="true">
 <script>
     function detectGesture(gesture) {
         $scope.$apply(function () {
@@ -413,7 +415,7 @@
 
 <div class="dialog1" ng-show="editing" ng-cloak>
     <form class="form-horizontal" action="#">
-        <h2>Saving Existing Item <div ng-bind-html="item.title"></div></h2>
+        <h2>Saving Existing Item <span ng-bind-html="item.title"></span></h2>
 
         <div class="row">
             <div class="span2" ng-bind-template="{{header2}}">...</div>
@@ -594,7 +596,7 @@
     </div>
 </div>
 
-<form><input style="width: 90%; border-size: 0px;" id="leap-swipe-direction" ng-model="userSelection.gesture.swipe" value="{{userSelection.gesture.swipe}}"></form>
+<form><input style="width: 90%; border-width: 0px;" id="leap-swipe-direction" ng-model="userSelection.gesture.swipe" value="{{userSelection.gesture.swipe}}"></form>
 
     <!-- OCEAN GALLERY  -->
 <!--<div id="oceanCarousel" class="carousel slide">-->
@@ -772,7 +774,7 @@
         <td ng-bind-template="{{item.id}}">...</td>
         <td>
             <div id="picture">
-                <a class="leap-interactive" class="small" href="#" title="small image">
+                <a class="leap-interactive small" href="#" title="small image">
                     <img ng-src="https://img.youtube.com/vi/{{getYoutubeVideoId(item.url)}}/3.jpg" alt="youtube third image">
                     <img class="large" ng-src="https://img.youtube.com/vi/{{getYoutubeVideoId(item.url)}}/0.jpg" title="large image" alt="youtube first image">
                 </a>

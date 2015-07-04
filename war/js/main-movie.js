@@ -84,22 +84,6 @@ require(['./main-config', './app'], function (common, app) {
             //notice the value for 'domReady!' is the current
             //document.
             $(document).ready(function () {
-//            angular.element(document).ready(function() {
-                try {
-                    $('body').attr('ng-controller', 'ctrlRead');
-                    // Registering a controller after app bootstrap
-//                    $controllerProvider.register('ctrlRead', ctrlRead);
-                    angular.bootstrap(document);
-
-//                    //=== courtesy of http://jsfiddle.net/codef0rmer/hvf6X/
-//                    angular.module('app').run(function($rootScope, $scope) {
-//                    });
-
-                    //window.console && console.log("main-index: AngularJS initialized (RequireJS).");
-                } catch (e) {
-                    alert('main-index.js AngularJS bootstrap error [' + e + ']');
-                }
-
                 //=== show the My Account
                 if($.url().param('logintype') === '1') {
                     $("#myaccount").show();
@@ -108,7 +92,28 @@ require(['./main-config', './app'], function (common, app) {
 //                alert('main-movie.js store [' + store + "]");    //unfortunately store is bootrappd in global namespace (c.f. main-config)
                 //TODO should not need global with AMD!
                 gStore = store;
+
+                angular.element(document).ready(function($controllerProvider) {
+                    try {
+                        console.log("main-movie.js angular.boostrap() begin ...");
+                        $('body').attr('ng-controller', 'MovieController');
+                        // Registering a controller after app bootstrap
+                        //$controllerProvider.register('MovieController', MovieController);
+                        var  temp = angular.bootstrap(document);    //this is the limitation of not able to upgrade to 1.3!
+                        console.log("main-movie.js angular.boostrap() end");
+                    } catch (e2) {
+                        alert('main-index.js AngularJS 1.2 angular.bootstrap() error [' + e2 + ']');
+                    }
+
+                    //=== courtesy of http://jsfiddle.net/codef0rmer/hvf6X/
+                    //angular.module('app').run(function($rootScope, $scope) {
+                    //});
+
+                    //window.console && console.log("main-index: AngularJS initialized (RequireJS).");
+                });
+
             });
+
 
         }, function (err) {
         //=== http://requirejs.org/docs/api.html#ieloadfail

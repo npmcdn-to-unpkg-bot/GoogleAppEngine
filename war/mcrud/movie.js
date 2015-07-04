@@ -1,18 +1,29 @@
 "use strict";
+var uid;
+
+//=== TODO: controller is not global since angularjs 1.3
+MovieController.$inject = ['$scope', '$filter', '$http', '$rootScope',
+    //'loglevel',
+    '$timeout', 'dateFilter', '$location'
+    , '$sce'
+];
+
 //var myApp = angular.module('app', ['summernote'], ctrlRead)   //summernote messed up with Bootstrap 2.3.1 woraround for mobile!!!
-/** Angular-Leap (https://github.com/angular-leap/angular-leap) does not work (yet) */
-var myApp = angular.module('app', ['ui.bootstrap', 'angular-leap'], ctrlRead)
 //var myApp = angular.module('app', ['ui.bootstrap', 'afkl.lazyImage'], ctrlRead)
-var myApp = angular.module('app', ['ui.bootstrap'], ctrlRead)
-;
+/** Angular-Leap (https://github.com/angular-leap/angular-leap) does not work (yet) */
+/*var myApp = angular.module('app', ['ui.bootstrap', 'angular-leap'], ctrlRead);
+ var myApp = angular.module('app', ['ui.bootstrap'], ctrlRead);
+ */
+
 //=== https://docs.angularjs.org/api/ng/service/$sce
 //myApp.config(function($sce) {
 //    $sce.enabled(false);
 //    alert('$SCE disabled!');
 //});
-//=== http://blog.bulte.net/12-24-2013/angular-wordpress-cors.html
-myApp.config(['$httpProvider', function($httpProvider) {
+
+angular.module('app', ['ui.bootstrap']).config(['$controllerProvider', '$httpProvider', function($controllerProvider, $httpProvider) {
     //alert('myApp config called');
+    $controllerProvider.allowGlobals();     //thanks to 1.3
     $httpProvider.defaults.useXDomain = true;
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
     $httpProvider.defaults.headers.get['Content-Type'] = $httpProvider.defaults.headers.put['Content-Type'] = $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
@@ -26,53 +37,11 @@ myApp.config(['$httpProvider', function($httpProvider) {
 }
 ]);
 
-//=== http://www.grobmeier.de/angular-js-binding-to-jquery-ui-datepicker-example-07092012.html#.UyIsZVFdVtZ
-myApp.directive('myDatepicker', function ($parse) {
-    return function (scope, element, attrs, controller) {
-        var ngModel = $parse(attrs.ngModel);
-        $(function(){
-            element.datepicker({
-                showOn:"both",
-                changeYear:true,
-                changeMonth:true,
-                dateFormat:'yy-mm-dd',
-                maxDate: new Date(),
-                yearRange: '1920:2012',
-                onSelect:function (dateText, inst) {
-                    scope.$apply(function(scope){
-                        // Change binded variable
-                        ngModel.assign(scope, dateText);
-                    });
-                }
-            });
-        });
-    };
-});
-/*
- This directive allows us to pass a function in on an enter key to do what we want.
- Courtesy of http://ericsaupe.com/angularjs-detect-enter-key-ngenter/
- */
-myApp.directive('ngEnter', function () {
-    return function (scope, element, attrs) {
-        element.bind("keydown keypress", function (event) {
-            if(event.which === 13) {
-                scope.$apply(function (){
-                    scope.$eval(attrs.ngEnter);
-                });
-
-                event.preventDefault();
-            }
-        });
-    };
-});
-
-var uid;
-
-function ctrlRead($scope, $filter, $http, $rootScope,
-    //log,
-    $timeout, dateFilter, $location
+function MovieController($scope, $filter, $http, $rootScope,
+                         //log,
+                         $timeout, dateFilter, $location
     , $sce
-    ) {
+) {
     $scope.singleClick = function() {
         alert('Single Click');
     }
@@ -170,13 +139,13 @@ function ctrlRead($scope, $filter, $http, $rootScope,
     }
 
     function unescapeJson(str) {
-    	var ret = str;
-    	try {
+        var ret = str;
+        try {
             ret = decodeURIComponent(str);
-    	} catch (e) {
-        	console.log("movie.js unescapeJson error: " + e);
+        } catch (e) {
+            console.log("movie.js unescapeJson error: " + e);
         }
-    	return ret; 
+        return ret;
     }
 
     function getObjectId() {
@@ -247,7 +216,7 @@ function ctrlRead($scope, $filter, $http, $rootScope,
         }
         catch (e) {
             //$console && $console.error('1.1.1.0 movie.js $scope.handleHashtag(): An error has occurred: ' + e.message + ' - The application will not function correctly. Please contact the developer!');
-        	console.log("movie.js: $scope.getHashtagUrl error: " + e);
+            console.log("movie.js: $scope.getHashtagUrl error: " + e);
         }
 
         return retVal;
@@ -307,11 +276,11 @@ function ctrlRead($scope, $filter, $http, $rootScope,
             //TODO for some reason, search made page.number and page.max both 0s!!!
             if (page.number > 0 && page.server_number !== page.number) {
                 throw new Error("Page number " + page.number + " is out of sync with the server" +
-                "s page (" + page.server_number + "). The page number should be in sync/the same!");
+                    "s page (" + page.server_number + "). The page number should be in sync/the same!");
             }
             if (page.max > 0 && page.server_max !== page.max) {
                 throw new Error("Maximum per page " + page.max + " is out of sync with the server" +
-                "s maximum (" + page.server_max + "). The max count per page should be in sync/the same!");
+                    "s maximum (" + page.server_max + "). The max count per page should be in sync/the same!");
             }
             //window.console && console.log("movie.js serviceCheck() ok: page#=" + page.number + " max#=" + page.max + " total page#=" + page.totalPage + " total item#=" + page.totalItem);
         }
@@ -372,29 +341,29 @@ function ctrlRead($scope, $filter, $http, $rootScope,
                             };
                             j.search_results = data[i].search_results;
                             try {
-/*
-                                if (j.search_results && j.search_results.value !== undefined) {
-                                    try {
-                                        var obj = angular.fromJson(
-                                            j.search_results.value
-                                        );
-//                                    //$console && $console.log('data[' + i + '] obj = [' + obj +']');
-//                                    //$console && $console.log('data[' + i + '] search_results = [' + obj[0].movie_thumbnail + ']');
-                                    }
-                                    catch (e) {
-                                        //$console && $console.error('1.0 movie.js loadItems(): An error has occurred: ' + e.message + ' - The application will not function correctly. Please contact the developer!');
-                                        alert("movie.js: 6 error: " + e);
-                                    }
-//                                    try {
-//                                        $scope.handleHashtag(j.description);
-//                                        //$console && $console.log('data[' + i + '] = id=' + j.id + " desc=" + j.description + " title=" + j.title + " url=" + j.url + " createDate=" + j.createDate + " shared=" + j.shared);
-//                                    }
-//                                    catch (e) {
-//                                        //$console && $console.error('1.1 movie.js loadItems(): An error has occurred: ' + e.message + ' - The application will not function correctly. Please contact the developer!');
-//                                        alert("movie.js: 7 error: " + e);
-//                                    }
-                                }
-*/
+                                /*
+                                 if (j.search_results && j.search_results.value !== undefined) {
+                                 try {
+                                 var obj = angular.fromJson(
+                                 j.search_results.value
+                                 );
+                                 //                                    //$console && $console.log('data[' + i + '] obj = [' + obj +']');
+                                 //                                    //$console && $console.log('data[' + i + '] search_results = [' + obj[0].movie_thumbnail + ']');
+                                 }
+                                 catch (e) {
+                                 //$console && $console.error('1.0 movie.js loadItems(): An error has occurred: ' + e.message + ' - The application will not function correctly. Please contact the developer!');
+                                 alert("movie.js: 6 error: " + e);
+                                 }
+                                 //                                    try {
+                                 //                                        $scope.handleHashtag(j.description);
+                                 //                                        //$console && $console.log('data[' + i + '] = id=' + j.id + " desc=" + j.description + " title=" + j.title + " url=" + j.url + " createDate=" + j.createDate + " shared=" + j.shared);
+                                 //                                    }
+                                 //                                    catch (e) {
+                                 //                                        //$console && $console.error('1.1 movie.js loadItems(): An error has occurred: ' + e.message + ' - The application will not function correctly. Please contact the developer!');
+                                 //                                        alert("movie.js: 7 error: " + e);
+                                 //                                    }
+                                 }
+                                 */
                                 try {
                                     $scope.items.push(j);
                                 }
@@ -458,7 +427,7 @@ function ctrlRead($scope, $filter, $http, $rootScope,
 
                 //$console && $console.log("items loaded [gBuild " + gBuild + "]");
             }
-            ).error(function (data, status, headers, config) {
+        ).error(function (data, status, headers, config) {
                 if(typeof data === 'undefined') {
                     $scope.error_message = status + ": unknown error, please try again later";
                 } else {
@@ -560,11 +529,11 @@ function ctrlRead($scope, $filter, $http, $rootScope,
 
                 //$console && $console.log("items loaded [gBuild " + gBuild + "]");
             }
-            ).error(function (data, status, headers, config) {
+        ).error(function (data, status, headers, config) {
                 $scope.error_message = status + ": " + data;
                 if(typeof status !== 'undefined') {	//TODO workaround to suppress the weird error! :(
                     //alert("movie.js: loadItemsJustForHashtag error: data [" + data + "] status [" + status + "] headers [" + headers + "] config [" + config + "] Hint: Is the json response sent by the server proper?");
-                	console.log("movie.js: loadItemsJustForHashtag error: data [" + data + "] status [" + status + "] headers [" + headers + "] config [" + config + "] Hint: Is the json response sent by the server proper?");
+                    console.log("movie.js: loadItemsJustForHashtag error: data [" + data + "] status [" + status + "] headers [" + headers + "] config [" + config + "] Hint: Is the json response sent by the server proper?");
                 }
             });
     };
@@ -669,7 +638,7 @@ function ctrlRead($scope, $filter, $http, $rootScope,
 
                 //$console && $console.log("items loaded for calendar [gBuild " + gBuild + "]");
             }
-            ).error(function (data, status, headers, config) {
+        ).error(function (data, status, headers, config) {
                 $scope.error_message = status + ": " + data;
                 if(status !== 0) {	//TODO workaround to suppress the weird error! :(
                     alert("movie.js: 11 error: data [" + data + "] status [" + status + "] headers [" + headers + "] config [" + config + "]");
@@ -808,8 +777,8 @@ function ctrlRead($scope, $filter, $http, $rootScope,
                 $scope.setFullSearchMode();
 //                try {
 //                    if ($scope.query != $scope.savedQuery) {
-                        $("#loadingSearch").show();
-                        $scope.loadItems();
+                $("#loadingSearch").show();
+                $scope.loadItems();
 //                    } else {
 //                        $("#loadingSearch").hide();
 //                    }
@@ -1044,48 +1013,48 @@ function ctrlRead($scope, $filter, $http, $rootScope,
             //alert('about to create [' + data + ']');
 //            $http.post('/ws/crud?', data)
             $http({
-			    method: 'POST',
-			    url: '/ws/crud',
-			    data: data,
-			    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-	            //headers: {'Content-type': 'application/json'}
-			})
+                method: 'POST',
+                url: '/ws/crud',
+                data: data,
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                //headers: {'Content-type': 'application/json'}
+            })
                 .success(function (response, status, headers, config) {
                     //alert('created response [' + response.id + "]");
                     //if(response.id === $scope.item.id) {
                     try {
-	                    if (response.id) {
-	                        $scope.item.id = response.id;
-	                        $scope.item.owner = response.owner === $scope.userId ? "Me" : response.owner;
-	                        $scope.item.createDate = response.modified;
-	                        if ($scope.pagedItems[$scope.currentPage] === undefined) {	//TBD
-	                            $scope.pagedItems[$scope.currentPage] = [];
-	                        }
-	                        $scope.pagedItems[$scope.currentPage].push($scope.item);
-	                        if ($scope.items.length === 0) {	//TBD
-	                            $scope.items = [];
-	                        }
-	                        $scope.items.push($scope.item);
-	                        $scope.enterNew = false;
-	                        $scope.editing = false;
-	                        $scope.item = "";
-	                        $scope.backendReady = true;
-	                        //alert('created');
-	                    } else {
-	                        $scope.error_message = response.error_message;
-	                        alert("movie.js: 12a2 error: response.id [" + response.id + "] status [" + status + "] headers [" + headers + "] config [" + config + "]");
-	                    }
+                        if (response.id) {
+                            $scope.item.id = response.id;
+                            $scope.item.owner = response.owner === $scope.userId ? "Me" : response.owner;
+                            $scope.item.createDate = response.modified;
+                            if ($scope.pagedItems[$scope.currentPage] === undefined) {	//TBD
+                                $scope.pagedItems[$scope.currentPage] = [];
+                            }
+                            $scope.pagedItems[$scope.currentPage].push($scope.item);
+                            if ($scope.items.length === 0) {	//TBD
+                                $scope.items = [];
+                            }
+                            $scope.items.push($scope.item);
+                            $scope.enterNew = false;
+                            $scope.editing = false;
+                            $scope.item = "";
+                            $scope.backendReady = true;
+                            //alert('created');
+                        } else {
+                            $scope.error_message = response.error_message;
+                            alert("movie.js: 12a2 error: response.id [" + response.id + "] status [" + status + "] headers [" + headers + "] config [" + config + "]");
+                        }
                     }
                     catch (e) {
                         $scope.error_message = response.error_message;
                         alert("movie.js: 12b2 error: response [" + response + "] status [" + status + "] headers [" + headers + "] config [" + config + "]");
                     }
                 }
-                ).error(function (response, status, headers, config) {
+            ).error(function (response, status, headers, config) {
                     $scope.error_message = response.error_message;
                     //$console && $console.log("movie.js 12c: We might have a bit of issue here :( ************************** response = [" + response + "] response.error_message = [" + response.error_message + "] **************************");
                     if(status !== 0) {	//TODO workaround to suppress the weird error! :(
-                    	alert("movie.js: 12c2 error: status [" + status + "] headers [" + headers + "] config [" + config + "] data [" + data + "]");
+                        alert("movie.js: 12c2 error: status [" + status + "] headers [" + headers + "] config [" + config + "] data [" + data + "]");
                     }
                 });
         } else {
@@ -1215,12 +1184,12 @@ function ctrlRead($scope, $filter, $http, $rootScope,
             //alert('about to update [' + data + ']');
 //            $http.post('/ws/crud?', data)
             $http({
-			    method: 'POST',
-			    url: '/ws/crud',
-			    data: data,
-			    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                method: 'POST',
+                url: '/ws/crud',
+                data: data,
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                 //headers: {'Content-type': 'application/json'}
-			})
+            })
                 .success(function (response, status, headers, config) {
                     //$console && $console.log('updated response id = ' + response.id + " $scope.item.id = " + $scope.item.id);
                     if (response.id === $scope.item.id) {
@@ -1239,7 +1208,7 @@ function ctrlRead($scope, $filter, $http, $rootScope,
                         //alert('updated');
                     }
                 }
-                ).error(function (response, status, headers, config) {
+            ).error(function (response, status, headers, config) {
                     if (status === '403') {
                         $scope.error_message = "You do not have access to the resource. Are you the content owner?";
                         //alert("Error: " + $scope.error_message);
@@ -1275,11 +1244,11 @@ function ctrlRead($scope, $filter, $http, $rootScope,
                 //$console && $console.log("deleteItem: before POST data [" + data + "]");
 //                $http.post('/ws/crud?', data)
                 $http({
-    			    method: 'POST',
-    			    url: '/ws/crud',
-    			    data: data,
-    			    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-    			})
+                    method: 'POST',
+                    url: '/ws/crud',
+                    data: data,
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                })
                     .success(function (response, status, headers, config) {
                         //$console && $console.log("deleteItem: checking response.id [" + response.id + "] with item.id [" + item.id + "]");
                         if (response.id === item.id) {
@@ -1299,7 +1268,7 @@ function ctrlRead($scope, $filter, $http, $rootScope,
                             $scope.backendReady = true;
                         }
                     }
-                    ).error(function (response, status, headers, config) {
+                ).error(function (response, status, headers, config) {
                         $scope.error_message = response.error_message;
                         if(status !== 0) {	//TODO workaround to suppress the weird error! :(
                             alert("movie.js: 15 error: response [" + response + "] status [" + status + "] headers [" + headers + "] config [" + config + "]");
@@ -1511,8 +1480,55 @@ function ctrlRead($scope, $filter, $http, $rootScope,
 
 }
 
-ctrlRead.$inject = ['$scope', '$filter', '$http', '$rootScope',
-    //'loglevel',
-    '$timeout', 'dateFilter', '$location'
-    , '$sce'
-];
+//=== http://stackoverflow.com/questions/25111831/controller-not-a-function-got-undefined-while-defining-controllers-globally
+//=== http://blog.bulte.net/12-24-2013/angular-wordpress-cors.html
+angular.module('app').controller('MovieController',
+//    ['$scope', '$filter', '$http', '$rootScope',
+//    //'loglevel',
+//    '$timeout', 'dateFilter', '$location'
+//    , '$sce'
+//,
+        MovieController //1.3 does not allow global and we need it to be as angular.bootstrap needs a global function
+//]
+);
+
+//=== http://www.grobmeier.de/angular-js-binding-to-jquery-ui-datepicker-example-07092012.html#.UyIsZVFdVtZ
+angular.module('app').directive('myDatepicker', function ($parse) {
+    return function (scope, element, attrs, controller) {
+        var ngModel = $parse(attrs.ngModel);
+        $(function(){
+            element.datepicker({
+                showOn:"both",
+                changeYear:true,
+                changeMonth:true,
+                dateFormat:'yy-mm-dd',
+                maxDate: new Date(),
+                yearRange: '1920:2012',
+                onSelect:function (dateText, inst) {
+                    scope.$apply(function(scope){
+                        // Change binded variable
+                        ngModel.assign(scope, dateText);
+                    });
+                }
+            });
+        });
+    };
+});
+/*
+ This directive allows us to pass a function in on an enter key to do what we want.
+ Courtesy of http://ericsaupe.com/angularjs-detect-enter-key-ngenter/
+ */
+angular.module('app').directive('ngEnter', function () {
+    return function (scope, element, attrs) {
+        element.bind("keydown keypress", function (event) {
+            if(event.which === 13) {
+                scope.$apply(function (){
+                    scope.$eval(attrs.ngEnter);
+                });
+
+                event.preventDefault();
+            }
+        });
+    };
+});
+
