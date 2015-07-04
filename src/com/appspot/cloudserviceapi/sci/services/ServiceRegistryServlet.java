@@ -57,6 +57,9 @@ public class ServiceRegistryServlet extends HttpServlet {
 
 		//=== support Rails-style edit via URL
 		String editFlag = request.getParameter("edit");		//edit the service only
+		if(editFlag == null) {
+			editFlag = request.getParameter("e");		//try secondary edit flag
+		}
 		String traverseFlag = request.getParameter("t");	//traverse indirect service, if any
 		if(editFlag != null) {
 			if(serviceName != null) {
