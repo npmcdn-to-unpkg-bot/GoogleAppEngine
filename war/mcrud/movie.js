@@ -1,13 +1,6 @@
 "use strict";
 var uid;
 
-//=== TODO: controller is not global since angularjs 1.3
-MovieController.$inject = ['$scope', '$filter', '$http', '$rootScope',
-    //'loglevel',
-    '$timeout', 'dateFilter', '$location'
-    , '$sce'
-];
-
 //var myApp = angular.module('app', ['summernote'], ctrlRead)   //summernote messed up with Bootstrap 2.3.1 woraround for mobile!!!
 //var myApp = angular.module('app', ['ui.bootstrap', 'afkl.lazyImage'], ctrlRead)
 /** Angular-Leap (https://github.com/angular-leap/angular-leap) does not work (yet) */
@@ -20,22 +13,6 @@ MovieController.$inject = ['$scope', '$filter', '$http', '$rootScope',
 //    $sce.enabled(false);
 //    alert('$SCE disabled!');
 //});
-
-angular.module('app', ['ui.bootstrap']).config(['$controllerProvider', '$httpProvider', function($controllerProvider, $httpProvider) {
-    //alert('myApp config called');
-    $controllerProvider.allowGlobals();     //thanks to 1.3
-    $httpProvider.defaults.useXDomain = true;
-    delete $httpProvider.defaults.headers.common['X-Requested-With'];
-    $httpProvider.defaults.headers.get['Content-Type'] = $httpProvider.defaults.headers.put['Content-Type'] = $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
-
-    $provide.decorator("$exceptionHandler", ['$delegate', function($delegate) {
-        return function(exception, cause) {
-            $delegate(exception, cause);
-            alert(exception.message);
-        };
-    }]);
-}
-]);
 
 function MovieController($scope, $filter, $http, $rootScope,
                          //log,
@@ -1482,15 +1459,40 @@ function MovieController($scope, $filter, $http, $rootScope,
 
 //=== http://stackoverflow.com/questions/25111831/controller-not-a-function-got-undefined-while-defining-controllers-globally
 //=== http://blog.bulte.net/12-24-2013/angular-wordpress-cors.html
-angular.module('app').controller('MovieController',
-//    ['$scope', '$filter', '$http', '$rootScope',
-//    //'loglevel',
-//    '$timeout', 'dateFilter', '$location'
-//    , '$sce'
-//,
+angular.module('app',['ui.bootstrap']).controller('MovieController',
+    ['$scope', '$filter', '$http', '$rootScope',
+    //'loglevel',
+    '$timeout', 'dateFilter', '$location'
+    , '$sce'
+,
         MovieController //1.3 does not allow global and we need it to be as angular.bootstrap needs a global function
-//]
+]
 );
+
+angular.module('app').config(['$controllerProvider', '$httpProvider', function($controllerProvider, $httpProvider) {
+    //alert('myApp config called');
+    //$controllerProvider.allowGlobals();     //thanks to 1.3
+    $httpProvider.defaults.useXDomain = true;
+    delete $httpProvider.defaults.headers.common['X-Requested-With'];
+    $httpProvider.defaults.headers.get['Content-Type'] = $httpProvider.defaults.headers.put['Content-Type'] = $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+
+    $provide.decorator("$exceptionHandler", ['$delegate', function($delegate) {
+        return function(exception, cause) {
+            $delegate(exception, cause);
+            alert(exception.message);
+        };
+    }]);
+}
+]);
+
+
+
+//=== TODO: controller is not global since angularjs 1.3
+MovieController.$inject = ['$scope', '$filter', '$http', '$rootScope',
+    //'loglevel',
+    '$timeout', 'dateFilter', '$location'
+    , '$sce'
+];
 
 //=== http://www.grobmeier.de/angular-js-binding-to-jquery-ui-datepicker-example-07092012.html#.UyIsZVFdVtZ
 angular.module('app').directive('myDatepicker', function ($parse) {
@@ -1532,3 +1534,5 @@ angular.module('app').directive('ngEnter', function () {
     };
 });
 
+//Error:
+//[$injector:modulerr] Failed to instantiate module app due to:TypeError: Cannot set property 'Content-Type' of undefined
