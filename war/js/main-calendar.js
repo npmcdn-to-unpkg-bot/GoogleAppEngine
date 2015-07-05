@@ -45,7 +45,7 @@ requirejs(['./main-config', './app'], function (common, app) {
         $, purl, Parse, facebook, angular, log, prefs,
             movie, init, fullCalendar, calendar, dateFormat, loglevel) {
         $(document).ready(function () {
-            $('body').attr('ng-controller', 'ctrlRead');
+            $('body').attr('ng-controller', 'MovieController');
             angular.bootstrap(document);
             // Registering a controller after app bootstrap
 //            $controllerProvider.register('ctrlRead', ctrlRead);

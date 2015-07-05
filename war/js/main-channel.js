@@ -76,7 +76,7 @@ requirejs(['./main-config', './app'], function (common, app) {
             init, galleria, channel, countDown) {
             $(document).ready(function() {
                 //loglevel.info("ready!");
-                $('body').attr('ng-controller', 'ctrlRead');
+                $('body').attr('ng-controller', 'MovieController');
                 //noinspection JSCheckFunctionSignatures
                 angular.bootstrap(document);
                 //loglevel.info("6.11AngularJS initialized (RequireJS).");

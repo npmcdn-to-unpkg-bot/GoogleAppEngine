@@ -184,7 +184,7 @@ function initCalendar() {
     /** This is to refresh AngularJS based UI */
     function refreshEventsUI() {
         //refresh the left panels
-        var el = $("[ng-controller='ctrlRead']");
+        var el = $("[ng-controller='MovieController']");
         el.scope().loadItemsForCalendar();
         el.scope().$apply();
 //        el.scope().loadItemsForCalendar(1);
