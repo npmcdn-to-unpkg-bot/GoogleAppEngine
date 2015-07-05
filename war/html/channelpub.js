@@ -46,7 +46,20 @@ function getNextShuffledUrl(startDatetime) {
                     }
                 }
             }
+        },
+        error: function(jqXHR, error, errorThrown) {
+//            if(jqXHR.status && jqXHR.status==500){
+//                //alert(jqXHR.responseText);
+//                //TODO ignoring error from the server - should have been handled by movie UI already (assuming that it is loaded by movie UI first everytime)
+//                //window.console && console.log("calendar.js error ignored: " + jqXHR.responseText + " [gBuild " + gBuild + "]");
+//            }else{
+                //most slightly due to empty JSON response thus causing Uncaught SyntaxError: Unexpected end of input	movie.html:1
+                if(jqXHR.responseText !== '') {
+                    alert("channelpub.js error: [" + jqXHR.responseText + "]");
+                }
+//            }
         }
+
     });
 
     return randomUrl;   //TODO async needs to true in the near future!
@@ -230,8 +243,17 @@ function loadMoviePub(username, log) {
                 //window.console && console.log("2.1.0 galleria loaded");
             }
         },
-        error: function(error) {
-            alert(error);
+        error: function(jqXHR, error, errorThrown) {
+//            if(jqXHR.status && jqXHR.status==500){
+//                //alert(jqXHR.responseText);
+//                //TODO ignoring error from the server - should have been handled by movie UI already (assuming that it is loaded by movie UI first everytime)
+//                //window.console && console.log("calendar.js error ignored: " + jqXHR.responseText + " [gBuild " + gBuild + "]");
+//            }else{
+//                //most slightly due to empty JSON response thus causing Uncaught SyntaxError: Unexpected end of input	movie.html:1
+                if(jqXHR.responseText !== '') {
+                    alert("channelpub.js error: [" + jqXHR.responseText + "]");
+                }
+//            }
         }
     });
 
@@ -447,8 +469,17 @@ function handleChannelType(type, username) {
                                     }
                                 }
                             },
-                            error: function(error) {
-                                alert(error);
+                            error: function(jqXHR, error, errorThrown) {
+//                                if(jqXHR.status && jqXHR.status==500){
+//                                    //alert(jqXHR.responseText);
+//                                    //TODO ignoring error from the server - should have been handled by movie UI already (assuming that it is loaded by movie UI first everytime)
+//                                    //window.console && console.log("calendar.js error ignored: " + jqXHR.responseText + " [gBuild " + gBuild + "]");
+//                                }else{
+                                    //most slightly due to empty JSON response thus causing Uncaught SyntaxError: Unexpected end of input	movie.html:1
+                                    if(jqXHR.responseText !== '') {
+                                        alert("channelpub.js error: [" + jqXHR.responseText + "]");
+                                    }
+//                                }
                             }
                         });
 

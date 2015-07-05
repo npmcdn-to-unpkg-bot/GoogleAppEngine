@@ -301,7 +301,7 @@ function saveNewEvent(event) {
                     //window.console && console.log("in saveNewEvent calendar.js error [" + e + "]");
                 }
             },
-            error: function(error) {
+            error: function(jqXHR, error, errorThrown) {
                 alert("Not able to schedule video [" + lastMovieDroppedTitle + "] for playback starting " + intendedDateTime + "! Error: " + error);
             }
         });
@@ -613,7 +613,7 @@ function saveExistingEvent(event) {
                 alert("calendar.js: User ID: " + username + " failed [" + data + "]");
             }
         },
-        error: function(error) {
+        error: function(jqXHR, error, errorThrown) {
             alert("Not able to update a scheduled video. Error: " + error);
         }
 
@@ -751,7 +751,10 @@ $.ajax({
             //TODO ignoring error from the server - should have been handled by movie UI already (assuming that it is loaded by movie UI first everytime)
             //window.console && console.log("calendar.js error ignored: " + jqXHR.responseText + " [gBuild " + gBuild + "]");
         }else{
-            alert("calendar.js error: " + jqXHR.responseText);
+            //most slightly due to empty JSON response thus causing Uncaught SyntaxError: Unexpected end of input	movie.html:1
+            if(jqXHR.responseText !== '') {
+                alert("calendar.js error: [" + jqXHR.responseText + "]");
+            }
         }
     }
 

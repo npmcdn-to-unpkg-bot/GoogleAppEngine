@@ -10,17 +10,10 @@
     <!--<meta http-equiv="X-UA-Compatible" content="IE=edge">-->
     <meta charset="utf-8">
     <title>Cool App</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/> <!-- source: https://developer.apple -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"> <!-- source: https://developer.apple -->
 
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     <script type="text/javascript" src='//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'></script>
-    <!-- begin bootstrap 2.x stuff -->
-    <!--<link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet">-->
-    <!--<link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap-responsive.min.css" rel="stylesheet">-->
-    <!--<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>-->  <!-- does not work correctly with mobile layout!!! -->
-    <!--workaround for bootstrap 2.3 issue with mobile devices - REQUIRES boostrap 2.3.1 js not 2.3.2 or anything else in 2.x!!! (thanks to https://github.com/twbs/bootstrap/issues/4550#issuecomment-8684262)-->
-    <!--<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>-->
-    <!-- end bootstrap 2.x stuff -->
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap.min.css">
     <!-- Optional theme -->
@@ -31,15 +24,10 @@
     <!--<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/dropdown.min.js"></script> &lt;!&ndash; for the menu &ndash;&gt;-->
     <!--<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/collapse.min.js"></script> &lt;!&ndash; for the mobile/collapsed view &ndash;&gt;-->
 
+    <!--<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.js"></script>-->
     <!--<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.js"></script>-->
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.js"></script>
     <script src="../js/ui-bootstrap-tpls-0.11.2.min.js"></script>
-
-    <!-- leapstrap/leapmotion stuff -->
-    <link rel="stylesheet" href="//wilkesalex.github.io/leapstrap/dist/css/leapstrap.css" />
-    <script src="//js.leapmotion.com/0.3.0-beta3/leap.js"></script>
-    <!-- Include Leapstrap JS -->
-    <script src="//wilkesalex.github.io/leapstrap/dist/js/leapstrap.js"></script>
 
     <link href="../parse/css/tabs.css" rel="stylesheet">
     <link href="../css/app.css" rel="stylesheet">
@@ -81,6 +69,13 @@
             text-overflow: ellipsis;
         }
     </style>
+
+    <!-- leapstrap/leapmotion stuff -->
+    <!--<link rel="stylesheet" href="//wilkesalex.github.io/leapstrap/dist/css/leapstrap.css" />-->
+    <!--<script src="//js.leapmotion.com/0.3.0-beta3/leap.js"></script>-->
+    <!-- Include Leapstrap JS *** THIS IS ALSO REQUIRED FOR BOOSTRAP collapsible menu to work!!! -->
+    <script src="//wilkesalex.github.io/leapstrap/dist/js/leapstrap.js"></script>
+
     <!--<script type="text/javascript" src="https://getfirebug.com/firebug-lite.js#overrideConsole=false,startInNewWindow=false,startOpened=false,enableTrace=true"></script>-->
     <script>
         /** this has to be BEFOFE requireJS for it to work! */
@@ -117,12 +112,12 @@
 //            });
 
             <!-- Init Leap, Set all "a" interactive, use 1 Leap cursor/finger -->
-            LeapManager.init({
-//                interactiveSelector:"a",    //do not use this in PROD (use class="leap-interactive" instead)!!!
-                maxCursors:1
-//                , enableMetaGestures: true
-//                , enableDefaultMetaGestureActions: true
-            });
+//            LeapManager.init({
+////                interactiveSelector:"a",    //do not use this in PROD (use class="leap-interactive" instead)!!!
+//                maxCursors:1
+////                , enableMetaGestures: true
+////                , enableDefaultMetaGestureActions: true
+//            });
             //swipe left and right support with LeapStrap
             document.body.addEventListener("leap-dual-swipe", function(event){
                 var gesture = event.gesture;
@@ -136,7 +131,7 @@
 
         //        }
     </script>
-    <script>var require = { urlArgs: 'a005a' };</script>
+    <script>var require = { urlArgs: 'a006' };</script>
     <script type="text/javascript" src="../js/require.js" data-main="../js/main-movie"></script>
 </head>
 <body ng-controller="MovieController" class="leap-interactive" leap-disable-tap="true" leap-disable-hover="true">
@@ -303,8 +298,7 @@
 <div style="position:absolute;margin-top:100px;margin-left:250px;" ng-cloak ng-hide="true">
     ****** If you are seeing this, please make sure you enable the support of "Mixed Content" ******
 </div>
-<div style="position:absolute;margin-top:88px;margin-left:50px;margin-right:auto;" ng-show="error_message"
-     ng-bind-template="&nbsp;{{error_message}}"></div>
+<div style="position:absolute;margin-top:88px;margin-left:50px;margin-right:auto;" ng-show="error_message" ng-bind-template="&nbsp;{{error_message}}"></div>
 
 <div ng-cloak class="row-fluid">
     <div class="span7">
@@ -596,7 +590,7 @@
     </div>
 </div>
 
-<form><input style="width: 90%; border-width: 0px;" id="leap-swipe-direction" ng-model="userSelection.gesture.swipe" value="{{userSelection.gesture.swipe}}"></form>
+<form><input style="width: 90%; border-width: 0;" id="leap-swipe-direction" ng-model="userSelection.gesture.swipe" value="{{userSelection.gesture.swipe}}"></form>
 
     <!-- OCEAN GALLERY  -->
 <!--<div id="oceanCarousel" class="carousel slide">-->
@@ -672,7 +666,7 @@
 <div ng-cloak style="padding-top:10px;width:50%;left:20px;" ng-show="page.totalItem == 0">You do not have any movie in your collection.</div>
 <!--<div ng-cloak style="padding-top:10px;width:50%;left:20px;" ng-hide="backendReady">Fetching ...</div>-->
 <div ng-hide="backendReady" style="position:absolute;top:250px;" id="loadingTable">
-    &nbsp;<img src="/images/ajax-loader-sm-wait-transbg.gif" id="loading-indicator" alt="loading collection"/>
+    &nbsp;<img src="/images/ajax-loader-sm-wait-transbg.gif" id="loading-indicator" alt="loading collection">
     &nbsp;<span style="width:200px;">Loading ...</span><p>
 </div>
 

@@ -9,7 +9,7 @@ var gEventArray = [];
 var gHref;
 var App = {
     major: '8',
-    minor: '0151',
+    minor: '0152',
     header_index: 0,   //metadata header
     movie_index: 1,     //the real movies data
     login_url: '/ui/index.html',
@@ -51,8 +51,8 @@ typeof requirejs !== 'undefined' && requirejs.config({
         //===common to all
         storejs: ['store.min', '//cdnjs.cloudflare.com/ajax/libs/store.js/1.3.14/store.min'],
         //===used by index1.html
-        jquery: ['//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min', 'jquery-1.9.1'],
-//        jquery: ['//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery', 'jquery-1.9.1'],
+//        jquery: ['//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min', 'jquery-1.9.1'],
+        jquery: ['//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery', 'jquery-1.9.1'],
         purl: '../jquery/purl',
         parse: 'https://www.parsecdn.com/js/parse-1.2.7.min',
         facebook: '../parse/facebook',
@@ -61,11 +61,12 @@ typeof requirejs !== 'undefined' && requirejs.config({
         //angularBootstrap: '../js/ui-bootstrap-tpls-0.11.2.min',
         //===used by movie.html
         //bootstrap: '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min',
+        angular: '//ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular',  //latest as at 4/6/2014
         //angular: '//ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular',  //latest as at 4/6/2014
         //angular: '//ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular',
         //angular: '//ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular',    //with ability to turn off $sce!?
-        angular: '//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular',    //with  net::ERR_CONNECTION_REFUSED
-        angularSanitize: '//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-sanitize',    //http://stackoverflow.com/questions/19770156/how-to-output-html-through-angularjs-template
+//        angular: '//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular',    //with  net::ERR_CONNECTION_REFUSED
+//        angularSanitize: '//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-sanitize',    //http://stackoverflow.com/questions/19770156/how-to-output-html-through-angularjs-template
         //angularAnimate: '//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-animate.min',
         //summernote: '../js/summernote',
         //angularSummernote: '../js/angular-summernote.min',
@@ -121,11 +122,7 @@ typeof requirejs !== 'undefined' && requirejs.config({
             deps: ["parse", "purl"],
             exports : 'angular'
         },
-        angularSanitize: {
-            deps: ["angular"],
-            exports : 'angular'
-        },
-//        angularAnimate: {
+//        angularSanitize: {
 //            deps: ["angular"],
 //            exports : 'angular'
 //        },
@@ -219,7 +216,7 @@ typeof requirejs !== 'undefined' && requirejs(
         'purl',
         //'parse', 'facebook',
         'angular',
-        'angularSanitize',  //1.3 does not have this
+//        'angularSanitize',  //1.3 does not have this
         //'angularBootstrap',
 //        'angularAnimate',
 //        'summernote',
@@ -234,7 +231,7 @@ typeof requirejs !== 'undefined' && requirejs(
         purl,
         //Parse, facebook,
         angular,
-        angularSanitize,	//1.3 does not have this
+//        angularSanitize,	//1.3 does not have this
         //angularBootstrap,
 //        angularAnimate,
 //        summernote,

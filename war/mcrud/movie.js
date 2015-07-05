@@ -100,20 +100,26 @@ function MovieController($scope, $filter, $http, $rootScope,
     $scope.api = "";
     $scope.movie_thumbnail = "";
     $scope.parsedHashtags = [];
-    $scope.page = { max:6, number:1 };  //for some reason, this needs to be repeated even though we already did ng-init in the movie.html!
-
     function escapeJson(str) {
-        return encodeURIComponent(str)
-            //.replace(/([\\]|[\"]|[\/])/g, "\\$1")
-            /*
-             .replace(/[\b]/g, "")
-             .replace(/[\f]/g, "")
-             .replace(/[\n]/g, "")
-             .replace(/[\r]/g, "")
-             .replace(/[\t]/g, "")
-             */
-            ;
+        var ret = str;
+        try {
+            ret = encodeURIComponent(str);
+        } catch (e) {
+            console.log("movie.js escapeJson error: " + e);
+        }
+        return ret;
+        //.replace(/([\\]|[\"]|[\/])/g, "\\$1")
+        /*
+         .replace(/[\b]/g, "")
+         .replace(/[\f]/g, "")
+         .replace(/[\n]/g, "")
+         .replace(/[\r]/g, "")
+         .replace(/[\t]/g, "")
+         ;
+         */
     }
+
+    $scope.page = { max:6, number:1 };  //for some reason, this needs to be repeated even though we already did ng-init in the movie.html!
 
     function unescapeJson(str) {
         var ret = str;
@@ -591,9 +597,13 @@ function MovieController($scope, $filter, $http, $rootScope,
 //                        j.search_results = data[i].search_results;
                         try {
                             if (j.search_results && j.search_results.value) {
-                                var obj = angular.fromJson(
-                                    j.search_results.value
-                                );
+                                try {
+                                    var obj = angular.fromJson(
+                                        j.search_results.value
+                                    );
+                                } catch (e) {
+                                    console.log("movie.js error loadItemsForCalendar(): " + e);
+                                }
                                 //$console && $console.log('data[' + i + '] = id=' + j.id + " title=" + j.title + " url=" + j.url + " createDate=" + j.createDate + " search_results=" + obj[0].movie_thumbnail + " shared=" + j.shared);
                                 //$console && $console.log('data[' + i + '] = obj=' + obj);
                             }
@@ -966,7 +976,11 @@ function MovieController($scope, $filter, $http, $rootScope,
         //alert($scope.item.channelPattern);
         var temp = $scope.saveButtonLabel;
         $scope.saveButtonLabel = "Saving";
-        $scope.item.search_results = angular.toJson($scope.serializeSearch());
+        try {
+            $scope.item.search_results = angular.toJson($scope.serializeSearch());
+        } catch (e) {
+            console.log("movie.js error createItem(): " + e);
+        }
         //alert('createItem  search_results [' + $scope.item.search_results + ']');
         if (!offline) {
             //AngularJS 1.2+ stuff
@@ -980,7 +994,7 @@ function MovieController($scope, $filter, $http, $rootScope,
             var data = "id=" + $scope.item.id + "&" +
                 "name=" + $scope.item.name + "&" +
                 "title=" + $scope.item.title + "&" +
-                "description=" + encodeURIComponent($scope.item.description) + "&" +
+                "description=" + escapeJson($scope.item.description) + "&" +
                 "url=" + $scope.item.url + "&" +
                 "shared=" + $scope.item.shared + "&" +
                 "channelPattern=" + $scope.item.channelPattern + "&" +
@@ -1097,9 +1111,13 @@ function MovieController($scope, $filter, $http, $rootScope,
         //$scope.item = item;   //no data-binding
         var obj;
         if (item.search_results && item.search_results.value) {
-            obj = angular.fromJson(
-                item.search_results.value
-            );
+            try {
+                obj = angular.fromJson(
+                    item.search_results.value
+                );
+            } catch (e) {
+                console.log("movie.js error editItem(): " + e);
+            }
             //$console && $console.log('editItem  search_results [' + obj + '] obj[0].movie_thumbnail [' + obj[0].movie_thumbnail + ']');
         }
         $scope.deserializeSearch(obj);
@@ -1139,7 +1157,11 @@ function MovieController($scope, $filter, $http, $rootScope,
 
         var temp = $scope.updateButtonLabel;
         $scope.updateButtonLabel = "Updating";
-        $scope.item.search_results = angular.toJson($scope.serializeSearch());
+        try {
+            $scope.item.search_results = angular.toJson($scope.serializeSearch());
+        } catch (e) {
+            console.log("movie.js error updateItem(): " + e);
+        }
         if (!offline) {
             //AngularJS 1.2+ stuff
             //$scope.item.title = $sce.trustAsHtml($scope.unsafeTitle); //already sanitized by editItem, avoid error "Attempted to trust a non-string value in a content requiring a string: Context: html
@@ -1151,7 +1173,7 @@ function MovieController($scope, $filter, $http, $rootScope,
             var data = "id=" + $scope.item.id + "&" +
                 "name=" + $scope.item.name + "&" +
                 "title=" + $scope.item.title + "&" +
-                "description=" + encodeURIComponent($scope.item.description) + "&" +
+                "description=" + escapeJson($scope.item.description) + "&" +
                 "url=" + $scope.item.url + "&" +
                 "shared=" + $scope.item.shared + "&" +
                 "channelPattern=" + $scope.item.channelPattern + "&" +
@@ -1459,7 +1481,31 @@ function MovieController($scope, $filter, $http, $rootScope,
 
 //=== http://stackoverflow.com/questions/25111831/controller-not-a-function-got-undefined-while-defining-controllers-globally
 //=== http://blog.bulte.net/12-24-2013/angular-wordpress-cors.html
-angular.module('app',['ui.bootstrap']).controller('MovieController',
+angular.module('app',['ui.bootstrap'])
+.config(
+//		['$controllerProvider', '$httpProvider', 
+function($controllerProvider, $httpProvider) {
+	//alert('test');
+	//console.log("movie.js app config called");
+	//************* THIS IS SOMEHOW NOT INVOKED FOR UNKNOWN REASON!!!!! *****************
+    //$controllerProvider.allowGlobals();     //thanks to 1.3
+    $httpProvider.defaults.useXDomain = true;
+    delete $httpProvider.defaults.headers.common['X-Requested-With'];
+//    $httpProvider.defaults.headers.get['Content-Type'] = $httpProvider.defaults.headers.put['Content-Type'] = $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+  $httpProvider.defaults.headers.get['Content-Type'] = $httpProvider.defaults.headers.put['Content-Type'] = $httpProvider.defaults.headers.post['Content-Type'] = 'text/plain; charset=UTF-8';
+//    $httpProvider.defaults.headers.common['Content-Type'] = 'text/plain; charset=UTF-8';
+    
+    $provide.decorator("$exceptionHandler", ['$delegate', function($delegate) {
+        return function(exception, cause) {
+            $delegate(exception, cause);
+            alert(exception.message);
+        };
+    }]);
+    console && console.log("movie.js config(): done")
+}
+//]
+)
+.controller('MovieController',
     ['$scope', '$filter', '$http', '$rootScope',
     //'loglevel',
     '$timeout', 'dateFilter', '$location'
@@ -1468,23 +1514,6 @@ angular.module('app',['ui.bootstrap']).controller('MovieController',
         MovieController //1.3 does not allow global and we need it to be as angular.bootstrap needs a global function
 ]
 );
-
-angular.module('app').config(['$controllerProvider', '$httpProvider', function($controllerProvider, $httpProvider) {
-    //alert('myApp config called');
-    //$controllerProvider.allowGlobals();     //thanks to 1.3
-    $httpProvider.defaults.useXDomain = true;
-    delete $httpProvider.defaults.headers.common['X-Requested-With'];
-    $httpProvider.defaults.headers.get['Content-Type'] = $httpProvider.defaults.headers.put['Content-Type'] = $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
-
-    $provide.decorator("$exceptionHandler", ['$delegate', function($delegate) {
-        return function(exception, cause) {
-            $delegate(exception, cause);
-            alert(exception.message);
-        };
-    }]);
-}
-]);
-
 
 
 //=== TODO: controller is not global since angularjs 1.3

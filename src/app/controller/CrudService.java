@@ -200,8 +200,8 @@ public class CrudService extends HttpServlet {
 			//response.setContentType("application/json");
 			//=== supports any language (UNICODE) / i18n stuff with two lines of codes that specify "utf-8"
 			response.setCharacterEncoding("UTF-8");
-//			response.setContentType("text/json; charset=UTF-8");	//text/json type caused: "Unexpected end of input" during jQuery's json.parse() on Chrome/Webkit browsers unfortunately
-			response.setContentType("text/plain; charset=UTF-8");	//Note: avoid SyntaxError: "Unexpected end of input" during jQuery's json.parse() on Chrome/Webkit browsers
+//			response.setContentType("text/json; charset=UTF-8");	//text/json type avoided: "Unexpected end of input" during jQuery's json.parse() on Chrome/Webkit browsers unfortunately
+			response.setContentType("text/plain; charset=UTF-8");	//Note: caused SyntaxError: "Unexpected end of input" during jQuery's json.parse() on Chrome/Webkit browsers
 			//response.setContentType("text/cache-manifest");
 			//http://stackoverflow.com/questions/49547/making-sure-a-web-page-is-not-cached-across-all-browsers
 			//request.getSession().invalidate();

@@ -44,12 +44,6 @@ requirejs.config({
     waitSeconds: 120     //timeout in seconds if not able to load any of the external URL above
 });
 
-//define('main-movie', [], function() {
-//    //does nothing for now - just to suppress "Uncaught Error: No define call for ..." error
-//    return function() {
-//    };
-//});
-
 //Start the main app logic.
 require(['./main-config', './app'], function (common, app) {
     require(

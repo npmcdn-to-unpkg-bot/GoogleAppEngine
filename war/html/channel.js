@@ -186,7 +186,7 @@ function loadMovie(username) {
                 //window.console && console.log("1galleria loaded");
             }
         },
-        error: function(error) {
+        error: function(jqXHR, error, errorThrown) {
             var msg = error;
             //alert && alert(msg);
             console && console.error(msg);
@@ -324,7 +324,7 @@ function loadMovieAll(username, log) {
                 //window.console && console.log("1galleria loaded");
             }
         },
-        error: function(error) {
+        error: function(jqXHR, error, errorThrown) {
             var msg = error;
             //alert && alert(msg);
             console && console.error(msg);
@@ -365,6 +365,11 @@ function getNextShuffledUrl(startDatetime) {
                     }
                 }
             }
+        },
+        error: function(jqXHR, error, errorThrown) {
+            var msg = error;
+            //alert && alert(msg);
+            console && console.error(msg);
         }
     });
 
@@ -553,7 +558,7 @@ function loadMovieShuffle(username, log) {
                 //window.console && console.log("2.1.0 galleria loaded");
             }
         },
-        error: function(error) {
+        error: function(jqXHR, error, errorThrown) {
             var msg = error.mesage;
             //alert && alert(msg);
             console && console.error(msg);
@@ -770,7 +775,7 @@ function handleChannelType(type, username) {
                                     }
                                 }
                             },
-                            error: function(error) {
+                            error: function(jqXHR, error, errorThrown) {
                                 var msg = error;
                                 //alert && alert(msg);
                                 console && console.error(msg);
