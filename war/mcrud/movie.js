@@ -1483,48 +1483,46 @@ function MovieController($scope, $filter, $http, $rootScope,
 //=== http://blog.bulte.net/12-24-2013/angular-wordpress-cors.html
 angular.module('app',['ui.bootstrap'])
 .config(
-//		['$controllerProvider', '$httpProvider', 
-function($controllerProvider, $httpProvider) {
-	//alert('test');
-	//console.log("movie.js app config called");
-	//************* THIS IS SOMEHOW NOT INVOKED FOR UNKNOWN REASON!!!!! *****************
-    //$controllerProvider.allowGlobals();     //thanks to 1.3
-    $httpProvider.defaults.useXDomain = true;
-    delete $httpProvider.defaults.headers.common['X-Requested-With'];
-//    $httpProvider.defaults.headers.get['Content-Type'] = $httpProvider.defaults.headers.put['Content-Type'] = $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
-  $httpProvider.defaults.headers.get['Content-Type'] = $httpProvider.defaults.headers.put['Content-Type'] = $httpProvider.defaults.headers.post['Content-Type'] = 'text/plain; charset=UTF-8';
-//    $httpProvider.defaults.headers.common['Content-Type'] = 'text/plain; charset=UTF-8';
-    
-    $provide.decorator("$exceptionHandler", ['$delegate', function($delegate) {
-        return function(exception, cause) {
-            $delegate(exception, cause);
-            alert(exception.message);
-        };
-    }]);
-    console && console.log("movie.js config(): done")
-}
-//]
+		['$controllerProvider', '$httpProvider',
+    function($controllerProvider, $httpProvider) {
+        //alert('test');
+        console.log("movie.js app config called");
+        //************* THIS IS SOMEHOW NOT INVOKED FOR UNKNOWN REASON!!!!! *****************
+        $controllerProvider.allowGlobals();     //thanks to 1.3
+        //gControllerProvider.allowGlobals();     //thanks to 1.3
+        $httpProvider.defaults.useXDomain = true;
+        delete $httpProvider.defaults.headers.common['X-Requested-With'];
+        //$httpProvider.defaults.headers.get['Content-Type'] = $httpProvider.defaults.headers.put['Content-Type'] = $httpProvider.defaults.headers.post['Content-Type'] = 'text/plain; charset=UTF-8';
+        //
+        //$provide.decorator("$exceptionHandler", ['$delegate', function($delegate) {
+        //    return function(exception, cause) {
+        //        $delegate(exception, cause);
+        //        alert(exception.message);
+        //    };
+        //}]);
+        console && console.log("movie.js config(): done")
+    }
+]
 )
 .controller('MovieController',
     ['$scope', '$filter', '$http', '$rootScope',
-    //'loglevel',
-    '$timeout', 'dateFilter', '$location'
-    , '$sce'
-,
+        //'loglevel',
+        '$timeout', 'dateFilter', '$location'
+        , '$sce'
+        ,
         MovieController //1.3 does not allow global and we need it to be as angular.bootstrap needs a global function
-]
-);
+    ]
+)
 
-
-//=== TODO: controller is not global since angularjs 1.3
-MovieController.$inject = ['$scope', '$filter', '$http', '$rootScope',
-    //'loglevel',
-    '$timeout', 'dateFilter', '$location'
-    , '$sce'
-];
+//MovieController.$inject = ['$scope', '$filter', '$http', '$rootScope',
+//    //'loglevel',
+//    '$timeout', 'dateFilter', '$location'
+//    , '$sce'
+//];
 
 //=== http://www.grobmeier.de/angular-js-binding-to-jquery-ui-datepicker-example-07092012.html#.UyIsZVFdVtZ
-angular.module('app').directive('myDatepicker', function ($parse) {
+//angular.module('app')
+.directive('myDatepicker', function ($parse) {
     return function (scope, element, attrs, controller) {
         var ngModel = $parse(attrs.ngModel);
         $(function(){
@@ -1544,12 +1542,14 @@ angular.module('app').directive('myDatepicker', function ($parse) {
             });
         });
     };
-});
+})
+
 /*
  This directive allows us to pass a function in on an enter key to do what we want.
  Courtesy of http://ericsaupe.com/angularjs-detect-enter-key-ngenter/
  */
-angular.module('app').directive('ngEnter', function () {
+//angular.module('app')
+.directive('ngEnter', function () {
     return function (scope, element, attrs) {
         element.bind("keydown keypress", function (event) {
             if(event.which === 13) {

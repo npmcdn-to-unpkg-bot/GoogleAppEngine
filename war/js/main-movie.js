@@ -96,8 +96,8 @@ require(['./main-config', './app'], function (common, app) {
                     // Registering a controller after app bootstrap
                     //$controllerProvider.register('MovieController', MovieController);
                     //$('body').attr('ng-controller', 'MovieController');
-                    //angular.bootstrap(document, ['app']);    //only for 1.3
-                    angular.bootstrap(document);    //only for 1.2 - this is the limitation of not able to upgrade to 1.3!
+                    angular.bootstrap(document, ['app']);    //only for 1.3
+                    //angular.bootstrap(document);    //only for 1.2 - this is the limitation of not able to upgrade to 1.3!
                     console.log("main-movie.js angular.boostrap() end");
                 } catch (e2) {
                     alert('main-movie.js AngularJS 1.2 angular.bootstrap() 2 error [' + e2 + ']');
@@ -141,12 +141,12 @@ require(['./main-config', './app'], function (common, app) {
     });
 });
 
-requirejs.onError = function (err) {
-    window.console && console.log($sce.trustAsHtml(err.requireType));
-    if (err.requireType === 'timeout') {
-        window.console && console.log('modules: ' + $sce.trustAsHtml(err.requireModules));
-        alert("We're sorry, we are having a connection issue and was not able to load the scripts. Please try again later.");
-    }
-
-    throw err;
-};
+//requirejs.onError = function (err) {
+//    window.console && console.log($sce.trustAsHtml(err.requireType));
+//    if (err.requireType === 'timeout') {
+//        window.console && console.log('modules: ' + $sce.trustAsHtml(err.requireModules));
+//        alert("We're sorry, we are having a connection issue and was not able to load the scripts. Please try again later.");
+//    }
+//
+//    throw err;
+//};
