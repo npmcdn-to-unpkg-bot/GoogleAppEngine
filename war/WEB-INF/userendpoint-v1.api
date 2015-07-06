@@ -24,26 +24,17 @@
     "maxAge" : 0
   },
   "methods" : {
-    "userendpoint.userEndpoint.listUser" : {
+    "userendpoint.userEndpoint.insertUser" : {
       "path" : "user",
-      "httpMethod" : "GET",
+      "httpMethod" : "POST",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "app.model.UserEndpoint.listUser",
+      "rosyMethod" : "app.model.UserEndpoint.insertUser",
       "request" : {
-        "parameters" : {
-          "cursor" : {
-            "type" : "string",
-            "required" : false
-          },
-          "limit" : {
-            "type" : "int32",
-            "required" : false
-          }
-        },
-        "body" : "empty"
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
@@ -70,22 +61,6 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
-    "userendpoint.userEndpoint.insertUser" : {
-      "path" : "user",
-      "httpMethod" : "POST",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "app.model.UserEndpoint.insertUser",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
     "userendpoint.userEndpoint.updateUser" : {
       "path" : "user",
       "httpMethod" : "PUT",
@@ -97,6 +72,31 @@
       "request" : {
         "body" : "autoTemplate(backendRequest)",
         "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "userendpoint.userEndpoint.listUser" : {
+      "path" : "user",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "app.model.UserEndpoint.listUser",
+      "request" : {
+        "parameters" : {
+          "cursor" : {
+            "type" : "string",
+            "required" : false
+          },
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
@@ -126,21 +126,6 @@
   },
   "descriptor" : {
     "schemas" : {
-      "CollectionResponse_User" : {
-        "id" : "CollectionResponse_User",
-        "type" : "object",
-        "properties" : {
-          "items" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "User"
-            }
-          },
-          "nextPageToken" : {
-            "type" : "string"
-          }
-        }
-      },
       "User" : {
         "id" : "User",
         "type" : "object",
@@ -267,12 +252,12 @@
           "url" : {
             "type" : "string"
           },
+          "title" : {
+            "type" : "string"
+          },
           "modified" : {
             "type" : "string",
             "format" : "date-time"
-          },
-          "title" : {
-            "type" : "string"
           }
         }
       },
@@ -428,6 +413,10 @@
         "id" : "Date",
         "type" : "object",
         "properties" : {
+          "time" : {
+            "type" : "string",
+            "format" : "int64"
+          },
           "hours" : {
             "type" : "integer"
           },
@@ -437,17 +426,13 @@
           "seconds" : {
             "type" : "integer"
           },
-          "time" : {
-            "type" : "string",
-            "format" : "int64"
-          },
-          "date" : {
+          "year" : {
             "type" : "integer"
           },
           "month" : {
             "type" : "integer"
           },
-          "year" : {
+          "date" : {
             "type" : "integer"
           },
           "day" : {
@@ -457,23 +442,33 @@
             "type" : "integer"
           }
         }
+      },
+      "CollectionResponse_User" : {
+        "id" : "CollectionResponse_User",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "User"
+            }
+          },
+          "nextPageToken" : {
+            "type" : "string"
+          }
+        }
       }
     },
     "methods" : {
-      "app.model.UserEndpoint.listUser" : {
-        "response" : {
-          "$ref" : "CollectionResponse_User"
-        }
-      },
-      "app.model.UserEndpoint.removeUser" : {
-        "response" : {
-          "$ref" : "User"
-        }
-      },
       "app.model.UserEndpoint.insertUser" : {
         "request" : {
           "$ref" : "User"
         },
+        "response" : {
+          "$ref" : "User"
+        }
+      },
+      "app.model.UserEndpoint.removeUser" : {
         "response" : {
           "$ref" : "User"
         }
@@ -484,6 +479,11 @@
         },
         "response" : {
           "$ref" : "User"
+        }
+      },
+      "app.model.UserEndpoint.listUser" : {
+        "response" : {
+          "$ref" : "CollectionResponse_User"
         }
       },
       "app.model.UserEndpoint.getUser" : {
