@@ -78,7 +78,8 @@ requirejs(['./main-config', './app'], function (common, app) {
                 //loglevel.info("ready!");
                 $('body').attr('ng-controller', 'MovieController');
                 //noinspection JSCheckFunctionSignatures
-                angular.bootstrap(document);
+                angular.bootstrap(document, ['app']);    //only for 1.3
+                //angular.bootstrap(document);    //only for 1.2 - this is the limitation of not able to upgrade to 1.3!
                 //loglevel.info("6.11AngularJS initialized (RequireJS).");
 
                 //=== TBD these should be refactored into common codes!!!! ===========================================================
