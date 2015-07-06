@@ -122,7 +122,7 @@
 		<intercept-url pattern="/g/**/*save/**" access="hasAnyRole('ROLE_MANAGER','ROLE_ADMIN')" />
  		<intercept-url pattern="/_ah/**" access="permitAll" />
 
-		<form-login login-page="/login.jsp" login-processing-url="/j_spring_security_check" authentication-failure-url="/login.jsp" />
+		<form-login username-parameter="password" password-parameter="j_password" login-page="/login.jsp" login-processing-url="/j_spring_security_check" authentication-failure-url="/login.jsp" />
  		<logout logout-success-url="/login.jsp" logout-url="/logout" invalidate-session="true" />
 	</http>
 
