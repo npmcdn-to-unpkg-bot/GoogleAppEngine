@@ -15,12 +15,13 @@ import org.apache.tapestry5.corelib.components.BeanEditForm;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.services.RequestGlobals;
 
+import cloudserviceapi.service.manager.SecuredManager;
+
 import com.appspot.cloudserviceapi.common.TapestryUtil;
 import com.appspot.cloudserviceapi.data.Datastore;
 import com.appspot.cloudserviceapi.data.Persistence;
 import com.appspot.cloudserviceapi.dto.Secure;
 import com.appspot.cloudserviceapi.dto.Secure;
-import com.appspot.cloudserviceapi.service.manager.SecuredManager;
 import com.appspot.cloudserviceapi.util.Compass;
 import com.appspot.cloudserviceapi.guarded.spring.CommonService;
 

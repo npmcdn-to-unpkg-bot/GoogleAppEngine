@@ -26,6 +26,13 @@ import org.apache.tapestry5.services.Request;
 
 
 
+import cloudserviceapi.service.manager.GeniusManager;
+import cloudserviceapi.service.manager.GeniusManagerImpl;
+import cloudserviceapi.service.manager.SecuredManager;
+import cloudserviceapi.service.manager.SecuredManagerImpl;
+import cloudserviceapi.service.manager.SocialManager;
+import cloudserviceapi.service.manager.SocialManagerImpl;
+
 import com.appspot.cloudserviceapi.data.AppEngine;
 //import com.appspot.cloudserviceapi.eo.services.manager.ActivityManager;
 //import com.appspot.cloudserviceapi.eo.services.manager.ActivityManagerImpl;
@@ -37,12 +44,6 @@ import com.appspot.cloudserviceapi.sci.services.manager.ServiceRegistryManager;
 import com.appspot.cloudserviceapi.sci.services.manager.ServiceRegistryManagerImpl;
 import com.appspot.cloudserviceapi.sci.services.manager.VideoDataManager;
 import com.appspot.cloudserviceapi.sci.services.manager.VideoDataManagerImpl;
-import com.appspot.cloudserviceapi.service.manager.GeniusManager;
-import com.appspot.cloudserviceapi.service.manager.GeniusManagerImpl;
-import com.appspot.cloudserviceapi.service.manager.SecuredManager;
-import com.appspot.cloudserviceapi.service.manager.SecuredManagerImpl;
-import com.appspot.cloudserviceapi.service.manager.SocialManager;
-import com.appspot.cloudserviceapi.service.manager.SocialManagerImpl;
 import com.appspot.cloudserviceapi.service.tapestry.RequiresLoginFilter;
 import com.appspot.cloudserviceapi.services.manager.UserManager;
 import com.appspot.cloudserviceapi.services.manager.UserManagerImpl;

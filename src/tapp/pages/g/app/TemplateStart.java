@@ -24,12 +24,13 @@ import org.ocpsoft.pretty.time.PrettyTime;
 import tapp.pages.sci.Index;
 import app.common.SecurityUtils;
 
+import cloudserviceapi.service.manager.GeniusManager;
+
 import com.appspot.cloudserviceapi.common.BackupService;
 import com.appspot.cloudserviceapi.common.TapestryUtil;
 import com.appspot.cloudserviceapi.data.AppEngine;
 import com.appspot.cloudserviceapi.dto.Geniu;
 import com.appspot.cloudserviceapi.security.spring.UserRole;
-import com.appspot.cloudserviceapi.service.manager.GeniusManager;
 import com.appspot.cloudserviceapi.util.Compass;
 //import org.apache.shiro.authz.annotation.RequiresUser;
 

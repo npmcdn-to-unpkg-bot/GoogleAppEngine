@@ -12,13 +12,14 @@ import org.apache.tapestry5.corelib.components.BeanEditForm;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.services.RequestGlobals;
 
+import cloudserviceapi.service.manager.GeniusManager;
+
 import com.appspot.cloudserviceapi.common.BackupService;
 import com.appspot.cloudserviceapi.common.SettingsDBUtils;
 import com.appspot.cloudserviceapi.common.StringUtil;
 import com.appspot.cloudserviceapi.data.Datastore;
 import com.appspot.cloudserviceapi.data.Persistence;
 import com.appspot.cloudserviceapi.dto.Geniu;
-import com.appspot.cloudserviceapi.service.manager.GeniusManager;
 
 public class TemplateSave {
 

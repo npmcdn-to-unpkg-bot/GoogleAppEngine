@@ -23,13 +23,14 @@ import org.apache.tapestry5.services.RequestGlobals;
 import tapp.pages.sci.Index;
 import app.common.SecurityUtils;
 
+import cloudserviceapi.service.manager.SocialManager;
+
 import com.appspot.cloudserviceapi.common.TapestryUtil;
 import com.appspot.cloudserviceapi.data.AppEngine;
 import com.appspot.cloudserviceapi.dto.Geniu;
 import com.appspot.cloudserviceapi.dto.Huma;
 import com.appspot.cloudserviceapi.dto.Secure;
 import com.appspot.cloudserviceapi.security.spring.UserRole;
-import com.appspot.cloudserviceapi.service.manager.SocialManager;
 import com.appspot.cloudserviceapi.util.Compass;
 
 public class SocialStart {
