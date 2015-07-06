@@ -65,7 +65,7 @@
 
 <form id="loginForm" name="loginForm" action="j_spring_security_check" method="post">
         <table>
-          <tr><td style="font-size: .5em">Username</td><td><input size="10" id="usernameField" type="text" name="j_username" /></td></tr>
+          <tr><td style="font-size: .5em">Username</td><td><input name="password" autocapitalize="off" autocorrect="off" size="10" id="usernameField" type="text" name="j_username" /></td></tr>
           <tr><td style="font-size: .5em">Password</td><td><input size="10" id="passwordField" type="password" name="j_password" /></td></tr>
           <tr><td colspan="4" align="right"><input style="margin-top:10px;width:100%;height:100%;" type="submit" value="Login" /></td></tr>
         </table>
