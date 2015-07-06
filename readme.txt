@@ -33,6 +33,9 @@ AngularJS with Data-URI (data-ng-src)
 . Use http://lightning.gs/ to optimize your png to save data store storage
 . Please turn off PNG crush!
 
+Elasticsearch Integration
+. Pending
+
 Genius Service
 . To support delete action, add a Service Registry (SR) with a prefix "template:delete:[genius appId]" e.g.
 template:delete:genius
