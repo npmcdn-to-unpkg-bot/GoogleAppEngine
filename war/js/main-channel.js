@@ -60,7 +60,7 @@ requirejs.config({
 //        }
     },
 
-    waitSeconds: 20     //timeout in seconds if not able to load any of the external URL above
+    waitSeconds: 60     //timeout in seconds if not able to load any of the external URL above
 });
 
 //Start the main app logic.

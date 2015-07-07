@@ -162,7 +162,8 @@ typeof define !== 'undefined'?define(['require', 'exports', 'module'], function 
                 console.log("YoutubeSubtitiles.js subTitleTextTimer() cleared");
             }
             if(typeof currentSub !== 'undefined') {
-                console.log("currentSub.t = [" + currentSub.t + "]");
+                //=== Hint: uncomment the following for debugging!!!
+                //console.log("currentSub.t = [" + currentSub.t + "]");
             }
 
 //                if(previousTime > currentTime) {

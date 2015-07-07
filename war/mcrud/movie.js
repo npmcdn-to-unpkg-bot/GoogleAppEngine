@@ -1481,7 +1481,7 @@ function MovieController($scope, $filter, $http, $rootScope,
 
 //=== http://stackoverflow.com/questions/25111831/controller-not-a-function-got-undefined-while-defining-controllers-globally
 //=== http://blog.bulte.net/12-24-2013/angular-wordpress-cors.html
-angular.module('app',['ui.bootstrap'])
+angular.module('app',[])//dependency 'ui.bootstrap' is conflicting with 1.4, thus removed (c.f. http://stackoverflow.com/questions/26332202/using-ui-bootstrap-causing-issues-with-carousel)!
 .config(
 		['$controllerProvider', '$httpProvider',
     function($controllerProvider, $httpProvider) {
@@ -1561,7 +1561,8 @@ angular.module('app',['ui.bootstrap'])
             }
         });
     };
-});
+})
+;
 
 //Error:
 //[$injector:modulerr] Failed to instantiate module app due to:TypeError: Cannot set property 'Content-Type' of undefined

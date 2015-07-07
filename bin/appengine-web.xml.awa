@@ -19,6 +19,8 @@
 	<sessions-enabled>true</sessions-enabled>
     <!-- on a different server than the app server -->
 	<static-files>
+		<!-- favicon.ico -->
+		<include path="/favicon.ico" />
 		<!-- common stuff -->
 		<include path="/static/**.srt" />
       	<include path="/**.html" />
