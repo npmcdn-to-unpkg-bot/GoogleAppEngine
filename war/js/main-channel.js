@@ -76,7 +76,7 @@ requirejs(['./main-config', './app'], function (common, app) {
             init, galleria, channel, countDown) {
             $(document).ready(function() {
                 //loglevel.info("ready!");
-                $('body').attr('ng-controller', 'MovieController');
+                //$('body').attr('ng-controller', 'MovieController');
                 //noinspection JSCheckFunctionSignatures
                 angular.bootstrap(document, ['app']);    //only for 1.3
                 //angular.bootstrap(document);    //only for 1.2 - this is the limitation of not able to upgrade to 1.3!

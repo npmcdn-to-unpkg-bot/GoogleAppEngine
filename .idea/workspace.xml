@@ -31,8 +31,8 @@
       <file leaf-file-name="movie.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/war/mcrud/movie.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.1636364">
-              <caret line="135" column="43" selection-start-line="135" selection-start-column="43" selection-end-line="135" selection-end-column="43" />
+            <state vertical-scroll-proportion="-1.2363636">
+              <caret line="135" column="42" selection-start-line="135" selection-start-column="42" selection-end-line="135" selection-end-column="42" />
               <folding>
                 <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#5;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#a#1;n#div#0;n#div#0;n#div#5;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -60,21 +60,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="YoutubeSubtitiles.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/war/jquery/YoutubeSubtitiles.js">
+      <file leaf-file-name="channelshuffle.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/war/html/channelshuffle.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="167" column="0" selection-start-line="167" selection-start-column="0" selection-end-line="167" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="channel.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/war/html/channel.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="59" column="87" selection-start-line="59" selection-start-column="75" selection-end-line="59" selection-end-column="87" />
+            <state vertical-scroll-proportion="0.33147633">
+              <caret line="92" column="74" selection-start-line="92" selection-start-column="71" selection-end-line="92" selection-end-column="74" />
               <folding />
             </state>
           </provider>
@@ -83,45 +73,45 @@
       <file leaf-file-name="main-channel.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/war/js/main-channel.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.413793">
-              <caret line="98" column="35" selection-start-line="98" selection-start-column="31" selection-end-line="98" selection-end-column="35" />
+            <state vertical-scroll-proportion="-8.206897">
+              <caret line="78" column="66" selection-start-line="78" selection-start-column="51" selection-end-line="78" selection-end-column="66" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="channel.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main-channelall.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/war/js/main-channelall.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-4.413793">
+              <caret line="77" column="19" selection-start-line="77" selection-start-column="18" selection-end-line="77" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main-channelshuffle.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/war/js/main-channelshuffle.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.5862069">
+              <caret line="1" column="7" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="channel.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/war/html/channel.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.9116883">
-              <caret line="172" column="47" selection-start-line="172" selection-start-column="47" selection-end-line="172" selection-end-column="47" />
+            <state vertical-scroll-proportion="-4.413793">
+              <caret line="28" column="22" selection-start-line="28" selection-start-column="10" selection-end-line="28" selection-end-column="22" />
               <folding>
-                <marker date="1436120652433" expanded="true" signature="29341:29507" placeholder="..." />
-                <marker date="1436120652433" expanded="true" signature="29822:29840" placeholder="..." />
-                <marker date="1436120652433" expanded="true" signature="29877:29902" placeholder="..." />
-                <marker date="1436120652433" expanded="true" signature="29955:29973" placeholder="..." />
-                <marker date="1436120652433" expanded="true" signature="30125:30175" placeholder="..." />
+                <marker date="1436233697366" expanded="true" signature="29349:29515" placeholder="..." />
+                <marker date="1436233697366" expanded="true" signature="29830:29848" placeholder="..." />
+                <marker date="1436233697366" expanded="true" signature="29885:29910" placeholder="..." />
+                <marker date="1436233697366" expanded="true" signature="29963:29981" placeholder="..." />
+                <marker date="1436233697366" expanded="true" signature="30133:30183" placeholder="..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="galleria.classic.min.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/war/galleria/themes/classic/galleria.classic.min.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="login.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/war/login.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="67" column="66" selection-start-line="67" selection-start-column="66" selection-end-line="67" selection-end-column="66" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -140,7 +130,7 @@
         <entry file="file://$PROJECT_DIR$/war/js/main-movie.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="100" column="0" selection-start-line="98" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
+              <caret line="106" column="0" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -156,7 +146,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/war/html/channelshuffle.html" />
         <option value="$PROJECT_DIR$/war/js/prefsmovie.js" />
         <option value="$PROJECT_DIR$/test/jest/__tests__/channel-test.js" />
         <option value="$PROJECT_DIR$/test/jest/__tests__/movie-test.js" />
@@ -169,11 +158,12 @@
         <option value="$PROJECT_DIR$/war/ui/p/d.html" />
         <option value="$PROJECT_DIR$/war/login.jsp" />
         <option value="$PROJECT_DIR$/war/mcrud/movie.js" />
-        <option value="$PROJECT_DIR$/war/jquery/YoutubeSubtitiles.js" />
-        <option value="$PROJECT_DIR$/war/js/main-channel.js" />
-        <option value="$PROJECT_DIR$/war/mcrud/movie.html" />
         <option value="$PROJECT_DIR$/war/js/main-config.js" />
         <option value="$PROJECT_DIR$/war/html/channel.js" />
+        <option value="$PROJECT_DIR$/war/jquery/YoutubeSubtitiles.js" />
+        <option value="$PROJECT_DIR$/war/js/main-channel.js" />
+        <option value="$PROJECT_DIR$/war/html/channelshuffle.html" />
+        <option value="$PROJECT_DIR$/war/mcrud/movie.html" />
       </list>
     </option>
   </component>
@@ -553,20 +543,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/war/js/main-calendar.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="20" column="10" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/war/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/war/passwordchange/jsp/simple.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -729,13 +705,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/war/html/channelshuffle.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="106" column="44" selection-start-line="106" selection-start-column="44" selection-end-line="106" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/war/js/prefs.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -863,18 +832,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/war/js/main-movie.js">
+    <entry file="file://$PROJECT_DIR$/war/js/main-config.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="100" column="0" selection-start-line="98" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
+          <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/war/jquery/YoutubeSubtitiles.js">
+    <entry file="file://$PROJECT_DIR$/war/js/main-channelshuffle.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="167" column="0" selection-start-line="167" selection-start-column="0" selection-end-line="167" selection-end-column="0" />
+        <state vertical-scroll-proportion="-0.5862069">
+          <caret line="1" column="7" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/js/main-channelall.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.413793">
+          <caret line="77" column="19" selection-start-line="77" selection-start-column="18" selection-end-line="77" selection-end-column="19" />
           <folding />
         </state>
       </provider>
@@ -887,18 +864,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/war/js/main-channel.js">
+    <entry file="file://$PROJECT_DIR$/war/html/channel.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-4.413793">
-          <caret line="98" column="35" selection-start-line="98" selection-start-column="31" selection-end-line="98" selection-end-column="35" />
-          <folding />
+          <caret line="28" column="22" selection-start-line="28" selection-start-column="10" selection-end-line="28" selection-end-column="22" />
+          <folding>
+            <marker date="1436233697366" expanded="true" signature="29349:29515" placeholder="..." />
+            <marker date="1436233697366" expanded="true" signature="29830:29848" placeholder="..." />
+            <marker date="1436233697366" expanded="true" signature="29885:29910" placeholder="..." />
+            <marker date="1436233697366" expanded="true" signature="29963:29981" placeholder="..." />
+            <marker date="1436233697366" expanded="true" signature="30133:30183" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/war/js/main-config.js">
+    <entry file="file://$PROJECT_DIR$/war/jquery/YoutubeSubtitiles.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+        <state vertical-scroll-proportion="-0.5862069">
+          <caret line="152" column="21" selection-start-line="152" selection-start-column="21" selection-end-line="152" selection-end-column="21" />
           <folding />
         </state>
       </provider>
@@ -911,10 +894,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/war/js/main-movie.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="106" column="0" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/js/main-channel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.206897">
+          <caret line="78" column="66" selection-start-line="78" selection-start-column="51" selection-end-line="78" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/war/mcrud/movie.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.1636364">
-          <caret line="135" column="43" selection-start-line="135" selection-start-column="43" selection-end-line="135" selection-end-column="43" />
+        <state vertical-scroll-proportion="-1.2363636">
+          <caret line="135" column="42" selection-start-line="135" selection-start-column="42" selection-end-line="135" selection-end-column="42" />
           <folding>
             <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#5;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#a#1;n#div#0;n#div#0;n#div#5;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -931,17 +930,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/war/html/channel.js">
+    <entry file="file://$PROJECT_DIR$/war/html/channelshuffle.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9116883">
-          <caret line="172" column="47" selection-start-line="172" selection-start-column="47" selection-end-line="172" selection-end-column="47" />
-          <folding>
-            <marker date="1436120652433" expanded="true" signature="29341:29507" placeholder="..." />
-            <marker date="1436120652433" expanded="true" signature="29822:29840" placeholder="..." />
-            <marker date="1436120652433" expanded="true" signature="29877:29902" placeholder="..." />
-            <marker date="1436120652433" expanded="true" signature="29955:29973" placeholder="..." />
-            <marker date="1436120652433" expanded="true" signature="30125:30175" placeholder="..." />
-          </folding>
+        <state vertical-scroll-proportion="0.33147633">
+          <caret line="92" column="74" selection-start-line="92" selection-start-column="71" selection-end-line="92" selection-end-column="74" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -26,7 +26,7 @@ function loadMovie(username) {
         type: "POST",
 //        url: "/ws/crud?type=modelCalendar&uid=" + username + "&filter=next5",
         url: "/ws/crud?type=modelMovie&uid=" + username + "&filter=next5",
-        async: false,
+        //async: false,
         success: function(data) {
 
             ////window.console && console.log("calendar event created, response = [" + data + "]");
@@ -203,7 +203,7 @@ function loadMovieAll(username, log) {
     $.ajax({
         type: "POST",
         url: "/ws/crud?type=modelMovie&uid=" + username + "&filter=next5",
-        async: false,
+        //async: false,
         success: function(data) {
 
             ////window.console && console.log("calendar event created, response = [" + data + "]");
@@ -349,7 +349,7 @@ function getNextShuffledUrl(startDatetime) {
     $.ajax({
         type: "GET",
         url: "/ws/crud?type=modelMovie&uid=" + userid + "&filter=next5",
-        async: false,
+        //async: false,
         success: function(data) {
             if(data !== undefined) {
                 var obj = jQuery.parseJSON(data);
@@ -403,7 +403,7 @@ function loadMovieShuffle(username, log) {
     $.ajax({
         type: "POST",
         url: "/ws/crud?type=modelMovie&uid=" + username + "&filter=next5",
-        async: false,
+        //async: false,
         success: function(data) {
 
             ////window.console && console.log("calendar event created, response = [" + data + "]");
@@ -757,7 +757,7 @@ function handleChannelType(type, username) {
                         $.ajax({
                             type: "POST",
                             url: "/ws/crud?type=modelMovie&uid=" + username,
-                            async: false,
+                            //async: false,
                             success: function(data) {
 
                                 ////window.console && console.log("rss event created, response = [" + data + "]");

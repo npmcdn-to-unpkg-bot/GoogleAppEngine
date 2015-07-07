@@ -155,11 +155,11 @@ typeof define !== 'undefined'?define(['require', 'exports', 'module'], function 
             }
             if (showSub) {
                 subtitleElement.html(currentSub.t);
-                console.log("YoutubeSubtitiles.js subTitleTextTimer() playing");
+                //console.log("YoutubeSubtitiles.js subTitleTextTimer() playing");
             }
             else {
                 subtitleElement.html('');
-                console.log("YoutubeSubtitiles.js subTitleTextTimer() cleared");
+                //console.log("YoutubeSubtitiles.js subTitleTextTimer() cleared");
             }
             if(typeof currentSub !== 'undefined') {
                 //=== Hint: uncomment the following for debugging!!!
