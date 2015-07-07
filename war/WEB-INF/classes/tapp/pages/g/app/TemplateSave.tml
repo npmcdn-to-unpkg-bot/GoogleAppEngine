@@ -49,32 +49,14 @@
  	}
  	function handleText(text) {
  		//alert('handleText = '+text);
- 		var retVal = text; 		
+ 		var retVal = text;
  		if(text != undefined) {
-			//TBD - mistakenly replace the real characters like a number 320 to 3' ' :(
-/*
-			retVal = replaceAll(retVal, "<", "_LT_");	//a left arrow
-			retVal = replaceAll(retVal, ">", "_GT_");	//a right arrow
-			retVal = replaceAll(retVal, ' ', "_SP_");	//a space
-			retVal = replaceAll(retVal, '"', "_QUO_");
-			retVal = replaceAll(retVal, '=', "_EQ_");
-			retVal = replaceAll(retVal, '\\.', "_DOT_");
-			retVal = replaceAll(retVal, '\\\\', "_BSL_");
-			retVal = replaceAll(retVal, '\/', "_FSL_");
-			retVal = replaceAll(retVal, ':', "_CL_");
-			retVal = replaceAll(retVal, ';', "_SC_");
-			retVal = replaceAll(retVal, '-', "_DH_");
-			retVal = replaceAll(retVal, '!', "_EX_");
-			retVal = replaceAll(retVal, ',', "_CO_");
-			retVal = replaceAll(retVal, "'", "_AP_");
-			retVal = replaceAll(retVal, '\\?', "_QUE_");
-*/
  			retVal = encodeURIComponent(retVal);	//http://xkr.us/articles/javascript/encode-compare/
 			if(!keepHtml) {
 				retVal = strip(retVal);
 			}
- 			retVal = nl2br(retVal);
-			retVal = retVal.replace(/[^%<>!,"'\/:\.\w]+/g, " ");
+// 			retVal = nl2br(retVal);									//backend is using urldecode(text)
+//			retVal = retVal.replace(/[^%<>!,"'\/:\.\w]+/g, " ");	//backend is using urldecode(text)
  			//alert('safely replaced 22');
  		}
  		return retVal;
@@ -97,6 +79,7 @@
 		    localStorage.category = "";
 	    }
 	    localStorage.what = handlePrimaryKey(localStorage.what);
+	    localStorage.category = handleText(localStorage.category);
 	    localStorage.details = handleText(jQuery('#details').val());
 	    localStorage.updated = jQuery('#lastUpdatedDate').val();
 		//alert('saveSettings end');
