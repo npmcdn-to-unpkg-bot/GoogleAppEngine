@@ -9,7 +9,8 @@ requirejs.config({
 //        purl: '../jquery/purl',
 //        parse: 'https://www.parsecdn.com/js/parse-1.2.7.min',
         //===used by channel.html
-        galleria: ['../galleria/galleria-1.2.9.min'],
+        galleria: ['../galleria-1.2.9/galleria-1.2.9.min'],
+        //galleria: ['//cdnjs.cloudflare.com/ajax/libs/galleria/1.4.2/galleria'],
 //        channelApp: ['../html/channel'],
         movieApp: ['../mcrud/movie'],
         calendarApp: '../html/calendar',
