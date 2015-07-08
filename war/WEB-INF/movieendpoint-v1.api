@@ -24,27 +24,6 @@
     "maxAge" : 0
   },
   "methods" : {
-    "movieendpoint.movieEndpoint.removeMovie" : {
-      "path" : "movie/{id}",
-      "httpMethod" : "DELETE",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "app.model.MovieEndpoint.removeMovie",
-      "request" : {
-        "parameters" : {
-          "id" : {
-            "type" : "int64",
-            "required" : true
-          }
-        },
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
     "movieendpoint.movieEndpoint.updateMovie" : {
       "path" : "movie",
       "httpMethod" : "PUT",
@@ -53,22 +32,6 @@
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
       "rosyMethod" : "app.model.MovieEndpoint.updateMovie",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "movieendpoint.movieEndpoint.insertMovie" : {
-      "path" : "movie",
-      "httpMethod" : "POST",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "app.model.MovieEndpoint.insertMovie",
       "request" : {
         "body" : "autoTemplate(backendRequest)",
         "bodyName" : "resource"
@@ -110,6 +73,43 @@
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
       "rosyMethod" : "app.model.MovieEndpoint.getMovie",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "movieendpoint.movieEndpoint.insertMovie" : {
+      "path" : "movie",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "app.model.MovieEndpoint.insertMovie",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "movieendpoint.movieEndpoint.removeMovie" : {
+      "path" : "movie/{id}",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "app.model.MovieEndpoint.removeMovie",
       "request" : {
         "parameters" : {
           "id" : {
@@ -190,12 +190,12 @@
           "url" : {
             "type" : "string"
           },
+          "title" : {
+            "type" : "string"
+          },
           "modified" : {
             "type" : "string",
             "format" : "date-time"
-          },
-          "title" : {
-            "type" : "string"
           }
         }
       },
@@ -404,6 +404,10 @@
         "id" : "Date",
         "type" : "object",
         "properties" : {
+          "time" : {
+            "type" : "string",
+            "format" : "int64"
+          },
           "hours" : {
             "type" : "integer"
           },
@@ -413,17 +417,13 @@
           "seconds" : {
             "type" : "integer"
           },
-          "time" : {
-            "type" : "string",
-            "format" : "int64"
-          },
-          "date" : {
+          "year" : {
             "type" : "integer"
           },
           "month" : {
             "type" : "integer"
           },
-          "year" : {
+          "date" : {
             "type" : "integer"
           },
           "day" : {
@@ -460,20 +460,7 @@
       }
     },
     "methods" : {
-      "app.model.MovieEndpoint.removeMovie" : {
-        "response" : {
-          "$ref" : "Movie"
-        }
-      },
       "app.model.MovieEndpoint.updateMovie" : {
-        "request" : {
-          "$ref" : "Movie"
-        },
-        "response" : {
-          "$ref" : "Movie"
-        }
-      },
-      "app.model.MovieEndpoint.insertMovie" : {
         "request" : {
           "$ref" : "Movie"
         },
@@ -487,6 +474,19 @@
         }
       },
       "app.model.MovieEndpoint.getMovie" : {
+        "response" : {
+          "$ref" : "Movie"
+        }
+      },
+      "app.model.MovieEndpoint.insertMovie" : {
+        "request" : {
+          "$ref" : "Movie"
+        },
+        "response" : {
+          "$ref" : "Movie"
+        }
+      },
+      "app.model.MovieEndpoint.removeMovie" : {
         "response" : {
           "$ref" : "Movie"
         }
