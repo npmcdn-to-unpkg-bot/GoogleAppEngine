@@ -21,9 +21,8 @@
 }
 
 #globalnav A {
-    <!-- display:block;
-    color:#444;
-    -->
+    /*display:block;*/
+    /*color:#444;*/
     text-decoration:none;
     font-weight:bold;
     background:#d3d3d3;
