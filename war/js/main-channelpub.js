@@ -57,7 +57,7 @@ require(['./main-config', './app'], function (common, app) {
                 //noinspection CommaExpressionJS
                 if(loadMoviePub('pub', log)) {
                     $('#progress').hide();
-                    //window.console && console.info("main-channelpub: channel UI loaded");
+                    //console && console.log("main-channelpub: channel UI loaded");
                 }
             });
     });

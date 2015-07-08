@@ -130,8 +130,8 @@ require(['./main-config', './app'], function (common, app) {
                     $('#password').removeAttr("disabled");
                     //$('.facebook').show();
                     //$('.twitter').show();
-                    console.assert && console.assert(document.getElementById("username"), "bad: username [" + document.getElementById("username") + "]");
-                    console.assert && console.assert(document.getElementById("password"), "bad: password [" + document.getElementById("password") + "]");
+                    //console.assert && console.assert(document.getElementById("username"), "bad: username [" + document.getElementById("username") + "]");
+                    //console.assert && console.assert(document.getElementById("password"), "bad: password [" + document.getElementById("password") + "]");
                     el.focus();
                     purgeStates();
 //                    alert('main-index.js store [' + store + "]");    //unfortunately store is bootrappd in global namespace (c.f. main-config)

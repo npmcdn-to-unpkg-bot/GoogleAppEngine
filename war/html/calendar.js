@@ -641,8 +641,8 @@ function handleDraggable(itemRow, movieUrl) {
     eventObject.movieUrl = movieUrl;
     eventObject.thumbUrl = $(itemRow).find("img").attr("src");
     //window.console && console.log("1 handleDraggable entered");
-    window.console && console.info("handleDraggable: thumb [" + eventObject.thumb + "]");
-    window.console && console.info("handleDraggable: movieid [" + eventObject.movieid + "]");
+    console && console.log("handleDraggable: thumb [" + eventObject.thumb + "]");
+    console && console.log("handleDraggable: movieid [" + eventObject.movieid + "]");
     //window.console && console.log(eventObject.thumbUrl);
 
 
@@ -688,8 +688,8 @@ function handleNonDraggable(item) {
     eventObject.thumbUrl = $('input[name=thumbUrl]').val();
 
     //window.console && console.log("1 handleNonDraggable entered");
-    //window.console && console.info("handleNonDraggable: thumb [" + eventObject.thumb + "]");
-    //window.console && console.info("handleNonDraggable: movieid [" + eventObject.movieid + "]");
+    //window.console && console.log("handleNonDraggable: thumb [" + eventObject.thumb + "]");
+    //window.console && console.log("handleNonDraggable: movieid [" + eventObject.movieid + "]");
     //window.console && console.log(eventObject.thumbUrl);
 
 

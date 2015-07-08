@@ -96,9 +96,10 @@ requirejs(['./main-config', './app'], function (common, app) {
                 }
                 //=== TBD these should be refactored into common codes!!!! ===========================================================
 
-                if(username && loadMovie(username)) {
+                if(//username &&
+                    loadMovie(username)) {
                     $('#progress').hide();
-                    window.console && console.info("channel UI loaded");
+                    console && console.log("channel UI loaded");
                 } else {
                     username = $.url().param('username');       //TBD security risk - need to get from third party API directly
                     alert("username [" + username + "]");

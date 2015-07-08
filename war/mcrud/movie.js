@@ -1356,8 +1356,8 @@ function MovieController($scope, $filter, $http, $rootScope,
     $scope.userSelection = {
         movie: {
             shuffleIt: false
-            , playDate: dateFilter(new Date(),  'yyyy-MM-dd')  //'1976-02-14' //leading zero is not optional!!!
-            , playTime: dateFilter(new Date(),  'HH:mm')   //new Date().timeNow()
+            , playDate: new Date(dateFilter(new Date(),  'yyyy-MM-dd'))  //'1976-02-14' //leading zero is not optional!!!
+            , playTime: new Date(dateFilter(new Date(),  'HH:mm'))   //new Date().timeNow()
             , playAllDay: false
         },
         gesture: {

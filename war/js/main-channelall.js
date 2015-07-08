@@ -89,7 +89,7 @@ require(['./main-config', './app'], function (common, app) {
                 //noinspection CommaExpressionJS
                 if(loadMovieAll(Parse.User.current() && Parse.User.current().getUsername()), log) {
                     $('#progress').hide();
-                    window.console && console.info("main-channelall: channel UI loaded");
+                    console && console.log("main-channelall: channel UI loaded");
                 }
             });
         });
