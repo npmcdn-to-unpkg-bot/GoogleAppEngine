@@ -24,6 +24,7 @@
     "maxAge" : 0
   },
   "methods" : {
+<<<<<<< HEAD
     "movieendpoint.movieEndpoint.removeMovie" : {
       "path" : "movie/{id}",
       "httpMethod" : "DELETE",
@@ -79,6 +80,86 @@
     },
     "movieendpoint.movieEndpoint.listMovie" : {
       "path" : "movie",
+=======
+    "movieendpoint.movieEndpoint.getMovie" : {
+      "path" : "movie/{id}",
+>>>>>>> 0a975dca81095be14f2f50494fa19c2c2c1a6195
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "app.model.MovieEndpoint.getMovie",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "movieendpoint.movieEndpoint.removeMovie" : {
+      "path" : "movie/{id}",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "app.model.MovieEndpoint.removeMovie",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+<<<<<<< HEAD
+=======
+    },
+    "movieendpoint.movieEndpoint.insertMovie" : {
+      "path" : "movie",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "app.model.MovieEndpoint.insertMovie",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "movieendpoint.movieEndpoint.updateMovie" : {
+      "path" : "movie",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "app.model.MovieEndpoint.updateMovie",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "movieendpoint.movieEndpoint.listMovie" : {
+      "path" : "movie",
       "httpMethod" : "GET",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
@@ -101,27 +182,7 @@
       "response" : {
         "body" : "autoTemplate(backendResponse)"
       }
-    },
-    "movieendpoint.movieEndpoint.getMovie" : {
-      "path" : "movie/{id}",
-      "httpMethod" : "GET",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "app.model.MovieEndpoint.getMovie",
-      "request" : {
-        "parameters" : {
-          "id" : {
-            "type" : "int64",
-            "required" : true
-          }
-        },
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
+>>>>>>> 0a975dca81095be14f2f50494fa19c2c2c1a6195
     }
   },
   "descriptor" : {
@@ -219,11 +280,11 @@
           "parent" : {
             "$ref" : "Key"
           },
-          "complete" : {
-            "type" : "boolean"
-          },
           "namespace" : {
             "type" : "string"
+          },
+          "complete" : {
+            "type" : "boolean"
           }
         }
       },
@@ -460,7 +521,28 @@
       }
     },
     "methods" : {
+<<<<<<< HEAD
       "app.model.MovieEndpoint.removeMovie" : {
+=======
+      "app.model.MovieEndpoint.getMovie" : {
+>>>>>>> 0a975dca81095be14f2f50494fa19c2c2c1a6195
+        "response" : {
+          "$ref" : "Movie"
+        }
+      },
+<<<<<<< HEAD
+      "app.model.MovieEndpoint.updateMovie" : {
+=======
+      "app.model.MovieEndpoint.removeMovie" : {
+        "response" : {
+          "$ref" : "Movie"
+        }
+      },
+      "app.model.MovieEndpoint.insertMovie" : {
+>>>>>>> 0a975dca81095be14f2f50494fa19c2c2c1a6195
+        "request" : {
+          "$ref" : "Movie"
+        },
         "response" : {
           "$ref" : "Movie"
         }
@@ -473,22 +555,17 @@
           "$ref" : "Movie"
         }
       },
-      "app.model.MovieEndpoint.insertMovie" : {
-        "request" : {
-          "$ref" : "Movie"
-        },
-        "response" : {
-          "$ref" : "Movie"
-        }
-      },
       "app.model.MovieEndpoint.listMovie" : {
+<<<<<<< HEAD
         "response" : {
           "$ref" : "CollectionResponse_Movie"
         }
       },
       "app.model.MovieEndpoint.getMovie" : {
+=======
+>>>>>>> 0a975dca81095be14f2f50494fa19c2c2c1a6195
         "response" : {
-          "$ref" : "Movie"
+          "$ref" : "CollectionResponse_Movie"
         }
       }
     }

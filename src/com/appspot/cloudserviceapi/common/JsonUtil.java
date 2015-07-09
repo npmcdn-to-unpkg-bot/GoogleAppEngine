@@ -39,6 +39,8 @@ public class JsonUtil {
 					//, "utf-8"
 					//)
 					;
+			//=== http://stackoverflow.com/questions/42068/how-do-i-handle-newlines-in-json/42073#42073
+			json = json.replaceAll("\n"," ");	//fix "SyntaxError: JSON Parse error: Unexpected EOF" in Apple Safari browser
 			//=== Good as at 12/13/2013(thanks to https://groups.google.com/forum/#!topic/google-gson/W3eXzqCnZ6U)
 			json = json.replaceAll("null","\"\"");
 		} catch (Exception e) {

@@ -24,17 +24,22 @@
     "maxAge" : 0
   },
   "methods" : {
-    "serviceregistryuserendpoint.serviceRegistryUserEndpoint.insertServiceRegistryUser" : {
-      "path" : "serviceregistryuser",
-      "httpMethod" : "POST",
+    "serviceregistryuserendpoint.serviceRegistryUserEndpoint.getServiceRegistryUser" : {
+      "path" : "serviceregistryuser/{id}",
+      "httpMethod" : "GET",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "tapp.model.ServiceRegistryUserEndpoint.insertServiceRegistryUser",
+      "rosyMethod" : "tapp.model.ServiceRegistryUserEndpoint.getServiceRegistryUser",
       "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
@@ -61,6 +66,7 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
+<<<<<<< HEAD
     "serviceregistryuserendpoint.serviceRegistryUserEndpoint.removeServiceRegistryUser" : {
       "path" : "serviceregistryuser/{id}",
       "httpMethod" : "DELETE",
@@ -83,6 +89,9 @@
       }
     },
     "serviceregistryuserendpoint.serviceRegistryUserEndpoint.updateServiceRegistryUser" : {
+=======
+    "serviceregistryuserendpoint.serviceRegistryUserEndpoint.listServiceRegistryUser" : {
+>>>>>>> 0a975dca81095be14f2f50494fa19c2c2c1a6195
       "path" : "serviceregistryuser",
       "httpMethod" : "PUT",
       "authLevel" : "NONE",
@@ -98,14 +107,40 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
+<<<<<<< HEAD
     "serviceregistryuserendpoint.serviceRegistryUserEndpoint.listServiceRegistryUser" : {
       "path" : "serviceregistryuser",
       "httpMethod" : "GET",
+=======
+    "serviceregistryuserendpoint.serviceRegistryUserEndpoint.insertServiceRegistryUser" : {
+      "path" : "serviceregistryuser",
+      "httpMethod" : "POST",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "tapp.model.ServiceRegistryUserEndpoint.insertServiceRegistryUser",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "serviceregistryuserendpoint.serviceRegistryUserEndpoint.removeServiceRegistryUser" : {
+      "path" : "serviceregistryuser/{id}",
+      "httpMethod" : "DELETE",
+>>>>>>> 0a975dca81095be14f2f50494fa19c2c2c1a6195
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+<<<<<<< HEAD
       "rosyMethod" : "tapp.model.ServiceRegistryUserEndpoint.listServiceRegistryUser",
+=======
+      "rosyMethod" : "tapp.model.ServiceRegistryUserEndpoint.removeServiceRegistryUser",
+>>>>>>> 0a975dca81095be14f2f50494fa19c2c2c1a6195
       "request" : {
         "parameters" : {
           "cursor" : {
@@ -244,10 +279,7 @@
       }
     },
     "methods" : {
-      "tapp.model.ServiceRegistryUserEndpoint.insertServiceRegistryUser" : {
-        "request" : {
-          "$ref" : "ServiceRegistryUser"
-        },
+      "tapp.model.ServiceRegistryUserEndpoint.getServiceRegistryUser" : {
         "response" : {
           "$ref" : "ServiceRegistryUser"
         }
@@ -257,12 +289,16 @@
           "$ref" : "ServiceRegistryUser"
         }
       },
-      "tapp.model.ServiceRegistryUserEndpoint.removeServiceRegistryUser" : {
+      "tapp.model.ServiceRegistryUserEndpoint.listServiceRegistryUser" : {
         "response" : {
-          "$ref" : "ServiceRegistryUser"
+          "$ref" : "CollectionResponse_ServiceRegistryUser"
         }
       },
+<<<<<<< HEAD
       "tapp.model.ServiceRegistryUserEndpoint.updateServiceRegistryUser" : {
+=======
+      "tapp.model.ServiceRegistryUserEndpoint.insertServiceRegistryUser" : {
+>>>>>>> 0a975dca81095be14f2f50494fa19c2c2c1a6195
         "request" : {
           "$ref" : "ServiceRegistryUser"
         },
@@ -270,7 +306,11 @@
           "$ref" : "ServiceRegistryUser"
         }
       },
+<<<<<<< HEAD
       "tapp.model.ServiceRegistryUserEndpoint.listServiceRegistryUser" : {
+=======
+      "tapp.model.ServiceRegistryUserEndpoint.removeServiceRegistryUser" : {
+>>>>>>> 0a975dca81095be14f2f50494fa19c2c2c1a6195
         "response" : {
           "$ref" : "CollectionResponse_ServiceRegistryUser"
         }
