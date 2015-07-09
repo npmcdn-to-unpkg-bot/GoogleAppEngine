@@ -1,12 +1,12 @@
 {
   "extends" : "thirdParty.api",
   "abstract" : false,
-  "root" : "https://cloudaware.appspot.com/_ah/api",
+  "root" : "https://2-share.appspot.com/_ah/api",
   "name" : "bkper",
   "version" : "v1",
   "defaultVersion" : false,
   "adapter" : {
-    "bns" : "https://cloudaware.appspot.com/_ah/spi",
+    "bns" : "https://2-share.appspot.com/_ah/spi",
     "deadline" : 65.0,
     "type" : "lily"
   },
