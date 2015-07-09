@@ -9,7 +9,7 @@
 		<pattern>/passwordchange/*</pattern>
 		<pattern>/nlogin</pattern>
 		<pattern>/ui/*</pattern>
-		<pattern>/galleria/*</pattern>
+		<pattern>/galleria*/*</pattern>
 		<pattern>/parse/*</pattern>
 		<pattern>/mcrud/*</pattern>
 		<pattern>/html/*</pattern>

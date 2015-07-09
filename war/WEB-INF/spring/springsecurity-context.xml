@@ -27,7 +27,7 @@
 	<http pattern="/password" security="none"/>
 	<http pattern="/nlogin" security="none"/>
 	<http pattern="/ui/**/*" security="none"/>
-	<http pattern="/galleria/**" security="none"/>
+	<http pattern="/galleria*/**" security="none"/>
 	<http pattern="/jsp/chec" security="none"/>
 	<http pattern="/parse/**" security="none"/>
 	<http pattern="/ws/**" security="none"/>

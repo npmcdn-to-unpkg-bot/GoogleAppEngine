@@ -167,7 +167,8 @@ function loadMovie(username) {
                 Galleria.configure({
                     dummy: '/images/noimage.jpg',
                     imageCrop: true,
-                    transition: 'fade'
+                    transition: 'fade',
+                    thumbnails: 'numbers'
                 });
 //                alert("running galleria type " + galleria_type);
                 Galleria.run('#galleria' + galleria_type,{
@@ -271,7 +272,8 @@ function loadMovieAll(username, log) {
                     dummy: '/images/noimage.jpg',
                     imageCrop: true,
                     transition: 'fade',
-                    carousel: true
+                    carousel: true,
+                    thumbnails: 'numbers'
                 });
 
                 Galleria.run('#galleria' + galleria_type,{
@@ -478,6 +480,7 @@ function loadMovieShuffle(username, log) {
                     carousel: true,
                     //http://galleria.io/docs/options/wait/
                     wait: true,
+                    thumbnails: 'numbers',
                     //http://galleria.io/docs/options/youtube/
                     youtube: { enablejsapi: 1, autoplay: 1 }
                 });
