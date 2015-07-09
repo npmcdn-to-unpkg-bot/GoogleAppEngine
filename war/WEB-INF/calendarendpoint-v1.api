@@ -1,12 +1,12 @@
 {
   "extends" : "thirdParty.api",
   "abstract" : false,
-  "root" : "https://2-share.appspot.com/_ah/api",
+  "root" : "https://cloudaware.appspot.com/_ah/api",
   "name" : "calendarendpoint",
   "version" : "v1",
   "defaultVersion" : false,
   "adapter" : {
-    "bns" : "https://2-share.appspot.com/_ah/spi",
+    "bns" : "https://cloudaware.appspot.com/_ah/spi",
     "deadline" : 65.0,
     "type" : "lily"
   },
@@ -24,38 +24,6 @@
     "maxAge" : 0
   },
   "methods" : {
-    "calendarendpoint.calendarEndpoint.insertCalendar" : {
-      "path" : "calendar",
-      "httpMethod" : "POST",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "app.model.CalendarEndpoint.insertCalendar",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "calendarendpoint.calendarEndpoint.updateCalendar" : {
-      "path" : "calendar",
-      "httpMethod" : "PUT",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "app.model.CalendarEndpoint.updateCalendar",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
     "calendarendpoint.calendarEndpoint.insertCalendar" : {
       "path" : "calendar",
       "httpMethod" : "POST",
@@ -112,7 +80,6 @@
       "response" : {
         "body" : "autoTemplate(backendResponse)"
       }
-<<<<<<< HEAD
     },
     "calendarendpoint.calendarEndpoint.getCalendar" : {
       "path" : "calendar/{id}",
@@ -155,8 +122,6 @@
       "response" : {
         "body" : "autoTemplate(backendResponse)"
       }
-=======
->>>>>>> 0a975dca81095be14f2f50494fa19c2c2c1a6195
     }
   },
   "descriptor" : {
@@ -319,15 +284,12 @@
           "$ref" : "Calendar"
         }
       },
-<<<<<<< HEAD
       "app.model.CalendarEndpoint.listCalendar" : {
         "response" : {
           "$ref" : "CollectionResponse_Calendar"
         }
       },
       "app.model.CalendarEndpoint.updateCalendar" : {
-=======
-      "app.model.CalendarEndpoint.updateCalendar" : {
         "request" : {
           "$ref" : "Calendar"
         },
@@ -335,24 +297,9 @@
           "$ref" : "Calendar"
         }
       },
-      "app.model.CalendarEndpoint.insertCalendar" : {
->>>>>>> 0a975dca81095be14f2f50494fa19c2c2c1a6195
-        "request" : {
-          "$ref" : "Calendar"
-        },
-        "response" : {
-          "$ref" : "Calendar"
-        }
-      },
-<<<<<<< HEAD
       "app.model.CalendarEndpoint.getCalendar" : {
         "response" : {
           "$ref" : "Calendar"
-=======
-      "app.model.CalendarEndpoint.listCalendar" : {
-        "response" : {
-          "$ref" : "CollectionResponse_Calendar"
->>>>>>> 0a975dca81095be14f2f50494fa19c2c2c1a6195
         }
       },
       "app.model.CalendarEndpoint.removeCalendar" : {
