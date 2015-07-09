@@ -8,7 +8,8 @@ requirejs.config({
         purl: '../jquery/purl',
 //        parse: 'https://www.parsecdn.com/js/parse-1.2.7.min',
         //===used by channel.html
-        galleria: ['../galleria/galleria-1.2.9.min'],
+        galleria: ['../galleria-1.2.9/galleria-1.2.9.min'],     //Note: remember to change GALLERIA_VERSION in channel.js too!!!
+        //galleria: ['../galleria-1.4.2/galleria-1.4.2.min'],   //Note: remember to change GALLERIA_VERSION in channel.js too!!!
 //        movieApp: ['../mcrud/movie'],
 //        initUser: ['../parse/init'],
         subsTitle: ['../jquery/YoutubeSubtitiles'],

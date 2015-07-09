@@ -37,10 +37,10 @@
 		<include path="/css/*.css" />
 		<include path="/images/*" />
 		<include path="/js/*" />
-     	<include path="/galleria/**.css" />
-     	<include path="/galleria/**.js" />
-		<include path="/galleria/**.gif" />
-		<include path="/galleria/**.png" />
+     	<include path="/galleria*/**.css" />
+     	<include path="/galleria*/**.js" />
+		<include path="/galleria*/**.gif" />
+		<include path="/galleria*/**.png" />
      	<include path="/parse/css/*.css" />
      	<include path="/parse/*" />
      	<include path="/mcrud/*" />     	

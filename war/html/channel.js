@@ -1,3 +1,5 @@
+var GALLERIA_VERSION = '1.2.9';
+//var GALLERIA_VERSION = '1.4.2';
 var GALLERIA_LIMIT = 10;     //limit to 10 movies/images only
 var galleria_type = 0;      //0 - video; 1 - image; 2 - RSS
 //var galleriaData = [];
@@ -160,12 +162,13 @@ function loadMovie(username) {
                 //window.console && console.log("loading galleria ...");
                 //=== http://support.galleria.io/kb/getting-started/quick-start
                 //=== https://drupal.org/node/1927420
-                Galleria.loadTheme('/galleria/themes/classic/galleria.classic.min.js?ts=' + (new Date()).getTime());
+                Galleria.loadTheme('/galleria-' + GALLERIA_VERSION + '/themes/classic/galleria.classic.min.js?ts=' + (new Date()).getTime());
 
                 Galleria.configure({
                     dummy: '/images/noimage.jpg',
                     imageCrop: true,
-                    transition: 'fade'
+                    transition: 'fade',
+                    thumbnails: 'numbers'
                 });
 //                alert("running galleria type " + galleria_type);
                 Galleria.run('#galleria' + galleria_type,{
@@ -264,12 +267,13 @@ function loadMovieAll(username, log) {
                 }
                 //window.console && console.log("1 loading galleria ...");
                 //=== http://support.galleria.io/kb/getting-started/quick-start
-                Galleria.loadTheme('/galleria/themes/classic/galleria.classic.min.js?ts=' + (new Date()).getTime());
+                Galleria.loadTheme('/galleria-' + GALLERIA_VERSION + '/themes/classic/galleria.classic.min.js?ts=' + (new Date()).getTime());
                 Galleria.configure({
                     dummy: '/images/noimage.jpg',
                     imageCrop: true,
                     transition: 'fade',
-                    carousel: true
+                    carousel: true,
+                    thumbnails: 'numbers'
                 });
 
                 Galleria.run('#galleria' + galleria_type,{
@@ -468,7 +472,7 @@ function loadMovieShuffle(username, log) {
 
                 //window.console && console.log("2 loading galleria ...");
                 //=== http://support.galleria.io/kb/getting-started/quick-start
-                Galleria.loadTheme('/galleria/themes/classic/galleria.classic.min.js?ts=' + (new Date()).getTime());
+                Galleria.loadTheme('/galleria-' + GALLERIA_VERSION + '/themes/classic/galleria.classic.min.js?ts=' + (new Date()).getTime());
                 Galleria.configure({
                     dummy: '/images/noimage.jpg',
                     imageCrop: true,
@@ -476,6 +480,7 @@ function loadMovieShuffle(username, log) {
                     carousel: true,
                     //http://galleria.io/docs/options/wait/
                     wait: true,
+                    thumbnails: 'numbers',
                     //http://galleria.io/docs/options/youtube/
                     youtube: { enablejsapi: 1, autoplay: 1 }
                 });
@@ -796,7 +801,7 @@ function handleChannelType(type, username) {
         }
     }
     //=== http://support.galleria.io/kb/getting-started/quick-start
-    Galleria.loadTheme('/galleria/themes/classic/galleria.classic.min.js?ts=' + (new Date()).getTime());
+    Galleria.loadTheme('/galleria-' + GALLERIA_VERSION + '/themes/classic/galleria.classic.min.js?ts=' + (new Date()).getTime());
     console.log("type is [" + type + "]");
     if(type === 0) {
         /* VIDEO */
