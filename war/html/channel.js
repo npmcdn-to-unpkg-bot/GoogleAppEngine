@@ -167,8 +167,8 @@ function loadMovie(username) {
                 Galleria.configure({
                     dummy: '/images/noimage.jpg',
                     imageCrop: true,
-                    transition: 'fade',
-                    thumbnails: 'numbers'
+                    transition: 'fade'
+                    , thumbnails: 'numbers'
                 });
 //                alert("running galleria type " + galleria_type);
                 Galleria.run('#galleria' + galleria_type,{
@@ -272,8 +272,8 @@ function loadMovieAll(username, log) {
                     dummy: '/images/noimage.jpg',
                     imageCrop: true,
                     transition: 'fade',
-                    carousel: true,
-                    thumbnails: 'numbers'
+                    carousel: true
+                    , thumbnails: 'numbers'
                 });
 
                 Galleria.run('#galleria' + galleria_type,{
@@ -474,15 +474,16 @@ function loadMovieShuffle(username, log) {
                 //=== http://support.galleria.io/kb/getting-started/quick-start
                 Galleria.loadTheme('/galleria-' + GALLERIA_VERSION + '/themes/classic/galleria.classic.min.js?ts=' + (new Date()).getTime());
                 Galleria.configure({
-                    dummy: '/images/noimage.jpg',
-                    imageCrop: true,
-                    transition: 'fade',
-                    carousel: true,
+                    //dummy: '/images/noimage.jpg',
+                    //imageCrop: true,
+                    transition: 'fade'
+                    , carousel: true
                     //http://galleria.io/docs/options/wait/
-                    wait: true,
-                    thumbnails: 'numbers',
+                    , wait: true
+                    , thumbnails: 'numbers'
+                    , thumbQuality: 'auto'
                     //http://galleria.io/docs/options/youtube/
-                    youtube: { enablejsapi: 1, autoplay: 1 }
+                    , youtube: { enablejsapi: 1, autoplay: 1 }
                 });
 
 //                Galleria.run('#galleria' + galleria_type, {

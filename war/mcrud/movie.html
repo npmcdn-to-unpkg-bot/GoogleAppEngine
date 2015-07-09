@@ -133,7 +133,7 @@
 
         //        }
     </script>
-    <script>var require = { urlArgs: 'a008d' };</script>
+    <script>var require = { urlArgs: 'a009' };</script>
     <script type="text/javascript" src="../js/require.js" data-main="../js/main-movie"></script>
 </head>
 <body ng-controller="MovieController" class="leap-interactive" leap-disable-tap="true" leap-disable-hover="true">
@@ -369,7 +369,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="editor" contenteditable="true" ng-enter="createItem()" ng-model="item.description" style="width:90%;">{{item.description}}</div>
+                <div id="editor" contenteditable="true" ng-enter="createItem()" ng-model="item.description" style="width:90%;">{{::item.description}}</div>
 -->
             </div>
         </div>
@@ -466,7 +466,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div id="editor" contenteditable ng-enter="updateItem()" ng-model="item.description" ng-change="console.log('contenteditable [' + this.html() + ']');" style="width:90%;">{{item.description}}</div>
+                                <div id="editor" contenteditable ng-enter="updateItem()" ng-model="item.description" ng-change="console.log('contenteditable [' + this.html() + ']');" style="width:90%;">{{::item.description}}</div>
                 -->
             </div>
         </div>
@@ -575,10 +575,10 @@
                     <a style="width:70%;" class="col-md-1 thumbnail leap-interactive" leap-click-delay="5000" ng-show="!getYoutubeVideoId(item.url)" href="#" title="{{item.title}}">
                         <div class="glyphicon glyphicon-edit truncate" ng-click="editItemForCalendar(item);$event.preventDefault(); $event.stopPropagation();">{{item.title}}</div>
                         <span ng-if="$index >= (page.number-1)*page.max && $index < 1 + page.max">
-                        <img class="img-responsive" ng-show="!getYoutubeVideoId(item.url)" data-ng-src="{{item.description}}" alt="no image found"/>
+                        <img class="img-responsive" ng-show="!getYoutubeVideoId(item.url)" data-ng-src="{{::item.description}}" alt="no image found"/>
                         </span>
                     </a>
-                    <a style="width:70%;" class="col-md-1 thumbnail leap-interactive" leap-click-delay="5000" ng-show="getYoutubeVideoId(item.url)" href="#" title="{{item.title}} {{item.description}}">
+                    <a style="width:70%;" class="col-md-1 thumbnail leap-interactive" leap-click-delay="5000" ng-show="getYoutubeVideoId(item.url)" href="#" title="{{item.title}} {{::item.description}}">
                         <div class="glyphicon glyphicon-edit truncate" ng-click="editItemForCalendar(item);$event.preventDefault(); $event.stopPropagation();">{{item.title}}</div>
                         <img class="img-responsive" ng-show="getYoutubeVideoId(item.url)" ng-src="https://img.youtube.com/vi/{{getYoutubeVideoId(item.url)}}/0.jpg" alt="youtube image 0"/>
                     </a>
@@ -623,7 +623,7 @@
 <!--<div ng-ini="itemsPerPage = 6; page.max = 6" class="span6" style="width:190px;height:auto;" ng-repeat="item in pagedItems[currentPage] | orderBy:sortingOrder:reverse | filter:query">-->
 <!--<a ng-show="page.number > 1" ng-click="selectPreviousPage(page)" class="ng-binding">« Previous</a>-->
 <!--<span style="text:right;">{{item.id}}</span>-->
-<!--<a ng-click="editItemForCalendar(item)" href="#" title="{{item.title}} {{item.description}}" ng-mouseLeave="handleDraggable(this, '{{item.url}}');" ng-mouseover="handleDraggable(this, '{{item.url}}');" data-movieid="{{item.id}}" data-movieUrl="{{item.url}}" data-movieTitle="{{item.title}}">-->
+<!--<a ng-click="editItemForCalendar(item)" href="#" title="{{item.title}} {{::item.description}}" ng-mouseLeave="handleDraggable(this, '{{item.url}}');" ng-mouseover="handleDraggable(this, '{{item.url}}');" data-movieid="{{item.id}}" data-movieUrl="{{item.url}}" data-movieTitle="{{item.title}}">-->
 <!--<img style="width:280px;height:auto;margin-left:auto;margin-right:auto;" ng-src="https://img.youtube.com/vi/{{getYoutubeVideoId(item.url)}}/0.jpg" alt="youtube image 0">-->
 <!--</a>-->
 <!--<a ng-click="selectNextPage(page)" class="ng-binding">Next »</a>-->
@@ -701,7 +701,7 @@
     <div class="span12" id="modernview6" style="display:none;" ngcloak>
         <div class="span6" style="width:190px;height:auto;display:block;" ng-repeat="item in pagedItems[currentPage] | orderBy:sortingOrder:reverse | filter:query">
             <!--<span style="text:right;">{{item.id}}</span>-->
-            <a class="leap-interactive" ng-click="editItemForCalendar(item)" href="#" title="{{item.title}} {{item.description}}" ng-mouseLeave="handleDraggable(this, '{{item.url}}');" ng-mouseover="handleDraggable(this, '{{item.url}}');" data-movieid="{{item.id}}" data-movieUrl="{{item.url}}" data-movieTitle="{{item.title}}">
+            <a class="leap-interactive" ng-click="editItemForCalendar(item)" href="#" title="{{item.title}} {{::item.description}}" ng-mouseLeave="handleDraggable(this, '{{item.url}}');" ng-mouseover="handleDraggable(this, '{{item.url}}');" data-movieid="{{item.id}}" data-movieUrl="{{item.url}}" data-movieTitle="{{item.title}}">
                 <img style="width:280px;height:auto;margin-left:auto;margin-right:auto;" ng-src="https://img.youtube.com/vi/{{getYoutubeVideoId(item.url)}}/0.jpg" alt="youtube image 0">
             </a>
         </div>
@@ -781,7 +781,7 @@
         <td ng-show="item.oid == objectId" ng-bind-template="Me">...</td>
         <td ng-show="item.oid != objectId" ng-bind-template="{{item.owner}}">...</td>
         <td ng-bind-template="{{item.title}}">...</td>
-        <td ng-bind-template="{{item.description}}">...</td>
+        <td ng-bind-template="{{::item.description}}">...</td>
         <td style="width:180px;" ng-bind-template="{{item.createDate | date:'yyyy-MM-dd HH:mm:ss Z'}}">...</td>
         <td>
             <div class="content"></div>
