@@ -154,6 +154,7 @@ function ctrlRead($scope, $filter, $http, $rootScope, $console, $timeout) {
                     j = {id: data[i].id, owner: data[i].owner, oid: data[i].oid, title: data[i].title, description: data[i].description, url: data[i].u_r_l, createDate: data[i].modified, shared: data[i].shared};
                     j.search_results = data[i].search_results;
                     try{
+/*
                         var obj;
                         if(j.search_results && j.search_results.value) {
                             obj = angular.fromJson(
@@ -162,6 +163,7 @@ function ctrlRead($scope, $filter, $http, $rootScope, $console, $timeout) {
                             window.console && console.log('data[' + i + '] = id=' + j.id + " title=" + j.title + " url=" + j.url + " createDate=" + j.createDate + " search_results=" + obj[0].movie_thumbnail + " shared=" + j.shared);
                             $console.info('data[' + i + '] = obj=' + obj);
                         }
+*/
                         $scope.items.push(j);
                     }
                     catch(e){
@@ -489,6 +491,7 @@ function ctrlRead($scope, $filter, $http, $rootScope, $console, $timeout) {
         $scope.enterNew = false;
         $scope.editing = true;
         //$scope.item = item;   //no data-binding
+/*
         var obj;
         if(item.search_results && item.search_results.value) {
             obj = angular.fromJson(
@@ -497,6 +500,7 @@ function ctrlRead($scope, $filter, $http, $rootScope, $console, $timeout) {
             window.console && console.log('editItem  search_results [' + obj + '] obj[0].movie_thumbnail [' + obj[0].movie_thumbnail + ']');
             $scope.deserializeSearch(obj);
         }
+*/
     };
 
     $scope.updateItem = function() {

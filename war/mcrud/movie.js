@@ -596,6 +596,7 @@ function MovieController($scope, $filter, $http, $rootScope,
                         j = {id: data[i].id, owner: data[i].owner, oid: data[i].oid, title: data[i].title, description: data[i].description.value, url: data[i].u_r_l, createDate: data[i].modified, shared: data[i].shared, scheduled: scheduled};
 //                        j.search_results = data[i].search_results;
                         try {
+/*
                             if (j.search_results && j.search_results.value) {
                                 try {
                                     var obj = angular.fromJson(
@@ -607,6 +608,7 @@ function MovieController($scope, $filter, $http, $rootScope,
                                 //$console && $console.log('data[' + i + '] = id=' + j.id + " title=" + j.title + " url=" + j.url + " createDate=" + j.createDate + " search_results=" + obj[0].movie_thumbnail + " shared=" + j.shared);
                                 //$console && $console.log('data[' + i + '] = obj=' + obj);
                             }
+*/
                             $scope.items.push(j);
                         }
                         catch (e) {
@@ -1109,6 +1111,7 @@ function MovieController($scope, $filter, $http, $rootScope,
         $scope.enterNew = false;
         $scope.editing = true;
         //$scope.item = item;   //no data-binding
+/*
         var obj;
         if (item.search_results && item.search_results.value) {
             try {
@@ -1121,6 +1124,7 @@ function MovieController($scope, $filter, $http, $rootScope,
             //$console && $console.log('editItem  search_results [' + obj + '] obj[0].movie_thumbnail [' + obj[0].movie_thumbnail + ']');
         }
         $scope.deserializeSearch(obj);
+*/
 
         //AngularJS 1.2+ stuff
         $scope.unsafeTitle = $scope.item.title;

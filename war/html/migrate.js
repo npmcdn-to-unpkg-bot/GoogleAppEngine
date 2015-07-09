@@ -505,6 +505,7 @@ function ctrlRead($scope, $filter, $http, $rootScope, $console, $timeout) {
         $scope.enterNew = false;
         $scope.editing = true;
         //$scope.item = item;   //no data-binding
+/*
         var obj;
         if(item.search_results && item.search_results.value) {
             obj = angular.fromJson(
@@ -513,6 +514,7 @@ function ctrlRead($scope, $filter, $http, $rootScope, $console, $timeout) {
         }
         window.console && console.log('editItem  search_results [' + obj + '] obj[0].movie_thumbnail [' + obj[0].movie_thumbnail + ']');
         $scope.deserializeSearch(obj);
+*/
     };
 
     $scope.updateItem = function() {
