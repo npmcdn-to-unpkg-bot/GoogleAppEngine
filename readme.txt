@@ -250,10 +250,9 @@ Configuration Tips -
 2Share
 
 . To turn on backup service
+/postsettings?setting=true&pincode=advanced.ui.active
 /postsettings?setting=true&pincode=backup.service.active
 
-. To turn on backup service
-/postsettings?setting=true&pincode=advanced.ui.active
 
 Development Tips -
 

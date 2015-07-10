@@ -1,30 +1,11 @@
-<!DOCTYPE html>
 <html t:type="layout" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd" xmlns:sec="http://www.springframework.org/security/tags" xmlns:p="tapestry:parameter">
  <head>
  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
  <title>Service Registry</title>
- <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/> <!-- source: https://developer.apple -->
  <style>
  	.t-beaneditor-submit {
 		color: red;
  	}
- 	/* the rich textarea content */
-    .cke_skin_kama * {
-        white-space: inherit;		/* fixed FF issue */
-    }
-    /* the raw content (html source) at the end/after the rich textarea */ 
-    .t-beandisplay {
-    	display:table;
-		word-break:break-all;
-    }
-    /* the left label's width */
-    div.t-beaneditor-row LABEL, DL.t-beandisplay DT {
-		width: 150px;
-    }
-    /* the spaces of each row */
-    div.t-beaneditor-row {
-    	padding: 4px 0px 5px 0px;
-    }
  </style>
  <script id="worker1" type="javascript/worker">
 	self.onmessage = function(e) {
@@ -62,10 +43,11 @@
 	    localStorage.host = jQuery('#host').text();
 	    localStorage.appid = jQuery('#appid').text();
 	    localStorage.service = handlePrimaryKey(jQuery('#service').val()+'-'+jQuery('#appid').text());
-	    localStorage.endpoint = jQuery('#endpoint').val();
+	    localStorage.endpoint = handleText(jQuery('#endpoint').val());
 //		localStorage.description = handleText(jQuery('textarea.editor').val());	//will not work before a form post!
 		localStorage.description = finalContent;
 	    localStorage.updated = jQuery('#lastUpdated').val();
+	    localStorage.summary = handleText(jQuery('#summary').text());
 		//alert('saveSettings end');
 	}
 	function resetSettings() {
@@ -103,7 +85,7 @@
 	   return tmp.innerText||tmp.textContent;
 	}
 	function nl2br(text) {
-		var retVal;
+		var retVal = '';
 		retVal = text.replace(/(\r\n|\n|\r)/gm, '_NL_');
 		retVal = retVal.replace(/[\x00-\x1F\x80-\xFF]/g, "");
 		return retVal;
@@ -130,32 +112,12 @@
  		//alert('handleText = '+text);
  		var retVal = text; 		
  		if(text != undefined) {
-			//TBD - mistakenly replace the real characters like a number 320 to 3' ' :(
-/*
-//			retVal = replaceAll(retVal, '<', "_LT_");	//a left arrow
-//			retVal = replaceAll(retVal, '>', "_GT_");	//a right arrow
-//			retVal = replaceAll(retVal, ' ', "_SP_");	//a space
-			retVal = replaceAll(retVal, '"', "_QUO_");
-			retVal = replaceAll(retVal, '=', "_EQ_");
-//			retVal = replaceAll(retVal, '\\.', "_DOT_");
-			retVal = replaceAll(retVal, '\\\\', "_BSL_");
-//			retVal = replaceAll(retVal, '\/', "_FSL_");
-			retVal = replaceAll(retVal, ':', "_CL_");
-			retVal = replaceAll(retVal, ';', "_SC_");
-			retVal = replaceAll(retVal, '-', "_DH_");
-			retVal = replaceAll(retVal, '!', "_EX_");
-			retVal = replaceAll(retVal, ',', "_CO_");
-			retVal = replaceAll(retVal, "'", "_AP_");
-			retVal = replaceAll(retVal, '\\?', "_QUE_");
-*/
  			retVal = encodeURIComponent(retVal);	//http://xkr.us/articles/javascript/encode-compare/
-//			alert('6 '+retVal);
 			if(!keepHtml) {
 				retVal = strip(retVal);
 			}
- 			retVal = nl2br(retVal);
-			retVal = retVal.replace(/[^%<>!,"'\/:\.\w]+/g, " ");
- 			//alert('safely replaced 22');
+// 			retVal = nl2br(retVal);
+//			retVal = retVal.replace(/[^%<>!,"'\/:\.\w]+/g, " ");
  		}
  		return retVal;
  	}
@@ -166,7 +128,7 @@
 	    var worker = new Worker(window.webkitURL.createObjectURL(bb.getBlob()));	//Chrome specific
 	    worker.onmessage = function(e) {
 	      	alert('web worker done!');
-	    };
+	    }
 	    worker.postMessage({
 	    	host: jQuery('#host').text(),
 		    appid: jQuery('#appid').text(),
@@ -181,14 +143,14 @@
 		//alert(localStorage.host);
 		post_to_urlXHR("https://"+localStorage.host+"/api/router-sr.php", {
 			'appId': localStorage.appid, 'service': localStorage.service, 'endpoint': localStorage.endpoint,
-			'description': localStorage.description
+			'description': localStorage.description, 'summary': localStorage.summary
 		});
 	}
 	function normalBackup() {
 		//alert(localStorage.host);
 		post_to_url("https://"+localStorage.host+"/api/router-sr.php", {
 			'appId': localStorage.appid, 'service': localStorage.service, 'endpoint': localStorage.endpoint,
-			'description': localStorage.description
+			'description': localStorage.description, 'summary': localStorage.summary
 		});
 	}
  	function handleSendError(xhr2, url) {
@@ -292,9 +254,9 @@
  <body>
 	<sec:ifNotGranted roles="ROLE_ADMIN, ROLE_SCI_ADMIN">
 	</sec:ifNotGranted>
-   	<div style="margin:10px 5px 5px 2px;height:20%;display:${backupServiceDisplay};">
+   	<div style="margin:10px 5px 5px 2px;height:10%;display:${backupServiceDisplay};">
    		AppId [<span id="appid">${uniqueSID}</span>] Backup Service [<span id="host">${backupServiceHost}</span>] <a href="https://${backupServiceHost}/api/index.php/ServiceRegistry/${serviceRegistryService}-${uniqueSID}.xml">XML</a>&#160;<a href="https://${backupServiceHost}/api/index.php/ServiceRegistry/${serviceRegistryService}-${uniqueSID}.html">HTML</a>&#160;<a href="https://${backupServiceHost}/api/index.php/ServiceRegistry/${serviceRegistryService}-${uniqueSID}.txt">TXT</a>&#160;:
-	   	<iframe style="width:100%;height:20%;" id="url_iframe" name="url_iframe" src="https://${backupServiceHost}/api/index.php/ServiceRegistry/${serviceRegistryService}-${uniqueSID}.xml"></iframe>
+	   	<iframe style="width:100%;height:10%;" id="url_iframe" name="url_iframe" src="https://${backupServiceHost}/api/index.php/ServiceRegistry/${serviceRegistryService}-${uniqueSID}.xml"></iframe>
 		<label for="backup1_1">Normal Backup:&#160;</label>
 			<input class="bck" name="backup1_1" id="backup1_1" value="Backup Only" onclick="backupOnly();" type="button" style="width:18%;"/>&#160;&#160;
 		<label for="backup2_1">AJAX Backup:&#160;</label>
@@ -304,10 +266,9 @@
 	<span style="float:left;padding-left:3px;"><t:actionlink t:id="logout" context="serviceRegistry.service">Save and Logout</t:actionlink></span>
 	-->
    	<form>
-		<input id='buttonCancel' type='button' value='Exit' onclick='location.href="/sci/serviceregistrystart";'/>
+		<input id='buttonCancel' type='button' value='Exit' onclick='javascript:location.href="/sci/serviceregistrystart";'/>
    	</form>
-   	<p/>
- 	<form id="form" t:id="form" t:type="beaneditform" t:submitLabel="message:submit-label" object="serviceRegistry" reorder="oid,saveOnly,service,endpoint,shorturl,summary,description,category,usedescription,usehtml" exclude="project,number,organization,owner,id,lastUpdated,lastAccessed">
+ 	<form id="form" t:id="form" t:type="beaneditform" t:submitLabel="message:submit-label" object="serviceRegistry" reorder="oid,saveOnly,service,endpoint,summary,description,category,usedescription,usehtml" exclude="project,number,organization,owner,id,lastUpdated,lastAccessed,shorturl">
  		<t:parameter name="id">
  			<!--
 	 		<label t:type="Label" for="id"/>
@@ -319,7 +280,6 @@
  		<t:parameter name="summary">
 	 		<label t:type="Label" for="summary"/>
  			<input t:type="TextField" style="width:50%;" t:id="summary" t:value="serviceRegistry.summary" />
- 			<span style="padding-left:2px; font-size:.5em;">* Searchable but proctected</span>
  		</t:parameter>
 <!--
  		<t:parameter name="preview">
@@ -334,43 +294,39 @@
  		<t:parameter name="service">
 	 		<label t:type="Label" for="service"/>
  			<input t:type="TextField" style="width:50%;" t:id="service" t:value="serviceRegistry.service" />
- 			<span style="padding-left:2px; font-size:.5em;">* must be unique</span>
+ 			* must be unique
  		</t:parameter>
  		<t:parameter name="endpoint">
 	 		<label t:type="Label" for="endpoint"/>
  			<input t:type="TextField" style="width:50%;" t:id="endpoint" t:value="serviceRegistry.endpoint" />
- 			<span style="padding-left:2px; font-size:.5em;">* e.g. URL/token/plain text</span>
+ 			* e.g. URL/token/plain text
  		</t:parameter>
 <!--
 Not sure why do I need two of description in order for it to show up :( ???
+-->
  		<t:parameter name="description">
 	 		<label t:type="Label" for="description"/>
 	 		<input t:type="TextArea" style="width:70%;height:180px;" t:id="description" t:value="serviceRegistry.description" />
  		</t:parameter>
--->
-        <!-- http://docs.cksource.com/CKEditor_3.x/Developers_Guide/Output_Formatting --> 
  		<t:parameter name="description">
-	<div class="t-beaneditor-row collapsible" id="nav-section2">
-    	&#160;[Full Content] - click to toggle between collapse and expand<span></span>
-    </div>
+	<div class="t-beaneditor-row collapsible" id="nav-section2">&#160;[Full Content] - click to toggle between collapse and expand<span></span></div>
 	<div>
  	 		<label t:type="Label" for="description"/>
-			<t:textarea class="editor" id="editor1" name="description" t:id="description" t:mixins="pn/ckeditor" parameters="{'toolbar': 'Basic'}" value="serviceRegistry.description" style="width: 98%; height: 400px"/>
+ 	 		<!-- http://docs.cksource.com/CKEditor_3.x/Developers_Guide/Output_Formatting -->
+			<t:textarea class="editor" id="editor1" name="editor1" t:mixins="pn/ckeditor" parameters="{'toolbar': 'Basic'}" value="serviceRegistry.description" style="width: 640px; height: 400px"/>
 	</div>
+			<!-- http://tynamo.org/tapestry-ckeditor+guide -->
+<!--
+			<t:textarea t:mixins="tynamo/ckeditor" parameters="{'toolbar': 'Full', 'toolbarStartupExpanded': false}" class="editor" id="editor1" name="editor1" value="serviceRegistry.description" />
+-->
  		</t:parameter>
- <!-- TODO ... "is bound to null. This parameter is not allowed to be null" error :( -->
- <!--
+<!--
  		<t:parameter name="usedescription">
 	 		<label t:type="Label" for="usedescription"/>
  			<input t:type="TextField" style="width:50%;" t:id="usedescription" t:value="serviceRegistry.useDescription" />
- 			<span style="padding-left:2px; font-size:.5em;">* No redirection</span>
+ 			* use the content of the service instead of redirection based on the endpoint
  		</t:parameter>
- 		<t:parameter name="usehtml">
-	 		<label t:type="Label" for="usehtml"/>
- 			<input t:type="TextField" style="width:50%;" t:id="usehtml" t:value="serviceRegistry.useHtml" />
- 			<span style="padding-left:2px; font-size:.5em;">* Saving in HTML format in cheaper</span>
- 		</t:parameter>
- -->
+-->
  		<t:parameter name="lastAccessed">
  			Last client access: ${serviceRegistry.lastAccessed}
  		</t:parameter>
@@ -390,7 +346,7 @@ Not sure why do I need two of description in order for it to show up :( ???
    	</form>
    	<p/>
    	<form>
-		<input id='buttonCancel' type='button' value='Exit' onclick='location.href="/sci/serviceregistrystart";'/>
+		<input id='buttonCancel' type='button' value='Exit' onclick='javascript:location.href="/sci/serviceregistrystart";'/>
    	</form>
    	<p/>
 	<div style="display:${advancedUIDisplay};" lass="t-beaneditor-row collapsible" id="nav-section2">[Raw Content] - click to toggle between collapse and expand<span></span></div>

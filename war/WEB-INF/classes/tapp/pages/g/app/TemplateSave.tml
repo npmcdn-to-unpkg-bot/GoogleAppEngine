@@ -57,7 +57,6 @@
 			}
 // 			retVal = nl2br(retVal);									//backend is using urldecode(text)
 //			retVal = retVal.replace(/[^%<>!,"'\/:\.\w]+/g, " ");	//backend is using urldecode(text)
- 			//alert('safely replaced 22');
  		}
  		return retVal;
  	}
