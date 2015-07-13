@@ -254,9 +254,9 @@
  <body>
 	<sec:ifNotGranted roles="ROLE_ADMIN, ROLE_SCI_ADMIN">
 	</sec:ifNotGranted>
-   	<div style="margin:10px 5px 5px 2px;height:10%;display:${backupServiceDisplay};">
+   	<div style="margin:10px 5px 5px 2px;height:115px;display:${backupServiceDisplay};">
    		AppId [<span id="appid">${uniqueSID}</span>] Backup Service [<span id="host">${backupServiceHost}</span>] <a href="https://${backupServiceHost}/api/index.php/ServiceRegistry/${serviceRegistryService}-${uniqueSID}.xml">XML</a>&#160;<a href="https://${backupServiceHost}/api/index.php/ServiceRegistry/${serviceRegistryService}-${uniqueSID}.html">HTML</a>&#160;<a href="https://${backupServiceHost}/api/index.php/ServiceRegistry/${serviceRegistryService}-${uniqueSID}.txt">TXT</a>&#160;:
-	   	<iframe style="width:100%;height:10%;" id="url_iframe" name="url_iframe" src="https://${backupServiceHost}/api/index.php/ServiceRegistry/${serviceRegistryService}-${uniqueSID}.xml"></iframe>
+	   	<iframe style="width:100%;height:65px;" id="url_iframe" name="url_iframe" src="https://${backupServiceHost}/api/index.php/ServiceRegistry/${serviceRegistryService}-${uniqueSID}.xml"></iframe>
 		<label for="backup1_1">Normal Backup:&#160;</label>
 			<input class="bck" name="backup1_1" id="backup1_1" value="Backup Only" onclick="backupOnly();" type="button" style="width:18%;"/>&#160;&#160;
 		<label for="backup2_1">AJAX Backup:&#160;</label>

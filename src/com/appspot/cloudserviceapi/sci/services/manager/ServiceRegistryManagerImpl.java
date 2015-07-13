@@ -22,7 +22,7 @@ public class ServiceRegistryManagerImpl implements ServiceRegistryManager {
 
 	public void delete(Long id) {
 		ServiceRegistry myBean = getServiceRegistry(id);
-		getServiceRegistrys().remove(myBean);
+//		getServiceRegistrys().remove(myBean);	//redundant as getServiceRegistrys() already getting the latest one always!
 		(new ServiceRegistryDAO()).remove(id);
 	}
 

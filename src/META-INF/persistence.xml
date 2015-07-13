@@ -53,15 +53,15 @@ Caused by: org.hibernate.MappingException: Repeated column in mapping for entity
 			<property name="datanucleus.appengine.autoCreateDatastoreTxns" value="true"/>
 			-->
 
-			<!-- http://stackoverflow.com/questions/10082934/appengine-jpa-level-2-cache-fails-to-persist -->
-			<!-- avoid "java.lang.IllegalArgumentException: can't accept class org.datanucleus.identity.IdentityReference as a memcache entity" exception! :(
-			<property name="datanucleus.cache.level2" value="true"/>
-			<property name="datanucleus.cache.level2.type" value="javax.cache"/>
-			<property name="datanucleus.cache.level2.cacheName" value="jpacache"/>
-			-->
+<!-- http://www.datanucleus.org/products/accessplatform_3_1/jpa/cache.html#jcache -->
+datanucleus.cache.level2.type=javax.cache
+datanucleus.cache.level2.cacheName=gaeCache
+<!-- datanucleus.cache.level2.timeout={expiration time in millis - optional}
+-->
 			<!-- JPA2 http://bpossolo.blogspot.com/2013/02/upgrading-gae-app-from-jpa1-to-jpa2.html -->
-			<property name="datanucleus.cache.level2.type" value="none" />
-			<!-- JPA2 https://developers.google.com/appengine/docs/java/datastore/transactions -->
+<!-- 			<property name="datanucleus.cache.level2.type" value="none" />
+-->
+ 			<!-- JPA2 https://developers.google.com/appengine/docs/java/datastore/transactions -->
 			<!--
 				Avoid the following error:
 					Caused by: java.lang.IllegalArgumentException: cross-group transaction need to be explicitly specified, see TransactionOptions.Builder.withXGfound both Element {

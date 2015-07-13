@@ -194,9 +194,9 @@
  </script>
  </head>
  <body>
-	<div style="margin:10px 5px 5px 2px;height:20%;">
+	<div style="margin:10px 5px 5px 2px;height:115px;">
    		AppId [<span id="appid">${uniqueSID}</span>] What [<span id="uniqueWhat">${uniqueWhat}</span>] Category [<span id="uniqueCategory">${uniqueCategory}</span>] Backup Service [<span id="host">${backupServiceHost}</span>]&#160;<a href="https://${backupServiceHost}/api/index.php/Genius/${uniqueWhat}-${uniqueCategory}-${uniqueSID}.xml">XML</a>&#160;<a href="https://${backupServiceHost}/api/index.php/Genius/${uniqueWhat}-${uniqueCategory}-${uniqueSID}.html">HTML</a>&#160;<a href="https://${backupServiceHost}/api/index.php/Genius/${uniqueWhat}-${uniqueCategory}-${uniqueSID}.txt">TXT</a>&#160;:
-	   	<iframe style="width:100%;height:20%;" id="url_iframe" name="url_iframe" src="https://${backupServiceHost}/api/index.php/Genius/${uniqueWhat}-${uniqueCategory}-${uniqueSID}.xml"></iframe>
+	   	<iframe style="width:100%;height:65px;" id="url_iframe" name="url_iframe" src="https://${backupServiceHost}/api/index.php/Genius/${uniqueWhat}-${uniqueCategory}-${uniqueSID}.xml"></iframe>
 		<label for="backup1_1">Normal Backup:&#160;</label>
 			<input class="bck" type="button" name="backup1_1" id="backup1_1" value="Backup" onclick="keepHtml = false; backupOnly();" style="width:15%;"/>&#160;&#160;
 			<input class="bck" type="button" name="backup1_2" id="backup1_2" value="Backup+Tags" onclick="keepHtml = true; backupOnly();" style="width:15%;" />&#160;&#160;
