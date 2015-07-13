@@ -76,7 +76,7 @@ public final class Compass {
 					.setSetting(
 							CompassEnvironment.ExecutorManager.EXECUTOR_MANAGER_TYPE,
 							"disabled")
-					.setSetting("compass.engine.store.gae.memcacheRegexPatterns", "*,")	//thanks to http://forum.compass-project.org/thread.jspa?messageID=298750&#298750
+					.setSetting("compass.engine.store.gae.memcacheRegexPatterns", "\\*")	//thanks to http://forum.compass-project.org/thread.jspa?messageID=298750&#298750
 					.
 					// === package at any levels (does not need to be the last
 					// level/leaf)

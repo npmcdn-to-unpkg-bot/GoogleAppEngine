@@ -1,12 +1,12 @@
 {
   "extends" : "thirdParty.api",
   "abstract" : false,
-  "root" : "https://cloudaware.appspot.com/_ah/api",
+  "root" : "https://cloudiservice.appspot.com/_ah/api",
   "name" : "userendpoint",
   "version" : "v1",
   "defaultVersion" : false,
   "adapter" : {
-    "bns" : "https://cloudaware.appspot.com/_ah/spi",
+    "bns" : "https://cloudiservice.appspot.com/_ah/spi",
     "deadline" : 65.0,
     "type" : "lily"
   },
@@ -24,27 +24,6 @@
     "maxAge" : 0
   },
   "methods" : {
-    "userendpoint.userEndpoint.getUser" : {
-      "path" : "user/{id}",
-      "httpMethod" : "GET",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "app.model.UserEndpoint.getUser",
-      "request" : {
-        "parameters" : {
-          "id" : {
-            "type" : "int64",
-            "required" : true
-          }
-        },
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
     "userendpoint.userEndpoint.removeUser" : {
       "path" : "user/{id}",
       "httpMethod" : "DELETE",
@@ -91,6 +70,22 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
+    "userendpoint.userEndpoint.updateUser" : {
+      "path" : "user",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "app.model.UserEndpoint.updateUser",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
     "userendpoint.userEndpoint.insertUser" : {
       "path" : "user",
       "httpMethod" : "POST",
@@ -107,17 +102,22 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
-    "userendpoint.userEndpoint.updateUser" : {
-      "path" : "user",
-      "httpMethod" : "PUT",
+    "userendpoint.userEndpoint.getUser" : {
+      "path" : "user/{id}",
+      "httpMethod" : "GET",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "app.model.UserEndpoint.updateUser",
+      "rosyMethod" : "app.model.UserEndpoint.getUser",
       "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
@@ -180,11 +180,11 @@
           "parent" : {
             "$ref" : "Key"
           },
-          "namespace" : {
-            "type" : "string"
-          },
           "complete" : {
             "type" : "boolean"
+          },
+          "namespace" : {
+            "type" : "string"
           }
         }
       },
@@ -252,12 +252,12 @@
           "url" : {
             "type" : "string"
           },
+          "title" : {
+            "type" : "string"
+          },
           "modified" : {
             "type" : "string",
             "format" : "date-time"
-          },
-          "title" : {
-            "type" : "string"
           }
         }
       },
@@ -460,11 +460,6 @@
       }
     },
     "methods" : {
-      "app.model.UserEndpoint.getUser" : {
-        "response" : {
-          "$ref" : "User"
-        }
-      },
       "app.model.UserEndpoint.removeUser" : {
         "response" : {
           "$ref" : "User"
@@ -475,6 +470,14 @@
           "$ref" : "CollectionResponse_User"
         }
       },
+      "app.model.UserEndpoint.updateUser" : {
+        "request" : {
+          "$ref" : "User"
+        },
+        "response" : {
+          "$ref" : "User"
+        }
+      },
       "app.model.UserEndpoint.insertUser" : {
         "request" : {
           "$ref" : "User"
@@ -483,10 +486,7 @@
           "$ref" : "User"
         }
       },
-      "app.model.UserEndpoint.updateUser" : {
-        "request" : {
-          "$ref" : "User"
-        },
+      "app.model.UserEndpoint.getUser" : {
         "response" : {
           "$ref" : "User"
         }
