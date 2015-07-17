@@ -24,7 +24,7 @@ import com.appspot.cloudserviceapi.sgc.Protect;
 public class ServiceRegistryDAO {
 
 	private boolean purgeMode = false; // the id type has to be String under purge mode
-//	private static List<ServiceRegistry> clonedList;	//used by UI, acts as cache as CacheController is not working
+	private static List<ServiceRegistry> clonedList;	//used by UI, acts as cache as CacheController is not working
 	private static final String ALL_SR_LIST = "AllServiceRegistryList";
 	
 	public ServiceRegistry findServiceRegistryByService(String service) {
@@ -146,7 +146,7 @@ public class ServiceRegistryDAO {
 	public List getCloneList() {
 		//List<ServiceRegistry> clonedList = (List<ServiceRegistry>) CacheController.get(ALL_SR_LIST);
 		List<ServiceRegistry> clonedList = null;
-//		if(clonedList == null || clonedList.size() == 0) {	//cut time from 1 ms to 4 micro s for every SR page rendered (in grid) or saved!
+		if(clonedList == null || clonedList.size() == 0) {	//cut time from 1 ms to 4 micro s for every SR page rendered (in grid) or saved!
 			PersistenceManager pm = Persistence.getManager();
 			List<ServiceRegistry> results = null;
 			javax.jdo.Query query = null;
@@ -168,18 +168,18 @@ public class ServiceRegistryDAO {
 			}
 			//CacheController.put(ALL_SR_LIST, clonedList);
 			pm.close();
-//		}
+		}
 		return clonedList;
 	}
 
 	public static void clearCache() {
 		//KISS approach
 		//List<ServiceRegistry> clonedList = (List<ServiceRegistry>) CacheController.get(ALL_SR_LIST);
-//		if(clonedList != null) {
-//			clonedList = null;
-//			//CacheController.put(ALL_SR_LIST, clonedList);
-//		}
-//		System.out.println("ServiceRegistryDAO.java: clearCache() cache cleared!!!");
+		if(clonedList != null) {
+			clonedList = null;
+			//CacheController.put(ALL_SR_LIST, clonedList);
+		}
+		System.out.println("ServiceRegistryDAO.java: clearCache() cache cleared!!!");
 	}
 
 	public void save(ServiceRegistry wo) {
@@ -193,23 +193,23 @@ public class ServiceRegistryDAO {
 			pm.makePersistent(wo);
 			//List<ServiceRegistry> clonedList = (List<ServiceRegistry>) CacheController.get(ALL_SR_LIST);
 			//update the cache too
-//			boolean found = false;
-//			if(clonedList != null) {
-//				Iterator<ServiceRegistry> itr = clonedList.iterator();
-//				ServiceRegistry sr = null;
-//				while(itr.hasNext()) {
-//					sr = (ServiceRegistry)itr.next();
-//					if(sr.getId().equals(wo.getId())) {
-//						itr.remove();
-//						clonedList.add(wo);
-//						found = true;
-//						break;
-//					}
-//				}
-//				if(!found) {
-//					clonedList.add(wo);
-//				}
-//			}
+			boolean found = false;
+			if(clonedList != null) {
+				Iterator<ServiceRegistry> itr = clonedList.iterator();
+				ServiceRegistry sr = null;
+				while(itr.hasNext()) {
+					sr = (ServiceRegistry)itr.next();
+					if(sr.getId().equals(wo.getId())) {
+						itr.remove();
+						clonedList.add(wo);
+						found = true;
+						break;
+					}
+				}
+				if(!found) {
+					clonedList.add(wo);
+				}
+			}
 			//CacheController.put(ALL_SR_LIST, clonedList);
 		} finally {
 			pm.close();
@@ -237,16 +237,16 @@ public class ServiceRegistryDAO {
 					pm.deletePersistent(e);
 					//List<ServiceRegistry> clonedList = (List<ServiceRegistry>) CacheController.get(ALL_SR_LIST);
 					//=== remove the cache too
-//					Iterator<ServiceRegistry> itr = clonedList.iterator();
-//					ServiceRegistry sr = null;
-//					while(itr.hasNext()) {
-//						sr = (ServiceRegistry)itr.next();
-//						System.out.println("sr [" + sr.getService() + "] targetService [" + targetService + "]");
-//						if(sr.getService() != null && sr.getService().equals(targetService)) {
-//							clonedList.remove(sr);
-//							break;
-//						}
-//					}
+					Iterator<ServiceRegistry> itr = clonedList.iterator();
+					ServiceRegistry sr = null;
+					while(itr.hasNext()) {
+						sr = (ServiceRegistry)itr.next();
+						System.out.println("sr [" + sr.getService() + "] targetService [" + targetService + "]");
+						if(sr.getService() != null && sr.getService().equals(targetService)) {
+							clonedList.remove(sr);
+							break;
+						}
+					}
 					//CacheController.put(ALL_SR_LIST, clonedList);
 					System.out.println("ServiceRegistry " + id + " removed ");
 				}
