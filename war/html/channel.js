@@ -183,6 +183,9 @@ function loadMovie(username) {
                         right: this.next,
                         left: this.prev
                     });
+                    this.bind('thumbnail', function(e) {
+                        e.thumbTarget.alt = 'My SEO optimized alt tag';
+                    });
                 });
                 stat = true;
                 $("#processStatus").hide();
@@ -290,7 +293,9 @@ function loadMovieAll(username, log) {
                         right: this.next,
                         left: this.prev
                     });
-
+                    this.bind('thumbnail', function(e) {
+                        e.thumbTarget.alt = 'My SEO optimized alt tag';
+                    });
                     //=== http://support.galleria.io/discussions/questions/1502-stop-autoplay-on-any-kind-of-interaction
                     var stateChange = function(e) {
                         if ( e.data == 1 ) {
@@ -503,7 +508,9 @@ function loadMovieShuffle(username, log) {
                         right: this.next,
                         left: this.prev
                     });
-
+                    this.bind('thumbnail', function(e) {
+                        e.thumbTarget.alt = 'My SEO optimized alt tag';
+                    });
                     //=== http://support.galleria.io/discussions/questions/1502-stop-autoplay-on-any-kind-of-interaction
                     var stateChange = function(e) {
                         if ( e.data == 1 ) {
@@ -831,6 +838,9 @@ function handleChannelType(type, username) {
                 } else {
                     iframe = false;
                 }
+            });
+            this.bind('thumbnail', function(e) {
+                e.thumbTarget.alt = 'My SEO optimized alt tag';
             });
         });
 
