@@ -84,8 +84,7 @@ public class ServiceRegistryUtil {
 			u.setLastAccessed(new Date());
 			System.out.println(u.getService() + " hit " + u.getHit());
 			r.save(u);
-			//TODO it could be better I know, but just clear the cache for now
-			ServiceRegistryDAO.clearCache();
+			r.updateCache(u);
 		} else {
 			System.out.println("stealth mode, tracking disabled");
 		}

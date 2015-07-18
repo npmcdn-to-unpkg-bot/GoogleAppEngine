@@ -55,6 +55,25 @@
     <!--<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/roundabout/2.4.2/jquery.roundabout.js'></script>-->
     <!--<script type="text/javascript" src='//cdn.jsdelivr.net/jquery.easing/1.3/jquery.easing.1.3.js'></script>-->
     <!-- end of jQuery Roundabout dependencies -->
+    <!--Script for Horizontal Scrolling-->
+    <script type="text/javascript" src="../js/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="../js/jquery.easing.1.3.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('a.scroll').bind('click', function (event) {
+                var $anchor = $(this);
+                $('html, body').stop().animate({
+                    scrollLeft: $($anchor.attr('href')).offset().left
+                }, 500, 'easeInOutExpo');
+                /* Uncomment this for another scrolling effect */
+                /*
+                 $('html, body').stop().animate({
+                 scrollLeft: $($anchor.attr('href')).offset().left
+                 }, 1000);*/
+                event.preventDefault();
+            });
+        });
+    </script>
     <script type="text/javascript" src='../js/detectmob.js'></script>
 
     <script>
@@ -271,25 +290,6 @@
     </div>
 </div>
 <!--END: Forget Password Section-->
-<!--Script for Horizontal Scrolling-->
-<!--<script type="text/javascript" src="../js/jquery-1.9.1.js"></script>-->
-<!--<script type="text/javascript" src="../js/jquery.easing.1.3.js"></script>-->
-<script type="text/javascript">
-    $(function () {
-        $('a.scroll').bind('click', function (event) {
-            var $anchor = $(this);
-            $('html, body').stop().animate({
-                scrollLeft: $($anchor.attr('href')).offset().left
-            }, 500, 'easeInOutExpo');
-            /* Uncomment this for another scrolling effect */
-            /*
-             $('html, body').stop().animate({
-             scrollLeft: $($anchor.attr('href')).offset().left
-             }, 1000);*/
-            event.preventDefault();
-        });
-    });
-</script>
 <!--Branding script-->
 <script type="text/javascript" src="../js/prefs.js"></script>
 <script>

@@ -145,8 +145,7 @@ public class ServiceRegistryDAO {
 	//TBD - this could be the performance bottleneck hotspot! the size should be saved as a variable in a row/property instead
 	public List getCloneList() {
 		//List<ServiceRegistry> clonedList = (List<ServiceRegistry>) CacheController.get(ALL_SR_LIST);
-		List<ServiceRegistry> clonedList = null;
-		if(clonedList == null || clonedList.size() == 0) {	//cut time from 1 ms to 4 micro s for every SR page rendered (in grid) or saved!
+		if(clonedList == null) {	//cut time from 1 ms to 4 micro s for every SR page rendered (in grid) or saved!
 			PersistenceManager pm = Persistence.getManager();
 			List<ServiceRegistry> results = null;
 			javax.jdo.Query query = null;
@@ -172,8 +171,9 @@ public class ServiceRegistryDAO {
 		return clonedList;
 	}
 
+	/** Warning: This will clear all entries in the cache and will cause a query for all the entries again from the datastore 
+	 * and it is EXPENSIVE (could consume around 10% of the datastore read!!!!) */
 	public static void clearCache() {
-		//KISS approach
 		//List<ServiceRegistry> clonedList = (List<ServiceRegistry>) CacheController.get(ALL_SR_LIST);
 		if(clonedList != null) {
 			clonedList = null;
@@ -193,26 +193,25 @@ public class ServiceRegistryDAO {
 			pm.makePersistent(wo);
 			//List<ServiceRegistry> clonedList = (List<ServiceRegistry>) CacheController.get(ALL_SR_LIST);
 			//update the cache too
-			boolean found = false;
-			if(clonedList != null) {
-				Iterator<ServiceRegistry> itr = clonedList.iterator();
-				ServiceRegistry sr = null;
-				while(itr.hasNext()) {
-					sr = (ServiceRegistry)itr.next();
-					if(sr.getId().equals(wo.getId())) {
-						itr.remove();
-						clonedList.add(wo);
-						found = true;
-						break;
-					}
-				}
-				if(!found) {
-					clonedList.add(wo);
-				}
-			}
+			updateCache(wo);
 			//CacheController.put(ALL_SR_LIST, clonedList);
 		} finally {
 			pm.close();
+		}
+	}
+
+	public void updateCache(ServiceRegistry wo) {
+		List<ServiceRegistry> newList = new ArrayList<ServiceRegistry>();
+		if(clonedList != null) {
+			ServiceRegistry sr = null;
+			for(int i = 0; i < clonedList.size(); i++) {
+				sr = clonedList.get(i);
+				if(!sr.getId().equals(wo.getId())) {
+					newList.add(sr);
+				}
+			}
+			newList.add(wo);
+			clonedList = newList;
 		}
 	}
 
@@ -230,23 +229,14 @@ public class ServiceRegistryDAO {
 			List<ServiceRegistry> results = (List<ServiceRegistry>) query.execute(primaryKey);
 			long id = -1L;
 			if (results.iterator().hasNext()) {
-				String targetService = null;
 				for (ServiceRegistry e : results) {
 					id = e.getId();
-					targetService = e.getService();
+					ServiceRegistry myBean = new ServiceRegistry();
+					myBean.setService(e.getService());
 					pm.deletePersistent(e);
 					//List<ServiceRegistry> clonedList = (List<ServiceRegistry>) CacheController.get(ALL_SR_LIST);
 					//=== remove the cache too
-					Iterator<ServiceRegistry> itr = clonedList.iterator();
-					ServiceRegistry sr = null;
-					while(itr.hasNext()) {
-						sr = (ServiceRegistry)itr.next();
-						System.out.println("sr [" + sr.getService() + "] targetService [" + targetService + "]");
-						if(sr.getService() != null && sr.getService().equals(targetService)) {
-							clonedList.remove(sr);
-							break;
-						}
-					}
+					removeCache(myBean);
 					//CacheController.put(ALL_SR_LIST, clonedList);
 					System.out.println("ServiceRegistry " + id + " removed ");
 				}
@@ -259,6 +249,21 @@ public class ServiceRegistryDAO {
 		}
 
 		return retVal;
+	}
+
+	private void removeCache(ServiceRegistry e) {
+		List<ServiceRegistry> newList = new ArrayList<ServiceRegistry>();
+		ServiceRegistry sr = null;
+		if(clonedList != null) {
+			for(int i = 0; i < clonedList.size(); i++) {
+				sr = clonedList.get(i);
+				//System.out.println("sr [" + sr.getService() + "] targetService [" + targetService + "]");
+				if(sr.getService() != null && !sr.getService().equals(e.getService())) {
+					newList.add(sr);
+				}
+			}
+			clonedList = newList;
+		}
 	}
 
 	/**

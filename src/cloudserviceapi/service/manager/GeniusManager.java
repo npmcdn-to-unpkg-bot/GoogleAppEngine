@@ -17,6 +17,8 @@ public interface GeniusManager {
         
         public void save(Geniu myBean) throws Exception;
         
-        public Geniu getGeniu(Long id);       
+        public Geniu getGeniu(Long id);
+
+		public void updateCache(Geniu myBean);
 
 }

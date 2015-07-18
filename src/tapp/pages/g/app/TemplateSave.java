@@ -1,6 +1,8 @@
 package tapp.pages.g.app;
 
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 
 import javax.jdo.PersistenceManager;
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +15,7 @@ import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.services.RequestGlobals;
 
 import cloudserviceapi.service.manager.GeniusManager;
+import cloudserviceapi.service.manager.GeniusManagerImpl;
 
 import com.appspot.cloudserviceapi.common.BackupService;
 import com.appspot.cloudserviceapi.common.SettingsDBUtils;
@@ -84,11 +87,11 @@ public class TemplateSave {
 		Object retVal = null;
 
 		try {
-			String what = myBean.getWhat();
-			Geniu g = beanManager.getDao().findByWhat(what);
-			if (g != null) {
-				id = g.getId();
-			}
+//			String what = myBean.getWhat();
+//			Geniu g = beanManager.getDao().findByWhat(what);
+//			if (g != null) {
+//				id = g.getId();
+//			}
 			Long bid = myBean.getId();
 			if (bid == null) {
 				bid = Datastore.getId(myBean, "template");
@@ -107,6 +110,7 @@ public class TemplateSave {
 				PersistenceManager pm = Persistence.getManager();
 				try {
 					pm.makePersistent(myBean);
+					beanManager.updateCache(myBean);
 				} catch(Exception e) {
 					throw e;
 				} finally {
