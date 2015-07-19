@@ -133,7 +133,7 @@
 
         //        }
     </script>
-    <script>var require = { urlArgs: 'a009' };</script>
+    <script>var require = { urlArgs: 'a010' };</script>
     <script type="text/javascript" src="../js/require.js" data-main="../js/main-movie"></script>
 </head>
 <body ng-controller="MovieController" class="leap-interactive" leap-disable-tap="true" leap-disable-hover="true">
@@ -329,7 +329,7 @@
         <div class="row">
             <div class="span2" ng-bind-template="{{header3}}">...</div>
             <div class="span8">
-                <input type="text" ng-enter="createItem()" required class="input" ng-model="unsafeTitle" style="width:80%;"
+                <input type="text" ng-enter="createItem()" required class="input" ng-model="item.title" style="width:80%;"
                        placeholder="Enter any easy to remember title or unique id.">
             </div>
         </div>
@@ -427,7 +427,7 @@
         <div class="row">
             <div class="span2" ng-bind-template="{{header3}}">...</div>
             <div class="span8">
-                <input type="text" ng-enter="updateItem()" class="input" ng-model="unsafeTitle" style="width:80%;">
+                <input type="text" ng-enter="updateItem()" class="input" ng-model="item.title" style="width:80%;">
             </div>
         </div>
         <!--<script>-->

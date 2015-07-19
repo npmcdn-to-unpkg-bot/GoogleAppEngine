@@ -1,6 +1,5 @@
 package app.controller;
 
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -19,6 +18,8 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.lang3.SerializationUtils;
 import org.joda.time.DateTime;
 
+import tapp.model.ServiceRegistry;
+
 import app.common.AppUtils;
 import app.common.Constants;
 import app.common.DatastoreUtils;
@@ -27,7 +28,6 @@ import app.model.Calendar;
 import app.model.Movie;
 import app.model.MovieEndpoint;
 import app.model.User;
-import app.model.UserEndpoint;
 
 import com.appspot.cloudserviceapi.common.JsonUtil;
 import com.appspot.cloudserviceapi.data.EMF;
@@ -76,6 +76,7 @@ import com.google.appengine.api.datastore.Text;
  *
  */
 public class MovieHandler implements CrudServiceCallback, ServletContextListener {
+	private static List<Movie> clonedList;	//used by UI, acts as cache
 	private static MovieEndpoint dao;
 	private String oid;	//the object id
 	private String uid;	//the parent id
@@ -87,7 +88,7 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
 	private long maxPerPage = 6;	//this needs to be in sy with the front end UI!
 	private long pageNumber = 1;
 	//KISS cache for all users
-	private HashMap allMoviesCache = new HashMap();
+//	private HashMap allMoviesCache = new HashMap();
 
 	static {
 		dao = new MovieEndpoint();
@@ -250,10 +251,10 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
 		uh.doUpdateItem(item);
 	}
 	
-	private void saveParent1(User item, Movie movie) throws Exception {
-		UserHandler uh = new UserHandler();
-		uh.doUpdateItem(item, movie);
-	}
+//	private void saveParent1(User item, Movie movie) throws Exception {
+//		UserHandler uh = new UserHandler();
+//		uh.doUpdateItem(item, movie);
+//	}
 
 	public Object doCreateItem(Object item) throws Exception {
 		long id = -1;
@@ -279,12 +280,12 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
 				cal.setId(id);	//set the "surrogate key" - important as everything else is depending on this key not the real key.id!
 				System.out.println(this.getClass().getName() + ":doCreateItem: object inserted with id '" + id + "' " + cal.getTitle() + " " + cal.getURL());
 			}
+			
+			//=== update the cache
+			CacheManager.saveUserCache(u, u.getMovie(), cal);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
-		//=== clear the cache!
-		CacheManager.clearUserCacheById(uid, allMoviesCache);
 
 		return cal;
 	}
@@ -314,14 +315,13 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
 	 * #perf top 2 (10-17-2013) sorted by desc avg time = 1110 ms
 	 */
 	public String doGetItems() throws Exception {
-		if(allMoviesCache != null && allMoviesCache.get(CacheManager.getUserCacheKey(uid, filter, pageNumber)) != null) {
-			System.out.println("MovieHandler: doGetItems() cached hit: with key [" + uid + filter + pageNumber + "]");
-			return (String)allMoviesCache.get(CacheManager.getUserCacheKey(uid, filter, pageNumber));
-		} else {
-			System.out.println("MovieHandler: doGetItems() cached missed: with key [" + uid + filter + pageNumber + "] <==================== !!!");
-		}
+//		if(allMoviesCache != null && allMoviesCache.get(CacheManager.getUserCacheKey(uid, filter, pageNumber)) != null) {
+//			System.out.println("MovieHandler: doGetItems() cached hit: with key [" + uid + filter + pageNumber + "]");
+//			return (String)allMoviesCache.get(CacheManager.getUserCacheKey(uid, filter, pageNumber));
+//		} else {
+//			System.out.println("MovieHandler: doGetItems() cached missed: with key [" + uid + filter + pageNumber + "] <==================== !!!");
+//		}
 		
-		CollectionResponse<Movie> cr = null;
 		Collection<Movie> l;
 		String retVal = "";
 		long totalItem = 0;
@@ -349,6 +349,12 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
 				//end TBD JPA 2
 				//=== begin supporting pagination
 				//List tl = u.getMovie();	//.fetch(1,25);
+				User cachedUser = CacheManager.getUserCache(u);
+				if(cachedUser != null) {
+					u = cachedUser;
+				} else {
+					CacheManager.addUserCache(u);
+				}
 				if(u.getMovie() != null) {
 					totalItem = u.getMovie().size();
 				} else {
@@ -361,6 +367,7 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
 				} else {
 					l = tl;	//no need to filter for CRUD
 				}
+				
 				Iterator<Movie> it = l != null?l.iterator():null;
 				Movie m = null;
 				if(it != null) {
@@ -397,7 +404,7 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
 		}
 
 		//=== update the cache for subsequent calls
-		allMoviesCache.put(CacheManager.getUserCacheKey(uid, filter, pageNumber), retVal);
+//		allMoviesCache.put(CacheManager.getUserCacheKey(uid, filter, pageNumber), retVal);
 
 		return retVal;
 	}
@@ -457,7 +464,6 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
 	 * Get all items.
 	 */
 	public String doGetAllItems() throws Exception {
-		CollectionResponse<Movie> cr = null;
 		Collection<Movie> l;
 		String retVal = "";
 		
@@ -791,6 +797,8 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
 		m.setOid(newCal.getOid());
         tx.begin();
 		mgr.persist(m);
+		//=== update the cache
+		CacheManager.saveUserCache(u, u.getMovie(), m);
         tx.commit();
         
 		Long id = m.getKey().getId();
@@ -802,7 +810,7 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
 		}
 		
 		//=== clear the cache!
-		CacheManager.clearUserCacheById(uid, allMoviesCache);
+//		CacheManager.clearUserCacheById(uid, allMoviesCache);
 
 		return m;
 	}
@@ -854,7 +862,9 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
 		}
 		
 		//=== clear the cache!
-		CacheManager.clearUserCacheById(uid, allMoviesCache);
+//		CacheManager.clearUserCacheById(uid, allMoviesCache);
+		//=== update the cache
+		CacheManager.saveUserCache(u, u.getMovie(), m);
 
 		return m;
 	}
@@ -879,6 +889,8 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
 		retVal.setId(id);	//set the "surrogate key" - important as everything else is depending on this key not the real key.id!
         tx.begin();
 		mgr.remove(mov);
+		//=== delete the cache
+		CacheManager.deleteUserCache(u, mov);
         tx.commit();
 //        CommonHandler.doDeleteItems(uid, new CalendarHandler(), mov);
         
@@ -887,7 +899,7 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
 		}
 
 		//=== clear the cache!
-		CacheManager.clearUserCacheById(uid, allMoviesCache);
+//		CacheManager.clearUserCacheById(uid, allMoviesCache);
 
 		return retVal;			
 	}
@@ -923,13 +935,12 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
 
 	public String handleCalendar() throws Exception {
 		CollectionResponse<Movie> cr = null;
-		Collection<Movie> l;
 		String retVal = "";
 		
 		try {
 			User u = getParent();
 			if(u != null) {
-				l = u.getMovie();
+				Collection<Movie> l = u.getMovie();
 				Iterator<Movie> it = l.iterator();
 				Movie cal = null;
 				while(it.hasNext()) {

@@ -63,7 +63,7 @@ function MovieController($scope, $filter, $http, $rootScope,
 //    );
 
     //AngularJS 1.2+ stuff
-    $scope.unsafeTitle = "";
+    //$scope.unsafeTitle = "";
     // app specific init
     var sortingOrder = 'name';
     //$scope.title = "Custom Channels Profile";
@@ -971,7 +971,7 @@ function MovieController($scope, $filter, $http, $rootScope,
         $scope.item = {};
 
         //AngularJS 1.2+ stuff
-        $scope.unsafeTitle = "";
+        //$scope.unsafeTitle = "";
     };
 
     $scope.createItem = function () {
@@ -986,7 +986,7 @@ function MovieController($scope, $filter, $http, $rootScope,
         //alert('createItem  search_results [' + $scope.item.search_results + ']');
         if (!offline) {
             //AngularJS 1.2+ stuff
-            $scope.item.title = $sce.trustAsHtml($scope.unsafeTitle);
+            //$scope.item.title = $sce.trustAsHtml($scope.unsafeTitle);
             //$scope.item.description = $sce.trustAsHtml($scope.unsafeDescription);
 
             $scope.backendReady = false;
@@ -1127,7 +1127,7 @@ function MovieController($scope, $filter, $http, $rootScope,
 */
 
         //AngularJS 1.2+ stuff
-        $scope.unsafeTitle = $scope.item.title;
+//        $scope.unsafeTitle = $scope.item.title;
 
     };
 
