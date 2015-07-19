@@ -1,13 +1,13 @@
 {
   "extends" : "thirdParty.api",
   "abstract" : false,
-  "root" : "https://2-share.appspot.com/_ah/api",
+  "root" : "https://cloudiservice.appspot.com/_ah/api",
   "name" : "serviceregistryuserendpoint",
   "version" : "v1",
   "defaultVersion" : false,
   "adapter" : {
-    "bns" : "https://2-share.appspot.com/_ah/spi",
-    "deadline" : 65.0,
+    "bns" : "https://cloudiservice.appspot.com/_ah/spi",
+    "deadline" : 10.0,
     "type" : "lily"
   },
   "auth" : {
@@ -27,7 +27,6 @@
     "serviceregistryuserendpoint.serviceRegistryUserEndpoint.insertServiceRegistryUser" : {
       "path" : "serviceregistryuser",
       "httpMethod" : "POST",
-      "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
@@ -43,7 +42,6 @@
     "serviceregistryuserendpoint.serviceRegistryUserEndpoint.getServiceRegistryUser" : {
       "path" : "serviceregistryuser/{id}",
       "httpMethod" : "GET",
-      "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
@@ -64,7 +62,6 @@
     "serviceregistryuserendpoint.serviceRegistryUserEndpoint.removeServiceRegistryUser" : {
       "path" : "serviceregistryuser/{id}",
       "httpMethod" : "DELETE",
-      "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
@@ -85,7 +82,6 @@
     "serviceregistryuserendpoint.serviceRegistryUserEndpoint.updateServiceRegistryUser" : {
       "path" : "serviceregistryuser",
       "httpMethod" : "PUT",
-      "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
@@ -101,7 +97,6 @@
     "serviceregistryuserendpoint.serviceRegistryUserEndpoint.listServiceRegistryUser" : {
       "path" : "serviceregistryuser",
       "httpMethod" : "GET",
-      "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],

@@ -1,13 +1,13 @@
 {
   "extends" : "thirdParty.api",
   "abstract" : false,
-  "root" : "https://2-share.appspot.com/_ah/api",
+  "root" : "https://cloudiservice.appspot.com/_ah/api",
   "name" : "movieendpoint",
   "version" : "v1",
   "defaultVersion" : false,
   "adapter" : {
-    "bns" : "https://2-share.appspot.com/_ah/spi",
-    "deadline" : 65.0,
+    "bns" : "https://cloudiservice.appspot.com/_ah/spi",
+    "deadline" : 10.0,
     "type" : "lily"
   },
   "auth" : {
@@ -27,7 +27,6 @@
     "movieendpoint.movieEndpoint.removeMovie" : {
       "path" : "movie/{id}",
       "httpMethod" : "DELETE",
-      "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
@@ -48,7 +47,6 @@
     "movieendpoint.movieEndpoint.updateMovie" : {
       "path" : "movie",
       "httpMethod" : "PUT",
-      "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
@@ -64,7 +62,6 @@
     "movieendpoint.movieEndpoint.insertMovie" : {
       "path" : "movie",
       "httpMethod" : "POST",
-      "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
@@ -80,7 +77,6 @@
     "movieendpoint.movieEndpoint.listMovie" : {
       "path" : "movie",
       "httpMethod" : "GET",
-      "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
@@ -105,7 +101,6 @@
     "movieendpoint.movieEndpoint.getMovie" : {
       "path" : "movie/{id}",
       "httpMethod" : "GET",
-      "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
@@ -190,12 +185,12 @@
           "url" : {
             "type" : "string"
           },
+          "title" : {
+            "type" : "string"
+          },
           "modified" : {
             "type" : "string",
             "format" : "date-time"
-          },
-          "title" : {
-            "type" : "string"
           }
         }
       },

@@ -1,3 +1,4 @@
+/** common JavaScript file used by 2share app */
 requirejs.config({
     baseUrl: '/js',
 
@@ -24,6 +25,19 @@ requirejs([
                 this.apiManager = new ApiManager();
             }
         };
+
+        //=== begin: disable Chrome pull down to refresh feature http://stackoverflow.com/questions/29008194/disabling-androids-chrome-pull-down-to-refresh-feature
+        var target = window; // this can be any scrollable element
+        var last_y = 0;
+        target.addEventListener('touchmove', function(e){
+            var scrolly = target.pageYOffset || target.scrollTop || 0;
+            var direction = e.changedTouches[0].pageY > last_y ? 1 : -1;
+            if(direction>0 && scrolly===0){
+                e.preventDefault();
+            }
+            last_y = e.changedTouches[0].pageY;
+        });
+        //=== end: disable Chrome pull down to refresh feature http://stackoverflow.com/questions/29008194/disabling-androids-chrome-pull-down-to-refresh-feature
 
         return App;
     }

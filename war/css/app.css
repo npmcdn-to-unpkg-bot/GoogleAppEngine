@@ -6,6 +6,7 @@
 
 body {
     overflow-x: hidden;
+    /*overflow-y: hidden; /!* disable Chrome pull down refresh to save cost! *!/*/
     padding-right: 6px;
     padding-left: 5px;
     /*background-color: #dde5ec;*/
