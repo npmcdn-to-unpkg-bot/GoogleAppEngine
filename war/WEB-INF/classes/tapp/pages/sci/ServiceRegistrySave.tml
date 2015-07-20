@@ -76,7 +76,7 @@
 		//alert(localStorage.host);
 		post_to_url("https://"+e.host+"/api/router-sr.php", {
 			'appId': e.appid, 'service': e.service, 'endpoint': e.endpoint,
-			'description': e.description
+			'description': e.description, 'summary': e.summary
 		});
 	}
 	function strip(html) {
@@ -136,7 +136,8 @@
 		    endpoint: jQuery('#endpoint').val(),
 //http://docs.cksource.com/FCKeditor_2.x/Developers_Guide/JavaScript_API#Retrieving_an_Editor_Instance
 		    description: handleText(jQuery('textarea.editor').val()),	//TBD - does not work; always get the previous val not the current/changed value
-		    updated: jQuery('#lastUpdated').val()
+		    updated: jQuery('#lastUpdated').val(),
+		    summary: jQuery('#summary').val()
 	    }); //start the worker
 	}
 	function xhrBackup() {
@@ -254,7 +255,10 @@
  <body>
 	<sec:ifNotGranted roles="ROLE_ADMIN, ROLE_SCI_ADMIN">
 	</sec:ifNotGranted>
+   	<div style="margin:10px 5px 5px 2px;height:115px;display:inline;">
+   	<!--
    	<div style="margin:10px 5px 5px 2px;height:115px;display:${backupServiceDisplay};">
+   	-->
    		AppId [<span id="appid">${uniqueSID}</span>] Backup Service [<span id="host">${backupServiceHost}</span>] <a href="https://${backupServiceHost}/api/index.php/ServiceRegistry/${serviceRegistryService}-${uniqueSID}.xml">XML</a>&#160;<a href="https://${backupServiceHost}/api/index.php/ServiceRegistry/${serviceRegistryService}-${uniqueSID}.html">HTML</a>&#160;<a href="https://${backupServiceHost}/api/index.php/ServiceRegistry/${serviceRegistryService}-${uniqueSID}.txt">TXT</a>&#160;:
 	   	<iframe style="width:100%;height:65px;" id="url_iframe" name="url_iframe" src="https://${backupServiceHost}/api/index.php/ServiceRegistry/${serviceRegistryService}-${uniqueSID}.xml"></iframe>
 		<label for="backup1_1">Normal Backup:&#160;</label>
