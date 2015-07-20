@@ -28,20 +28,25 @@ public class ServiceRegistryDAO {
 	private static final String ALL_SR_LIST = "AllServiceRegistryList";
 	
 	public ServiceRegistry findServiceRegistryByService(String service) {
-		EntityManager em = EMF.get().createEntityManager();
+		ServiceRegistry sr = getServiceFromCache(service);
 		ServiceRegistry gud;
-		try {
-			javax.persistence.Query q = (javax.persistence.Query) em.createQuery("select u from tapp.model.ServiceRegistry u where u.service = ?1");
-			q.setParameter(1, service);
-			gud = (ServiceRegistry) q.getSingleResult();
-			//TODO commented out for now due to https://community.jboss.org/message/868254#868254
-//		} catch (com.google.apphosting.api.ApiProxy.OverQuotaException e1) {
-//			throw e1;
-		} catch (Exception e) {
-			//e.printStackTrace();
-			gud = null;
-		} finally {
-			em.close();
+		if(sr == null) {
+			EntityManager em = EMF.get().createEntityManager();
+			try {
+				javax.persistence.Query q = (javax.persistence.Query) em.createQuery("select u from tapp.model.ServiceRegistry u where u.service = ?1");
+				q.setParameter(1, service);
+				gud = (ServiceRegistry) q.getSingleResult();
+				//TODO commented out for now due to https://community.jboss.org/message/868254#868254
+//			} catch (com.google.apphosting.api.ApiProxy.OverQuotaException e1) {
+//				throw e1;
+			} catch (Exception e) {
+				//e.printStackTrace();
+				gud = null;
+			} finally {
+				em.close();
+			}
+		} else {
+			gud = sr;
 		}
 		return gud;
 	}
@@ -171,6 +176,20 @@ public class ServiceRegistryDAO {
 		return clonedList;
 	}
 
+	private ServiceRegistry getServiceFromCache(String service) {
+		ServiceRegistry ret = null;
+		if(clonedList != null) {
+			for (ServiceRegistry wo : clonedList) {
+				if(wo.getService().trim().equals(service.trim())) {
+					ret = wo;
+					break;
+				}
+			}
+		}
+		
+		return ret;
+	}
+	
 	/** Warning: This will clear all entries in the cache and will cause a query for all the entries again from the datastore 
 	 * and it is EXPENSIVE (could consume around 10% of the datastore read!!!!) */
 	public static void clearCache() {

@@ -79,7 +79,8 @@ public class ServiceRegistryUtil {
 		if(temp == null) {
 			temp = new Long(0);
 		}
-		if(request.getParameter(Constants.STEALTH_MODE) == null) {
+//		if(request.getParameter(Constants.STEALTH_MODE) == null) {
+		if(request.getParameter(Constants.COUNT_HIT_MODE) != null) {
 			u.setHit(temp + 1L);
 			u.setLastAccessed(new Date());
 			System.out.println(u.getService() + " hit " + u.getHit());

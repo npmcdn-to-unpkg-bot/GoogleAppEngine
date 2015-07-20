@@ -8,16 +8,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.lang3.StringUtils;
-
 import tapp.model.ServiceRegistry;
 
 import com.appspot.cloudserviceapi.common.Constants;
-//import com.appspot.cloudserviceapi.common.JSLintUtil;
-//import com.appspot.cloudserviceapi.common.PMDUtil;
 import com.appspot.cloudserviceapi.common.StringUtil;
 import com.appspot.cloudserviceapi.data.ServiceRegistryUtil;
 import com.appspot.cloudserviceapi.sci.dao.ServiceRegistryDAO;
+//import com.appspot.cloudserviceapi.common.JSLintUtil;
+//import com.appspot.cloudserviceapi.common.PMDUtil;
 //import com.appspot.cloudserviceapi.test.CodesionSVNTest;
 //import com.newatlanta.commons.vfs.provider.gae.GaeVFS;
 
@@ -56,11 +54,11 @@ public class ServiceRegistryServlet extends HttpServlet {
 		ServiceRegistry sr = null;
 
 		//=== support Rails-style edit via URL
-		String editFlag = request.getParameter("edit");		//edit the service only
+		String editFlag = request.getParameter(app.common.Constants.EDIT_MODE1);		//edit the service only
 		if(editFlag == null) {
-			editFlag = request.getParameter("e");		//try secondary edit flag
+			editFlag = request.getParameter(app.common.Constants.EDIT_MODE2);		//try secondary edit flag
 		}
-		String traverseFlag = request.getParameter("t");	//traverse indirect service, if any
+		String traverseFlag = request.getParameter(app.common.Constants.TRAVERSE_INDIRECT_MODE);	//traverse indirect service, if any
 		if(editFlag != null) {
 			if(serviceName != null) {
 				if(traverseFlag == null) {

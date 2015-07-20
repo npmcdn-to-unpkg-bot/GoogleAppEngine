@@ -2,7 +2,7 @@
 <html>
 	<head>  
   		<title>  
-   			GAE - <decorator:title default="General" />
+   			:<decorator:title default="General" />:
   		</title>
 		<!-- CSS -->
 		<link rel="stylesheet" type="text/css" href="/sgc/css/style.css" />

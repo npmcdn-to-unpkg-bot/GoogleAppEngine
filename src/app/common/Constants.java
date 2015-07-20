@@ -37,8 +37,14 @@ public class Constants {
 	
 	/** Service Registry */
 	public static final String APP_ID_MASK = "appidmask";
-	public static final String STEALTH_MODE = "incog";
+	//********** begin The modes, the values have to be unique!!! **********
+	public static final String EDIT_MODE1 = "edit";
+	public static final String EDIT_MODE2 = "e";
+	public static final String TRAVERSE_INDIRECT_MODE = "t";
+	public static final String STEALTH_MODE = "incog";	//deprecated, by default it is already STEALTH, to save datastore read cost
+	public static final String COUNT_HIT_MODE = "c";	//have to be this mode to count the hit
 	public static final String TRAVERSE_MODE = "traverse";		//traverse to the final URL if there is any intermediate sid before the final sid
 	public static final String PARSE_MODE = "parse";			//parse the content (e.g. into the real hyperlinks etc)
+	//********** end The modes, the values have to be unique!!! **********
 	
 }

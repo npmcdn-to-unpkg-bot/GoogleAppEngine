@@ -2,7 +2,7 @@
 <html>
  	<head>  
 	<title>  
-	GAE - <decorator:title default="Main" />
+	:<decorator:title default="Main" />:
 	</title>
 	<decorator:head />
 	</head>
