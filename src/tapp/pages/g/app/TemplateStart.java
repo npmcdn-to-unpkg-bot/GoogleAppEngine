@@ -23,8 +23,8 @@ import org.ocpsoft.pretty.time.PrettyTime;
 
 import tapp.pages.sci.Index;
 import app.common.SecurityUtils;
-
 import cloudserviceapi.service.manager.GeniusManager;
+import cloudserviceapi.service.manager.GeniusManagerImpl;
 
 import com.appspot.cloudserviceapi.common.BackupService;
 import com.appspot.cloudserviceapi.common.TapestryUtil;
@@ -103,14 +103,15 @@ public class TemplateStart {
 		return beanManager.getGenius().isEmpty();
 	}
 
-//	public long getTotalRows() {
-//		return -1; //beanManager.getGenius().size();	//TBD PERF expensive operation!
-//	}
-
-	public long getTotal() {
-		return -1;	//TBD PERF expensive operation!
+	public long getTotalRows() {
+		long totalRows = 0;
+		List l = beanManager.getClonedList();
+		if(l != null) {
+			totalRows = l.size();
+		}
+		return totalRows;
 	}
-	
+
 	public Object onActionFromDelete(Long id) {
 		Object retVal = null;
 		

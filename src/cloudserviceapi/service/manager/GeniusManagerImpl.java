@@ -17,6 +17,10 @@ import com.google.appengine.api.datastore.Transaction;
 public class GeniusManagerImpl implements GeniusManager {
 
 	private static List<Geniu> clonedList;	//used by UI to save datastore read free quota
+	public List<Geniu> getClonedList() {
+		return clonedList;
+	}
+
 	private static GeniuDao dao = (new DaoFactoryImpl()).createGeniuDao(Datastore.getDS());
 	private List<Geniu> myBeans = getGenius();
 		

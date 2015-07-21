@@ -21,4 +21,6 @@ public interface GeniusManager {
 
 		public void updateCache(Geniu myBean);
 
+		public List getClonedList();
+
 }

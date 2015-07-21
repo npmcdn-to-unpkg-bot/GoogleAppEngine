@@ -88,7 +88,7 @@ public class ServiceRegistryStart {
 //    @Inject 
 //    private AlertManager alertManager;
 
-    private long totalRows = -1;
+    private long totalRows = 0;
     
     @Inject
     private Request request;
@@ -124,18 +124,22 @@ public class ServiceRegistryStart {
 	/** cost of this call has not been evaluated!!! */
 	public long getTotalRows() {
 		long totalRows = 0;
-		String t = SettingsDBUtils.getSettings(TCOUNT_UUID);
-		if(!StringUtils.isEmpty(t)) {
+//		String t = SettingsDBUtils.getSettings(TCOUNT_UUID);
+//		if(!StringUtils.isEmpty(t)) {
 			try {
-				long count = Integer.valueOf(t);
-				totalRows = count;
-			} catch (NumberFormatException e) {
-				// TODO Auto-generated catch block
-				//just ignore it
+				ServiceRegistryDAO dao = new ServiceRegistryDAO();
+				List l = dao.getCloneList();
+				if(l != null) {
+					totalRows = l.size();
+				}
+//				long count = Integer.valueOf(t);
+//				totalRows = count;
+//			} catch (NumberFormatException e) {
+//				// TODO Auto-generated catch block
+//				//just ignore it
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}
 		return totalRows;
 	}
 	

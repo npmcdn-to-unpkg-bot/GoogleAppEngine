@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html t:type="layoutwithsegments" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd" xmlns:sec="http://www.springframework.org/security/tags" xmlns:p="tapestry:parameter">
     <head>
-        <title>Code (${total})</title>
+        <title>Code (${totalRows})</title>
     	<meta name="viewport" content="initial-scale=1.07, user-scalable=no"/> <!-- source: https://developer.apple.com/library/ios/DOCUMENTATION/AppleApplications/Reference/SafariWebContent/UsingtheViewport/UsingtheViewport.html -->
         <link rel="stylesheet" type="text/css" href="/css/table.css"/>
         <style type="text/css">
@@ -49,7 +49,7 @@ td.description:hover span, td.details:hover span {
     <body>
         <t:alerts/>
     	<div>
-	        <h2 style="display:inline">Code Manager (${total})</h2>
+	        <h2 style="display:inline">Code Manager (${totalRows})</h2>
 	        &nbsp;&nbsp;&nbsp;<span style="float:right;"><t:actionlink t:id="logout">Logout</t:actionlink></span>
 			<form style="float:right;" action="/g/search_template.jsp">
 				Search <input type="text" name="q" id="q" value="" style="font-size:12px;min-width:200px;margin:0 5px 0 2px;"/><img style="vertical-align:middle" src="http://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/16/Actions-edit-find-icon.png" alt="Search"/>&nbsp;<a href='http://lucene.apache.org/java/2_9_1/queryparsersyntax.html'>?</a>
