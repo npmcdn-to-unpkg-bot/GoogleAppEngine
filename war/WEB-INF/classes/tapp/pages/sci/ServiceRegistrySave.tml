@@ -47,7 +47,7 @@
 //		localStorage.description = handleText(jQuery('textarea.editor').val());	//will not work before a form post!
 		localStorage.description = finalContent;
 	    localStorage.updated = jQuery('#lastUpdated').val();
-	    localStorage.summary = handleText(jQuery('#summary').text());
+	    localStorage.summary = handleText(jQuery('#summary').val());
 		//alert('saveSettings end');
 	}
 	function resetSettings() {
@@ -281,10 +281,6 @@
  			-->
  			${serviceRegistry.id}
  		</t:parameter>
- 		<t:parameter name="summary">
-	 		<label t:type="Label" for="summary"/>
- 			<input t:type="TextField" style="width:50%;" t:id="summary" t:value="serviceRegistry.summary" />
- 		</t:parameter>
 <!--
  		<t:parameter name="preview">
 	 		<label t:type="Label" for="preview"/>
@@ -304,6 +300,10 @@
 	 		<label t:type="Label" for="endpoint"/>
  			<input t:type="TextField" style="width:50%;" t:id="endpoint" t:value="serviceRegistry.endpoint" />
  			* e.g. URL/token/plain text
+ 		</t:parameter>
+ 		<t:parameter name="summary">
+	 		<label t:type="Label" for="summary"/>
+ 			<input t:type="TextField" style="width:50%;" t:id="summary" t:value="serviceRegistry.summary" />
  		</t:parameter>
 <!--
 Not sure why do I need two of description in order for it to show up :( ???
