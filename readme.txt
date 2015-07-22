@@ -846,7 +846,7 @@ Subversion with Subclipse
 
 You need at least 1.10.1 of Subversion client adapter, get it from http://subclipse.tigris.org/update_1.10.x/.
 
-7/6/2015
+7/22/2015
 
 Good Reference -
 
