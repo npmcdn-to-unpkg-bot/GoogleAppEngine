@@ -24,14 +24,14 @@
     "maxAge" : 0
   },
   "methods" : {
-    "userendpoint.userEndpoint.removeUser" : {
+    "userendpoint.userEndpoint.getUser" : {
       "path" : "user/{id}",
-      "httpMethod" : "DELETE",
+      "httpMethod" : "GET",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "app.model.UserEndpoint.removeUser",
+      "rosyMethod" : "app.model.UserEndpoint.getUser",
       "request" : {
         "parameters" : {
           "id" : {
@@ -77,6 +77,27 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
+    "userendpoint.userEndpoint.removeUser" : {
+      "path" : "user/{id}",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "app.model.UserEndpoint.removeUser",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
     "userendpoint.userEndpoint.listUser" : {
       "path" : "user",
       "httpMethod" : "GET",
@@ -94,27 +115,6 @@
           "limit" : {
             "type" : "int32",
             "required" : false
-          }
-        },
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "userendpoint.userEndpoint.getUser" : {
-      "path" : "user/{id}",
-      "httpMethod" : "GET",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "app.model.UserEndpoint.getUser",
-      "request" : {
-        "parameters" : {
-          "id" : {
-            "type" : "int64",
-            "required" : true
           }
         },
         "body" : "empty"
@@ -252,12 +252,12 @@
           "url" : {
             "type" : "string"
           },
+          "title" : {
+            "type" : "string"
+          },
           "modified" : {
             "type" : "string",
             "format" : "date-time"
-          },
-          "title" : {
-            "type" : "string"
           }
         }
       },
@@ -426,13 +426,13 @@
           "seconds" : {
             "type" : "integer"
           },
+          "date" : {
+            "type" : "integer"
+          },
           "year" : {
             "type" : "integer"
           },
           "month" : {
-            "type" : "integer"
-          },
-          "date" : {
             "type" : "integer"
           },
           "day" : {
@@ -460,7 +460,7 @@
       }
     },
     "methods" : {
-      "app.model.UserEndpoint.removeUser" : {
+      "app.model.UserEndpoint.getUser" : {
         "response" : {
           "$ref" : "User"
         }
@@ -481,14 +481,14 @@
           "$ref" : "User"
         }
       },
+      "app.model.UserEndpoint.removeUser" : {
+        "response" : {
+          "$ref" : "User"
+        }
+      },
       "app.model.UserEndpoint.listUser" : {
         "response" : {
           "$ref" : "CollectionResponse_User"
-        }
-      },
-      "app.model.UserEndpoint.getUser" : {
-        "response" : {
-          "$ref" : "User"
         }
       }
     }

@@ -31,6 +31,9 @@
 td.description {
     text-decoration:none;
 }
+td.details {
+	/*min-width:100px;*/
+}
 td.description span, td.details span {
     display:none;
     padding:2px 3px;
@@ -50,9 +53,9 @@ td.description:hover span, td.details:hover span {
         <t:alerts/>
     	<div>
 	        <h2 style="display:inline">Code Manager (${totalRows})</h2>
-	        &nbsp;&nbsp;&nbsp;<span style="float:right;"><t:actionlink t:id="logout">Logout</t:actionlink></span>
+	        &nbsp;&nbsp;&nbsp;<span style="float:right;display:table;"><t:actionlink t:id="logout" style="vertical-align:-webkit-baseline-middle;">Logout</t:actionlink></span>
 			<form style="float:right;" action="/g/search_template.jsp">
-				Search <input type="text" name="q" id="q" value="" style="font-size:12px;min-width:200px;margin:0 5px 0 2px;"/><img style="vertical-align:middle" src="http://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/16/Actions-edit-find-icon.png" alt="Search"/>&nbsp;<a href='http://lucene.apache.org/java/2_9_1/queryparsersyntax.html'>?</a>
+				Search (e.g. \.text\(\) AND \.val\(\)) <input type="text" name="q" id="q" value="" style="font-size:12px;min-width:200px;margin:0 5px 0 2px;"/><img style="vertical-align:middle" src="http://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/16/Actions-edit-find-icon.png" alt="Search"/>&nbsp;<a href='http://lucene.apache.org/java/2_9_1/queryparsersyntax.html'>?</a>
 			</form>
     	</div>
 		
