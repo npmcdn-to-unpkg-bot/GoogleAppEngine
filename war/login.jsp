@@ -14,7 +14,9 @@
         }
         h2 {
             margin-top: 0px;
+            margin-left: 5px;
         }
+
         /* iPhone 2G-4S in portrait & landscape (source: http://stephen.io/mediaqueries/) */
         @media only screen
         and (min-device-width : 320px)
@@ -24,8 +26,11 @@
                 margin-left: 15px;
             }
             h2 {
-                font-size: .75em;
+                font-size: .9em;
                 margin-top: 10px;
+            }
+            td, input {
+                font-size:.82em
             }
         }
         /* IE styles only */
@@ -59,14 +64,14 @@
 <% if(session.getAttribute("data-icon-back") != null) { %>
 		<a href="<%= com.appspot.cloudserviceapi.common.Constants.MAIN_URL %>" data-icon="back"><%=session.getAttribute("data-icon-back")%></a>
 <% } %>
-		<h2>Hey!</h2>
+		<h2>Welcome!</h2>
 	</div>
 	<div data-role="content" data-theme="c">
 
 <form id="loginForm" name="loginForm" action="j_spring_security_check" method="post">
         <table>
-          <tr><td style="font-size: .5em">Username</td><td><input name="password" autocapitalize="off" autocorrect="off" size="10" id="usernameField" type="text" /></td></tr>
-          <tr><td style="font-size: .5em">Password</td><td><input autocomplete="off" size="10" id="passwordField" type="password" name="j_password" /></td></tr>
+          <tr><td>ID</td><td><input size="5" name="password" autocapitalize="off" autocorrect="off" id="usernameField" type="text" /></td></tr>
+          <tr><td>Password</td><td><input size="5" autocomplete="off" id="passwordField" type="password" name="j_password" /></td></tr>
           <tr><td colspan="4" align="right"><input style="margin-top:10px;width:100%;height:100%;" type="submit" value="Submit" /></td></tr>
         </table>
 </form>
