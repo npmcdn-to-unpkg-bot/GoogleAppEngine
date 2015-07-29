@@ -1,12 +1,12 @@
 {
   "extends" : "thirdParty.api",
   "abstract" : false,
-  "root" : "https://2-share.appspot.com/_ah/api",
+  "root" : "https://chudoonet.appspot.com/_ah/api",
   "name" : "userendpoint",
   "version" : "v1",
   "defaultVersion" : false,
   "adapter" : {
-    "bns" : "https://2-share.appspot.com/_ah/spi",
+    "bns" : "https://chudoonet.appspot.com/_ah/spi",
     "deadline" : 65.0,
     "type" : "lily"
   },
@@ -24,38 +24,26 @@
     "maxAge" : 0
   },
   "methods" : {
-    "userendpoint.userEndpoint.getUser" : {
-      "path" : "user/{id}",
+    "userendpoint.userEndpoint.listUser" : {
+      "path" : "user",
       "httpMethod" : "GET",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "app.model.UserEndpoint.getUser",
+      "rosyMethod" : "app.model.UserEndpoint.listUser",
       "request" : {
         "parameters" : {
-          "id" : {
-            "type" : "int64",
-            "required" : true
+          "cursor" : {
+            "type" : "string",
+            "required" : false
+          },
+          "limit" : {
+            "type" : "int32",
+            "required" : false
           }
         },
         "body" : "empty"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "userendpoint.userEndpoint.updateUser" : {
-      "path" : "user",
-      "httpMethod" : "PUT",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "app.model.UserEndpoint.updateUser",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
@@ -69,6 +57,22 @@
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
       "rosyMethod" : "app.model.UserEndpoint.insertUser",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "userendpoint.userEndpoint.updateUser" : {
+      "path" : "user",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "app.model.UserEndpoint.updateUser",
       "request" : {
         "body" : "autoTemplate(backendRequest)",
         "bodyName" : "resource"
@@ -98,23 +102,19 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
-    "userendpoint.userEndpoint.listUser" : {
-      "path" : "user",
+    "userendpoint.userEndpoint.getUser" : {
+      "path" : "user/{id}",
       "httpMethod" : "GET",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "app.model.UserEndpoint.listUser",
+      "rosyMethod" : "app.model.UserEndpoint.getUser",
       "request" : {
         "parameters" : {
-          "cursor" : {
-            "type" : "string",
-            "required" : false
-          },
-          "limit" : {
-            "type" : "int32",
-            "required" : false
+          "id" : {
+            "type" : "int64",
+            "required" : true
           }
         },
         "body" : "empty"
@@ -126,6 +126,21 @@
   },
   "descriptor" : {
     "schemas" : {
+      "CollectionResponse_User" : {
+        "id" : "CollectionResponse_User",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "User"
+            }
+          },
+          "nextPageToken" : {
+            "type" : "string"
+          }
+        }
+      },
       "User" : {
         "id" : "User",
         "type" : "object",
@@ -177,14 +192,14 @@
           "name" : {
             "type" : "string"
           },
-          "parent" : {
-            "$ref" : "Key"
+          "namespace" : {
+            "type" : "string"
           },
           "complete" : {
             "type" : "boolean"
           },
-          "namespace" : {
-            "type" : "string"
+          "parent" : {
+            "$ref" : "Key"
           }
         }
       },
@@ -249,15 +264,15 @@
             "type" : "string",
             "format" : "date-time"
           },
-          "url" : {
-            "type" : "string"
-          },
           "title" : {
             "type" : "string"
           },
           "modified" : {
             "type" : "string",
             "format" : "date-time"
+          },
+          "url" : {
+            "type" : "string"
           }
         }
       },
@@ -426,13 +441,13 @@
           "seconds" : {
             "type" : "integer"
           },
-          "date" : {
-            "type" : "integer"
-          },
           "year" : {
             "type" : "integer"
           },
           "month" : {
+            "type" : "integer"
+          },
+          "date" : {
             "type" : "integer"
           },
           "day" : {
@@ -442,25 +457,18 @@
             "type" : "integer"
           }
         }
-      },
-      "CollectionResponse_User" : {
-        "id" : "CollectionResponse_User",
-        "type" : "object",
-        "properties" : {
-          "items" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "User"
-            }
-          },
-          "nextPageToken" : {
-            "type" : "string"
-          }
-        }
       }
     },
     "methods" : {
-      "app.model.UserEndpoint.getUser" : {
+      "app.model.UserEndpoint.listUser" : {
+        "response" : {
+          "$ref" : "CollectionResponse_User"
+        }
+      },
+      "app.model.UserEndpoint.insertUser" : {
+        "request" : {
+          "$ref" : "User"
+        },
         "response" : {
           "$ref" : "User"
         }
@@ -473,22 +481,14 @@
           "$ref" : "User"
         }
       },
-      "app.model.UserEndpoint.insertUser" : {
-        "request" : {
-          "$ref" : "User"
-        },
-        "response" : {
-          "$ref" : "User"
-        }
-      },
       "app.model.UserEndpoint.removeUser" : {
         "response" : {
           "$ref" : "User"
         }
       },
-      "app.model.UserEndpoint.listUser" : {
+      "app.model.UserEndpoint.getUser" : {
         "response" : {
-          "$ref" : "CollectionResponse_User"
+          "$ref" : "User"
         }
       }
     }

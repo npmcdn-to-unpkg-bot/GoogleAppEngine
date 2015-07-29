@@ -2,7 +2,7 @@
 <appengine-web-app xmlns="http://appengine.google.com/ns/1.0">
 	<!-- c.f. https://developers.google.com/appengine/docs/java/config/appconfig for latest features -->
     <application>chudoonet</application>
-    <version>8</version>
+    <version>9</version>
     <!-- https://groups.google.com/forum/#!topic/google-appengine-java/PYpoELG7ZZ4 -->
     <!-- already true by default, just trying to be explicit -->
 	<warmup-requests-enabled>true</warmup-requests-enabled>

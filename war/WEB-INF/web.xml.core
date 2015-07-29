@@ -1,7 +1,6 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><web-app xmlns="http://java.sun.com/xml/ns/javaee">
+<?xml version="1.0" encoding="utf-8" standalone="no"?><web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.5" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 <!--
-<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" metadata-complete="false" version="3.0" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
-<web-app xmlns="http://java.sun.com/xml/ns/javaee" version="2.5">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><web-app xmlns="http://java.sun.com/xml/ns/javaee">
  -->   
 <!-- ***************** CORE Web Configuration ***************** -->
 <!--
@@ -14,11 +13,11 @@
                        <trim-directive-whitespaces>true</trim-directive-whitespaces>
                </jsp-property-group>
        </jsp-config>    
--->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/spring/springsecurity-context.xml</param-value>
 	</context-param>
+-->
 	<!-- https://bitbucket.org/akochnev/tap5-gae-utils/wiki/Home -->
 	<context-param>
 		<param-name>tapestry.DevelopmentMode-modules</param-name>
@@ -122,6 +121,102 @@
 </filter-mapping>
 -->
 
+<!-- Spring MVC stuff -->
+	<context-param>
+	  <param-name>contextClass</param-name>
+	  <param-value>com.appspot.cloudserviceapi.springmvc.controller.CustomXmlWebApplicationContext</param-value>
+	</context-param>
+    <!-- Handles Spring requests -->
+    <servlet>
+        <servlet-name>cloudserviceapi</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+<!--
+            <param-value>WEB-INF/spring/webmvc-config.xml</param-value>
+-->
+          	<param-value>WEB-INF/dispatcher-servlet.xml</param-value>
+            </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>cloudserviceapi</servlet-name>
+        <url-pattern>/web/*</url-pattern>
+    </servlet-mapping>
+    
+    <!-- Enable escaping of form submission contents -->
+    <context-param>
+        <param-name>defaultHtmlEscape</param-name>
+        <param-value>true</param-value>
+    </context-param>
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            WEB-INF/spring/springsecurity-context.xml
+            WEB-INF/applicationContext.xml
+<!--
+        	classpath*:META-INF/spring/applicationContext*.xml
+-->
+        </param-value>
+    </context-param>
+    
+    <filter>
+        <filter-name>CharacterEncodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+        <init-param>
+            <param-name>forceEncoding</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+    
+    
+    
+    <filter>
+        <filter-name>HttpMethodFilter</filter-name>
+        <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
+    </filter>
+    
+    <filter>
+        <filter-name>Spring OpenEntityManagerInViewFilter</filter-name>
+        <filter-class>org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter</filter-class>
+		<init-param>
+            <param-name>entityManagerFactoryBeanName</param-name>
+            <!-- the persistence unit name used by entityManagerFactory should be the same name as the one defined in persistence.xml -->
+            <param-value>entityManagerFactory</param-value>
+      	</init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>CharacterEncodingFilter</filter-name>
+        <url-pattern>/web/*</url-pattern>
+    </filter-mapping>
+    
+    <filter-mapping>
+        <filter-name>HttpMethodFilter</filter-name>
+        <url-pattern>/web/*</url-pattern>
+    </filter-mapping>
+    
+    <filter-mapping>
+        <filter-name>Spring OpenEntityManagerInViewFilter</filter-name>
+        <url-pattern>/web/*</url-pattern>
+    </filter-mapping>
+    
+    <session-config>
+        <session-timeout>60</session-timeout>
+    </session-config>
+    
+    <error-page>
+        <exception-type>java.lang.Exception</exception-type>
+        <location>/error/custom_error.html</location>
+    </error-page>
+    
+    <error-page>
+        <error-code>404</error-code>
+        <location>/error/custom_error.html</location>
+    </error-page>
 
       
 <!-- Tapestry 5.3 stuff -->
