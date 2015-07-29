@@ -18,30 +18,50 @@
 		<param-value>/WEB-INF/spring/springsecurity-context.xml</param-value>
 	</context-param>
 -->
-  	<!--  CSRF library configuration (https://www.owasp.org/index.php/Category:OWASP_CSRFGuard_Project) -->
-	<context-param>
-		<param-name>Owasp.CsrfGuard.Config</param-name>
-		<param-value>WEB-INF/Owasp.CsrfGuard.properties</param-value>
-	</context-param>
-	
-	<context-param>
-		<param-name>Owasp.CsrfGuard.Config.Print</param-name>
-		<param-value>true</param-value>
-	</context-param>
-	
-	<listener>
-		<listener-class>org.owasp.csrfguard.CsrfGuardListener</listener-class>
-	</listener>
+  	<!--  CSRF library configuration (http://owaspcsrfguard3.blogspot.com/2015/04/owasp-csrfguard-3.html) -->
+  <!--	
+  <listener>
+  <listener-class>org.owasp.csrfguard.CsrfGuardServletContextListener</listener-class>
+   </listener>
+   <listener>
+  <listener-class>org.owasp.csrfguard.CsrfGuardHttpSessionListener</listener-class>
+  </listener>
+  -->
+   <context-param>
+   <param-name>Owasp.CsrfGuard.Config</param-name>
+   <param-value>WEB-INF/Owasp.CsrfGuard.properties</param-value>
+   </context-param>
+   <context-param>
+   <param-name>Owasp.CsrfGuard.Config.Print</param-name>
+   <param-value>true</param-value>
+   </context-param>
+   
+  <filter>
+  <filter-name>CSRFGuard</filter-name>
+  <filter-class>org.owasp.csrfguard.CsrfGuardFilter</filter-class>
+ </filter>
+ <filter-mapping>
+  <filter-name>CSRFGuard</filter-name>
+  <url-pattern>/*</url-pattern>
+ </filter-mapping>
+ 
 
-	<filter>
-		<filter-name>CSRFGuard</filter-name>
-		<filter-class>org.owasp.csrfguard.CsrfGuardFilter</filter-class>
-	</filter>
- 	
-	<filter-mapping>
-		<filter-name>CSRFGuard</filter-name> 
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
+<!-- Version 3.1.0 has error: java.lang.RuntimeException: Problem with class: class org.owasp.csrfguard.config.PropertiesConfigurationProvider 	
+	   <listener>
+            <listener-class>org.owasp.csrfguard.CsrfGuardServletContextListener</listener-class>
+       </listener>
+       <listener>
+            <listener-class>org.owasp.csrfguard.CsrfGuardHttpSessionListener</listener-class>
+       </listener>
+       <context-param>
+             <param-name>Owasp.CsrfGuard.Config</param-name>
+             <param-value>WEB-INF/Owasp.CsrfGuard.properties</param-value>
+       </context-param>
+       <context-param>
+             <param-name>Owasp.CsrfGuard.Config.Print</param-name>
+             <param-value>true</param-value>
+       </context-param>
+-->
 
 	<!-- https://bitbucket.org/akochnev/tap5-gae-utils/wiki/Home -->
 	<context-param>
@@ -667,8 +687,8 @@ java.lang.RuntimeException: Exception constructing service 'ApplicationContext':
 -->
   <servlet>
     <description/>
-    <display-name>ServiceRegistryServlet1</display-name>
-    <servlet-name>ServiceRegistryServlet1</servlet-name>
+    <display-name>ServiceRegistryServlet</display-name>
+    <servlet-name>ServiceRegistryServlet</servlet-name>
     <servlet-class>com.appspot.cloudserviceapi.sci.services.ServiceRegistryServlet</servlet-class>
   </servlet>
   <servlet-mapping>
@@ -677,8 +697,8 @@ java.lang.RuntimeException: Exception constructing service 'ApplicationContext':
   </servlet-mapping>
   <servlet>
     <description/>
-    <display-name>ServiceRegistryServlet2</display-name>
-    <servlet-name>ServiceRegistryServlet2</servlet-name>
+    <display-name>ServiceRegistryServlet</display-name>
+    <servlet-name>ServiceRegistryServlet</servlet-name>
     <servlet-class>com.appspot.cloudserviceapi.sci.services.ServiceRegistryServlet</servlet-class>
   </servlet>
   <servlet-mapping>
