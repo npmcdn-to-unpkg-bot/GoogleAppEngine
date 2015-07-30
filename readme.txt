@@ -80,6 +80,7 @@ APIs exposed
 . Store.js 1.3.14 (https://github.com/marcuswestin/store.js/)
 . Ajax loader icons (http://ajaxload.info/)
 . Page Piling (https://github.com/alvarotrigo/pagePiling.js)
+. OWASP CSRFGuard 3.1.0 (https://github.com/aramrami/OWASP-CSRFGuard)
 
 https://[appid].appspot.com/_ah/api/explorer
 https://localhost:8888/_ah/api/bkper/v1/temptransaction
@@ -253,6 +254,11 @@ Configuration Tips -
 /postsettings?setting=true&pincode=advanced.ui.active
 /postsettings?setting=true&pincode=backup.service.active
 
+OWASP CSRFGuard
+
+. You need to build it and copy the generated jar e.g. csrfguard-3.1.0-SNAPSHOT.jar into war/WEB-INF/lib.
+. Please make sure you use the latest and greatest setup guid to configure it in the web.xml. Out of sync web.xml 
+with the latest implementation might cause runtime exception like "Problem with class: class org.owasp.csrfguard.config.PropertiesConfigurationProvider"
 
 Development Tips -
 
@@ -379,6 +385,10 @@ src/com/plannow/tapestry5/ckeditor/mixins/ckeditor/config.js.
 
 . Spring MVC
 For signup service (not implemented, yet), please consider developing it with UsernamePasswordAuthenticationToken and use the custom object, GaeUserDetails.
+
+JSP Tips:
+
+Disable precompilation c.f. http://stackoverflow.com/questions/11413869/disable-taglib-scanning-in-google-app-engine-jetty
 
 
 Known Issues -

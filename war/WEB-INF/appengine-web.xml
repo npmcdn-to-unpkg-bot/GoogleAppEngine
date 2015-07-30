@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <appengine-web-app xmlns="http://appengine.google.com/ns/1.0">
+	<!-- speed up init time (https://cloud.google.com/appengine/docs/java/config/appconfig#Disabling_Precompilation) -->
+	<precompilation-enabled>false</precompilation-enabled>
 	<!-- c.f. https://developers.google.com/appengine/docs/java/config/appconfig for latest features -->
-    <application>chudoonet</application>
-    <version>9</version>
+    <application>cloudaware</application>
+    <version>3</version>
     <!-- https://groups.google.com/forum/#!topic/google-appengine-java/PYpoELG7ZZ4 -->
     <!-- already true by default, just trying to be explicit -->
 	<warmup-requests-enabled>true</warmup-requests-enabled>
@@ -19,6 +21,9 @@
 	<sessions-enabled>true</sessions-enabled>
     <!-- on a different server than the app server -->
 	<static-files>
+	  	<include path="/error/**.html" />
+		<!-- favicon.ico -->
+		<include path="/favicon.ico" />
 		<!-- common stuff -->
 		<include path="/static/**.srt" />
       	<include path="/**.html" />
@@ -35,10 +40,10 @@
 		<include path="/css/*.css" />
 		<include path="/images/*" />
 		<include path="/js/*" />
-     	<include path="/galleria/**.css" />
-     	<include path="/galleria/**.js" />
-     	<include path="/galleria/**.gif" />
-     	<include path="/galleria/**.png" />
+     	<include path="/galleria*/**.css" />
+     	<include path="/galleria*/**.js" />
+		<include path="/galleria*/**.gif" />
+		<include path="/galleria*/**.png" />
      	<include path="/parse/css/*.css" />
      	<include path="/parse/*" />
      	<include path="/mcrud/*" />     	

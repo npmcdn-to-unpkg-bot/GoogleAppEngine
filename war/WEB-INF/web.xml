@@ -4,47 +4,51 @@
  -->   
 <!-- ***************** CORE Web Configuration ***************** -->
 <!--
+-->
+<!-- Need to enable JSTL for passwordchange as well as OWASP CSRF!!! -->
        <jsp-config>
                <jsp-property-group>
                        <url-pattern>*.jsp</url-pattern>
                        <el-ignored>false</el-ignored>
-                       <include-prelude>/WEB-INF/taglibs.jspf</include-prelude>
+                       <include-prelude>/WEB-INF/jspf/taglibs.jspf</include-prelude>
                        <deferred-syntax-allowed-as-literal>true</deferred-syntax-allowed-as-literal>
                        <trim-directive-whitespaces>true</trim-directive-whitespaces>
                </jsp-property-group>
        </jsp-config>    
-	<context-param>
-		<param-name>contextConfigLocation</param-name>
-		<param-value>/WEB-INF/spring/springsecurity-context.xml</param-value>
-	</context-param>
--->
+<!-- The NoTLDJarPattern paramter is configured in web.xml to reduce JSP taglib scanning time -->
+<context-param>
+    <param-name>org.mortbay.jetty.webapp.NoTLDJarPattern</param-name>
+    <param-value>test.jar|prefix-.*\.jar</param-value>
+</context-param>
   	<!--  CSRF library configuration (http://owaspcsrfguard3.blogspot.com/2015/04/owasp-csrfguard-3.html) -->
-  <!--	
-  <listener>
-  <listener-class>org.owasp.csrfguard.CsrfGuardServletContextListener</listener-class>
-   </listener>
-   <listener>
-  <listener-class>org.owasp.csrfguard.CsrfGuardHttpSessionListener</listener-class>
-  </listener>
-  -->
-   <context-param>
-   <param-name>Owasp.CsrfGuard.Config</param-name>
-   <param-value>WEB-INF/Owasp.CsrfGuard.properties</param-value>
-   </context-param>
-   <context-param>
-   <param-name>Owasp.CsrfGuard.Config.Print</param-name>
-   <param-value>true</param-value>
-   </context-param>
-   
-  <filter>
-  <filter-name>CSRFGuard</filter-name>
-  <filter-class>org.owasp.csrfguard.CsrfGuardFilter</filter-class>
- </filter>
- <filter-mapping>
-  <filter-name>CSRFGuard</filter-name>
-  <url-pattern>/*</url-pattern>
- </filter-mapping>
- 
+	<listener>
+		<listener-class>org.owasp.csrfguard.CsrfGuardServletContextListener</listener-class>
+	</listener>
+	<listener>
+		<listener-class>org.owasp.csrfguard.CsrfGuardHttpSessionListener</listener-class>
+	</listener>
+	
+	<filter>
+		<filter-name>CSRFGuard</filter-name>
+		<filter-class>org.owasp.csrfguard.CsrfGuardFilter</filter-class>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>CSRFGuard</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<servlet>
+		<servlet-name>JavaScriptServlet</servlet-name>
+		<servlet-class>org.owasp.csrfguard.servlet.JavaScriptServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>JavaScriptServlet</servlet-name>
+		<url-pattern>/JavaScriptServlet</url-pattern>
+	</servlet-mapping>
+<!--  
+--> 
 
 <!-- Version 3.1.0 has error: java.lang.RuntimeException: Problem with class: class org.owasp.csrfguard.config.PropertiesConfigurationProvider 	
 	   <listener>
@@ -55,7 +59,7 @@
        </listener>
        <context-param>
              <param-name>Owasp.CsrfGuard.Config</param-name>
-             <param-value>WEB-INF/Owasp.CsrfGuard.properties</param-value>
+             <param-value>/WEB-INF/Owasp.CsrfGuard.properties</param-value>
        </context-param>
        <context-param>
              <param-name>Owasp.CsrfGuard.Config.Print</param-name>
