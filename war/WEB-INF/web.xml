@@ -21,6 +21,7 @@
     <param-value>test.jar|prefix-.*\.jar</param-value>
 </context-param>
   	<!--  CSRF library configuration (http://owaspcsrfguard3.blogspot.com/2015/04/owasp-csrfguard-3.html) -->
+<!--  
 	<listener>
 		<listener-class>org.owasp.csrfguard.CsrfGuardServletContextListener</listener-class>
 	</listener>
@@ -47,25 +48,8 @@
 		<servlet-name>JavaScriptServlet</servlet-name>
 		<url-pattern>/JavaScriptServlet</url-pattern>
 	</servlet-mapping>
-<!--  
 --> 
 
-<!-- Version 3.1.0 has error: java.lang.RuntimeException: Problem with class: class org.owasp.csrfguard.config.PropertiesConfigurationProvider 	
-	   <listener>
-            <listener-class>org.owasp.csrfguard.CsrfGuardServletContextListener</listener-class>
-       </listener>
-       <listener>
-            <listener-class>org.owasp.csrfguard.CsrfGuardHttpSessionListener</listener-class>
-       </listener>
-       <context-param>
-             <param-name>Owasp.CsrfGuard.Config</param-name>
-             <param-value>/WEB-INF/Owasp.CsrfGuard.properties</param-value>
-       </context-param>
-       <context-param>
-             <param-name>Owasp.CsrfGuard.Config.Print</param-name>
-             <param-value>true</param-value>
-       </context-param>
--->
 
 	<!-- https://bitbucket.org/akochnev/tap5-gae-utils/wiki/Home -->
 	<context-param>
