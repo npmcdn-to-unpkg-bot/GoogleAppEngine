@@ -38,14 +38,20 @@ public class CacheManager {
 		userCache = newUserCache;
 	}
 
-	public static User getUserCache(User user) {
+	public static User getUserCache(User user) throws Exception {
+		if(user == null) {
+			throw new Exception("User is NULL or empty.");
+		}
+		if(user.getId() == null) {
+			return null;	//throw new Exception("User id is NULL or empty. Is the user passed created out of a datastore user object?");
+		}
 		User u = null;
 		if(userCache != null) {
 			User tmp = null;
 			for(int i=0; i<userCache.size(); i++) {
 				tmp = userCache.get(i);
-				System.out.println("tmp id [" + tmp.getId() + "] user id [" + user.getId() + "]");
-				if(tmp.getId().longValue() == user.getId().longValue()) {
+				if(tmp != null && tmp.getId().longValue() == user.getId().longValue()) {
+					System.out.println("tmp id [" + tmp.getId() + "] user id [" + user.getId() + "]");
 					u = tmp;
 					break;
 				} 

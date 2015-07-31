@@ -138,6 +138,9 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
 		return req.getParameter(reqName);
 	}
 	
+	/**
+	 * This is the main JSON parsing method into a Java object. It does not involve any datastore calls.
+	 */
 	public Object parseRequest(HttpServletRequest request) {
 	    //=== begin TBD
 		uid = getValue(request, Constants.UNIVERSAL_ID);
@@ -349,12 +352,15 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
 				//end TBD JPA 2
 				//=== begin supporting pagination
 				//List tl = u.getMovie();	//.fetch(1,25);
+//the following have been moved to UserHandler.getUserByName()!!!				
+/*				
 				User cachedUser = CacheManager.getUserCache(u);
 				if(cachedUser != null) {
 					u = cachedUser;
 				} else {
 					CacheManager.addUserCache(u);
 				}
+*/
 				if(u.getMovie() != null) {
 					totalItem = u.getMovie().size();
 				} else {

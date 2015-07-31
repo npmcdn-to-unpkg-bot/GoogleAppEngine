@@ -201,6 +201,11 @@ public class UserHandler implements CrudServiceCallback, ServletContextListener 
 		if(user == null) {
 			throw new Exception("UserHandler:getUserByName() User is null or empty!");
 		}
+		User cachedUser = CacheManager.getUserCache(user);
+		if(cachedUser != null) {
+			return cachedUser;
+		}
+		
 		System.out.println("UserHandler:getUserByName ...");
 		EntityManager em = getEntityManager();
 		try {
@@ -222,6 +227,7 @@ public class UserHandler implements CrudServiceCallback, ServletContextListener 
             if(user.getKey() != null) {
     		    user.setId(user.getKey().getId());    //GAEJ specific
             }
+			CacheManager.addUserCache(user);
 		} catch (Exception e) {
 			System.out.println("UserHandler:getUserByName exception: user [" + user.getName() + "] " + e);
 		} finally {

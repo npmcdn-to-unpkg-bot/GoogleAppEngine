@@ -47,6 +47,12 @@ public class CrudService extends HttpServlet {
 		return retVal;
 	}
 
+	/**
+	 * Main method to call any supporting domain objects like a Movie by invoking their corresponding parseRequest(). See #1.
+	 * @param request
+	 * @return
+	 * @throws Exception
+	 */
 	private Object handleRequest(HttpServletRequest request) throws Exception {
 		Object item = null;
 
@@ -58,7 +64,7 @@ public class CrudService extends HttpServlet {
 		System.out.println("CrudService:handleRequest() uid = [" + uid + "] received");
 		while (it.hasNext()) {
 			h = (CrudServiceCallback) it.next();
-			item = h.parseRequest(request);
+			item = h.parseRequest(request);	//**** #1 here !!! ****
 			if (item != null) {
 				// get the type of operation
 				String action = getValue(request, "action");
