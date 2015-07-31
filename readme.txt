@@ -254,11 +254,12 @@ Configuration Tips -
 /postsettings?setting=true&pincode=advanced.ui.active
 /postsettings?setting=true&pincode=backup.service.active
 
-OWASP CSRFGuard
+OWASP CSRFGuard ******* This feature is currently turned off due to its high database read operations/JSTL taglib scanning issue *******
 
 . You need to build it and copy the generated jar e.g. csrfguard-3.1.0-SNAPSHOT.jar into war/WEB-INF/lib.
 . Please make sure you use the latest and greatest setup guid to configure it in the web.xml. Out of sync web.xml 
 with the latest implementation might cause runtime exception like "Problem with class: class org.owasp.csrfguard.config.PropertiesConfigurationProvider"
+
 
 Development Tips -
 
