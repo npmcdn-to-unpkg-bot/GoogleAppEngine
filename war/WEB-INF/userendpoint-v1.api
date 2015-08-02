@@ -1,12 +1,12 @@
 {
   "extends" : "thirdParty.api",
   "abstract" : false,
-  "root" : "https://2-share.appspot.com/_ah/api",
+  "root" : "https://chudoonet.appspot.com/_ah/api",
   "name" : "userendpoint",
   "version" : "v1",
   "defaultVersion" : false,
   "adapter" : {
-    "bns" : "https://2-share.appspot.com/_ah/spi",
+    "bns" : "https://chudoonet.appspot.com/_ah/spi",
     "deadline" : 65.0,
     "type" : "lily"
   },
@@ -45,6 +45,31 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
+    "userendpoint.userEndpoint.listUser" : {
+      "path" : "user",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "app.model.UserEndpoint.listUser",
+      "request" : {
+        "parameters" : {
+          "cursor" : {
+            "type" : "string",
+            "required" : false
+          },
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
     "userendpoint.userEndpoint.insertUser" : {
       "path" : "user",
       "httpMethod" : "POST",
@@ -56,27 +81,6 @@
       "request" : {
         "body" : "autoTemplate(backendRequest)",
         "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "userendpoint.userEndpoint.removeUser" : {
-      "path" : "user/{id}",
-      "httpMethod" : "DELETE",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "app.model.UserEndpoint.removeUser",
-      "request" : {
-        "parameters" : {
-          "id" : {
-            "type" : "int64",
-            "required" : true
-          }
-        },
-        "body" : "empty"
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
@@ -98,23 +102,19 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
-    "userendpoint.userEndpoint.listUser" : {
-      "path" : "user",
-      "httpMethod" : "GET",
+    "userendpoint.userEndpoint.removeUser" : {
+      "path" : "user/{id}",
+      "httpMethod" : "DELETE",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "app.model.UserEndpoint.listUser",
+      "rosyMethod" : "app.model.UserEndpoint.removeUser",
       "request" : {
         "parameters" : {
-          "cursor" : {
-            "type" : "string",
-            "required" : false
-          },
-          "limit" : {
-            "type" : "int32",
-            "required" : false
+          "id" : {
+            "type" : "int64",
+            "required" : true
           }
         },
         "body" : "empty"
@@ -180,11 +180,11 @@
           "namespace" : {
             "type" : "string"
           },
-          "complete" : {
-            "type" : "boolean"
-          },
           "parent" : {
             "$ref" : "Key"
+          },
+          "complete" : {
+            "type" : "boolean"
           }
         }
       },
@@ -426,6 +426,9 @@
             "type" : "string",
             "format" : "int64"
           },
+          "date" : {
+            "type" : "integer"
+          },
           "month" : {
             "type" : "integer"
           },
@@ -436,9 +439,6 @@
             "type" : "integer"
           },
           "timezoneOffset" : {
-            "type" : "integer"
-          },
-          "date" : {
             "type" : "integer"
           }
         }
@@ -465,15 +465,15 @@
           "$ref" : "User"
         }
       },
+      "app.model.UserEndpoint.listUser" : {
+        "response" : {
+          "$ref" : "CollectionResponse_User"
+        }
+      },
       "app.model.UserEndpoint.insertUser" : {
         "request" : {
           "$ref" : "User"
         },
-        "response" : {
-          "$ref" : "User"
-        }
-      },
-      "app.model.UserEndpoint.removeUser" : {
         "response" : {
           "$ref" : "User"
         }
@@ -486,9 +486,9 @@
           "$ref" : "User"
         }
       },
-      "app.model.UserEndpoint.listUser" : {
+      "app.model.UserEndpoint.removeUser" : {
         "response" : {
-          "$ref" : "CollectionResponse_User"
+          "$ref" : "User"
         }
       }
     }
