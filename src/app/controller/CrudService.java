@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import app.common.Constants;
+import app.common.SecurityUtils;
 import app.model.Movie;
 import app.model.User;
 import app.model.UserEndpoint;
@@ -190,12 +191,7 @@ public class CrudService extends HttpServlet {
 
 	private void handleServiceRequest(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		try {
-	        //Frame busting begin (https://www.owasp.org/index.php/Clickjacking_Protection_for_Java_EE) - just for the IE browsers
-	        // to prevent all framing of this content
-			response.addHeader("X-FRAME-OPTIONS", "DENY");
-	        // to allow framing of this content only by this site
-	        response.addHeader("X-FRAME-OPTIONS", "SAMEORIGIN");
-	        //Frame busting end
+			SecurityUtils.handleOWASPSession(request, response);	//OWASP
 			//response.setHeader("Cache-Control","no-cache");
 			// Set to expire far in the past.
 			response.setHeader("Expires", "-1");

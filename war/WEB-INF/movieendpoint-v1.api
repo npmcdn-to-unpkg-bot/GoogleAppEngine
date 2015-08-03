@@ -45,6 +45,22 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
+    "movieendpoint.movieEndpoint.updateMovie" : {
+      "path" : "movie",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "app.model.MovieEndpoint.updateMovie",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
     "movieendpoint.movieEndpoint.getMovie" : {
       "path" : "movie/{id}",
       "httpMethod" : "GET",
@@ -61,6 +77,22 @@
           }
         },
         "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "movieendpoint.movieEndpoint.insertMovie" : {
+      "path" : "movie",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "app.model.MovieEndpoint.insertMovie",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
@@ -86,38 +118,6 @@
           }
         },
         "body" : "empty"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "movieendpoint.movieEndpoint.insertMovie" : {
-      "path" : "movie",
-      "httpMethod" : "POST",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "app.model.MovieEndpoint.insertMovie",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "movieendpoint.movieEndpoint.updateMovie" : {
-      "path" : "movie",
-      "httpMethod" : "PUT",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "app.model.MovieEndpoint.updateMovie",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
@@ -465,14 +465,17 @@
           "$ref" : "Movie"
         }
       },
-      "app.model.MovieEndpoint.getMovie" : {
+      "app.model.MovieEndpoint.updateMovie" : {
+        "request" : {
+          "$ref" : "Movie"
+        },
         "response" : {
           "$ref" : "Movie"
         }
       },
-      "app.model.MovieEndpoint.listMovie" : {
+      "app.model.MovieEndpoint.getMovie" : {
         "response" : {
-          "$ref" : "CollectionResponse_Movie"
+          "$ref" : "Movie"
         }
       },
       "app.model.MovieEndpoint.insertMovie" : {
@@ -483,12 +486,9 @@
           "$ref" : "Movie"
         }
       },
-      "app.model.MovieEndpoint.updateMovie" : {
-        "request" : {
-          "$ref" : "Movie"
-        },
+      "app.model.MovieEndpoint.listMovie" : {
         "response" : {
-          "$ref" : "Movie"
+          "$ref" : "CollectionResponse_Movie"
         }
       }
     }
