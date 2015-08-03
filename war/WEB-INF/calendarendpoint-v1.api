@@ -45,6 +45,22 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
+    "calendarendpoint.calendarEndpoint.updateCalendar" : {
+      "path" : "calendar",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "app.model.CalendarEndpoint.updateCalendar",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
     "calendarendpoint.calendarEndpoint.listCalendar" : {
       "path" : "calendar",
       "httpMethod" : "GET",
@@ -78,22 +94,6 @@
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
       "rosyMethod" : "app.model.CalendarEndpoint.insertCalendar",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "calendarendpoint.calendarEndpoint.updateCalendar" : {
-      "path" : "calendar",
-      "httpMethod" : "PUT",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "app.model.CalendarEndpoint.updateCalendar",
       "request" : {
         "body" : "autoTemplate(backendRequest)",
         "bodyName" : "resource"
@@ -248,14 +248,14 @@
           "name" : {
             "type" : "string"
           },
-          "namespace" : {
-            "type" : "string"
-          },
           "parent" : {
             "$ref" : "Key"
           },
           "complete" : {
             "type" : "boolean"
+          },
+          "namespace" : {
+            "type" : "string"
           }
         }
       },
@@ -281,12 +281,7 @@
           "$ref" : "Calendar"
         }
       },
-      "app.model.CalendarEndpoint.listCalendar" : {
-        "response" : {
-          "$ref" : "CollectionResponse_Calendar"
-        }
-      },
-      "app.model.CalendarEndpoint.insertCalendar" : {
+      "app.model.CalendarEndpoint.updateCalendar" : {
         "request" : {
           "$ref" : "Calendar"
         },
@@ -294,7 +289,12 @@
           "$ref" : "Calendar"
         }
       },
-      "app.model.CalendarEndpoint.updateCalendar" : {
+      "app.model.CalendarEndpoint.listCalendar" : {
+        "response" : {
+          "$ref" : "CollectionResponse_Calendar"
+        }
+      },
+      "app.model.CalendarEndpoint.insertCalendar" : {
         "request" : {
           "$ref" : "Calendar"
         },

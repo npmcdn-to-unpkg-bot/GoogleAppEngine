@@ -9,7 +9,7 @@
     <!-- http://code.google.com/appengine/docs/java/config/appconfig.html#Concurrent_Requests -->
 	<threadsafe>true</threadsafe>	<!-- run url fetch service in parallel -->
     <system-properties>
-        <property name="java.util.logging.config.file" value="WEB-INF/logging.properties"/>
+        <property name="java.util.logging.config.file" value="WEB-INF/logging-tmp.properties"/>
 		<!-- To avoid "at org.apache.poi.hssf.record.WriteAccessRecord.setUsername(WriteAccessRecord.java:101) error on GAE -->
 		<!-- Reference: http://amithmit.blogspot.com/2010/04/this-poi-hack-on-google-appengine-lets.html -->
         <property name="user.name" value="voicestreams"/>
