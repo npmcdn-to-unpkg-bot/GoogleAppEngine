@@ -66,6 +66,31 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
+    "calendarendpoint.calendarEndpoint.listCalendar" : {
+      "path" : "calendar",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "app.model.CalendarEndpoint.listCalendar",
+      "request" : {
+        "parameters" : {
+          "cursor" : {
+            "type" : "string",
+            "required" : false
+          },
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
     "calendarendpoint.calendarEndpoint.insertCalendar" : {
       "path" : "calendar",
       "httpMethod" : "POST",
@@ -93,31 +118,6 @@
       "request" : {
         "body" : "autoTemplate(backendRequest)",
         "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "calendarendpoint.calendarEndpoint.listCalendar" : {
-      "path" : "calendar",
-      "httpMethod" : "GET",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "app.model.CalendarEndpoint.listCalendar",
-      "request" : {
-        "parameters" : {
-          "cursor" : {
-            "type" : "string",
-            "required" : false
-          },
-          "limit" : {
-            "type" : "int32",
-            "required" : false
-          }
-        },
-        "body" : "empty"
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
@@ -286,6 +286,11 @@
           "$ref" : "Calendar"
         }
       },
+      "app.model.CalendarEndpoint.listCalendar" : {
+        "response" : {
+          "$ref" : "CollectionResponse_Calendar"
+        }
+      },
       "app.model.CalendarEndpoint.insertCalendar" : {
         "request" : {
           "$ref" : "Calendar"
@@ -300,11 +305,6 @@
         },
         "response" : {
           "$ref" : "Calendar"
-        }
-      },
-      "app.model.CalendarEndpoint.listCalendar" : {
-        "response" : {
-          "$ref" : "CollectionResponse_Calendar"
         }
       }
     }

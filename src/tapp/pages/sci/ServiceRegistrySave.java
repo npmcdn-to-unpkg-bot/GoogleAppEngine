@@ -57,9 +57,6 @@ public class ServiceRegistrySave {
 	@Path("config.js")
 	private Asset config;
 
-	//=== for dirty check comparison
-//	private ServiceRegistry originalBean;	//TODO cause duplicate entry in Start! commented out
-
     private long totalRows = -1;
 
 //	@InjectComponent
@@ -94,7 +91,6 @@ public class ServiceRegistrySave {
 	private void incrementTotalCount() {
 		totalRows = totalRows+1;
 		SettingsDBUtils.updateSettings(TCOUNT_UUID, String.valueOf(totalRows));
-//		initTotalRows();
 	}
 
     public void onActivate(Long id) {
@@ -123,8 +119,6 @@ public class ServiceRegistrySave {
 			System.out.println("ServiceRegistrySave:onActivate legacy entity without getUseHtml flag: " + e);
 		}
 		this.id = id;
-		
-//		initTotalRows();
 	}
 
 	public Long onPassivate() {
@@ -171,9 +165,6 @@ public class ServiceRegistrySave {
 //					System.out.println("service [" + myBean.getService() + "] not saved (not changed)");
 //				}
 				//Compass.runIndex();
-				
-				//=== "remove" the bean so that it would not become a shadow bean in the start!!!
-//				originalBean = null;
 				
 				retVal = start;
 				justSaved = true;

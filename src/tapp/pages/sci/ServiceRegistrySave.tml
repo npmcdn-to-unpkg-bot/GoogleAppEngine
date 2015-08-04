@@ -253,6 +253,11 @@
  </script>
  </head>
  <body>
+<t:jquery.dialog t:clientId="delDialog">
+    ¿Are you sure to delete selected items?
+    <input t:type="submit" t:id="delYes" value="Yes" />
+    <input t:type="submit" t:id="delNo" value="No" t:mixins="dialogButtonHandler" t:dlgId="delDialog"/>
+</t:jquery.dialog>
 	<sec:ifNotGranted roles="ROLE_ADMIN, ROLE_SCI_ADMIN">
 	</sec:ifNotGranted>
    	<div style="margin:10px 5px 5px 2px;height:115px;display:inline;">

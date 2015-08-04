@@ -62,9 +62,9 @@ public class GeniusManagerImpl implements GeniusManager {
 		try {
             tx = Datastore.getDS().beginTransaction();
 			dao.deleteByPrimaryKey(id);
-			myBeans = getGenius();
 			//=== remove the cache too
 			removeCache(id);
+			myBeans = getGenius();
             tx.commit();
 		} catch (Exception e) {
 	        tx.rollback();
@@ -76,7 +76,7 @@ public class GeniusManagerImpl implements GeniusManager {
 		Geniu sr = null;
 		for(int i = 0; i < clonedList.size(); i++) {
 			sr = (Geniu)clonedList.get(i);
-			if(sr.getId() != null && sr.getId() == id) {
+			if(sr.getId() != null && sr.getId().longValue() == id) {
 				clonedList.remove(i);
 				break;
 			}

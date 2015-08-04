@@ -19,10 +19,10 @@ import org.apache.tapestry5.corelib.components.Grid;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.services.BeanModelSource;
 import org.apache.tapestry5.services.RequestGlobals;
+import org.ocpsoft.pretty.time.PrettyTime;
 
 import tapp.pages.sci.Index;
 import app.common.SecurityUtils;
-
 import cloudserviceapi.service.manager.SocialManager;
 
 import com.appspot.cloudserviceapi.common.TapestryUtil;
@@ -106,17 +106,17 @@ public class SocialStart {
 	public Object onActionFromDelete(Long id) {
 		Object retVal = null;
 		
-		if(!delete.isAuthorized()) /** hackable? */ {
-	        HttpServletRequest request = requestGlobals.getHTTPServletRequest(); 
-			delete.setUri(request.getRequestURL().toString());
-			delete.setAction("template:delete:social");
-			delete.setMagicKey(":magickey");
-			retVal = delete;
-		} else
-		if(delete.isAuthorized()) {
+//		if(!delete.isAuthorized()) /** hackable? */ {
+//	        HttpServletRequest request = requestGlobals.getHTTPServletRequest(); 
+//			delete.setUri(request.getRequestURL().toString());
+//			delete.setAction("template:delete:social");
+//			delete.setMagicKey(":magickey");
+//			retVal = delete;
+//		} else
+//		if(delete.isAuthorized()) {
 			beanManager.delete(id);
 			delete.setAuthorized(false);	/** TBD - the caller does not set this but rather the security service */
-		}
+//		}
 		
 		return retVal;
 	}
@@ -162,6 +162,12 @@ public class SocialStart {
 		return myBean.getSimilarity();
 	}
 	
+	public String getFriendlyLastUpdatedTime() {
+		PrettyTime p = new PrettyTime();
+		
+		return p.format(myBean.getLastUpdatedDate());
+	}
+
 	@OnEvent(component = "runIndex", value = EventConstants.SELECTED)
 	void runIndexClicked() {
 		TapestryUtil.setAlertManager(alertManager);
