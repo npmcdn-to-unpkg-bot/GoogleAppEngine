@@ -45,7 +45,7 @@ and the value of the SR entry will be the token (when a delete action is hit, a 
 
 $$$$$$ Third-Party/OSS Integrations $$$$$$
 
-. Tapestry 5.3.7
+. Tapestry 5.3.8
 . Wicket 1.4.17 (Wicket 1.5.X will not work with GAEJ)
 . Struts 2.2.3.1
 . Sitemesh
