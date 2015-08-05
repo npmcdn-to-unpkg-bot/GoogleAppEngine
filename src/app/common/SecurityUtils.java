@@ -25,7 +25,7 @@ public class SecurityUtils {
 			/** secured session cookie */
 			//=== https://www.owasp.org/index.php/HttpOnly
 			// be careful overwriting with HttpOnly: JSESSIONID may have been set with other flags + secure: https://blog.whitehatsec.com/session-cookie-httponly-flag-java/
-			retVal.setHeader("SET-COOKIE", "JSESSIONID=" + sessionid + "; HttpOnly; secure");
+			//retVal.setHeader("SET-COOKIE", "JSESSIONID=" + sessionid + "; HttpOnly; secure");
 			/** frame busting (https://www.owasp.org/index.php/Clickjacking_Protection_for_Java_EE) - just for the IE browsers */
 	        // to prevent all framing of this content
 			retVal.addHeader( "X-FRAME-OPTIONS", "DENY" );
