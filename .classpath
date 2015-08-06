@@ -7,7 +7,6 @@
 	<classpathentry kind="lib" path="war/WEB-INF/lib/tapestry-json-5.3.7.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/tapestry-test-5.3.7.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/tapestry-yuicompressor-5.3.7.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/tapestry5-annotations-5.3.7.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/plastic-5.3.7.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/slf4j-api-1.6.1.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/compass-2.3.0-beta1.jar"/>
@@ -32,6 +31,14 @@
 	<classpathentry kind="lib" path="war/WEB-INF/lib/js.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/jslint4java-1.4.6.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/prettytime-1.0.8.Final.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/plastic-5.3.8.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/tapestry5-annotations-5.3.8.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/tapestry-core-5.3.8.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/tapestry-func-5.3.8.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/tapestry-ioc-5.3.8.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/tapestry-json-5.3.8.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/tapestry-test-5.3.8.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/tapestry-yuicompressor-5.3.8.jar"/>
 	<classpathentry kind="con" path="com.google.appengine.eclipse.core.GAE_CONTAINER"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/spring-aop-4.0.7.RELEASE.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/spring-aspects-4.0.0.RELEASE.jar"/>
