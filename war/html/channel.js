@@ -272,11 +272,12 @@ function loadMovieAll(username, log) {
                 //=== http://support.galleria.io/kb/getting-started/quick-start
                 Galleria.loadTheme('/galleria-' + GALLERIA_VERSION + '/themes/classic/galleria.classic.min.js?ts=' + (new Date()).getTime());
                 Galleria.configure({
-                    dummy: '/images/noimage.jpg',
-                    imageCrop: true,
+                    //dummy: '/images/noimage.jpg',
+                    //imageCrop: true,
                     transition: 'fade',
                     carousel: true
                     , thumbnails: 'numbers'
+                    //, thumbnails: true
                 });
 
                 Galleria.run('#galleria' + galleria_type,{
@@ -486,6 +487,9 @@ function loadMovieShuffle(username, log) {
                     //http://galleria.io/docs/options/wait/
                     , wait: true
                     , thumbnails: 'numbers'
+                    //, thumbnails: true
+                    , lightbox: true
+                    , trueFullscreen:true
                     , thumbQuality: 'auto'
                     //http://galleria.io/docs/options/youtube/
                     , youtube: { enablejsapi: 1, autoplay: 1 }
