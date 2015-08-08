@@ -5,12 +5,14 @@ requirejs.config({
 
     paths: {
         jquery: ['//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery', 'jquery-1.9.1'],    //for some reason, this is needed for IE 8 otherwise  'jQuery' is undefined or  '$' is undefined will occur
-//        purl: '../jquery/purl',
+        purl: '../jquery/purl',
 //        parse: 'https://www.parsecdn.com/js/parse-1.2.7.min',
         //===used by channel.html
-        galleria: ['../galleria/galleria-1.2.9.min'],
+        galleria: ['../galleria-1.2.9/galleria-1.2.9.min'],     //Note: remember to change GALLERIA_VERSION in channel.js too!!!
+        //galleria: ['../galleria-1.4.2/galleria-1.4.2.min'],   //Note: remember to change GALLERIA_VERSION in channel.js too!!!
 //        movieApp: ['../mcrud/movie'],
 //        initUser: ['../parse/init'],
+        subsTitle: ['../jquery/YoutubeSubtitiles'],
         channelApp: ['../html/channel']
     },
 
@@ -23,10 +25,10 @@ requirejs.config({
 //            deps: ["jquery"],
 //            exports: 'Parse'
 //        },
-//        purl: {
-//            deps: ["jquery"],
-//            exports : '$'
-//        },
+        purl: {
+            deps: ["jquery"],
+            exports : '$'
+        },
 //        angular: {
 //            deps: ["parse", "purl"],
 //            exports : 'angular'
@@ -34,6 +36,9 @@ requirejs.config({
 //        movieApp: {
 //            deps: ['jquery', 'parse', 'angular']
 //        },
+        subsTitle: {
+            deps: ['jquery', 'purl', 'channelApp']
+        },
         channelApp: {
             deps: ['galleria']
         },
@@ -65,13 +70,13 @@ require(['./main-config', './app'], function (common, app) {
             'loglevel', 'prefs',
             //'movieApp',
             //'initUser',
-            'galleria', 'channelApp'], function (
+            'galleria', 'subsTitle', 'channelApp'], function (
             $, purl, Parse, facebook,
             //angular,
             log, prefs,
             //movie,
             //init,
-            galleria, channel) {
+            galleria, subsTitle, channel) {
             $(document).ready(function() {
                 //log.info("ready!");
 //                $('body').attr('ng-controller', 'ctrlRead');
