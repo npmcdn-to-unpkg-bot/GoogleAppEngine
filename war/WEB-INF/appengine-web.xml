@@ -5,7 +5,6 @@
     <version>15</version>
     <!-- Configure java.util.logging -->
     <system-properties>
-        <property name="java.util.logging.config.file" value="WEB-INF/logging.properties"/>
         <property name="appengine.orm.disable.duplicate.emf.exception" value="false"/>
     </system-properties>
     <!-- https://groups.google.com/forum/#!topic/google-appengine-java/PYpoELG7ZZ4 -->
