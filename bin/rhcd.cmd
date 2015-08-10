@@ -1,13 +1,17 @@
 REM Hit ctrl + break if you have not done: C:\>rhc git-clone mygaeapp!!!
 
+set CAPEDWAFT=C:\Users\sony\Downloads\CapeDwarf_WildFly_2.0.0.Final\CapeDwarf_WildFly_2.0.0.Final
+
 pause
 
-xcopy ..\war c:\mygaeapp\deployments\war\ /s /e /h
+xcopy ..\war %CAPEDWAFT%\standalone\deployments\war\ /s /e /h
 
-copy skip_maven_build c:\mygaeapp\.openshift\markers\
+copy skip_maven_build %CAPEDWAFT%\standalone\.openshift\markers\
 
-copy rhcp.cmd c:\mygaeapp\
+copy rhcp.cmd %CAPEDWAFT%\bin\
 
-cd c:\mygaeapp\
+copy rcd.cmd %CAPEDWAFT%\bin\
 
-REM Invoke rhcp.cmd now to push to OpenShift! :)
+:cd %CAPEDWAFT%
+
+REM cd %CAPEDWAFT% and invoke rhcp.cmd now to push to OpenShift! :)

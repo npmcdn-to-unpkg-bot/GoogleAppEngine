@@ -37,11 +37,11 @@ public class User implements Cloneable, Serializable {
 //    		, mappedBy="parent"		//memory intensive!!!
     		)
 	private List<Calendar> calendar = new ArrayList<Calendar>();
-    @OneToMany(cascade = CascadeType.ALL
-    		, fetch = FetchType.EAGER
-    		, orphanRemoval = true
-    		//, mappedBy="parent"	//memory intensive!!!
-    		)
+//    @OneToMany(cascade = CascadeType.ALL
+//    		, fetch = FetchType.LAZY
+//    		//, orphanRemoval = true
+//    		//, mappedBy="parent"	//memory intensive!!!
+//    		)
 	private List<UserSecurityQuestion> securityQuestion = new ArrayList<UserSecurityQuestion>();
 
 	public Key getKey() {
