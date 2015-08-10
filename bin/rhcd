@@ -1,0 +1,20 @@
+echo "Hit ctrl + break in 5 seconds if you have not done: C:\>rhc git-clone gae!!!"
+
+export CAPEDWAFT=~/gae
+
+#sleep infinity
+sleep 5 
+
+### Local CapeDwarf Only ###
+#cp -R ..\war $CAPEDWAFT/standalone/deployments/war
+#cp skip_maven_build %CAPEDWAFT%\standalone\.openshift\markers\
+#cp rcd $CAPEDWAFT/bin
+
+#### OpenShift ###
+cp -R ../war $CAPEDWAFT/deployments
+cp skip_maven_build $CAPEDWAFT/.openshift/markers
+cp rhcp $CAPEDWAFT
+
+#cd $CAPEDWAFT
+
+echo "cd $CAPEDWAFT and invoke rhcp now to push to OpenShift! :)"
