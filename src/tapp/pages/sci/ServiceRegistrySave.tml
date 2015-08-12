@@ -2,7 +2,31 @@
  <head>
  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
  <title>Service Registry</title>
- <style>
+ <style type="text/css">
+    /* iPhone 2G-4S in portrait and landscape (source: http://stephen.io/mediaqueries/) */
+    @media only screen
+    and (min-device-width : 320px)
+    and (max-device-width : 480px) {
+        body {
+            -webkit-text-size-adjust:80%;
+            margin-left: 15px;
+        }
+        h2 {
+            font-size: .75em;
+            margin-top: 10px;
+        }
+    }
+    /** iPhone 5 portrait and landscape (source: http://stephen.io/mediaqueries/) */
+    @media only screen 
+	and (min-device-width : 320px) 
+	and (max-device-width : 568px) { 
+        h2 {
+            font-size: 1.75em;
+        }
+	}
+	/** http://stackoverflow.com/questions/7073396/disable-zoom-on-input-focus-in-android-webpage */
+	input:focus { font-size: 16px!important}
+
  	.t-beaneditor-submit {
 		color: red;
  	}
@@ -300,7 +324,7 @@
 
  		<t:parameter name="service">
 	 		<label t:type="Label" for="service"/>
- 			<input t:type="TextField" style="width:50%;" t:id="service" t:value="serviceRegistry.service" />
+ 			<input name="password" t:type="TextField" style="width:50%;" t:id="service" t:value="serviceRegistry.service" />
  			* must be unique
  		</t:parameter>
  		<t:parameter name="endpoint">
