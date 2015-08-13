@@ -1,4 +1,0 @@
-<!-- https://docs.jboss.org/author/display/WFLY8/CDI+Reference -->
-<jboss xmlns="urn:jboss:1.0">
-    <weld xmlns="urn:jboss:weld:1.0" require-bean-descriptor="true"/>
-</jboss>
