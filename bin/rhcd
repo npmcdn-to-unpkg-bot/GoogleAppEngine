@@ -1,24 +1,24 @@
 echo "Hit ctrl + break in 5 seconds if you have not done: C:\>rhc git-clone gae!!!"
 
-export LOCAL_CAPEDWAFT=~/Downloads/CapeDwarf_WildFly_2.0.0.Final
-export CAPEDWAFT=~/gae
+export LOCAL_CAPEDWARF=~/Downloads/CapeDwarf_WildFly_2.0.0.Final
+export CAPEDWARF=~/gae
 
 #sleep infinity
 sleep 5 
 
 ### Local CapeDwarf Only ###
-rm -rf $LOCAL_CAPEDWAFT/deployments/ROOT.war
-cp ../.openshift/config/standalone.xml $LOCAL_CAPEDWAFT/standalone/configuration/
-cp -R ../war $LOCAL_CAPEDWAFT/standalone/deployments/ROOT.war/
-cp rcd $LOCAL_CAPEDWAFT/bin
+rm -rf $LOCAL_CAPEDWARF/deployments/ROOT.war
+cp ../.openshift/config/standalone.xml $LOCAL_CAPEDWARF/standalone/configuration/
+cp -R ../war $LOCAL_CAPEDWARF/standalone/deployments/ROOT.war/
+cp rcd $LOCAL_CAPEDWARF/bin
 
 #### OpenShift ###
-rm -rf $CAPEDWAFT/deployments/ROOT.war
-cp -R ../war $CAPEDWAFT/deployments/ROOT.war/
-cp skip_maven_build $CAPEDWAFT/.openshift/markers
-cp rhcp $CAPEDWAFT
+rm -rf $CAPEDWARF/deployments/ROOT.war
+cp -R ../war $CAPEDWARF/deployments/ROOT.war/
+cp skip_maven_build $CAPEDWARF/.openshift/markers
+cp rhcp $CAPEDWARF
 
-#cd $CAPEDWAFT
+#cd $CAPEDWARF
 
-echo "cd $LOCAL_CAPEDWAFT and capedwarf.sh or "
-echo "cd $CAPEDWAFT and invoke rhcp now to push to OpenShift! :)"
+echo "cd $LOCAL_CAPEDWARF and capedwarf.sh or "
+echo "cd $CAPEDWARF and invoke rhcp now to push to OpenShift! :)"
