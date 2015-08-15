@@ -8,12 +8,12 @@ pause
 :### Local CapeDwarf Only ###
 del /f/s/q %LOCAL_CAPEDWARF%\deployments\ROOT.war > nul
 copy /S/Y ..\.openshift\config\standalone.xml %LOCAL_CAPEDWARF%\standalone\configuration\
-xcopy /S/Y ..\war %LOCAL_CAPEDWARF%\standalone\deployments\ROOT.war
+xcopy /S/Y ..\war %LOCAL_CAPEDWARF%\standalone\deployments\ROOT.war\
 copy rcd %LOCAL_CAPEDWARF%\bin
 
 :#### OpenShift ###
 del /f/s/q %CAPEDWARF%\deployments\ROOT.war > nul
-xcopy /S/Y ..\war %CAPEDWARF%\deployments\ROOT.war
+xcopy /S/Y ..\war %CAPEDWARF%\deployments\ROOT.war\
 copy skip_maven_build %CAPEDWARF%\.openshift\markers
 copy rhcp %CAPEDWARF%
 
