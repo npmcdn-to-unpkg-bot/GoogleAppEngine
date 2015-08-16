@@ -735,6 +735,12 @@ java.lang.RuntimeException: Exception constructing service 'ApplicationContext':
         </auth-constraint>
     </security-constraint>
 -->
+<!-- For CapeDwarf DEV mode (http://capedwarf.org/documentation/user-guide/) 
+	<context-param>
+	  <param-name>com.google.appengine.runtime.environment</param-name>
+	  <param-value>Development</param-value>
+	</context-param>
+-->
 	<security-constraint>
         <web-resource-collection>
 <!-- comment out these in local CapeDwarf to avoid redirect loop error due to non-existing SSL port -->
