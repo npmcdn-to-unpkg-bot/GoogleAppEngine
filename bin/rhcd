@@ -20,5 +20,5 @@ cp rhcp $CAPEDWARF
 
 #cd $CAPEDWARF
 
-echo "cd $LOCAL_CAPEDWARF and capedwarf.sh or "
+echo "cd $LOCAL_CAPEDWARF/bin and capedwarf.sh or "
 echo "cd $CAPEDWARF and invoke rhcp now to push to OpenShift! :)"
