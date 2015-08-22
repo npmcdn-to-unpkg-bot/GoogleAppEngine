@@ -92,7 +92,7 @@ require(['./main-config', './app'], function (common, app) {
                 })();
 
                 //noinspection CommaExpressionJS
-                if(loadMovieShuffle(Parse.User.current() && Parse.User.current().getUsername()), log) {
+                if(loadMovieShuffle(Parse.User.current() && Parse.User.current().getUsername())) {
                     $('#progress').hide();
                     console && console.log("main-channelshuffle: channel UI loaded");
                 }
