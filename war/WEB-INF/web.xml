@@ -264,7 +264,7 @@ java.lang.RuntimeException: Exception constructing service 'ApplicationContext':
  
       Collect always logs
  
-      MailOnError from=jamesscigrp@gmail.com to=jamesscigrp@gmail.com
+      MailOnError from=admin@gmail.com to=admin@gmail.com
  
     </param-value>
   </init-param>
@@ -735,9 +735,17 @@ java.lang.RuntimeException: Exception constructing service 'ApplicationContext':
         </auth-constraint>
     </security-constraint>
 -->
+<!-- For CapeDwarf DEV mode (http://capedwarf.org/documentation/user-guide/) 
+	<context-param>
+	  <param-name>com.google.appengine.runtime.environment</param-name>
+	  <param-value>Development</param-value>
+	</context-param>
+-->
 	<security-constraint>
         <web-resource-collection>
-<!-- comment out these in dev to avoid "WARNING: AUTH FAILURE: incorrect role for xxx" -->
+<!-- comment out these in local CapeDwarf to avoid redirect loop error due to non-existing SSL port -->
+<!--
+-->
             <url-pattern>/userstart</url-pattern>
             <url-pattern>/usersave/*</url-pattern>
             <url-pattern>/sci/serviceregistrysave/*</url-pattern>
@@ -746,8 +754,6 @@ java.lang.RuntimeException: Exception constructing service 'ApplicationContext':
             <url-pattern>/g/social/socialsave/*</url-pattern>            
             <url-pattern>/postsettings</url-pattern>
             <url-pattern>/settings</url-pattern>
-<!--
--->
 <!-- relegated to the Google authentication until Shiro is in place	
             <url-pattern>/app/*</url-pattern>
             <url-pattern>/sgc/jsp/admin.jsp</url-pattern>

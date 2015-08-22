@@ -1,17 +1,27 @@
 REM Hit ctrl + break if you have not done: C:\>rhc git-clone mygaeapp!!!
 
-set CAPEDWAFT=C:\Users\sony\Downloads\CapeDwarf_WildFly_2.0.0.Final\CapeDwarf_WildFly_2.0.0.Final
+set LOCAL_CAPEDWARF=C:\Users\sony\Downloads\CapeDwarf_WildFly_2.0.0.Final\CapeDwarf_WildFly_2.0.0.Final
+set CAPEDWARF=C:\gae
 
 pause
 
-xcopy ..\war %CAPEDWAFT%\standalone\deployments\war\ /s /e /h
+:### Local CapeDwarf Only ###
+del /f/s/q %LOCAL_CAPEDWARF%\standalone\deployments\ROOT.war > nul
+:pause
+xcopy /S/Y ..\.openshift\config\standalone.xml %LOCAL_CAPEDWARF%\standalone\configuration\
+xcopy /S/Y ..\war %LOCAL_CAPEDWARF%\standalone\deployments\ROOT.war\
+copy rcd.cmd %LOCAL_CAPEDWARF%\bin
+:pause
 
-copy skip_maven_build %CAPEDWAFT%\standalone\.openshift\markers\
+:#### OpenShift ###
+del /f/s/q %CAPEDWARF%\deployments\ROOT.war
+:pause
+xcopy /S/Y ..\war %CAPEDWARF%\deployments\ROOT.war\
+copy skip_maven_build %CAPEDWARF%\.openshift\markers
+copy rhcp.cmd %CAPEDWARF%
+:pause
 
-copy rhcp.cmd %CAPEDWAFT%\bin\
+:cd %CAPEDWARF%
 
-copy rcd.cmd %CAPEDWAFT%\bin\
-
-:cd %CAPEDWAFT%
-
-REM cd %CAPEDWAFT% and invoke rhcp.cmd now to push to OpenShift! :)
+echo "cd %LOCAL_CAPEDWARF%\bin and capedwarf.sh or "
+echo "cd %CAPEDWARF% and invoke rhcopy now to push to OpenShift! :)"
