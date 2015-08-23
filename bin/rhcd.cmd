@@ -23,5 +23,5 @@ copy rhcp.cmd %CAPEDWARF%
 
 :cd %CAPEDWARF%
 
-echo "cd %LOCAL_CAPEDWARF%\bin and capedwarf.sh or "
+echo "cd %LOCAL_CAPEDWARF%\bin and rcd.cmd or "
 echo "cd %CAPEDWARF% and invoke rhcopy now to push to OpenShift! :)"
