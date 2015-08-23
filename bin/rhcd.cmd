@@ -9,6 +9,7 @@ pause
 del /f/s/q %LOCAL_CAPEDWARF%\standalone\deployments\ROOT.war > nul
 :pause
 xcopy /S/Y ..\.openshift\config\standalone.xml %LOCAL_CAPEDWARF%\standalone\configuration\
+xcopy /S/Y ..\.openshift\config\standalone-capedwarf.xml %LOCAL_CAPEDWARF%\standalone\configuration\
 xcopy /S/Y ..\war %LOCAL_CAPEDWARF%\standalone\deployments\ROOT.war\
 copy rcd.cmd %LOCAL_CAPEDWARF%\bin
 :pause
