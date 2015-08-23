@@ -206,6 +206,14 @@ public class CrudService extends HttpServlet {
 			response.setHeader("Pragma", "no-cache");
 			//=== set the content type we are sending back as JSON
 			//response.setContentType("application/json");
+			
+			//=== avoid "POST http://localhost:8888/ws/crud 403 (Forbidden)" from AngularJS 1.4
+			response.addHeader("Access-Control-Allow-Origin", "*");
+			response.addHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
+			response.addHeader("Access-Control-Max-Age", "3600");
+			response.addHeader("Access-Control-Allow-Headers", "x-requested-with");
+			
+			
 			//=== supports any language (UNICODE) / i18n stuff with two lines of codes that specify "utf-8"
 			response.setCharacterEncoding("UTF-8");
 //			response.setContentType("text/json; charset=UTF-8");	//text/json type avoided: "Unexpected end of input" during jQuery's json.parse() on Chrome/Webkit browsers unfortunately

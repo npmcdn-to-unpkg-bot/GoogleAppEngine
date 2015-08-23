@@ -1243,14 +1243,13 @@ function MovieController($scope, $filter, $http, $rootScope,
                 var data = "id=" + item.id + "&" +
                     "oid=" + oid + "&" +
                     "type=" + $scope.backendObject + "&action=delete&uid=" + uid;
-                //$console && $console.log("about to delete  [" + data + ']');
-                //$console && $console.log("deleteItem: before POST data [" + data + "]");
-//                $http.post('/ws/crud?', data)
                 $http({
                     method: 'POST',
                     url: '/ws/crud',
                     data: data,
-                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+                    }
                 })
                     .success(function (response, status, headers, config) {
                         //$console && $console.log("deleteItem: checking response.id [" + response.id + "] with item.id [" + item.id + "]");
@@ -1270,8 +1269,8 @@ function MovieController($scope, $filter, $http, $rootScope,
                             $scope.editing = false;
                             $scope.backendReady = true;
                         }
-                    }
-                ).error(function (response, status, headers, config) {
+                    })
+                    .error(function (response, status, headers, config) {
                         $scope.error_message = response.error_message;
                         if(status !== 0) {	//TODO workaround to suppress the weird error! :(
                             alert("movie.js: 15 error: response [" + response + "] status [" + status + "] headers [" + headers + "] config [" + config + "]");
