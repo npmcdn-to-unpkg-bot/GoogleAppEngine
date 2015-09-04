@@ -9,6 +9,7 @@ pause
 del /f/s/q %LOCAL_CAPEDWARF%\standalone\deployments\ROOT.war > nul
 :pause
 xcopy /S/Y ..\.openshift\config\standalone.xml %LOCAL_CAPEDWARF%\standalone\configuration\
+xcopy /S/Y ..\.openshift\config\standalone-capedwarf.xml %LOCAL_CAPEDWARF%\standalone\configuration\
 xcopy /S/Y ..\war %LOCAL_CAPEDWARF%\standalone\deployments\ROOT.war\
 copy rcd.cmd %LOCAL_CAPEDWARF%\bin
 :pause
@@ -23,5 +24,5 @@ copy rhcp.cmd %CAPEDWARF%
 
 :cd %CAPEDWARF%
 
-echo "cd %LOCAL_CAPEDWARF%\bin and capedwarf.sh or "
+echo "cd %LOCAL_CAPEDWARF%\bin and rcd.cmd or "
 echo "cd %CAPEDWARF% and invoke rhcopy now to push to OpenShift! :)"
