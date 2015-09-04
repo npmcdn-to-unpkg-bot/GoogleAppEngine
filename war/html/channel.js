@@ -580,7 +580,7 @@ function loadMovieShuffle(username) {
         }
     };
     $.ajax({
-        type: "POST",
+        type: "GET",
         url: "/ws/crud?type=modelMovie&uid=" + username + "&filter=next5"
         //,
         //async: false,
