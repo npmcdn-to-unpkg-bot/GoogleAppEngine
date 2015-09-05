@@ -9,7 +9,7 @@ var gEventArray = [];
 var gHref;
 var App = {
     major: '9',
-    minor: '0102',
+    minor: '0102a',
     header_index: 0,   //metadata header
     movie_index: 1,     //the real movies data
     login_url: '/ui/index.html',
@@ -72,8 +72,6 @@ typeof requirejs !== 'undefined' && requirejs.config({
         //angularSummernote: '../js/angular-summernote.min',
 
         init: '../parse/init',  //cache and user initialization
-        //===used by calendar.html
-        jQueryUI: '../jquery/jquery-ui-1.10.2.custom.min',
         dateFormat: 'dateFormat',
 //        modernizr: '//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min',
         modernizr: '//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr',

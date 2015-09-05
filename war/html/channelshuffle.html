@@ -1,8 +1,5 @@
 ﻿<!DOCTYPE html>
 <html>
-<!--
-<html manifest="movie.appcache" xmlns:ng="http://angularjs.org" id="ng:app" ng-app lang="en">
--->
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=8">
     <meta charset="utf-8">
@@ -275,7 +272,7 @@ http://support.galleria.io/kb/getting-started/quick-start
     var col6;
     var entry;
     function importGSS(json) {
-        for (i = 0; i < json.feed.entry.length; i++) {
+        for (var i = 0; i < json.feed.entry.length; i++) {
             entry = json.feed.entry[i];
             col1 = entry.gsx$index && entry.gsx$index.$t;
             col2 = entry.gsx$_cokwr && entry.gsx$_cokwr.$t;

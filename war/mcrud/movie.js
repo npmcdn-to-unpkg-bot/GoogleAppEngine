@@ -1525,28 +1525,19 @@ angular.module('app',[])//dependency 'ui.bootstrap' is conflicting with 1.4, thu
 
 //=== http://www.grobmeier.de/angular-js-binding-to-jquery-ui-datepicker-example-07092012.html#.UyIsZVFdVtZ
 //angular.module('app')
-.directive('myDatepicker', function ($parse) {
-    return function (scope, element, attrs, controller) {
-        var ngModel = $parse(attrs.ngModel);
-        $(function(){
-            element.datepicker({
-                showOn:"both",
-                changeYear:true,
-                changeMonth:true,
-                dateFormat:'yy-mm-dd',
-                maxDate: new Date(),
-                yearRange: '1920:2012',
-                onSelect:function (dateText, inst) {
-                    scope.$apply(function(scope){
-                        // Change binded variable
-                        ngModel.assign(scope, dateText);
-                    });
-                }
-            });
+.directive('datepicker', function() {
+    return function(scope, element, attrs) {
+        element.datepicker({
+            inline: true,
+            dateFormat: 'dd.mm.yy',
+            onSelect: function(dateText) {
+                var modelPath = $(this).attr('ng-model');
+                putObject(modelPath, scope, dateText);
+                scope.$apply();
+            }
         });
-    };
+    }
 })
-
 /*
  This directive allows us to pass a function in on an enter key to do what we want.
  Courtesy of http://ericsaupe.com/angularjs-detect-enter-key-ngenter/
