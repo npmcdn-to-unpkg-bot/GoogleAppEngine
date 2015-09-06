@@ -31,8 +31,6 @@ typeof define !== 'undefined'?define(['require', 'exports', 'module'], function 
     }
 
     function hasYoutubePlayer() {
-//            ytplayer = window.document.getElementById("embed#player1");
-
         if (typeof ytplayer !== 'undefined' && ytplayer !== null) {
             return true;
         }
@@ -40,8 +38,6 @@ typeof define !== 'undefined'?define(['require', 'exports', 'module'], function 
     }
 
     function getPlayTime() {
-//            ytplayer = window.document.getElementById("embed#player1");
-
         var time = -1;
         var state;
 
@@ -166,10 +162,6 @@ typeof define !== 'undefined'?define(['require', 'exports', 'module'], function 
                 //console.log("currentSub.t = [" + currentSub.t + "]");
             }
 
-//                if(previousTime > currentTime) {
-//                    //it's a rewind
-//                }
-//                previousTime = currentTime;
         }, 300);
     }
 
@@ -177,14 +169,13 @@ typeof define !== 'undefined'?define(['require', 'exports', 'module'], function 
         $('.srt').each(function () {
                 var subtitleElement = $(this);
 
-//                if (!hasYoutubePlayer()) return;
                 var srtUrl = subtitle_url;
                 if (srtUrl) {
                     $("#str_load_info").hide();
                     $("#str_url_added").hide();
                     $("#srt_url_data").hide();
                     $("#srt_url_data").val("");     //IMPORTANT: do not do a server request again until I am done!!!
-                    console.log("YoutubeSubtitiles.js calling service request ....................................................");
+                    //console.log("YoutubeSubtitiles.js calling service request ....................................................");
                     $.ajax({
                         type: "GET",
                         url: srtUrl
@@ -197,7 +188,7 @@ typeof define !== 'undefined'?define(['require', 'exports', 'module'], function 
                                 $("#str_load_info").hide();
                                 subtitleElement.text("");
                                 playSubtitles(subtitleElement, data);
-                                console.log("YoutubeSubtitiles.js service returned successfully.");
+                                //console.log("YoutubeSubtitiles.js service returned successfully.");
                             } catch(e) {
                                 alert("YoutubeSubtitiles.js error 1 [" + e + "]");
                                 window.console && console.log("YoutubeSubtitiles.js error 1 [" + e + "]");

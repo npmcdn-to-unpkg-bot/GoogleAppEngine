@@ -560,7 +560,7 @@ function loadMovieShuffle(username) {
             Galleria.on('loadstart', function (e) {
                 var fSubtitle, trans;
                 //trans = .5;
-                var trans = 1.0;
+                var trans = 0.5;
                 var sText = e.galleriaData.subtitle;
                 if (isValidSubtitle(sText)) {
                     fSubtitle = '/go/' + sText;
@@ -573,7 +573,7 @@ function loadMovieShuffle(username) {
                 }
                 //alert(fSubtitle);
                 //TODO http://css-tricks.com/forums/topic/is-it-possible-to-adapt-font-size-to-div-width/
-                $("#subtitleDiv").replaceWith("<div id=\"subtitleDiv\" style=\"top:50px;height:72px;font-size:24px;position: fixed;bottom: 10px;background: rgba(50,50,50,trans);width: 97%;z-index: 2000;color: rgb(220,220,220);text-align: center;\"><input type=\"text\" value=\"" + fSubtitle + "\" style=\"width:50%;height:70%;\" id=\"srt_url_data\" onfocus=\"if(this.value.length==0){this.value='Enter subtitle here (would not work in fullscreen mode for now).';}\"> <a class=\"btn-reverse\" href=\"#\" onclick=\"hideSubtitle();\" id=\"str_url_added\" style=\"margin-bottom:1px;\" name=\"str_url_added\"><i style=\"vertical-align: baseline;\" class=\"icon-remove-sign\"></i></a><label style=\"padding-left:10px;\" id=\"str_load_info\"></label><div class=\"srt\"></div><input alt=\"Delay of subtitles in seconds, can be postive or negative\" type=\"text\" style=\"width:2.5em;position:absolute;left:89%;bottom:9px;\" placeholder=\"<![CDATA[Delay/s]]>\" id=\"srt_delay\"/></div>");
+                $("#subtitleDiv").replaceWith("<div id=\"subtitleDiv\" style=\"top:50px;height:72px;font-size:24px;position: fixed;bottom: 10px;background: rgba(50,50,50,"+ trans +");width: 99%;z-index: 2000;color: rgb(220,220,220);text-align: center;\"><input type=\"text\" value=\"" + fSubtitle + "\" style=\"width:50%;height:70%;\" id=\"srt_url_data\" onfocus=\"if(this.value.length==0){this.value='Enter subtitle here (would not work in fullscreen mode for now).';}\"> <a class=\"btn-reverse\" href=\"#\" onclick=\"hideSubtitle();\" id=\"str_url_added\" style=\"margin-bottom:1px;\" name=\"str_url_added\"><i style=\"vertical-align: baseline;\" class=\"icon-remove-sign\"></i></a><label style=\"padding-left:10px;\" id=\"str_load_info\"></label><div class=\"srt\"></div><input alt=\"Delay of subtitles in seconds, can be postive or negative\" type=\"text\" style=\"width:2.5em;position:absolute;left:89%;bottom:9px;\" placeholder=\"<![CDATA[Delay/s]]>\" id=\"srt_delay\"/></div>");
                 $("#srt_url_data").val(fSubtitle);
             });
             //window.console && console.log("2.1.0 galleria loaded");

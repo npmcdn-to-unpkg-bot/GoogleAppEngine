@@ -87,8 +87,6 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
 	private CalendarHandler calendarHandler;
 	private long maxPerPage = 6;	//this needs to be in sy with the front end UI!
 	private long pageNumber = 1;
-	//KISS cache for all users
-//	private HashMap allMoviesCache = new HashMap();
 
 	static {
 		dao = new MovieEndpoint();
@@ -227,20 +225,6 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
 	}
 
 	private User getParent() throws Exception {
-//		User retVal = null;
-//		User u = new User();
-//		UserHandler uh = new UserHandler();
-//		u.setName(uid);
-//		u = uh.getUserByName(u);
-//		if(u.getKey() != null) {
-//			retVal = u;
-//		} else {
-//			System.out.println("no parent with uid [" + uid + "] found, nothing will be done for object instance of " + u.getClass().getName());
-//			//TODO - could have been done better to avoid security risk!!!
-//			//createParent(u);	//automatic user creation to avoid future JPA upgrade for instance
-//			//System.out.println("no parent with uid [" + uid + "] found, automatically created one: user [" + u + "]");
-//		}
-//		return retVal;
 		return CommonHandler.getParent(uid);
 	}
 	
@@ -253,11 +237,6 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
 		UserHandler uh = new UserHandler();
 		uh.doUpdateItem(item);
 	}
-	
-//	private void saveParent1(User item, Movie movie) throws Exception {
-//		UserHandler uh = new UserHandler();
-//		uh.doUpdateItem(item, movie);
-//	}
 
 	public Object doCreateItem(Object item) throws Exception {
 		long id = -1;

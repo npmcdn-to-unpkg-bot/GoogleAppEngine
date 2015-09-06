@@ -1311,7 +1311,7 @@ function MovieController($scope, $filter, $http, $rootScope,
 
         try {
             assert(swipe, "movie.js: swipe [" + swipe + "]");
-            window.console && console.log("movie.js: swipe [" + swipe + "]");
+            //console && console.log("movie.js: swipe [" + swipe + "]");
             if(swipe === 'right') {
                 //$scope.selectNextPage(page);
             } else
@@ -1489,10 +1489,8 @@ angular.module('app',[])//dependency 'ui.bootstrap' is conflicting with 1.4, thu
 		['$controllerProvider', '$httpProvider',
     function($controllerProvider, $httpProvider) {
         //alert('test');
-        console.log("movie.js app config called");
-        //************* THIS IS SOMEHOW NOT INVOKED FOR UNKNOWN REASON!!!!! *****************
+        //console.log("movie.js app config called");
         $controllerProvider.allowGlobals();     //thanks to 1.3
-        //gControllerProvider.allowGlobals();     //thanks to 1.3
         $httpProvider.defaults.useXDomain = true;
         delete $httpProvider.defaults.headers.common['X-Requested-With'];
         //$httpProvider.defaults.headers.get['Content-Type'] = $httpProvider.defaults.headers.put['Content-Type'] = $httpProvider.defaults.headers.post['Content-Type'] = 'text/plain; charset=UTF-8';
@@ -1503,7 +1501,7 @@ angular.module('app',[])//dependency 'ui.bootstrap' is conflicting with 1.4, thu
         //        alert(exception.message);
         //    };
         //}]);
-        console && console.log("movie.js config(): done")
+        //console && console.log("movie.js config(): done")
     }
 ]
 )
