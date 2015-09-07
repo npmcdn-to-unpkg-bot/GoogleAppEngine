@@ -26,7 +26,8 @@ public class User implements Cloneable, Serializable {
     private Long id;
 	private String name;
     @OneToMany(cascade = CascadeType.ALL 
-    		, fetch = FetchType.EAGER
+//    		, fetch = FetchType.LAZY
+    		, fetch = FetchType.EAGER	//TODO to be turned off once the paginated movie query in MovieHandler is done
 //    		, orphanRemoval = true
 //    		, mappedBy="parent"		//memory intensive!!!
     		)	//FetchType.LAZY was not working for me (JPA1)!

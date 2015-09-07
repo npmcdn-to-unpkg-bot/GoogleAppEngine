@@ -6,10 +6,14 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import app.model.Movie;
 import app.model.User;
 
 public class CacheManager {
+    private static final Logger logger = LoggerFactory.getLogger(CacheManager.class);
 	private static List<User> userCache = new ArrayList<User>();
 //	private static String separator = ",";
 
@@ -27,7 +31,7 @@ public class CacheManager {
 			User tmp = null;
 			for(int i=0; i<userCache.size(); i++) {
 				tmp = userCache.get(i);
-				System.out.println("tmp id [" + tmp.getId() + "] user id [" + user.getId() + "]");
+				logger.debug("CacheManager#updateUserCache: tmp id [" + tmp.getId() + "] user id [" + user.getId() + "]");
 				if(tmp != null && user != null && tmp.getId() != null && user.getId() != null && tmp.getId().longValue() != user.getId().longValue()) {
 					newUserCache.add(tmp);
 				} else {
@@ -51,7 +55,7 @@ public class CacheManager {
 			for(int i=0; i<userCache.size(); i++) {
 				tmp = userCache.get(i);
 				if(tmp != null && user != null && tmp.getId() != null && user.getId() != null && tmp.getId().longValue() == user.getId().longValue()) {
-					System.out.println("tmp id [" + tmp.getId() + "] user id [" + user.getId() + "]");
+					logger.debug("CacheManager#getUserCache: tmp id [" + tmp.getId() + "] user id [" + user.getId() + "]");
 					u = tmp;
 					break;
 				} 

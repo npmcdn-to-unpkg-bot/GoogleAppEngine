@@ -11,6 +11,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.http.HttpServletRequest;
@@ -19,7 +20,6 @@ import org.apache.commons.lang3.SerializationUtils;
 import org.joda.time.DateTime;
 
 import tapp.model.ServiceRegistry;
-
 import app.common.AppUtils;
 import app.common.Constants;
 import app.common.DatastoreUtils;
@@ -85,8 +85,8 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
 	private String filter;
 	private String legacy;
 	private CalendarHandler calendarHandler;
-	private long maxPerPage = 6;	//this needs to be in sy with the front end UI!
-	private long pageNumber = 1;
+	private int maxPerPage = 6;	//this needs to be in sy with the front end UI!
+	private int pageNumber = 1;
 
 	static {
 		dao = new MovieEndpoint();
@@ -272,24 +272,6 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
 		return cal;
 	}
 
-	
-//	public Object doCreateItem1(Object item) throws Exception {
-//		long id = -1;
-//		
-//		Movie cal = (Movie)item;
-//		try {
-//			User u = getParent();
-//			if(u != null) {
-//				saveParent1(u, cal);
-//			}
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		
-//		return cal;
-//	}
-
-
 	/**
 	 * Get all items related to a logged in user.
 	 * 
@@ -297,13 +279,6 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
 	 * #perf top 2 (10-17-2013) sorted by desc avg time = 1110 ms
 	 */
 	public String doGetItems() throws Exception {
-//		if(allMoviesCache != null && allMoviesCache.get(CacheManager.getUserCacheKey(uid, filter, pageNumber)) != null) {
-//			System.out.println("MovieHandler: doGetItems() cached hit: with key [" + uid + filter + pageNumber + "]");
-//			return (String)allMoviesCache.get(CacheManager.getUserCacheKey(uid, filter, pageNumber));
-//		} else {
-//			System.out.println("MovieHandler: doGetItems() cached missed: with key [" + uid + filter + pageNumber + "] <==================== !!!");
-//		}
-		
 		Collection<Movie> l;
 		String retVal = "";
 		long totalItem = 0;
@@ -329,17 +304,13 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
 				//begin TBD JPA 2
 				//to lookup based on the owner field!!!
 				//end TBD JPA 2
+				
 				//=== begin supporting pagination
 				//List tl = u.getMovie();	//.fetch(1,25);
-//the following have been moved to UserHandler.getUserByName()!!!				
-/*				
-				User cachedUser = CacheManager.getUserCache(u);
-				if(cachedUser != null) {
-					u = cachedUser;
-				} else {
-					CacheManager.addUserCache(u);
-				}
-*/
+//TODO
+//c.f. JPA https://groups.google.com/forum/#!topic/google-appengine-java/UiMhX_JMOz4
+//c.f. JDO http://stackoverflow.com/questions/6867720/app-engine-java-syntax-for-setting-query-limit-and-start-offset
+				
 				if(u.getMovie() != null) {
 					totalItem = u.getMovie().size();
 				} else {
@@ -347,6 +318,7 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
 				}
 				List tl = (List) AppUtils.getPagedResults(u.getMovie(), maxPerPage, pageNumber);
 				//=== end supporting pagination
+				
 				if(action != null && !action.equals("")) {
 					l = filterScheduledMovies(tl);
 				} else {
@@ -388,29 +360,24 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
 			e.printStackTrace();
 		}
 
-		//=== update the cache for subsequent calls
-//		allMoviesCache.put(CacheManager.getUserCacheKey(uid, filter, pageNumber), retVal);
-
 		return retVal;
 	}
 
 	private String addMetaPage(String retVal, long totalItem) {
-//		if(totalItem > -1) {	//only if it is not from cache i.e. not -1
-			//=== includes metadata
-			String meta = "{" +
-	            "\"pageNumber\":" + pageNumber + "," +
-	            "\"maxPerPage\":" + maxPerPage + "," +	/* decided by the client */
-	            "\"totalItem\":" + totalItem + "," +
-	            "\"totalPage\":" + generateTotalPageForUI(maxPerPage, totalItem) +
-	         "}";
-			String finalContent = "";
-			if(totalItem > 0) {
-				finalContent = meta + "," + retVal;
-			} else {
-				finalContent = meta;
-			}
-			retVal = "[" + finalContent + "]";
-//		}
+		//=== includes metadata
+		String meta = "{" +
+            "\"pageNumber\":" + pageNumber + "," +
+            "\"maxPerPage\":" + maxPerPage + "," +	/* decided by the client */
+            "\"totalItem\":" + totalItem + "," +
+            "\"totalPage\":" + generateTotalPageForUI(maxPerPage, totalItem) +
+         "}";
+		String finalContent = "";
+		if(totalItem > 0) {
+			finalContent = meta + "," + retVal;
+		} else {
+			finalContent = meta;
+		}
+		retVal = "[" + finalContent + "]";
 		
 		return retVal;
 	}
@@ -455,6 +422,7 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
 		try {
 			//=== end automatic user creation (e.g. for Facebook)
 			l = filterMovies(getMovies());
+//			l = filterMovies(getMovies(maxPerPage, pageNumber));	//TODO use this and not the above once it is done
 			l = AppUtils.getPagedResults(l, maxPerPage, pageNumber);
 			Iterator<Movie> it = l.iterator();
 			Movie cal = null;
@@ -497,7 +465,17 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
 
 		return results;
 	}
-	
+
+	public List<Movie> getMovies(int maxPerPage, int pageNumber) {
+		EntityManager mgr = getEntityManager();
+
+		Query query = mgr.createQuery("select m from Movie m");
+		query.setFirstResult(pageNumber-1);	//starts from 0 thus minus 1
+		query.setMaxResults(maxPerPage);
+		List<Movie> resultList = query.getResultList();
+		return resultList;
+	}
+
 	private Collection<Movie> filterMovies(List<Movie> l) throws Exception {
 		List<Movie> nList = null;
 		
@@ -557,7 +535,6 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
 								Calendar c2 = (Calendar) calendarHandler.doGetItem(p2.getCalendarId());
 								retVal = c1.getStartDate().compareTo(c2.getStartDate());
 							} catch (Exception e) {
-								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
 			        	} else {
@@ -846,8 +823,6 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
 					+ " t[" + m.getTitle() + "] s[" + m.getSearchResults() + "] u[" + m.getURL() + "]");
 		}
 		
-		//=== clear the cache!
-//		CacheManager.clearUserCacheById(uid, allMoviesCache);
 		//=== update the cache
 		CacheManager.saveUserCache(u, u.getMovie(), m);
 
@@ -882,9 +857,6 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
         if(mov != null) {
 			System.out.println(mov.getClass().getName() + " object deleted with id '" + id + "' " + mov.getTitle() + " " + mov.getSearchResults() + " " + mov.getURL());
 		}
-
-		//=== clear the cache!
-//		CacheManager.clearUserCacheById(uid, allMoviesCache);
 
 		return retVal;			
 	}

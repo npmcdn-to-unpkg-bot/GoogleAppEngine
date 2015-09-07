@@ -282,7 +282,7 @@ public class CalendarHandler implements CrudServiceCallback, ServletContextListe
 				m.setId(movieId);
 				if(item.getStartDate() != null) {	//KISS - use the start date to kick off scheduling in channel
 					//=== Target format required by jquery.countdown.js: 2013, 8-1, 23, 21, 51, 40
-					String temp = CalendarHelper.getEventPattern(item.getStartDate());	//localDate.getYear() + "," + (localDate.getMonthOfYear()-1) + "," + localDate.getDayOfMonth() + "," + localDate.getHourOfDay() + "," + localDate.getMinuteOfHour() + "," + localDate.getSecondOfMinute();
+//					String temp = CalendarHelper.getEventPattern(item.getStartDate());	//localDate.getYear() + "," + (localDate.getMonthOfYear()-1) + "," + localDate.getDayOfMonth() + "," + localDate.getHourOfDay() + "," + localDate.getMinuteOfHour() + "," + localDate.getSecondOfMinute();
 					//String.valueOf(item.getStartDate().getTime());
 					m.setCalendarId(itemId);
 //					m.setEventPattern(temp);
