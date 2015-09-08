@@ -316,7 +316,8 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
 				} else {
 					totalItem = 0;
 				}
-				List tl = (List) AppUtils.getPagedResults(u.getMovie(), maxPerPage, pageNumber);
+//				List tl = (List) AppUtils.getPagedResults(u.getMovie(), maxPerPage, pageNumber);
+				List tl = getMovies(maxPerPage, pageNumber);	//TODO causing Protractor subtitle play to fail for unknown reason!!!
 				//=== end supporting pagination
 				
 				if(action != null && !action.equals("")) {
@@ -469,9 +470,11 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
 	public List<Movie> getMovies(int maxPerPage, int pageNumber) {
 		EntityManager mgr = getEntityManager();
 
-		Query query = mgr.createQuery("select m from Movie m");
-		query.setFirstResult(pageNumber-1);	//starts from 0 thus minus 1
-		query.setMaxResults(maxPerPage);
+		Query query = mgr.createQuery("select m from Movie m where owner = '" + uid + "'");
+		if(pageNumber > 0) {
+			query.setFirstResult(pageNumber-1);	//starts from 0 thus minus 1
+			query.setMaxResults(maxPerPage);
+		}
 		List<Movie> resultList = query.getResultList();
 		return resultList;
 	}
