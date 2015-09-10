@@ -425,8 +425,8 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
 		
 		try {
 			//=== end automatic user creation (e.g. for Facebook)
-//			l = filterMovies(getMovies());
-			l = filterMovies(getMovies(maxPerPage, pageNumber));	//TODO use this and not the above once it is done
+			l = filterMovies(getMovies());
+//			l = filterMovies(getMovies(maxPerPage, pageNumber));	//TODO use this and not the above once it is done
 			l = AppUtils.getPagedResults(l, maxPerPage, pageNumber);
 			Iterator<Movie> it = l.iterator();
 			Movie cal = null;
