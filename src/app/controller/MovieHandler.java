@@ -311,13 +311,16 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
 //c.f. JPA https://groups.google.com/forum/#!topic/google-appengine-java/UiMhX_JMOz4
 //c.f. JDO http://stackoverflow.com/questions/6867720/app-engine-java-syntax-for-setting-query-limit-and-start-offset
 				
+//				List ml = getMovies(maxPerPage, pageNumber);	//TODO causing Protractor subtitle play to fail for unknown reason!!!
+//				if(ml != null) {
 				if(u.getMovie() != null) {
+//					totalItem = ml.size();
 					totalItem = u.getMovie().size();
 				} else {
 					totalItem = 0;
 				}
-//				List tl = (List) AppUtils.getPagedResults(u.getMovie(), maxPerPage, pageNumber);
-				List tl = getMovies(maxPerPage, pageNumber);	//TODO causing Protractor subtitle play to fail for unknown reason!!!
+//				List tl = (List) AppUtils.getPagedResults(ml, maxPerPage, pageNumber);
+				List tl = (List) AppUtils.getPagedResults(u.getMovie(), maxPerPage, pageNumber);
 				//=== end supporting pagination
 				
 				if(action != null && !action.equals("")) {
@@ -422,8 +425,8 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
 		
 		try {
 			//=== end automatic user creation (e.g. for Facebook)
-			l = filterMovies(getMovies());
-//			l = filterMovies(getMovies(maxPerPage, pageNumber));	//TODO use this and not the above once it is done
+//			l = filterMovies(getMovies());
+			l = filterMovies(getMovies(maxPerPage, pageNumber));	//TODO use this and not the above once it is done
 			l = AppUtils.getPagedResults(l, maxPerPage, pageNumber);
 			Iterator<Movie> it = l.iterator();
 			Movie cal = null;
