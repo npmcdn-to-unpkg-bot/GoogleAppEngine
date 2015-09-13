@@ -21,7 +21,7 @@ import org.springframework.security.web.util.RedirectUrlBuilder;
  * Enables Tapestry to handle AccessDenied Exceptions. So you can show some
  * additional information on your Page.
  * 
- * TODO At the time only the implied PortMapping(80:443) is supported.
+ * At the time only the implied PortMapping(80:443) is supported.
  * 
  * @author Michael Gerzabek
  * 

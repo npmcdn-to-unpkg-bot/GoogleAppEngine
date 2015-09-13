@@ -154,7 +154,6 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
 			try {
 				throw new Exception(Constants.ERR_NOT_AUTHENTICATED);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -188,7 +187,6 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
 				try {
 					item.setShared(new Boolean(temp2));
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
@@ -196,7 +194,6 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
 				try {
 					item.setChannelPattern(temp2);
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
@@ -307,13 +304,13 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
 				
 				//=== begin supporting pagination
 				//List tl = u.getMovie();	//.fetch(1,25);
-//TODO
+
 //c.f. JPA https://groups.google.com/forum/#!topic/google-appengine-java/UiMhX_JMOz4
 //c.f. JDO http://stackoverflow.com/questions/6867720/app-engine-java-syntax-for-setting-query-limit-and-start-offset
 				
 //				List ml = getMovies(maxPerPage, pageNumber);	//TODO causing Protractor subtitle play to fail for unknown reason!!!
 //				if(ml != null) {
-				if(u.getMovie() != null) {
+				if(u.getMovie() != null) {	//TODO need to avoid this as it is querying the datastore!!!
 //					totalItem = ml.size();
 					totalItem = u.getMovie().size();
 				} else {
@@ -1083,7 +1080,6 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
 						//=== delete the legacy item	//TODO uncomment only after the above works!
 //						DatastoreUtils.removeLegacyMovie(uid, legacyKeyString);
 					} catch (Exception e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 					i++;

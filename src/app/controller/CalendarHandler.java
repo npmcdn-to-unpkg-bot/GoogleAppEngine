@@ -227,7 +227,10 @@ public class CalendarHandler implements CrudServiceCallback, ServletContextListe
 				item.setIsRecurring(false);
 				item.setRecurringPattern(null);
 			}
-			item.setEventPattern(CalendarHelper.getEventPattern(item.getStartDate()));
+			
+			//=== It was a hot spot with average time of 5516 microseconds in a total of 5 invocations
+			//item.setEventPattern(CalendarHelper.getEventPattern(item.getStartDate()));
+			
 			String temp = CalendarHelper.getValue(request, "id");
 			if(temp != null) {
 				item.setId(Long.parseLong(temp));	//this is only good for update/delete

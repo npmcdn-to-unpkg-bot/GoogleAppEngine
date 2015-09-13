@@ -95,7 +95,6 @@ public class CgiShow {
 				resp = BigTimeUtil.removeRedundantHTML(resp);
 //				BigTimeUtil.store(resp, false);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		Float tHours = BigTimeUtil.getTotalHours("Overall Totals:", "</span></p></td>", resp);
@@ -117,7 +116,6 @@ public class CgiShow {
 				resp = BigTimeUtil.removeRedundantHTMLr(resp);
 //				BigTimeUtil.store(resp, true);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		System.out.println(resp);
