@@ -385,9 +385,9 @@
             </div>
             <br>
             <div class="span2">
-                <input type="submit" style="background:#98969E;" class="btn btn-primary"
+                <input id="createItem" type="submit" style="background:#98969E;" class="btn btn-primary"
                        value="{{saveButtonLabel}}" ng-disabled="!(item.url)" ng-click="createItem()">
-                <a class="btn" ng-click="cancelSave()">Cancel</a>
+                <a id="cancelSave" class="btn" ng-click="cancelSave()">Cancel</a>
             </div>
         </div>
     </form>
@@ -481,10 +481,10 @@
             </div>
             <br>
             <div class="span3">
-                <input type="submit" style="background:#98969E;" class="btn btn-primary" value="{{updateButtonLabel}}"
+                <input id="updateItem" type="submit" style="background:#98969E;" class="btn btn-primary" value="{{updateButtonLabel}}"
                        ng-disabled="!(item.title)" ng-click="updateItem()">
-                <a class="btn" ng-click="cancelSave()">Cancel</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a class="btn" ng-click="deleteItem(item)" ng-bind-template="Delete">Delete</a>
+                <a id="cancelSave2" class="btn" ng-click="cancelSave()">Cancel</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a id="deleteItem" class="btn" ng-click="deleteItem(item)" ng-bind-template="Delete">Delete</a>
                 <!--
                 -->
             </div>
@@ -772,11 +772,11 @@
             <div id="element_to_pop_up" style="display:none;width:50%;height:50%;">Content of popup</div>
         </td>
         <td style="width:134px;">
-            <a class="menu_links" ng-click="viewItem(item)">View</a>
+            <a id="viewItem2" class="menu_links" ng-click="viewItem(item)">View</a>
             &nbsp;|&nbsp;
-            <a class="menu_links" ng-click="editItem(item)">Edit</a>
+            <a id="editItem2" class="menu_links" ng-click="editItem(item)">Edit</a>
             &nbsp;|&nbsp;
-            <a class="menu_links" ng-click="deleteItem(item)" ng-bind-template="{{deleteLinkText}}">...</a>
+            <a id="deleteItem2" class="menu_links" ng-click="deleteItem(item)" ng-bind-template="{{deleteLinkText}}">...</a>
         </td>
     </tr>
     <tr>
