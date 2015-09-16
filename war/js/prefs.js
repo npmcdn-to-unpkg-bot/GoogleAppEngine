@@ -66,6 +66,7 @@ if(location.hostname.indexOf('service') > -1 ||
     location.hostname.indexOf('lacaltunnel.me') > -1    //support localtunnel.me for moble debugging
 ) {
     //common
+    //https://docs.google.com/spreadsheets/d/1nZ5bITADCBoiUXnExeCy1ejaJOZBj6eyHwiuP1409aY/edit#gid=0
     loadExternalScriptFile("https://spreadsheets.google.com/feeds/list/0AkAXtx48HdvbdE00RVp5OW4yQUl6RGZPcVFCY05NX2c/1/public/values?alt=json-in-script&amp;callback=importGSS");
 }
 

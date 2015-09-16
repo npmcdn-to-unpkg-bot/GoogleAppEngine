@@ -286,7 +286,7 @@ function MovieController($scope, $filter, $http, $rootScope,
         $scope.pagedItems.length = 0;
         $scope.searchResults.length = 0;
         //$console && $console.log('3.1 list reinit');
-        $http.get('/ws/crud?type=' + $scope.backendObject + "&uid=" + uid + "&maxPerPage=" + $scope.page.max + "&pageNumber=" + $scope.page.number )
+        $http.get(gCacheProxy + '/ws/crud?type=' + $scope.backendObject + "&aid=" + gAppId + "&uid=" + uid + "&maxPerPage=" + $scope.page.max + "&pageNumber=" + $scope.page.number )
             .success(function (data, status1, headers, config) {
                 if(data.indexOf(App.NO_PARENT_ERR) > -1) {
                     alert(App.NO_PARENT_ERR_MSG);
@@ -435,7 +435,7 @@ function MovieController($scope, $filter, $http, $rootScope,
         $scope.backendReady = false;
         var uid = getUsername();
         //$console && $console.log('4.1 list reinit');
-        $http.get('/ws/crud?type=' + $scope.backendObject + "&uid=" + uid + "&maxPerPage=" + $scope.page.max + "&pageNumber=" + $scope.page.number )
+        $http.get(gCacheProxy + '/ws/crud?type=' + $scope.backendObject + "&aid=" + gAppId + "&uid=" + uid + "&maxPerPage=" + $scope.page.max + "&pageNumber=" + $scope.page.number )
             .success(function (data, status1, headers, config) {
                 //$console && $console.log('loadItems success entered');
                 var j;
@@ -562,8 +562,8 @@ function MovieController($scope, $filter, $http, $rootScope,
         //$console && $console.log('3list reinit');
 
         var endpoint;
-//        var host = $.url().attr('protocol') + '://' + $.url().attr('host');
-        var host = '';  //https://' + $.url().attr('host');
+        //var host = $.url().attr('protocol') + '://' + $.url().attr('host');
+        var host = gCacheProxy;  //https://' + $.url().attr('host');
 
         if (datasource === 2) {
             endpoint = host + '/ws/crud?type=' + $scope.backendObject + "&uid=" + uid + "&action=scheduled&filter=scheduled";
@@ -572,6 +572,7 @@ function MovieController($scope, $filter, $http, $rootScope,
         } else {
             endpoint = host + '/ws/crud?type=' + $scope.backendObject + "&uid=" + uid;
         }
+        endpoint = endpoint + "&aid=" + gAppId
 
         $http.get(endpoint)
             .success(function (data, status, headers, config) {
@@ -1002,12 +1003,13 @@ function MovieController($scope, $filter, $http, $rootScope,
                 "channelPattern=" + $scope.item.channelPattern + "&" +
                 "search_results=" + $scope.item.search_results + "&" +
                 "oid=" + oid + "&" +
-                "type=" + $scope.backendObject + "&action=create&uid=" + uid;
+                "type=" + $scope.backendObject + "&action=create&uid=" + uid
+                + "&aid=" + gAppId;
             //alert('about to create [' + data + ']');
 //            $http.post('/ws/crud?', data)
             $http({
                 method: 'POST',
-                url: '/ws/crud',
+                url: gCacheProxy + '/ws/crud',
                 data: data,
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                 //headers: {'Content-type': 'application/json'}
@@ -1183,12 +1185,13 @@ function MovieController($scope, $filter, $http, $rootScope,
                 "channelPattern=" + $scope.item.channelPattern + "&" +
                 "search_results=" + $scope.item.search_results + "&" +
                 "oid=" + oid + "&" +
-                "type=" + $scope.backendObject + "&action=update&uid=" + uid;
+                "type=" + $scope.backendObject + "&action=update&uid=" + uid
+                + "&aid=" + gAppId;
             //alert('about to update [' + data + ']');
 //            $http.post('/ws/crud?', data)
             $http({
                 method: 'POST',
-                url: '/ws/crud',
+                url: gCacheProxy + '/ws/crud',
                 data: data,
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                 //headers: {'Content-type': 'application/json'}
@@ -1242,10 +1245,11 @@ function MovieController($scope, $filter, $http, $rootScope,
                 var uid = getUsername();
                 var data = "id=" + item.id + "&" +
                     "oid=" + oid + "&" +
-                    "type=" + $scope.backendObject + "&action=delete&uid=" + uid;
+                    "type=" + $scope.backendObject + "&action=delete&uid=" + uid
+                    + "&aid=" + gAppId;
                 $http({
                     method: 'POST',
-                    url: '/ws/crud',
+                    url: gCacheProxy + '/ws/crud',
                     data: data,
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'

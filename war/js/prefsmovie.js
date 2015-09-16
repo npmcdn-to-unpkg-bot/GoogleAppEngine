@@ -1,5 +1,8 @@
+//var showLog = true;
 var showLog = false;
 var gHeaderReleaseBuildTitle;
+var gCacheProxy = '';
+var gAppId;
 var gServiceName;
 var gManageColMainTitle;
 var gSharedColMainTitle;
@@ -55,6 +58,25 @@ function importGSS(json) {
         col6 = entry.gsx$_ciyn3 && entry.gsx$_ciyn3.$t;
         if (col1 && col2 && col3 && col4 && col5) {
             showLog && window.console && console.log('[' + (i + 1) + '] = ' + '[' + col1 + '] ' + '[' + col2 + '] ' + '[' + col3 + '] ' + '[' + col4 + '] ' + '[' + col5 + '] ' + '[' + col6 + '] ');
+            if (col1 === 'cache' &&
+                col2 === 'proxy' &&
+                col3 === 'host' &&
+                col4 === 'rest' &&
+                col5 === 'url'
+            ) {
+                //alert('rest host cache proxy url [' + col6 + ']');
+                gCacheProxy = col6;
+                if(typeof gCacheProxy === 'undefined') gCacheProxy = '';
+            } else
+            if (col1 === 'cache' &&
+                col2 === 'proxy' &&
+                col3 === 'origin' &&
+                col4 === 'app' &&
+                col5 === 'id'
+            ) {
+                //alert('app id [' + col6 + ']');
+                gAppId = col6;
+            } else
             if (col1 === 'app' &&
                 col2 === 'common' &&
                 col3 === 'ui' &&
