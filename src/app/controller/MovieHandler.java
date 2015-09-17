@@ -752,6 +752,7 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
 //				m.setEventPattern(null);
 			}
 		}
+		//TODO begin to make sure values are not missing - none of the following values can be empty - otherwise NPE will occur
 		m.setTitle(newCal.getTitle());
 		m.setDescription(newCal.getDescription());
 		m.setSearchResults(newCal.getSearchResults());
@@ -760,6 +761,7 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
 		m.setChannelPattern(newCal.getChannelPattern());
 		m.setOwner(newCal.getOwner());
 		m.setOid(newCal.getOid());
+		//TODO end
         tx.begin();
 		mgr.persist(m);
 		//=== update the cache

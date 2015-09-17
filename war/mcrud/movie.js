@@ -257,7 +257,8 @@ function MovieController($scope, $filter, $http, $rootScope,
     $scope.serviceCheck = function(page) {
         if(typeof page.server_max !== 'undefined' && typeof page.server_number !== 'undefined') {
             //TODO for some reason, search made page.number and page.max both 0s!!!
-            if (page.number > 0 && page.server_number !== page.number) {
+            if (page.number > 0 && page.server_number !== page.number && page.server_number !== 0) {    //page.server_number === 0 is the same as the client side page 1
+                alert('page.server_number [' + page.server_number + '] page.number [' + page.number + ']')
                 throw new Error("Page number " + page.number + " is out of sync with the server" +
                     "s page (" + page.server_number + "). The page number should be in sync/the same!");
             }
