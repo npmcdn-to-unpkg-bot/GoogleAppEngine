@@ -287,7 +287,7 @@ function MovieController($scope, $filter, $http, $rootScope,
         $scope.pagedItems.length = 0;
         $scope.searchResults.length = 0;
         //$console && $console.log('3.1 list reinit');
-        $http.get(gCacheProxy + '/ws/crud?type=' + $scope.backendObject + "&aid=" + gAppId + "&uid=" + uid + "&maxPerPage=" + $scope.page.max + "&pageNumber=" + $scope.page.number )
+        $http.get(gCacheProxy + '/ws/crud?type=' + $scope.backendObject + "&origin=" + document.referrer + "&origin=" + document.referrer + "&origin=" + document.referrer + "&aid=" + gAppId + "&uid=" + uid + "&maxPerPage=" + $scope.page.max + "&pageNumber=" + $scope.page.number )
             .success(function (data, status1, headers, config) {
                 if(data.indexOf(App.NO_PARENT_ERR) > -1) {
                     alert(App.NO_PARENT_ERR_MSG);
@@ -436,7 +436,7 @@ function MovieController($scope, $filter, $http, $rootScope,
         $scope.backendReady = false;
         var uid = getUsername();
         //$console && $console.log('4.1 list reinit');
-        $http.get(gCacheProxy + '/ws/crud?type=' + $scope.backendObject + "&aid=" + gAppId + "&uid=" + uid + "&maxPerPage=" + $scope.page.max + "&pageNumber=" + $scope.page.number )
+        $http.get(gCacheProxy + '/ws/crud?type=' + $scope.backendObject + "&origin=" + document.referrer + "&aid=" + gAppId + "&uid=" + uid + "&maxPerPage=" + $scope.page.max + "&pageNumber=" + $scope.page.number )
             .success(function (data, status1, headers, config) {
                 //$console && $console.log('loadItems success entered');
                 var j;
@@ -573,7 +573,7 @@ function MovieController($scope, $filter, $http, $rootScope,
         } else {
             endpoint = host + '/ws/crud?type=' + $scope.backendObject + "&uid=" + uid;
         }
-        endpoint = endpoint + "&aid=" + gAppId
+        endpoint = endpoint + "&origin=" + document.referrer + "&aid=" + gAppId
 
         $http.get(endpoint)
             .success(function (data, status, headers, config) {
@@ -1005,7 +1005,7 @@ function MovieController($scope, $filter, $http, $rootScope,
                 "search_results=" + $scope.item.search_results + "&" +
                 "oid=" + oid + "&" +
                 "type=" + $scope.backendObject + "&action=create&uid=" + uid
-                + "&aid=" + gAppId;
+                + "&origin=" + document.referrer + "&aid=" + gAppId;
             //alert('about to create [' + data + ']');
 //            $http.post('/ws/crud?', data)
             $http({
@@ -1187,7 +1187,7 @@ function MovieController($scope, $filter, $http, $rootScope,
                 "search_results=" + $scope.item.search_results + "&" +
                 "oid=" + oid + "&" +
                 "type=" + $scope.backendObject + "&action=update&uid=" + uid
-                + "&aid=" + gAppId;
+                + "&origin=" + document.referrer + "&aid=" + gAppId;
             //alert('about to update [' + data + ']');
 //            $http.post('/ws/crud?', data)
             $http({
@@ -1247,7 +1247,7 @@ function MovieController($scope, $filter, $http, $rootScope,
                 var data = "id=" + item.id + "&" +
                     "oid=" + oid + "&" +
                     "type=" + $scope.backendObject + "&action=delete&uid=" + uid
-                    + "&aid=" + gAppId;
+                    + "&origin=" + document.referrer + "&aid=" + gAppId;
                 $http({
                     method: 'POST',
                     url: gCacheProxy + '/ws/crud',

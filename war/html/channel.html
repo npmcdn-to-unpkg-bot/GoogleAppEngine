@@ -1,12 +1,6 @@
 ﻿<!DOCTYPE html>
 <html>
-<!--
-<html manifest="movie.appcache" xmlns:ng="http://angularjs.org" id="ng:app" ng-app lang="en">
--->
 <head>
-    <!-- chrome://appcache-internals/ -->
-<!--     <meta http-equiv="X-UA-Compatible" content="IE=8">
- -->
     <meta charset="utf-8">
     <title>Cool App</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/> <!-- source: https://developer.apple -->
@@ -19,15 +13,6 @@
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap-transition.min.js"></script>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap-dropdown.min.js"></script>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap-collapse.min.js"></script>
-    <!-- end bootstrap 2.x stuff -->
-	<!-- temporary workaround - include it outside the module! -->
-    <!--=== common js -->
-    <!--<script type="text/javascript" src='//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js'></script>	-->
-    <!--<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/galleria/1.4.2/galleria'></script>-->
-    <!--<script type="text/javascript" src='../galleria-1.2.9/galleria-1.2.9.min.js'></script>-->
-    <!-- didn't work!!! :(
-    <script type="text/javascript" src="../js/ui-bootstrap-tpls-0.3.0.min.js"></script>
-    -->
     <!-- http://ajax.cdnjs.com/ajax/libs/galleria/1.2.9/galleria.min.js -->
     <link href="../parse/css/tabs.css" rel="stylesheet">
     <link href="../css/app.css" rel="stylesheet">
@@ -228,6 +213,7 @@ http://support.galleria.io/kb/getting-started/quick-start
     <a id="t9" href="http://en.wikipedia.org/wiki/RSS"><img id="ti9" class="iframe" src="../images/rss1.png" alt="image 9 of galleria2"></a>
 </div>
 <div id=’facebookfeedholder’></div>
+<script src="../js/prefsmovie.js" type="text/javascript"></script>
 <script>
     var showLog =false;
     var gHeaderReleaseBuildTitle;
@@ -303,13 +289,6 @@ http://support.galleria.io/kb/getting-started/quick-start
                 gHomeText = col6;
                 document.getElementById("homeText").innerHTML = col6;
                 showLog && window.console && console.log("movie.html:gHomeText set [" + gHomeText + "]");
-//            } else if (col1 === 'manage' &&
-//                    col2 === 'collections' &&
-//                    col3 === 'main' &&
-//                    col4 === 'title' &&
-//                    col5 === 'text'
-//                    ) {
-//                document.getElementById("manageCollections").innerHTML = col6;
             } else if (col1 === 'manage' &&
                     col2 === 'showtime' &&
                     col3 === 'main' &&
@@ -321,46 +300,6 @@ http://support.galleria.io/kb/getting-started/quick-start
                 document.getElementById("manageShowtime").innerHTML = col6;
                 $("#manageShowtime").show();
             }
-//            else if (col1 === 'manage' &&
-//                    col2 === 'channels' &&
-//                    col3 === 'main' &&
-//                    col4 === 'title' &&
-//                    col5 === 'text'
-//                    ) {
-//                document.getElementById("manageChannelsMain").innerHTML = col6;
-//                $("#manageChannelsMain").show();
-//                $("#playview").show();
-//            } else if (col1 === 'manage' &&
-//                    col2 === 'channels' &&
-//                    col3 === 'image' &&
-//                    col4 === 'title' &&
-//                    col5 === 'active' &&
-//                    col6 === 'TRUE'
-//            ) {
-//                $("#manageChannelsImage").show();
-//            } else if (col1 === 'manage' &&
-//                    col2 === 'channels' &&
-//                    col3 === 'data' &&
-//                    col4 === 'title' &&
-//                    col5 === 'active' &&
-//                    col6 === 'TRUE'
-//                    ) {
-//                $("#manageChannelsData").show();
-//            } else if (col1 === 'manage' &&
-//                    col2 === 'channels' &&
-//                    col3 === 'image' &&
-//                    col4 === 'title' &&
-//                    col5 === 'text'
-//                    ) {
-//                document.getElementById("manageChannelsImage").innerHTML = col6;
-//            } else if (col1 === 'manage' &&
-//                    col2 === 'channels' &&
-//                    col3 === 'data' &&
-//                    col4 === 'title' &&
-//                    col5 === 'text'
-//                    ) {
-//                document.getElementById("manageChannelsData").innerHTML = col6;
-//            }
         }
     }
 </script>
