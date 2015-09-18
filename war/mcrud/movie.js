@@ -195,7 +195,7 @@ function MovieController($scope, $filter, $http, $rootScope,
         var retVal = "";
 
         try {
-            retVal = '/html/channelshuffle.html?username=' + $.url().param('username') + '&logintype=' + $.url().param('logintype') + '&filter=' + hashtag.substr(1);
+            retVal = '/html/channelshuffle.html?username=' + $.url().param('username') + '&logintype=' + $.url().param('logintype') + '&filter=' + hashtag.substr(1) + '&type=' + gPlayNowShuffle;
         }
         catch (e) {
             //$console && $console.error('1.1.1.0 movie.js $scope.handleHashtag(): An error has occurred: ' + e.message + ' - The application will not function correctly. Please contact the developer!');
@@ -383,30 +383,6 @@ function MovieController($scope, $filter, $http, $rootScope,
                     return;
                 }
 
-                //begin play now setup
-//                try {
-//                    $scope.templates =
-//                        [
-//                            { name1: 'Shuffle Mode', url: '/html/channelshuffle.html?username=' + $.url().param('username') + '&logintype=' + $.url().param('logintype')},
-//                            { name1: 'All In Sequence', url: '/html/channelall.html?username=' + $.url().param('username') + '&logintype=' + $.url().param('logintype')}
-//                        ];
-//                    var u, start = 2;   //after the above 2!
-//                    //=== begin play now setup
-//                    $scope.template = $scope.templates[0];   //default play now url
-//                    //=== begin hashtags processing
-//                    for (var l in $scope.parsedHashtags) {
-//                        $scope.templates[$scope.templates.length] = { name1: l, url: $scope.getHashtagUrl(l) };
-//                    }
-//                    //=== end hashtags processing
-//                    $scope.play = function () {
-//                        window.location = $scope.template.url;
-//                    };
-//                }catch (e) {
-//                    //$console && $console.error('2 movie.js loadItems(): An error has occurred: ' + e.message + ' - The application will not function correctly. Please contact the developer!');
-//                    alert("movie.js: 9a error: " + e);
-//                }
-                //=== end play now setup
-
                 $scope.renderPagedTable(true);
 
                 //$console && $console.log("items loaded [gBuild " + gBuild + "]");
@@ -491,8 +467,8 @@ function MovieController($scope, $filter, $http, $rootScope,
                 try {
                     $scope.templates =
                         [
-                            { name1: 'Shuffle Mode', url: '/html/channelshuffle.html?username=' + $.url().param('username') + '&logintype=' + $.url().param('logintype')},
-                            { name1: 'All In Sequence', url: '/html/channelall.html?username=' + $.url().param('username') + '&logintype=' + $.url().param('logintype')}
+                            { name1: 'Shuffle Mode', url: '/html/channelshuffle.html?username=' + $.url().param('username') + '&logintype=' + $.url().param('logintype') + '&type=' + gPlayNowShuffle},
+                            { name1: 'All In Sequence', url: '/html/channelall.html?username=' + $.url().param('username') + '&logintype=' + $.url().param('logintype') + '&type=' + gPlayNowAllInSeq}
                         ];
                     //var start = 2;   //after the above 2!
                     //=== begin play now setup

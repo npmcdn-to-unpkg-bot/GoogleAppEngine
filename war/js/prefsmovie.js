@@ -4,6 +4,8 @@ var gHeaderReleaseBuildTitle;
 var gCacheProxy = '';
 var gAppId;
 var gServiceName;
+var gPlayNowShuffle = 'playNowShuffle';     //have to be unique, mainly for the cache to work
+var gPlayNowAllInSeq = 'playNowAllInSeq';   //have to be unique, mainly for the cache to work
 var gManageColMainTitle;
 var gSharedColMainTitle;
 var gManageShoMainTitle;
