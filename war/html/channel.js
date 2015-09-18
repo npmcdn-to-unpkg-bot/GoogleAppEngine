@@ -26,8 +26,8 @@ function loadMovie(username) {
 
     $.ajax({
         type: "POST",
-//        url: "/ws/crud?type=modelCalendar&origin=" + document.referrer + "&uid=" + username + "&filter=next5",
-        url: "/ws/crud?type=modelMovie&origin=" + document.referrer + "&uid=" + username + "&filter=next5",
+//        url: "/ws/crud?type=modelCalendar&origin=" + location.hostname + "&uid=" + username + "&filter=next5",
+        url: "/ws/crud?type=modelMovie&origin=" + location.hostname + "&uid=" + username + "&filter=next5",
         async: false,
         success: function(data) {
 
@@ -208,7 +208,7 @@ function loadMovieAll(username, log) {
 
     $.ajax({
         type: "POST",
-        url: "/ws/crud?type=modelMovie&origin=" + document.referrer + "&uid=" + username + "&filter=next5",
+        url: "/ws/crud?type=modelMovie&origin=" + location.hostname + "&uid=" + username + "&filter=next5",
         async: false,
         success: function(data) {
 
@@ -358,7 +358,7 @@ function getNextShuffledUrl(startDatetime) {
 
     $.ajax({
         type: "GET",
-        url: "/ws/crud?type=modelMovie&origin=" + document.referrer + "&uid=" + userid + "&filter=next5",
+        url: "/ws/crud?type=modelMovie&origin=" + location.hostname + "&uid=" + userid + "&filter=next5",
         //async: false,
         success: function(data) {
             if(data !== undefined) {
@@ -581,7 +581,7 @@ function loadMovieShuffle(username) {
     };
     $.ajax({
         type: "GET",
-        url: "/ws/crud?type=modelMovie&origin=" + document.referrer + "&uid=" + username + "&filter=next5"
+        url: "/ws/crud?type=modelMovie&origin=" + location.hostname + "&uid=" + username + "&filter=next5"
         //,
         //async: false,
         //success: function(data) {
@@ -785,7 +785,7 @@ function handleChannelType(type, username) {
                     try {
                         $.ajax({
                             type: "POST",
-                            url: "/ws/crud?type=modelMovie&origin=" + document.referrer + "&uid=" + username,
+                            url: "/ws/crud?type=modelMovie&origin=" + location.hostname + "&uid=" + username,
                             //async: false,
                             success: function(data) {
 

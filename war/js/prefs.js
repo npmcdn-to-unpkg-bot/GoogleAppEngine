@@ -58,7 +58,7 @@ if(location.hostname.indexOf('aware') > -1 ||
     //2ShareIt
     //ref implementation
     //https://docs.google.com/spreadsheet/pub?key=0Aov1RWgHNTwLdFZyc3V1ZllPWU4yVUV2c3FQVDZEMEE&output=html
-    loadExternalScriptFile("https://spreadsheets.google.com/feeds/list/0AkAXtx48HdvbdE00RVp5OW4yQUl6RGZPcVFCY05NX2c/1/public/values?alt=json-in-script&amp;callback=importGSS");
+    loadExternalScriptFile("https://spreadsheets.google.com/feeds/list/1rHd8FkYXBQO7H7J0qcC7PMLQ0SjU4aWqKcUWSRTOLgc/1/public/values?alt=json-in-script&amp;callback=importGSS");
 }
 else
 if(location.hostname.indexOf('service') > -1 ||
