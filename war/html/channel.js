@@ -25,9 +25,9 @@ function loadMovie(username) {
     //window.console && console.log("**************>>>> cBuild = " + cBuild + "<<<<**************");
 
     $.ajax({
-        type: "POST",
+        type: "GET",
 //        url: gCacheProxy + "/ws/crud?type=modelCalendar&origin=" + location.hostname + "&uid=" + username + "&filter=next5",
-        url: gCacheProxy + "/ws/crud?type=modelMovie&origin=" + location.hostname + "&uid=" + username + "&filter=next5",
+        url: gCacheProxy + "/ws/crud?type=modelMovie&origin=" + location.hostname  + "&aid=" + gAppId + "&uid=" + username + "&filter=next5",
         async: false,
         success: function(data) {
 
@@ -207,8 +207,8 @@ function loadMovieAll(username, log) {
     var stat = false;
 
     $.ajax({
-        type: "POST",
-        url: gCacheProxy + "/ws/crud?type=modelMovie&origin=" + location.hostname + "&uid=" + username + "&filter=next5",
+        type: "GET",
+        url: gCacheProxy + "/ws/crud?type=modelMovie&origin=" + location.hostname + "&aid=" + gAppId + "&uid=" + username + "&filter=next5",
         async: false,
         success: function(data) {
 
@@ -358,7 +358,7 @@ function getNextShuffledUrl(startDatetime) {
 
     $.ajax({
         type: "GET",
-        url: gCacheProxy + "/ws/crud?type=modelMovie&origin=" + location.hostname + "&uid=" + userid + "&filter=next5",
+        url: gCacheProxy + "/ws/crud?type=modelMovie&origin=" + location.hostname + "&aid=" + gAppId + "&uid=" + userid + "&filter=next5",
         //async: false,
         success: function(data) {
             if(data !== undefined) {
@@ -581,7 +581,7 @@ function loadMovieShuffle(username) {
     };
     $.ajax({
         type: "GET",
-        url: gCacheProxy + "/ws/crud?type=modelMovie&origin=" + location.hostname + "&uid=" + username + "&filter=next5"
+        url: gCacheProxy + "/ws/crud?type=modelMovie&origin=" + location.hostname + "&aid=" + gAppId + "&uid=" + username + "&filter=next5"
         //,
         //async: false,
         //success: function(data) {
@@ -784,8 +784,8 @@ function handleChannelType(type, username) {
                 if($("#t" + i).val().toLowerCase().indexOf("youtube") == -1) {
                     try {
                         $.ajax({
-                            type: "POST",
-                            url: gCacheProxy + "/ws/crud?type=modelMovie&origin=" + location.hostname + "&uid=" + username,
+                            type: "GET",
+                            url: gCacheProxy + "/ws/crud?type=modelMovie&origin=" + location.hostname  + "&aid=" + gAppId + "&uid=" + username,
                             //async: false,
                             success: function(data) {
 

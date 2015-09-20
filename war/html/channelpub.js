@@ -90,7 +90,7 @@ function loadMoviePub(username, log) {
     //username = "pub";
 
     $.ajax({
-        type: "POST",
+        type: "GET",
         url: "/ws/crud?type=modelMovie&uid=" + username + "&filter=next5",
         async: false,
         success: function(data) {
@@ -449,7 +449,7 @@ function handleChannelType(type, username) {
                 if($("#t" + i).val().toLowerCase().indexOf("youtube") == -1) {
                     try {
                         $.ajax({
-                            type: "POST",
+                            type: "GET",
                             url: "/ws/crud?type=modelMovie&uid=" + username,
                             async: false,
                             success: function(data) {

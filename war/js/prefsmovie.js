@@ -1,7 +1,9 @@
 //var showLog = true;
 var showLog = false;
 var gHeaderReleaseBuildTitle;
-var gCacheProxy = '';
+//var gCacheProxy = '';
+var gCacheProxy = 'https://me-n3t.rhcloud.com';   //TODO
+//var gCacheProxy = 'http://localhost:8080';          //TODO
 var gAppId;
 var gServiceName;
 var gPlayNowShuffle = 'playNowShuffle';     //have to be unique, mainly for the cache to work
