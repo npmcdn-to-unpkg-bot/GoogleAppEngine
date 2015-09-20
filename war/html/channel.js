@@ -3,7 +3,7 @@ var GALLERIA_VERSION = '1.2.9';
 var GALLERIA_LIMIT = 10;     //limit to 10 movies/images only
 var galleria_type = 0;      //0 - video; 1 - image; 2 - RSS
 //var galleriaData = [];
-var cBuild = '0166';
+var cBuild = '0166a';
 var gDefaultPhoto = "../images/stock-photo-closeup-of-a-photographic-lens-106033496.jpg";
 //var gYTPlayer;  //global youtube player
 var ytplayer;
@@ -26,8 +26,8 @@ function loadMovie(username) {
 
     $.ajax({
         type: "POST",
-//        url: "/ws/crud?type=modelCalendar&origin=" + location.hostname + "&uid=" + username + "&filter=next5",
-        url: "/ws/crud?type=modelMovie&origin=" + location.hostname + "&uid=" + username + "&filter=next5",
+//        url: gCacheProxy + "/ws/crud?type=modelCalendar&origin=" + location.hostname + "&uid=" + username + "&filter=next5",
+        url: gCacheProxy + "/ws/crud?type=modelMovie&origin=" + location.hostname + "&uid=" + username + "&filter=next5",
         async: false,
         success: function(data) {
 
@@ -66,16 +66,16 @@ function loadMovie(username) {
                             desc ="";
                         j = {id: obj[i].id, movie_url: temp[YOUTUBE_INDEX].movie_url, shuffled: obj[i].shuffled, datetime: obj[i].event_pattern, title: obj[i].title, description: desc, url: obj[i].u_r_l, createDate: obj[i].modified, event_id: obj[i].calendar_id, allDay: obj[i].calendar_all_day
                         };
-    //                    alert(temp);
-    //                    j = {id: obj[i].id, movie_url:temp, datetime:obj[i].event_pattern, title: obj[i].title, description: obj[i].description, url: temp, createDate: obj[i].created_date};
+                        //                    alert(temp);
+                        //                    j = {id: obj[i].id, movie_url:temp, datetime:obj[i].event_pattern, title: obj[i].title, description: obj[i].description, url: temp, createDate: obj[i].created_date};
                         //window.console && console.log('1loadMovie: data[' + i + '] = id=' + j.id + " datetime=" + j.datetime + " title=" + j.title + " desc=" + j.description + " url=" + j.url + " createDate=" + j.createDate + " shuffled=" + j.shuffled);
                         try {
                             if (j.url !== undefined
-    //                            && j.allDay !== true
-                                ) {
+                            //                            && j.allDay !== true
+                            ) {
                                 currentDate = new Date();
                                 tempDateStr = j.datetime ? j.datetime : "1970,1,1,0,0,0";
-    //                            alert(tempDateStr);
+                                //                            alert(tempDateStr);
                                 if (tempDateStr && tempDateStr.indexOf(",") > -1) {
                                     //=== begin TBD this have to be placed in a common module/routine!!!
                                     dateStr = tempDateStr.split(",");
@@ -102,11 +102,11 @@ function loadMovie(username) {
                                     }
                                 }
                             }
-    //                        else if (j.url !== undefined && j.allDay === true) {
-    //                            movieArray.push({id: i, previewDate: j.datetime, url: j.url, description: j.decription, shuffled: j.shuffled});
-    //                            //alert(array);
-    //                            moviePreviewCount111++;
-    //                        }
+                            //                        else if (j.url !== undefined && j.allDay === true) {
+                            //                            movieArray.push({id: i, previewDate: j.datetime, url: j.url, description: j.decription, shuffled: j.shuffled});
+                            //                            //alert(array);
+                            //                            moviePreviewCount111++;
+                            //                        }
                         } catch (e) {
                             //alert('Oops, I am dead :( Please refresh me? :)');
                             console && console.log('channel.js loadMovie 1: An error has occurred: ' + e.message + ' - The application will not function correctly. Please contact the developer!');
@@ -208,7 +208,7 @@ function loadMovieAll(username, log) {
 
     $.ajax({
         type: "POST",
-        url: "/ws/crud?type=modelMovie&origin=" + location.hostname + "&uid=" + username + "&filter=next5",
+        url: gCacheProxy + "/ws/crud?type=modelMovie&origin=" + location.hostname + "&uid=" + username + "&filter=next5",
         async: false,
         success: function(data) {
 
@@ -253,7 +253,7 @@ function loadMovieAll(username, log) {
                                 //window.console && console.log('saved j.url as ' + $("#i" + i).val());
                                 if (j.url.toLowerCase().indexOf("youtube.com") > -1) {
                                     $("#v" + moviePreviewCount).attr("href", j.url);
-    //                                $("#v" + moviePreviewCount).attr("span", j.description);
+                                    //                                $("#v" + moviePreviewCount).attr("span", j.description);
                                 } else if (galleria_type === 1) {
                                     $("#img" + i).attr("src", gDefaultPhoto);
                                 } else if (galleria_type === 2) {
@@ -358,7 +358,7 @@ function getNextShuffledUrl(startDatetime) {
 
     $.ajax({
         type: "GET",
-        url: "/ws/crud?type=modelMovie&origin=" + location.hostname + "&uid=" + userid + "&filter=next5",
+        url: gCacheProxy + "/ws/crud?type=modelMovie&origin=" + location.hostname + "&uid=" + userid + "&filter=next5",
         //async: false,
         success: function(data) {
             if(data !== undefined) {
@@ -581,17 +581,17 @@ function loadMovieShuffle(username) {
     };
     $.ajax({
         type: "GET",
-        url: "/ws/crud?type=modelMovie&origin=" + location.hostname + "&uid=" + username + "&filter=next5"
+        url: gCacheProxy + "/ws/crud?type=modelMovie&origin=" + location.hostname + "&uid=" + username + "&filter=next5"
         //,
         //async: false,
         //success: function(data) {
-        }).done(doIt).fail(doIt);
-        //,
-        //error: function(jqXHR, error, errorThrown) {
-        //    var msg = error.mesage;
-        //    alert && alert(msg);
-        //    console && console.error(msg);
-        //}
+    }).done(doIt).fail(doIt);
+    //,
+    //error: function(jqXHR, error, errorThrown) {
+    //    var msg = error.mesage;
+    //    alert && alert(msg);
+    //    console && console.error(msg);
+    //}
     //});
 
     return stat;
@@ -771,7 +771,7 @@ function handleChannelType(type, username) {
                 if($("#i" + i).val().toLowerCase().indexOf(".png") > -1 ||
                     $("#i" + i).val().toLowerCase().indexOf(".jpg") > -1 ||
                     $("#i" + i).val().toLowerCase().indexOf(".gif") > -1
-                    ) {
+                ) {
                     $("#img" + i).attr("src", $("#i" + i).val());
                     //$("#v" + i).attr("alt", "Description " + i);
                 } else {
@@ -785,7 +785,7 @@ function handleChannelType(type, username) {
                     try {
                         $.ajax({
                             type: "POST",
-                            url: "/ws/crud?type=modelMovie&origin=" + location.hostname + "&uid=" + username,
+                            url: gCacheProxy + "/ws/crud?type=modelMovie&origin=" + location.hostname + "&uid=" + username,
                             //async: false,
                             success: function(data) {
 
@@ -829,7 +829,7 @@ function handleChannelType(type, username) {
     console.log("type is [" + type + "]");
     if(type === 0) {
         /* VIDEO */
-    	//alert("type 0");
+        //alert("type 0");
         Galleria.run('#galleria0', {
             dummy: '/images/noimage.jpg',
             youtube: { enablejsapi: 0, autoplay: 0 },
@@ -869,7 +869,7 @@ function handleChannelType(type, username) {
     } else
     if(type === 1) {
         /* IMAGE */
-    	//alert("type 1");
+        //alert("type 1");
         Galleria.run('#galleria' + type, {
             dummy: '/images/noimage.jpg',
             transition: 'fade',
@@ -878,7 +878,7 @@ function handleChannelType(type, username) {
         });
     } else {
         /* TEXT */
-    	//alert("type 2");
+        //alert("type 2");
         Galleria.run('#galleria' + type, {
             dummy: '/images/noimage.jpg',
             transition: 'fade',

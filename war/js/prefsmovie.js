@@ -49,7 +49,7 @@ function showModernView(show) {
         $("#modernview6").hide();
     }
 }
-function importGSS(json) {
+var baseImportGSS = function importGSS(json) {
     for (var i = 0; i < json.feed.entry.length; i++) {
         entry = json.feed.entry[i];
         col1 = entry.gsx$index && entry.gsx$index.$t;
@@ -232,26 +232,33 @@ function importGSS(json) {
                 col5 === 'text'
             ) {
                 if(col6 === undefined) col6 = '';
-
-                gManageShoMainTitle = col6;
-                document.getElementById("manageShowtime").innerHTML = col6;
-                $("#manageShowtime").show();
-                $("#manageShowtime1").show();
-                showLog && window.console && console.log("movie.html:gManageShoMainTitle set [" + gManageShoMainTitle + "]");
+                try {
+                    gManageShoMainTitle = col6;
+                    document.getElementById("manageShowtime").innerHTML = col6;
+                    $("#manageShowtime").show();
+                    $("#manageShowtime1").show();
+                    showLog && window.console && console.log("movie.html:gManageShoMainTitle set [" + gManageShoMainTitle + "]");
+                }catch(e) {
+                    //
+                }
             } else if (col1 === 'manage' &&
                 col2 === 'channels' &&
                 col3 === 'main' &&
                 col4 === 'title' &&
                 col5 === 'text'
             ) {
-                if(col6 === undefined) col6 = '';
+                try {
+                    if(col6 === undefined) col6 = '';
 
-                gManageShoMainTitle = col6;
-                document.getElementById("manageChannels").innerHTML = col6;
-                $("#manageChannels").show();
-                $("#manageChannels1").show();
-                //$("#playview").show();
-                showLog && window.console && console.log("movie.html:gManageShoMainTitle set [" + gManageShoMainTitle + "]");
+                    gManageShoMainTitle = col6;
+                    document.getElementById("manageChannels").innerHTML = col6;
+                    $("#manageChannels").show();
+                    $("#manageChannels1").show();
+                    //$("#playview").show();
+                    showLog && window.console && console.log("movie.html:gManageShoMainTitle set [" + gManageShoMainTitle + "]");
+                }catch(e) {
+                    //
+                }
             } else if (col1 === 'about' &&
                 col2 === 'index' &&
                 col3 === 'main' &&
@@ -267,7 +274,7 @@ function importGSS(json) {
                 col5 === 'color'
             ) {
                 if (col4 === 'background') {
-                    $('body').css('background-color', col6);
+                    //$('body').css('background-color', col6); //TODO breaking Play Now Shuffle, All and Groups
                 } /*else if (col4 === 'table-text') {
                  $('#brand').css('color', col6);
                  } else if (col4 === 'navigator-text') {
