@@ -20,14 +20,16 @@ $("#cBuild").val("(" + cBuild + ")");
 
 /** load my scheduled movies */
 function loadMovie(username) {
+    cacheProxyWorkaround();
+
     var stat = false;
     //alert('channel.js loadMovie() entered');
     //window.console && console.log("**************>>>> cBuild = " + cBuild + "<<<<**************");
 
     $.ajax({
         type: "GET",
-//        url: gCacheProxy + "/ws/crud?type=modelCalendar&origin=" + location.hostname + "&uid=" + username + "&filter=next5",
-        url: gCacheProxy + "/ws/crud?type=modelMovie&origin=" + location.hostname  + "&aid=" + gAppId + "&uid=" + username + "&filter=next5",
+        //TODO this might be a security risk - to check if the server side does make sure this user is logged in or to use JSON web token!!!
+        url: gCacheProxy + "/ws/crud?type=modelMovie&origin=" + location.hostname  + "&aid=" + gAppId + "&uid=" + $.url().attr('username') + "&filter=next5",
         async: false,
         success: function(data) {
 
@@ -204,6 +206,8 @@ function loadMovie(username) {
 
 /** load all movies (mine, shared, sheduled or otherwise */
 function loadMovieAll(username, log) {
+    cacheProxyWorkaround();
+
     var stat = false;
 
     $.ajax({
@@ -404,6 +408,8 @@ function getSubTitle(text) {
 
 /** load movies in a random order for playback */
 function loadMovieShuffle(username) {
+    cacheProxyWorkaround();
+
     //playNow();  //just a test
     console && console.log("Parse username[" + username + "]");
 

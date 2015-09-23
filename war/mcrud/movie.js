@@ -30,6 +30,8 @@ function MovieController($scope, $filter, $http, $rootScope,
     //log.enableAll();
     //log.disableAll();
 
+    cacheProxyWorkaround();
+
     //=== bootstrap rich text editor (summernote) stuff
     //$scope.options = {
     //    height: 150,

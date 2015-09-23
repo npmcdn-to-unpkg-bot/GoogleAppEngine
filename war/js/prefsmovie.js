@@ -1,9 +1,7 @@
 //var showLog = true;
 var showLog = false;
 var gHeaderReleaseBuildTitle;
-//var gCacheProxy = '';
-var gCacheProxy = 'https://me-n3t.rhcloud.com';   //TODO
-//var gCacheProxy = 'http://localhost:8080';          //TODO
+var gCacheProxy;
 var gAppId;
 var gServiceName;
 var gPlayNowShuffle = 'playNowShuffle';     //have to be unique, mainly for the cache to work
@@ -22,6 +20,16 @@ var col4;
 var col5;
 var col6;
 var entry;
+
+/** Workaround until a good solution is found bewteen requireJS, AngularJS and jQuery is found. */
+function cacheProxyWorkaround() {
+    if(typeof gCacheProxy === 'undefined' || gCacheProxy.trim() === '') {
+        //=== comment out the following to use the value from the Google Sheet!
+        //gCacheProxy = 'https://me-n3t.rhcloud.com';   //TODO
+        //gCacheProxy = 'http://localhost:8080';          //TODO
+    }
+}
+
 function showSlotView(show) {
     var el = $("#slotview1");
     if (typeof show === 'undefined' || show) {
