@@ -1,7 +1,7 @@
 //var showLog = true;
 var showLog = false;
 var gHeaderReleaseBuildTitle;
-var gCacheProxy;
+var gCacheProxy = '';   //note: this has to be empty string initially!!!
 var gAppId;
 var gServiceName;
 var gPlayNowShuffle = 'playNowShuffle';     //have to be unique, mainly for the cache to work
