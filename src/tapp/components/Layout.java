@@ -5,8 +5,7 @@ import org.apache.tapestry5.annotations.Property;
 
 //import org.apache.tapestry5.annotations.IncludeStylesheet;
 
-public class Layout
-{
+public class Layout {
 	//=== http://jumpstart.doublenegative.com.au/jumpstart/previews/withlayout/helloworld
 	@Parameter
 	@Property

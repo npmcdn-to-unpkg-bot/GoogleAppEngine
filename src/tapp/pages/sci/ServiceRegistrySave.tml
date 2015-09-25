@@ -1,7 +1,6 @@
 <html t:type="layout" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd" xmlns:sec="http://www.springframework.org/security/tags" xmlns:p="tapestry:parameter">
  <head>
  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
- <title>Service Registry</title>
  <style type="text/css">
     /* iPhone 2G-4S in portrait and landscape (source: http://stephen.io/mediaqueries/) */
     @media only screen

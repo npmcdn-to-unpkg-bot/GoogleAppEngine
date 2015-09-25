@@ -2,7 +2,6 @@
 <html t:type="layout" t:title="SRM (${totalRows})" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd" xmlns:sec="http://www.springframework.org/security/tags" xmlns:p="tapestry:parameter">
     <head>
     	<!-- Spring 3 optimized for GAEJ released [b0002] -->
-        <title>Service</title>
     	<meta name="viewport" content="initial-scale=1.07, user-scalable=no"/> <!-- source: https://developer.apple.com/library/ios/DOCUMENTATION/AppleApplications/Reference/SafariWebContent/UsingtheViewport/UsingtheViewport.html -->
         <link rel="stylesheet" type="text/css" href="/css/table.css"/>
         <style type="text/css">
