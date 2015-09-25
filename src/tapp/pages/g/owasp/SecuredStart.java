@@ -38,6 +38,8 @@ public class SecuredStart {
 	@Component(id="secured1Grid")
     private Grid _grid;
 	
+	private String title = "Secured";
+	
 	@Inject
 	private SecuredManager beanManager;
 
@@ -63,6 +65,10 @@ public class SecuredStart {
 	//=== http://tapestry.apache.org/session-storage.html
 	//@SessionState(create=true)	//didn't work
     private Boolean justSaved;
+
+	public String getTitle() {
+		return title;
+	}
 
 	@Inject
     private AlertManager alertManager;

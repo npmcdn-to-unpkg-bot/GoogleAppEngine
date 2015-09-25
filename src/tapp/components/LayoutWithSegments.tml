@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html t:type="layout" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 	<head>
+    	<title>${title}</title>
 	</head>
 	<body>
 <!-- relegated to HTML 5 approach -->
 <nav>
-	<a href="/g/owasp/securedstart">Security</a> | 
 	<a href="/g/app/templatestart">App</a> | 
+	<a href="/g/owasp/securedstart">Security</a> | 
 	<a href="/g/social/socialstart">Social</a> | 
 	<a href="">All</a>
 </nav>

@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-<html t:type="layout" t:title="SRM (${totalRows})" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd" xmlns:sec="http://www.springframework.org/security/tags" xmlns:p="tapestry:parameter">
+<html t:title="Mobile (${totalRows})" t:type="layout" t:title="SRM (${totalRows})" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd" xmlns:sec="http://www.springframework.org/security/tags" xmlns:p="tapestry:parameter">
     <head>
-        <title>Service (${total})</title>
         <!-- begin - iui stuff -->
  		<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
    		<link rel="stylesheet" href="/g/service/iui/iui.css" type="text/css" />
