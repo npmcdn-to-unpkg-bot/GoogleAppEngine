@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/plastic-5.4-beta-26.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/tapestry-core-5.4-beta-26.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/tapestry-func-5.4-beta-26.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/tapestry-json-5.4-beta-26.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/tapestry-test-5.4-beta-26.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/tapestry5-annotations-5.4-beta-26.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/beanmodel-5.4-beta-35.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/tapestry-ioc-5.4-beta-35.jar"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/slf4j-api-1.6.1.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/compass-2.3.0-beta1.jar"/>
@@ -20,13 +28,6 @@
 	<classpathentry kind="lib" path="war/WEB-INF/lib/js.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/jslint4java-1.4.6.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/prettytime-1.0.8.Final.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/plastic-5.3.8.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/tapestry5-annotations-5.3.8.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/tapestry-core-5.3.8.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/tapestry-func-5.3.8.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/tapestry-ioc-5.3.8.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/tapestry-json-5.3.8.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/tapestry-test-5.3.8.jar"/>
 	<classpathentry kind="con" path="com.google.appengine.eclipse.core.GAE_CONTAINER"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/spring-aop-4.0.7.RELEASE.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/spring-aspects-4.0.0.RELEASE.jar"/>
@@ -51,11 +52,6 @@
 	<classpathentry kind="lib" path="war/WEB-INF/lib/commons-fileupload-1.2.2.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/commons-codec-1.5.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/appengine-testing.jar"/>
-	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7">
 		<attributes>
 			<attribute name="owner.project.facets" value="java"/>
