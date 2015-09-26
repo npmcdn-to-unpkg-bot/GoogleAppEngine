@@ -5,10 +5,9 @@ import java.security.SecureRandom;
 
 import org.apache.tapestry5.SymbolConstants;
 //import org.apache.tapestry5.beanvalidator.BeanValidatorConfigurer;	//gone since 5.3.2
-//TODO 5.4	
-//import org.apache.tapestry5.ioc.Configuration;
-//import org.apache.tapestry5.ioc.MappedConfiguration;
-//import org.apache.tapestry5.ioc.OrderedConfiguration;
+import org.apache.tapestry5.ioc.Configuration;
+import org.apache.tapestry5.ioc.MappedConfiguration;
+import org.apache.tapestry5.ioc.OrderedConfiguration;
 import org.apache.tapestry5.ioc.ServiceBinder;
 import org.apache.tapestry5.ioc.annotations.Contribute;
 import org.apache.tapestry5.ioc.annotations.Inject;
@@ -90,24 +89,40 @@ public class AppModule {
 	/**
 	 * Reference: http://tapestry.apache.org/configuration.html#Configuration-ConfiguringIgnoredPaths
 	 */
-//TODO 5.4	
-//	public static void contributeIgnoredPathsFilter(Configuration<String> configuration) {
-//	  configuration.add("/ws/.*");
-//	}
+	public static void contributeIgnoredPathsFilter(Configuration<String> configuration) {
+	  configuration.add("/ws/.*");
+	}
 	
-//TODO 5.4	
-//	public static void contributeApplicationDefaults(
-//			MappedConfiguration<String, Object> configuration) {
-//		// reference:
-//		// http://tapestry.apache.org/5.3/apidocs/constant-values.html
-////		configuration.add(SymbolConstants.PRODUCTION_MODE, false);
-////		configuration.add(SymbolConstants.APPLICATION_VERSION, "0.1");
-//		configuration.add("tapestry.thread-pool-enabled", false);
-//		configuration.add("tapestry.application-version", 0);
-//        configuration.add(SymbolConstants.HMAC_PASSPHRASE, "353t5eferr3453534534534");
-//		System.out
-//				.println("AppModule contributeApplicationDefaults() done. App is ready.");
-//	}
+	public static void contributeApplicationDefaults(
+			MappedConfiguration<String, Object> configuration) {
+		// reference:
+		// http://tapestry.apache.org/5.3/apidocs/constant-values.html
+//		configuration.add(SymbolConstants.PRODUCTION_MODE, false);
+//		configuration.add(SymbolConstants.APPLICATION_VERSION, "0.1");
+		configuration.add("tapestry.thread-pool-enabled", false);
+		configuration.add("tapestry.application-version", 0);
+//		configuration.add(Trait.SCRIPTACULOUS, false); 
+		// configuration.add(IOCSymbols.THREAD_POOL_ENABLED, false);
+		// turn off redirect after post
+		// c.f.
+		// http://tapestry.1045711.n5.nabble.com/Implication-of-client-side-redirect-td2429849.html
+		// config.add(SymbolConstants.SUPPRESS_REDIRECT_FROM_ACTION_REQUESTS,
+		// "true");
+		// === source: https://github.com/got5/tapestry5-jquery
+		// configuration.add(JQuerySymbolConstants.JQUERY_ALIAS,
+		// "yourOwnAlias");
+		// configuration.add(SymbolConstants.MINIFICATION_ENABLED, "true");
+		// //encountered runtime error during startup
+
+		//http://tapestry.1045711.n5.nabble.com/Disabling-HMAC-check-td5718156.html
+		// Set a random HMAC key for form signing (not cluster safe) 
+        configuration.add(SymbolConstants.HMAC_PASSPHRASE, "353t5eferr3453534534534");
+        
+//        configuration.add(JQuerySymbolConstants.SUPPRESS_PROTOTYPE, "false");
+
+		System.out
+				.println("AppModule contributeApplicationDefaults() done. App is ready.");
+	}
 
 	/**
 	 * Works only from T5.3 beta 9 and onwards (c.f.
@@ -139,33 +154,34 @@ public class AppModule {
 	// conf.add("MyConfigurer", configurer);
 	// }
 
-//TODO 5.4	
-//	public static void contributeDefaultDataTypeAnalyzer(
-//			MappedConfiguration<Class<?>, String> configuration) {
-//		// add child support in the model, name part can be anything
-////		configuration.add(CdActivityDetails.class, "eoActivityDetails");
-////		configuration.add(ParentInput.class, "eoParentInput");
-////		configuration.add(Subject.class, "eoSubject");
-////		configuration.add(Student.class, "eoStudent");
-////		configuration.add(College.class, "eoCollege");
-//	}
+	public static void contributeDefaultDataTypeAnalyzer(
+			MappedConfiguration<Class<?>, String> configuration) {
+		// add child support in the model, name part can be anything
+//		configuration.add(CdActivityDetails.class, "eoActivityDetails");
+//		configuration.add(ParentInput.class, "eoParentInput");
+//		configuration.add(Subject.class, "eoSubject");
+//		configuration.add(Student.class, "eoStudent");
+//		configuration.add(College.class, "eoCollege");
+	}
 
-//TODO 5.4	
-//	public static void contributeBeanBlockSource(
-//			Configuration<BeanBlockContribution> configuration) {
+//	@Contribute(HttpServletRequestFilter.class)
+	public static void contributeBeanBlockSource(
+			Configuration<BeanBlockContribution> configuration) {
+//TODO 5.4
 //		configuration.add(new BeanBlockContribution("eoSubject",
 //				"eo/ActivitySave", "subject", true));
 //		configuration.add(new BeanBlockContribution("eoStudent",
 //				"eo/ActivitySave", "student", true));
 //		configuration.add(new BeanBlockContribution("eoCollege",
 //				"eo/ActivitySave", "college", true));
-//	}
+	}
 
 	// === source: http://lombok.demon.co.uk/tapestry5Demo/
-//TODO 5.4	
-//	public static void contributeComponentClassResolver(
-//			Configuration<LibraryMapping> configuration) {
-//	}
+	public static void contributeComponentClassResolver(
+			Configuration<LibraryMapping> configuration) {
+		// Creates a virtual root pacakge for pages,components.
+		// configuration.add(new LibraryMapping("lombok", "net.sf.lombok"));
+	}
 
 	// public static void contributeRegexAuthorizer(
 	// Configuration<String> configuration) {
@@ -175,10 +191,10 @@ public class AppModule {
 	// }
 
 	// === source: http://tapestryjava.blogspot.com/2009/12/securing-tapestry-pages-with.html
-//TODO 5.4	
-//	public static void contributeComponentRequestHandler(
-//			OrderedConfiguration configuration) {
-//	}
+	public static void contributeComponentRequestHandler(
+			OrderedConfiguration configuration) {
+//		configuration.addInstance("RequiresLogin", RequiresLoginFilter.class);
+	}
 
 	// === source: http://apache-tapestry-mailing-list-archives.1045711.n5.nabble.com/T5-2-update-problem-The-resource-path-was-not-within-an-aliased-path-td2803667.html
 //	public static void contributeClasspathAssetAliasManager(MappedConfiguration<String, String>configuration){ 

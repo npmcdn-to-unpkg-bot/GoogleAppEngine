@@ -18,9 +18,9 @@ import org.apache.tapestry5.corelib.components.Grid;
 import org.apache.tapestry5.corelib.components.Zone;
 import org.apache.tapestry5.grid.GridDataSource;
 import org.apache.tapestry5.internal.alerts.AlertManagerImpl;
-//import org.apache.tapestry5.ioc.Messages;					//TODO 5.4
+import org.apache.tapestry5.ioc.Messages;
 import org.apache.tapestry5.ioc.annotations.Inject;
-//import org.apache.tapestry5.ioc.services.TypeCoercer;		//TODO 5.4
+import org.apache.tapestry5.ioc.services.TypeCoercer;
 import org.apache.tapestry5.services.AssetSource;
 import org.apache.tapestry5.services.Request;
 import org.apache.tapestry5.services.RequestGlobals;
@@ -67,9 +67,8 @@ public class ServiceRegistryStart {
 
 	private ServiceRegistry myBean;
 
-//TODO 5.4
-//	@Inject 
-//	private Messages messages;
+	@Inject 
+	private Messages messages;
 	
 	@Inject
 	private RequestGlobals requestGlobals;

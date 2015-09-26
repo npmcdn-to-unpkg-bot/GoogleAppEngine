@@ -6,7 +6,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.tapestry5.annotations.Component;
 import org.apache.tapestry5.annotations.InjectPage;
 import org.apache.tapestry5.corelib.components.Grid;
-//import org.apache.tapestry5.ioc.Messages;
+import org.apache.tapestry5.ioc.Messages;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.services.RequestGlobals;
 import org.ocpsoft.pretty.time.PrettyTime;
@@ -34,8 +34,8 @@ public class StartMobile {
 	@InjectPage
 	private StartMobile start;
 	
-//	@Inject 
-//	private Messages messages;
+	@Inject 
+	private Messages messages;
 	
 //	@Inject 
 //	private Grid grid;

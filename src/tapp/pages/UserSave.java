@@ -3,18 +3,14 @@ package tapp.pages;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.tapestry5.OptionModel;
 import org.apache.tapestry5.SelectModel;
 import org.apache.tapestry5.ValidationException;
 import org.apache.tapestry5.ValueEncoder;
 import org.apache.tapestry5.annotations.InjectPage;
 import org.apache.tapestry5.annotations.Property;
-import org.apache.tapestry5.internal.OptionModelImpl;
-import org.apache.tapestry5.internal.SelectModelImpl;
-//import org.apache.tapestry5.ioc.Messages;
-import org.apache.tapestry5.internal.services.MapMessages;
+import org.apache.tapestry5.ioc.Messages;
 import org.apache.tapestry5.ioc.annotations.Inject;
-//import org.apache.tapestry5.ioc.services.TypeCoercer;
+import org.apache.tapestry5.ioc.services.TypeCoercer;
 import org.apache.tapestry5.util.EnumSelectModel;
 import org.apache.tapestry5.util.EnumValueEncoder;
 
@@ -26,7 +22,7 @@ import com.appspot.cloudserviceapi.services.manager.UserManager;
 public class UserSave {
 
 	@Inject
-	private MapMessages messages; //source: Tapestry 5 Building Web Applications page 121
+	private Messages messages; //source: Tapestry 5 Building Web Applications page 121
 
 	private GaeUserDetails myBean;
 
@@ -44,8 +40,8 @@ public class UserSave {
 	@Property
 	private List<UserRole> myList; 
 	
-//	@Inject
-//	private TypeCoercer typeCoercer;
+	@Inject
+	private TypeCoercer typeCoercer;
 	
 	public void onActivate(Long id) {
 		if (id.equals(0L)) {
@@ -153,17 +149,12 @@ public class UserSave {
 //	} 
 
 	//source: https://builds.apache.org/job/tapestry-trunk-freestyle/javadoc/org/apache/tapestry5/corelib/components/Checklist.html
-//	public ValueEncoder<UserRole> getEncoder() {
-//        return new EnumValueEncoder<UserRole>(typeCoercer, UserRole.class);
-//    }
+	public ValueEncoder<UserRole> getEncoder() {
+        return new EnumValueEncoder<UserRole>(typeCoercer, UserRole.class);
+    }
 
     public SelectModel getModel() {
-//        return new EnumSelectModel(UserRole.class, messages);	//TODO 5.4
-    	//=== http://apache-tapestry-mailing-list-archives.1045711.n5.nabble.com/Renaming-options-in-select-menu-using-properties-td5723516.html#a5723527    	List<OptionModel> tardies = new ArrayList<OptionModel>(); 
-        List<OptionModel> tardies = new ArrayList<OptionModel>(); 
-        tardies.add(new OptionModelImpl("Y", true)); 
-        tardies.add(new OptionModelImpl("N", false)); 
-        return new SelectModelImpl(null, tardies);
+        return new EnumSelectModel(UserRole.class, messages);
     }
     
 }
