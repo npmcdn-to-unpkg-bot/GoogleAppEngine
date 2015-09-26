@@ -86,6 +86,13 @@ public class AppModule {
 				+ "' started.");
 	}
 
+	/**
+	 * Reference: http://tapestry.apache.org/configuration.html#Configuration-ConfiguringIgnoredPaths
+	 */
+	public static void contributeIgnoredPathsFilter(Configuration<String> configuration) {
+	  configuration.add("/ws/.*");
+	}
+	
 	public static void contributeApplicationDefaults(
 			MappedConfiguration<String, Object> configuration) {
 		// reference:
