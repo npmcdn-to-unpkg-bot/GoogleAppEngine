@@ -22,3 +22,4 @@ war/WEB-INF/lib/jta-1.1.jar
 war/WEB-INF/movieendpoint-v1.api
 war/WEB-INF/serviceregistryuserendpoint-v1.api
 war/WEB-INF/userendpoint-v1.api
+war/WEB-INF/layouts/appengine-api-labs.jar
