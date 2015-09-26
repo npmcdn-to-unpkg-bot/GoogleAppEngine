@@ -2,7 +2,7 @@ package tapp.mixins;
 
 import org.apache.tapestry5.ClientElement;
 import org.apache.tapestry5.MarkupWriter;
-import org.apache.tapestry5.RenderSupport;
+//import org.apache.tapestry5.RenderSupport;	//TODO 5.4
 import org.apache.tapestry5.annotations.Environmental;
 import org.apache.tapestry5.annotations.Import;
 import org.apache.tapestry5.annotations.InjectContainer;
@@ -26,8 +26,8 @@ public class MaxLength {
 	@Parameter("true")
 	private boolean displayCounter;
 
-	@Environmental
-	private RenderSupport renderSupport;
+//	@Environmental
+//	private RenderSupport renderSupport;
 
 	void afterRender(MarkupWriter writer) {
 		String id = container.getClientId();
@@ -40,7 +40,6 @@ public class MaxLength {
 				"disabled", "size", "3");
 		writer.end();
 		writer.end();
-		renderSupport.addScript("new MaxLength('%s', '%s', %s)", id, counterId,
-				max);
+//		renderSupport.addScript("new MaxLength('%s', '%s', %s)", id, counterId, max);
 	}
 }

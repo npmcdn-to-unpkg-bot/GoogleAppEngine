@@ -3,6 +3,7 @@ package com.troymaxventures.tapestry.gaeutils;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+
 import org.apache.tapestry5.Link;
 import org.apache.tapestry5.services.Request;
 import org.apache.tapestry5.services.RequestFilter;
@@ -107,5 +108,11 @@ public class RedirectFixRequestFilter implements RequestFilter {
         public void disableCompression() {
             origResponse.disableCompression();
         }
+
+		@Override
+		public void addHeader(String arg0, String arg1) {
+			// TODO Auto-generated method stub
+			
+		}
     }
 }
