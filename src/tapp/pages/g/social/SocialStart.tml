@@ -29,6 +29,9 @@
 td.description {
     text-decoration:none;
 }
+td.details {
+	width:100%;
+}
 td.description span, td.details span {
     display:none;
     padding:2px 3px;

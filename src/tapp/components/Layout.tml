@@ -53,6 +53,14 @@
 detailsExcerpt { max-width:150px; word-wrap:break-word; }
 .targ { width:100%; height:100%; }
 
+.t-data-grid {
+	table-layout:fixed;
+	width:100%;
+}
+td.details {
+	width:100%;
+}
+
 		</style>
 	</head>
 	<body>
