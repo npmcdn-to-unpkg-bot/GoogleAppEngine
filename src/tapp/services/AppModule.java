@@ -99,6 +99,8 @@ public class AppModule {
 		// http://tapestry.apache.org/5.3/apidocs/constant-values.html
 //		configuration.add(SymbolConstants.PRODUCTION_MODE, false);
 //		configuration.add(SymbolConstants.APPLICATION_VERSION, "0.1");
+//		configuration.add(SymbolConstants.SESSION_LOCKING_ENABLED, false);		//TODO 5.4
+		configuration.add(SymbolConstants.RESTRICTIVE_ENVIRONMENT, true);		//TODO 5.4 - http://tapestry.apache.org/5.4/apidocs/org/apache/tapestry5/SymbolConstants.html#EXECUTION_MODE
 		configuration.add("tapestry.thread-pool-enabled", false);
 		configuration.add("tapestry.application-version", 0);
 //		configuration.add(Trait.SCRIPTACULOUS, false); 
