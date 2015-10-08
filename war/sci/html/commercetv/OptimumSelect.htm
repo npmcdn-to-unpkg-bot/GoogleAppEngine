@@ -1,0 +1,129 @@
+<html>
+<header>
+	<LINK REL=StyleSheet HREF="css/style.css" TYPE="text/css" MEDIA="screen">
+	<style>
+	body {
+		//background-color: #000000;
+		color: #FFFFFF;
+	}
+	#video {
+	  position: fixed;
+	  top: 150;
+	  left: 10;
+	  bottom: 0;
+	  right: 0;
+	  width: 100%;
+	  height: 100%,
+	  z-index: -1000;
+	  <!-- source: http://css-tricks.com/css-transparency-settings-for-all-broswers/ -->
+      filter:alpha(opacity=50);
+      -moz-opacity:0.5;
+      -khtml-opacity: 0.5;
+      opacity: 0.5;
+	}
+	#shop {
+	  position: fixed;
+	  top: 55;
+	  left: 360;
+	  z-index: 10;
+	}
+	</style>
+</header>
+<body>
+
+<script type="text/javascript" src="swf/swfobject.js"></script>
+<div id="ytapiplayer">
+  You need Flash player 8+ and JavaScript enabled to view this video.
+</div>
+
+<script type="text/javascript">
+    var params = { allowScriptAccess: "always" };
+    var atts = { id: "myytplayer" };
+    swfobject.embedSWF("http://www.youtube.com/v/dNR0U375m3s?enablejsapi=1&playerapiid=ytplayer", 
+                       "ytapiplayer", "60%", "75%", "8", null, null, params, atts);
+</script>
+
+<div id="text1" style="position:absolute;left:65%;top:100px;display:none">
+CableVision Optimum Select (non EBIF) 0:10
+</div>
+<div id="text2" style="position:absolute;left:65%;top:120px;display:none">
+iO TV and Optimum Online 0:20
+</div>
+<div id="text3" style="position:absolute;left:65%;top:140px;display:none">
+Select bar appear at the bottom of the screen 0:25
+</div>
+<div id="text4" style="position:absolute;left:65%;top:160px;display:none">
+"Buy Later" 0:40
+</div>
+<div id="text5" style="position:absolute;left:65%;top:180px;display:none">
+Save later for purchase 0:49
+</div>
+<div id="text6" style="position:absolute;left:65%;top:200px;display:none">
+Retrieve the saved product later at your convenience 1:03
+</div>
+<div id="text7" style="position:absolute;left:65%;top:240px;display:none">
+by pressing on iO button, 1:05
+</div>
+<div id="text8" style="position:absolute;left:65%;top:260px;display:none">
+scroll down and choose Optimum Select 1:15
+</div>
+<div id="text9" style="position:absolute;left:65%;top:280px;display:none">
+Optimum Online allows subscriber to see the saved product from the PC as well 1:34
+</div>
+<div id="text10" style="position:absolute;left:65%;top:320px;display:none">
+Purchase online via PC and TV (same user experience) 1:53
+</div>
+  
+<script type="text/javascript">
+function onYouTubePlayerReady(playerId) {
+  ytplayer = document.getElementById("myytplayer");
+  ytplayer.addEventListener("onStateChange", "onytplayerStateChange");
+}
+
+function onytplayerStateChange(newState) {
+   	//alert("Player's new state: " + newState);
+	if(newState == 0) {
+		//video ended
+		document.getElementById("text1").style.display = "block";
+	}
+}
+function ontime() {
+	//alert('2s after: ' + ytplayer.getCurrentTime());
+	t = ytplayer.getCurrentTime();
+	if(t >= 10) {
+		document.getElementById("text1").style.display = "block";
+	}
+	if(t >= 20) {
+		document.getElementById("text2").style.display = "block";
+	}
+	if(t >= 25) {
+		document.getElementById("text3").style.display = "block";
+	}
+	if(t >= 40) {
+		document.getElementById("text4").style.display = "block";
+	}
+	if(t >= 49) {
+		document.getElementById("text5").style.display = "block";
+	}
+	if(t >= 63) {
+		document.getElementById("text6").style.display = "block";
+	}
+	if(t >= 65) {
+		document.getElementById("text7").style.display = "block";
+	}
+	if(t >= 75) {
+		document.getElementById("text8").style.display = "block";
+	}
+	if(t >= 94) {
+		document.getElementById("text9").style.display = "block";
+	}
+	if(t >= 113) {
+		document.getElementById("text10").style.display = "block";
+	}
+}
+var t=setInterval("ontime()",2000);
+
+</script>	
+
+</body>
+</html>

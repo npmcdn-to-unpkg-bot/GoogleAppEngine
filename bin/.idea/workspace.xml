@@ -1,0 +1,1473 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SCOPE_TYPE" value="3" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" readonly="true" id="63aeb619-5a8f-446b-a0ee-28b9685663ca" name="Default" comment=".">
+      <change type="MODIFICATION" beforePath="C:\GoogleAppEngine\war\WEB-INF\calendarendpoint-v1.api" afterPath="C:\GoogleAppEngine\war\WEB-INF\calendarendpoint-v1.api" />
+      <change type="MODIFICATION" beforePath="C:\GoogleAppEngine\war\html\channelshuffle.html" afterPath="C:\GoogleAppEngine\war\html\channelshuffle.html" />
+      <change type="MODIFICATION" beforePath="C:\GoogleAppEngine\war\WEB-INF\movieendpoint-v1.api" afterPath="C:\GoogleAppEngine\war\WEB-INF\movieendpoint-v1.api" />
+      <change type="MODIFICATION" beforePath="C:\GoogleAppEngine\war\html\shared.html" afterPath="C:\GoogleAppEngine\war\html\shared.html" />
+      <change type="MODIFICATION" beforePath="C:\GoogleAppEngine\war\WEB-INF\appengine-generated\datastore-indexes-auto.xml" afterPath="C:\GoogleAppEngine\war\WEB-INF\appengine-generated\datastore-indexes-auto.xml" />
+      <change type="MODIFICATION" beforePath="C:\GoogleAppEngine\war\html\channelshuffle.htm" afterPath="C:\GoogleAppEngine\war\html\channelshuffle.htm" />
+      <change type="MODIFICATION" beforePath="C:\GoogleAppEngine\war\html\migrate.html" afterPath="C:\GoogleAppEngine\war\html\migrate.html" />
+      <change type="MODIFICATION" beforePath="C:\GoogleAppEngine\.classpath" afterPath="C:\GoogleAppEngine\.classpath" />
+      <change type="MODIFICATION" beforePath="C:\GoogleAppEngine\war\html\channelall.html" afterPath="C:\GoogleAppEngine\war\html\channelall.html" />
+      <change type="MODIFICATION" beforePath="C:\GoogleAppEngine\war\crud\movie.html" afterPath="C:\GoogleAppEngine\war\crud\movie.html" />
+      <change type="MODIFICATION" beforePath="C:\GoogleAppEngine\war\WEB-INF\bkper-v1.api" afterPath="C:\GoogleAppEngine\war\WEB-INF\bkper-v1.api" />
+      <change type="MODIFICATION" beforePath="C:\GoogleAppEngine\war\WEB-INF\appengine-generated\local_db.bin" afterPath="C:\GoogleAppEngine\war\WEB-INF\appengine-generated\local_db.bin" />
+      <change type="MODIFICATION" beforePath="C:\GoogleAppEngine\war\WEB-INF\userendpoint-v1.api" afterPath="C:\GoogleAppEngine\war\WEB-INF\userendpoint-v1.api" />
+      <change type="MODIFICATION" beforePath="C:\GoogleAppEngine\war\WEB-INF\serviceregistryuserendpoint-v1.api" afterPath="C:\GoogleAppEngine\war\WEB-INF\serviceregistryuserendpoint-v1.api" />
+      <change type="MODIFICATION" beforePath="C:\GoogleAppEngine\.idea\workspace.xml" afterPath="C:\GoogleAppEngine\.idea\workspace.xml" />
+    </list>
+    <list id="acf5117e-d341-47cb-8046-e59dab15ed3d" name="New changelist" comment="New changelist" />
+    <ignored path="GoogleAppEngine.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="DaemonCodeAnalyzer">
+    <disable_hints />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="GoogleAppEngine" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf />
+  </component>
+  <component name="FindManager">
+    <FindUsagesManager>
+      <setting name="OPEN_NEW_TAB" value="false" />
+    </FindUsagesManager>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="changedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/war/html/channel.htm" />
+        <option value="$PROJECT_DIR$/war/html/yt.html" />
+        <option value="$PROJECT_DIR$/war/html/channel.js" />
+        <option value="$PROJECT_DIR$/war/html/channel.html" />
+        <option value="$PROJECT_DIR$/war/js/prefs.js" />
+        <option value="$PROJECT_DIR$/war/html/migrate.html" />
+        <option value="$PROJECT_DIR$/war/html/shared.html" />
+        <option value="$PROJECT_DIR$/war/html/channelshuffle.html" />
+        <option value="$PROJECT_DIR$/war/html/channelall.html" />
+        <option value="$PROJECT_DIR$/war/r.html" />
+        <option value="$PROJECT_DIR$/war/js/flowchart-1.2.5.js" />
+        <option value="$PROJECT_DIR$/war/html/widget/2sequence.html" />
+        <option value="$PROJECT_DIR$/war/js/raphael-2.1.0.js" />
+        <option value="$PROJECT_DIR$/war/html/widget/2flowchart.html" />
+        <option value="$PROJECT_DIR$/war/crud/movie.js" />
+        <option value="$PROJECT_DIR$/war/crud/movie.html" />
+        <option value="$PROJECT_DIR$/src/tapp/pages/sci/ServiceRegistryStart.tml" />
+        <option value="$PROJECT_DIR$/war/sgc/jsp/main.jsp" />
+        <option value="$PROJECT_DIR$/war/js/jquery.are-you-sure.js" />
+        <option value="$PROJECT_DIR$/src/tapp/pages/sci/ServiceRegistrySave.tml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>Code style issuesJavaScript</id>
+          </State>
+          <State>
+            <id>JavaScript</id>
+          </State>
+          <State>
+            <id>Portability issues</id>
+          </State>
+          <State>
+            <id>XML</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>CheckTagEmptyBody</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="false" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectReloadState">
+    <option name="STATE" value="0" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
+      <flattenPackages />
+      <showMembers ProjectPane="false" />
+      <showModules />
+      <showLibraryContents ProjectPane="true" />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource ProjectPane="true" />
+      <autoscrollFromSource ProjectPane="true" />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GoogleAppEngine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GoogleAppEngine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GoogleAppEngine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GoogleAppEngine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GoogleAppEngine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="war" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GoogleAppEngine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GoogleAppEngine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="options.lastSelected" value="editor.preferences.appearance" />
+    <property name="recentsLimit" value="5" />
+    <property name="last_opened_file_path" value="/Applications/jboss-5.1.0.GA/server/default/deploy" />
+    <property name="restartRequiresConfirmation" value="true" />
+    <property name="FullScreen" value="false" />
+    <property name="DefaultHtmlFileTemplate" value="Html5" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\GoogleAppEngine\war\js" />
+      <recent name="C:\GoogleAppEngine\war\html" />
+      <recent name="$PROJECT_DIR$/war/images" />
+      <recent name="$PROJECT_DIR$/war/html" />
+      <recent name="$PROJECT_DIR$/war/js" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/war/images" />
+      <recent name="$PROJECT_DIR$/war" />
+      <recent name="$PROJECT_DIR$/war/fullcalendar" />
+      <recent name="$PROJECT_DIR$/war/html" />
+      <recent name="$PROJECT_DIR$/war/html/dnn" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JavaScript Debug.calendar.htm">
+    <configuration default="false" name="calendar.html" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true" temporary="true" uri="file://$PROJECT_DIR$/war/html/calendar.html">
+      <RunnerSettings RunnerId="JavascriptDebugRunner" />
+      <ConfigurationWrapper RunnerId="JavascriptDebugRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="calendar.htm" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true" temporary="true" uri="file://$PROJECT_DIR$/war/html/calendar.htm">
+      <RunnerSettings RunnerId="JavascriptDebugRunner" />
+      <ConfigurationWrapper RunnerId="JavascriptDebugRunner" />
+      <method />
+    </configuration>
+    <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
+      <option name="VMOptions" />
+      <option name="arguments" />
+      <option name="filePath" />
+      <option name="name" value="Dart" />
+      <option name="saveOutputToFile" value="false" />
+      <option name="showConsoleOnStdErr" value="false" />
+      <option name="showConsoleOnStdOut" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
+      <option name="VMOptions" />
+      <option name="arguments" />
+      <option name="filePath" />
+      <option name="scope" value="ALL" />
+      <option name="testName" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" singleton="true" config-file="">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JSTestDriver:ConfigurationType" factoryName="JsTestDriver">
+      <setting name="configLocationType" value="CONFIG_FILE" />
+      <setting name="settingsFile" value="" />
+      <setting name="serverType" value="INTERNAL" />
+      <setting name="preferredDebugBrowser" value="CHROME" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" working-dir="">
+      <browser start="false" url="" with-js-debugger="false" />
+      <method />
+    </configuration>
+    <list size="2">
+      <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.calendar.html" />
+      <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.calendar.htm" />
+    </list>
+    <recent_temporary>
+      <list size="2">
+        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.calendar.htm" />
+        <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.calendar.html" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="commandLine" myAutoUpdateAfterCommit="false" cleanupOnStartRun="true" SSL_PROTOCOLS="sslv3">
+    <option name="USER" value="" />
+    <option name="PASSWORD" value="" />
+    <option name="mySSHConnectionTimeout" value="30000" />
+    <option name="mySSHReadTimeout" value="30000" />
+    <option name="LAST_MERGED_REVISION" />
+    <option name="MERGE_DRY_RUN" value="false" />
+    <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
+    <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
+    <option name="IGNORE_SPACES_IN_MERGE" value="false" />
+    <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
+    <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
+    <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
+    <option name="FORCE_UPDATE" value="false" />
+    <option name="IGNORE_EXTERNALS" value="false" />
+    <configuration useDefault="true">C:\Users\tanj3\AppData\Roaming\Subversion</configuration>
+    <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
+    <supportedVersion>125</supportedVersion>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="63aeb619-5a8f-446b-a0ee-28b9685663ca" name="Default" comment="" />
+      <changelist id="acf5117e-d341-47cb-8046-e59dab15ed3d" name="New changelist" comment="" />
+      <created>1366230450188</created>
+      <updated>1366230450188</updated>
+    </task>
+    <task id="LOCAL-00001">
+      <created>1366233887274</created>
+      <updated>1366233887274</updated>
+    </task>
+    <task id="LOCAL-00002">
+      <created>1366234574103</created>
+      <updated>1366234574103</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Apply strict mode for JavaScript.">
+      <created>1366392439177</created>
+      <updated>1366392439177</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Apply strict mode for JavaScript.">
+      <created>1366926096250</created>
+      <updated>1366926096250</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Apply strict mode for JavaScript.">
+      <created>1366987182379</created>
+      <updated>1366987182379</updated>
+    </task>
+    <task id="LOCAL-00006" summary=".">
+      <created>1366987590103</created>
+      <updated>1366987590103</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Initial complete codes to save movie search results.">
+      <created>1367011609258</created>
+      <updated>1367011609258</updated>
+    </task>
+    <task id="LOCAL-00008" summary=".">
+      <created>1367035926426</created>
+      <updated>1367035926426</updated>
+    </task>
+    <task id="LOCAL-00009" summary=".">
+      <created>1367039273104</created>
+      <updated>1367039273104</updated>
+    </task>
+    <task id="LOCAL-00010" summary=".">
+      <created>1367113187211</created>
+      <updated>1367113187211</updated>
+    </task>
+    <task id="LOCAL-00011" summary=".">
+      <created>1367113456493</created>
+      <updated>1367113456493</updated>
+    </task>
+    <task id="LOCAL-00012" summary=".">
+      <created>1367276328999</created>
+      <updated>1367276328999</updated>
+    </task>
+    <task id="LOCAL-00013" summary=".">
+      <created>1367794761375</created>
+      <updated>1367794761375</updated>
+    </task>
+    <task id="LOCAL-00014" summary=".">
+      <created>1367797718103</created>
+      <updated>1367797718103</updated>
+    </task>
+    <task id="LOCAL-00015" summary=".">
+      <created>1367878732109</created>
+      <updated>1367878732109</updated>
+    </task>
+    <task id="LOCAL-00016" summary=".">
+      <created>1367888936183</created>
+      <updated>1367888936183</updated>
+    </task>
+    <task id="LOCAL-00017" summary=".">
+      <created>1367890518104</created>
+      <updated>1367890518104</updated>
+    </task>
+    <task id="LOCAL-00018" summary=".">
+      <created>1367926081140</created>
+      <updated>1367926081140</updated>
+    </task>
+    <task id="LOCAL-00019" summary=".">
+      <created>1367929969192</created>
+      <updated>1367929969192</updated>
+    </task>
+    <task id="LOCAL-00020" summary=".">
+      <created>1367964710205</created>
+      <updated>1367964710205</updated>
+    </task>
+    <task id="LOCAL-00021" summary=".">
+      <created>1368050610157</created>
+      <updated>1368050610157</updated>
+    </task>
+    <task id="LOCAL-00022" summary=".">
+      <created>1368063236428</created>
+      <updated>1368063236428</updated>
+    </task>
+    <task id="LOCAL-00023" summary=".">
+      <created>1368065354122</created>
+      <updated>1368065354122</updated>
+    </task>
+    <task id="LOCAL-00024" summary=".">
+      <created>1368097464311</created>
+      <updated>1368097464311</updated>
+    </task>
+    <task id="LOCAL-00025" summary=".">
+      <created>1368099954466</created>
+      <updated>1368099954466</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Fixed some layout issue between movie and scheduler interface.">
+      <created>1368132354163</created>
+      <updated>1368132354163</updated>
+    </task>
+    <task id="LOCAL-00027" summary=".">
+      <created>1368137825105</created>
+      <updated>1368137825105</updated>
+    </task>
+    <task id="LOCAL-00028" summary=".">
+      <created>1368138598111</created>
+      <updated>1368138598111</updated>
+    </task>
+    <task id="LOCAL-00029" summary=".">
+      <created>1368150448237</created>
+      <updated>1368150448237</updated>
+    </task>
+    <task id="LOCAL-00030" summary=".">
+      <created>1368157238115</created>
+      <updated>1368157238115</updated>
+    </task>
+    <task id="LOCAL-00031" summary=".">
+      <created>1368160012103</created>
+      <updated>1368160012103</updated>
+    </task>
+    <task id="LOCAL-00032" summary=".">
+      <created>1368191449513</created>
+      <updated>1368191449513</updated>
+    </task>
+    <task id="LOCAL-00033" summary=".">
+      <created>1368220838152</created>
+      <updated>1368220838152</updated>
+    </task>
+    <task id="LOCAL-00034" summary=".">
+      <created>1368221370103</created>
+      <updated>1368221370103</updated>
+    </task>
+    <task id="LOCAL-00035" summary=".">
+      <created>1368222541102</created>
+      <updated>1368222541102</updated>
+    </task>
+    <task id="LOCAL-00036" summary=".">
+      <created>1368230648104</created>
+      <updated>1368230648104</updated>
+    </task>
+    <task id="LOCAL-00037" summary=".">
+      <created>1368237160105</created>
+      <updated>1368237160105</updated>
+    </task>
+    <task id="LOCAL-00038" summary=".">
+      <created>1368246924117</created>
+      <updated>1368246924117</updated>
+    </task>
+    <task id="LOCAL-00039" summary=".">
+      <created>1368248248133</created>
+      <updated>1368248248133</updated>
+    </task>
+    <task id="LOCAL-00040" summary=".">
+      <created>1368292649105</created>
+      <updated>1368292649105</updated>
+    </task>
+    <task id="LOCAL-00041" summary=".">
+      <created>1368311279105</created>
+      <updated>1368311279105</updated>
+    </task>
+    <task id="LOCAL-00042" summary=".">
+      <created>1368393605170</created>
+      <updated>1368393605170</updated>
+    </task>
+    <task id="LOCAL-00043" summary=".">
+      <created>1368403631102</created>
+      <updated>1368403631102</updated>
+    </task>
+    <task id="LOCAL-00044" summary=".">
+      <created>1368415697108</created>
+      <updated>1368415697108</updated>
+    </task>
+    <task id="LOCAL-00045" summary=".">
+      <created>1368484174166</created>
+      <updated>1368484174166</updated>
+    </task>
+    <task id="LOCAL-00046" summary=".">
+      <created>1368494929114</created>
+      <updated>1368494929114</updated>
+    </task>
+    <task id="LOCAL-00047" summary="Upgraded to sdk 1.8.0.">
+      <created>1368496050160</created>
+      <updated>1368496050160</updated>
+    </task>
+    <task id="LOCAL-00048" summary="Upgraded to sdk 1.8.0.">
+      <created>1368503535102</created>
+      <updated>1368503535102</updated>
+    </task>
+    <task id="LOCAL-00049" summary="Upgraded to sdk 1.8.0.">
+      <created>1368568759111</created>
+      <updated>1368568759111</updated>
+    </task>
+    <task id="LOCAL-00050" summary="Upgraded to sdk 1.8.0.">
+      <created>1368585175156</created>
+      <updated>1368585175156</updated>
+    </task>
+    <task id="LOCAL-00051" summary="Upgraded to sdk 1.8.0.">
+      <created>1368590903173</created>
+      <updated>1368590903173</updated>
+    </task>
+    <task id="LOCAL-00052" summary="Upgraded to sdk 1.8.0.">
+      <created>1368592183104</created>
+      <updated>1368592183104</updated>
+    </task>
+    <task id="LOCAL-00053" summary="Upgraded to sdk 1.8.0.">
+      <created>1368621507179</created>
+      <updated>1368621507197</updated>
+    </task>
+    <task id="LOCAL-00054" summary="Upgraded to sdk 1.8.0.">
+      <created>1368656098111</created>
+      <updated>1368656098111</updated>
+    </task>
+    <task id="LOCAL-00055" summary="Upgraded to sdk 1.8.0.">
+      <created>1368675055154</created>
+      <updated>1368675055154</updated>
+    </task>
+    <task id="LOCAL-00056" summary="Upgraded to sdk 1.8.0.">
+      <created>1368679167104</created>
+      <updated>1368679167104</updated>
+    </task>
+    <task id="LOCAL-00057" summary="Upgraded to sdk 1.8.0.">
+      <created>1368709909104</created>
+      <updated>1368709909104</updated>
+    </task>
+    <task id="LOCAL-00058" summary="Upgraded to sdk 1.8.0.">
+      <created>1368736890216</created>
+      <updated>1368736890216</updated>
+    </task>
+    <task id="LOCAL-00059" summary="Upgraded to sdk 1.8.0.">
+      <created>1368737583104</created>
+      <updated>1368737583105</updated>
+    </task>
+    <task id="LOCAL-00060" summary="Upgraded to sdk 1.8.0.">
+      <created>1368738011106</created>
+      <updated>1368738011106</updated>
+    </task>
+    <task id="LOCAL-00061" summary="Upgraded to sdk 1.8.0.">
+      <created>1368744134137</created>
+      <updated>1368744134137</updated>
+    </task>
+    <task id="LOCAL-00062" summary="Upgraded to sdk 1.8.0.">
+      <created>1368745244105</created>
+      <updated>1368745244105</updated>
+    </task>
+    <task id="LOCAL-00063" summary="Upgraded to sdk 1.8.0.">
+      <created>1368763839106</created>
+      <updated>1368763839107</updated>
+    </task>
+    <task id="LOCAL-00064" summary="Upgraded to sdk 1.8.0.">
+      <created>1368763941185</created>
+      <updated>1368763941185</updated>
+    </task>
+    <task id="LOCAL-00065" summary="Upgraded to sdk 1.8.0.">
+      <created>1368792182113</created>
+      <updated>1368792182114</updated>
+    </task>
+    <task id="LOCAL-00066" summary=".">
+      <created>1368807455161</created>
+      <updated>1368807455162</updated>
+    </task>
+    <task id="LOCAL-00067" summary=".">
+      <created>1368826190137</created>
+      <updated>1368826190138</updated>
+    </task>
+    <task id="LOCAL-00068" summary=".">
+      <created>1368829956104</created>
+      <updated>1368829956104</updated>
+    </task>
+    <task id="LOCAL-00069" summary=".">
+      <created>1368845191107</created>
+      <updated>1368845191107</updated>
+    </task>
+    <task id="LOCAL-00070" summary=".">
+      <created>1368907716118</created>
+      <updated>1368907716118</updated>
+    </task>
+    <task id="LOCAL-00071" summary=".">
+      <created>1368927545161</created>
+      <updated>1368927545170</updated>
+    </task>
+    <task id="LOCAL-00072" summary=".">
+      <created>1368985501138</created>
+      <updated>1368985501138</updated>
+    </task>
+    <task id="LOCAL-00073" summary=".">
+      <created>1368987920143</created>
+      <updated>1368987920143</updated>
+    </task>
+    <task id="LOCAL-00074" summary=".">
+      <created>1369000043103</created>
+      <updated>1369000043103</updated>
+    </task>
+    <task id="LOCAL-00075" summary=".">
+      <created>1369004453177</created>
+      <updated>1369004453177</updated>
+    </task>
+    <task id="LOCAL-00076" summary=".">
+      <created>1369022126306</created>
+      <updated>1369022126306</updated>
+    </task>
+    <task id="LOCAL-00077" summary=".">
+      <created>1369069507199</created>
+      <updated>1369069507199</updated>
+    </task>
+    <task id="LOCAL-00078" summary=".">
+      <created>1369091434162</created>
+      <updated>1369091434163</updated>
+    </task>
+    <task id="LOCAL-00079" summary=".">
+      <created>1369135093202</created>
+      <updated>1369135093203</updated>
+    </task>
+    <task id="LOCAL-00080" summary=".">
+      <created>1369169203326</created>
+      <updated>1369169203353</updated>
+    </task>
+    <task id="LOCAL-00081" summary=".">
+      <created>1369192413293</created>
+      <updated>1369192413294</updated>
+    </task>
+    <task id="LOCAL-00082" summary=".">
+      <created>1369195245104</created>
+      <updated>1369195245105</updated>
+    </task>
+    <task id="LOCAL-00083" summary=".">
+      <created>1369345878104</created>
+      <updated>1369345878104</updated>
+    </task>
+    <task id="LOCAL-00084" summary=".">
+      <created>1369398764187</created>
+      <updated>1369398764187</updated>
+    </task>
+    <task id="LOCAL-00085" summary=".">
+      <created>1369432888102</created>
+      <updated>1369432888103</updated>
+    </task>
+    <task id="LOCAL-00086" summary=".">
+      <created>1369494953104</created>
+      <updated>1369494953104</updated>
+    </task>
+    <task id="LOCAL-00087" summary=".">
+      <created>1369510016229</created>
+      <updated>1369510016229</updated>
+    </task>
+    <task id="LOCAL-00088" summary=".">
+      <created>1369524535104</created>
+      <updated>1369524535105</updated>
+    </task>
+    <task id="LOCAL-00089" summary=".">
+      <created>1369528964151</created>
+      <updated>1369528964151</updated>
+    </task>
+    <task id="LOCAL-00090" summary=".">
+      <created>1369529772103</created>
+      <updated>1369529772104</updated>
+    </task>
+    <task id="LOCAL-00091" summary=".">
+      <created>1369531522105</created>
+      <updated>1369531522105</updated>
+    </task>
+    <task id="LOCAL-00092" summary="Changes before url is commented out in event object.">
+      <created>1369602721691</created>
+      <updated>1369602721692</updated>
+    </task>
+    <task id="LOCAL-00093" summary="Initial codes to support Google Plus sign in.">
+      <created>1369617602145</created>
+      <updated>1369617602145</updated>
+    </task>
+    <task id="LOCAL-00094" summary=".">
+      <created>1369623186106</created>
+      <updated>1369623186106</updated>
+    </task>
+    <task id="LOCAL-00095" summary="Fixed some Google Plus issues.">
+      <created>1369659679681</created>
+      <updated>1369659679681</updated>
+    </task>
+    <task id="LOCAL-00096" summary="Fixed some Google Plus issues.">
+      <created>1369673606216</created>
+      <updated>1369673606216</updated>
+    </task>
+    <task id="LOCAL-00097" summary="Fixed some Google Plus issues.">
+      <created>1369687379215</created>
+      <updated>1369687379215</updated>
+    </task>
+    <task id="LOCAL-00098" summary="Fixed some Google Plus issues.">
+      <created>1369702549476</created>
+      <updated>1369702549476</updated>
+    </task>
+    <task id="LOCAL-00099" summary="Added initial artifacts for RequireJS.">
+      <created>1369865683102</created>
+      <updated>1369865683102</updated>
+    </task>
+    <task id="LOCAL-00100" summary=".">
+      <created>1369956148773</created>
+      <updated>1369956148811</updated>
+    </task>
+    <task id="LOCAL-00101" summary="Changed Google Plus to be loaded with RequireJS.">
+      <created>1370057368158</created>
+      <updated>1370057368159</updated>
+    </task>
+    <task id="LOCAL-00102" summary="dnn">
+      <created>1370309033104</created>
+      <updated>1370309033104</updated>
+    </task>
+    <task id="LOCAL-00103" summary="dnn">
+      <created>1370315681103</created>
+      <updated>1370315681103</updated>
+    </task>
+    <task id="LOCAL-00104" summary="Initial working changes of AngularJS with RequireJS.">
+      <created>1370400195103</created>
+      <updated>1370400195103</updated>
+    </task>
+    <task id="LOCAL-00105" summary=".">
+      <created>1370467077134</created>
+      <updated>1370467077134</updated>
+    </task>
+    <task id="LOCAL-00106" summary=".">
+      <created>1370468820105</created>
+      <updated>1370468820105</updated>
+    </task>
+    <task id="LOCAL-00107" summary="First initial working codes based on RequireJS for 2share service (minus Facebook and GooglePlus).">
+      <created>1370796988587</created>
+      <updated>1370796988587</updated>
+    </task>
+    <task id="LOCAL-00108" summary=" Changed requirejs to define to avoid reloading.">
+      <created>1370806702155</created>
+      <updated>1370806702155</updated>
+    </task>
+    <task id="LOCAL-00109" summary=".">
+      <created>1370813834272</created>
+      <updated>1370813834272</updated>
+    </task>
+    <task id="LOCAL-00110" summary="Added logger support.">
+      <created>1370999276187</created>
+      <updated>1370999276187</updated>
+    </task>
+    <task id="LOCAL-00111" summary="Use non-minified version of .js files in main-config (for development only).">
+      <created>1371076517695</created>
+      <updated>1371076517695</updated>
+    </task>
+    <task id="LOCAL-00112" summary=".">
+      <created>1371509593247</created>
+      <updated>1371509593248</updated>
+    </task>
+    <task id="LOCAL-00113" summary=".">
+      <created>1371591506202</created>
+      <updated>1371591506203</updated>
+    </task>
+    <task id="LOCAL-00114" summary=".">
+      <created>1371745017149</created>
+      <updated>1371745017149</updated>
+    </task>
+    <task id="LOCAL-00115" summary="First integrated codes of channel with RSS support.">
+      <created>1371760979108</created>
+      <updated>1371760979109</updated>
+    </task>
+    <task id="LOCAL-00116" summary=".">
+      <created>1371764762105</created>
+      <updated>1371764762105</updated>
+    </task>
+    <task id="LOCAL-00117" summary=".">
+      <created>1371839739290</created>
+      <updated>1371839739290</updated>
+    </task>
+    <task id="LOCAL-00118" summary="Fixed some calendar dateFormat and user id issue.">
+      <created>1372034348150</created>
+      <updated>1372034348150</updated>
+    </task>
+    <task id="LOCAL-00119" summary="Fixed some calendar dateFormat and user id issue.">
+      <created>1372200234157</created>
+      <updated>1372200234157</updated>
+    </task>
+    <task id="LOCAL-00120" summary=".">
+      <created>1372294678115</created>
+      <updated>1372294678115</updated>
+    </task>
+    <task id="LOCAL-00121" summary=".">
+      <created>1372461717101</created>
+      <updated>1372461717101</updated>
+    </task>
+    <task id="LOCAL-00122" summary=".">
+      <created>1372463723111</created>
+      <updated>1372463723111</updated>
+    </task>
+    <task id="LOCAL-00123" summary=".">
+      <created>1372479240112</created>
+      <updated>1372479240112</updated>
+    </task>
+    <task id="LOCAL-00124" summary=".">
+      <created>1372523206108</created>
+      <updated>1372523206108</updated>
+    </task>
+    <task id="LOCAL-00125" summary="Initial codes to handle IE browsers without RequireJS.">
+      <created>1372534099109</created>
+      <updated>1372534099109</updated>
+    </task>
+    <task id="LOCAL-00126" summary=".">
+      <created>1372565557209</created>
+      <updated>1372565557209</updated>
+    </task>
+    <task id="LOCAL-00127" summary=".">
+      <created>1372567740108</created>
+      <updated>1372567740108</updated>
+    </task>
+    <task id="LOCAL-00128" summary=".">
+      <created>1372568165106</created>
+      <updated>1372568165106</updated>
+    </task>
+    <task id="LOCAL-00129" summary=".">
+      <created>1372569108109</created>
+      <updated>1372569108109</updated>
+    </task>
+    <task id="LOCAL-00130" summary=".">
+      <created>1373042348183</created>
+      <updated>1373042348183</updated>
+    </task>
+    <task id="LOCAL-00131" summary=".">
+      <created>1373057801129</created>
+      <updated>1373057801129</updated>
+    </task>
+    <task id="LOCAL-00132" summary=".">
+      <created>1373061265107</created>
+      <updated>1373061265107</updated>
+    </task>
+    <task id="LOCAL-00133" summary=".">
+      <created>1373070401103</created>
+      <updated>1373070401103</updated>
+    </task>
+    <task id="LOCAL-00134" summary="Upgraded FullCalendar to 1.6.1 and fixed an event update bug.">
+      <created>1373073248108</created>
+      <updated>1373073248108</updated>
+    </task>
+    <task id="LOCAL-00135" summary=".">
+      <created>1373076429214</created>
+      <updated>1373076429214</updated>
+    </task>
+    <task id="LOCAL-00136" summary="Initial codes for playback timer.">
+      <created>1374951608190</created>
+      <updated>1374951608191</updated>
+    </task>
+    <task id="LOCAL-00137" summary=".">
+      <created>1374958329102</created>
+      <updated>1374958329103</updated>
+    </task>
+    <task id="LOCAL-00138" summary=".">
+      <created>1374962200172</created>
+      <updated>1374962200172</updated>
+    </task>
+    <task id="LOCAL-00139" summary=".">
+      <created>1374963133103</created>
+      <updated>1374963133103</updated>
+    </task>
+    <task id="LOCAL-00140" summary=".">
+      <created>1374963668103</created>
+      <updated>1374963668103</updated>
+    </task>
+    <task id="LOCAL-00141" summary=".">
+      <created>1375041827128</created>
+      <updated>1375041827129</updated>
+    </task>
+    <task id="LOCAL-00142" summary=".">
+      <created>1375045842126</created>
+      <updated>1375045842127</updated>
+    </task>
+    <task id="LOCAL-00143" summary=".">
+      <created>1375050681105</created>
+      <updated>1375050681105</updated>
+    </task>
+    <task id="LOCAL-00144" summary="Initial codes for movie filtering based on calendar events.">
+      <created>1375051413110</created>
+      <updated>1375051413110</updated>
+    </task>
+    <task id="LOCAL-00145" summary=".">
+      <created>1375067303105</created>
+      <updated>1375067303106</updated>
+    </task>
+    <task id="LOCAL-00146" summary=".">
+      <created>1375068185102</created>
+      <updated>1375068185103</updated>
+    </task>
+    <task id="LOCAL-00147" summary=".">
+      <created>1375127306196</created>
+      <updated>1375127306196</updated>
+    </task>
+    <task id="LOCAL-00148" summary=".">
+      <created>1375150688103</created>
+      <updated>1375150688103</updated>
+    </task>
+    <task id="LOCAL-00149" summary="Initial codes for the automatic scheduled youtube launcher.">
+      <created>1376877271168</created>
+      <updated>1376877271169</updated>
+    </task>
+    <task id="LOCAL-00150" summary=".">
+      <created>1379136622251</created>
+      <updated>1379136622251</updated>
+    </task>
+    <task id="LOCAL-00151" summary="1. Separated calendar's movie list from the managed movie collection list. &#10;2. Moved password change into My Account.">
+      <created>1379636582198</created>
+      <updated>1379636582198</updated>
+    </task>
+    <task id="LOCAL-00152" summary="Exposed shared collections for scheduling.">
+      <created>1379804202314</created>
+      <updated>1379804202314</updated>
+    </task>
+    <task id="LOCAL-00153" summary=".">
+      <created>1379869959248</created>
+      <updated>1379869959249</updated>
+    </task>
+    <task id="LOCAL-00154" summary=".">
+      <created>1379882390251</created>
+      <updated>1379882390251</updated>
+    </task>
+    <task id="LOCAL-00155" summary=".">
+      <created>1379906588200</created>
+      <updated>1379906588200</updated>
+    </task>
+    <task id="LOCAL-00156" summary=".">
+      <created>1379981659292</created>
+      <updated>1379981659293</updated>
+    </task>
+    <task id="LOCAL-00157" summary="Put back Facebook integration.">
+      <created>1379993650257</created>
+      <updated>1379993650257</updated>
+    </task>
+    <task id="LOCAL-00158" summary="Fix some Google Plus issues.">
+      <created>1380147315254</created>
+      <updated>1380147315255</updated>
+    </task>
+    <task id="LOCAL-00159" summary="Fix some Google Plus issues.">
+      <created>1380209858236</created>
+      <updated>1380209858236</updated>
+    </task>
+    <task id="LOCAL-00160" summary=".">
+      <created>1380234740275</created>
+      <updated>1380234740276</updated>
+    </task>
+    <task id="LOCAL-00161" summary="Fixed some Google Plus issues.">
+      <created>1380245465310</created>
+      <updated>1380245465311</updated>
+    </task>
+    <task id="LOCAL-00162" summary=".">
+      <created>1380420308202</created>
+      <updated>1380420308202</updated>
+    </task>
+    <task id="LOCAL-00163" summary=".">
+      <created>1380480117266</created>
+      <updated>1380480117266</updated>
+    </task>
+    <task id="LOCAL-00164" summary=".">
+      <created>1380594109256</created>
+      <updated>1380594109256</updated>
+    </task>
+    <task id="LOCAL-00165" summary="Added events purging test feature for user.">
+      <created>1380651430260</created>
+      <updated>1380651430260</updated>
+    </task>
+    <task id="LOCAL-00166" summary="Initial codes to add channel pattern of movies.">
+      <created>1380756730250</created>
+      <updated>1380756730250</updated>
+    </task>
+    <task id="LOCAL-00167" summary=".">
+      <created>1380757096236</created>
+      <updated>1380757096236</updated>
+    </task>
+    <task id="LOCAL-00168" summary=".">
+      <created>1380774910303</created>
+      <updated>1380774910304</updated>
+    </task>
+    <task id="LOCAL-00169" summary=".">
+      <created>1380814519257</created>
+      <updated>1380814519257</updated>
+    </task>
+    <task id="LOCAL-00170" summary="Fixed the scheduler issue (sorted by the movie's event start date in ascending order).">
+      <created>1380829711242</created>
+      <updated>1380829711242</updated>
+    </task>
+    <task id="LOCAL-00171" summary=".">
+      <created>1380890679262</created>
+      <updated>1380890679262</updated>
+    </task>
+    <task id="LOCAL-00172" summary="You to Me.">
+      <created>1380938273215</created>
+      <updated>1380938273216</updated>
+    </task>
+    <task id="LOCAL-00173" summary="Made calendar event non-resizable and set the duration to YT video.">
+      <created>1381022141256</created>
+      <updated>1381022141256</updated>
+    </task>
+    <task id="LOCAL-00174" summary=".">
+      <created>1381268164252</created>
+      <updated>1381268164253</updated>
+    </task>
+    <task id="LOCAL-00175" summary=".">
+      <created>1381296248208</created>
+      <updated>1381296248208</updated>
+    </task>
+    <task id="LOCAL-00176" summary=".">
+      <created>1381323352240</created>
+      <updated>1381323352241</updated>
+    </task>
+    <task id="LOCAL-00177" summary=".">
+      <created>1381358151254</created>
+      <updated>1381358151255</updated>
+    </task>
+    <task id="LOCAL-00178" summary="Provided temporary workarounds for Google Plus and Twitter accounts usage with the app (security holes to be addressed later on!!!).">
+      <created>1381439885249</created>
+      <updated>1381439885250</updated>
+    </task>
+    <task id="LOCAL-00179" summary="More fixes/changes related to Facebook and Google Plus.">
+      <created>1381445474250</created>
+      <updated>1381445474251</updated>
+    </task>
+    <task id="LOCAL-00180" summary=".">
+      <created>1381705349224</created>
+      <updated>1381705349224</updated>
+    </task>
+    <task id="LOCAL-00181" summary=".">
+      <created>1381705374199</created>
+      <updated>1381705374199</updated>
+    </task>
+    <task id="LOCAL-00182" summary=".">
+      <created>1381712358282</created>
+      <updated>1381712358282</updated>
+    </task>
+    <task id="LOCAL-00183" summary=".">
+      <created>1381718619238</created>
+      <updated>1381718619238</updated>
+    </task>
+    <task id="LOCAL-00184" summary=".">
+      <created>1381807468285</created>
+      <updated>1381807468286</updated>
+    </task>
+    <task id="LOCAL-00185" summary="Added overflow-y into large vertical Accordian panel with auto scroll.">
+      <created>1381840511255</created>
+      <updated>1381840511256</updated>
+    </task>
+    <task id="LOCAL-00186" summary="Some codes related to scheduled movies.">
+      <created>1381878646302</created>
+      <updated>1381878646302</updated>
+    </task>
+    <task id="LOCAL-00187" summary=".">
+      <created>1381888811252</created>
+      <updated>1381888811252</updated>
+    </task>
+    <task id="LOCAL-00188" summary=".">
+      <created>1381964851247</created>
+      <updated>1381964851247</updated>
+    </task>
+    <task id="LOCAL-00189" summary=".">
+      <created>1381989425240</created>
+      <updated>1381989425240</updated>
+    </task>
+    <task id="LOCAL-00190" summary=".">
+      <created>1382047196248</created>
+      <updated>1382047196248</updated>
+    </task>
+    <task id="LOCAL-00191" summary=".">
+      <created>1382051085274</created>
+      <updated>1382051085275</updated>
+    </task>
+    <task id="LOCAL-00192" summary="Tagged backend with top 3 worst performers based on JProfiler analysis.">
+      <created>1382063057286</created>
+      <updated>1382063057286</updated>
+    </task>
+    <task id="LOCAL-00193" summary="Hide social icons by default.">
+      <created>1382571014261</created>
+      <updated>1382571014262</updated>
+    </task>
+    <task id="LOCAL-00194" summary="Hide social icons by default.">
+      <created>1382571435248</created>
+      <updated>1382571435249</updated>
+    </task>
+    <task id="LOCAL-00195" summary=".">
+      <created>1383003789207</created>
+      <updated>1383003789208</updated>
+    </task>
+    <task id="LOCAL-00196" summary=".">
+      <created>1383076977275</created>
+      <updated>1383076977276</updated>
+    </task>
+    <task id="LOCAL-00197" summary=".">
+      <created>1383084074263</created>
+      <updated>1383084074263</updated>
+    </task>
+    <task id="LOCAL-00198" summary=".">
+      <created>1383085095260</created>
+      <updated>1383085095260</updated>
+    </task>
+    <task id="LOCAL-00199" summary="Initial build purely for JDK 1.7 (u45).">
+      <created>1383707949293</created>
+      <updated>1383707949293</updated>
+    </task>
+    <option name="localTasksCounter" value="200" />
+    <servers />
+  </component>
+  <component name="TodoView" selected-index="0">
+    <todo-panel id="selected-file">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+    <todo-panel id="default-changelist">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="false" />
+    <layout>
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.327787" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3289256" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39708266" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21486989" sideWeight="0.6026273" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38196722" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32987398" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32656023" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31782946" sideWeight="0.9986413" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3116279" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39076924" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24964131" sideWeight="0.7208672" order="2" side_tool="false" content_ui="combo" />
+    </layout>
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.tml" />
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USERS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="myTodoPanelSettings">
+      <TodoPanelSettings />
+    </option>
+    <MESSAGE value="Code fix for IE issue due to  &lt;div ng-bind-template=&quot;&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&amp;nbsp;...&lt;/div&gt; not in &lt;tr&gt;&lt;/tr&gt;." />
+    <MESSAGE value="Upgraded FullCalendar to 1.6.1 and fixed an event update bug." />
+    <MESSAGE value="Initial codes for playback timer." />
+    <MESSAGE value="Initial codes for movie filtering based on calendar events." />
+    <MESSAGE value="Blocking non-movie dropping event." />
+    <MESSAGE value="Initial codes for the automatic scheduled youtube launcher." />
+    <MESSAGE value="1. Separated calendar's movie list from the managed movie collection list. &#10;2. Moved password change into My Account." />
+    <MESSAGE value="Exposed shared collections for scheduling." />
+    <MESSAGE value="Put back Facebook integration." />
+    <MESSAGE value="Fix some Google Plus issues." />
+    <MESSAGE value="Fixed some Google Plus issues." />
+    <MESSAGE value="Added events purging test feature for user." />
+    <MESSAGE value="Initial codes to add channel pattern of movies." />
+    <MESSAGE value="Fixed the scheduler issue (sorted by the movie's event start date in ascending order)." />
+    <MESSAGE value="You to Me." />
+    <MESSAGE value="Made calendar event non-resizable and set the duration to YT video." />
+    <MESSAGE value="Provided temporary workarounds for Google Plus and Twitter accounts usage with the app (security holes to be addressed later on!!!)." />
+    <MESSAGE value="More fixes/changes related to Facebook and Google Plus." />
+    <MESSAGE value="Added overflow-y into large vertical Accordian panel with auto scroll." />
+    <MESSAGE value="Some codes related to scheduled movies." />
+    <MESSAGE value="Tagged backend with top 3 worst performers based on JProfiler analysis." />
+    <MESSAGE value="Hide social icons by default." />
+    <MESSAGE value="Quick hack just to show all movies for CRUD and channels." />
+    <MESSAGE value="Initial build purely for JDK 1.7 (u45)." />
+    <MESSAGE value="." />
+    <option name="LAST_COMMIT_MESSAGE" value="." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/war/html/calendar.js</url>
+          <line>11</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/war/html/calendar.js</url>
+          <line>60</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="7" />
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/war/html/widget/2flowchart.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="6" selection-start="1708" selection-end="1708" vertical-scroll-proportion="0.0" vertical-offset="391" max-vertical-offset="1241">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/js/raphael-2.1.0.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="272">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/html/widget/2sequence.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="12" selection-start="1479" selection-end="1508" vertical-scroll-proportion="0.0" vertical-offset="327" max-vertical-offset="884">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/js/flowchart-1.2.6.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="20604">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/js/flowchart-1.2.5.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="20332">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/crud/movie.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="56" column="52" selection-start="2669" selection-end="2669" vertical-scroll-proportion="0.0" vertical-offset="595" max-vertical-offset="11135">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tapp/pages/sci/ServiceRegistryStart.tml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="68" column="42" selection-start="3465" selection-end="3465" vertical-scroll-proportion="0.0" vertical-offset="884" max-vertical-offset="2091">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/sgc/jsp/main.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="85" column="66" selection-start="2683" selection-end="2812" vertical-scroll-proportion="0.0" vertical-offset="1445" max-vertical-offset="1734">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/crud/movie.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="49" column="27" selection-start="1792" selection-end="1792" vertical-scroll-proportion="0.0" vertical-offset="833" max-vertical-offset="15096">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/r.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="44" selection-start="527" selection-end="527" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="561">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/html/widget/2flowchart.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="6" selection-start="1708" selection-end="1708" vertical-scroll-proportion="0.0" vertical-offset="391" max-vertical-offset="1241">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/js/raphael-2.1.0.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="272">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/html/widget/2sequence.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="12" selection-start="1479" selection-end="1508" vertical-scroll-proportion="0.0" vertical-offset="327" max-vertical-offset="884">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/js/flowchart-1.2.6.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="20604">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/js/flowchart-1.2.5.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="20332">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/crud/movie.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="13" selection-start="1773" selection-end="1773" vertical-scroll-proportion="0.0" vertical-offset="595" max-vertical-offset="11135">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/crud/movie.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="49" column="27" selection-start="1792" selection-end="1792" vertical-scroll-proportion="0.0" vertical-offset="833" max-vertical-offset="15096">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/r.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="44" selection-start="527" selection-end="527" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="561">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/html/shared.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="41" column="23" selection-start="2089" selection-end="2089" vertical-scroll-proportion="0.0" vertical-offset="697" max-vertical-offset="7395" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/html/calendar.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5355" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/html/channel.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="27" selection-start="444" selection-end="444" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="4641" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/html/channel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="113" column="26" selection-start="7483" selection-end="7483" vertical-scroll-proportion="0.0" vertical-offset="1921" max-vertical-offset="10812" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/html/channelshuffle.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="68" column="3" selection-start="2695" selection-end="2695" vertical-scroll-proportion="0.0" vertical-offset="1156" max-vertical-offset="4947" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/html/channelall.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="81" column="68" selection-start="3342" selection-end="3342" vertical-scroll-proportion="-5.230769" vertical-offset="1241" max-vertical-offset="5287" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/sgc/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="562" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/r.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="44" selection-start="527" selection-end="527" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="561">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/js/flowchart-1.2.6.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="20604">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/js/flowchart-1.2.5.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="20553">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/js/raphael-2.1.0.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="583">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/html/widget/2flowchart.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="6" selection-start="1708" selection-end="1708" vertical-scroll-proportion="0.0" vertical-offset="391" max-vertical-offset="1241">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/js/ui-bootstrap-tpls-0.3.0.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="570" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/html/widget/2sequence.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="12" selection-start="1479" selection-end="1508" vertical-scroll-proportion="0.0" vertical-offset="327" max-vertical-offset="884">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/crud/movie.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="49" column="27" selection-start="1792" selection-end="1792" vertical-scroll-proportion="0.0" vertical-offset="544" max-vertical-offset="15130">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/crud/movie.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="56" column="52" selection-start="2669" selection-end="2669" vertical-scroll-proportion="0.0" vertical-offset="595" max-vertical-offset="11135">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tapp/pages/sci/ServiceRegistryStart.tml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="68" column="42" selection-start="3465" selection-end="3465" vertical-scroll-proportion="0.0" vertical-offset="884" max-vertical-offset="2091">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/js/jquery.are-you-sure.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="152" column="11" selection-start="5365" selection-end="5365" vertical-scroll-proportion="0.0" vertical-offset="2052" max-vertical-offset="2686">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/sgc/jsp/main.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="92" column="11" selection-start="3412" selection-end="3412" vertical-scroll-proportion="-14.307693" vertical-offset="1192" max-vertical-offset="1734">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tapp/pages/sci/ServiceRegistrySave.tml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="250" column="52" selection-start="9165" selection-end="9165" vertical-scroll-proportion="0.75227684" vertical-offset="3837" max-vertical-offset="6052">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.34965035" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
+

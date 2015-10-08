@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ -->
+    <meta charset="utf-8">
+    <title>Cool App</title>
+    <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.no-icons.min.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+    <!-- begin bootstrap 2.x stuff -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <script type="text/javascript" src='//ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.js'></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap-transition.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap-dropdown.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap-collapse.min.js"></script>
+    <!-- end bootstrap 2.x stuff -->
+    <link href='../fullcalendar/fullcalendar.css' rel='stylesheet' />
+    <link href='../fullcalendar/fullcalendar.print.css' rel='stylesheet' media='print' />
+    <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.no-icons.min.css" rel="stylesheet">
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome.css" rel="stylesheet">
+    <link href="../css/external-event.css" rel="stylesheet">
+    <link href="../parse/css/tabs.css" rel="stylesheet">
+    <link href="../css/app.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../CSS3Accordion/css/style.css" />
+    <!--=== common js -->
+    <script type="text/javascript" src='//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js'></script>
+
+    <script>
+        /** this has to be BEFOFE requireJS for it to work! */
+        var isIE = !!window.ActiveXObject;
+        if(isIE) {
+            //=== http://stackoverflow.com/questions/13478303/correct-way-to-use-modernizr-to-detect-ie
+            var IE = (!! window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1])) || NaN;
+            if (IE < 9) {
+//                alert("Microsoft/IE browser below version 9 (e.g. IE 6/7/8) is currently not supported. Please try with a browser like IE 9 or even better, Google Chrome. Not all functionality will work properly or as designed.");
+//                history.back();
+
+//                if ("http:" === document.location.protocol) {
+//                    alert("IE browsers are not supported over plain old HTTP via Parse SDK. See https://www.parse.com/questions/internet-explorer-and-the-javascript-sdk for details.");
+//                    //history.back();
+//                } else {
+//                    window.location = "https://" + location.hostname + "/mcrud/movie.htm";
+//                }
+            }
+        }
+        $(document).ready(function() {
+            Date.prototype.toDateInputValue = (function() {
+                var local = new Date(this);
+                local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
+                return local.toJSON().slice(0,10);
+            });
+            $('#play-date').val(new Date().toDateInputValue());
+        });
+    </script>
+    <script>var require = { urlArgs: 'a004' };</script>
+    <script type="text/javascript" src="../js/require.js" data-main="../js/main-calendar"></script>
+</head>
+<body ng-controller="ctrlRead">
+<!--
+<body>
+-->
+<script>
+/*    if (Modernizr.draganddrop) {
+        // Browser supports HTML5 DnD.
+        //console.log("Support DND");
+    } else {
+        // Fallback to a library solution.
+        console.log("No support for DND");
+        alert("Sorry, but your browser does not support drag and drop!");
+    }*/
+</script>
+<div id="header" class="row-fluid">
+    <div class="span6">
+        <div ng-show="!backendReady">
+            &nbsp;<img src="/images/ajax-loader-sm-wait-transbg.gif" class="loading-indicator" alt="processing" />
+            &nbsp;Processing (can be up to 20 seconds) ...<p>
+        </div>
+    </div>
+</div>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="pull-left" style="padding-top:10px;padding-left:20px;" ng-show="!backendReady">
+        &nbsp;<img src="/images/ajax-loader-transbg.gif" class="loading-indicator" alt="processing"/>
+        &nbsp;Processing ...<p>
+    </div>
+    <div class="navbar-inner">
+        <div class="container">
+            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div class="brand" id="serviceName" style="padding-left:20px;">...</div>
+            <div class="nav-collapse collapse">
+                <ul class="nav">
+                    <li><a id="homeLink" href="#"><span id="homeText">Home</span></a></li>
+                    <!--<li class="dropdown">-->
+                        <!--<a id="manageLink" data-toggle="dropdown" class="dropdown-toggle" href="#">Manage <b class="caret"></b></a>-->
+                        <!--<ul class="dropdown-menu">-->
+                            <!--<li class="nav-header">Collections</li>-->
+                            <!--<li><a class="here" id="manageCollections" href="javascript:void(0);" onclick="location.href='/mcrud/movie.html?username=' + $.url().param('username') + '&amp;logintype=' + $.url().param('logintype');">Collections</a></li>-->
+                            <!--<li><a href="#">Songs</a></li>-->
+                            <!--<li><a href="#">RSS</a></li>-->
+                            <!--&lt;!&ndash;<li class="divider"></li>&ndash;&gt;-->
+                            <!--<li class="nav-header">Channels</li>-->
+                            <!--<li><a id="manageChannels" href="javascript:void(0);" onclick="location.href='/html/channel.html?username=' + $.url().param('username') + '&amp;logintype=' + $.url().param('logintype');">Channel</a></li>-->
+                            <!--<li><a href="#">Live Feeds</a></li>-->
+                            <!--<li class="nav-header">Schedule</li>-->
+                            <!--<li><a id="manageShowtime" href="javascript:void(0);" onclick="location.href='/html/calendar.html?username=' + $.url().param('username') + '&amp;logintype=' + $.url().param('logintype');">Calendar</a></li>-->
+                            <!--<li class="nav-header">2Share</li>-->
+                            <!--<li><a id="sharedCollections" href="javascript:void(0);" onclick="location.href='/html/shared.html?username=' + $.url().param('username') + '&amp;logintype=' + $.url().param('logintype');">Shared</a></li>-->
+                            <!--<li><a href="#">Others</a></li>-->
+                        <!--</ul>-->
+                    <!--</li>-->
+                    <li class="active"><a id="manageShowtime" href="javascript:void(0);" onclick="location.href='/html/calendar.html?username=' + $.url().param('username') + '&amp;logintype=' + $.url().param('logintype');">Calendar</a></li>
+                    <li><a id="manageChannels" href="javascript:void(0);" onclick="location.href='/html/channel.html?username=' + $.url().param('username') + '&amp;logintype=' + $.url().param('logintype');">Channel</a></li>
+                    <li class="dropdown">
+                        <a id="aboutLink" data-toggle="dropdown" class="dropdown-toggle" href="#">About <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><span id="releaseLabel">{{mRelease}}</span> {{mBuild}}</li>
+                        </ul>
+                    </li>
+                    <li style="display:none;"><a id="helpLink" href="#"><span id="helpText">Help</span></a></li>
+                </ul>
+            </div><!--/.nav-collapse -->
+            <div style="padding-top:10px;padding-right:20px;" class="navbar-header pull-right">
+                <div class="pull-right">
+                    <a style="display:none;" id="myaccount" href="javascript:void(0);" onclick="location.href='/passwordchange/jsp/simple.jsp?username=' + $.url().param('username') + '&amp;logintype=' + $.url().param('logintype');">My Account</a>&nbsp;<span id=currentUser></span> <a href="javascript:logout();">Logout</a>
+                    Welcome <span id=currentUserName></span>!
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- / new bootrap based nav -->
+<!--<ul id="globalnav">-->
+    <!--<li><a href="#">Home</a></li>-->
+    <!--<li><a href="#">About</a>-->
+    <!--<li><a href="#" class="here">Manage</a></li>-->
+    <!--<ul>-->
+        <!--<li><a id="manageCollections" href="javascript:void(0);" onclick="location.href='/mcrud/movie.html?username=' + $.url().param('username') + '&amp;logintype=' + $.url().param('logintype');" alt="Collections">Collections</a></li>-->
+        <!--<li><a class="here" id="manageShowtime" href="javascript:void(0);" onclick="location.href='/html/calendar.html?username=' + $.url().param('username') + '&amp;logintype=' + $.url().param('logintype');" alt="Collections">Calendar</a></li>-->
+        <!--<li><a style="display:none;" id="allShowtime" href="javascript:void(0);" onclick="viewAllShowtime();">DEBUG ONLY&gt;All Events&lt;</a></li>-->
+        <!--<li><a style="display:none;" id="removeAllShowtime" href="javascript:void(0);" onclick="removeAllShowtime();">DEBUG ONLY&gt;Purge All Events&lt;</a></li>-->
+        <!--<li><a id="manageChannels" href="javascript:void(0);" onclick="location.href='/html/channel.html?username=' + $.url().param('username') + '&amp;logintype=' + $.url().param('logintype');" alt="Collections">Channel</a></li>-->
+
+    <!--</ul>-->
+    <!--<li><a href="#">Help</a></li>-->
+<!--</ul>-->
+<div style="position:absolute;margin-top:100px;margin-left:250px;" ng-cloak ng-hide="true">
+    ****** If you are seeing this, please make sure you enable the support of "Mixed Content" ******
+</div>
+<div ng-show="error_message" ng-bind-template="&nbsp;{{error_message}}"></div>
+
+<div ng-cloak class="row-fluid">
+    <div class="span7">
+        <div style="position:relative;top:10px;margin-left:2px;margin-top:10px;margin-bottom:3px;width:70%;" ng-cloak ng-show="backendReady">
+            <input style="width:90%;" type="text" ng-model="query1" ng-change="searchForCalendar()" class="input-large search-query" placeholder="Search for a movie to schedule">
+            <i ng-show="query1.length > 0" ng-click="resetSearch1()" class="fa fa-times"></i>
+            <label style="font-size:10px;" ng-show="query1.length > 0">&nbsp;<mark>Click the X to clear. Your movie(s), is filtered by the search term entered.</mark></label>
+        </div>
+    </div>
+    <!--
+    <div class="span5">
+        <div class="pull-right">
+            <a id="frequency" ng-show="backendReady" style="position:relative;top:13px;margin-top:10px;width:120px;background:#98969E;" class="btn btn-primary pull-right" ng-click="recurringItem()" ng-bind-template="{{item.frequency?item.frequency:recurringButtonTitle}}">...</a>
+        </div>
+    </div>
+    -->
+    <div class="span5" id="slotmode" style="display:none;">
+        <div class="btn-group" style="position:relative;top:13px;left:-47px;">
+            <!--<button id="movieMode" type="button" style="background:#98969E" class="btn btn-primary" ng-model="radioModel" btn-radio="'Left'">Default</button>-->
+            <button id="movieMode" type="button" style="background:#98969E" class="btn btn-primary" ng-model="radioModel" btn-radio="'Left'">Movie Mode</button>
+            <button id="musicMode" type="button" style="background:#98969E" class="btn btn-primary" ng-model="radioModel" btn-radio="'Right'">Music Mode</button>
+        </div>
+    </div>
+</div>
+<div ng-bind-template=""><br><br><br>&nbsp;...</div>
+<!-- http://www.ilounge.com/index.php/articles/comments/scheduling-irregularly-recurring-events/ -->
+<div style="float:left;margin-left:10px;width:95%;" ng-show="repeatEvent" ng-cloak>
+    <form id="repeatEventForm" class="form-horizontal" action="#">
+        <h2>Recurring Events</h2>
+
+        <div class="row">
+            <div class="span5" ng-bind-template="{{calheader1}}">...</div>
+            <div class="span4">
+                <input name="repeated" value="One Time Event" type="radio" class="input" ng-model="item.frequency" style="width:60%;" ng-checked="!defaultChecked">
+            </div>
+        </div>
+        <div class="row">
+            <div class="span5" ng-bind-template="{{calheader2}}">...</div>
+            <div class="span4">
+                <input name="repeated" value="Daily Event" type="radio" class="input" ng-model="item.frequency" style="width:60%;">
+                <input ng-show="item.frequency=='Daily Event'" type="text" class="span1" value="6"> days
+            </div>
+        </div>
+        <div class="row">
+            <div class="span5" ng-bind-template="{{calheader3}}">...</div>
+            <div class="span4">
+                <input name="repeated" value="Weekly Event" type="radio" class="input" ng-model="item.frequency" style="width:60%;">
+                <input ng-show="item.frequency=='Weekly Event'" type="text" class="span1" value="3"> weeks
+            </div>
+        </div>
+        <div class="row">
+            <div class="span5" ng-bind-template="{{calheader4}}">...</div>
+            <div class="span4">
+                <input name="repeated" value="Monthly Event" type="radio" ng-model="item.frequency" style="width:60%;">
+                <input ng-show="item.frequency=='Monthly Event'" type="text" class="span1" value="11"> months
+            </div>
+
+            <div class="row span2">
+                <div class="span2">
+                    <a class="btn" ng-click="cancelRecurringItem()">{{cancelRecurringButtonTitle}}</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- new overlay for scheduling of touch base UI and randomizer -->
+<div class="dialog1" ng-show="editing" ng-cloak>
+    <form class="form-horizontal" name="scheduleEventForm" action="#">
+        <h2>Scheduling Existing Item {{item.title}}</h2>
+
+        <div class="row">
+            <div class="span2" ng-bind-template="{{header2}}">...</div>
+            <div class="span5">
+                <input type="text" class="uneditable-input" readonly=readonly ng-model="item.id">
+            </div>
+        </div>
+        <div class="row">
+            <div class="span2" ng-bind-template="{{header3}}">...</div>
+            <div class="span8">
+                <input type="text" class="uneditable-input" readonly=readonly ng-model="item.title" style="width:60%;">
+            </div>
+        </div>
+        <!--<div class="row">-->
+            <!--<div class="span2" ng-bind-template="{{header4}}">...</div>-->
+            <!--<div class="span8">-->
+                <!--<input type="text" class="input" ng-model="item.description" style="width:60%;">-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="row">-->
+            <!--<div class="span2" ng-bind-template="{{header5}}">...</div>-->
+            <!--<div class="span8">-->
+                <!--<input type="text" ng-model="item.url" style="width:100%;">-->
+            <!--</div>-->
+        <!--</div>-->
+        <div class="row">
+            <!--<div class="span2" ng-bind-template="{{header7}}">...</div>-->
+            <div class="span2" ng-bind-template="{{header8}}">...</div>
+            <div class="span2">
+                <!--<input type="checkbox" ng-model="item.shuffle">-->
+                <input type="checkbox" ng-model="userSelection.movie.shuffleIt">
+                <!--<pre>{{userSelection.movie.shuffleIt}}</pre>-->
+            </div>
+            <!--<div class="span2" ng-bind-template="allDay">...</div>-->
+            <!--<div class="span2">-->
+                <!--<input type="checkbox" ng-model="userSelection.movie.playAllDay">-->
+                <!--&lt;!&ndash;<pre>{{userSelection.movie.playAllDay}}</pre>&ndash;&gt;-->
+            <!--</div>-->
+            <div class="span2" ng-show="!userSelection.movie.playAllDay" ng-bind-template="{{header7}}">...</div>
+            <div class="span2" ng-show="!userSelection.movie.playAllDay">
+                <!--<input id="play-time" name="play-time" ng-model="dateString" type="datetime-local">-->
+                <!--<input type="date" id="play-date" name="play-date" ng-model="playDate" required="required" onblur="createTemporaryEvent();">-->
+                <input id="dp" type="date" required="required" ng-model="userSelection.movie.playDate" name="play-date" my-datepicker/>
+                <!--<pre>{{userSelection.movie.playDate}}</pre>-->
+                <input type="time" id="play-time" name="play-time" ng-model="userSelection.movie.playTime">
+                <!--<pre>{{userSelection.movie.playTime}}</pre>-->
+            </div>
+            <!--<div style="display:none;" class="row advanced">-->
+                <!--<div class="span2" ng-bind-template="Advanced Settings">...</div>-->
+                <!--<div id="channelpattern2" class="span8" style="width:10%;">-->
+                    <!--<label for="channelpattern2">Channel Pattern:</label>-->
+                    <!--<input type="text" list="channelpattern_list" ng-model="item.channelPattern">-->
+                    <!--<datalist id="channelpattern_list">-->
+                        <!--<option value="D">Daily</option>-->
+                        <!--<option value="W">Weekly</option>-->
+                        <!--<option value="M">Monthly</option>-->
+                        <!--<option value="BY MAGIC">By Magic</option>-->
+                    <!--</datalist>-->
+                <!--</div>-->
+            <!--</div>-->
+        </div>
+        <div class="row">
+            <div class="span3" style="float:right;">
+                <input type="submit" style="background:#98969E;" class="btn btn-primary" value="{{doneButtonLabel}}"
+                       ng-disabled="!(item.title)" ng-click="scheduleItem(scheduleEventForm);">
+                <a class="btn" ng-click="cancelSaveForCalendar();">Cancel</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <!--
+                <a class="btn" ng-click="deleteItem(item)" ng-bind-template="Delete">Delete</a>
+                -->
+            </div>
+        </div>
+    </form>
+</div>
+
+<!--
+<div ng-app id='external-events' ng-init="pagedItems = [{title:'John', id:25}, {title:'Mary', id:26},{title:'Joe', id:27}]">
+-->
+<div ng-cloak id='external-events' style="height:730px;" ng-init="loadItemsForCalendar();">
+    <label style="font-size: 8px;" ng-show="pagedItemsForCalendar.length > 0">Drag and drop a movie from the Mine or Shared tabs in this container into the calendar at the left. Alternatively, one can click on the movie to add it into the calendar for scheduling. Scheduled tab allows one to see movies that have been previously scheduled for playback.</label>
+    <h4>Collections</h4>
+
+    <section class="ac-container">
+        <div>
+            <input id="ac-1" name="accordion-1" type="radio" checked />
+            <label ng-click="backendReady = false;loadItemsForCalendar();" for="ac-1">Mine</label>
+            <article class="ac-large">
+                <!--<ul ng-cloak ng-repeat="item in pagedItemsForCalendar[0] | filter:query1">-->
+                    <!--<li class='alert alert-info nomargin' style="background-color:#74aac5;color:white;" onMouseLeave="handleDraggable(this, '{{item.url}}');" onmouseover="handleDraggable(this, '{{item.url}}');" data-movieid="{{item.id}}" data-movieUrl="{{item.url}}">{{item.title}} ({{item.url}}) </li>-->
+                <!--</ul>-->
+                <div class="row" id="modernview3" style="width:100%;" ng-cloak>
+                    <div class="span12" id="modernview6" style="width:100%;" ngcloak>
+                        <div class="span6" style="padding-top:10px;width:80px;height:auto;" ng-repeat="item in pagedItemsForCalendar[0] | filter:query1">
+                            <!--<span style="text:right;">{{item.id}}</span>-->
+                            <a ng-click="editItemForCalendar(item)" href="#" title="{{item.title}} {{item.description}}" onMouseLeave="handleDraggable(this, '{{item.url}}');" onmouseover="handleDraggable(this, '{{item.url}}');" data-movieid="{{item.id}}" data-movieUrl="{{item.url}}" data-movieTitle="{{item.title}}">
+                                <img style="width:280px;height:auto;margin-left:auto;margin-right:auto;" ng-src="https://img.youtube.com/vi/{{getYoutubeVideoId(item.url)}}/0.jpg" alt="youtube image 0">
+                            </a>
+                        </div>
+                        <div ng-show="!getYoutubeVideoId(item.url)">
+                            <img ng-src="data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=" alt="no image found">
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+        <div>
+            <input id="ac-2" name="accordion-1" type="radio" />
+            <label ng-click="backendReady = false;loadItemsForCalendar(1);" for="ac-2">Shared</label>
+            <article class="ac-large">
+                <ul ng-cloak ng-repeat="item in pagedItemsForCalendar[0] | filter:query1">
+                    <li class='alert alert-info nomargin' style="background-color:#74aac5;color:white;" onMouseLeave="handleDraggable(this, '{{item.url}}');" onmouseover="handleDraggable(this, '{{item.url}}');" data-movieid="{{item.id}}" data-movieUrl="{{item.url}}">{{item.title}} ({{item.url}}) </li>
+                </ul>
+            </article>
+        </div>
+        <div>
+            <input id="ac-3" name="accordion-1" type="radio" />
+            <label ng-click="backendReady = false;loadItemsForCalendar(2);" for="ac-3">Scheduled</label>
+            <article class="ac-large">
+                <ul ng-cloak ng-repeat="item in pagedItemsForCalendar[0] | filter:query1">
+                    <li class='alert alert-info nomargin' style="background-color:#74aac5;color:white;" data-movieid="{{item.id}}" data-movieUrl="{{item.url}}">{{item.scheduled | date:'medium'}}: {{item.title}} ({{item.url}}) </li>
+                </ul>
+            </article>
+        </div>
+    </section>
+
+    <div style="position:absolute;top:238px;left:100px;" id="loadingTable">
+        <img src="/images/ajax-loader-sm-wait-transbg.gif" id="loading-indicator" alt="loading collection" />
+        &nbsp;<span style="width:200px;">Loading collection ...</span><p>
+    </div>
+    <div ng-show="!pagedItemsForCalendar">No movie in your collections.</div>
+    <!--
+    <div ng-show="pagedItemsForCalendar.length > 0">
+        <input type='checkbox' id='drop-remove' /> Remove After Drop
+    </div>
+    -->
+    <form id="calendarForm" style="display:none">
+        <input type=hidden name=id value=1><input>
+        <input type=hidden name=movieid value=2><input>
+        <input type=hidden name=movieUrl value="https://www.youtube.com/watch?v=C0DPdy98e4c"><input>
+        <input type=hidden name=thumbUrl value="https://img.youtube.com/vi/ILLHMzDeIpk/0.jpg"><input>
+        <input type=hidden name=title value='Now (just a place holder)'><input>
+        <input type=hidden name=start value=2013-05-15><input>
+        <input type=hidden name=end value=2013-05-16><input>
+        <input type=hidden name=allDay value=false><input>
+        <input type=hidden name=color value=blue><input>
+        <input type=hidden name=type value=nothing><input>
+        <input type=hidden name=action value=nothing><input>
+        <input type=hidden name=repeat value=nothing><input>
+        <input type=hidden name=uid value=nothing><input>
+        <input type=hidden name=shuffled value=false><input>
+    </form>
+</div>
+
+<div align=center>
+    <div id='calendar' style="display: table;">
+        <div id="calendar-loader" style="position:absolute;top:50%;left:50%;display: none;vertical-align: middle;text-align: center;">
+            <i class="fa fa-spinner fa-spin fa-5x"></i>
+        </div>
+    </div>
+</div>
+
+<div style='clear:both'></div>
+<script>
+    var showLog = false;
+	var gHeaderReleaseBuildTitle;
+    var gManageColMainTitle;
+    var gManageShoMainTitle;
+    var gManageChaMainTitle;
+    var col1;
+    var col2;
+    var col3;
+    var col4;
+    var col5;
+    var col6;
+    var entry;
+    function importGSS(json) {
+        for (i = 0; i < json.feed.entry.length; i++) {
+            entry = json.feed.entry[i];
+            col1 = entry.gsx$index && entry.gsx$index.$t;
+            col2 = entry.gsx$_cokwr && entry.gsx$_cokwr.$t;
+            col3 = entry.gsx$_cpzh4 && entry.gsx$_cpzh4.$t;
+            col4 = entry.gsx$_cre1l && entry.gsx$_cre1l.$t;
+            col5 = entry.gsx$_chk2m && entry.gsx$_chk2m.$t;
+            col6 = entry.gsx$_ciyn3 && entry.gsx$_ciyn3.$t;
+            if (col1 && col2 && col3 && col4 && col5) {
+                showLog && window.console && console.log('[' + (i + 1) + '] = ' + '[' + col1 + '] ' + '[' + col2 + '] ' + '[' + col3 + '] ' + '[' + col4 + '] ' + '[' + col5 + '] ' + '[' + col6 + '] ');
+                if (col1 === 'app' &&
+                        col2 === 'common' &&
+                        col3 === 'ui' &&
+                        col4 === 'debug' &&
+                        col5 === 'enabled' &&
+                        col6 === 'TRUE'
+                        ) {
+                    $('#allShowtime').show();
+                    $('#removeAllShowtime').show();
+                } else if (col1 === 'app' &&
+                        col2 === 'common' &&
+                        col3 === 'main' &&
+                        col4 === 'brand' &&
+                        col5 === 'text'
+                        ) {
+                    if(col6 === undefined) col6 = '';
+                    gServiceName = col6;
+                    document.getElementById("serviceName").innerHTML = col6;
+                    showLog && window.console && console.log("movie.html:gServiceName set [" + gServiceName + "]");
+                } else if (col1 === 'manage' &&
+                        col2 === 'collections' &&
+                        col3 === 'main' &&
+                        col4 === 'brand' &&
+                        col5 === 'url'
+                        ) {
+                    gHomeLink = col6;
+                    $("#homeLink").attr('href', gHomeLink);
+                    showLog && window.console && console.log("movie.html:gHomeLink set [" + gHomeLink + "]");
+                } else if (col1 === 'manage' &&
+                        col2 === 'showtime' &&
+                        col3 === 'main' &&
+                        col4 === 'brand' &&
+                        col5 === 'text'
+                        ) {
+                    gHomeText = col6;
+                    document.getElementById("homeText").innerHTML = col6;
+                    showLog && window.console && console.log("movie.html:gHomeText set [" + gHomeText + "]");
+                } else if (col1 === 'manage' &&
+                        col2 === 'showtime' &&
+                        col3 === 'main' &&
+                        col4 === 'brand' &&
+                        col5 === 'url'
+                        ) {
+                    gHomeLink = col6;
+                    $("#homeLink").attr('href', gHomeLink);
+                    showLog && window.console && console.log("movie.html:gHomeLink set [" + gHomeLink + "]");
+                } else
+                if (col1 === 'header' &&
+                        col2 === 'release' &&
+                        col3 === 'build' &&
+                        col4 === 'title' &&
+                        col5 === 'text'
+                        ) {
+                	gHeaderReleaseBuildTitle = col6;
+                    document.getElementById("releaseLabel").innerHTML = col6;
+                    showLog && window.console && console.log("movie.html:gHeaderReleaseBuildTitle set [" + gHeaderReleaseBuildTitle + "]");
+                } else
+                if (col1 === 'manage' &&
+                        col2 === 'collections' &&
+                        col3 === 'main' &&
+                        col4 === 'title' &&
+                        col5 === 'text'
+                        ) {
+                    gManageColMainTitle = col6;
+                    document.getElementById("manageCollections").innerHTML = col6;
+                    showLog && window.console && console.log("index.html:gManageColMainTitle set [" + gManageColMainTitle + "]");
+                } else if (col1 === 'manage' &&
+                        col2 === 'showtime' &&
+                        col3 === 'main' &&
+                        col4 === 'title' &&
+                        col5 === 'text'
+                        ) {
+                    gManageShoMainTitle = col6;
+                    document.getElementById("manageShowtime").innerHTML = col6;
+                    showLog && window.console && console.log("index.html:gManageShoMainTitle set [" + gManageShoMainTitle + "]");
+                } else if (col1 === 'manage' &&
+                        col2 === 'showtime' &&
+                        col3 === 'main' &&
+                        col4 === 'slotmode' &&
+                        col5 === 'active' &&
+                        col6 === 'TRUE'
+                        ) {
+                    $('#slotmode').show();
+                    showLog && window.console && console.log("calendar.html:slotmode is [" + col6 + "]");
+                } else if (col1 === 'manage' &&
+                        col2 === 'channels' &&
+                        col3 === 'main' &&
+                        col4 === 'title' &&
+                        col5 === 'text'
+                        ) {
+                    gManageShoMainTitle = col6;
+                    document.getElementById("manageChannels").innerHTML = col6;
+                    showLog && window.console && console.log("channel.html:gManageShoMainTitle set [" + gManageShoMainTitle + "]");
+                }
+            }
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{
+  "name": "intern",
+  "version": "0.0.0",
+  "description": "npm install intern --save-dev Note on Mac: If you do not see node_modules in the current directory, issue: mkdir node_modules",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "intern": "^2.1.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

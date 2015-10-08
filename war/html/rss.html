@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--
+        needs to be https!!! https://www.parse.com/questions/internet-explorer-and-the-javascript-sdk
+        IE 9 issue http://stackoverflow.com/questions/12399428/facebook-javascript-sdk-not-firing-internet-explorer
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    -->
+    <!-- only jQuery 1.9.X supports IE 6/7/8 !!! :( -->
+    <!-- http://blog.jquery.com/2012/06/28/jquery-core-version-1-9-and-beyond/ -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <!-- Google API key https://code.google.com/apis/console/b/0/#project:875412382034:access -->
+    <script type="text/javascript" src="http://www.google.com/jsapi?key=AIzaSyA4GWRgm4LxiPWkqvAQSKs7lP6dE1w7aRk">
+    </script>
+
+    <script type="text/javascript">
+        google.load("feeds", "1") //Load Google Ajax Feed API (version 1)
+    </script>
+</head>
+<body>
+<div id="feeddiv"></div>
+
+<script type="text/javascript">
+
+    var feedcontainer=document.getElementById("feeddiv")
+    var feedurl="http://feeds.reuters.com/reuters/technologyNews"
+    var feedlimit=5
+    var rssoutput="<b>Latest Slashdot News:</b><br /><ul>"
+
+    function rssfeedsetup(){
+        var feedpointer=new google.feeds.Feed(feedurl) //Google Feed API method
+        feedpointer.setNumEntries(feedlimit) //Google Feed API method
+        feedpointer.load(displayfeed) //Google Feed API method
+    }
+
+    function displayfeed(result){
+        if (!result.error){
+            var thefeeds=result.feed.entries
+            var desc;
+            for (var i=0; i<thefeeds.length; i++) {
+                desc = thefeeds[i].description;
+                if(desc === undefined) desc = "";
+                rssoutput+="<li><a href='" + thefeeds[i].link + "'>" + thefeeds[i].title + "</a><h1>" + desc + "</h1></li>"
+            }
+            rssoutput+="</ul>"
+            feedcontainer.innerHTML=rssoutput
+        }
+        else
+            alert("Error fetching feeds! " + result.error.message);
+    }
+
+    window.onload=function(){
+        rssfeedsetup()
+    }
+
+</script>
+
+</body>
+</html>

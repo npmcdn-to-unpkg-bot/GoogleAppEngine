@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Convert to UML Sequence Diagram</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js"></script>
+    <script type="text/javascript" src='../../jquery/purl.js'></script>
+    <!--Workaround for IE 8-->
+    <script>
+        //http://stackoverflow.com/questions/10919915/ie8-getprototypeof-method
+        if (typeof Object.getPrototypeOf !== "function")
+            Object.getPrototypeOf = "".__proto__ === String.prototype
+            ? function (object) {
+            return object.__proto__;
+            }
+            : function (object) {
+            // May break if the constructor has been tampered with
+            return object.constructor.prototype;
+        };
+    </script>
+    <script src="../../js/sequence-diagram.js"></script>
+</head>
+<body>
+<img src="/images/ajax-loader-sm-wait-transbg.gif" id="loading-indicator" alt="processing" />&nbsp;<span id="wait">Rendering, please wait ...</span>
+<div id="diagram"></div>
+<!--<script>-->
+    <!--var diagram = Diagram.parse("A->B: Message");-->
+    <!--diagram.drawSVG("diagram", {theme: 'hand'});-->
+<!--</script>-->
+<!--<div class="diagram">A->B: Message</div>-->
+<script>
+    $( document ).ready(function() {
+        $.get( $.url().param('url'), function( data ) {
+            window.console && console.log( "2sequence.html: Data Loaded [" + data + "]");
+            $("#diagram").html(data);
+            var theme = $.url().param('theme');
+            if(theme === undefined) theme = 'hand';
+            $("#diagram").sequenceDiagram({theme: theme});
+            $("#wait").hide();
+            $("#loading-indicator").hide();
+        });
+//        $(".diagram").sequenceDiagram({theme: 'hand'});
+    });
+</script>
+</body>
+</html>

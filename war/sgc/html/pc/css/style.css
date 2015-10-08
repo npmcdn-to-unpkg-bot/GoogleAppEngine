@@ -1,0 +1,316 @@
+/*  This template was created by Mantis-a [http://www.mantisa.cz/]. For more templates visit Free website templates [http://www.mantisatemplates.com/]. */
+
+
+
+/* CSS Document */
+
+
+/* General */
+
+html {
+font-size: 62.5%;
+}
+
+body {
+text-align: center;
+font: 1.2em Verdana, Arial, Helvetica, sans-serif;
+background-color: #ACCEF3;
+min-width: 640px;
+padding-bottom: 80px; /* Simulates margin-bottom for wrapper in IE */
+}
+
+a:link, a:visited {
+color: #00598D;
+text-decoration: underline;
+font-weight: bold;
+}
+
+a:hover {
+text-decoration: none;
+}
+
+.cleaner {
+clear: both;
+height: 0;
+font-size: 0;
+visibility: hidden;
+}
+
+.noscreen {
+display: none;
+}
+
+
+/* Paragraphs, headings, ... */
+
+p {
+line-height: 1.9;
+margin-bottom: 7px;
+}
+
+p.text-content:first-letter {
+font-size: 1.4em;
+font-weight: bold;
+line-height: 0.9;
+color: #202020;
+font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+h1 {
+font: 2.6em  Georgia, "Times New Roman", Times, serif;
+margin: 0 50px 0 50px;
+border-bottom: 1px solid #4C8CA6;
+width: 90%;
+text-align:left;
+padding: 15px 0 5px 0;
+}
+
+h1 a:link, h1 a:visited {
+font-weight: normal;
+text-decoration: none;
+color: #FFFFFF;
+}
+
+h2 {
+text-align: left;
+letter-spacing: 1px;
+color: #FFFFFF;
+border-left: 3px solid #FFAE20;
+padding-left: 14px;
+margin-top: 50px;
+margin-left: 50px;
+}
+
+h3 {
+color: #00598D;
+font: 1.7em Georgia, "Times New Roman", Times, serif;
+letter-spacing: 1px;
+background: url('../img/h3-bg.gif') no-repeat 0 50%;
+padding-left: 35px;
+margin: 18px 0 10px 0;
+}
+
+h4 {
+font-size: 1em;
+background-color: #005E85;
+color: #FFFFFF;
+letter-spacing: 1px;
+border: 2px solid #FFFFFF;
+margin-top: 7px;
+padding: 6px 10px;
+}
+
+ul {
+list-style-type: none; 
+}
+
+
+/* Site wrapper */
+
+#wrapper {
+margin: 0 auto 80px auto;
+position: relative;
+background-color: #FFFFFF;
+display: table; /* margin-bottom for FF   (?) */
+text-align: left;
+}
+
+
+/* Header */
+
+#pcheader {
+height: 125px;
+width: 100%;
+position: relative;
+background: #004E6C url('../img/header-bg.gif') repeat-x 0 0;
+border-top: 4px solid #003042;
+border-bottom: 1px solid #46A0CA;
+
+}
+
+#pcheader td {
+color:white;
+}
+	
+#pcheader a {
+color:orange;
+font-size:10pt;
+}
+
+#pcheader-arrow {
+position: absolute;
+top: 0;
+right: 50px;
+background: url('../img/header-arrow.gif') no-repeat 0 0;
+width: 148px;
+height: 105px;
+}
+
+
+/* Menu */
+
+#menu {
+margin: 0 auto;
+background: #4A4A4A url('../img/menu-bg.gif') repeat-x 0 0;
+}
+
+#menu li {
+display: inline;
+list-style-type: none;
+}
+
+#menu li.first a {
+margin-left: 1.6em;
+display: inline;
+}
+
+#menu li a {
+float: left;
+color: #FFFFFF;
+font-weight: normal;
+text-decoration: none;
+font-size: 1.1em;
+line-height: 33px;
+padding: 0 1em;
+}
+
+#menu li a:hover {
+text-decoration: underline;
+}
+
+#menu li a.active {
+font-weight: bold;
+color: #B1EEFF;
+}
+
+.cleaning-box { 
+min-height: 1px;
+}
+
+.cleaning-box:after {
+display: block; 
+clear: both; 
+visibility: hidden; 
+height: 0; 
+font-size: 0; 
+content: ' ';
+}
+
+.hidden { /* Skip menu */
+position: absolute;
+top: -10000px;
+left: 0;
+width: 1px;
+height: 1px;
+overflow: hidden;
+}
+
+
+/* Content boxes */
+
+#content-box {
+width: 100%;
+margin-left: 50px;
+color: #151515;
+position: relative;
+}
+
+#content-box-in {
+width: 100%;
+}
+
+.content-box-left {
+float: left;
+margin-bottom: 4em;
+}
+
+.content-box-right {
+display:none;
+float: right;
+width: 220px;
+margin-bottom: 4em;
+background-color: #DBF3FF;
+}
+
+#column-right-bottom {
+background: #DBF3FF url('../img/column-right-bottom.gif') no-repeat 0 0;
+width: 300px;
+height: 20px;
+}
+
+.content-box-left-in {
+}
+
+.gallery {
+margin-top: 18px;
+}
+
+.gallery a img, .gallery a:visited img {
+border: 4px solid #EEEEEE;
+}
+
+.gallery a:hover img {
+border: 4px solid #74BDDC;
+}
+
+.content-box-right-in {
+}
+
+dt {
+font-size: 0.9em;
+font-weight: bold;
+}
+
+dd {
+line-height: 1.4;
+margin-bottom: 12px;
+}
+
+dd.heading, dd.heading a, dd.heading a:visited {
+margin-bottom: 1px;
+color: #D15900;
+font-weight: bold;
+}
+
+address {
+line-height: 1.5;
+margin-bottom: 7px;
+}
+
+
+/* Footer */
+
+#footer {
+background-color: #00587D;
+color: white;
+height: 34px;
+font-size: 0.9em;
+border-bottom: 2px solid #003042;
+}
+
+#footer a, #footer a:visited {
+font-weight: normal;
+color: white;
+}
+
+#footer p.left, #footer p.right {
+display: inline;
+margin-bottom: 0;
+line-height: 30px;
+}
+
+#footer a.b, #footer a.b a:visited {
+font-weight: bold !important;
+}
+
+#footer p.left {
+float: left;
+text-align: left;
+margin-left: 15px;
+}
+
+#footer p.right {
+float: right;
+text-align: right;
+margin-right: 15px;
+}

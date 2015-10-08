@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<!--<script src="../assets/plugins/gallery/view/js/angular-dragdrop.min.js"></script>-->
+<!--<script src="../assets/plugins/gallery/view/js/test.js"></script>-->
+<body>
+    <div id="container">
+        <div id="test">
+            <ul class="test_list">
+                <li><a href="http://whatever"><span id="t">link 1</span></a></li>
+            </ul>
+        </div>
+    </div>
+    <script src="http://code.jquery.com/jquery-2.0.0b2.min.js"></script>
+    <script>
+        function runJQuery() {
+            //alert($('#t').text());
+            for(var i=0; i<10000; i++) {
+                $('#t').text();
+            }
+        }
+        function runJavaScript() {
+            //alert(document.getElementById("t").textContent);
+            for(var i=0; i<10000; i++) {
+                document.getElementById("t").textContent;
+            }
+        }
+        runJQuery();
+        runJavaScript();
+    </script>
+
+    <!--<div class="ex" style="width:420px;padding:10px;border:5px solid gray;margin:0px;position: relative;left:800px">-->
+        <!--<div class=" btn-droppable" data-drop="true" ng-model='list5' data-jqyoui-options="{accept:'.btn-draggable:not([ng-model=list5])'}"-->
+             <!--jqyoui-droppable="{index: {{$index}}}">-->
+            <!--<div class="  btn-draggable" data-drag="{{item.drag}}" data-jqyoui-options="{revert: 'invalid'}"-->
+                 <!--ng-model="list5" jqyoui-draggable="{index: {{$index}},placeholder:true,animate:true}">-->
+                <!--<img src="http://www.site-build-it-scam.com/images/free-apps.jpg" width="304"-->
+                     <!--height="228" />-->
+            <!--</div>-->
+            <!--<div class="  btn-draggable" data-drag="{{item.drag}}" data-jqyoui-options="{revert: 'invalid'}"-->
+                 <!--ng-model="list5" jqyoui-draggable="{index: {{$index}},placeholder:true,animate:true}">-->
+                <!--<img id="img2" src="../assets/plugins/gallery/view/images/cross.jpg" width="304"-->
+                     <!--height="228" />-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <!--<img src="http://www.site-build-it-scam.com/images/free-apps.jpg"-->
+      <!--width="304" height="228" />-->
+      <!--<img id="img2" src="../assets/plugins/gallery/view/images/cross.jpg" width="304"-->
+      <!--height="228" />-->
+      <!--<img id="img3" src="http://inchoo.net/wp-content/uploads/2012/05/penguin-e1336375628766.jpg"-->
+      <!--width="304" height="228" />-->
+      <!--<br/>-->
+      <!--<img id="img4" src="http://www.michaelstults.com/wp-content/uploads/2012/12/GoogleAppsNoFree.jpg"-->
+      <!--width="304" height="228" />-->
+
+</body>
+</html>

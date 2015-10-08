@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Master" id="2" measuredWidth="905" measuredHeight="505" dimmed="true">
+    <screen xsi:type="model:Screen" href="Master.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="6" x="10" y="65" measuredWidth="287" measuredHeight="27" link="SchedulerDragATimeblock.screen" dimmed="true">
+    <screen xsi:type="model:Screen" href="HeaderScheduler.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Note" id="7" x="136" y="104" width="233" height="177" text="Click on Scheduler tab to proceed and look for a Timeblock in the Collections accordian at the left panel" measuredWidth="233" measuredHeight="177" annotation="true">
+    <font/>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

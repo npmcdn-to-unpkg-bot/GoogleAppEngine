@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Common Utility</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src='../../jquery/purl.js'></script>
+    <script>
+        if($.url().param('service') === 'seq') {
+            var loca = "/html/widget/2sequence.html?url=" + $.url().param('url') + "&theme=simple";
+            $(location).attr('href', loca);
+            //window.location = loca;
+        } else
+        if($.url().param('service') === 'flo') {
+            var loca = "/html/widget/2flowchart.html?url=" + $.url().param('url') + "&theme=simple";
+            $(location).attr('href', loca);
+            //window.location = loca;
+		} else {
+            $('#redirect').hide();
+            $('#error').show();
+		} 
+    </script>
+</head>
+<body>
+    <span id="redirect">Redirecting ... (having said that, you really should not be seeing this !)</span>
+    <p>
+    <span style="display:none;" id="error">Oops, we are sorry. Either the service is not available or something else is seriously wrong.</span>
+</body>
+</html>

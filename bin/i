@@ -1,0 +1,11 @@
+#Need JDK 1.7 - set JAVA_HOME accordingly
+. ./j7
+
+export GAE_JAVA_SDK_HOME='/appengine-java-sdk'
+export PROJECT_HOME='/project_home'
+
+#infer -- javac -classpath ../war/WEB-INF/lib/commons-lang3-3.1.jar:$GAE_JAVA_SDK_HOME/lib/shared/servlet-api.jar:./mygae.jar ../src/com/appspot/cloudserviceapi/sci/services/ServiceRegistryServlet.java
+
+infer -- javac -classpath ../war/WEB-INF/lib/commons-lang3-3.1.jar:$GAE_JAVA_SDK_HOME/lib/shared/servlet-api.jar:./mygae.jar ../src/tapp/pages/sci/ServiceRegistrySave.java
+
+

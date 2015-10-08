@@ -1,0 +1,17 @@
+<html t:type="layout" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd" xmlns:sec="http://www.springframework.org/security/tags">
+	<head>
+		<title>Authorization</title>
+	</head>
+<body>
+	<!-- 
+	http://wiki.apache.org/tapestry/Tapestry5HowToUseForms
+	http://tapestry.apache.org/forms-and-validation.html
+	--> 
+	<form t:id="form1">
+		<!-- some inputs here or a beaneditor -->
+		Please enter your token <input t:type="PasswordField" t:id="token" t:validate="minlength=1" size="50" />
+		<input t:type="submit" value="Ok"   t:id="update" />
+		<input t:type="submit" value="Cancel"   t:id="cancel"  />
+ 	</form>
+</body>
+</html>

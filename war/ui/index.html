@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html xmlns:fb="http://www.facebook.com/2008/fbml">
+<head>
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">-->
+    <!--<meta name="viewport" content="width=1600, initial-scale=1">-->
+    <!--<meta name="viewport" content="initial-scale=1, maximum-scale=1">-->
+    <!--<meta name="viewport" content="width=320">-->
+    <!-- Build 7b -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Cool App</title>
+    <meta name="description" content="Beautiful flat UI login form with horizontal scroll effect"/>
+    <meta name="keywords" content="flat, flat ui, flat design, login form, horizontal scroll"/>
+    <meta name="author" content="gforcelogic"/>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <link rel="stylesheet" type="text/css" href="font/css/fontello.css"/>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600,700' rel='stylesheet'
+          type='text/css'>
+    <!-- http://dataurl.net/#dataurlmaker -->
+    <style>
+        .login-form {
+            background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAAAAAA6fptVAAAACklEQVQYV2P4DwABAQEAWk1v8QAAAABJRU5ErkJggg==) no-repeat center;
+            background-attachment: initial;
+            width: 450px;
+            height: 300px;
+        }
+
+        #logo1 {
+            background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAAAAAA6fptVAAAACklEQVQYV2P4DwABAQEAWk1v8QAAAABJRU5ErkJggg==) no-repeat center;
+            position: absolute;
+            top: 30px;
+            /*left: 1000px;*/
+            float: left;
+            width: 350px;
+            height: 200px;
+        }
+
+        #logo2 {
+            background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAAAAAA6fptVAAAACklEQVQYV2P4DwABAQEAWk1v8QAAAABJRU5ErkJggg==) no-repeat center;
+            position: absolute;
+            top: 30px;
+            /*left: 1000px;*/
+            float: right;
+            width: 350px;
+            height: 200px;
+        }
+
+        /* jQuery Roundabout */
+        #carousel {
+            /*height: 600px;*/
+        }
+    </style>
+
+    <!-- begin of jQuery Roundabout dependencies -->
+    <!--<script type="text/javascript" src='//ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.js'></script>-->
+    <!--<script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/roundabout/2.4.2/jquery.roundabout.js'></script>-->
+    <!--<script type="text/javascript" src='//cdn.jsdelivr.net/jquery.easing/1.3/jquery.easing.1.3.js'></script>-->
+    <!-- end of jQuery Roundabout dependencies -->
+    <!--Script for Horizontal Scrolling-->
+    <script type="text/javascript" src="../js/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="../js/jquery.easing.1.3.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('a.scroll').bind('click', function (event) {
+                var $anchor = $(this);
+                $('html, body').stop().animate({
+                    scrollLeft: $($anchor.attr('href')).offset().left
+                }, 500, 'easeInOutExpo');
+                /* Uncomment this for another scrolling effect */
+                /*
+                 $('html, body').stop().animate({
+                 scrollLeft: $($anchor.attr('href')).offset().left
+                 }, 1000);*/
+                event.preventDefault();
+            });
+        });
+    </script>
+    <script type="text/javascript" src='../js/detectmob.js'></script>
+
+    <script>
+        /** this has to be BEFOFE requireJS to avoid reloading it twice! */
+//    if ("https:" === document.location.protocol) {
+//        /* secure */
+//    } else {
+//        /* unsecure */
+//        if(location.hostname.indexOf('localhost') === -1) {
+//            window.location= "https://" + location.hostname + "/" + location.pathname;
+//        }
+//    }
+        if(detectmob()) {
+            window.location.href = '/ui/p/d.html';
+        }
+
+        var isIE = !!window.ActiveXObject;
+        if (isIE) {
+            if ("http:" === document.location.protocol) {
+                window.console && console.log("MS IE browsers are not supported over plain old HTTP via Parse SDK!" + ""); //" You will be redirected to HTTPS URL of the application.");
+                //history.back();
+            }
+        }
+
+        //begin of jQuery Roundabout (source: http://stackoverflow.com/questions/21946250/jquery-roundabout-conflicts-with-jquery-easing-1-3-js)
+//        (function($) {
+//
+//            var $descriptions = $('#carousel-descriptions').children('li'),
+//                    $controls = $('#carousel-controls').find('span'),
+//                    $carousel = $('#carousel')
+//                            .roundabout({childSelector:"img", minOpacity:1, autoplay:true, autoplayDuration:5000, autoplayPauseOnHover:true, easing: 'none' })
+//                            .on('focus', 'img', function() {
+//                                var slideNum = $carousel.roundabout("getChildInFocus");
+//
+//                                $descriptions.add($controls).removeClass('current');
+//                                $($descriptions.get(slideNum)).addClass('current');
+//                                $($controls.get(slideNum)).addClass('current');
+//                            });
+//
+//            $controls.on('click dblclick', function() {
+//                var slideNum = -1,
+//                        i = 0, len = $controls.length;
+//
+//                for (; i<len; i++) {
+//                    if (this === $controls.get(i)) {
+//                        slideNum = i;
+//                        break;
+//                    }
+//                }
+//
+//                if (slideNum >= 0) {
+//                    $controls.removeClass('current');
+//                    $(this).addClass('current');
+//                    $carousel.roundabout('animateToChild', slideNum);
+//                }
+//            });
+//
+//        }(jQuery));
+        //end of jQuery Roundabout (source: http://stackoverflow.com/questions/21946250/jquery-roundabout-conflicts-with-jquery-easing-1-3-js)
+
+        //begin of centering logic
+        $(document).ready(function() {
+            //alert(screen.availWidth);
+            resizeTargets();
+            $(window).resize(resizeTargets);
+        });
+        function resizeTargets() {
+            $(".section").each(function() {
+                //get the new body width
+                var bodyWidth = $(window).width() || screen.availWidth;
+                var bodyHeight = $(window).height() || screen.availHeight;
+                //window.console &&  console.log("screen width [" + bodyWidth + "]");
+                $(this).css("width", bodyWidth);
+                $(this).css("height", bodyHeight);
+                $(this).show();
+            });
+        }
+        //end of centering logic
+        console.assert && console.assert(!document.getElementById("username"), "bad: username [" + document.getElementById("username") + "]");
+        console.assert && console.assert(!document.getElementById("password"), "bad: password [" + document.getElementById("password") + "]");
+    </script>
+    <script>var require = { urlArgs: 'a010' };</script>
+    <script type="text/javascript" src="../js/require.js" data-main="../js/main-index"></script>
+    <!-- just for the spreadsheet logics at the bottom!!! -->
+    <script type="text/javascript" src="../js/google.js"></script>
+</head>
+<body>
+<div id="fb-root"></div>
+<!--
+<div><fb:login-button autologoutlink="true" perms="user_likes" size="large" onlogin="javascript:fb_login();" onlogout="javascript:fb_logout();"></fb:login-button></div>
+-->
+
+<!-- begin of jQuery Roundabout (source: http://stackoverflow.com/questions/21946250/jquery-roundabout-conflicts-with-jquery-easing-1-3-js) -->
+<!--<div id="carousel">-->
+    <!--<img src="http://placekitten.com/g/200/300" alt="">-->
+    <!--<img src="http://placekitten.com/g/200/300" alt="">-->
+    <!--<img src="http://placekitten.com/g/200/300" alt="">-->
+    <!--<img src="http://placekitten.com/g/200/300" alt="">-->
+<!--</div>-->
+<!-- end of jQuery Roundabout (source: http://stackoverflow.com/questions/21946250/jquery-roundabout-conflicts-with-jquery-easing-1-3-js) -->
+
+<div id="logo1">
+    <span></span>
+</div>
+<div>
+    <label id="firsttext" style="position:absolute;margin:20px;font-size:28px;color:white;" ng-show="true">...</label>
+    <label id="motto" style="position:absolute;margin:20px;margin-top:80px;font-size:16px;color:white;" ng-show="true">...</label>
+</div>
+<div id="brand_background">
+    <span></span>
+</div>
+<div id="logo2">
+    <span></span>
+</div>
+<!--Login Section-->
+<div class="section" id="section1" style="display:none;">
+    <div style="margin-top:30px;">
+        <label id="notice" style="margin-top:10px;font-size:16px;color:white;" ng-show="true">You might
+            want to enable "Mixed Content" mode specific to your browser.</label>
+
+        <div id="fb-redirect-for-IE" style="display:none;"><h1>Click <a href=../mcrud/movie.html>here</a> if you are not
+            redirected</h1></div>
+        <!--
+        -->
+        <div id="fb-login-notice" style="display:none;"><h1>Logging in with Facebook, please wait ...</h1></div>
+        <div id="gp-login-notice" style="display:none;"><h1>Logging in with Google Plus, please wait ...</h1></div>
+    </div>
+    <div class="login-form">
+        <h1 id="loginTitle">Loading ...</h1>
+
+        <p>You already have an account? Great! Login here.</p>
+
+        <div>
+            <form class="form-wrapper-01">
+                <input id="username" disabled class="inputbox" type="text" placeholder="Login Id" required/>
+                <input id="password" disabled class="inputbox password" type="password" placeholder="Password"
+                       required/>
+
+                <p><a id="loginButton" href="javascript:void(0);" class="button">Login <i class="icon-paper-plane"></i></a>
+                </p>
+            </form>
+            <p>Forget password? It's ok. <a class="scroll" href="#section3">Recover Here &raquo;</a></p>
+        </div>
+        <hr/>
+        <p>Or you can Login with the following</p>
+
+        <div class="social"><a id="fbLoginButton" href="#" class="facebook"><i class="icon-facebook"></i></a> <a
+                href="javascript:void(0);" onclick="loginTwitter();" class="twitter"><i class="icon-twitter"></i></a>
+
+            <div id="gSignInWrapper">
+                <span class="label">Sign in with:</span>
+
+                <div id="customBtn" class="customGPlusSignIn">
+                    <span class="icon"></span>
+                    <span class="buttonText">Google</span>
+                </div>
+            </div>
+        </div>
+        <p>Don't have an account? <a class="scroll" href="#section2">Register Now &raquo;</a></p>
+    </div>
+    <div style="margin-top:100px;left:10px;">
+    <label id="footer" style="font-size:16px;color:white;" ng-show="true">...</label>
+</div>
+</div>
+<!--END: Login Section-->
+<!--Signup Section-->
+<div class="section" id="section2" style="display:none;">
+    <div class="signup-form">
+        <h1>Sign Up in Seconds!</h1>
+
+        <p>Signup using your Email address</p>
+
+        <div>
+            <form class="form-wrapper-01">
+                <input id="yn" class="inputbox name" type="text" placeholder="Your Name" required/>
+                <input id="email" class="inputbox email" type="email" placeholder="Email Id" required/>
+                <input id="pwd" class="inputbox password" type="password" placeholder="Password" required/>
+                <input id="cpwd" class="inputbox password" type="password" placeholder="Confirm Password" required/>
+
+                <p><a id="createAccountButton" href="javascript:void(0);" class="button">Create Account <i
+                        class="icon-paper-plane"></i></a></p>
+                <!--<input id="" type="button" class="button" value="Sign up" />-->
+            </form>
+        </div>
+        <hr/>
+        <p>Or you can Signup with one of the following</p>
+
+        <div class="social"><a href="#" class="facebook"><i class="icon-facebook"></i><span>Facebook</span></a> <a
+                href="#" class="twitter"><i class="icon-twitter"></i><span>Twitter</span></a> <a href="#"
+                                                                                                 class="google"><i
+                style="width:150px;" class="icon-gplus"></i><span class="icon-google">Google</span></a></div>
+        <p><a class="scroll" href="#section1">&laquo; Login here</a></p>
+    </div>
+</div>
+<!--END: Signup Section-->
+<!--Forget Password Section-->
+<div class="section" id="section3" style="display:none;">
+    <div class="forgot-pwd">
+        <h1>Lost password?</h1>
+
+        <p>Oh ok, don't panic. You can recover it here.</p>
+
+        <div>
+            <form class="form-wrapper-01">
+                <input id="" class="inputbox email" type="text" placeholder="Email Id"/>
+
+                <p><a href="#" class="button">Send me <i class="icon-paper-plane"></i></a></p>
+            </form>
+        </div>
+        <hr/>
+        <p>You remember your Password? Brilliant!</p>
+
+        <p><a class="scroll" href="#section1">&laquo; Login here</a></p>
+    </div>
+</div>
+<!--END: Forget Password Section-->
+<!--Branding script-->
+<script type="text/javascript" src="../js/prefs.js"></script>
+<script>
+var showLog = false;
+var gManageColMainTitle;
+var gManageShoMainTitle;
+var gManageChaMainTitle;
+function importGSS(json) {
+    for (i = 0; i < json.feed.entry.length; i++) {
+        entry = json.feed.entry[i];
+        col1 = entry.gsx$index && entry.gsx$index.$t;
+        col2 = entry.gsx$_cokwr && entry.gsx$_cokwr.$t;
+        col3 = entry.gsx$_cpzh4 && entry.gsx$_cpzh4.$t;
+        col4 = entry.gsx$_cre1l && entry.gsx$_cre1l.$t;
+        col5 = entry.gsx$_chk2m && entry.gsx$_chk2m.$t;
+        col6 = entry.gsx$_ciyn3 && entry.gsx$_ciyn3.$t;
+        if (col1 && col2 && col3 && col4 && col5) {
+            showLog && window.console && console.log('[' + (i + 1) + '] = ' + '[' + col1 + '] ' + '[' + col2 + '] ' + '[' + col3 + '] ' + '[' + col4 + '] ' + '[' + col5 + '] ' + '[' + col6 + '] ');
+            if (col1 === 'home' &&
+                    col2 === 'index' &&
+                    col3 === 'main' &&
+                    col5 === 'text'
+                    ) {
+                if (col4 === 'notice') {
+                    $('#notice').text(col6);
+                }
+                else if (col4 === 'firsttext') {
+                    $('#firsttext').text(col6);
+                }
+                else if (col4 === 'motto') {
+                    $('#motto').text(col6);
+                }
+                else if (col4 === 'title') {
+                    $(document).attr("title", col6);
+                }
+                else if (col4 === 'footer') {
+                    $("#footer").text(col6);
+                }
+            } else if (col1 === 'home' &&
+                    col2 === 'index' &&
+                    col3 === 'main' &&
+                    col4 === 'brand' &&
+                    col5 === 'background'
+                    ) {
+                $(".login-form").css("background", "url(" + col6 + ") no-repeat center center");
+            } else if (col1 === 'home' &&
+                    col2 === 'index' &&
+                    col3 === 'main' &&
+                    col4 === 'brand' &&
+                    col5 === 'background-size'
+                    ) {
+                $(".login-form").css("background-size", col6);
+            } else if (col1 === 'home' &&
+                    col2 === 'index' &&
+                    col3 === 'main' &&
+                    col4 === 'footer' &&
+                    col5 === 'font-size'
+                    ) {
+                $("#footer").css("font-size", col6);
+            } else if (col1 === 'home' &&
+                    col2 === 'index' &&
+                    col3 === 'main' &&
+                    col4 === 'logo1' &&
+                    col5 === 'background'
+                    ) {
+                $("#logo1").css("background", "url(" + col6 + ") no-repeat center");
+            } else if (col1 === 'home' &&
+                    col2 === 'index' &&
+                    col3 === 'main' &&
+                    col4 === 'logo1' &&
+                    col5 === 'top'
+                    ) {
+                $("#logo1").css("top", col6);
+            } else if (col1 === 'home' &&
+                    col2 === 'index' &&
+                    col3 === 'main' &&
+                    col4 === 'logo1' &&
+                    col5 === 'left'
+                    ) {
+                $("#logo1").css("left", col6);
+            } else if (col1 === 'home' &&
+                    col2 === 'index' &&
+                    col3 === 'main' &&
+                    col4 === 'logo1' &&
+                    col5 === 'width'
+                    ) {
+                $("#logo1").css("width", col6);
+            } else if (col1 === 'home' &&
+                    col2 === 'index' &&
+                    col3 === 'main' &&
+                    col4 === 'logo1' &&
+                    col5 === 'height'
+                    ) {
+                $("#logo1").css("height", col6);
+            } else if (col1 === 'home' &&
+                    col2 === 'index' &&
+                    col3 === 'main' &&
+                    col4 === 'logo2' &&
+                    col5 === 'background'
+                    ) {
+                $("#logo2").css("background", "url(" + col6 + ") no-repeat center");
+            } else if (col1 === 'home' &&
+                    col2 === 'index' &&
+                    col3 === 'main' &&
+                    col4 === 'logo2' &&
+                    col5 === 'top'
+                    ) {
+                $("#logo2").css("top", col6);
+            } else if (col1 === 'home' &&
+                    col2 === 'index' &&
+                    col3 === 'main' &&
+                    col4 === 'logo2' &&
+                    col5 === 'left'
+                    ) {
+                $("#logo2").css("left", col6);
+            } else if (col1 === 'home' &&
+                    col2 === 'index' &&
+                    col3 === 'main' &&
+                    col4 === 'logo2' &&
+                    col5 === 'width'
+                    ) {
+                $("#logo2").css("width", col6);
+            } else if (col1 === 'home' &&
+                    col2 === 'index' &&
+                    col3 === 'main' &&
+                    col4 === 'logo2' &&
+                    col5 === 'height'
+                    ) {
+                $("#logo2").css("height", col6);
+            } else if (col1 === 'home' &&
+                    col2 === 'index' &&
+                    col3 === 'main' &&
+                    col4 === 'firsttext' &&
+                    col5 === 'top'
+                    ) {
+                $("#firsttext").css("top", col6);
+            } else if (col1 === 'home' &&
+                    col2 === 'index' &&
+                    col3 === 'main' &&
+                    col4 === 'firsttext' &&
+                    col5 === 'left'
+                    ) {
+                $("#firsttext").css("left", col6);
+            } else if (col1 === 'home' &&
+                    col2 === 'index' &&
+                    col3 === 'main' &&
+                    col4 === 'brand' &&
+                    col5 === 'width'
+                    ) {
+                $(".login-form").css("width", col6);
+            } else if (col1 === 'home' &&
+                    col2 === 'index' &&
+                    col3 === 'main' &&
+                    col4 === 'brand' &&
+                    col5 === 'height'
+                    ) {
+                $(".login-form").css("height", col6);
+            } else if (col1 === 'home' &&
+                    col2 === 'index' &&
+                    col3 === 'main' &&
+                    col4 === 'input#username' &&
+                    col5 === 'style'
+            ) {
+                $("input#username").css("style", col6);
+            } else if (col1 === 'home' &&
+                    col2 === 'index' &&
+                    col3 === 'main' &&
+                    col4 === 'input#password' &&
+                    col5 === 'style'
+            ) {
+                $("input#password").css("style", col6);
+            } else if (col1 === 'home' &&
+                    col2 === 'index' &&
+                    col3 === 'main' &&
+                    col4 === 'motto' &&
+                    col5 === 'top'
+                    ) {
+                $("#motto").css("top", col6);
+            } else if (col1 === 'home' &&
+                    col2 === 'index' &&
+                    col3 === 'main' &&
+                    col4 === 'motto' &&
+                    col5 === 'left'
+                    ) {
+                $("#motto").css("left", col6);
+            } else if (col1 === 'home' &&
+                    col2 === 'index' &&
+                    col3 === 'form' &&
+                    col4 === 'h1' &&
+                    col5 === 'color'
+                    ) {
+                $("h1").css("color", col6);
+            } else if (col1 === 'home' &&
+                    col2 === 'index' &&
+                    col3 === 'form' &&
+                    col4 === 'p' &&
+                    col5 === 'color'
+                    ) {
+                $("p").css("color", col6);
+            } else if (col1 === 'home' &&
+                    col2 === 'index' &&
+                    col3 === 'form' &&
+                    col4 === 'a.scroll' &&
+                    col5 === 'color'
+                    ) {
+                $("a.scroll").css("color", col6);
+            } else if (col1 === 'home' &&
+                    col2 === 'index' &&
+                    col3 === 'form' &&
+                    col4 === 'a.scroll:hover' &&
+                    col5 === 'color'
+                    ) {
+                $("a.scroll:hover").css("color", col6);
+            } else if (col1 === 'home' &&
+                    col2 === 'index' &&
+                    col3 === 'main' &&
+                    col4 === 'facebook' &&
+                    col5 === 'active' &&
+                    col6 === 'TRUE'
+                    ) {
+                $('.facebook').show();
+            } else if (col1 === 'home' &&
+                    col2 === 'index' &&
+                    col3 === 'main' &&
+                    col4 === 'twitter' &&
+                    col5 === 'active' &&
+                    col6 === 'TRUE'
+                    ) {
+                $('.twitter').show();
+            } else if (col1 === 'home' &&
+                    col2 === 'index' &&
+                    col3 === 'main' &&
+                    col4 === 'googleplus' &&
+                    col5 === 'active' &&
+                    col6 === 'TRUE'
+                    ) {
+                $('#gSignInWrapper').show();
+                $('#customBtn').show();
+                $('#gSignInWrapper').css("display", "inline-block");
+                $('#customBtn').css("display", "inline-block");
+                initGoooglePlus();  //the tag needs to be shown first before this init is called???
+            } else if (col1 === 'home' &&
+                    col2 === 'index' &&
+                    col3 === 'main' &&
+                    col5 === 'color'
+                    ) {
+                if (col4 === 'background') {
+                    $('body').css('background-color', col6);
+                } else if (col4 === 'brand') {
+                    $('#brand').css('color', col6);
+                } else if (col4 === 'notice') {
+                    $('#notice').css('color', col6);
+                } else if (col4 === 'brand') {
+                    $('#brand').css('color', col6);
+                } else if (col4 === 'motto') {
+                    $('#motto').css('color', col6);
+                } else if (col4 === 'footer') {
+                    $('#footer').css('color', col6);
+                }
+            }
+        }
+    }
+}
+</script>
+
+
+<!-- G+
+General Info: https://developers.google.com/+/web/signin/
+Dependencies: https://developers.google.com/+/web/api/javascript
+API/Client ID: https://code.google.com/apis/console/b/1/?pli=1#project:1004600689852
+-->
+
+<!-- Twitter -->
+<script type="text/javascript">
+    //=== source: http://www.nigraphic.com/blog/java-script/how-open-new-window-popup-center-screen
+    function PopupCenter(pageURL, title, w, h) {
+        var left = (screen.width / 2) - (w / 2);
+        var top = (screen.height / 2) - (h / 2);
+        var targetWin = window.open(pageURL, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
+    }
+
+    function loginTwitter() {
+
+        var host = "https://" + window.location.hostname;
+        var pageURL = "https://c7oud.us/twitteroauth/connect.php?origin=" + host;
+        //alert(host);
+        //PopupCenter(pageURL, "Twitter Sign-in", 480, 320);
+        window.location.href = pageURL;
+    }
+
+</script>
+
+<!--Google analytics-->
+<!--<script src="http://spreadsheets.google.com/feeds/list/0AkAXtx48HdvbdE00RVp5OW4yQUl6RGZPcVFCY05NX2c/1/public/values?alt=json-in-script&amp;callback=importGSS"></script>-->
+
+<!--<script type="text/javascript">-->
+<!--var _gaq = _gaq || [];-->
+<!--_gaq.push(['_setAccount', 'UA-29231762-1']);-->
+<!--_gaq.push(['_setDomainName', 'dzyngiri.com']);-->
+<!--_gaq.push(['_trackPageview']);-->
+
+<!--(function() {-->
+<!--var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;-->
+<!--ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';-->
+<!--var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);-->
+<!--})();-->
+<!--</script>-->
+<!--<meta name="msvalidate.01" content="09692E9A9D5629DE1CE9855BB9649DEF" />-->
+<!-- End: Google analytics-->
+<div>
+</div>
+</body>
+</html>

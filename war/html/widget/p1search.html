@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>jQuery UI Autocomplete - Default functionality</title>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <link rel="stylesheet" href="/resources/demos/style.css" />
+</head>
+<body>
+
+<form>
+    <input id="url" style="width:90%;" type="text" value="http://vector.commerce-search.net/return_autocomplete_jsonp.php?callback=jQuery1720032300144712967827_1377031101648&q=square&cid=7bcc169b65e3f2f04f8f4722752c2b5b&num_products=20&num_terms=0&_=1377031116231">
+</form>
+<div class="ui-widget">
+    <label for="tags">Tags: </label>
+    <input id="tags" />
+</div>
+</body>
+<script>
+    var pArr = new Array();
+
+    function load(target) {
+        $.ajax({
+            type: "GET",
+            url: target,
+            //data: $('#calendarForm').serialize(),
+            async: false,
+            dataType : "jsonp",
+            success: function (data) {
+                window.console && console.log("response >" + JSON.stringify(data.products) + "<");
+//              var obj = $.parseJSON(data);
+                var obj = data.products;
+
+                for (var i = 0; i < obj.length; i++) {
+                    p = {name: obj[i].Name, sku: obj[i].Sku, url:obj[i].Url};
+                    window.console && console.log("products.Name = '" + p.name + "'");
+                    pArr.push(p.name);
+                }
+            }
+        });
+    }
+    $(function() {
+        load($("#url").val());
+
+        $( "#tags" ).autocomplete({
+            source: pArr
+        });
+    });
+
+    $(document).keypress(function(event) {
+        var keycode = (event.keyCode ? event.keyCode : event.which);
+        if(keycode == '13') {
+        }
+        load($("#url").val());
+        $( "#tags" ).autocomplete({
+            source: pArr
+        });
+        window.console && console.log("reloaded!");
+    });
+</script>
+</html>

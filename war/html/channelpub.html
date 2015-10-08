@@ -1,0 +1,178 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=8">
+    <meta charset="utf-8">
+    <title>Public Play</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/> <!-- source: https://developer.apple -->
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome.css" rel="stylesheet">
+    <!-- begin bootstrap 2.x stuff -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <script type="text/javascript" src='//ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.js'></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap-transition.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap-dropdown.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap-collapse.min.js"></script>
+    <!-- end bootstrap 2.x stuff -->
+    <script src="../jquery/purl.js" type="text/javascript"></script>
+    <link href="../parse/css/tabs.css" rel="stylesheet">
+    <link href="../css/app.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: black;
+            margin:0 auto;
+        }
+        .galleria-loader {
+            top:50%;
+            left:50%;
+        }
+        .galleria-container {
+            top: 10px;
+            /*height: 500px;  *//* android friendly! */
+            height: auto;  /* android friendly! */
+        }
+        .galleria-image {
+            height: 80%;
+        }
+        /*.galleria-stage {*/
+            /*position: absolute;*/
+            /*top: 10px;*/
+            /*bottom: 145px;*/
+            /*left: 10px;*/
+            /*right: 10px;*/
+            /*overflow:hidden;*/
+        /*}*/
+        /*.galleria-thumbnails {*/
+            /*height: 100px;*/
+        /*}*/
+
+        /** =============================== begin of mobile specific styles =============================== */
+        h2 {
+            margin-top: 44px;
+        }
+        /* iPhone 2G-4S in portrait and landscape (source: http://stephen.io/mediaqueries/) */
+        @media only screen
+        and (min-device-width : 320px)
+        and (max-device-width : 480px) {
+            h2 {
+                margin-top: 0px;
+            }
+        }
+        /** iPhone 5 portrait and landscape (source: http://stephen.io/mediaqueries/) */
+        @media only screen
+        and (min-device-width : 320px)
+        and (max-device-width : 568px) {
+            h2 {
+                margin-top: 0px;
+            }
+        }
+        /* IE devices styles only */
+        @-ms-viewport {
+            width: device-width;
+        }
+        /** =============================== end of mobile specific styles =============================== */
+    </style>
+    <script>
+        /** this has to be BEFOFE requireJS for it to work! */
+//        var isIE = !!window.ActiveXObject;
+//        if(isIE) {
+            var IE = (!! window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1])) || NaN;
+            if (IE < 9) {
+//                alert("Microsoft/IE browser below version 9 (e.g. IE 6/7/8) is currently not supported. Please try with a browser like IE 9 or even better, Google Chrome. Not all functionality will work properly or as designed.");
+//                history.back();
+
+                if ("http:" === document.location.protocol) {
+                    alert("IE browsers are not supported over plain old HTTP via Parse SDK. See https://www.parse.com/questions/internet-explorer-and-the-javascript-sdk for details.");
+                    //history.back();
+                } else {
+                    window.location = "https://" + location.hostname + "/html/channelshuffle.htm";
+                }
+            }
+//        }
+    </script>
+    <script>var require = { urlArgs: 'a007' };</script>
+    <script type="text/javascript" src="../js/require.js" data-main="../js/main-channelpub"></script>
+</head>
+<body ng-controller="ctrlRead">
+<div id="fb-root"></div>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div id="processStatus" class="pull-left" style="padding-top:10px;padding-left:20px;" ng-show="!backendReady">
+        &nbsp;<img src="/images/ajax-loader-transbg.gif" class="loading-indicator" alt="processing"/>
+        &nbsp;Processing ...<p>
+    </div>
+    <div class="navbar-inner">
+        <div class="container">
+            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div class="brand" id="serviceName" style="padding-left:20px;"></div>
+            <div class="nav-collapse collapse">
+                <ul class="nav">
+                    <li><a id="homeLink" href="/go/home"><span id="homeText">Home</span></a></li>
+                    <li class="active"><a id="playview1" href="javascript:void(0);" ng-click="play();">Play Now</a></li>
+                    <li class="dropdown">
+                        <a id="aboutLink" data-toggle="dropdown" class="dropdown-toggle" href="#">About <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><span id="releaseLabel">Alpha Release</span> <span id="cBuild"></span></li>
+                        </ul>
+                    </li>
+                    <li style="display:none;"><a id="helpLink" href="#"><span id="helpText">Help</span></a></li>
+                </ul>
+            </div><!--/.nav-collapse -->
+            <div style="padding-top:10px;padding-right:20px;" class="navbar-header pull-right">
+                <div class="pull-right">
+                    <!--<a style="display:none;" id="myaccount" href="javascript:void(0);" onclick="location.href='/passwordchange/jsp/simple.jsp?username=' + $.url().param('username') + '&amp;logintype=' + $.url().param('logintype');">My Account</a>&nbsp;<span id=currentUser></span> <a href="javascript:logout();">Logout</a>-->
+                    Welcome <span id=currentUserName></span>!
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- / new bootrap based nav -->
+<div style="position:absolute;margin-top:100px;margin-left:250px;" ng-cloak ng-hide="true">
+    ****** If you are seeing this, please make sure you enable the support of "Mixed Content" ******
+</div>
+<div ng-show="error_message" ng-bind-template="&nbsp;{{error_message}}"></div>
+
+<style>
+    /*#galleria0 { z-index:-100; position: absolute; top:28px; width:99%; height:80%; background: #000 } /* video - not mobile friendly */
+    #galleria0 { z-index:-100; position: absolute; top:150px; width:99%; height:80%; background: #000 }  /* video + subtitle and works better on mobile !!! */
+    #galleria1 { z-index:-100; position: absolute; top:85px; width:99%; height:640px; background: #000 }  /* image */
+    #galleria2 { z-index:-100; position: absolute; top:85px; width:99%; height:640px; background: #000 }  /* text/rss */
+    .galleria-info-text, .galleria-info-description {
+        zoom: 1.5;
+        display: inline;
+        margin-left: 10px;
+    }
+</style>
+
+<div id="title" style="z-index:500;margin-top:0px;margin-left:auto;margin-right:auto;width:100%;"></div>
+<div id="galleria0">
+</div>
+
+<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ FUTURE ENHANCEMENTS !!! :-) $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+<!--
+<div id="galleria1" style="left:-9999px">
+    <img id="img0" src="../images/cross.jpg" alt="" />
+    <img id="img1" src="../images/cross.jpg" alt="" />
+    <img id="img2" src="../images/cross.jpg" alt="" />
+    <img id="img3" src="../images/cross.jpg" alt="" />
+    <img id="img4" src="../images/cross.jpg" alt="" />
+</div>
+-->
+<!-- http://support.galleria.io/kb/references/galleria-data -->
+<!--
+<div id="galleria2" style="left:-9999px">
+    <a id="t0" href="http://en.wikipedia.org/wiki/RSS"><img id="ti0" class="iframe" src="../images/rss1.png"></a>
+    <a id="t1" href="http://en.wikipedia.org/wiki/RSS"><img id="ti1" class="iframe" src="../images/rss1.png"></a>
+    <a id="t2" href="http://en.wikipedia.org/wiki/RSS"><img id="ti2" class="iframe" src="../images/rss1.png"></a>
+    <a id="t3" href="http://en.wikipedia.org/wiki/RSS"><img id="ti3" class="iframe" src="../images/rss1.png"></a>
+    <a id="t4" href="http://en.wikipedia.org/wiki/RSS"><img id="ti4" class="iframe" src="../images/rss1.png"></a>
+</div>
+-->
+<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ FUTURE ENHANCEMENTS !!! :-) $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+
+<div id="subtitleDiv" style="top:50px;height:72px;">...</div>
+</body>
+</html>

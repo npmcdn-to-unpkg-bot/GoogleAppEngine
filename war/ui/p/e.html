@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Cool App</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> <!-- source: https://developer.apple -->
+	<!-- Made possible thanks to pagePiling.js plugin -->
+	<meta name="author" content="Google" />
+	<meta name="description" content="cool youtube ap based on google's polymer." />
+	<meta name="keywords"  content="youtube, angularjs, jquery, parse, mvc, cool app" />
+	<meta name="Resource-type" content="Document" />
+	<!-- 2Share -->
+	<link rel="stylesheet" type="text/css" href="app.css" />
+
+	<script
+			src="bower_components/platform/platform.js">
+	</script>
+
+	<link rel="import"
+		  href="bower_components/font-roboto/roboto.html">
+	<link rel="import"
+		  href="bower_components/core-header-panel/core-header-panel.html">
+	<link rel="import"
+		  href="bower_components/core-toolbar/core-toolbar.html">
+	<link rel="import"
+		  href="bower_components/paper-tabs/paper-tabs.html">
+	<style>
+		html,body {
+			height: 100%;
+			margin: 0;
+			background-color: #E5E5E5;
+			font-family: 'RobotoDraft', sans-serif;
+		}
+		core-header-panel {
+			height: 100%;
+			overflow: auto;
+			-webkit-overflow-scrolling: touch;
+		}
+		core-toolbar {
+			background: #03a9f4;
+			color: white;
+		}
+		#tabs {
+			width: 100%;
+			margin: 0;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+			text-transform: uppercase;
+		}
+		.pink paper-tab::shadow #ink {
+			color: #ff4081;
+		}
+		paper-tabs.pink::shadow #selectionBar {
+			background-color: #ff4081;
+		}
+		paper-tabs {
+			color: white;
+		}
+		p {
+			color: yellow;
+		}
+	</style>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script>var require = { urlArgs: 'a010' };</script>
+    <script type="text/javascript" src="../../js/require.js" data-main="../../js/main-index"></script>
+    <!-- just for the spreadsheet logics at the bottom!!! -->
+    <script type="text/javascript" src="../../js/google.js"></script>
+
+</head>
+<body>
+	<paper-tabs selected="0">
+		<paper-tab>Login</paper-tab>
+		<paper-tab>Signup</paper-tab>
+		<paper-tab>Recover</paper-tab>
+	</paper-tabs>
+
+	<div id="pagepiling">
+		<!--Login Section-->
+		<div class="section" id="sec1">
+			<div class="intro">
+				<div style="margin-left: auto; margin-right: auto; width:50%; margin-top:30px;">
+					<label id="notice" style="margin-top:10px;font-size:16px;color:white;" ng-show="true">You might
+						want to enable "Mixed Content" mode specific to your browser.</label>
+
+					<div id="fb-redirect-for-IE" style="display:none;"><h1>Click <a href=../../mcrud/movie.html>here</a> if you are not
+						redirected</h1></div>
+					<!--
+					-->
+					<div id="fb-login-notice" style="display:none;"><h1>Logging in with Facebook, please wait ...</h1></div>
+					<div id="gp-login-notice" style="display:none;"><h1>Logging in with Google Plus, please wait ...</h1></div>
+				</div>
+				<div style="margin-left: 150px; margin-right: auto; width: 45%;" class="login-form">
+					<h1 id="loginTitle">Loading ...</h1>
+
+					<p>You already have an account? Great! Login here.</p>
+
+					<div>
+						<form class="form-wrapper-01">
+							<input id="username" disabled class="inputbox email" type="text" placeholder="Email id" required/>
+							<input id="password" disabled class="inputbox password" type="password" placeholder="Password"
+								   required/>
+
+							<p><a id="loginButton" href="javascript:void(0);" class="button">Login <i class="icon-paper-plane"></i></a>
+							</p>
+						</form>
+						<p>Forget password? It's ok. <a class="scroll" href="#section3">Recover here &raquo;</a></p>
+					</div>
+					<hr/>
+					<p>Or you can Login with the following</p>
+
+					<div class="social"><a id="fbLoginButton" href="#" class="facebook"><i class="icon-facebook"></i></a> <a
+							href="javascript:void(0);" onclick="loginTwitter();" class="twitter"><i class="icon-twitter"></i></a>
+
+						<div id="gSignInWrapper">
+							<span class="label">Sign in with:</span>
+
+							<div id="customBtn" class="customGPlusSignIn">
+								<span class="icon"></span>
+								<span class="buttonText">Google</span>
+							</div>
+						</div>
+					</div>
+					<p>Don't have an account? <a class="scroll" href="#section2">Register Now &raquo;</a></p>
+				</div>
+				<div style="margin-top:100px;left:10px;">
+				<label id="footer" style="font-size:16px;color:white;" ng-show="true">...</label>
+			</div>
+			</div>
+		</div>
+		<!--END: Login Section-->
+	    <div class="section" id="sec2" style="display:none;">
+	    	<div class="intro">
+				<!--Signup Section-->
+				<div style="margin-left: auto; margin-right: auto; width: 480px;" class="signup-form">
+					<h1>Sign Up in Seconds!</h1>
+
+					<p>Signup using your Email address</p>
+
+					<div>
+						<form class="form-wrapper-01">
+							<input id="yn" class="inputbox name" type="text" placeholder="Your Name" required/>
+							<input id="email" class="inputbox email" type="text" placeholder="Email id" required/>
+							<input id="pwd" class="inputbox password" type="password" placeholder="Password" required/>
+							<input id="cpwd" class="inputbox password" type="password" placeholder="Confirm Password" required/>
+
+							<p><a id="createAccountButton" href="javascript:void(0);" class="button">Create my Account <i
+									class="icon-paper-plane"></i></a></p>
+							<!--<input id="" type="button" class="button" value="Sign up" />-->
+						</form>
+					</div>
+					<hr/>
+					<p>Or you can Signup with one of the following</p>
+
+					<div class="social"><a href="#" class="facebook"><i class="icon-facebook"></i><span>Facebook</span></a> <a
+							href="#" class="twitter"><i class="icon-twitter"></i><span>Twitter</span></a> <a href="#"
+																											 class="google"><i
+							style="width:150px;" class="icon-gplus"></i><span class="icon-google">Google</span></a></div>
+					<p><a class="scroll" href="#section1">&laquo; Login here</a></p>
+				</div>
+				<!--END: Signup Section-->
+	    	</div>
+	    </div>
+	    <div class="section" id="sec3" style="display:none;">
+	    	<div class="intro">
+				<!--Forget Password Section-->
+				<div style="margin-left: auto; margin-right: auto; width: 400px;" class="forgot-pwd">
+					<h1>Lost password?</h1>
+
+					<p>Oh ok, don't panic. You can recover it here.</p>
+
+					<div>
+						<form class="form-wrapper-01">
+							<input id="" class="inputbox email" type="text" placeholder="Email id"/>
+
+							<p><a href="#" class="button">Send me <i class="icon-paper-plane"></i></a></p>
+						</form>
+					</div>
+					<hr/>
+					<p>You remember your Password? Brilliant!</p>
+
+					<p><a class="scroll" href="#section1">&laquo; Login here</a></p>
+				</div>
+				<!--END: Forget Password Section-->
+			</div>
+	    	</div>
+	    </div>
+	</div>
+
+	<script type="text/javascript">
+		var tabs = document.querySelector('paper-tabs');
+
+		tabs.addEventListener('core-select', function() {
+			var selected = tabs.selected;
+			console.log("Selected: " + selected);
+			if(selected === 0) {
+				$("#sec1").show();
+				$("#sec2").hide();
+				$("#sec3").hide();
+			} else
+			if(selected === 1) {
+				$("#sec1").hide();
+				$("#sec2").show();
+				$("#sec3").hide();
+			} else
+			if(selected === 2) {
+				$("#sec1").hide();
+				$("#sec2").hide();
+				$("#sec3").show();
+			}
+		});
+	</script>
+
+</body>
+<!--Branding script-->
+<script type="text/javascript" src="../../js/prefs.js"></script>
+<!--Google spreadsheet based script-->
+<script type="text/javascript" src="../../js/gas.js"></script>
+<!--Twitter script-->
+<script type="text/javascript" src="../../js/twitter.js"></script>
+
+</html>

@@ -1,0 +1,8 @@
+<html xmlns:t='http://tapestry.apache.org/schema/tapestry_5_1_0.xsd'>
+   <body> 
+      <t:form> 
+         <t:ck.MultipleSelect value='selectedList' model='model' encoder='encoder'/>
+         <input type='submit' value='submit'/> 
+      </t:form> 
+   </body> 
+</html> 

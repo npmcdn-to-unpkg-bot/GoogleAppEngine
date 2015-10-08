@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html xmlns:ng="http://angularjs.org" id="ng-app" ng-app>
+<head>
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+    <meta charset="utf-8">
+    <title>Cool App - IE</title>
+    <link href="https://netdna.bootstrapcdn.cm/twitter-bootstrap/2.1.1/css/bootstrap.no-icons.min.css" rel="stylesheet">
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome.css" rel="stylesheet">
+    <link href='../fullcalendar/fullcalendar.css' rel='stylesheet' />
+    <link href='../fullcalendar/fullcalendar.print.css' rel='stylesheet' media='print' />
+    <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.no-icons.min.css" rel="stylesheet">
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome.css" rel="stylesheet">
+    <link href="../css/external-event.css" rel="stylesheet">
+    <link href="../parse/css/tabs.css" rel="stylesheet">
+    <link href="../css/app.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="https://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+    <!--=== IE DOES NOT WORK WITH REQUIREJS + ANGULARJS! -->
+    <!--=== common js -->
+    <script type="text/javascript" src='//ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.js'></script>
+    <script type="text/javascript" src='../jquery/purl.js'></script>
+    <script type="text/javascript" src='https://www.parsecdn.com/js/parse-1.2.7.min.js'></script>
+    <script>
+        Parse.initialize("Ld70ODLxjXFkhhRux6kQqVCiJ4rQeXU8dISafNJa", "dLHhDNKnLimXHzSzxvQcGuwle5iLwnn3bFahDS9q");
+        window.console && console.log("Parse initialized.");
+    </script>
+    <script type="text/javascript" src='../parse/facebook.js'></script>
+    <script type="text/javascript" src='../js/google.js'></script>
+    <script type="text/javascript" src='../angularjs/1.1.5/angular.js'></script>
+    <script type="text/javascript" src='../jquery/jquery-ui-1.10.2.custom.min.js'></script>
+    <script type="text/javascript" src='../js/dateFormat.js'></script>
+    <script type="text/javascript" src='//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.js'></script>
+    <script type="text/javascript" src='../js/loglevel.js'></script>
+    <!--=== app js -->
+    <script type="text/javascript" src='../mcrud/movie.js'></script>
+    <script type="text/javascript" src='../parse/init.js'></script>
+    <script type="text/javascript" src='../fullcalendar/fullcalendar.min.js'></script>
+    <script type="text/javascript" src='../html/calendar.js'></script>
+</head>
+<body ng-controller="ctrlRead">
+<!--
+<body>
+-->
+<script>
+    /*
+    if (Modernizr.draganddrop) {
+        // Browser supports HTML5 DnD.
+        console.log("Support DND");
+    } else {
+        // Fallback to a library solution.
+        console.log("No support for DND");
+    }
+    */
+</script>
+<div class="row-fluid">
+    <div class="span6">
+        <div ng-show="!backendReady">
+            &nbsp;Processing (can be up to 20 seconds) ...<p>
+        </div>
+        <div ng-cloak ng-show="backendReady">
+            &nbsp;<span id="releaseLabel">{{mRelease}}</span> (Build 5-{{mBuild}})
+        </div>
+    </div>
+    <div class="span6">
+        <div class="pull-right">
+            <span id=currentUser></span> <a href="javascript:logout();">Logout</a>
+        </div>
+    </div>
+</div>
+<ul id="globalnav">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">About</a>
+        <!--
+        <li><a href="#" class="here">About</a>
+            <ul>
+                <li><a href="#">Vision</a></li>
+                <li><a href="#">Team</a></li>
+                <li><a href="#">Culture</a></li>
+                <li><a href="#">Careers</a></li>
+                <li><a href="#" class="here">History</a></li>
+                <li><a href="#">Sponsorship</a></li>
+            </ul>
+        </li>
+        -->
+    <li><a href="#" class="here">Manage</a></li>
+    <ul>
+        <!--
+        <li><a href="">My Folders</a></li>
+        -->
+        <li><a href="/mcrud/movie.html">Collections</a></li>
+        <li><a href="/html/calendar.html" class="here">Showtime</a></li>
+        <li><a id="allShowtime" href="javascript:void(0);" onclick="viewAllShowtime();">All Showtime</a></li>
+        <li><a href="/html/channel.html">Channels</a></li>
+    </ul>
+    <li><a href="#">Help</a></li>
+</ul>
+<div style="position:absolute;margin-top:100px;margin-left:250px;" ng-cloak ng-hide="true">
+    ****** If you are seeing this, please make sure you enable the support of "Mixed Content" ******
+</div>
+<div ng-show="error_message" ng-bind-template="&nbsp;{{error_message}}"></div>
+
+<div ng-cloak class="row-fluid">
+    <div class="span7">
+        <div style="position:relative;top:13px;margin-left:2px;margin-top:10px;margin-bottom:3px;width:70%;" ng-cloak ng-show="backendReady">
+            <input style="width:100%;" type="text" ng-model="query" ng-change="search()" class="input-large search-query" placeholder="Search for a movie to schedule">
+            <i ng-show="query.length > 0" ng-click="resetSearch()" class="icon-remove"></i>
+            <label style="font-size:10px;" ng-show="query.length > 0">&nbsp;<mark>Click the X to clear. Your movie(s), is filtered by the search term entered.</mark></label>
+        </div>
+    </div>
+    <div class="span5">
+        <div class="pull-right">
+            <a href="#" id="frequency" ng-show="backendReady" style="position:relative;top:13px;margin-top:10px;width:120px;background:#98969E;" class="btn btn-primary pull-right" ng-click="recurringItem()" ng-bind-template="{{recurringButtonTitle}}">...</a>
+        </div>
+    </div>
+</div>
+<div ng-bind-template=""><br><br><br>&nbsp;...</div>
+<!-- http://www.ilounge.com/index.php/articles/comments/scheduling-irregularly-recurring-events/ -->
+<div style="float:left;margin-left:10px;width:95%;" ng-show="repeatEvent" ng-cloak>
+    <form class="form-horizontal" action="#">
+        <h2>Recurring Events</h2>
+
+        <div class="row">
+            <div class="span5" ng-bind-template="{{calheader1}}">...</div>
+            <div class="span4">
+                <input name="repeated" value="One Time Event" type="radio" class="input" ng-model="item.frequency" style="width:60%;" ng-checked="!defaultChecked">
+            </div>
+        </div>
+        <div class="row">
+            <div class="span5" ng-bind-template="{{calheader2}}">...</div>
+            <div class="span4">
+                <input name="repeated" value="Daily Event" type="radio" class="input" ng-model="item.frequency" style="width:60%;">
+                <input ng-show="item.frequency=='Daily Event'" type="text" class="span1" value="6"> days
+            </div>
+        </div>
+        <div class="row">
+            <div class="span5" ng-bind-template="{{calheader3}}">...</div>
+            <div class="span4">
+                <input name="repeated" value="Weekly Event" type="radio" class="input" ng-model="item.frequency" style="width:60%;">
+                <input ng-show="item.frequency=='Weekly Event'" type="text" class="span1" value="3"> weeks
+            </div>
+        </div>
+        <div class="row">
+            <div class="span5" ng-bind-template="{{calheader4}}">...</div>
+            <div class="span4">
+                <input name="repeated" value="Monthly Event" type="radio" ng-model="item.frequency" style="width:60%;">
+                <input ng-show="item.frequency=='Monthly Event'" type="text" class="span1" value="11"> months
+            </div>
+
+            <div class="row span2">
+                <div class="span2">
+                    <a href="#" class="btn" ng-click="cancelRecurringItem()">{{cancelRecurringButtonTitle}}</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<script>
+    $("input[name='repeated']").bind("change", function() {
+        window.console && console.log("radio = '" + $("input[name='repeated']:checked").val() + "'");
+    });
+</script>
+<!--
+<div ng-app id='external-events' ng-init="pagedItems = [{title:'John', id:25}, {title:'Mary', id:26},{title:'Joe', id:27}]">
+-->
+<div ng-cloak id='external-events' ng-init="loadItemsForCalendar();">
+    <table style="width:100%;"><tr>
+        <td style="width:50%;"><h4 ng-click="loadItemsForCalendar();">My Collections</h4></td><td><h4 ng-click="loadItemsForCalendar(1);">Shared</h4></td>
+    </tr></table>
+
+    <label ng-show="pagedItemsForCalendar.length > 0">Drag and drop a movie in this container into the calendar at the left.</label>
+    <!-- TBD http://www.smartjava.org/examples/dnd/double.html -->
+    <ul ng-cloak ng-repeat="item in pagedItemsForCalendar[0] | filter:query1">
+        <li class='alert alert-info nomargin' style="background-color:#74aac5;color:white;" onMouseLeave="handleDraggable(this, '{{item.url}}');" onmouseover="handleDraggable(this, '{{item.url}}');" data-movieid="{{item.id}}" data-movieUrl="{{item.url}}">{{item.title}} ({{item.url}}) </li>
+    </ul>
+    <div style="position:absolute;top:238px;" id="loadingTable">
+        &nbsp;Loading table ...<p>
+    </div>
+    <div ng-show="!pagedItems">No movie in your collections.</div>
+    <!--
+    <div ng-show="pagedItems.length > 0">
+        <input type='checkbox' id='drop-remove' /> Remove After Drop
+    </div>
+    -->
+    <form id="calendarForm" style="display:none">
+        <input type=hidden name=id value=1><input>
+        <input type=hidden name=movieid value=2><input>
+        <input type=hidden name=movieUrl value=https://www.youtube.com/watch?v=C0DPdy98e4c><input>
+        <input type=hidden name=title value=test_title2><input>
+        <input type=hidden name=start value=2013-05-15><input>
+        <input type=hidden name=end value=2013-05-16><input>
+        <input type=hidden name=allDay value=false><input>
+        <input type=hidden name=color value=blue><input>
+    </form>
+</div>
+
+<div id='calendar'></div>
+<div style='clear:both'></div>
+</body>
+</html>

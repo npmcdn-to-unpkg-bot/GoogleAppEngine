@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_appspot_cloudserviceapi_Service" items="${services}" z="0L/70jLTuE5C91hJVi6NJ4W5vXc=">
+        <table:table data="${services}" id="l_com_appspot_cloudserviceapi_Service" path="/services" z="YZXvuLjPaTNkl27nf0cDaZU8mvI=">
+            <table:column id="c_com_appspot_cloudserviceapi_Service_service" property="service" z="yjTSOswiSjCqPcAjWOJrG9zpKb8="/>
+        </table:table>
+    </page:list>
+</div>

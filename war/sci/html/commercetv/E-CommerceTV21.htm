@@ -1,0 +1,30 @@
+<html>
+<header>
+	<!-- source: http://developer.apple.com/library/safari/#documentation/AudioVideo/Conceptual/Using_HTML5_Audio_Video/ControllingMediaWithJavaScript/ControllingMediaWithJavaScript.html -->
+</header>
+<body>
+	<video poster="http://skyvision.com/images/stop%20sign.jpg" 
+	src=
+"http://movies.apple.com/media/us/html5/showcase/2010/demos/apple-html5-demo-tron_legacy-us-20100601_848x352.mov"
+	width="100%" height="100%" autoplay autobuffer controls>
+		<h2>Sorry, your web browser does not support HTML5 video tag and/or does not play the video type involved. Please try to use HTML5 web browser like Google Chrome. You can download it from <a href="http://www.google.com/chrome">here</a>.</h2>
+	</video>
+
+	<script type="text/javascript">
+		var i = 0;
+		var sources = [
+		   	"http://media.w3.org/2010/05/sintel/trailer.mp4",
+		   	"http://videos-cdn.mozilla.net/serv/firefox4beta/ants/FlightDemo.mp4",
+			"http://video-js.zencoder.com/oceans-clip.mp4", 
+		    "http://www.archive.org/download/DivXSharkstaletralerDivxTest/SharkTale_512kb.mp4",
+			"http://movies.apple.com/media/us/html5/showcase/2010/demos/apple-html5-demo-tron_legacy-us-20100601_848x352.mov"
+		];
+		var videoElement = document.getElementsByTagName('video')[0];
+		videoElement.addEventListener('ended', function(){
+		   videoElement.src = sources[(++i)%sources.length];
+		   videoElement.load();
+		   videoElement.play();
+		}, false);
+	</script>
+</body>
+</html>

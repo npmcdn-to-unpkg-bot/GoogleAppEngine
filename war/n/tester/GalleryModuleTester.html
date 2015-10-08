@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html class="k-webkit k-webkit32">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular.min.js"></script>-->
+    <title>Gallery Module Tester</title>
+    <style>
+        body {
+            overflow: scroll;
+        }
+    </style>
+</head>
+<body style="">
+
+<div id="fade" style="display:none;witdh:60%;height:940px;" class="black_overlay">
+</div> <!-- /end .black_overlay -->
+
+<h1>Not A Final Software</h1>
+
+<div id="0" class="neo-asset gallery-plugin ng-scope ui-draggable ui-resizable ui-resizable-autohide"
+     style="background-color: white; opacity: 1; width: 115px; height: 48px;position: absolute; right: 900px;"
+     data-plugin-info="{&quot;date&quot;:&quot;2.2.2&quot;,&quot;version&quot;:&quot;1.0&quot;}"
+     data-ng-controller="GalleryPluginController" data-ng-click="select();">
+    <div class="neo-asset-inner">
+        <div class="galleria">
+            <div class="galleria-container notouch" style="width: 500px; height: 400px;">
+                <div class="galleria-stage">
+                    <div class="galleria-images"
+                         style="position: relative; top: 0px; left: 0px; width: 100%; height: 100%;">
+                        <div class="galleria-image"
+                             style="overflow: hidden; position: absolute; top: 0px; left: 0px; -webkit-transition: none; transition: none; z-index: 1; opacity: 1; width: 450px; height: 391px;">
+                            <div class="galleria-layer"
+                                 style="position: absolute; top: 0px; left: 0px; right: 0px; bottom: 0px; z-index: 2; display: none;"></div>
+                            <div class="galleria-frame"
+                                 style="overflow: hidden; position: absolute; top: 0px; left: 0px; z-index: 4; background-color: rgb(0, 0, 0); display: none; width: 450px; height: 391px; background-position: initial initial; background-repeat: initial initial;"></div>
+                            <img src="GalleryModuleTester/fire.jpg"
+                                 style="display: block; opacity: 1; min-width: 0px; min-height: 0px; max-width: none; max-height: none; -webkit-transform: translate3d(0, 0, 0); width: 587px; height: 391px; position: absolute; top: 31px; left: 0px;"
+                                 width="587" height="391"></div>
+                        <div class="galleria-image"
+                             style="overflow: hidden; position: absolute; top: 0px; left: 0px; opacity: 0; width: 450px; height: 391px; -webkit-transition: none; transition: none; z-index: 0;">
+                            <div class="galleria-layer"
+                                 style="position: absolute; top: 0px; left: 0px; right: 0px; bottom: 0px; z-index: 2; display: none;"></div>
+                            <div class="galleria-frame"
+                                 style="overflow: hidden; position: absolute; top: 0px; left: 0px; z-index: 4; background-color: rgb(0, 0, 0); display: none; background-position: initial initial; background-repeat: initial initial;"></div>
+                            <img src="GalleryModuleTester/fire.jpg"
+                                 style="display: block; opacity: 1; min-width: 0px; min-height: 0px; max-width: none; max-height: none; -webkit-transform: translate3d(0, 0, 0); width: 587px; height: 391px; position: absolute; top: 31px; left: 0px;"
+                                 width="587" height="391"></div>
+                    </div>
+                    <div class="galleria-loader" style="display: none; opacity: 0.4;"></div>
+                    <div class="galleria-counter"
+                         style="opacity: 0.4000000059604645; -webkit-transition: none; transition: none;"><span
+                            class="galleria-current">1</span> / <span class="galleria-total">2</span></div>
+                    <div class="galleria-image-nav">
+                        <div class="galleria-image-nav-right"
+                             style="right: 10px; -webkit-transition: none; transition: none;"></div>
+                        <div class="galleria-image-nav-left"
+                             style="left: 10px; -webkit-transition: none; transition: none;"></div>
+                    </div>
+                </div>
+                <div class="galleria-thumbnails-container">
+                    <div class="galleria-thumb-nav-left disabled"></div>
+                    <div class="galleria-thumbnails-list" style="overflow: hidden; position: relative;">
+                        <div class="galleria-thumbnails"
+                             style="overflow: hidden; position: relative; width: 175px; height: 42px; left: auto;">
+                            <div class="galleria-image active"
+                                 style="overflow: hidden; position: relative; visibility: visible; width: 60px; height: 40px;">
+                                <img src="GalleryModuleTester/fire.jpg"
+                                     style="display: block; opacity: 1; min-width: 0px; min-height: 0px; max-width: none; max-height: none; -webkit-transform: translate3d(0, 0, 0); width: 60px; height: 40px; position: absolute; top: 0px; left: 0px;"
+                                     width="60" height="40"></div>
+                            <div class="galleria-image"
+                                 style="overflow: hidden; position: relative; visibility: visible; width: 101px; height: 40px;">
+                                <img src="GalleryModuleTester/penguin-e1336375628766.jpg"
+                                     style="display: block; opacity: 0.6; min-width: 0px; min-height: 0px; max-width: none; max-height: none; -webkit-transform: translate3d(0, 0, 0); width: 101px; height: 40px; position: absolute; top: 0px; left: 0px;"
+                                     width="101" height="40"></div>
+                        </div>
+                    </div>
+                    <div class="galleria-thumb-nav-right disabled"></div>
+                </div>
+                <div class="galleria-info">
+                    <div class="galleria-info-text">
+                        <div class="galleria-info-title">My title</div>
+                        <div class="galleria-info-description" style="display: none;"></div>
+                    </div>
+                    <div class="galleria-info-link"></div>
+                    <div class="galleria-info-close"></div>
+                </div>
+                <div class="galleria-tooltip" style="opacity: 0;"></div>
+            </div>
+        </div>
+    </div>
+    <div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90; display: none;"></div>
+    <div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90; display: none;"></div>
+    <div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90; display: none;"></div>
+    <div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se"
+         style="z-index: 90; display: none;"></div>
+    <div class="ui-resizable-handle ui-resizable-n" style="z-index: 90; display: none;"></div>
+    <div class="ui-resizable-handle ui-resizable-w" style="z-index: 90; display: none;"></div>
+    <div class="ui-resizable-handle ui-resizable-s" style="z-index: 90; display: none;"></div>
+    <div class="ui-resizable-handle ui-resizable-e" style="z-index: 90; display: none;"></div>
+</div>
+<div id="1" class="neo-asset gallery-plugin ng-scope ui-draggable ui-resizable ui-resizable-autohide"
+     style="background-color: white; opacity: 1; width: 115px; height: 48px;position: absolute; right: 900px;top: 500px;"
+     data-plugin-info="{&quot;date&quot;:&quot;2.2.2&quot;,&quot;version&quot;:&quot;1.0&quot;}"
+     data-ng-controller="GalleryPluginController" data-ng-click="select();">
+    <div class="neo-asset-inner">
+        <div class="galleria">
+            <div class="galleria-container notouch" style="width: 500px; height: 400px;">
+                <div class="galleria-stage">
+                    <div class="galleria-images"
+                         style="position: relative; top: 0px; left: 0px; width: 100%; height: 100%;">
+                        <div class="galleria-image"
+                             style="overflow: hidden; position: absolute; top: 0px; left: 0px; -webkit-transition: none; transition: none; z-index: 0; opacity: 0; width: 450px; height: 391px;">
+                            <div class="galleria-layer"
+                                 style="position: absolute; top: 0px; left: 0px; right: 0px; bottom: 0px; z-index: 2; display: none;"></div>
+                            <div class="galleria-frame"
+                                 style="overflow: hidden; position: absolute; top: 0px; left: 0px; z-index: 4; background-color: rgb(0, 0, 0); display: none; background-position: initial initial; background-repeat: initial initial;"></div>
+                            <img src="GalleryModuleTester/dreams_of_a_fantasy_world_18.jpg"
+                                 style="display: block; opacity: 1; min-width: 0px; min-height: 0px; max-width: none; max-height: none; -webkit-transform: translate3d(0, 0, 0); width: 521px; height: 391px; position: absolute; top: 31px; left: 0px;"
+                                 width="521" height="391"></div>
+                        <div class="galleria-image"
+                             style="overflow: hidden; position: absolute; top: 0px; left: 0px; opacity: 1; width: 450px; height: 391px; -webkit-transition: none; transition: none; z-index: 1;">
+                            <div class="galleria-layer"
+                                 style="position: absolute; top: 0px; left: 0px; right: 0px; bottom: 0px; z-index: 2; display: none;"></div>
+                            <div class="galleria-frame"
+                                 style="overflow: hidden; position: absolute; top: 0px; left: 0px; z-index: 4; background-color: rgb(0, 0, 0); display: none; width: 450px; height: 391px; background-position: initial initial; background-repeat: initial initial;"></div>
+                            <img src="GalleryModuleTester/dreams_of_a_fantasy_world_18.jpg"
+                                 style="display: block; opacity: 1; min-width: 0px; min-height: 0px; max-width: none; max-height: none; -webkit-transform: translate3d(0, 0, 0); width: 521px; height: 391px; position: absolute; top: 31px; left: 0px;"
+                                 width="521" height="391"></div>
+                    </div>
+                    <div class="galleria-loader" style="display: none; opacity: 0.4;"></div>
+                    <div class="galleria-counter" style="opacity: 0; -webkit-transition: none; transition: none;"><span
+                            class="galleria-current">1</span> / <span class="galleria-total">3</span></div>
+                    <div class="galleria-image-nav">
+                        <div class="galleria-image-nav-right"
+                             style="right: -50px; -webkit-transition: none; transition: none;"></div>
+                        <div class="galleria-image-nav-left"
+                             style="left: -50px; -webkit-transition: none; transition: none;"></div>
+                    </div>
+                </div>
+                <div class="galleria-thumbnails-container">
+                    <div class="galleria-thumb-nav-left disabled"></div>
+                    <div class="galleria-thumbnails-list" style="overflow: hidden; position: relative;">
+                        <div class="galleria-thumbnails"
+                             style="overflow: hidden; position: relative; width: 251px; height: 42px; left: auto;">
+                            <div class="galleria-image active"
+                                 style="overflow: hidden; position: relative; visibility: visible; width: 53px; height: 40px;">
+                                <img src="GalleryModuleTester/dreams_of_a_fantasy_world_18.jpg"
+                                     style="display: block; opacity: 1; min-width: 0px; min-height: 0px; max-width: none; max-height: none; -webkit-transform: translate3d(0, 0, 0); width: 53px; height: 40px; position: absolute; top: 0px; left: 0px;"
+                                     width="53" height="40"></div>
+                            <div class="galleria-image"
+                                 style="overflow: hidden; position: relative; visibility: visible; width: 101px; height: 40px;">
+                                <img src="GalleryModuleTester/penguin-e1336375628766.jpg"
+                                     style="display: block; opacity: 0.6; min-width: 0px; min-height: 0px; max-width: none; max-height: none; -webkit-transform: translate3d(0, 0, 0); width: 101px; height: 40px; position: absolute; top: 0px; left: 0px;"
+                                     width="101" height="40"></div>
+                            <div class="galleria-image"
+                                 style="overflow: hidden; position: relative; visibility: visible; width: 76px; height: 40px;">
+                                <img src="GalleryModuleTester/GoogleAppsNoFree.jpg"
+                                     style="display: block; opacity: 0.6; min-width: 0px; min-height: 0px; max-width: none; max-height: none; -webkit-transform: translate3d(0, 0, 0); width: 76px; height: 40px; position: absolute; top: 0px; left: 0px;"
+                                     width="76" height="40"></div>
+                        </div>
+                    </div>
+                    <div class="galleria-thumb-nav-right disabled"></div>
+                </div>
+                <div class="galleria-info">
+                    <div class="galleria-info-text">
+                        <div class="galleria-info-title">My title</div>
+                        <div class="galleria-info-description" style="display: none;"></div>
+                    </div>
+                    <div class="galleria-info-link"></div>
+                    <div class="galleria-info-close"></div>
+                </div>
+                <div class="galleria-tooltip" style="opacity: 0;"></div>
+            </div>
+        </div>
+    </div>
+    <div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90; display: none;"></div>
+    <div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90; display: none;"></div>
+    <div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90; display: none;"></div>
+    <div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se"
+         style="z-index: 90; display: none;"></div>
+    <div class="ui-resizable-handle ui-resizable-n" style="z-index: 90; display: none;"></div>
+    <div class="ui-resizable-handle ui-resizable-w" style="z-index: 90; display: none;"></div>
+    <div class="ui-resizable-handle ui-resizable-s" style="z-index: 90; display: none;"></div>
+    <div class="ui-resizable-handle ui-resizable-e" style="z-index: 90; display: none;"></div>
+</div>
+
+
+<!--/END gallery-plugin-->
+
+<div class="white_content" onclick="GalleryModule.toggleLightbox()" id="asset-manager" style="display:block;position: absolute;top:0;right:0;width:300px;background-color:#eee">
+    <h4>Manager
+        <br>(for scheduling into gallery/channel)</h4>
+    <img id="image_1" src="GalleryModuleTester/GoogleAppsNoFree.jpg" width="250" height="150" class="selected">
+    <br>
+    <img id="image_2" src="GalleryModuleTester/fire.jpg" width="250" height="150" class="selected">
+    <br>
+    <img id="image_3" src="GalleryModuleTester/penguin-e1336375628766.jpg" width="250" height="150" class="selected">
+    <br>
+
+    <img id="image_4" src="GalleryModuleTester/dreams_of_a_fantasy_world_18.jpg" width="250" height="150"
+         class="selected">
+    <br></div>
+
+
+<!-- /END #asset-manager-->
+<div id="page-includes" style="display: none;">
+<div id="lib-includes">
+    <script src="GalleryModuleTester/cb=gapi.loaded_1" async=""></script>
+    <script src="GalleryModuleTester/cb=gapi.loaded_0" async=""></script>
+    <script id="facebook-jssdk" async="" src="GalleryModuleTester/all.js"></script>
+    <script src="GalleryModuleTester/jquery.min.js"></script>
+    <script src="GalleryModuleTester/angular.min.js"></script>
+    <script src="GalleryModuleTester/kendo.all.min.js"></script>
+    <script src="GalleryModuleTester/angular-kendo.min.js"></script>
+    <script src="GalleryModuleTester/jquery-ui.min.js"></script>
+    <script src="GalleryModuleTester/util.js"></script>
+    <script src="GalleryModuleTester/webcomApp.js"></script>
+    <script src="GalleryModuleTester/bootstrap.min.js"></script>
+    <link href="GalleryModuleTester/kendo.common.min.css" rel="stylesheet" type="text/css">
+    <link href="GalleryModuleTester/kendo.silver.min.css" rel="stylesheet" type="text/css">
+    <link href="GalleryModuleTester/jquery-ui.css" rel="stylesheet" type="text/css">
+    <link href="GalleryModuleTester/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="GalleryModuleTester/help-overlay.css" rel="stylesheet" type="text/css">
+</div>
+<div id="module-includes">
+<div id="html-partials" style="display:none">
+
+<!--?php require_once( 'common/page-includes.builder.php')?-->
+
+
+<meta charset="utf-8">
+<title>Help Module Tester</title>
+<link href="GalleryModuleTester/help-overlay(1).css" rel="stylesheet" type="text/css">
+<script src="GalleryModuleTester/jquery.min.js">
+</script>
+
+
+<div id="helpoverlay" style=" width: 100%;">
+<div class="help-main-container">
+<img src="GalleryModuleTester/Screenshot-1.png" style=" width: 100%;height:100%;">
+
+<div id="slide1">
+
+    <div class="overlay-container" style="width: 100%;">
+        <div class="top-container">
+            <div class="container top-header-container">Congratulations, You're on your way!</div>
+            <div class="container left-container">Quick Tutorial -- Then customise your Design</div>
+            <div class="container right-container">Customize Now -- Skip Tutorial</div>
+
+            <br>
+            <img id="loadPage1" class="cursorpointer" style="position: absolute;	right: 665px; top: 224px;"
+                 src="GalleryModuleTester/tutorial.png">
+            <img id="loadPage1" style="position: absolute;	right: 213px; top: 224px;"
+                 src="GalleryModuleTester/customize.png">
+
+
+        </div>
+    </div>
+</div>
+
+<div id="slide2" style="display: none;">
+    <div class="overlay-container" style="width: 94%;">
+        <div class="container right-container container-content">Content Manager -- Select a content type to add to your
+            website
+        </div>
+    </div>
+    <br>
+    <img id="loadPage2" class="cursorpointer" style="position: absolute;
+				right: 145px;
+				top: 99px; " src="GalleryModuleTester/next.png">
+
+
+</div>
+<div id="slide3" style="display: none;">
+    <div class="overlay-container" style="width: 76%">
+        <div class="container right-container container-content">Drag &amp; drop your content such as text, images,
+            forms, or videos onto the
+            canvas
+        </div>
+        <br>
+        <img id="loadPage3" class="cursorpointer" style="   position: absolute;
+						right: 53px;
+						top: 123px;" src="GalleryModuleTester/next.png">
+    </div>
+
+
+</div>
+
+
+<div id="slide4" style="display: none;">
+
+    <div class="overlay-container-top-slide4">
+        <div class="container right-container container-content-slide4 content-transparent">Select a content on the <br>
+            canvas by clicking on it<br> once
+
+        </div>
+        <br><img id="loadPage4" class="cursorpointer" style=" position: absolute;
+                                                 right: 74px;
+                                     top: 237px; " src="GalleryModuleTester/next.png">
+
+        <div class="image-box-properties">
+
+        </div>
+    </div>
+
+    <div class="overlay-container-left-slide4">
+        <div class="image-box-properties">
+
+        </div>
+    </div>
+
+    <div class="overlay-container-bottom-slide4">
+        <div class="image-box-properties">
+
+        </div>
+    </div>
+    <div class="overlay-container-right-slide4">
+        <div class="image-box-properties">
+
+        </div>
+    </div>
+    <div class="overlay-containerr-right-center-slide4">
+
+        <div class="image-box-properties">
+
+        </div>
+    </div>
+</div>
+<div id="slide5" style="display: none;">
+    <div class="overlay-container-top-slide5">
+        <div class="container right-container container-content-slide5 content-transparent">Edit the container with
+            <br>the Box properties panel
+            <br>
+            <img id="loadPage5" class="cursorpointer" style="   position: absolute;
+                    right: 168px;
+                top: 70px; " src="GalleryModuleTester/next.png">
+        </div>
+        <div class="image-box-properties"></div>
+    </div>
+    <div class="overlay-container-left-slide5">
+        <div class="image-box-properties"></div>
+    </div>
+    <div class="overlay-container-bottom-slide5">
+        <div class="image-box-properties"></div>
+    </div>
+    <div class="overlay-container-right-slide5">
+        <div class="image-box-properties"></div>
+    </div>
+    <div class="overlay-containerr-right-center-slide5">
+        <div class="image-box-properties"></div>
+    </div>
+
+
+</div>
+<div id="slide6" style="display: none;">
+    <div class="overlay-container-top-slide6">
+        <div class="container left-container container-content">The Edit Text selection allows you to make changes to
+            the content within the box
+        </div>
+        <div class="container right-container container-content-slide6 content-transparent">Clicking the Edit selection
+            allows you to make changes to the content within the box
+        </div>
+
+        <br><img id="loadPage6" class="cursorpointer" style="  position: absolute;
+                                right: 149px;
+                         top: 271px; " src="GalleryModuleTester/next.png">
+
+        <div class="image-box-properties">
+
+        </div>
+
+
+        <div class="overlay-container-left-slide6">
+            <div class="image-box-properties">
+
+            </div>
+        </div>
+
+        <div class="overlay-container-bottom-slide6">
+            <div class="image-box-properties">
+
+            </div>
+        </div>
+        <div class="overlay-container-right-slide6">
+            <div class="image-box-properties">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="slide7" style="display: none;">
+    <div class="overlay-container-top-slide7"></div>
+    <div class="image-box-properties"></div>
+
+    <div class="overlay-container-right-slide7">
+        <div class="container left-container container-content-slide7">Manage Pages-- Add a page, remove a page, or
+            re-order your page
+        </div>
+        <div class="container left-container container-content-stripetop"></div>
+        <div class="container left-container container-content-stripebottom"></div>
+        <div class="image-box-properties"></div>
+        <br>
+        <img id="loadPage7" class="cursorpointer" style="  left: 351px;
+                         position: absolute;
+                        top: 391px; " src="GalleryModuleTester/next.png">
+    </div>
+
+</div>
+
+<div id="slide8" style="display: none;">
+    <div class="overlay-container-right-slide8">
+        <div class="image-box-properties"></div>
+    </div>
+    <div class="overlay-container-left-slide8">
+        <div class="image-box-properties"></div>
+    </div>
+    <div class="overlay-container-bottom-slide8">
+        <div class="container right-container container-content-slide8 content-transparent">Undo/redo changes or go into
+            Settings, to adjust background display or
+            layout and page settings
+        </div>
+    </div>
+    <br>
+    <img id="loadPage8" class="cursorpointer" style="position: absolute;
+					right: -12px;
+				top: 220px;" src="GalleryModuleTester/next.png">
+
+    <div class="image-box-properties"></div>
+</div>
+
+
+<div id="slide9" style="display: none;">
+
+    <div class="overlay-container-left-slide9">
+        <div class="image-box-properties"></div>
+    </div>
+    <div class="overlay-container-bottom-slide9">
+        <div class="container-content-slide9-1 ">Publish your site</div>
+        <div class="container-content-slide9-2 ">Preview your site in a Browser</div>
+        <div class="container-content-slide9-3 ">Search Help topics</div>
+    </div>
+    <br>
+    &lt;<img id="loadPage9" class="cursorpointer" style="     position: absolute;
+                     right: -12px;
+                    top: 220px;" src="GalleryModuleTester/next.png">
+
+    <div class="image-box-properties"></div>
+</div>
+
+<div id="slide10" style="display: none;">
+    <div class="overlay-container-right-slide10">
+        <div class="image-box-properties"></div>
+    </div>
+    <div class="overlay-container-bottom-slide10">
+        <div class="container left-container container-content-slide10 content-transparent">The Menu button to access
+            the existing sites, create new sites and to
+            get help with your website
+        </div>
+    </div>
+    <br>
+    <img id="loadPage10" class="cursorpointer" style="  left: 252px;
+			position: absolute;
+			top: 199px;" src="GalleryModuleTester/end.png">
+
+    <div class="image-box-properties"></div>
+</div>
+
+</div>
+</div>
+<!--?php require_once( 'common/page-includes.builder.php')?-->
+
+<script type="text/javascript">
+    $(document).ready(function (e) {
+        var countr = 1;
+
+        for (var i = 1; i < 12; i++) {
+            $('#loadPage' + i).click(function () {
+                loadScreen();
+            });
+        }
+
+
+        function loadScreen() {
+            for (var i = 1; i < 12; i++) {
+                $('#slide' + i).css("display", "none");
+            }
+            $('#slide' + countr).css("display", "block");
+            countr++;
+        }
+
+        for (var i = 2; i < 12; i++) {
+            $('#slide' + i).css("display", "none");
+        }
+    });
+
+    /*jQuery(function(){
+     jQuery('#loadPage').click(function(){
+     jQuery('#slide4').load('slide5-new.html')
+
+     );
+     });
+     })*/
+</script>
+
+
+<meta charset="utf-8">
+<title>Help Module Tester</title>
+<link href="GalleryModuleTester/help-overlay(1).css" rel="stylesheet" type="text/css">
+
+
+<!--?php require_once( 'common/page-includes.builder.php')?-->
+
+
+<meta charset="utf-8">
+<title>Help Module Tester</title>
+<link href="GalleryModuleTester/help-overlay(1).css" rel="stylesheet" type="text/css">
+
+
+<div id="helpoverlay-module-shell" style="display:none;" class="ng-scope">
+    <div class="help-main-container">
+        <img src="GalleryModuleTester/Screenshot-1.png">
+
+        <div class="overlay-container-top-slide6">
+            <div class="container left-container container-content">The Edit Text selection allows you to make changes
+                to the content within
+                the box
+            </div>
+            <div class="container right-container container-content-slide6 content-transparent">Clicking the Edit
+                selection allows you to make changes to the content
+                within the box
+            </div>
+        </div>
+        <br>
+        <a href=""><img style="  position: absolute;
+                                right: 149px;
+                         top: 271px; " src="GalleryModuleTester/next.png"></a>
+
+        <div class="image-box-properties"></div>
+    </div>
+    <div class="overlay-container-left-slide6">
+        <div class="image-box-properties"></div>
+    </div>
+    <div class="overlay-container-bottom-slide6">
+        <div class="image-box-properties"></div>
+    </div>
+    <div class="overlay-container-right-slide6">
+        <div class="image-box-properties"></div>
+    </div>
+</div>
+</div>
+<!--?php require_once( 'common/page-includes.builder.php')?-->
+
+
+<meta charset="utf-8">
+<title>Help Module Tester</title>
+<link href="GalleryModuleTester/help-overlay(1).css" rel="stylesheet" type="text/css">
+
+
+<div id="helpoverlay-module-shell" style="display:none;">
+    <div class="help-main-container">
+        <img src="GalleryModuleTester/Screenshot-1.png">
+
+        <div class="overlay-container-right-slide8">
+            <div class="image-box-properties"></div>
+        </div>
+        <div class="overlay-container-left-slide8">
+            <div class="image-box-properties"></div>
+        </div>
+        <div class="overlay-container-bottom-slide8">
+            <div class="container right-container container-content-slide8 content-transparent">Undo/redo changes or go
+                into Settings, to adjust background display or
+                layout and page settings
+            </div>
+        </div>
+        <br>
+        <a href=""><img style="     position: absolute;
+    right: -12px;
+    top: 220px;" src="GalleryModuleTester/next.png"></a>
+
+        <div class="image-box-properties"></div>
+    </div>
+</div>
+</div>
+<!--?php require_once( 'common/page-includes.builder.php')?-->
+
+
+<meta charset="utf-8">
+<title>Help Module Tester</title>
+<link href="GalleryModuleTester/help-overlay(1).css" rel="stylesheet" type="text/css">
+
+
+<div id="helpoverlay-module-shell" style="display:none;">
+    <div class="help-main-container">
+        <img src="GalleryModuleTester/Screenshot-1.png">
+
+        <div class="overlay-container-right-slide11">
+            <div class="image-box-properties"></div>
+        </div>
+        <div class="overlay-container-bottom-slide11">
+            <div class="container left-container container-content-slide11 content-transparent">The Menu button to
+                access the existing sites, create new sites and to
+                get help with your website
+            </div>
+        </div>
+        <br>
+        <a href=""><img style="  left: 252px;
+    position: absolute;
+    top: 199px;" src="GalleryModuleTester/end.png"></a>
+
+        <div class="image-box-properties"></div>
+    </div>
+</div>
+</div>
+
+
+
+<link href="GalleryModuleTester/like.css" rel="stylesheet" type="text/css">
+<link href="GalleryModuleTester/box.css" rel="stylesheet" type="text/css">
+<link href="GalleryModuleTester/help-overlay.css" rel="stylesheet" type="text/css">
+<link href="GalleryModuleTester/common.css" rel="stylesheet" type="text/css">
+<link href="GalleryModuleTester/googleplus.css" rel="stylesheet" type="text/css">
+<link href="GalleryModuleTester/gallery.css" rel="stylesheet" type="text/css">
+<link href="GalleryModuleTester/media.css" rel="stylesheet" type="text/css">
+<script src="GalleryModuleTester/LikeModule.js"></script>
+<script src="GalleryModuleTester/GooglePlusModule.js"></script>
+<script src="GalleryModuleTester/SocialModule.js"></script>
+<script src="GalleryModuleTester/BoxModule.js"></script>
+<script src="GalleryModuleTester/HelpOverlayModule.js"></script>
+<script src="GalleryModuleTester/gallery-image-directive.js"></script>
+<script src="GalleryModuleTester/GalleryModule.js"></script>
+<script src="GalleryModuleTester/MediaModule.js"></script>
+<div id="plugin-includes">
+    <div id="plugins-html-partials" style="display:none">
+        <div class="like-plugin-inner">
+            <div class="fb-like fb_iframe_widget" data-href="https://developers.facebook.com/docs/plugins/"
+                 data-width="100" data-layout="standard" data-action="like" data-show-faces="true"
+                 fb-xfbml-state="rendered"
+                 fb-iframe-plugin-query="action=like&amp;app_id=&amp;href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;layout=standard&amp;locale=en_US&amp;sdk=joey&amp;show_faces=true&amp;width=100">
+                <span style="vertical-align: bottom; width: 225px; height: 20px;"><iframe name="f36185dba4"
+                                                                                          width="100px" height="1000px"
+                                                                                          frameborder="0"
+                                                                                          allowtransparency="true"
+                                                                                          scrolling="no"
+                                                                                          title="fb:like Facebook Social Plugin"
+                                                                                          src="GalleryModuleTester/like.html"
+                                                                                          class=""
+                                                                                          style="border: none; visibility: visible; width: 225px; height: 20px;"></iframe></span>
+            </div>
+            <script type="text/javascript">(function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s);
+                js.id = id;
+                js.async = true;
+                js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+            </script>
+        </div>
+        <script type="text/javascript" src="GalleryModuleTester/plusone.js" gapi_processed="true">
+            {
+                "parsetags"
+            :
+                "explicit"
+            }
+        </script>
+        <div class="googleplus-plugin-inner">
+            <div id="plusone"
+                 style="text-indent: 0px; margin: 0px; padding: 0px; background-color: transparent; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 450px; height: 24px; background-position: initial initial; background-repeat: initial initial;">
+                <iframe frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no"
+                        style="position: static; top: 0px; width: 450px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 24px;"
+                        tabindex="0" vspace="0" width="100%" id="I0_1392932671409" name="I0_1392932671409"
+                        src="GalleryModuleTester/fastbutton.html" data-gapiattached="true" title="+1"></iframe>
+            </div>
+            <script type="text/javascript">
+                gapi.plusone.render
+                (
+                        'plusone',
+                        {
+                            "size": "standard",
+                            "annotation": "inline"
+                        }
+                );
+            </script>
+
+        </div>
+        <script>
+
+        </script>
+        <div class="social-plugin-inner">
+            <a href="javascript:void(0);" class="img-url" target="_blank"><img class="link-icon" alt="social"></a>
+        </div>
+        <div class="box-plugin-inner">
+            <span class="box-text">Default Text</span>
+        </div>
+        <!--<script src="../../../../assets/libs/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+        <link href="../../../../assets/libs/bootstrap/3.1.0/styles/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <div class="helpoverlay-plugin-inner">
+        <div >Help</div>
+        </div>-->
+        <div class="gallery-plugin-inner"
+             data-plugin-info="{&quot;date&quot;:&quot;2.2.2&quot;,&quot;version&quot;:&quot;1.0&quot;}">
+            <div class="galleria">
+                <div class="galleria-container notouch" style="width: 500px; height: 400px;">
+                    <div class="galleria-stage">
+                        <div class="galleria-images"
+                             style="position: relative; top: 0px; left: 0px; width: 100%; height: 100%;">
+                            <div class="galleria-image"
+                                 style="overflow: hidden; position: absolute; top: 0px; left: 0px;">
+                                <div class="galleria-layer"
+                                     style="position: absolute; top: 0px; left: 0px; right: 0px; bottom: 0px; z-index: 2;"></div>
+                                <div class="galleria-frame"
+                                     style="overflow: hidden; position: absolute; top: 0px; left: 0px; z-index: 4; background-color: rgb(0, 0, 0); display: none; width: 450px; height: 391px; background-position: initial initial; background-repeat: initial initial;"></div>
+                            </div>
+                            <div class="galleria-image"
+                                 style="overflow: hidden; position: absolute; top: 0px; left: 0px;">
+                                <div class="galleria-layer"
+                                     style="position: absolute; top: 0px; left: 0px; right: 0px; bottom: 0px; z-index: 2;"></div>
+                                <div class="galleria-frame"
+                                     style="overflow: hidden; position: absolute; top: 0px; left: 0px; z-index: 4; background-color: rgb(0, 0, 0); display: none; background-position: initial initial; background-repeat: initial initial;"></div>
+                            </div>
+                        </div>
+                        <div class="galleria-loader"></div>
+                        <div class="galleria-counter" style="opacity: 0;"><span class="galleria-current">–</span> /
+                            <span class="galleria-total"></span></div>
+                        <div class="galleria-image-nav">
+                            <div class="galleria-image-nav-right"></div>
+                            <div class="galleria-image-nav-left"></div>
+                        </div>
+                    </div>
+                    <div class="galleria-thumbnails-container">
+                        <div class="galleria-thumb-nav-left disabled"></div>
+                        <div class="galleria-thumbnails-list" style="overflow: hidden; position: relative;">
+                            <div class="galleria-thumbnails"
+                                 style="overflow: hidden; position: relative; width: 0px; height: 0px;"></div>
+                        </div>
+                        <div class="galleria-thumb-nav-right disabled"></div>
+                    </div>
+                    <div class="galleria-info">
+                        <div class="galleria-info-text">
+                            <div class="galleria-info-title"></div>
+                            <div class="galleria-info-description"></div>
+                        </div>
+                    </div>
+                    <div class="galleria-tooltip" style="opacity: 0;"></div>
+                </div>
+            </div>
+        </div>
+        <div class="media-plugin-inner">
+            <div class="video" style="width:200px;height:300px">
+            </div>
+        </div>
+    </div>
+    <link href="GalleryModuleTester/like(1).css" rel="stylesheet" type="text/css">
+    <link href="GalleryModuleTester/googleplus(1).css" rel="stylesheet" type="text/css">
+    <link href="GalleryModuleTester/social.css" rel="stylesheet" type="text/css">
+    <link href="GalleryModuleTester/box(1).css" rel="stylesheet" type="text/css">
+    <link href="GalleryModuleTester/galleria.classic.css" rel="stylesheet" type="text/css">
+    <link href="GalleryModuleTester/gallery(1).css" rel="stylesheet" type="text/css">
+    <link href="GalleryModuleTester/jquery-ui.min.css" rel="stylesheet" type="text/css">
+    <link href="GalleryModuleTester/common(1).css" rel="stylesheet" type="text/css">
+    <link href="GalleryModuleTester/media(1).css" rel="stylesheet" type="text/css">
+    <script src="GalleryModuleTester/LikePlugin.js"></script>
+    <script src="GalleryModuleTester/GooglePlusPluging.js"></script>
+    <script src="GalleryModuleTester/SocialPlugin.js"></script>
+    <script src="GalleryModuleTester/BoxPlugin.js"></script>
+    <script src="GalleryModuleTester/HelpOverlayPlugin.js"></script>
+    <script src="GalleryModuleTester/GalleryPlugin.js"></script>
+    <script src="GalleryModuleTester/angular-dragdrop.min.js"></script>
+    <script src="GalleryModuleTester/test.js"></script>
+    <script src="GalleryModuleTester/galleria-1.3.5.min.js"></script>
+    <script src="GalleryModuleTester/galleria.classic.min.js"></script>
+    <script src="GalleryModuleTester/jquery-ui.min(1).js"></script>
+    <script src="GalleryModuleTester/jquery-ui-1.10.2.custom.min.js"></script>
+    <script src="GalleryModuleTester/MediaPlugin.js"></script>
+</div>
+<iframe name="oauth2relay757866520" id="oauth2relay757866520" src="GalleryModuleTester/postmessageRelay.html"
+        tabindex="-1" style="width: 1px; height: 1px; position: absolute; top: -100px;"></iframe>
+<script>webcomApp.enableAllPlugins();</script>
+<div id="modules">
+
+<div class="white_content" id="gallery-module-shell" class="module-shell ng-scope" data-ng-controller="GalleryModule.ngController"
+     style="display: block;">
+    <div class="webcom-property-panel-directive"></div>
+    <!-- property slides -->
+    <div type="text/webcom-template" id="box-tab-1">
+        <div class="gallery-properties-box">
+            <label>Channel 1</label>
+            <button class="edit-box btn btn-default">Schedule</button>
+        </div>
+        <div class="properties-images-grid">
+            <!--<div>-->
+            <!--<img onclick="javascript:$(this).hide();$('#addimage2').show();"-->
+            <!--data-ng-click="setState('normal');" id="addimage1"-->
+            <!--style="width: auto; height: 55px; display: none;"-->
+            <!--src="GalleryModuleTester/normal-gallery-prop.png">-->
+            <!--<img onclick="javascript:$(this).hide();$('#addimage3').show();"-->
+            <!--data-ng-click="setState('hover');" id="addimage2" style="width: auto; height: 55px;"-->
+            <!--src="GalleryModuleTester/hover-gallery-prop.png">-->
+            <!--<img onclick="javascript:$(this).hide();$('#addimage1').show();"-->
+            <!--data-ng-click="setState('done');" id="addimage3"-->
+            <!--style="display:none;width:auto;height:55px;" src="GalleryModuleTester/done-gallery-prop.png">-->
+            <!--</div>-->
+            <div>
+                <img
+                        data-ng-click="setState('normal',true)" id="addimage1"
+                        style="width: auto; height: 55px;"
+                        src="../app/modules/gallery/view/images/normal-gallery-prop.png">
+                <img
+                        data-ng-click="setState('hover',true)" id="addimage2" style="width: auto; height: 55px;"
+                        src="../app/modules/gallery/view/images/hover-gallery-prop.png">
+                <img onclick="javascript:$(this).hide();$('#addimage1').show();"
+                     data-ng-click="setState('done',true)" id="addimage3"
+                     style="width:auto;height:55px;"
+                     src="../app/modules/gallery/view/images/done-gallery-prop.png">
+            </div>
+
+            <ul id="sortable" data-ng-model="sortable" class="ng-pristine ng-valid ui-sortable">
+                <div class="img-wrap"><span class="close">×</span>
+                    <li id="image_4"><img src="GalleryModuleTester/dreams_of_a_fantasy_world_18.jpg"></li>
+                </div>
+                <div class="img-wrap"><span class="close">×</span>
+                    <li id="image_3"><img src="GalleryModuleTester/penguin-e1336375628766.jpg"></li>
+                </div>
+                <div class="img-wrap"><span class="close">×</span>
+                    <li id="image_1"><img src="GalleryModuleTester/GoogleAppsNoFree.jpg"></li>
+                </div>
+            </ul>
+        </div>
+    </div>
+</div>
+</div>
+<div id="fb-root" class=" fb_reset">
+    <div style="position: absolute; top: -10000px; height: 0px; width: 0px;">
+        <div></div>
+    </div>
+    <div style="position: absolute; top: -10000px; height: 0px; width: 0px;">
+        <div>
+            <iframe name="fb_xdm_frame_https" frameborder="0" allowtransparency="true" scrolling="no"
+                    id="fb_xdm_frame_https" aria-hidden="true" title="Facebook Cross Domain Communication Frame"
+                    tab-index="-1" src="GalleryModuleTester/xd_arbiter.html" style="border: none;"></iframe>
+        </div>
+    </div>
+</div>
+<div class="k-list-container k-popup k-group k-reset" data-role="popup"
+     style="position: absolute; height: auto; display: none;">
+    <ul unselectable="on" class="k-list k-reset" tabindex="-1" role="listbox" aria-hidden="true" aria-live="off"
+        style="overflow: auto;">
+        <li tabindex="-1" role="option" unselectable="on" class="k-item k-state-selected k-state-focused"></li>
+        <li tabindex="-1" role="option" unselectable="on" class="k-item">Light</li>
+        <li tabindex="-1" role="option" unselectable="on" class="k-item">Dark</li>
+    </ul>
+</div>
+<div class="k-list-container k-popup k-group k-reset" data-role="popup"
+     style="position: absolute; height: auto; display: none;">
+    <ul unselectable="on" class="k-list k-reset" tabindex="-1" role="listbox" aria-hidden="true" aria-live="off"
+        style="overflow: auto;">
+        <li tabindex="-1" role="option" unselectable="on" class="k-item k-state-selected k-state-focused"></li>
+        <li tabindex="-1" role="option" unselectable="on" class="k-item">Standard</li>
+        <li tabindex="-1" role="option" unselectable="on" class="k-item">Box Count</li>
+    </ul>
+</div>
+<div class="k-list-container k-popup k-group k-reset" data-role="popup"
+     style="position: absolute; height: auto; display: none;">
+    <ul unselectable="on" class="k-list k-reset" tabindex="-1" role="listbox" aria-hidden="true" aria-live="off"
+        style="overflow: auto;">
+        <li tabindex="-1" role="option" unselectable="on" class="k-item k-state-selected k-state-focused"></li>
+        <li tabindex="-1" role="option" unselectable="on" class="k-item">Like</li>
+        <li tabindex="-1" role="option" unselectable="on" class="k-item">Recommend</li>
+    </ul>
+</div>
+<div class="k-list-container k-popup k-group k-reset" data-role="popup"
+     style="position: absolute; height: auto; display: none;">
+    <ul unselectable="on" class="k-list k-reset" tabindex="-1" role="listbox" aria-hidden="true" aria-live="off"
+        style="overflow: auto;">
+        <li tabindex="-1" role="option" unselectable="on" class="k-item k-state-selected k-state-focused"></li>
+        <li tabindex="-1" role="option" unselectable="on" class="k-item">Small</li>
+        <li tabindex="-1" role="option" unselectable="on" class="k-item">Medium</li>
+        <li tabindex="-1" role="option" unselectable="on" class="k-item">Standard</li>
+        <li tabindex="-1" role="option" unselectable="on" class="k-item">Tall</li>
+    </ul>
+</div>
+<div class="k-list-container k-popup k-group k-reset" data-role="popup"
+     style="position: absolute; height: auto; display: none;">
+    <ul unselectable="on" class="k-list k-reset" tabindex="-1" role="listbox" aria-hidden="true" aria-live="off"
+        style="overflow: auto;">
+        <li tabindex="-1" role="option" unselectable="on" class="k-item k-state-selected k-state-focused"></li>
+        <li tabindex="-1" role="option" unselectable="on" class="k-item">Inline</li>
+        <li tabindex="-1" role="option" unselectable="on" class="k-item">Bubble</li>
+        <li tabindex="-1" role="option" unselectable="on" class="k-item">None</li>
+    </ul>
+</div>
+
+
+</body>
+</html>

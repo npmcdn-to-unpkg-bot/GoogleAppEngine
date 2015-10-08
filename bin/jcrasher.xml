@@ -1,0 +1,87 @@
+<!--
+jcrasher.xml
+Copyright 2004-2007 Christoph Csallner and Yannis Smaragdakis.
+
+====================================================================
+Testee Ant build file, located in testee root directory
+Compiles testee, calls use-jcrasher.xml to generate, compile, run, and archive tests.
+Adapt properties below to your project and environment settings.
+
+Requires the following:
+Ant: http://ant.apache.org/
+JUnit: http://junit.org/
+====================================================================
+
+Author: csallner@gatech.edu (Christoph Csallner)
+-->
+
+<project name="Run JCrasher on testees" default="jcrasher" basedir="..">
+  <description>
+	Build and run JCrasher on testee.
+</description>
+	
+	
+	<!-- ********************************************* -->
+	<!-- <APP SPECIFIC SETUP> -->
+	<property name="lib.dir" location="${basedir}/war/WEB-INF/lib" />
+	<path id="libpath">
+		<fileset dir="${lib.dir}" includes="*.jar" />
+		<fileset dir="${basedir}/lib/standalone" includes="servlet-api-3.0.jar" />
+	</path>
+	
+	<!-- <ADAPT TO YOUR SETUP> -->
+
+	<property name="classpath" refid="libpath" />		<!--Libraries required by the testee-->
+	<property name="src" value="src"/>			<!--no backslashes as used as pattern-->
+	<property name="bin" value="jcrasher-bin"/>	
+	<property name="src.generated.tests" value="jcrasher-generated-tests-src"/> 
+	<property name="bin.generated.tests" value="jcrasher-generated-tests-bin"/>
+	<property name="testee.list.filename" value="${basedir}/bin/jcrasher-testees.txt"/>
+	
+	<property name="jcrasher.params" value="--depth=2"/>
+	<property name="jcrasher.version" value="2.1.3"/>
+	<property name="jcrasher.jar" value="${basedir}/bin/lib/jcrasher/jcrasher-${jcrasher.version}.jar"/>
+	
+	<property name="junit.filtering.params" value=""/>
+	<property name="junit.jar" value="${basedir}/bin/lib/jcrasher/junit-3.8.2.jar"/>
+	<!--
+	<property name="junit.jar" value="${basedir}/war/WEB-INF/lib/junit-4.8.2.jar"/> 
+	-->
+		
+	<property name="jvm.args.javac.default" value="-J-Xms128m -J-Xmx3024m"/>	<!-- -Xmx1536m -->
+	<property name="jvm.args.java.default" value="-Xms128m -Xmx3024m"/>	<!-- -Xmx1536m -->
+	<property name="jvm.args.jcrasher" value="${jvm.args.java.default}"/>
+	<property name="jvm.args.junit" value="${jvm.args.java.default}"/>
+
+	<!-- </ADAPT TO YOUR SETUP> -->
+	
+	<!-- ********************************************* -->
+	
+	
+	
+	<!--jcrasher-->
+	<target name="jcrasher">
+	    <!--
+		<unjar src="${jcrasher.jar}" dest=".">
+			<patternset includes="use-jcrasher.xml"/>
+		</unjar>
+		-->
+		<ant antfile="${basedir}/jcrasher-2.1.3-sources/use-jcrasher.xml" target="test.archive"/>
+		<!--
+		<delete file="use-jcrasher.xml"/>
+		-->
+	</target>
+
+	
+	<!--clean-->
+	<target name="clean"	description="delete all generated files except the archive-bundle">
+		<delete dir="${bin}"/>
+		<delete dir="${src.generated.tests}"/>
+		<delete dir="${bin.generated.tests}"/>
+		<delete>
+	  	<fileset dir="${basedir}">  <!--deletes . if nested patternsets omitted-->
+	  		<patternset includes="*.jcrasher.txt,*.junit.txt,use-jcrasher.xml"/>
+	  	</fileset>		
+		</delete>
+	</target>			
+</project>

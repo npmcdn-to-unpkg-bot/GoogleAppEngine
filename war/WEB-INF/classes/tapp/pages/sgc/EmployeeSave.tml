@@ -1,0 +1,19 @@
+<html t:type="layout" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
+ <head>
+ <title>Employee</title>
+ </head>
+ <body>
+ 
+ 	<form t:type="beaneditform" object="Employee">
+ 		<t:parameter name="id">
+ 			<!--
+	 		<label t:type="Label" for="id"/>
+	 		<input t:type="TextField" t:id="id" t:value="Employee.id" />
+ 			* used as unique identifier in the system
+			-->
+			${Employee.id}
+ 		</t:parameter>
+ 	</form>
+ 
+ </body>
+</html>

@@ -1,0 +1,9 @@
+$ sqlite3 XMM/moviedb-sqlite3.db
+SQLite version 3.7.5
+Enter ".help" for instructions
+Enter SQL statements terminated with a ";"
+sqlite> .mode html
+sqlite> .separator ","
+sqlite> .output mymovies.csv
+sqlite> select title,year,genre,catalogno,custom3,movieid,upc from movies;
+sqlite> 

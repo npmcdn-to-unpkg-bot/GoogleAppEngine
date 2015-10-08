@@ -1,0 +1,325 @@
+{
+ "kind": "discovery#restDescription",
+ "etag": "\"ykhqEJ_LDFBNzs2RnXtIc2-QyAc/jjEYFlOx_F_46kX_w8rpHeFre3g\"",
+ "discoveryVersion": "v1",
+ "id": "calendarendpoint:v1",
+ "name": "calendarendpoint",
+ "version": "v1",
+ "description": "This is an API",
+ "icons": {
+  "x16": "http://www.google.com/images/icons/product/search-16.gif",
+  "x32": "http://www.google.com/images/icons/product/search-32.gif"
+ },
+ "protocol": "rest",
+ "baseUrl": "https://chudoonet2.appspot.com/_ah/api/calendarendpoint/v1/",
+ "basePath": "/_ah/api/calendarendpoint/v1/",
+ "rootUrl": "https://chudoonet2.appspot.com/_ah/api/",
+ "servicePath": "calendarendpoint/v1/",
+ "batchPath": "batch",
+ "parameters": {
+  "alt": {
+   "type": "string",
+   "description": "Data format for the response.",
+   "default": "json",
+   "enum": [
+    "json"
+   ],
+   "enumDescriptions": [
+    "Responses with Content-Type of application/json"
+   ],
+   "location": "query"
+  },
+  "fields": {
+   "type": "string",
+   "description": "Selector specifying which fields to include in a partial response.",
+   "location": "query"
+  },
+  "key": {
+   "type": "string",
+   "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+   "location": "query"
+  },
+  "oauth_token": {
+   "type": "string",
+   "description": "OAuth 2.0 token for the current user.",
+   "location": "query"
+  },
+  "prettyPrint": {
+   "type": "boolean",
+   "description": "Returns response with indentations and line breaks.",
+   "default": "true",
+   "location": "query"
+  },
+  "quotaUser": {
+   "type": "string",
+   "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters. Overrides userIp if both are provided.",
+   "location": "query"
+  },
+  "userIp": {
+   "type": "string",
+   "description": "IP address of the site where the request originates. Use this if you want to enforce per-user limits.",
+   "location": "query"
+  }
+ },
+ "auth": {
+  "oauth2": {
+   "scopes": {
+    "https://www.googleapis.com/auth/userinfo.email": {
+     "description": "View your email address"
+    }
+   }
+  }
+ },
+ "schemas": {
+  "Calendar": {
+   "id": "Calendar",
+   "type": "object",
+   "properties": {
+    "allDay": {
+     "type": "boolean"
+    },
+    "backgroundColor": {
+     "type": "string"
+    },
+    "borderColor": {
+     "type": "string"
+    },
+    "className": {
+     "type": "string"
+    },
+    "color": {
+     "type": "string"
+    },
+    "createdDate": {
+     "type": "string",
+     "format": "date-time"
+    },
+    "description": {
+     "type": "string"
+    },
+    "disabled": {
+     "type": "boolean"
+    },
+    "editable": {
+     "type": "boolean"
+    },
+    "end": {
+     "type": "string"
+    },
+    "endDate": {
+     "type": "string",
+     "format": "date-time"
+    },
+    "eventPattern": {
+     "type": "string"
+    },
+    "hit": {
+     "type": "string",
+     "format": "int64"
+    },
+    "id": {
+     "type": "string",
+     "format": "int64"
+    },
+    "isRecurring": {
+     "type": "boolean"
+    },
+    "key": {
+     "$ref": "Key"
+    },
+    "lastAccessed": {
+     "type": "string",
+     "format": "date-time"
+    },
+    "modifiedDate": {
+     "type": "string",
+     "format": "date-time"
+    },
+    "movieId": {
+     "type": "string",
+     "format": "int64"
+    },
+    "name": {
+     "type": "string"
+    },
+    "number": {
+     "type": "string",
+     "format": "int64"
+    },
+    "owner": {
+     "type": "string"
+    },
+    "recurringPattern": {
+     "type": "string"
+    },
+    "shortUrl": {
+     "type": "string"
+    },
+    "start": {
+     "type": "string"
+    },
+    "startDate": {
+     "type": "string",
+     "format": "date-time"
+    },
+    "summary": {
+     "type": "string"
+    },
+    "textColor": {
+     "type": "string"
+    },
+    "title": {
+     "type": "string"
+    },
+    "url": {
+     "type": "string"
+    }
+   }
+  },
+  "CollectionResponse_Calendar": {
+   "id": "CollectionResponse_Calendar",
+   "type": "object",
+   "properties": {
+    "items": {
+     "type": "array",
+     "items": {
+      "$ref": "Calendar"
+     }
+    },
+    "nextPageToken": {
+     "type": "string"
+    }
+   }
+  },
+  "Key": {
+   "id": "Key",
+   "type": "object",
+   "properties": {
+    "appId": {
+     "type": "string"
+    },
+    "complete": {
+     "type": "boolean"
+    },
+    "id": {
+     "type": "string",
+     "format": "int64"
+    },
+    "kind": {
+     "type": "string"
+    },
+    "name": {
+     "type": "string"
+    },
+    "namespace": {
+     "type": "string"
+    },
+    "parent": {
+     "$ref": "Key"
+    }
+   }
+  }
+ },
+ "resources": {
+  "calendarEndpoint": {
+   "methods": {
+    "getCalendar": {
+     "id": "calendarendpoint.calendarEndpoint.getCalendar",
+     "path": "calendar/{id}",
+     "httpMethod": "GET",
+     "parameters": {
+      "id": {
+       "type": "string",
+       "required": true,
+       "format": "int64",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "id"
+     ],
+     "response": {
+      "$ref": "Calendar"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/userinfo.email"
+     ]
+    },
+    "insertCalendar": {
+     "id": "calendarendpoint.calendarEndpoint.insertCalendar",
+     "path": "calendar",
+     "httpMethod": "POST",
+     "request": {
+      "$ref": "Calendar",
+      "parameterName": "resource"
+     },
+     "response": {
+      "$ref": "Calendar"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/userinfo.email"
+     ]
+    },
+    "listCalendar": {
+     "id": "calendarendpoint.calendarEndpoint.listCalendar",
+     "path": "calendar",
+     "httpMethod": "GET",
+     "parameters": {
+      "cursor": {
+       "type": "string",
+       "location": "query"
+      },
+      "limit": {
+       "type": "integer",
+       "format": "int32",
+       "location": "query"
+      }
+     },
+     "response": {
+      "$ref": "CollectionResponse_Calendar"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/userinfo.email"
+     ]
+    },
+    "removeCalendar": {
+     "id": "calendarendpoint.calendarEndpoint.removeCalendar",
+     "path": "calendar/{id}",
+     "httpMethod": "DELETE",
+     "parameters": {
+      "id": {
+       "type": "string",
+       "required": true,
+       "format": "int64",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "id"
+     ],
+     "response": {
+      "$ref": "Calendar"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/userinfo.email"
+     ]
+    },
+    "updateCalendar": {
+     "id": "calendarendpoint.calendarEndpoint.updateCalendar",
+     "path": "calendar",
+     "httpMethod": "PUT",
+     "request": {
+      "$ref": "Calendar",
+      "parameterName": "resource"
+     },
+     "response": {
+      "$ref": "Calendar"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/userinfo.email"
+     ]
+    }
+   }
+  }
+ }
+}

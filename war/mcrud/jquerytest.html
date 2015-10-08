@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:ng="http://angularjs.org" id="ng:app" ng-app="app" lang="en">
+<head>
+    <title></title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script type="text/javascript" src="../public/jquery/jquery.toolbar.js"></script>
+    <link href="http://paulkinzett.github.com/toolbar/css/documentation.css" rel="stylesheet">
+    <link href="http://paulkinzett.github.com/toolbar/css/toolbars.css" rel="stylesheet">
+    <link href="http://paulkinzett.github.com/toolbar/css/bootstrap.icons.css" rel="stylesheet">
+    <script type="text/javascript" src="http://code.angularjs.org/1.1.1/angular.min.js"></script>
+    <script type="text/javascript" src="../public/angularjs/angular-ui.js"></script>
+    <script src="jquerytest.js"></script>
+    <style>
+        #format-toolbar1, #format-toolbar2 {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #format-toolbar-options { display: none; }
+    </style>
+</head>
+<body>
+    <h1>Test 4</h1>
+    <a title="Easiest. Binding. Ever!" ui-jq="tooltip">Hover over me for static Tooltip</a>
+
+    <div id="format-toolbar1" class="settings-button" toolbar-tip="{content: '#format-toolbar-options', position: 'top'}">
+        <img src="http://paulkinzett.github.com/toolbar/img/icon-cog-small.png">
+    </div>
+    <div id="format-toolbar2" class="settings-button" toolbar-tip="{content: '#format-toolbar-options', position: 'left'}">
+        <img src="http://paulkinzett.github.com/toolbar/img/icon-cog-small.png">
+    </div>
+
+    <div id="format-toolbar-options">
+        <a href="#"><i class="icon-align-left"></i></a>
+        <a href="#"><i class="icon-align-center"></i></a>
+        <a href="#"><i class="icon-align-right"></i></a>
+    </div>
+
+    <div ng-controller="CalendarCtrl" ui-calendar="{width:100%; height: 450,editable: true}" class="span8 calendar" ng-model="eventSources"></div>
+</body>
+</html>

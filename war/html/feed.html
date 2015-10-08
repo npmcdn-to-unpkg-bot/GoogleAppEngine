@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="content-language" content="en" />
+
+    <link href="/css/zframework.css" rel="stylesheet" type="text/css" />
+    <link href="/css/example_zframework.css" rel="stylesheet" type="text/css" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script src="/js/jquery.zrssfeed.min.js" type="text/javascript"></script>
+    <!-- Zazar Presentation Framework -->
+    <script src="/jquery/jquery.zframework.js" type="text/javascript"></script>
+    <script src="/jquery/purl.js" type="text/javascript"></script>
+
+    <title>b001 zRSSFeed - Animating RSS feeds with zFramework</title>
+
+    <style>
+        .slider {
+            width: 480px;
+            height: 300px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+<div id="zslider"></div>
+<div id="pages"></div>
+
+<p class="clearfix">&nbsp;</p>
+</body>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        //=== http://www.zazar.net/developers/jquery/zrssfeed/
+        $('#zslider').rssfeed($.url().param('url'),{
+            header: true,
+            titletag: 'h4',
+            media: true,
+            limit: 25,
+            snippet: false,
+            linktarget: '_new'
+        }, function(e) {
+            $.zazar.slider({
+                selector: '#zslider ul',
+                speed: 180,
+                pause: 5000,
+                pagination: '#pages',
+                auto: true,
+                showItems: 1
+            });
+        });
+
+    });
+</script>
+</html>

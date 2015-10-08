@@ -1,0 +1,2919 @@
+platform,what,details,key,platformValue
+,Parsing XML:iOS,http://www.cbeninati.com/i/?p=131,,
+,Delegation:iOS,"Virtually all application in iOS deals with delegation, e.g. at least implementing UIApplicationDelegate protocol. UIApplicationDelegate allows a controller to listen to events like applicationDidFinishLaunching.",,
+,Delegation:Android,Event delegation model in respect to handling UI events like onClick etc. This predates Android as it is a core mechanism used in Java Swing/JFC.,,
+,Filtered List:iOS,"Implement UISearchDisplayDelegate and UISearchBarDelegate protocols for your UITableViewController, e.g.
+
+@interface SearchViewController : UITableViewController<UISearchDisplayDelegate, UISearchBarDelegate>  {
+...",,
+,Optimization:GAEJ,"@Persistent
+  @Extension(vendorName=""datanucleus"", key=""gae.unindexed"", value=""true"")
+  private Link coverImageUrl;
+
+It is not recommended to use unindexed property to speed up performance of jdo/jpa for the reasons specified in 
+http://gae-java-persistence.blogspot.com/2009/11/unindexed-properties.html",,
+,Mail:GAEJ,"GMail (IMAP based) can be used c.f. 
+
+http://code.google.com/apis/gmail/docs/
+
+http://code.google.com/p/app-engine-workarounds
+
+But make sure to apply the patches (fix for plain/text attachments and attachment's file names) provided here (It's on the issue tracker for a long time):
+
+http://code.google.com/p/app-engine-workarounds/issues/detail?id=3 http://code.google.com/p/app-engine-workarounds/issues/detail?id=4 ",,
+,Camera 1:PhoneGap,"getPicture (third parameter is optional) e.g.
+
+function capturePhoto(id) {
+ navigator.camera.getPicture(onSuccess, onFail, { quality: 20, 
+ destinationType: Camera.DestinationType.FILE_URI });
+...
+
+function onSuccess(imageURI) {
+ var image = document.getElementById(id);
+ image.style.display = 'block';
+ image.src = imageURI;
+}
+
+function onFail(message) {
+...",,
+,Text:iOS,UITextField,,
+,Big Text:iOS,UITextView,,
+,Row Select:iOS,"- (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+",,
+,Row Unselect:iOS,"- (void)tableView:(UITableView *)aTableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+",,
+,Persistence Manager:iOS,"NSFetchedResultsController e.g.
+
+@property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
+",,
+,Persistence Manager:GAEJ,Entitymanager,,
+,Bottom Bar:WebOS,Commands Buttons,,
+,Background Notification:WebOS,"To enable background applications to communicate with the user, Palm provides a notification system with two types of notifications:
+
+Popup. Non-modal dialogs which are of fixed height and include at least one button to dismiss the dialog
+Banner. Non-modal icon and single non-styled string of text",,
+,String Comparison:iOS,"if ([text isEqualToString: @""Google""])
+{
+   ....
+}",,
+,String Comparison:Android,"if (text.contentEquals( ""Google"" ))
+{
+   ....
+}",,
+,Text Alignment:Android,"TextView textRegion = (TextView) findViewById(R.id.textRegion);
+textRegion.setGravity(gravity);
+where,
+
+gravity =
+
+Gravity.LEFT to align to left
+Gravity.RIGHT to align to right
+Gravity.CENTER to center the text",,
+,Cell Style:iOS,"Default:
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+
+Text with details:
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
+
+<img src='https://pc2mac.googlegroups.com/attach/af34be18c6670709/Screen+shot+2011-09-24+at+11.09.57+AM.png?view=1&part=4'/>",,
+,Persistence Getter:iOS,"[info valueForKey:@""name""]",,
+,Persistence Setter:iOS,"[managedObject setValue:summary forKey:@""summary""];
+",,
+,Database:PhoneGap,"window.openDatabase(""couriii.sqlite"","""",""Demo Database"",2000000);",,
+,Audio:PhoneGap,"var i = 1;
+var mediafile = [];
+mediafile[0] = ""audiofile.wav"";
+mediafile[1] = ""audiofile1.wav"";
+mediafile[2] = ""audiofile2.wav"";
+
+var myMedia = new Media(mediafile[0], playNext);
+myMedia.play();
+
+function playNext() {
+    var myMedia2 = new Media(mediafile[i], planNext);
+    myMedia2.play();
+    i++;
+}",,
+,What:Bada,"Based on the TouchWiz UI, bada provides developers with flash control, web control, motion sensing, fine-tuned vibration control and face detection tools, complete with support for context-aware applications incorporating accelerometers, tilt, weather, proximity and activity sensors. It also integrate with device functions to make phone calls, send messages or access the contact list.",,
+,Value Proposition:Bada,"Includes server platform, on top of client api/ui. Supports flash runtime out of the box.
+
+BADA provides a framework for low as well has high end phones. (as opposed to Android which could be used only on high end phones).",,
+,Language:Bada,"C++, Flash, WebKit and some low level C",,
+,Version:Bada,2.0,,
+,Optimization:Bada,Native Profiler and Performance Analyzer,,
+,NFC:Bada,yes,,
+,NFC:iOS,no,,
+,NFC:Android,yes,,
+,Portrait View:iOS,"Default -
+
+- (void)splitViewController:(UISplitViewController *)svc willHideViewController:(UIViewController *)aViewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController: (UIPopoverController *)pc
+{
+    barButtonItem.title = @""List"";
+    NSMutableArray *items = [[self.toolbar items] mutableCopy];
+    [items insertObject:barButtonItem atIndex:0];
+    [self.toolbar setItems:items animated:YES];
+    [items release];
+    self.popoverController = pc;
+}",,
+,Landscape View:iOS,"// Called when the view is shown again in the split view, invalidating the button and popover controller.
+- (void)splitViewController:(UISplitViewController *)svc willShowViewController:(UIViewController *)aViewController invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem
+{
+    NSMutableArray *items = [[self.toolbar items] mutableCopy];
+    [items removeObjectAtIndex:0];
+    [self.toolbar setItems:items animated:YES];
+    [items release];
+    self.popoverController = nil;
+}",,
+,Split View Master:iOS,RootViewController with default NavigationBar,,
+,Split View Detail:iOS,DetailViewController with default ToolBar,,
+,Email:Android,"Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND); 
+emailIntent.setType(""plain/text"");
+emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{""webmaster@website.com""});
+emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, ""mySubject"");
+emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, ""myBodyText"");
+startActivity(Intent.createChooser(emailIntent, ""Send mail...""));",,
+,No Phone in Web:iOS,"- (void)webViewDidStartLoad:(UIWebView *)theWebView 
+{
+    // disable telephone detection, basically <meta name=""format-detection"" content=""telephone=no"" />
+    theWebView.dataDetectorTypes = UIDataDetectorTypeAll ^ UIDataDetectorTypePhoneNumber;
+
+    return [ super webViewDidStartLoad:theWebView ];
+}",,
+,Camera:Android,"  final Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+  intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(getTempFile(this)) ); 
+
+  startActivityForResult(intent, TAKE_PHOTO_CODE);",,
+,Data Encapsulation:iOS,"#import ""MyClass.h""
+
+Creating a Class Extension lets one define some methods and properties that are going to be used within a class not intended to be exposed to other classes in a header file, e.g.
+
+@interface MyClass ()
+- (void) somePrivetMethod
+- (void) somePrivteOtherMethod
+@end
+
+@implementation MyClass
+...",,
+,Method Modifier:iOS,"+ class
+- instance level
+static - function, seen only the class where it is defined",,
+,Handle UI Event:Android," //implement the onClick method
+        public void onClick(View v) {
+           // Perform action on click
+          switch(v.getId()) {
+            case R.id.buttonplay:
+              //Play voicefile
+              MediaPlayer.create(getBaseContext(), R.raw.voicefile).start();
+              break;
+            case R.id.buttonstop:
+              //Stop MediaPlayer
+              MediaPlayer.create(getBaseContext(), R.raw.voicefile).stop();
+              break;
+          }
+       }",,
+,Get Image:Android,"ImageView image = (ImageView) findViewById(R.id.test_image);
+Bitmap bMap = BitmapFactory.decodeResource(getResources(), R.drawable.icon);
+
+http://www.higherpass.com/Android/Tutorials/Working-With-Images-In-Android/2/",,
+,Fixed Orientation:Android,"<activity android:name="".YourActivity"" android:screenOrientation=""portrait"" ></activity>
+This doesn't work well with tablets that have a default orientation of landscape.
+
+<android android:name="".YourActivity"" android:screenOrientation=""nosensor"" ></activity>
+This makes it so that the device's orientation doesn't respond to the sensor.
+
+http://stackoverflow.com/questions/6605986/android-natural-sensor-orientation-help",,
+,Relative Layout:Android,"<RelativeLayout ...
+        <Button 
+ 		android:id=""@+id/backbutton""
+ 		android:text=""Back""
+ 		android:layout_width=""wrap_content""
+ 		android:layout_height=""wrap_content"" />
+	<TextView
+   		android:id=""@+id/firstName""
+   		android:text=""First Name""
+   		android:layout_width=""wrap_content""
+   		android:layout_height=""wrap_content""
+   		android:layout_below=""@id/backbutton"" />
+
+id, text (if applicable), layout_width and layout_height are generated automatically by ADT.",,
+,IPC 1:Android,"Instead of using startActivity (one way), use startActivityForResult
+
+intent.putExtra - parameter is a Bundle (key/value pairs) and listen for results back in onActivityResult
+
+intent.getExtras - in the sub activity
+
+http://mobileorchard.com/android-app-development-using-intents-to-pass-data-and-return-results-between-activities/",,
+,Array:iOS,"//creates an NSArray with multiple objects. Don't forget to add nil as the last object
+NSArray  * myArray = [NSArray arrayWithObjects:@""foo"",@""bar"",@""baz"",nil];
+
+[myArray objectAtIndex:index] where index is integer starts with 0.",,
+,Common Methods:Android,"onCreate
+onListItemClick
+onCreateOptionsMenu
+onOptionsItemSelected
+onLongClick
+onStop
+createDialog
+removeDialog instead of dismissDIalog
+startActivity
+stopActivity
+startService
+stopService",,
+,Bottom Bar:Android,"Navigation Bar - on ICS
+
+Menu - on non-Honeycomb smartphone (res/menu/menu.xml)
+
+System Bar - on Honeycomb or above (can not be hidden on non-rooted tablet c.f. http://stackoverflow.com/questions/6099105/hiding-systembar-in-android-3-0honeycomb)",,
+,Theme:Android,"In the Android layout xml, you can add a theme for your UI. For example, you can use the Dialog theme and make your Activity appear like a dialog box:
+
+<activity android:theme=""@android:style/Theme.Dialog"">
+
+Or if you want the background to be transparent, use the Translucent theme:
+
+<activity android:theme=""@android:style/Theme.Translucent"">
+
+http://developer.android.com/guide/topics/ui/themes.html",,
+,Shared Preferences:Android,"public class Settings extends PreferenceActivity
+
+...
+        // Get the app's shared preferences
+        SharedPreferences app_preferences = 
+        	PreferenceManager.getDefaultSharedPreferences(this);
+        
+        // Get the value for the run counter
+        int counter = app_preferences.getInt(""counter"", 0);
+
+http://www.helloandroid.com/tutorials/preferenceactivity-basics
+http://marakana.com/forums/android/examples/63.html",,
+,Preferences:iOS,"NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+
+[prefs objectForKey:@""key1""];  //to get a value
+[prefs setValue:@""pref1"" forKey:@""key1""];  //to set the (new) value
+
+[prefs synchronized];   //save it (important, otherwise it won't work!)
+
+http://www.youtube.com/watch?v=GjlpBr5UcEM&feature=related",,
+,Landscape View:Android,"The layouts in /res/layout are applied to both portrait and landscape
+
+create folder /res/layout-land (here you will keep your landscape adjusted layouts)
+copy home.xml there
+make necessary changes to it
+
+When you want a different design for landscape, put your layout XML file inside /res/layout-land. Android will automatically look here when the layout changes. Without this special landscape layout defined, Android will stretch the default layout.",,
+,Core MVC:WebOS,"Models, Views and Assistants",,
+,Main Concepts:WebOS,"Application runs in Cards (small html pages)
+
+Scene is a content inside a Card; can be stacked up
+
+Cards are a type of Stage; other stages e.g. Dashboards and Alerts
+
+Widget (UI Control)",,
+,Main Container:WebOS,Window/Card,,
+,Main View Class:WebOS,Card,,
+,2D Methods:Android,onTouch,,
+,Packaging:WebOS,appinfo.json,,
+,Transaction:GAEJ,"There are two Storage Scheme which affects the transactions -
+
+1. Master/Slave (conventional/default)
+2. High Replication (just added in SDK 1.5.0)
+
+Conceptually, High Replication's has potential delays between a write in one transaction and a subsequent read without using a transaction to see the newly-updated data. Master/Slave's does not have this latency but is not as scalable as the High Replication's.",,
+,Populate Table:iOS,"The 2 methods involved -
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+e.g.
+    cell.textLabel.text = [similarityNames objectAtIndex:indexPath.row];
+    cell.detailTextLabel.text = @""Static DetailText"";
+
+and
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+e.g.
+    return [self.similarityNames count];
+
+Generally a list are initialized in viewDidLoad but it does not need to be.",,
+,Dismiss Popover:iOS,"e.g.
+     [detailViewController.findSimilarPopoverController dismissPopoverAnimated:YES];",,
+,Concatenate String:iOS,"[Util append:one, @"" "", two, nil]; // ""one two""
+
+or
+
+[NSString stringWithFormat:@""%@/%@/%@"", three, two, one];",,
+,Stay Awake:Android,"PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
+PowerManager.WakeLock wakeLock = pm.newWakeLock(
+        pm.SCREEN_DIM_WAKE_LOCK, ""My wakelook"");
+// This will make the screen and power stay on
+// This will release the wakelook after 1000 ms
+wakeLock.acquire(1000);
+ 
+// Alternative you can request and / or  release the wakelook via:
+/
+/ wakeLock.acquire(); wakeLock.release();",,
+,Audio 1:Android,"soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC, 0);
+soundPool.setOnLoadCompleteListener(new OnLoadCompleteListener() {
+ @Override
+ public void onLoadComplete(SoundPool soundPool, int sampleId, int status) {
+   loaded = true;
+ }
+});
+soundID = soundPool.load(this, R.raw.sound1, 1);",,
+,SlidingDrawer:Android,"Native, top down direction. Methods -
+
+onDrawerOpened
+open
+close
+lock
+unlock
+toggle",,
+,SlidingDrawer:iOS,None (iOS 5 or later?),,
+,Tabs:Android,"/** TabHost will have Tabs */
+TabHost tabHost = (TabHost)findViewById(android.R.id.tabhost);
+
+/** TabSpec used to create a new tab.
+* By using TabSpec only we can able to setContent to the tab.
+* By using TabSpec setIndicator() we can set name to tab. */
+
+/** tid1 is firstTabSpec Id. Its used to access outside. */
+TabSpec firstTabSpec = tabHost.newTabSpec(""tid1"");
+TabSpec secondTabSpec = tabHost.newTabSpec(""tid1"");
+
+http://www.youtube.com/watch?v=o5LrdSQrWEI&amp;feature=relmfu
+",,
+,System Time:Android,System.getCurrentMillis(),,
+,Web View:Android,"WebView or extends WebViewClient
+
+loadUrl
+goBack
+goForward
+getSettings().setJavaScriptEnabled(true)
+getSettings().setLoadWithOverviewMode(true)
+getSettings().setWideViewPort(true)",,
+,Policy:iOS,Lack native permissions settings/policy.,,
+,Web View:iOS,UIWebView,,
+,Keyboard:Android,"EditText editText = (EditText) findViewById(R.id.myEdit);
+InputMethodManager mgr = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+// only will trigger it if no physical keyboard is open
+mgr.showSoftInput(editText, InputMethodManager.SHOW_IMPLICIT);
+
+And to hide:
+
+InputMethodManager mgr = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+mgr.hideSoftInputFromWindow(editText.getWindowToken(), 0);",,
+,View Flipper:Android,"ViewFlipper
+
+showNext
+setFlipInterval(2000)
+startFlipping
+
+
+",,
+,View Flipper:iOS,No native view flipper control.,,
+,Preferences:Android,"Android provided two ways to use the preferences
+
+1. Shared Preferences: The shared preferences can be used by all the components (activities, services etc) of the applications.
+
+2. Activity handled preferences: These preferences can only be used with in the activity and can not be used by other components of the application.
+
+http://www.androidcompetencycenter.com/tag/editor/",,
+,Write File:Android,"import java.io.FileOutputStream;
+public void save(String filename, MyObjectClassArray[] theObjectAr) {
+        FileOutputStream fos;
+        try {
+            fos = openFileOutput(filename, Context.MODE_PRIVATE);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(theObjectAr); 
+            oos.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+}",,
+,Life Cycle:Bada,"launch
+OnAppInitializing
+OnForeground - OnBackground
+Running
+OnAppTerminating
+exit",,
+,Life Cycle:iOS,"applicationDidFinishLaunchingWithOptions:
+applicationWillResignActive:
+applicationDidEnterBackground:",,
+,App Types:Bada,". Frame based e.g. For game type app
+. Form based",,
+,Life Cycle 1:Android,"Activity is started:
+onCreated()
+onStart() <--- *
+onResume()
+
+Activity is running:
+onPause()
+onStop() ---> *
+onDestroy()
+
+Activity is shut down
+
+* Activity is back to foreground:
+onRestart()",,
+,Read File:Android,"FileInputStream fIn = openFileInput(""samplefile.txt"");
+InputStreamReader isr = new InputStreamReader(fIn);
+/* Prepare a char-Array that will
+  * hold the chars we read back in. */
+char[] inputBuffer = new char[TESTSTRING.length()];
+// Fill the Buffer with data from the file 
+isr.read(inputBuffer);",,
+,Background Process 1:Android,"new DownloadImageTask().execute();
+publishProgress(5);
+...
+private class DownloadImageTask extends AsyncTask {
+     protected Bitmap doInBackground(String... urls) {
+         return loadImageFromNetwork(urls[0]);
+     }
+     protected void onPostExecute(Bitmap result) {
+         mImageView.setImageBitmap(result);
+     }
+     protected void onProgressUpdate(Integer...progress) {
+         dialog.incrementProgressBy(progress[0]);
+     }
+...",,
+,SD Card:Android,"static boolean isSdPresent() {
+ 
+return android.os.Environment.getExternalStorageState().equals(android.os.Environment.MEDIA_MOUNTED);
+ ",,
+,Face Detection:Bada,FaceDetector class (native),,
+,Overlay View:Bada,OverlayPanel (native); background is the camera preview/video and the foreground can be the graphics and controls,,
+,Spinner:Android,"Native
+
+implements onItemSelectedListener
+
+public void onItemSelected(...",,
+,File Notification:Android," MediaScannerConnection.scanFile(this,
+          new String[] { file.toString() }, null,
+          new MediaScannerConnection.OnScanCompletedListener() {
+      public void onScanCompleted(String path, Uri uri) {
+          Log.i(""ExternalStorage"", ""Scanned "" + path + "":"");
+          Log.i(""ExternalStorage"", ""-> uri="" + uri);
+      }
+ });
+
+http://stackoverflow.com/questions/4646913/android-how-to-use-mediascannerconnection-scanfile
+",,
+,Sqlite:Android,"DBHelper extends SQLiteOpenHelper {
+
+db = dbHelper.getWritableDatabase()
+
+//you generally do not use DML even though DDL is permitted, but rather to use ContentValues and corresponding CRUD method
+ContentValues cv = new ContentValues();
+cv.put(""Col1"", value1);
+cv.put(""Col2"", value2);
+db.insert(TABLE_NAME, null, cv);
+
+...",,
+,Main Container:Android,"Activity, with or without content view",,
+,Dialog:Android,"                Dialog dialog = new Dialog(this);
+                dialog.setContentView(R.layout.maindialog);
+                dialog.setTitle(""This is my custom dialog"");
+or just
+                Dialog dialog = new Dialog(this);
+                TextView text = new TextView(this);
+                text.setText(""Hello!"");
+                dialog.setContentView(text);
+                dialog.setTitle(""This is my custom dialog box"");",,
+,Database Cursor:Android,"        Cursor cur = db.query(""tbl_countries"", 
+       		null, null, null, null, null, null);
+        cur.moveToFirst();
+        while (cur.isAfterLast() == false) {
+            view.append(""n"" + cur.getString(1));
+       	    cur.moveToNext();
+        }
+        cur.close();
+
+http://www.higherpass.com/Android/Tutorials/Accessing-Data-With-Android-Cursors/2/",,
+,Database Cursor:iOS,"    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@""Event"" inManagedObjectContext:managedObjectContext];
+    [fetchRequest setEntity:entity];
+    [fetchRequest setFetchBatchSize:20];
+...    
+    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:managedObjectContext sectionNameKeyPath:nil cacheName:@""Root""];
+...",,
+,EPG:FiOS TV,"Native
+
+function EPGClass.GetTunedChannel()
+function EPGClass.GetProgramInfo(lCurrentTime, nChannelNum)
+function EPGClass.TuneToChannel()
+function EPGClass.GetChannelLogo()
+function EPGClass.GetVersion()
+function EPGClass.GetProgramType()
+function EPGClass.ShowProgramInfo()
+function EPGClass.GetNextChannel()",,
+,Setup:Internet@TV,"Samsung TV
+
+Within the SDK you get 4 tools -
+
+1. a visual designer
+2. an integrated development environment
+3. an emulator of the Internet@TV system
+4. a copy of the Apache Web Server
+
+Development platform - Windows 7 only",,
+,Language:Internet@TV,"Apps for Samsung's Internet@TV system are basically HTML web widgets where the web page, CSS, Javascript and images needed for your app are bundled together and run on the device itself. The browser on these systems is called MAPLE (Markup engine Platform for Embedded Systems ), it is an HTML4 browser with CSS 2 (and CSS TV Profile 1.0) and Javascript 1.6. It also provides Javascript classes that you can include in your app in order to interact with the capabilities of the device.",,
+,Sample:Internet@TV,"<!DOCTYPE html>
+ <html>
+   <head>
+     <meta http-equiv=""Content-Type"" content=""text/html; charset=utf-8""> 
+     <link rel='stylesheet' type='text/css' href = 'CSS/Main.css'/>
+     <script type=""text/javascript"" language=""javascript"" src=""$MANAGER_WIDGET/Common/API/Widget.js""></script>
+    <script type=""text/javascript"" language=""javascript"" src=""JavaScript/Main.js""></script>
+   </head>
+   <body onload=""Main.onLoad();""> 
+    <div id='welcome'>Hello world!</div> 
+ </body>",,
+,SSO:Internet@TV,Native,,
+,SSO:FiOS TV,None,,
+,EPG:Internet@TV,None,,
+,VOD:Internet@TV,None,,
+,VOD:FiOS TV,"function VODClass.PlayAssetByID(nContext, pPID, pPAID)
+function VODClass.DrawPoster(iAttributeID, iWinID, lAssetID, lHirarchyID, X_Position, Y_Position, Width, Height, alphaBlending)",,
+,Main Container:FiOS TV,Widget,,
+,File Input:Internet@TV,fileObj.readLine(),,
+,File Output:Internet@TV,fileObj.writeAll(text:String),,
+,AJAX:Internet@TV,Native Samsung XHR,,
+,Watchdog:Internet@TV,"Register or unregister a widget to watchdog queue (see remarks for watchdog detail)
+Syntax  SetWatchDog( Number  watchDog ) 
+Parameter 
+ watchDog 
+o Number 
+o 1: On, 0:Off
+Return Value 
+If success, returns positive value.
+otherwise, returns negative value
+
+Watchdog is the widget  mornitoring tool. If some widget is stopped and can't be reply in few 
+seconds, then watchdog reboot system.
+
+So when you run long time task ( ex : download ) you should turn watchdog off.",,
+,Sensor:Android,"... implements SensorEventListener {
+
+sm  = (SensorManager)getSystemService(Context.SENSOR_SERVICE);
+if(sm.getSensorList(Sensor.TYPE_ACCELEROMETER).size() != 0) {
+    Sensor s = sm.getSensorList(Sensor.TYPE_ACCELEROMETER).get(0);
+    s.registerListener(this, s, SensorManager.SENSOR_DELAY_NORMAL);
+}
+
+...
+public void onAccuracyChanged(
+
+
+public void onSensorChanged(SensorEvent e) {
+    x = e.values[0];
+    y = e.values[1];
+",,
+,Map View:Android,"... extends MapActivity {
+
+<com.google.android.maps.MapView ...
+
+With native maps overlays",,
+,Simple Dialog 1:Android,"The Dialog class is the base class for creating dialogs. However, you typically should not instantiate a Dialog directly. Instead, you should use one of the following subclasses:
+
+AlertDialog
+A dialog that can manage zero, one, two, or three buttons, and/or a list of selectable items that can include checkboxes or radio buttons. The AlertDialog is capable of constructing most dialog user interfaces and is the suggested dialog type.",,
+,Http Get:Android,Apache httpclient,,
+,JSON Input:Android,"HttpEntity e = response.getEntity();
+String data = EntityUtils.toString(e);
+JSONArray timeline = new JSONArray(data);
+JSONObject last = timeline.getJSONObject(0);",,
+,Parsing XML:Android,"    df = new MyDefaultHandler();
+    SAXParserFactory spf = SAXParserFactory.newInstance();
+    SAXParser sp = spf.newSAXParser();
+    XMLReader xr = sp.getXMLReader();
+
+Set the content Handler
+    xr.setContentHandler(df);
+
+Set the XML Content    
+Type 1:
+    InputSource is = new InputSource();
+    is.setCharacterStream(new StringReader(parseContent));
+
+http://about-android.blogspot.com/2010/02/sample-saxparser-in-android.html",,
+,Home Widget:Android,"AndroidManifest.xml
+	<receiver android:name=""Wdgt"">
+
+Wdgt extends AppWidgetProvider {
+    public void onUpdate(...
+...
+		int widgetId = appWidgetIds[i];
+		RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget_layout);
+		views.setTextViewText(R.id.TextView01, ""Hello!"");
+		appWidgetManager.updateAppWidget(widgetId, views);
+
+http://developer.android.com/guide/practices/ui_guidelines/widget_design.html",,
+,Home Widget:iOS,None,,
+,Policy 2:Android,"A Pending Intent is a token that you give to a foreign application (e.g. Notification Manager, Alarm Manager, Home Screen AppWidget Manager, or other 3rd party applications), which allows a foreign application to use your application's permissions to execute a predefined piece of code.
+
+http://www.satyakomatineni.com/akc/display?url=DisplayNoteIMPURL&reportId=3301&ownerUserId=android",,
+,IPC 2:Android,"Caller:
+
+Intent i = ...
+
+i.putExtra(""label"", ""Label 1"");
+i.putExtra(""value"", 1);
+
+Using startActivityForResult, one can use PendingIntent
+PendingIntent is used where no direct user intervention is expected or between the application and its (Home Screen) widget
+
+Callee (onActivityResult(..., Intent i)):
+
+String text = i.getExtras().getString(""label"");
+int value = i.getExtras().getInt(""value"");",,
+,3D:Android,"GLSurfaceView view = new GLSurfaceView(this);
+view.setRenderer(new OpenGLRenderer());
+setContentView(view);
+
+// Called when the surface is created or recreated.
+public void onSurfaceCreated(GL10 gl, EGLConfig config) 
+
+// Called to draw the current frame.
+public void onDrawFrame(GL10 gl)
+
+// Called when the surface changed size.
+public void onSurfaceChanged(GL10 gl, int width, int height)",,
+,Constraint Layout 1:iOS,"MPMoviePlayerController* p = [self.moviePlayerController readyPlayerWindowMode:videoView];
+[[p view] setFrame:videoView.frame]; // size to fit parent view exactly
+
+or
+
+//=== anchor the y coordinate of transcription panel to description panel
+CGRect frame1 = transcriptPanel.frame;
+frame1.origin.x = descriptionPanel.frame.origin.x;
+frame1.origin.y = descriptionPanel.frame.origin.y + videoView.frame.origin.y + videoView.frame.size.height + 14;
+transcriptPanel.frame = frame1;",,
+,Voice 1:Android," private void startVoiceRecognitionActivity() {
+        Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+        intent.putExtra(RecognizerIntent.EXTRA_PROMPT, ""Speech recognition demo"");
+        startActivityForResult(intent, VOICE_RECOGNITION_REQUEST_CODE);
+    }",,
+,Voice 2:Android,"void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == VOICE_RECOGNITION_REQUEST_CODE && resultCode == RESULT_OK) {
+            // Fill the list view with the strings the recognizer thought it could have heard
+            ArrayList matches = data.getStringArrayListExtra(
+                    RecognizerIntent.EXTRA_RESULTS);   
+
+          //DO SOMETHING WITH THE MATCHES
+
+        super.onActivityResult(requestCode, resultCode, data);",,
+,Voice 3:Android,"        mTts = new TextToSpeech(this,
+            this  // TextToSpeech.OnInitListener
+            );
+
+// Select a random hello.
+        int helloLength = HELLOS.length;
+        String hello = HELLOS[RANDOM.nextInt(helloLength)];
+        mTts.speak(hello,
+            TextToSpeech.QUEUE_FLUSH,  //shut up the rest of speech if any
+            null);
+
+http://developer.android.com/resources/samples/ApiDemos/src/com/example/android/apis/app/TextToSpeechActivity.html",,
+,Video Overlay:iOS,"[[[[UIApplication sharedApplication] windows] objectAtIndex:0] addSubView:myView]
+
+http://stackoverflow.com/questions/4045966/mpmovieplayer-overlay-in-fullscreen-mode-ipad",,
+,Audio 2:Android,"AudioManager am = (AudioManager) getApplicationContext().getSystemService(Context.AUDIO_SERVICE);
+int max = am.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+int current = am.getStreamVolume(AudioManager.STREAM_MUSIC));  //the current volume",,
+,Constraint Layout 2:iOS,"setBounces has to be set to YES
+
+e.g.
+
+    CGSize size = CGSizeMake(320, 460);
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
+    [scrollView setBounces:YES];
+    [scrollView setContentSize:size];
+    [[_detailViewController view] addSubview:scrollView];
+
+http://stackoverflow.com/questions/6954187/how-to-create-simple-viewcontroller-with-simple-view-in-it-that-bounce-like-tabl",,
+,Constraint Layout 3:iOS,"    myLabel.center = CGPointMake(0.0, 0.0);
+    myLabel.frame = self.bounds;
+    myLabel.autoresizingMask = (UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth);
+    [self addSubview:myLabel];
+",,
+,Ads:Android,Add advertisement via Admob xml,,
+,Fragment:Android,"Mini activities, i.e. android.app.Fragment
+
+Purpose - component reuse across
+
+1. Smartphones and tablets
+2. Landscape and portrait modes
+3. Potentially among mobile devices and Google TV devices
+
+Impact - instead of one Activity handles 1 screen, say in an app with 4 screens, you can have 1 Activity takes care of 4 Fragments (saving 3 screens and Activities!)
+
+Honeycomb+ (other version as far back as 1.6 with the Compatibility/Support Package)
+
+Use FragmentActivity vs Activity",,
+,Fragment:Java,"Portlet
+
+Java Portlet Specification (JSR-168)
+
+The Java platform provides an standard referred to as JSR-168 that standarizes how portlets interact with portlet containers and ensures compatibility across different portal products as long as portlet adheres to the standard.",,
+,Rich Notification:Android,"Honeycomb (Android 3.0) and above only
+
+Can use fragment or remote view e.g.
+
+Notification.Builder builder = new Notification.Builder(application);
+// ....
+builder.setLargeIcon(iconBitmap);  // Requires a Bitmap
+builder.setSmallIcon(iconResId);   // Requires a drawable resource ID
+Notification notification = builder.getNotification();",,
+,Rich Notification:iOS,None,,
+,Language:Android,"Java, C (NDK) or RenderScript (Honeycomb or above only)",,
+,Lowercase:iOS,    NSString *noCaps = [originalString lowercaseString];   //NSString is immutable!,,
+,Lowercase:Android,"String noCase = ""yourString"".toLowerCase();   //String is immutable",,
+,Theme:Struts,"In Struts 2, theme are applied by default (which is xhmtl) if none is specified. So it is equivalent to setting the theme in such a way in struts.xml -
+
+<struts>
+	<constant name=""struts.ui.theme"" value=""xhmtl"" />
+
+http://struts.apache.org/2.2.1/docs/struts-2-themes.html
+
+Note: However this automagic functionality (due to Freemarker issue with the restrictions imposed by GAEJ) is not working on  GAEJ as at SDK 1.5.4 (10/3/2011).",,
+,Detect Orientation 1:iOS,"In UIViewController -
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    return YES;
+}
+
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation duration:(NSTimeInterval)duration {
+    if (UIInterfaceOrientationIsLandscape(interfaceOrientation)) {
+        NSLog(@""landscape"");
+    } else {
+        NSLog(@""portrait"");
+    }
+}",,
+,Constant:iOS,"// constants.h
+extern NSInteger const MyIntegerConstant;
+
+// constants.m
+NSInteger const MyIntegerConstant = 666;
+
+http://stackoverflow.com/questions/554256/integer-constants",,
+,Layout:Wicket,"Use Markup Inheritance
+
+http://ondra.zizka.cz/stranky/programovani/java/web/wicket/wicket-extend-child-inheritance-include-example.texy",,
+,Persistence Mapping:Java,"@basic
+@embedded
+
+ps. @embeddable is the entity class embedded
+
+http://schuchert.wikispaces.com/JPA+Tutorial+1+-+Embedded+Entity",,
+,SQL Debug:iOS,"1. Create an iOS project with Core Data
+
+2. Edit Scheme For ""Run"" action
+
+3. Choose Arguments Tab
+
+4. Add an argument such as ""-com.apple.CoreData.SQLDebug 1""",,
+,1-to-many Mapping:iOS,"    NSSet *attNameSet = [[NSSet alloc] initWithObjects:attName, nil];
+    NSSet *attValueSet = [[NSSet alloc] initWithObjects:attValue, nil];
+    [object setValue:attNameSet forKey:@""attName""];
+    [object setValue:attValueSet forKey:@""attValue""];
+
+http://www.raywenderlich.com/934/core-data-tutorial-getting-started",,
+,Common Codes:Struts,"Interceptor i.e.
+
+1. intercept() - before an Action
+2. beforeResult() - between Action and View
+3. After return invocation.invoke() - after the View
+
+http://www.benmccann.com/dev-blog/struts-2-tutorial-interceptors/",,
+,Packaging:Struts,struts.xml,,
+,MVC Controller:Struts,"Action class
+
+It is no longer a singleton, therefore it can contrains a class level instance like a POJO model to save the inputs entered by a user between requests (in classic Struts, it was a singleton)",,
+,Prevent Duplicated Submit:Struts,"In the .html -
+
+<s:form>
+   <s:token/>
+...
+</s:form>
+
+In struts.xml -
+
+<interceptors>    
+    <interceptor-stack name=""tokenStack"">
+      <interceptor-ref name=""token""/>
+      <interceptor-ref name=""defaultStack""/>
+    </interceptor-stack>
+...
+
+<action name=""Token"" class=""com.avhdeveloper.actions.Delay"">
+      <interceptor-ref name=""tokenStack""/>
+...
+</action>",,
+,Fixed UI:HTML,"  position: fixed;
+
+e.g.
+
+#nav-fixed {
+  position: fixed;
+}",,
+,SQL based ORM:iOS,"e.g.
+
+- (NSPersistentStoreCoordinator *)persistentStoreCoordinator
+{
+…
+    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@""VideoBrowser.sqlite""];
+    NSLog(@""storeURL = %@"", storeURL);
+    NSError *error = nil;
+    __persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
+…    
+    return __persistentStoreCoordinator;
+}
+
+VideoBrowser.sqlite is the typical sqlite3 file",,
+,Association:JDO,"@PersistenceCapable public class A { @Unowned B b; }
+
+@PersistenceCapable public class B {...}
+
+Persist of an A with related B will persist the A and B (though the Key of the B will obviously have no parent Key component). Entity of A will have a property containing the Key of the related B. Loading of such objects will pull in the related object as per the Fetch Plan (which the user controls, as per the JDO spec), so when it needs the B then it does a get of the B using the Key.",,
+,Core MVC:Struts,"Action, Result and FilterDispatcher",,
+,Launch:Struts,"In struts.xml
+
+1. Package namespace + action name + jsp in the result (default is SUCCESS) e.g. /ns/an
+2. The above but action with class specified
+3. The above two but with action method specified (not the default execute method in action)
+4. Wildcard in action name e.g. */* which can be referred as {1} and {2} in the result",,
+,Main Concepts:Struts,". struts.xml defines almost everything
+. Struts2 front controller is a filter (vs servlet in 1.x), action is a separate instance for each request (vs singletons in 1.x) and with no form bean; action can be the model
+. Validation can be supported by extending ActionSupport (validate, with addFieldError/addActionError)
+. Action can be made a pure controller by having a separate model by implementing ModelDriven interface
+",,
+,Cross Cutting:Struts,"Using interceptor
+. Implements interceptor's intercept method
+. Get the session via ActionInvocation context
+. Invoke invocation.invoke to call the next component in queue
+
+
+",,
+,Moving To:PhoneGap,"1) Rewrite the app to reference files (e.g., images, sounds) locally (as opposed to a server directory) and rename the first page of the web app to ""index.html.""
+2) Embed an iFrame inside a simple PhoneGap app that references the web app. This requires no changes to the web app, but changing the PhoneGap configuration file to let external sources open within an iFrame and not open in mobile Safari
+3) Using jQuery Mobile inside the PhoneGap app, inject the web app into index.html (no frame)",,
+,Log:Android,"Log.d(""packagename.classname"", String.format(""userid = %s, password = %s"", userId, password));
+
+Log.e(""...
+
+adb stop-server (optional)
+
+adb start-server
+
+adb logcat",,
+,Multimedia:Android Web,Android WebView does support the <audio/> or <video/> tags from HTML5,,
+,File System:PhoneGap,"The getDirectory() and getFile() methods are asynchronous methods so one need to create a success callback to get the proper return values.
+
+http://docs.phonegap.com/en/1.1.0/phonegap_file_file.md.html#DirectoryEntry",,
+,Camera 2:PhoneGap,"As well make sure you have put:
+
+android:configChanges=""orientation|keyboardHidden""
+
+in your AndroidManifest.xml. If not the main html page will reload when you return from the camera.",,
+,Native Data Reload:iOS,"- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    NSError *error = nil;
+    if (![[self fetchedResultsController] performFetch:&error]) {
+        NSLog(@""Unresolved error %@, %@"", error, [error userInfo]);
+        abort();
+    }
+    [self.tableView reloadData];
+
+By default, the above are generated in - (void)viewDidLoad with UISplitViewController project",,
+,String Parsing:Java,"Scanner over StringTokenizer
+
+http://stackoverflow.com/questions/691184/scanner-vs-stringtokenizer-vs-string-split",,
+,Core MVC:Spring MVC,"In org.springframework.web.servlet.mvc.annotation 
+AnnotationMethodHandlerAdapter for REST and 
+InternalResourceViewResolver for view",,
+,Detect Orientation 2:iOS,"In UIViewController -
+
+-(void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+	if((self.interfaceOrientation == UIDeviceOrientationLandscapeLeft) || (self.interfaceOrientation == UIDeviceOrientationLandscapeRight)){
+        NSLog(@""landscape"");
+	} else	if((self.interfaceOrientation == UIDeviceOrientationPortrait) || (self.interfaceOrientation == UIDeviceOrientationPortraitUpsideDown)) {
+        NSLog(@""portrait"");
+    }
+}",,
+,Translation:jQuery,"Moving element using .appendTo (yes, there is no moveTo)",,
+,Hovering:jQuery,"Your parent element has children elements and your parent element have mouseover/mouseout event. Now when you mouseover/mouseout on children element, it fires parent's mouseover/mouseout event. This is caused by event bubbling/propagation.
+
+http://www.programmingfacts.com/problems-parents-jquery-mouseovermouseout/",,
+,String Tokenizer:Google Apps Script,"Split
+
+https://docs.google.com/support/bin/static.py?page=table.cs&topic=25273",,
+,String Tokenizer:Java,Scanner,,
+,Packaging:Maven,".pom file, generated under target directory",,
+,Packaging:Gradle,"build.gradle file, generated under build directory
+
+typically contains just:
+
+apply plugin 'java'
+
+Gradle expects to find your productionsource code under src/main/java and your test source code under src/test/java. In addition, any files under src/main/resources will be included in the JAR file as resources, and any files under src/test/resources will be included in the classpath used to run the tests.",,
+,Has String:iOS,"NSString* search = @""Where's the manual?"";
+NSRange range = [search rangeOfString: @""the""];
+NSLog( @""Found at %u"", range.location );
+
+http://stackoverflow.com/questions/4990304/string-compare-in-ios",,
+,Trim String:iOS,"NSString *trimMe = @""    Trim this string      "";
+trimMe = [trimMe stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+
+http://engineeringtheworld.wordpress.com/2011/02/07/how-to-trim-nsstring-in-objective-c-2-0-ios-ipad-iphone/
+",,
+,Background Process:iOS,"iOS has limited multi-tasking support. However, application can be put into background mode. To turn off this feature, click on [xcode project name]-Info.plist, and set ""Application does not run in background"" to YES.
+
+This setting does not allow the application to go into the background mode, thus if the Home button is pressed, the application will be killed.",,
+,Edit Table:iOS,"- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return UITableViewCellEditingStyleNone;
+}
+
+http://stackoverflow.com/questions/4560196/subclassed-uitableviewcell-make-the-delete-button-not-show-up",,
+,Native Call:iOS,"Do not foget to use ""static"" e.g.
+
+static void volumeListenerCallback(
+
+http://stackoverflow.com/questions/801976/mixing-c-functions-in-an-objective-c-class",,
+,Code In Tool:Android,"Allow the codes to know that it is running in IDE e.g Eclipse -
+
+In your custom view class, call isInEditMode() (which is inherited from android.view.View) to determine if your view is being created and painted from within a tool rather than really running on a device or emulator. For example, for initializing mock-up data.
+
+http://tools.android.com/recent/customviewsinthepalette",,
+,Device Debug:Android,"Through DDMS (Dalvik Debug Monitor Service). DDMS allows:
+
+1. Task management
+2. File management
+3. Emulator interaction
+4. Logging
+5. Screen captures",,
+,Video Format:Android,"Supported video formats:
+
+H.263
+H.264
+MPEG-4 SP
+VP8
+
+http://developer.android.com/guide/appendix/media-formats.html",,
+,Audio Format:Android,"Supported audio formats:
+
+AAC LC/LTP
+HE-AACv1 (AAC+)
+HE-AACv2 (enhanced AAC+)
+AMR-NB
+AMR-WB
+FLAC
+MP3
+MIDI
+Vorbis
+PCM/WAVE
+
+http://developer.android.com/guide/appendix/media-formats.html",,
+,i18n:Android,"res/values/strings.xml
+res/values-de/strings.xml
+res/values-ru/strings.xml
+
+usage:
+
+@string/titleStatusMessage
+
+this.getString(R.string.titleStatusMessage)
+
+http://www.connorgarvey.com/blog/?p=9",,
+,Common Directory:Android,"res/drawable
+res/drawable-hdpi
+res/drawable-mdpi
+res/drawable-ldpi
+res/layout
+res/values",,
+,Alpha Channel:Android,The prefix in the color code e.g. #f00c (full opacity) and #0fff (total transparency),,
+,Style:Android,"Style defines the theme. System style is denoted with ""@android:style"", while the user defined style is specified with just ""@style"".
+
+",,
+,Landscape:Android Emulator,Ctrl + F11,,
+,Landscape:iOS Emulator,Cmd + left/right arrow,,
+,WYSIWYG Editor:Android,". Nine-patch graphic using the Draw 9-patch tool (draw9patch)
+http://android10.org/index.php/articlesother/279-draw-9-patch-tutorial",,
+,Trace:Android,"onCreate
+    // start tracing to ""/sdcard/calc.trace""
+    Debug.startMethodTracing(""calc"");   //file name is optional
+
+onStop
+    Debug.stopMethodTracing();   //without a stop, one will not see the file in logCat related to a specific emulator!!!
+
+To view, use 
+
+1. DDMS pull or
+2. ""adb pull /sdcard/calc.trace ."" or
+3. traceview calc.trace (only after step 1 or 2 above)",,
+,Cleanup Method:Android,onDestroy(),,
+,Cleanup Method:Java,finalize(),,
+,IDE Shortcut:Eclipse,"All Eclipse related -
+
+Ctrl + Shift + O = Organize/import packages
+Ctrl + Shift + F = format source
+Ctrl + Shift + S = Save all opened
+Ctrl + Space = Context sensitive suggestion
+Ctrl + Shift + G = Find Usages",,
+,Magic Shortcut:iOS,"Ctrl + Shift + F = search for every occurence in the XCode
+Cmd + 1 = Zoom Out Mode of Simulator
+Cmd + 2 = Normal Mode of Simulator
+Cmd + Alt + R = Launch Info|Arguments|Options|Diagnostics dialog
+Shift + Cmd + H = Simulate clicking Home button in the simulator",,
+,Activity Preferences:Android,"T extends PreferenceActivity {
+
+   @Override
+   protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        //Gets the preference layout from xml
+        addPreferencesFromResource(R.drawable.settings);
+",,
+,Shared Object:Android,XXXActivity extends android.app.Application,,
+,Shared Object:iOS,AppDelegate,,
+,Periodic Job:Android,". android.app.Alarm (new)
+
+. use Thread.sleep in run() of a thread",,
+,Thread Methods:Android,"isRunning()
+interupt()",,
+,Database:Android,. Default/out of the box is sqlite (android.database.sqlite.SQLiteDatabase),,
+,Database:iOS,Default/out of the box is sqlite (via CoreData),,
+,Object to String:Android,toString,,
+,Object to String:iOS,description,,
+,Common ORM:Android,ContentProvider,,
+,Request Parameters:Grails,"params.parameter_name - getting a HTTP GET/POST parameter in view
+
+request.expression_name - setting a value in a controller so that it can be retrieved with ${expression_name} in view
+
+",,
+,Request Parameters:Java,"HttpServletRequest request;
+String value = request.getParameter(""parameter_name""); //getting
+
+request.setAttribute(""expression_name"", value); //setting",,
+,Scaffolding:Grails,"def scaffold = true
+
+By default, scaffolding provides an index, list, show, edit, save, update, and delete action
+
+http://stackoverflow.com/questions/4960147/paginate-error-grails-dynamic-scaffolding",,
+,Screen:jQueryMobile,"Using@media css tag you change the property of class in Style sheet. 
+
+@media all and (min-width: 650px){ /* styles class */  }
+@media all and (min-width: 750px){  /* styles class */  }
+@media all and (min-width: 1200px){ /* styles class */  }
+
+Each line apply custom style to html depending of screen size.
+
+http://forum.jquery.com/topic/how-does-jquery-mobile-website-adjusts-itself-according-to-the-screen-size-explanation-with-a-simple-example-required#14737000002979896",,
+,large Text:Grails,"import com.google.appengine.api.datastore.Text
+
+book.story = params.description as Text
+
+http://stackoverflow.com/questions/6051944/in-gaelyk-how-do-i-store-the-form-submitted-params-variable-as-text-type-in-ent",,
+,Closure:Groovy,"def x = {}
+
+a piece of codes",,
+,Closure:Java,"none
+
+closest is annonymous inner class",,
+,Main Concepts:Enyo,"Kind is like a class,it is an object prototype
+Component is run time object
+Control is a UI level component object",,
+,Fixed Layout:Android,FrameLayout,,
+,Fixed Layout:HTML,position:absolute,,
+,Table:RDBMS,Table,,
+,Table:Mongodb,Collection,,
+,Secured Annotation:Spring,"@PreAuthorize(""hasRole('ROLE_USER')"")
+
+@PreAuthorize(""hasPermission(#contact, 'admin')"")
+
+http://static.springsource.org/spring-security/site/docs/3.0.x/reference/el-access.html",,
+,Secured Annotation:Apache Shiro,"@RequiresPermissions(“account:create”)‏
+
+@RequiresRoles( “teller” )
+
+http://shiro.apache.org/static/current/apidocs/org/apache/shiro/authz/permission/WildcardPermission.html
+http://shiro.apache.org/java-authorization-guide.html",,
+,Flash Service:Android,BroadcastReceiver,,
+,Sandbox Mode:Facebook,"Note that if you want to hide your web app from friends until you launch (from search, News Feed, Requests and other Social Channel), you'll need to enabled Sandbox Mode. You can find this setting on the Advanced tab.
+
+http://developers.facebook.com/docs/guides/mobile/web/",,
+,Common Methods:Apache Shiro Session,"Session session = subject.getSession();
+session.getAttribute(“key”, someValue);
+Date start = session.getStartTimestamp();
+Date timestamp = session.getLastAccessTime();
+session.setTimeout(millis);
+
+http://www.infoq.com/articles/apache-shiro",,
+,Background Process 2:Android,"Start a service in the BroadcastReceiver's onReceive method as the following:
+
+	public void onReceive(Context context, Intent intent) {
+		context.startService(new Intent(context, UpdateService.class));
+	}
+
+http://www.youtube.com/watch?v=i0hyfAKkNCY&feature=g-all-u&context=G2416ffdFAAAAAAAAAAA",,
+,Integration:Android,"To be invoked by other app, use intent-filter.
+
+To invoke another view:
+
+Intent intent = new Intent(MyNextActivity.class) //between your app's Activities
+
+or
+
+Intent intent = new Intent(Intent.ACTION_DIAL) //between yours and the system's
+
+To pass information, use intent.putExtra for the next Activity.",,
+,Background Process 3:Android,"IntentService, this is like a cron job for Android. It is an efficient way to process multiple requests, in a queue and sequential manner.
+
+In onHandleIntent vs. OnStartCommand.
+
+This should be used instead of spawning a new thread in an Activity with while loop.",,
+,Easy to Forget:Android,"1. Remember to add your Activity into AndroidManifest.xml, otherwise your app just crash without clear indication!
+
+2. .show e.g. Toast.makeText(...).show (in the latest ADT announced in Google I/O 2012 6/28, you will get a compilation error if yu forget to call show!)
+
+3. android.R e.g. android.R.layout.simple_list_item_1 if you removed main.xml and use ArrayAdapter",,
+,Drop Down Menu:Android,android.widget.Spinner,,
+,Drop Down Menu:iOS,"UIPickerView
+
+http://stackoverflow.com/questions/8400801/any-pull-down-or-drop-down-menu-for-ios",,
+,String Array:Android,"<string-array name=""spinner1Value"">
+   <item>value1</item>
+   <item>value2</item>
+   <item>value3</item>
+</string-array>
+
+can be in values/strings.xml",,
+,File Manager:Android,AssetManager,,
+,Media Player:Android,android.media.MediaPlayer,,
+,Observer Pattern:iOS,"Implementing a notification is pretty simple, to send a message implement this:
+
+[[NSNotificationCenter defaultCenter] postNotificationName:@""MessageName"" object:self];
+
+And to recieve a message,
+
+[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(action:) name:@""MessageName"" object:sender];
+
+http://devinsheaven.com/cocoa-tutorial-passing-messages-between-objects-notifications-delegates-and-target-action/",,
+,,"To send a message:
+  Intent intent = new Intent(""custom-event-name"");
+  // You can also include some extra data.
+  intent.putExtra(""message"", ""This is my message!"");
+  LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
+
+To receive a message:
+
+  LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver, 
+  new IntentFilter(""custom-event-name""));
+
+http://stackoverflow.com/questions/3947641/android-equivalent-to-nsnotificationcenter",,
+,Emulator Orientation:Android,"Ctrl + F11 (Windows)
+
+fn + control + F11 (Mac OS X)",,
+,Emulator Orientation:iOS,"command + left arrow key
+
+command + right arrow key",,
+,Media Player:iOS,MPMoviePlayerViewController,,
+,Host localhost:Android Emulator,10.0.2.2,,
+,Right Alignment:Android Web,"style float:right does not work on Android 3.X (Honeycomb) and 4.X (ICS)
+
+Something like the following will work:
+
+position:absolute;top:5px;right:0;margin:28px 10px 0 0",,
+,Language:Windows Phone 7,XNA/Silverlight,,
+,Language:Blackberry,Java,,
+,Screen:iOS,iPad 2 1024 x 768,,
+,Hide Keyboard:iOS,"- (void)handleSearch:(UISearchBar *)searchBar {
+...
+[searchBar resignFirstResponder];",,
+,Hide Keyboard:Android,"getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+
+or
+
+InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+imm.hideSoftInputFromWindow(myEditText.getWindowToken(), 0);
+
+http://stackoverflow.com/questions/3553779/android-dismiss-keyboard",,
+,Useful Command:SQLite,".schema
+.dump
+sqlite3 moviedb-sqlite3.db .dump > dump.sql",,
+,Common SQLite Method:Android,"db.insertWithOnConflict(TABLE, null, values, SQLiteDatabase.CONFLICT_IGNORE);",,
+,Super User:Android,adb shell,,
+,Super User:SQLIte,"sqlite3 [filename].sqlite (iOS)
+
+sqlite3 [filename].db (Android)",,
+,Cursor Adapter 1:Android,"SimpleCursorAdapter binds the SQLite columns to view's UI component by Id automatically with pagination support!
+
+e.g.
+
+list = (ListView) findViewById(R.id.list);
+
+SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.list, cursor,
+          new String[] { Definition.Item.TITLE, Definition.Item.CREATE_DATE }, new int[] { R.id.title, R.id.createDate});
+
+list.setAdapter(adapter);",,
+,Cursor Adapter:iOS,"None but have to be manually coded e.g.
+
+@interface RootViewController : UITableViewController <NSFetchedResultsControllerDelegate>  {
+...
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    id <NSFetchedResultsSectionInfo> sectionInfo = [[fetchedResultsController sections] objectAtIndex:section];
+    return [sectionInfo numberOfObjects];
+}
+
+
+- (NSFetchedResultsController *)fetchedResultsController
+...
+",,
+,Cursor Adapter 2:Android,"A better approach is to use view binder, as one can inter-mix the business logics e.g.
+
+...
+  adapter.setViewBinder(new ViewBinder() {
+
+  public boolean setViewValue(View aView, Cursor aCursor, int aColumnIndex) {
+  if (aColumnIndex == 2) {
+              String createDate = aCursor.getString(aColumnIndex);
+              TextView textView = (TextView) aView;
+              textView.setText(""Create date: "" + MyFormatterHelper.formatDate(getApplicationContext(), createDate));
+...",,
+,Friendly Time:Android,"DateUtils.getRelativeTimeSpanString(new SimpleDateFormat(""yyyy/MM/dd"").parse(input.toString()).getTime(), new Date().getTime(), DateUtils.DAY_IN_MILLIS, DateUtils.FORMAT_ABBREV_RELATIVE).toString()
+
+or just
+
+DateUtils.getRelativeTimeSpanString(new Date())
+
+http://murodese.wordpress.com/category/android/",,
+,Friendly Time:Java,Use Joda framework,,
+,Permission:Android,"App level
+
+Component level
+
+Protection level
+. normal
+. dangerous (commonly used)
+. signature
+. signatureOrSystem
+
+Granted at install time
+All or nothing
+Forever
+
+http://rupertrawnsley.blogspot.com/2011_11_01_archive.html",,
+,Autolink:Android,"By using this attribute, android can controls whether links(such as urls, emails, phone and address) are automatically found and converted to clickable links e.g.
+
+android:autoLink=""email|web|phone""
+
+android:autoLink=""all""
+
+http://www.technotalkative.com/android-textview-autolink-attribute/",,
+,Useful Component:Android,"ListActivity
+
+android.widget.ArrayAdapter",,
+,Fit Size:iOS,"[prevLabel sizeToFit];
+
+[buttonPrevious sizeToFit];
+
+[self.view sizeToFit];",,
+,Fit Size:Android,"You need to set the text view size like this because otherwise setTextSize assumes the value is in SP units:
+
+setTextSize(TypedValue.COMPLEX_UNIT_PX, trySize);
+
+http://stackoverflow.com/questions/2617266/how-to-adjust-text-font-size-to-fit-textview/7875656#7875656",,
+,Detect Orientation:Android,onSurfaceChanged,,
+,Default Text:Android,"<EditText
+   android:text=""Default Value""
+...
+</EditText>",,
+,Default Text:HTML,<input type=text value=Default Text ...,,
+,Resource Friendly String:Android,CharSequence,,
+,Native Data Reload:Android,"adapter.notifyDataSetChanged();
+
+For example, after a list item is removed.",,
+,Simple Dialog 2:Android,"AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+ 
+alertDialogBuilder.setTitle(""Your Title"");
+
+...
+
+alertDialog.show();
+
+http://www.mkyong.com/android/android-alert-dialog-example/",,
+,Default Request Limit:.Net,4096 KB,,
+,Native UI:Java,Swing / Java Foundation Class (JFC),,
+,Native UI:.Net,Windows Presentation Foundation,,
+,Desktop UI:Java,AWT,,
+,Desktop UI:.Net,Windows Forms,,
+,Mobile App:Java,"Java ME APIs (CLDC, MIDP, OpenGL, Java2D ...)",,
+,Mobile App:.Net,"Silverlight, XNA Framework",,
+,Class Library:Java,Java Class Library,,
+,Class Library:.Net,.Net Framework Class Library,,
+,Enterprise Component:Java,"Session Beans, Message Driven Beans, Timer Service",,
+,Enterprise Component:.Net,"Windows Communication Foundation / Windows Workflow Foundation, Microsoft Message Queue, Custom Windows Services",,
+,Web App and Service:Java,"JAX-WS, JAX-RS
+JSF, JSP/Servlets
+Applets, JavaFX",,
+,Web App and Service:.Net,"WCF Web Service
+ASP .Net, ASP .Net MVC
+Silverlight",,
+,Data Access:Java,"JDBC
+JDO, JPA
+JTA",,
+,Data Access 1:.Net,"DataSet (default storage approach used by ASP.Net)
+-an in-memory store than can contain one or more tables (rowsets) of data and optionally relationships between tables e.g. SqlDataSource
+-can be with either embedded SQL or stored procedures
+-in general, it is recommended to start with embedded SQL, then use a performance-profiling tool to find the most expensive SQL commands and then refactor them as stored procedures",,
+,Integration:Java,"RMI
+JMS
+JCA",,
+,Integration:.Net,"WCF
+MSMQ
+COM Interop",,
+,Directory Service:Java,JNDI,,
+,Directory Service:.Net,Active Directory,,
+,Security:Java,JAAS,,
+,Security:.Net,"Windows Authentication Service, Windows Identity Foundation",,
+,Common Language:Java,Java Bytecodes,,
+,Common Language:.Net,"Common Intermediate Language (also known as MSIL, CIL or simply IL)",,
+,Simple Dialog:C#,"MessageBox.Show(""Hello World!"");",,
+,Core MVC:.Net,". ASP .Net MVC
+. No ViewState
+. Does not inherit System.Web.UI.Page, thus no isPostBack",,
+,Entity Framework .Net:With,"System.Data.Entity
+System.Linq
+:DbContext
+DbSet<.*> (relationship)",,
+,Fragment:.Net,"ASP.Net MVC
+-renderpartial
+-PartialView
+
+ASP.Net
+-Content Page (vs. Master Page)
+-denoted by <asp:contentplaceholder",,
+,Request Parameter:.Net,"ASP 1.0 - Request.Form / Request.QueryString(.*)
+ASP .Net - Request[.*] / Request.Params[.*]",,
+,ASP .Net 4.0:Version,". Able to tweak ViewState behaviour (activate per control basis)
+. Can C# 4.0 and VB 10
+. MultiView control (prev and next functionality)",,
+,Windows Presentation Foundation (WPF):With,System.Windows,,
+,Layering Tips:iOS,"if UIView does not work, try UIWindow",,
+,Screen Abstraction:.Net,Device Independent Pixel (px) = 1/96th of an inch,,
+,Binding 2:XAML,"XAML data binding e.g. <TextBox Text=""{Binding Path=UserName}"" />
+. one way or two way (via mode attribute)
+. anytime data is changed, custom validation can be applied
+. value conversion/data format without code
+
+e.g. binding a checbox to a visibility of a panel
+
+<CheckBox Name=""RmdCheckBox"" ... />
+
+<WrapPanel x:Name=""LayoutRoot"" Background=""White"" Height=""30"" Visibility=""{Binding !IsChecked, ElementName=RmdCheckBox, Converter={StaticResource BoolToVisConverter}}"">
+...
+</WrapPanel>",,
+,Resource:.Net,"WPF
+
+With a proper ResourceDictionary defined:
+
+StaticResources
+
+<Rectangle Fill=""{StaticResource MyBrush}"" />
+
+DynamicResource
+
+<ItemsControl ItemTemplate=""{DynamicResource MyItemTemplate}""  />",,
+,Useful Command:.Net,". Set <UseIIS> in *.csproj to false, reload the project and the project should load without IIS installed
+. Ctrl + Alt + O = Display (Debug) Output with the use of System.Diagnostics.Debug.written
+. Ctrl + K C = Comment; Ctrl + K You = Uncomment
+. Locate In Solution = In Solution Navigator, top corner (second/third from the right), used to show where is the current source in the project
+. Ctlr + 3 = Quick Access (need to dock to Solution Navigator is not shown), used filtering the file",,
+,Redirect:.Net,"ASP.Net 3.5+
+Response.Buffer = true;
+Response.Clear();
+Response.StatusCode = ""301 Moved"";
+Response.AddHeader(""Location"", ""Default2.aspx"");
+Response.Write(""<html><body>Page moved permanently to <a href=\""New.aspx\"">New</a></body></html>"");
+Response.End();
+
+http://forums.asp.net/t/1560622.aspx/1
+http://www.mycsharpcorner.com/Post.aspx?postID=40",,
+,IDE Shortcuts:Eclipse,"Alt + Left Arrow = Navigate Backward
+Alt + Right Arrow = Navigate Forward",,
+,IDE Shortcuts:MS Visual Studio,"Ctrl + - = Navigate Backward
+Ctrl + Shift + - = Navigate Forward",,
+,CRUD:.Net,"MS Visual Web Developer
+. Drag and drop GridView into designer
+. Check paging, editing, deletion and selection in the GridView tasks
+. Optionally check Edit columns (to remove any columns from the display)
+. Optionally check Auto format to make the table looks nicer",,
+,CRUD:Grails,". Set scaffold to true in the domain object
+. Optionally Run ""grails install-templates"" and customize .gsp file(s) as needed",,
+,CRUD:Tapestry,". Use Grid component in start page
+. Customize delete link in start page
+. Use BeanEditForm for save page
+. Link the save page into start page",,
+,Main Navigation:.Net,"ASP.Net
+-In Toolbox (Ctrl + Alt + x), drag and drop a Menu control within the Navigation section into the designer/source code
+-Change the StaticDisplayLevels from 1 (default) to 2 if needed to show the next levels of links as well",,
+,ASP.Net Master Page:With,". <%@ Master Language=""xxx"" %> where xxx like VB, C# etc.
+
+. File extension is .master",,
+,ASP.Net Content Page:With,". Has MasterPagefile in @Page directive e.g.
+<%@ Page Language=""VB"" MasterPagefile=""~/PPQ.master"" ...
+
+. Has the following content (no HTML html and body tags)
+
+<asp:Content ContentPlaceHolderId=""CPH1"" runat=""server"">
+  <h2>Individual Content</h2>
+  <p>Paragraph 1</p>
+  <p>Paragraph 2</p>
+</asp:Content>
+
+. File is Default.aspx (by default)
+
+http://www.w3schools.com/aspnet/aspnet_masterpages.asp",,
+,Accessibility:.Net,"ASP.Net
+-AccessKey
+-DescriptionUrl
+-GenerateEmptyAlternateText
+-TabIndex",,
+,Relationships:.Net,"ASP.Net
+-use datatabase diagram
+-use Table Designer (insert and update specification: Delete Rule and Update Rule; No Action, Cascade, Set Null or Set Default)",,
+,Relationships:Grails,"One-to-One
+. static hasOne = [children:Child]
+.
+
+One-to-Many
+. static hasMany = [children:Child] in the parent class
+. static belongsTo = [parent:Parent] in the child (inverse relationship; optional)
+
+The default cascading behaviour is to cascade saves and updates, but not deletes unless a belongsTo is also specified
+
+Many-to-Many
+. define a hasMany on both sides of the relationship and having a belongsTo on the owned side of the relationship (like a child)",,
+,Split View:.Net,"ASP.Net
+-Use Master-Detail view controls like GridView (can be the left panel) and DetailView (can be the right panel)
+-If DetailView is not enough, further customization for the Edit/Update mode can be supported by FormView control",,
+,Breaking Line:.Net,"VB.Net
+-a space and an underscore ('_') to the end of the first line",,
+,Nested Data:.Net,"ASP.Net
+-use <ItemTemplate> with <asp:Repeater
+",,
+,ASP.Net Form Authentication:With,"In web.config:
+
+<roleManager enabled=""true"" />
+<authentication mode=""Forms"" />",,
+,Main Concepts:ASP.Net MVC 4,". Web API
+. Single page app",,
+,Useful Command:ApacheDS,sudo /usr/bin/apacheds stop default,,
+,State Machine Pattern:With,"-Complex navigation
+-Use to represent the navigation between web pages
+-Each page represents a state
+-Actions taken by users are events that trigger transitions from one state to another
+-The user is constrained by the transitions that are defined in the state diagram
+-A transition can loop back on itself to represent an invalid operation",,
+,Intercepting Filter Pattern:With,Common HTTP processing steps,,
+,ASP.Net Server Controls:What,". HTML Server Controls - typical HTML control but accesible via server side script
+
+. Web Server Controls - new ASP.Net tags, more powerful and does not necessarily mapped to any HTML controls
+
+. Validation Server Controls - for input validation",,
+,Page Controller Pattern:With,"-in the context of the usage of MVC pattern
+-maximize code reuse
+-minimize code duplication
+-each link has a controller
+-each controller inherits a base controller to avoid code duplication
+-controller invokes a proper methods to populate the model, and pick the right view to display the model",,
+,Front Controller Pattern:With,"-in the context of the usage of MVC pattern
+-your page controller classes have complex logic or
+-are part of a deep inheritance hierarchy
+-your app determines the navigation between pages dynamically based on configurable rules
+-single controller instead of multiple (c.f. page controller)
+-generally involves two steps: retrieve parameters and select commands (which ultimately select the right view)",,
+,Transaction Script Pattern:With,"-organize business logic for simple and straightforward app
+-by procedure
+-each procedure handles a single request from the presentation (transaction)
+-your task is to get the input data, interrogate the database, do some business logic and save your results to the database
+",,
+,Table Module Pattern:With,-a single instance that handles the business logic for all rows in a database table or view,,
+,Domain Model Pattern:With,"-creates a web of interconnected objects that model the business area that you are working with
+-the objects encapsulates the business data and the business rules and are interconnected with each other through inheritance and aggregation",,
+,Service Interface Pattern:With,"-a need to separate the business logic from the elements responsible for communication protocols, data transformation and fulfillment of service contracts
+-responses (ouput/UI) optimized for a particular usage scenarios
+-consumers may want to communicate using different technologies
+-each software service has an associated interface that it presents to the consumers
+-the interface defines and implements a contract between the consumers of the service and the provider of the service",,
+,Table Data Gateway Pattern:With,"-generally is used to implement Table Module pattern
+-has a simple interface, usually consisting of several find methods to get data from the database and update, insert and delete methods
+-usually stateless, as its role is to push data back and forth",,
+,Service Gateway Pattern:With,"-more likely to be part of the web app (consumer) c.f. Service Interface which is more at the provider side
+-acts as proxies to other services, encapsulating the details of connecting to the source (like authentication) and performing any necessary translation (marshaling, encryption, message routing etc)
+-perform similar roles as data access layer
+-also used for service results which is asynchronous; a service consumer is prepared to receive a separate result message from the service",,
+,Connection Pooling:.Net,"ADO.Net
+-each Data Provider (DP) e.g. OLE DB .Net DP, Oracle .Net DP, SQL Server .Net DP and ODBC .Net DP provides transparent connection pooling
+-during development, you might want to reduce the maximum size to discover connection leaks, if any",,
+,Data Result Set:Java,java.sql.ResultSet,,
+,Data Result Set:.Net,"ADO.Net
+-System.Data.OleDb.OleDbDataReader",,
+,High Level Data Access Object (DAO):.Net,"Disconnected
+-DataSet (contains multiple DataTables and DataRelations of various tables, with built-in XML support) can be used for caching and with paging support
+-DataTable (contains a collection of rows from a single table)
+
+Connected
+-DataProvider i.e. Connection, Command, DataReader and DataAdapter objects",,
+,Data Access 2:.Net,"DataAdapter is used by DataSet to connect to the database
+
+DataReader stream the rowsets to the control in read-only, forward-only fashion e.g. SqlDataReader (can be chosen by setting the DataSourceMode property of the data source control)
+
+ADO.Net
+
+Entity Framework
+
+Enterprise Services",,
+,Factory Pattern:With,"-no hard coding of object creation
+-the client code that uses an object should be unaware of the details of how this object is created
+-the system should be flexible enough to allow the substitution of a type of object (assuming its interface is invariant) with another type without having to modify the client code (assuming factory interface is invariant as well)",,
+,Session Management Performance 1:.Net,"ASP.Net
+-25% penalty for storing session in SQL server instead of keeping it in memory; best case scenario where only simple objects like String and Integers are stored
+-More complex objects like DataSets must be serialized and de-serialized, which will be much more expensive
+-minimize use of the ViewState; turn it off for any page that does not explicitly need it
+-use ASP.Net session as it is more efficient",,
+,Session Management Performance 2:.Net,"-use Session Analyzer to measure how much data you are storing in the session
+-keep in mind that HttpSessionModule loads the ASP.Net session into memory for every ASPX page request, EVEN IF you are not using the session for this request
+-as a rule of thumb, do not store data that can be re-created from the database in the session
+-set ASPX compilation debug flag to false in web.config as it is directly impacting the performance of ASP.Net session",,
+,File Upload Limit:Liferay,"6.1 CE (in bytes)
+-51,200 (Web Content Image)
+-307,200 (User Images)
+-3,072,000 (Documents and Media)",,
+,File Upload 2:.Net,"<asp:FileUpload ID=""txtattach""
+
+if(txtattach.HasFile == true) {
+   ...
+   txtattach.SaveAs(filepath);",,
+,WS-Policy:With,. Neethi,,
+,Formatting Attributes:Android,"XML                 TextView Class Method
+android:height      setHeight(int)
+android:lines       setHeight(int)
+android:maxLines    setMaxLines(int)
+android:text        setText(CharSequence,TextView.BufferType)
+android:textColor   setTextColor(int)",,
+,Formatting Attributes:Windows Phone 7,". XAML or C#
+. XAML is just an XML substitute for C# instantiation
+
+""Silverlight renders from innermost element out, bottom-most element up; measure first then arrange.""",,
+,Life Cycle 2:Android,"onStart() called when the activity becomes visible to the user
+onResume() called when the activity starts interacting with the user
+onPaused() called when the application/system resumes a previous activity; it is typically used to commit data to persistent storage
+onStop() called when the activity is no longer visible to the user; could be called when a new activity is being started or an existing one brought to the front of this one 
+",,
+,Text Attributes:Android,"android:textColor
+android:textAppearance
+android:textSize
+android:typeface
+android:textStyle",,
+,Useful Command:Android,"adb install
+adb push
+adb pull
+adb shell
+adb logcat
+adb devices - your device should be recognized",,
+,Life Cycle:Windows Phone 7.5,"Launching Event:
+*1 Running ---> *2
+
+Deactivated Event:
+Dormant (Not Running)
+Tombstoned ---> *1 (with Activated Event)
+
+Closing Event:
+*2 Closed",,
+,To Emulator:Android,"In Eclipse:
+
+Use DDMS perspective|File Explorer view, click on the second top right corner button from the left",,
+,Main Concepts:.Net XAML,"In WPF and Silverlight, it is primarily used to describe:
+1. UI
+2. WIindows Workflow Foundation (WF)
+3. Windows Communication Foundation (WCF)
+
+The latter two have nothing to do with UI.
+
+All event handlers are always attached before any properties are set for any object declared in XAML.
+",,
+,Tips:XAML Property Element,"<Button xmlns=""http://schemas.microsoft... Content=""OK"" Background=""White""/>
+
+is the same as
+
+<Button xmlns=""http://schemas.microsoft...>
+ <Button.Content>
+  OK
+ </Button.Content>
+ <Button.Background>
+  White
+ </Button.Background>
+</Button>",,
+,Curly Braces ({}):XAML,". Treated as Mackup Extension or subjected to type conversion
+. It can be nested, containing other {} for example",,
+,Binding 1:XAML,"Binding markup extension:
+
+1. Can refer to a Named Parameter (i.e. another attribute of the same element) e.g. Height=""20"" Content=""{Binding  Path=Height
+
+2. Can refer to a Named Element in the same parent e.g.
+<StackPanel ...
+ <Label Target=""{Binding ElementName=box}
+ <TextBox Name=""box""/>
+
+or in WPF 4
+
+<StackPanel ...
+ <Label Target=""{x:Reference box}
+ <TextBox Name=""box""/>
+
+or simply
+
+<StackPanel ...
+ <Label Target=""box""
+ <TextBox Name=""box""/>",,
+,Content Property:XAML,"Most WPF classes designate a property known as Content, which is set to whatever content is inside an XML element.
+
+Some don't, e.g.ComboBox, ListBox and TabControl. They use Items property instead, as their content property.",,
+,Layout Properties:XAML,"Margin = left, top, right, bottom
+Padding = left, top, right, bottom
+
+e.g.
+
+<Label padding=""0,10,20,30"" ...
+<Label padding=""20,5"" ... (left/right gets 20, top/bottom gets 5)
+<Label padding=""10"" ... (all gets a 10)
+
+c.f. HorizontalAlignment and VerticalAlignment - use these first if possible instead of Canvas.Left and Canvas.Top",,
+,Layout Properties:CSS,"Margin = top, right, bottom, left
+Padding = top, right, bottom, left",,
+,Easy to Forget:.Net,You can not change an XAML in VS if the app is running (you need to stop it first),,
+,Two Way Data Binding:XAML,"mode=""TwoWay""",,
+,Two Way Data Binding:Knockout,"Out of the box, it is already two way, you do nothing to get this feature",,
+,Complex Data Binding:Knockout,"ko.dependentObservable(function() {
+   this.firstName() + this.lastName()
+...
+ko.applyBindings(viewModel);",,
+,Binding:Knockout,"<input id=""test"" type=""text"" data-bind=""value: firstName"" />
+
+//yourscript...
+var model = { 
+    firstName : ko.observable(""Default_Value""),
+};
+ko.applyBindings(model);",,
+,Binding:Backbone,"<input id=""test"" name=""firstName"" type=""text"">
+
+//your script...
+var Model = Backbone.Model.extend();
+var model = new Model();
+$('input').bind(""change"", function(){
+    var obj = {};
+    obj[$(this).attr('name')] = $(this).val();
+    model.set(obj);
+});",,
+,Main Concepts:View Model,Blurred separation between Models and Controllers,,
+,Remote Mashup:Liferay,WSRP (The Web Services for Remote Portlets specification 2.0),,
+,Local Mashup:Liferay,"Web Proxy:
+
+<div id=""embedded-welcome-portlet"">
+  <runtime-portlet name=""47"" instance=""4433"" queryString=""""/>
+</div>
+
+Obviously using the typical portlet, but also IFrame Portlet which is reachable by your browser and might not have the look and feel of your other portlet.",,
+,Useful Command:Debian Linux,". apt-cache search <search term>
+. apt-get install <library etc.>",,
+,Useful Command:CentOS Linux,"yum search <keyword>
+yum install <library etc.>
+service tomcat6 restart
+cd /usr/share/tomcat5/logs
+",,
+,Lowest Resolution:Android Game,320 x 240 pixels,,
+,Setup:Liferay 6,"Add the following line into portal-ext.properties (create one if none) -
+
+resource.repositories.root=${user.home}/liferay",,
+,Useful Command:Linux,"Copy files remotely
+rcp -rp root@108.178.12.176:/root/_liferay-portal-tomcat-6.1.0-ce-ga1-20120106155615760.zip .
+
+Count the total number of files in a folder
+find . -type f | wc -l
+
+Look at the device (error) log
+dmesg | tail",,
+,General Game Logic:Android,". Set up the new window and UI component
+
+. Hook into callbacks so that we can receive window and input events
+
+. Start the main loop thread
+
+. Keep track of the current screen and tell it to update and present itself in each main loop (aka frame)
+
+. Transfer any window events (e.g. pause and resume events) from the the UI thread to the main loop thread and pass them onto the current screen (state changed)
+
+. Grant access to all the modules (input, file io, graphics and audio)",,
+,Easily to Forget:Liferay,". If you plan to use the instance for production, you have to setup a database beforehand
+. Also, do not forget to create a database called ""lportal"" before you try to connect to the database during the database setup",,
+,Error:PHP,"To display error back to the web browser -
+
+ini_set('display_errors', 1);
+error_reporting(E_ALL); ",,
+,Useful Command:MySQL,"mysql -u root -p
+mysql -u root -p [database name]
+mysql -p -u root -h 127.0.0.1 [database name] < dump.sql
+mysqladmin -uroot -proot create [database name]
+mysqladmin -uroot -proot drop [database name]
+sudo /Library/StartupItems/MySQLCOM/MySQLCOM start
+
+SQL:
+
+CREATE USER 'jen1'@'localhost' IDENTIFIED BY 'jen1';
+
+SET PASSWORD FOR root@localhost = PASSWORD('newpassword');
+",,
+,Setup:caGrid Portal,"1. Change your local build e.g. ~/cagrid-portal-3-5_release_final/build-local.properties
+
+...
+liferay.db.username=portalacct
+liferay.db.password=portalacct
+
+cagrid.portal.db.username=portalacct
+cagrid.portal.db.password=portalacct
+
+cagrid.portal.geocoder.yahoo.appId=cQXrDAfV34G2zqlg33Zos77wHJPi2acOFD0zjdBH9c9IIDdrfnmSf1LpeVJHQuzO
+
+liferay.install.dir=C:/liferay-portal
+
+2. Invoke these steps -
+
+ant all (reinstall all, slow and optional)
+
+ant install
+",,
+,App Store Limit:Windows Phone Marketplace,. Only Windows Phone 7.5+ (http://www.readwriteweb.com/mobile/2012/05/microsofts-smart-decision-for-the-windows-phone-marketplace.php),,
+,Useful Command:Mac OS X,". Shift + Cmd + H = Goto Home (in Finder)
+
+. /Applications/Utilities/Network\ Utility.app/Contents/Resources/stroke 127.0.0.1 49152 65535
+http://www.thoughtdeposit.net/os-x/osx-has-a-builtin-command-line-port-scanner",,
+,Easily to Forget:Android Game,. Used the synchronized block to make sure that you don’t get a concurrentModificationException (as in make it thread safe in a way),,
+,Main Concepts:Android Game,". Types of animations
+
+a. Frame-by-frame animation
+b. Layout animation
+c. View animation
+d. Texture based animation like OpenGL ES
+
+. Sprite - a graphical overlay e.g. a rectangle region superimposed on a background image
+. Game Loop - where the game spends most of its life time on",,
+,App Store:Apple,. 30% Apple 70% Developers (http://9to5mac.com/2011/02/15/apple-launches-app-store-subscriptions-for-all-developers/),,
+,App Store:Android,. 30% Google 70% Developer (http://developer.android.com/guide/market/billing/index.html),,
+,Useful Command:Google Chrome,". Ctrl + Shift + I (Windows) or Alt + Cmd + I (Mac OS X) = Developer Tools
+. Ctrl + 0 = Back to default zoom",,
+,Hacking:Tools,"Paros
+http://sourceforge.net/projects/paros/files/",,
+,Error:jQuery AJAX,"$(function() {
+    $.ajaxSetup({
+        error: function(jqXHR, exception) {
+            if (jqXHR.status === 0) {
+                alert('Not connect.\n Verify Network.');
+            } else if (jqXHR.status == 404) {
+                alert('Requested page not found. [404]');
+            } else if (jqXHR.status == 500) {
+                alert('Internal Server Error [500].');
+            } else {
+                alert('Uncaught Error.\n' + jqXHR.responseText);
+            }
+...",,
+,Parsing XML:jQuery,"jQuery(document).ready(function(){
+	jQuery.get({
+		""content.xml"",
+		function(xml) {
+			jQuery(xml).find('table').each(function(){
+			 	alert('table');
+				jQuery(this).find('row').each(function(){
+					var brief = $(this).find('row').text();
+			 		alert('brief ' + brief);
+				});
+			});
+		}
+	});
+});",,
+,HTML Form Post:jQuery,"var parameters = {
+    'tprice': $(""#tprice"").text(),
+    'tevents': $(""#tevents"").text()
+};
+$.post(""checkout.php"", parameters);",,
+,Useful Command:SQL,"alter table `ServiceRegistry` add unique index(appId, service);
+alter table `Genius` add unique index(appId, what);
+alter table `ServiceRegistry` add constraint pkc_Name primary key (appId, service);
+
+SELECT @@global.time_zone, @@session.time_zone;
+SET GLOBAL time_zone = '-4:00';
+SET SESSION time_zone = '-4:00';",,
+,Newline:C#,"Environment.Newline
+
+http://msdn.microsoft.com/en-us/library/system.environment.newline.aspx",,
+,Main Concepts (1):OpenGL ES 2.0,"First standardized OpenGL 2D and 3D graphics API emerged in 1992
+
+. Vertices - a series of points you draw in 3D space (x, y and z)
+. View Matrix is the ""camera""
+. Model Matrix - to transform your model
+. Projection Matrix - basically this is your eyes' coordinates looking into the camera
+. Bounding Volume/Bounding Box/Viewing Volume/Viewing Box/Frustum - the pyramid shaped 3D volume that determines what is visible on screen",,
+,Deployment Tips 1:Android,"To prevent an OpenGL ES 2 app from appearing on a device which doesn’t support it, you can add this to your manifest:
+
+<uses-feature android:glEsVersion=""0x00020000"" android:required=""true"" />
+
+Use this tag cautiously, as it might exclude your app from the Play market on the devices that do not support the feature.",,
+,Screen Tips:Android,". DisplayMetrics utility can be used to find out more information about the device screen e.g.
+
+DisplayMetics currentMetrics = new DisplayMetics();
+WindowManager wm = getWindowManager();
+wm.getDefaultDisplay().getMetrics(currentMetrics);
+
+. Explicitly state which screen sizes your app supports with <supports-screen> tag in Android manifest file
+
+. Apply ""working square"" principle appropriately (like view finder controls)",,
+,Native SDK:Google TV,". As at Feb 2012, there is no native development kit (NDK) - one have to use typical Android SDK",,
+,OpenGL ES (1):Android,". Java bindings to OpenGL ES 2.0 (with some issues as at 2011) done pretty well since 1.5 and not exactly JSR 239 compliant
+
+. Included both 1.0 and 2.0
+
+. You deal with GLSurfaceView instead of Android's SurfaceView
+
+. The camera in OpenGL is different concept from the Android's Camera class in graphics package
+
+. OpenGL ES 2.0 is available only from API level 8 (SDK 2.2)
+
+. Android 3.0 introduced ""C"" like language known as Renderscript for better performance with OpenGL on Android",,
+,OpenGL ES (2):Android,". Many convenient functions have been removed (from OpenGL) like drawing rectangles is not directly supported (need to draw two triangles to make a rectangle)
+
+. Besides being different from Java ME's JSR 239, Android implementation is not object oriented (vs. Java ME's JSR 184 aka M3G and 297)
+
+. Android does not support M3G
+
+. You deals with only GLSurfaceView class and GLSurfaceView.Renderer interface",,
+,Main Concepts (2):OpenGL ES 2.0,". Shaders - even the simplest drawing requires a program segments called shaders; they are core of OpenGL ES 2.0
+. Textures - a bitmap that you paste on a surface",,
+,Common Methods:OpenGL ES,"glVertexPointer
+glDrawElements
+glColor
+glClear
+gluLooAt
+glFrustum
+glViewport
+
+The above methods allow one to -
+
+1. Use the essential OpenGL drawing APIs
+2. Clear the palette
+3. Specify colors
+4. Understand OpenGL camera and coordinates",,
+,Layout Properties:OpenGL 2D,"It is assumed that the camera is at the center of the screen, thus -
+
+negative x means it is towards the left and positive x means to the right
+negative y means it is towards the bottom and positive y means towards the top",,
+,Layout Properties:OpenGL 3D,". If you do not specify eye point, the camera is located at (0, 0, 0)
+
+. The x and y coordinates are the same as in 2D, but for the z coordinate, negative value means you are going into the screen and positive value means it is coming out towards you",,
+,Easy to Forget:Java,"In String's replaceAll method, ( and ) have special meanings. In order to use it correctly without run-time exception (yes, it will not cause compile time error), you need to escape them with double backward slash e.g.
+
+retVal = retVal.replaceAll(""\\("", ""_LPAREN_"");",,
+,Easy to Forget:.Net XAML,". Remember to issue a reload before assigning the value from the database/backend e.g.
+
+ DC.Reload();
+ CustomerCurrentStatusTable.DataContext = DC.CustomerCurrentStatusTable;
+
+. Your server stub appears locked in the client project, and you need to remember to rebuild the server solution to see the changes from the client project
+
+. If you bind to anything that does not exist (from xaml to code behind), there will be no warning. It just won't work quitely",,
+,Got Focus 1:.Net XAML,"In XAML -
+
+<DockPanel Canvas.Left=""-20"" Canvas.Top=""0"">
+ <TextBlock Text=""Growth Old Money:"" Style=""{StaticResource EditorLabel}"" Width=""120"" />
+   <igEditors:XamCurrencyEditor Name=""GrowthOldMoney"" Style=""{StaticResource XamCurrencyEditor}"" GotFocus=""GrowthOldMoneyEditor_GotFocus"" Value=""{Binding Path=GrowthOldMoney, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True,Converter={",,
+,Got Focus 2:.Net XAML,"In XAML CS -
+
+private void GrowthOldMoneyEditor_GotFocus(object sender, RoutedEventArgs e) {
+   (sender as XamCurrencyEditor).SelectAll();
+}",,
+,IDE Shortcut:MS Visual Studio,"Shift + F12 = Find Usages
+
+http://weblogs.asp.net/scottgu/archive/2010/08/24/search-and-navigation-tips-tricks-with-visual-studio.aspx",,
+,Common ORM:.Net,". Entity Framework
+
+. Mapping between the entity and the table (""name"") is generally done in a .edmx file",,
+,Common Device:Android Game,Zeemote,,
+,Optimization:Game,"If your game does not have states/persistent data, and if you can recompute everything, it will make your game fast!",,
+,Version:caGrid,"Production = 1.4
+Development = 1.5
+
+[as at 6/1/2012]
+
+https://wiki.nci.nih.gov/display/TechStack/NCI-Hosted+Technology+Stack+2011",,
+,Deployment Tips:caGrid,"ant -Dtarget.grid=<gridname> configure' task reads the grid configuration for the specified grid and automatically populates several service URLS into caGrid services for you, e.g.
+
+> ant -Dtarget.grid=training configure
+
+
+caGrid 1.1 Production 
+
+> ant -Dtarget.grid=nci_prod configure
+
+
+caGrid 1.2 Training 
+
+> ant -Dtarget.grid=training-1.2 configure
+
+
+caGrid 1.2 Production 
+
+> ant -Dtarget.grid=nci_prod-1.2 configure",,
+,Optimization 1:WebGL,". Never ever call gl.getXXX in render(), do it in setup (this is applicable to OpenGL too)
+. Never attach frame buffer during rendering too, just recreate them (they are cheap to create) e.g.
+render() {
+  ...
+  gl.framebufferRenderbuffer(...); //BAD!
+  gl.framebufferTexture2D(...); //BAD!
+  if(gl.checkFramebufferStatus() ... //BAD!
+
+. Do use requestAnimationFrame(render, canvas) in render() instead of setInterval / setTimeout",,
+,Optimization 2:WebGL,". Always set the canvas's width and height to 100% and calculate the aspect by canvas.clientWidth/canvas.clientHeight and projectionMatrix = perspective(fov, aspect, zNear, zFar)",,
+,Development Tips:WebGL,". Use WebGL Inspector to inspect WebGL programs
+
+. Prompt the user to visit get.webgl.org/troubleshooting if you are not able to load WebGL e.g.
+
+gl = canvas.getContext(""webgl"");
+if(!gl) {
+  //prompt the user",,
+,caCORE 1:What,". The primary purpose of caCORE SDK is to allow users to quickly build data services
+
+. caCORE SDK takes a UML model, which consists of an object model and a data model, as input, and generates a complete application
+
+. caCORE SDK Generated Artifacts
+- project_name-beans.jar (JavaBeans)
+- project_name-orm.jar (Hibernate)
+- xml-mapping.xml and xml-unmapping.xml (Castor) for grid service
+- .wsdd flle for (AXIS SOAP)",,
+,caCORE 2:What,". XSD and XML Mapping files
+-For each package defined in the object model, caCORE SDK generates an XSD file.
+-If the UML model is annotated with semantic tags (CDE information from caDSR, during stage 1 of code generation c.f. https://wiki.nci.nih.gov/display/caCORE/6+-+caCORE+SDK+4.4+Data+Validation) then the generated XSD files will include this information as XSD documentation.",,
+,Unique ID Generation:Java,"ThreadLocal - these variables differ from their normal counterparts in that each thread that accesses one (via its get or set method) has its own, independently initialized copy of the variable",,
+,Backround Process:Google App Engine for Java (GAEJ),"import com.google.appengine.api.taskqueue.Queue;
+
+...
+Queue queue = QueueFactory.getDefaultQueue();		    			     queue.add(TaskOptions.Builder.withUrl(""/task/compassindex"").param(""targetClass"", targetClass.getName()).method(Method.GET));
+",,
+,Asynchronous Method:Enterprise JavaBeans (EJB),Message Driven Bean (MDB)'s onMessage,,
+,Easily to Forget:HTML 5,. localStorage is not accessible from within Web Worker [6/1/2012 Chrome 19],,
+,Cross Origin Resource Sharing (CORS):PHP,"The simplest one is:
+
+<?php header('Access-Control-Allow-Origin: cloudserviceapi.appspot.com,scigrpservice.appspot.com'); ?>
+
+It is not advisable to set it to *.",,
+,OpenGL ES:Without,GLUT and GLU,,
+,Development Tips:OpenGL ES,. Use glFrustumf for more realistic rendering as it has perspective (vs. glOrthof,,
+,Development Tips:Tapestry,. Does not allow && so you embedded Javascript won't work - you need to use external js file!,,
+,Cross-Origin Resource Sharing (CORS):With,. Web browser which has a XHR Level 2 (XHR2),,
+,Development Tips:Chrome Browser,". If you get ""Uncaught Error: INVALID_STATE_ERR: DOM Exception 11"" on line xhr2.onreadystatechange, you probably set it after opening the URL; set it before opening the URL instead",,
+,Security:caGrid,"Core Security Module (CMS) supports:
+
+. RDMS
+. LDAP
+. JAAS
+. caGrid Authentication Service and Dorian Service (SAML based Globus Credential)
+
+https://wiki.nci.nih.gov/display/caCORE/4+-+caCORE+SDK+4.4+Security",,
+,Version:caBig NES,"3.2
+
+https://wiki.nci.nih.gov/display/TechStack/NCI-Hosted+Technology+Stack+2011",,
+,caCORE Workbench:What,"caCORE Workbench acts as a process guide and an integrated platform, enabling the user to more readily create a Data or Analytical service on the Grid. The following are supported:
+
+Creation of a UML Model (ArgoUML, Enterprise Architect) - Link only
+Semantic integration (SIW, CDE Browser, UML Model Browser, Curation Tool) - Link only
+Model mapping (caAdapter) - Link only
+Application creation and deployment (SDK) - Integrated
+Creation of a grid service (Introduce) - Link only",,
+,caArray Model Mapping Service (MMS):What,"caAdapter Model Mapping Service (MMS) allows users to map an object to a data model. The tool provides a rich user interface with drag and drop capability to perform this mapping. Subsequently, the tool annotates the XMI file containing the object and data models with the proper mapping tags.",,
+,Easy to Forget:MS Visual Studio,. You should be using Solution Navigator and not Solution Explorer to see the quick access toolbar,,
+,caDSR:What,"caDSR Database
+caDSR APIs
+Object Cart API
+CDE Browser
+UML Model Browser
+caDSR Freestyle Search
+CDE Curation Tool
+Form Builder
+Semantic Integration Workbench (SIW)
+caDSR Sentinel Tool
+
+https://wiki.nci.nih.gov/display/caDSR/caDSR+Administration+Tool",,
+,Supported Web Browser:caDSR,"Beginning with the 4.0.0.1 releases of the tools, caDSR officially supports Firefox 3.0 and above, in addition to Microsoft Internet Explorer 7.0 and above.
+
+https://wiki.nci.nih.gov/display/caDSR/caDSR+Database
+
+caDSR Tools and Firefox and IE Browsers
+Firefox retains the session across multiple windows; IE does not. Follow the steps on this page to force a new session in Firefox.
+
+https://wiki.nci.nih.gov/display/caDSR/caDSR+APIs",,
+,Easy to Forget:jQueryMobile,". The form is inside data-role=content and the posting target (the action) has to use jQueryMobile too, otherwise you will encounter strange error like ""Cannot call method '_trigger' of undefined"".
+
+. Do use <label tag as it will take care of the placement of the text/input's label automatically if the width is within or beyond 480 pixels (top or inline).",,
+,Audit:.Net,"private void addCustomerBalanceAuditLog(BO.Customer customer, int fundId, BO.CustomerBalance customerBalance)
+{
+	_context.CustomerBalanceHistories.Add(new BO.CustomerBalanceHistory() { AIN = customer.AIN, FundId = fundId, UnitQty = customerBalance.UnitQty, OldMoney = customerBalance.OldMoney, Contribution = customerBalance.Contribution, PayPeriodUpdatedOn = payPeriod.Id });
+}",,
+,Useful Tips:Oracle,". Default root user is SYSTEM (10g+), the password is set during installation",,
+,UI Field:Tapestry,"<p:lastUpdatedDateCell>
+  <t:output format=""message:month_year"" value=""Template.lastUpdatedDate""/>
+</p:lastUpdatedDateCell>",,
+,Limits:MySQL,30 billion rows,,
+,Partial Implementation:C#,"Partial Class and Partial Method
+
+In short, partial classes allow you to split the definition of a class across multiple files, or alternatively you could think about it as a code compilation unit separated over multiple files. The reason for the existence of this feature is - primarily - to provide a nice split between generated code and user code
+
+http://community.bartdesmet.net/blogs/bart/archive/2007/07/28/c-3-0-partial-methods-what-why-and-how.aspx",,
+,Partial Implementation:Objective-C,Category,,
+,caAdapter:What,". Part of caCORE SDK (has a GUI and backend).
+
+. Supports object-to-data model mapping. This component allows users to parse and load data and object models from an XMI file, map the object model to the data model using drag-and-drop, add the SDK- required tags and tagged values into the XMI file, and then generate a Hibernate mapping file.
+
+. Create a mapping from (HL7 v2 message ->) Comma Separated Value (CSV) formatted clinical data -> HL7 v3 XML format.",,
+,Model 1:caDSR,". Uses ISO/IEC 11179 standard as Metadata Modelling
+-while it contains extensions developed specifically to support registration of forms used in clinical trials data management, usage of the caDSR is not limited to clinical applications
+
+. In ISO/IEC 11179, the fundamental component/model is the data element and it is the smallest unit of information that can be exchanged in a transaction between cooperating systems",,
+,Optimization:.Net,". Starting from 4.5 (probably back port to 4 as well)
+. Like avoiding downloading of 45 files per ASP.Net request, minimization of js files, use 30% less memory etc",,
+,Analytics:Google,"		<form action=""/registerMe.gtpl?smsadmin=y&page2=y"" method=""post"">
+			Contact Number: <input width=""10"" size=""10"" type=""phone"" name=""mycontactnumber"" /> (Your US cell number only please) <p>
+	<%
+	ReCaptcha c = ReCaptchaFactory.newReCaptcha(your_public_key, your_private_key, false)
+	println c.createRecaptchaHtml(null, null)
+	%>
+		  	<input type=""submit"" value=""Submit""/>
+			<input type=""button"" name=""cancel"" value=""Cancel"" onclick=""window.location='/registerMe.gtpl'"" />
+		</form>",,
+,security,". Cybersecurity
+. Network Security
+. Information Security
+. Data Security
+. Application Security",,
+,Most Common UI 1:caDSR,"CDE Browser 
+. Has a tree (left panel) that includes caBIG® CDE Data Standards (shortcut) and is a recommended CDEs for reuse
+. Data Standard consists of one or more CDEs e.g. the Person Name Data Standard has 13 CDEs
+. The Curation Tool (c.f. next section) shows retired concepts and the CDE browser does not (which is the reason for the disparity in the search results of a DE)",,
+,Most Common UI 2:caDSR,"Curation Tool Search:
+. You can’t find what you’re looking for in the CDE Browser	
+. You are searching for other metadata e.g.
+Data Element Concepts
+Value Domains
+Object Class, Property
+. Your results list can be data element OR other administered items
+. You are looking for “associated” administered items (using the “Get Associated” search feature, first column/action icon of the right panel) - navigating the relationships between metadata",,
+,Best Practices:caDSR,". Search by public ID
+. Use DEs with a Workflow Status of ""Released""",,
+,Life Cycle 1:caDSR,"Workflow Status - where a DE is in its development cycle
+
+You may designate Data Elements with the following Workflow Status: 
+RELEASED
+APPROVED FOR TRIAL USE
+COMMITTEE SUBMITTED USED
+DRAFT MOD
+COMMITTEE APPROVED
+RELEASED NON-COMPLIANT
+DRAFT NEW (choose this when creating a new DE)",,
+,Life Cycle 2:caDSR,"Registration Status- indicator of usage and acceptance across contexts and throughout the caBIG® community:
+
+Standard - has been approved for usage in all contexts
+Candidate - has been proposed for usage in all contexts
+Proposed – Met all quality requirements and is ready to be proposed for usage in all contexts
+Qualified -  the Administered Component has met all quality requirements, and is ready to be reviewed for usage in all contexts",,
+,Relationships 1:caDSR,"Standard (CDE) <-- DE Concept (DEC)+1 <-- Object Class/Property <-- EVS Concept (NCI Thesaurus Concept)
++
+Standard (CDE) <-- Value Domain (VD)+1
+
+Note: +1 = one or more will form a unique (C)DE
+
+e.g. an Example Data Element: Contact Person Phone Number
+Primary Representation Term Concept = Number
+Value Domain: Phone Number
+DEC= Contact Person",,
+,Designate a caDSR DE:What,"What does it mean to designate a DE?
+. Designate a DE when you want to re-use the DE in your context
+. DO NOT Designate if you are the OWNING Context
+Why designate?
+. #1 reason is to avoid creating redundant, semantically equivalent CDEs
+. Allows others to view the metadata your Context is using
+. Allows you to set up a Sentinel Alert for the Data Element
+Where do I designate DE?
+. Curation Tool
+Where are designations viewed?
+. CDE Browser
+. Curation Tool
+(""Used By Context"" for both)",,
+,Alternate Name:caDSR,". Alternate Names are one attribute of an Administered Item
+. The following Administered Items can have Alternate Names
+Data Element
+Data Element Concept
+Value Domain
+. Alternate Names are used only in external systems
+. You must designate an data element before you can add an alternate name
+. Anyone with curator privileges can add an Alternate Name to a Data Element, Data Element Concept or Value Domain (A curator does not have to own the Administered Item to add an Alternate Name)",,
+,Value Domain:caDSR,A good Value Domain has a Primary Representation Term Concept based on one of the 37 approved Representation Terms,,
+,Immutable:F#,. Everything is by default immutable ,,
+,Data Type:caDSR,Primary Representation Term Concept (37 of them),,
+,Collections:caDSR,"There are three ways to build collections of Data Elements in the caDSR:
+
+Contexts - Group or organizational unit that has privileges to own and maintain metadata
+
+Classification Schemes (CS) and Classification Scheme Items (CSI) - Collection of related classification scheme items that define a sub-hierarchy within the tree
+
+Forms (FormBuilder) – Smallest way to build a collection of DE’s.  Allow for modular organization structure of metadata",,
+,Relationships 2:caDSR,"Forms <-- Modules <-- Data Elements  <-- Values
+
+Form: Collection of CDEs describing the type and  possible values of clinical information collected
+
+Module:  Small group of related CDEs on a form
+
+Value: One single item on a permitted list of answers for questions; another name for this is a permissible value (PV)
+
+CRF: Case Report Form – group of CDEs arranged by module
+
+Template: Used to clone forms (CRFs) of similar type",,
+,Useful Tips:caDSR,. CDEs must be in your Cart in order to use them on a Module or Form,,
+,Version:caDSR,". Oracle 10gAS, 10.1.2.0.2 (caDSR Administration Tool)",,
+,Observable Attributes:caDSR,"Metadata changes can be monitored with
+
+. Workflow Status
+. Registration Status
+. Version",,
+,UI Panel:.Net,"WPF:
+
+Canvas - like HTML
+DockPanel
+StackPanel (Vertical Orientation)
+StackPanel (Horizontal Orientation)
+Grid
+WrapPanel - basic sequential layout from left to right
+
+http://msdn.microsoft.com/en-us/library/ms754152.aspx",,
+,Binding 3:XAML,"WPF: Bind Control Enabled to Checkbox Checked:
+
+IsEnabled=""{Binding ElementName=chkEnableBackup, Path=IsChecked}""
+
+http://mel-green.com/2009/07/wpf-bind-control-enabled-to-checkbox-ecked/",,
+,Metadata:caDSR,". Generically, these are referred to as “administered items.” 
+. An Administered Item has a Public ID and Version number in the caDSR. Non-administered items do not.",,
+,Model 2:caDSR,". ISO/IEC 11179 defines a framework and protocols for how can be specified, consistently maintained and shared across diverse domains",,
+,Development Tips:C#,". If you ever encounter ""Cannot implicitly convert type 'int?' to 'int'. An explicit conversion exists (are you missing a cast?)"" compilation error, you just need to cast the variable e.g.
+int k = (int)j;",,
+,caDSR Data Element Concept (DEC):What,"Person (Object Class) + Name (Property) = Data Element Concept (DEC)
+
+Deceased (Qualifier) Person (Object Class) + Last (Qualifier) Name (Property) = Data Element Concept (DEC)",,
+,caDSR Data Element (DE):What,". The Data Element is formed from a Data Element Concept and a Value Domain.
+. The Data Element Concept and the Value Domain must be in the right order so that the intended meaning is achieved.
+. Rearranging the order of the terms within a Data Element Concept or a Value Domain will also result in a different Data Element.
+. e.g.
+(Person (Object Class) + Address (Property))=DEC + Postal Code (Representation)=VD ---> Person Address Postal Code (DE)",,
+,Highest Resolution:Android,Nexus 7 Tablet = 1280 x 800 (HD),,
+,Highest Resolution:iOS,iPad 3 = 2048 x 1536,,
+,Checkbox:Android,"Pre-ICS = Checkbox
+
+ICS and above = Switch",,
+,Themes:Android,Holo - Honeycomb and beyond,,
+,Menu:Android,"Pre-HC = Options Menu
+
+HC+ = Action Overflow",,
+,Button:Android,"Button order changes (+ = Ok, - = No):
+
+pre-ICS
++ 0 -
+
+post-ICS
+- 0 +",,
+,Deployment Tips 2:Android,"Always use these in the manifest file -
+
+android:minSdkVersion - what the version your app require
+
+android:targetAdkVersion - should always be the latest Sdk (to get Action Bar, hardware acceleration etc)",,
+,Development Tips 1:Android,"Announced in Google I/O 2012 6/28:
+
+. Always use ""Preview All Screen Sizes"" and ""Preview All Locales"" (if relevant) for UI design in DDMS
+. Use ""Lint Warnings"" view for better development insight like with target API allowed, missing permission in XML (with Quick Fix) etc
+. More new tools i.e.
+a. New ""Device Monitor"" which includes
+-DDMS
+-Traceview
+-HierachyViewer
+-""Tracer for OpenGL ES"" (New)
+
+b. New ""Systrace""
+
+c. NDK support in Eclipse
+
+. Library Project (binary sharing code)",,
+,Development Tips 2:Android,". Try to use libs/ folder (not individually adding jar using conventional Eclipse approach)
+. Use BuildConfig.java (currently only DEBUG flag)
+. onSensorChanged - check the sensor type first before handling the event to avoid false triggering; also one can use two sensors for the same purpose",,
+,Bluetooth:What,"R2CAP low level Bluetooth
+SDP
+RFCOMM
+A2DP",,
+,Audio 3:Android,". Use MediaRecorder (API 1, Android 1+) for regular audio recording
+. Use AudioRecord (API 3, Android 1.5+) for low level audio signal processing
+. Normal human hearing range 20 Hz to 20 kHz
+. All Android device supports 44.1 kHz sampling rate, need to sample > 2 * the highest frequency of your signal to avoid aliasing
+",,
+,Accessibilty 1:Android,". Android View's with input focus (focusable) or clickable is Section 508 (US) compliant by default
+. Use default widget if possible, if not add content description to your component (so that a tool that read it out loud for instance)
+. Starting from ICS (4.0), accessibility spanned onto touch event too e.g.
+MyDelegate extends AccessibiltyDelegateCompat {
+...
+viewCompat.setAccessibilityDelegate(myView, new MyDelegate());",,
+,Accessibilty 2:Android,". Install latest ADT, use lint --check Accessibilty
+. For lint, if you would like to purposely suppress image with no text's warning, use android:contentDescription=""@null""",,
+,HTML 5:With,". CSS Flexbox
+. Dynamic CSS (calc() method)
+. Data binding (attr for one way data binding no need angularjs)
+. File IO (Filesystem API) - c.f. filer.js and idb.filesystem.js projects
+. download attribute no server involved
+. Transferable object (Chrome only)
+. Device API e.g.
+<input type=text x-webkit-speech>
+navigator.getUserMedia with video tag - for audio/video capturing
+. Web Audio API with audio tag
+. Websocket audio streaming 
+",,
+,Top Issues:Android,"1. Null pointer exception (NPE)
+2. Out of memory",,
+,Resource:Java,"Standard way 
+
+private static final String BUNDLE_NAME = ""gov.nih.nci.cadsr.cadsrpasswordchange.core.messages"";
+
+ResourceBundle.getBundle(BUNDLE_NAME);
+...
+String value = RESOURCE_BUNDLE.getString(key);
+
+But it seems like it might not work consistently across app server. For instance, JBoss 4.0.5 GA does not recognize the package name and the file (messages.properties in this case) need to be in WEB-INF/classes",,
+,Update Now:MySQL,"DEFAULT CURRENT_TIMESTAMP and ON UPDATE CURRENT_TIMESTAMP
+
+e.g.
+
+create table p (
+ id int,
+ a varchar(10),
+ d timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+ constraint p_pk primary key (id)
+);",,
+,Update Now:Oracle,"Use Trigger e.g.
+
+SQL> host cat p_test.sql
+CREATE OR REPLACE TRIGGER p_d_trig
+BEFORE UPDATE ON p
+FOR EACH ROW
+BEGIN
+        select sysdate into :new.d from dual;
+END p_d_trig;
+/
+
+SQL> @p_test
+
+Trigger created.
+
+http://halisway.blogspot.com/2007/11/converting-mysql-on-update.html",,
+,IDE:Blackberry,WebWorks,,
+,PhoneGap:Tools,". Droidgap - to create a project (Eclipse) quickly targeting Android
+. PhoneGap Build - cloud based service to deal with multiple project configuration issues that PhoneGap has; free for one app, single icon and splash screen except iOS and unified look and feel (you have to fallback to native sdk if you want platform specific)
+. Third party tools e.g.
+
+RIM Ripple Emulator (RMEE) - Google Chrome extension based
+Web Inspector Remote (Weinre)",,
+,jQueryMobile:Ready,"$(document).ready( function() {
+...
+
+or
+
+jQuery(document).ready( function() {
+...",,
+,PhoneGap:Ready,"You can not call PhoneGap API before it is ready. Thus you need to wait for it to be ready, say in HTML body load event e.g.
+
+document.addEventListener(""deviceready"", onDeviceReady, false);
+
+function onDeviceReady() {
+ alert(""PhoneGap (version "" + device.phonegap + "") "" + device.platform + "" "" + device.name + "" "" + device.platform + "" "" + device.version);
+ ...",,
+,Simple Dialog:PhoneGap,"navigator.notification.alert(""PhoneGap is here!""); //does not seem to work in Blackberry (June 2012)
+
+or
+
+WebKit's global object, console e.g.
+
+try {
+ ...
+} catch(e) {
+ console.log(""message"", e.message);
+ //console.warn(""message""); //does not seem to work in Blackberry
+ //console.error(""message""); //does not seem to work in Blackberry
+}",,
+,Log:Blackberry,". In simulator, access the log by Alt + typing lglg. Use n (next) and p (previous) keys to navigate
+
+. Use javaloader.exe to copy the logs from the device",,
+,Limitation:PhoneGap,". API consistency
+. Multiple JavaScript files (some platforms have (had?) different name!)
+. Web content folder structure (e.g. framework/www)
+. Application requirements e.g. json2.js (on iOS)
+. UI (PhoneGap does not deal with UI)
+. Application icons (due to differing themes by various carriers)",,
+,API:PhoneGap,"There are 13 categories -
+
+. Accelerometer
+. Camera (image)
+. Capture (audio, video and image)
+. Compass
+. Connection (2G, 3G, 4G, Ethernet, None, Unknown and WIFI)
+. Contacts
+. Device
+. Events
+. File
+. Geolocation
+. Media (audio, some overlap with Capture, to be phazed out?)
+. Notification
+. Storage (W3C localStorage and SQL database)",,
+,Development Tips:HTML 5,". Forget about appcache, websql or localstorage, start to use indexdb and use lawnchair
+. If you want alternative to lawnchair, check out persistJS",,
+,Device API:With,". WAC, Webinos (which was BONDI?)
+. PhoneGap (which became Apache Cordova)
+. W3C DAP and Widget
+. Mozilla WebAPI",,
+,Remember HTML Form:Java,"In Java:
+				req.getRequestDispatcher(""/your_url"").forward(req, resp);
+
+In JSP:
+
+<input id=""Answer1"" type=""text"" name=""answer1"" value=""${param.answer1}"" style=""width: 3.75in"" class=""std"" autocomplete=""off"">
+
+http://stackoverflow.com/questions/1055308/retaining-the-submitted-jsp-form-data",,
+,Fixed Background:HTML,"<style type=""text/css"">
+
+body { background-attachment: fixed; background-repeat: no-repeat; background-position: center center; } 
+
+</style>
+
+http://forums.devshed.com/html-programming-1/making-a-background-image-stay-214105.html",,
+,Production Version:Android,Android 3.2 (API level 13),,
+,Base Class:Android,Object (Implied),160,
+,Device Runtime:Android,Dalvik VM,157,
+,Compiler Directive:Android,None,162,
+,Named Parameter:Android,None,156,
+,Custom Gesture:Android,Yes,159,
+,Base Class Method Inherited:Android,"hashCode, equals, toString",161,
+,Production Version:WP7,7.1,164,
+,Memory Management:Android,Garbage Collected,155,
+,Device Runtime:WP7,Silverlight or XNA (Game),163,
+,Multiple Inheritence:iOS,None (can be supported using protocol),224,
+,Multiple Inheritence:Android,None (supported with interface),225,
+,Closures:Android,None (closest is like Java Generic types),223,
+,IDE Concepts:iOS,". Group is directory in XCode
+
+. Connections can be made between UI control and the source using IBAction or IBOutlet",218,
+,IDE Shortcuts:iOS,"""Option + Click = class
+Cmd + Shift + F = search in workspace""",219,
+,IDE Shortcut:Android,"Ctrl + Shift + T = Search Type/Class
+Ctrl + Shift + G = Find Usages",,
+,UI Design:iOS,Tool (IB) or code,227,
+,Multimedia:iOS,scigrpservice.appspot.com/go?s=iosmultimedia,221,
+,Relative Path:iOS,[NSBundle mainBundle],226,
+,Closures:iOS,scigrpservice.appspot.com/go?s=iosblocks,222,
+,Most Common Event:iOS,"UITouch
+UIEvent",55,
+,Common DB:iOS,SQLite,58,
+,Common ORM:iOS,CoreData,57,
+,Core MVC:iOS,"TClass, TViewController and TAppDelegate (can be specified either in main(), .xib file or in the protocol of a class header)
+
+The .xib (or previously known as .nib) is always associated with a single/specific view controller and can not be used/accessible from other view controller(s)",,
+,Popover:iOS,UIPopoverView (iPad only),63,
+,Controllers:iOS,"Table view
+Detail view
+Split view
+Popover view
+Modal view",61,
+,Core Framework:iOS,"UIKit (Cocoa Touch), Foundation and CoreGraphics (""Frameworks"" already installed on the device itself)",59,
+,SplitView:iOS,UISplitView (iPad only),62,
+,Common Methods:iOS,"viewDidLoad
+didFinishLaunchingWithOptions
+didSelectRowAtIndexPath
+",,
+,Native UI Builder:iOS,Interface Builder (UI design and making connections to the codes),56,
+,Memory Management:Tapestry,Garbage Collected,130,
+,Flexible Pager:Wicket,"<div wicket:id=""navigator""></div>",128,
+,Namespace:Wicket,Java Package,125,
+,Device Runtime:HTML5,WebKit,133,
+,Production Version:HTML5,1,134,
+,Flexible Pager:Tapestry,"t:type=""grid"" pagerPosition=""both""",132,
+,Production Version:Wicket,1.4,127,
+,Namespace:Tapestry,Java Package,129,
+,Memory Management:Wicket,Garbage Collected,126,
+,Production Version:Tapestry,5.2,131,
+,Launch:iOS Web,main.js/main.html,,
+,Production Version:iOS Web,3.0.2,234,
+,UI Design:Android,XML file,228,
+,Most Common UI:iOS Web,"Widget
+WebApp",232,
+,Search:iOS Web,Search Field,235,
+,Native UI Builder:iOS Web,Dashcode itself,233,
+,Most Common Event:iOS Web,"onClick, onLoad, etc. (Javascript events)",231,
+,Self Reference:iOS Web,this,236,
+,Submit Button Color:iOS,"Blue (iOS4), Green (iOS5)",229,
+,Gestures:iOS Web,"Click
+Mouseover
+Double Click
+Hover
+",230,
+,Core MVC:Android,"Intent - an identifier to communicate purpose on the ensuing activity; can be an action name specified in android manifest file or the class name of Activity class (preferred)
+
+Activity - a  view container class (extends Activity) - controller that own view(s)
+
+View - view is set by setContentView() in an activity class, e.g. setContentView(R.layout.main)  which will force the runtime to look for a view defined in res/layout/main.xml resource file
+
+Service and Component",,
+,Home Screen:Android,App Widgets,90,
+,Value Proposition:WP7,Live Tiles,91,
+,Controllers:Android,"ListView
+FrameLayout
+LinearLayout
+TableLayout
+RelativeLayout",85,
+,Home Screen:WP7,Live Tiles,93,
+,Advanced:Android,"Make phone call
+Send SMS text
+Access accelerometer
+Install application from Market
+Camera
+Microphone
+",89,
+,Gestures:Android,"Tap
+Touch and Hold
+Double Tap
+Swipe
+Flick
+Drag
+Pinch",88,
+,Most Common UI:WP7,Tiles,92,
+,SplitView:Android,"Not available, but can be with Fragments",86,
+,Popover:Android,Dialogue box with transparent background,87,
+,Error:iOS,"""unrecognized selector sent to instance"" e.g.
+
+2011-08-30 13:51:28.905 VideoBrowser[27268:207] *** Terminating app due to uncaught exception 'NSInvalidArgumentException', reason: '-[CustomMoviePlayerViewController setVideoFrame:]: unrecognized selector sent to instance 0x5b27b10'
+*** Call stack at first throw:
+
+It means the method does not exist!
+
+",241,
+,Layout:iOS,Interface Builder (T.nib (legacy)/T.xib) or using Objective-C,,
+,IDE Concepts:Android,"While there is no advanced tool based connection mapping between source codes and UI controls like iOS, Android's approach is to use specially notation known as @id+ to refer to a control in main.xml. To respond to UI events, one has to add a Java class to be the event (whatever that is like onClick) listener.",,
+,Layout:Android,"Resource types (first 3 directories are created automatically in Android project's res/) -
+
+drawable/
+layout/ (e.g. main.xml)
+values/ (e.g. strings.xml)
+raw/ (e.g. logoSound.mp3)
+xml/
+
+Accessed via (in AndroidManifest.xml) -
+
+@ followed by type
+@+id
+
+e.g. setContentView(R.layout.main) or setContentView(R.id.main)",,
+,Handle UI Event:iOS,IBAction,,
+,Full Exception:Java,"	public static String toString(Exception e) {
+		StringWriter sw = new StringWriter();
+		PrintWriter pw = new PrintWriter(sw);
+
+		e.printStackTrace(pw);
+
+		return sw.toString();
+	}",240,
+,Policy 1:Android,"AndroidManifest.xml (granting request access to network, camera, contacts etc) e.g.
+
+android.permission.INTERNET",,
+,Access to UI Control:Android,"In a button tag inside main.xml:
+...
+android:id=""""@+id/bAdd""""
+
+In Android Java:
+import android.widget.Button;
+...
+Button button = (Button)findViewById(R.id.bAdd);
+
+All controls are considered view in Android, accessible by findViewById. findViewById's id is always in the context of the view set by setContentView (for otherwise, cf. http://stackoverflow.com/questions/5882064/how-to-make-a-single-view-globally-accessible)",,
+,Value Proposition:iOS Web,Web Apps for iOS/Widgets for OS X,238,
+,Access to UI Control:iOS,"Connection between the attribute of the UI controls and their corresponding IBOutlet.
+
+IBOutlet variables have a one-to-one relationship with objects in interface builder. You will have to have another variable if you need to connect more than one.",,
+Code,Screen orientation:iOS,https://catch.com/m/BuVEc/BrPDz7BE86X,5,
+,Value Proposition:Tapestry,Out of box CRUD,21,
+,Value Proposition:Wicket,Everything is Java,15,
+,Start:Wicket,T extends WebApplication,16,
+,Main Concepts:Tapestry,"Components
+Pages
+Services
+Mixins
+Model",19,
+,High Level Unit Test:Wicket,Wicket Tester,18,
+,Automatic Accessors:Tapestry,@Property in Tapestry page,23,
+,Start:Tapestry,"app.services.
+AppModule",22,
+Java,Redirection:Java,"What is the difference between RequestDispatcher's forward(ServletRequest request, ServletResponse response) method and HttpServletResponse's sendRedirect(String location) method?
+
+http://www.jguru.com/faq/view.jsp?EID=1310997",10,
+,Common ORM:Wicket,Hibernate,17,
+,Production Version:JQueryMobile,1.0 Beta,136,
+,Chromeless Window:iOS,UIWindow,140,
+,Window Display Method:iOS,UIWindow makeKeyAndVisible,141,
+,Design Patterns Used:iOS,"MVC, 
+Delegation, 
+Target-Action, 
+Managed Memory Model",138,
+,Application Context:JQueryMobile,navigator,137,
+,Application Context:HTML5,navigator,135,
+,Memory Management:iOS,"Manual (alloc/release) e.g.
+
+	if (_detailItem != managedObject) {
+		[_detailItem release];
+		_detailItem = [managedObject retain];
+...",,
+,Main View Class:iOS,"UIWindow - parent/top level window
+UIView - any other window (generally reside inside UIWindow)
+
+In iOS, windows do not have title bars, close boxes, or any other visual adornments. A window is always just a blank container for one or more views. Also, applications do not change their content by showing new windows.
+
+In MacOS X, NSWindows are not views. They contain a ""root view"", called the contentView. iOS windows are a composition of NSWindow + its root view.",,
+,Namespace:iOS,"None (relying on the initials of each Class e.g. UIView, NSString etc)",142,
+,Named Parameter:iOS,None (: is part of the method name),144,
+,Foreground Notification:iOS,"Modal dialog (iOS4), notification type (iOS5)",210,
+,Development Mode:Wicket,getResourceSettings().setResourcePollFrequency(Duration.ONE_SECOND) (.html only),208,
+,IDE:Android,Eclipse,214,
+,IDE:GoogleTV,Eclipse,215,
+,Background Notification:iOS,Status Bar (iOS 5 only),209,
+,IDE:iOS,XCode,213,
+,Main Container:iOS,Window (e.g. MainWindow.xib),211,
+,IDE:FiOSTV,Iris,217,
+,IDE:iOS Web,Dashcode,216,
+,Device Persistence:HTML,"With
+localStorage.setItem('variable_name',variable_value); you can save in local storage your variables.
+with
+variable_value = localStorage.getItem('variable_name'); you can get variable value",271,
+,Native Interface:PhoneGap,". Between Objective-C and web, use SQLite
+. Works with Honeycomb
+
+",,
+,Method:PhoneGap,JavaScript style,96,
+,Launch:PhoneGap,www/index.html,,
+,Most Common UI:PhoneGap,<table>/<div>,98,
+,Default Constructor:Titanium,Titanium.UI.createWindow({ }),102,
+,Start:Titanium,app.js,101,
+,Method With Parameters:PhoneGap,object.method,97,
+,Value Proposition:PhoneGap,". Most matured hybrid platform
+
+. Others -
+
+Titanium Application
+
+AT&T Workbench (http://www.wireless.att.com/businesscenter/solutions/industry-solutions/att-mobile-enterprise-applications-platform.jsp)
+
+Antenna Volt (http://www.antennasoftware.com/resources/volt)
+
+Blackberry Webworks
+
+Strobe (strobecorp.com)
+
+Tiggr (tiggzi.com)
+
+Worklight (worklight.com, IBM)",,
+,Method:Titanium,JavaScript style,103,
+,Native UI Builder:PhoneGap,"HTML UI applications (Dreamweaver, etc)",99,
+,Core Framework:PhoneGap,HTML/JavaScript,100,
+,App Store Limit:iOS,. Up to 20 MB in size,,
+,Top Bar:Android,"Status Bar
+
+Note: This  bar is merged into the bottom bar becoming System Bar in Android 4.0",,
+,Screen Abstraction:GoogleTV,720p or 1080p,207,
+,Multiple Target:Android,"Multiple APK (useful for cases in which your app cannot reach all desired devices with a single APK, not a preferred approach)",197,
+,Prototyping:Android,None,203,
+,Multiple Target:GoogleTV,Intel Atom (x86) and ARM,204,
+,Prototyping:iOS,"Categories/""@interface T (PrivateMethods)"" (Objective-C 2.0+ and method only)",196,
+,Programmatic Channel Control:GoogleTV,Yes,205,
+,App Store Limit:Android,". Android Market limit an APK to 50 MB
+. Your package name must be unique otherwise you will not be able to upload it",202,
+,EPG:GoogleTV,No,206,
+,Start:JQueryMobile,document.ready(),34,
+,Common DB:JQueryMobile,WebSQL,37,
+,Default Constructor:iOS,[[T alloc]init],,
+,Start:iOS,"main.m, MainWindow.xib, XCode Main Interface/Info.plist, applicationDidFinishLaunching: method",41,
+,Main Navigation:jQueryMobile,"Nested list or adding rel=""external"" into href a tag.
+
+In the case of nested list, in order for the title of the nested child list to pick up the header of the parent, the title say with h3 tag, has to be at the first line of the parent.",,
+,Value Proposition:iOS,iPad is the market leader on tablet,40,
+,Main Concepts:iOS,"View (UI)
+View Controller (workflow)
+App Delegate (custom codes)
+Class (main reuse, optional)",39,
+,Automatic Accessors:iOS,@property in T.h @synthesize in T.m,43,
+,Most Common UI:JQueryMobile,"<ul data-role=""listview"">",35,
+,Core Framework:JQueryMobile,JQuery,38,
+,Class Level Method:Android,static,78,
+,Method Parameter Check:Android,Compile time,77,
+,Instance Level Method:Android,N/A,79,
+,Self Reference:Android,this (implicit),76,
+,Common DB:Android,SQLite,83,
+,Native UI Builder:Android,App Inventor (recently open sourced as at 8/2011),82,
+,Cell Accessory:Android,"Image: ImageView alligned right, text alligned left (Vice versa)",75,
+,Most Common Event:Android,"onClick
+onTouch
+onSensorChanged - check the sensor type first",,
+,Main Navigation:Android,"Invoke finish() in any Activity's method. This will bring the screen back to the previous Activity, if any.",,
+,Object Dump:Android,"System.out.println(""T: "" + T)",80,
+,Start:GoogleTV,index html,109,
+,Self Reference:Titanium,this,105,
+,Start:FiOSTV,lua_onLoad(),112,
+,Home Screen:GoogleTV,App Widgets,111,
+,Native UI Builder:Titanium,"None available.
+
+Forced to do it programmatically ",106,
+,Most Common Method:FiOSTV,"lua_onKey(nKeyCode, nKeyType, nKeyState)",113,
+,Most Common UI:Titanium,Window,104,
+,Core Framework:Titanium,Javascript,108,
+,Common DB:Titanium,SQLite,107,
+,Main Navigation:GoogleTV,tabGroup.open();,110,
+,Flash Notification:Tapestry,Transient Alerts component of AlertManager,182,
+,Packaging:Wicket,web.xml,180,
+,Flash Notification:GoogleTV,Toast Notification,177,
+,Search:GoogleTV,Search dialog and SearchView widget delivers search queries to a specific activity that performs searches,176,
+,Background Notification:GoogleTV,Status Bar Notification,178,
+,Packaging:GoogleTV,AndroidManifest.xml,175,
+,Foreground Notification:GoogleTV,Dialog Notification,179,
+,Form Spam Detection:Tapestry,Kaptcha / KaptchaField,183,
+,Screen Abstraction:iOS,Point instead of raw pixel (e.g. 1 point in iPad is 2 x 1 pixel on iPhone 4),184,
+,Packaging:Tapestry,web.xml,181,
+,Segmented UI:jQueryMobile,Layout view,266,
+,Text Input Hint:HTML,"<input placeholder=""value"" />",270,
+,Filtered List:jQueryMobile,"data-filter=""true""
+
+e.g.
+
+<ul id=""mylist"" data-role=""listview"" data-filter=""true"" data-split-theme=""c"">",,
+,Filtered List:Android,yes,,
+,Segmented UI:iOS,UISegmentedControl,265,
+,Text Input Hint:Android,EditText android:hint,269,
+,Main Concepts:jQueryMobile,"jQueryMobile (jqm) is the coolest framework I have seen. Using just data-role as an attribute in DOM element like div, ul etc, one can magically transform existing web portal into mobile friendly portal. E.g. (tags not shown)
+
+data-role=page
+data-role=header
+
+data-role=content
+
+An option to selectively skip the transformation is also available using data-role=""none"".",,
+,Dismiss a View:jQueryMobile,"Please note that sequence of adding library does matter here.
+
+<script src=""/javascript/jquery.min.js""></script>
+<script type=""text/javascript"">
+    $(document).bind(""mobileinit"", function(){
+        $.mobile.page.prototype.options.addBackBtn= true;
+    });
+</script>
+<script src=""javascript/jquery.mobile.js"">
+</script>
+
+",261,
+,List Handler:Android,onListItemClick() which has a parameter int position as one of its 4 parameters.,268,
+,Most Common UI:iOS,"UITableView
+UIView's CollageView",46,
+,Method Parameter Check:iOS,Run time,50,
+,Instance Level Method:iOS,-,52,
+,Class Level Method:iOS,+,51,
+,Method With Paramaters:iOS,"[[T alloc] initWithParameters:@""ViewController1"" bundle:nil]",,
+,Cell Accessory:iOS,"Disclosure Indicator - the usual right arrow
+Detail disclosure button
+Check mark",48,
+,Object Dump:iOS,"NSLog(@""T: %@"", T)",53,
+,Main Navigation:iOS,UINavigationController pushViewController,47,
+CODE,Self Reference:iOS,"self (not implicit; has to specify it even if the codes is in the class itself).
+
+Exception seems like in the if(self = [super init]) { ...",49,CODE
+,Method:iOS,"[T method:arg1] Objective-C style
+
+function(arg1) typical C style",,
+,Custom Gesture:iOS,Yes,147,
+,Compiler Directive:iOS,@ (e.g. @interface),150,
+,Namespace:Android,Java Package,154,
+,Application Context:iOS,UIApplication,151,
+,Production Version:iOS,"4.3, 5.0 Beta 6",146,
+,Device Runtime:iOS,Native iOS,145,
+,Base Class Method Inherited:iOS,init,149,
+,Network Class:iOS,NSURLConnection,153,
+,Preprocessor Directive:iOS,# (e.g. #import),152,
+,Base Class:iOS,NSObject (Optional),148,
+,Home Screen:FiOSTV,IMG,114,
+,High Level Unit Test:Tapestry,Page Tester,118,
+,Import:iOS,"In main.m -
+
+#import <UIKit/UIKit.h>
+
+There is no need to import the Foundation framework, as it is already included by UIKit.",122,
+,Main Concepts:Wicket,Java object represented as wicket:id in html; each T.java file has a corresponding T.html file,117,
+,Forward Declaration:iOS,@protocol (for class that implement certain Frameworks protocol) and @class (for others),124,
+,Streaming:iOS,"http://mobile.tutsplus.com/tutorials/iphone/iphone-sdk-playing-video-with-the-mediaplayer-framework/
+
+-(void)initAndPlayMovie:(NSURL *)movieURL
+{
+    // Initialize a movie player object with the specified URL
+       MPMoviePlayerController *mp = [[MPMoviePlayerController alloc] initWithContentURL:movieURL];
+       if (mp)
+       {
+           [self.moviePlayer play];
+       }
+}",116,
+,Split View:iOS,UISplitViewController (iPad only),,
+CODE,DSL,"Domain Specific Language
+
+a. Internal DSL e.g. Scala, Ruby On Rails (ROR), Ruby etc.
+b. External DSL e.g. Spring, ANT, Maven etc.",115,CODE
+,Split View:Android,"No exact equivalence, but can be easily implemented using Fragment?
+
+Fragment is avaiable on Android 3.0 (API  11) or above only.
+
+public View onCreateView(",,
+,iOS:Protocol,"@interface className : superclassName <delegateProtocolClassName> e.g.
+
+    @interface WorkbenchAppDelegate : NSObject <UIApplicationDelegate>
+
+Generally followed by delegate assignment e.g.
+
+    scrollView.delegate = self;
+
+which is important, otherwise it won't work",,
+,Bottom Bar:iOS,"Tab Bar
+
+http://developer.apple.com/library/ios/#documentation/userexperience/conceptual/mobilehig/UIElementGuidelines/UIElementGuidelines.html%23//apple_ref/doc/uid/TP40006556-CH13-SW52",,
+,Main View Class:Wicket,WebPage,187,
+,Main View Class:Tapestry,App Package/Pages,188,
+,Action Bar:iOS,"iOS does not really have equivalence for this, the closest is View controller's navigation bar",190,
+,Action Bar:Android,"User/application level bar (Honeycomb 3.0 or above only)
+
+It is ""the new Home within the application""
+
+Click Action Bar's Home, will lead the app the start/home of the app, not the home (screen) of the Android
+
+Context sensitive within the app
+
+Pre-HC, AppCompat library",,
+,Main View Class:HTML 5,HTML DOM (Document Object Model),189,
+,Search:iOS,". @interface XXX : UITableViewController <NSFetchedResultsControllerDelegate, UISearchBarDelegate, UISearchDisplayDelegate> {
+
+. Implement search logics mainly with NSPredicate predicateWithFormat e.g.
+
+NSPredicate *pred = [NSPredicate predicateWithFormat:@""(title contains %@) OR (desc contains %@)"", searchText, searchText];",,
+,Top Bar:iOS,Status Bar (UIApplication),193,
+,Screen Abstraction:Android,"Density-independent pixel (dp) - for UI layout
+Scale-independent pixel (sp) - for text
+
+Instead of using pixel (px), use density pixel (dp) to support multitude of Android phones with various screen resolutions and sizes.
+
+1 dp is a unit in term of 160 dpi. Thus, 1 dp is two pixels in a screen of 320 dpi resolution.
+
+Also for Android 3.2 or above, please see http://developer.android.com/guide/practices/screens_support.html#DeclaringTabletLayouts",,
+,Multiple Target:iOS,Universal App (iPhone and iPad),192,
+,Object Dump:HTML5,console.log,31,
+,Start:HTML5,index html,29,
+,Common ORM:Tapestry,Hibernate,25,
+,Most Common UI:HTML5,"<table>
+<div>
+",30,
+,Value Proposition:HTML5,"Everyone believes in it, easier on hardware than competitors",28,
+,Value Proposition:JQueryMobile,Turn your existing web app into mobile app easily,33,
+,Most Common UI:Tapestry,"t:type=""grid""
+t:type=""beaneditform""",24,
+,Common DB:HTML5,Local Storage,32,
+,Core IoC:Tapestry,Tapestry IoC,27,
+,Gestures:iOS,"Tap
+Touch and Hold
+Double Tap
+Swipe
+Flick
+Drag
+Pinch",64,
+,Home Screen:iOS,Static icon only,66,
+,Most Common UI:Android,"ListView
+TextView
+EditText
+Button
+ScrollView",,
+,Default Constructor:Android,new T(),,
+,Start:Android,"A filter in AndroidManifest.xml file with ""android.intent.action.MAIN"" and ""android.intent.category.LAUNCHER"" settings advertises an activity as one that initiates an application e.g.
+
+<activity android:name="".FirstActivity"" android:label=""@string/app_name"">
+    <intent-filter>
+        <action android:name=""android.intent.action.MAIN"" />
+        <category android:name=""android.intent.category.LAUNCHER"" />
+    </intent-filter>
+...
+In java, the first method invoked is onCreate()",69,
+,Advanced:iOS,"Make phone call
+Send SMS text
+Access accelerometer
+Install application from App Store
+Camera
+Microphone
+Some OpenGL ES
+",65,
+,Method:Android,(new T()).init(),71,
+,Value Proposition:Android,Big market share,68,
+,Main Concepts:Android,"Overview:
+
+Apps are typically made up of Activities.
+
+Entities:
+Intent - 4 of them i.e. View, Edit, Search and Notify; its action can optionally include data
+
+Activity - an activity is a single action with a UI that performs a specific function for the user
+
+Service - an activity without a UI (for long running process)
+
+(Broadcast) Receiver - receivers of intents for notifications (for short running process)
+
+(Content) Provider",,
+,Method With Parameters:Android,"new T(""ViewController1"", null)",72,
+,Production Version:FiOSTV,1.9,168,
+,Production Version:GoogleTV,GoogleTV Addon - API Level 12,167,
+,Packaging:Android,AndroidManifest.xml,170,
+,Foreground Notification:Android,Dialog Notification,174,
+,Background Notification:Android,"String ns = Context.NOTIFICATION_SERVICE;
+NotificationManager nm = (NotificationManager) getSystemService(ns);
+nm.cancel(uid);  //clear the notification
+
+Notification n = new Notification(icon, tickerText, when);
+...
+contentIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
+n.setLatestEventInfo(context, contentTitle, c
+n.defaults = Notification.DEFAULT_ALL;
+nm.notify(uid, n);
+
+http://developer.android.com/guide/topics/ui/notifiers/notifications.html",,
+,Application Context:PhoneGap,navigator,166,
+,Search:Android,Search dialog and SearchView widget delivers search queries to a specific activity that performs searches,171,
+,Flash Notification:Android,"Toast Notification can be invoked from anywhere, including from the Async task e.g.
+
+private void ShowToast(String msg ) {
+        Toast toast = Toast.makeText(Main.this, msg,
+                 Toast.LENGTH_LONG);
+        toast.setGravity(Gravity.TOP, 0, 0);
+        toast.show(); //do not forget this, otherwise it will not appear!
+}
+
+http://bimbim.in/post/2011/03/21/Android-Creating-notification-using-Toast.apex",,
+,Production Version:PhoneGap,1.0.0,165,
+,Packaging:iOS,info.plist (Default),169,
+,Display a View:iOS,"    [self presentModalViewController:_movieEditViewController animated:YES];
+    _movieEditViewController.delegate = self;
+    [self.view addSubview:_movieEditViewController.view];",251,
+,Dismiss a View:iOS,"In the method say DONE button -
+
+    [delegate didDismissModalView];
+
+In the delegate (say the parent or caller view) -
+
+- (void)didDismissModalView {
+    // Dismiss the modal view controller
+    [self dismissModalViewControllerAnimated:YES];
+}",253,
+,Display a View:Android,"    Intent intent = new Intent(SecondActivity.class);
+    startActivity(intent);",252,
+,Respond to UI Control:Android,"import android.view.View;
+...
+    Button button = (Button)findViewById(R.id.corky);
+    // Register the onClick listener with the implementation above
+    button.setOnClickListener(new View.OnClickListener() {
+       public void onClick(View v) {
+         // do something when the button is clicked
+       }
+    };",250,
+,Background Notification:jQueryMobile,"$.mobile.loadingMessage = ""My custom message!"";",257,
+,Clean URL:jQueryMobile,$.mobile.pushStateEnabled = true; (default),255,
+,Pagination:jQueryMobile,pagination plugin,256,
+,Page Prefetch:jQueryMobile,"<a href=""foo/bar/baz"" data-prefetch>link text</a>
+
+Pages can also be pre-fetched programmatically by calling $.mobile.loadpage( url ). Pre-fetching links will naturally cause additional HTTP requests that may never be used, so it’s important to use this feature only in situations where it’s highly likely that a page will be visited.",,
+,Dismiss a View:Android,"No need to do anything. By default, you can always go back (hit Back button) to the previous Activity unless you did a finish(); inside its onPause() method.",254,
+,Custom Gesture:jQueryMobile,"Configurable swipe event thresholds
+
+scrollSupressionThreshold (default: 10px) – More than this horizontal displacement, and we will suppress scrolling
+durationThreshold (default: 1000ms) – More time than this, and it isn’t a swipe
+horizontalDistanceThreshold (default: 30px) – Swipe horizontal displacement must be more than this.
+verticalDistanceThreshold (default: 75px) – Swipe vertical displacement must be less than this.",,

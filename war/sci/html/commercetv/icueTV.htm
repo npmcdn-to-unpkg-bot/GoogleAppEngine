@@ -1,0 +1,105 @@
+<html>
+<header>
+	<LINK REL=StyleSheet HREF="css/style.css" TYPE="text/css" MEDIA="screen">
+	<style>
+	body {
+		//background-color: #000000;
+		color: #FFFFFF;
+	}
+	#video {
+	  position: fixed;
+	  top: 150;
+	  left: 10;
+	  bottom: 0;
+	  right: 0;
+	  width: 100%;
+	  height: 100%,
+	  z-index: -1000;
+	  <!-- source: http://css-tricks.com/css-transparency-settings-for-all-broswers/ -->
+      filter:alpha(opacity=50);
+      -moz-opacity:0.5;
+      -khtml-opacity: 0.5;
+      opacity: 0.5;
+	}
+	#shop {
+	  position: fixed;
+	  top: 55;
+	  left: 360;
+	  z-index: 10;
+	}
+	</style>
+</header>
+<body>
+
+<script type="text/javascript" src="swf/swfobject.js"></script>    
+<div id="ytapiplayer">
+  You need Flash player 8+ and JavaScript enabled to view this video.
+</div>
+
+<script type="text/javascript">
+    var params = { allowScriptAccess: "always" };
+    var atts = { id: "myytplayer" };
+    swfobject.embedSWF("http://www.youtube.com/v/gkGznPTSgS4?enablejsapi=1&playerapiid=ytplayer", 
+                       "ytapiplayer", "60%", "75%", "8", null, null, params, atts);
+</script>
+
+<div id="text1" style="position:absolute;left:65%;top:100px;display:none">
+Enhanced Television Services (ETS) 0:22
+</div>
+<div id="text2" style="position:absolute;left:65%;top:120px;display:none">
+Order Management, Billing, Hard Asset 0:27
+</div>
+<div id="text3" style="position:absolute;left:65%;top:140px;display:none">
+and Electric Fullfilment 0:32
+</div>
+<div id="text4" style="position:absolute;left:65%;top:160px;display:none">
+"i" Button "Press OK to interact" 0:43
+</div>
+<div id="text5" style="position:absolute;left:65%;top:180px;display:none">
+Enter 4 digit PalPal PIN 1:03
+</div>
+<div id="text6" style="position:absolute;left:65%;top:200px;display:none">
+Order confirmation sent by email 1:15
+</div>
+  
+<script type="text/javascript">
+function onYouTubePlayerReady(playerId) {
+  ytplayer = document.getElementById("myytplayer");
+  ytplayer.addEventListener("onStateChange", "onytplayerStateChange");
+}
+
+function onytplayerStateChange(newState) {
+   	//alert("Player's new state: " + newState);
+	if(newState == 0) {
+		//video ended
+		document.getElementById("text1").style.display = "block";
+	}
+}
+function ontime() {
+	//alert('2s after: ' + ytplayer.getCurrentTime());
+	t = ytplayer.getCurrentTime();
+	if(t >= 22) {
+		document.getElementById("text1").style.display = "block";
+	}
+	if(t >= 27) {
+		document.getElementById("text2").style.display = "block";
+	}
+	if(t >= 32) {
+		document.getElementById("text3").style.display = "block";
+	}
+	if(t >= 43) {
+		document.getElementById("text4").style.display = "block";
+	}
+	if(t >= 63) {
+		document.getElementById("text5").style.display = "block";
+	}
+	if(t >= 75) {
+		document.getElementById("text6").style.display = "block";
+	}
+}
+var t=setInterval("ontime()",2000);
+
+</script>	
+
+</body>
+</html>

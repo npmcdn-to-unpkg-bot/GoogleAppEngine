@@ -1,0 +1,1 @@
+cd .. && svn commit -m"%1" && cd bin

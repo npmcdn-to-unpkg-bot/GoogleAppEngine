@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Tabs" id="4" x="16" y="80" text="Collections,Scheduler,Channel,Play Now" measuredWidth="287" measuredHeight="27" selection="1">
+    <items x="1" y="0" width="79" height="27" text="Collections"/>
+    <items x="80" y="0" width="72" height="27" text="Scheduler"/>
+    <items x="152" y="0" width="64" height="27" text="Channel"/>
+    <items x="216" y="0" width="70" height="27" text="Play Now"/>
+    <font/>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

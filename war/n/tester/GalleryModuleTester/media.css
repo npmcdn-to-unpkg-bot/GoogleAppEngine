@@ -1,0 +1,22 @@
+#social-module-shell input {
+  border: 1px solid #A4A4A4;
+  border-radius: 2px;
+  left: 5px;
+  position: relative;
+}
+.box{
+    border: 1px solid #A4A4A4 !important;
+    background-color:#e3e3e3;
+}
+.box label{
+    font-family: "calibri",Times,serif;
+    font-size: 12px;
+    left: 5px;
+    position: relative;
+}
+.title,.submit{
+    height: 40px;
+}
+.body-properties{
+    height:72%;
+}

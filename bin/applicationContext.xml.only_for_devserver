@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+<bean id="sessionFactory" 
+          class="com.appspot.cloudserviceapi.eo.test.MyAnnotationSessionFactoryBean">
+        <!-- Option 3: use a Hibernate config file -->
+        <property name="configLocation">
+            <value>classpath:hibernate.cfg.xml</value>
+        </property>
+        <property name="namingStrategy"><bean class="com.appspot.cloudserviceapi.eo.test.UppercaseColumnNamingStrategy"/></property>
+        
+        <!-- Option 2: name each annotated class explicitly -->
+<!--
+        <property name="annotatedClasses">
+            <list>
+                <value>com.appspot.cloudserviceapi.eo.test.CdActivity</value>
+                <value>com.appspot.cloudserviceapi.eo.test.CdActivityDetails</value>
+            </list>
+        </property>
+-->
+        <property name="configurationClass">
+            <value>org.hibernate.cfg.AnnotationConfiguration</value>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.format_sql">true</prop>
+                <prop key="hibernate.jdbc.batch_size">0</prop>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+                <prop key="hibernate.cache.use_second_level_cache">false</prop>
+                <prop key="hibernate.hbm2ddl.auto">create-drop</prop>
+            </props>
+        </property>
+    </bean>
+
+	<bean id="activityDAO" class="com.appspot.cloudserviceapi.eo.test.ActivityDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="collegeDAO" class="com.appspot.cloudserviceapi.eo.test.CollegeDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+<!-- 
+	<bean id="activityDAO" class="com.appspot.cloudserviceapi.eo.dao.ActivityDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="collegeDAO" class="com.appspot.cloudserviceapi.eo.dao.CollegeDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+-->
+
+    <!--
+		<bean id="contentEntryService" class="junit.ContentEntryService"
+		abstract="false" lazy-init="default" autowire="default"
+		dependency-check="default" p:loDAO-ref="LearningObjectiveDAO"> </bean>
+	-->
+</beans>

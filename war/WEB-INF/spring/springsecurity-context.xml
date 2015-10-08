@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans
+	xmlns="http://www.springframework.org/schema/security"
+    xmlns:beans="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+    	http://www.springframework.org/schema/beans
+    	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/security
+        http://www.springframework.org/schema/security/spring-security-3.2.xsd" default-lazy-init="true">
+
+	<!-- Guides used to upgrade from 2.0.4 to 3.0.5 -
+		http://billkratzer.blogspot.com/2009/12/migrating-to-spring-security-30.html	
+		http://forum.springsource.org/showthread.php?88940-Help-migrating-Spring-security-2.5.6-filters-to-3.0.2-filters
+		http://code.google.com/p/googleappengine/wiki/WillItPlayInJava
+	-->
+	<!-- avoid redirect loop with /login.jsp -->
+	<http pattern="/login.jsp" security="none"/>
+	<http pattern="/web/**" security="none"/>
+	<http pattern="/static/**" security="none"/>
+	<http pattern="/stats/**" security="none"/>
+	<http pattern="/appstats" security="none"/>
+	<http pattern="/nuke*/**" security="none"/>
+	<http pattern="/css/*" security="none"/>
+	<http pattern="/images/*" security="none"/>
+	<http pattern="/js/*" security="none"/>
+	<http pattern="/password" security="none"/>
+	<http pattern="/nlogin" security="none"/>
+	<http pattern="/ui/**/*" security="none"/>
+	<http pattern="/galleria*/**" security="none"/>
+	<http pattern="/jsp/chec" security="none"/>
+	<http pattern="/parse/**" security="none"/>
+	<http pattern="/ws/**" security="none"/>
+	<http pattern="/html/**" security="none"/>
+	<http pattern="/fullcale" security="none"/>
+	<http pattern="/angularj" security="none"/>
+	<http pattern="/jquery/*" security="none"/>
+	<http pattern="/jsp/logo" security="none"/>
+	<http pattern="/CSS3Acco" security="none"/>
+	<!-- 2share -->
+	<http pattern="/crud*" security="none"/>
+	<http pattern="/gu/**" security="none"/>
+	<http pattern="/gu1/**" security="none"/>
+	<http pattern="/gu2/**" security="none"/>
+	<!-- SCI -->
+	<http pattern="/sci/html" security="none"/>
+	<http pattern="/cibt/*" security="none"/>
+	<http pattern="/cibt/**" security="none"/>
+	<http pattern="/url*/**" security="none"/>
+	<http pattern="/sci/go/*" security="none"/>
+	<http pattern="/sci/admi*/**" security="none"/>
+	<http pattern="/sci/toke*/**" security="none"/>
+	<http pattern="/sci/vide*/**" security="none"/>
+	<http pattern="/sci/buye*/**" security="none"/>
+	<http pattern="/sci/jsp/*.jsp" security="none"/>
+	<http pattern="/sci/bigtime*/**" security="none"/>
+	<http pattern="/sci/cr" security="none"/>
+	<http pattern="/sci/emai*/**" security="none"/>
+	<http pattern="/sci/code*/**" security="none"/>
+	<http pattern="/sci/svn*" security="none"/>
+	<!-- n -->
+	<http pattern="/n/**" security="none"/>	
+	<!-- EO -->
+	<http pattern="/eo*/**" security="none"/>
+	<!-- to be in production!!! -->
+	<http pattern="/eo/html/" security="none"/>
+	<!-- SGC -->
+	<http pattern="/sgc/**/*" security="none"/>
+	<!--  XMM stuff -->
+<!-- 	<http pattern="/app/**" security="none"/>
+ -->
+ 	<http pattern="/app/xmm" security="none"/>
+	<!-- Common to all -->
+	<http pattern="/apple-touch-icon.png" security="none"/>
+	<http pattern="/user*/**" security="none"/>
+	<!-- appstats/stats already guarded by Google auth -->
+	<http pattern="/remote_api" security="none"/>
+	<http pattern="/_ah/remote_api" security="none"/>
+	<http pattern="/tpl/**" security="none"/>
+	<http pattern="/g/owasp/**" security="none"/>
+	<http pattern="/g/app/**" security="none"/>
+	<http pattern="/g/social/**" security="none"/>
+	<http pattern="/jsp/g/search_owasp.jsp" security="none"/>
+	<http pattern="/jsp/g/search_template.jsp" security="none"/>
+	<http pattern="/jsp/g/search_social.jsp" security="none"/>
+	<http pattern="/jsp/g/search_all.jsp" security="none"/>
+	<http pattern="/go/**" security="none"/>
+	<http pattern="/media/**" security="none"/>
+	<http pattern="/" security="none"/>
+	<http pattern="/index.*" security="none"/>
+	<http pattern="/decorators/**" security="none"/>
+	<!-- http pattern="/login.jsp" security="none"  -->
+	<http pattern="/styles/**" security="none"/>
+	<http pattern="/assets/**" security="none"/>
+	<http pattern="/g/service/**" security="none"/>
+	<http pattern="/crossdomain.xml" security="none"/>
+	<http pattern="http://www.google.com/jsapi/**" security="none"/>
+	<http pattern="/favicon.ico" security="none"/>
+	<http pattern="/fail*/**" security="none"/>
+	<http pattern="/task/**" security="none"/>
+	<http pattern="/whereami.jsp" security="none"/>
+	<!--
+	Delegated to Google's authentication
+	-->
+	<!--
+	<http pattern="/appstats" security="none"/>
+	<http pattern="/stats/**" security="none"/>
+	-->
+	<http pattern="/wicket/**" security="none"/>
+
+	<http auto-config="false" use-expressions="true">
+    	<intercept-url pattern="/" access="permitAll" />
+ 		<intercept-url pattern="/login.jsp" access="permitAll" requires-channel="https" />
+		<intercept-url pattern="/go/*/**" access="permitAll" />
+		<intercept-url pattern="/sr" access="permitAll" requires-channel="https" />
+		<intercept-url pattern="/sci" access="permitAll" />
+		<intercept-url pattern="/userstart" access="permitAll" requires-channel="https" />
+ 		<!-- avoid redirect loop (thanks to http://bitcoinmex.blogspot.com/2013/03/spring-security-and-google-app-engine.html) -->
+		<intercept-url pattern="/sci/s*" access="hasAnyRole('ROLE_USER_SCI','ROLE_ADMIN_SCI','ROLE_MANAGER','ROLE_ADMIN')" />
+		<intercept-url pattern="/sci/s*/**" access="hasAnyRole('ROLE_USER_SCI','ROLE_ADMIN_SCI','ROLE_MANAGER','ROLE_ADMIN')" />
+ 		<intercept-url pattern="/g/**/*start/**" access="hasAnyRole('ROLE_MANAGER','ROLE_ADMIN')" />
+		<intercept-url pattern="/g/**/*save/**" access="hasAnyRole('ROLE_MANAGER','ROLE_ADMIN')" />
+ 		<intercept-url pattern="/_ah/**" access="permitAll" />
+
+		<form-login username-parameter="password" password-parameter="j_password" login-page="/login.jsp" login-processing-url="/j_spring_security_check" authentication-failure-url="/login.jsp" />
+ 		<logout logout-success-url="/login.jsp" logout-url="/logout" invalidate-session="true" />
+	</http>
+
+	<authentication-manager alias="authenticationManager">
+		<authentication-provider user-service-ref="userSecurityManagerService" />
+	</authentication-manager>	
+	
+	<beans:bean lazy-init="true" id="userSecurityDAO"
+		class="com.appspot.cloudserviceapi.security.spring.UserSecurityDAO" />
+
+	<beans:bean lazy-init="true" id="GaeUserDetailsService" class="com.appspot.cloudserviceapi.security.spring.GaeUserDetailsService">
+	    <beans:property name="userSecurityDAO" ref="userSecurityDAO" />
+	</beans:bean>
+
+	<!-- http://tojava13.appspot.com/question/5080f7ab4f1eba38a4d3ee62 -->
+<beans:bean id="userSecurityManagerService" class="org.springframework.aop.framework.ProxyFactoryBean">
+    <beans:property name="targetSource">
+        <beans:bean class="org.springframework.aop.target.LazyInitTargetSource">
+            <beans:property name="targetBeanName" value="GaeUserDetailsService"/>
+        </beans:bean>
+    </beans:property>
+</beans:bean>	
+	
+	<!--
+	<beans:bean id="loggerListener"
+	class="org.springframework.security.authentication.event.LoggerListener" />
+ 	-->
+ 
+</beans:beans>

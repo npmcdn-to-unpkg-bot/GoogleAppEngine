@@ -1,0 +1,428 @@
+﻿<!DOCTYPE html>
+<html>
+<!--
+<html xmlns:ng="http://angularjs.org" id="ng-app" ng-app>
+<html manifest="movie.appcache" xmlns:ng="http://angularjs.org" id="ng:app" ng-app lang="en">
+-->
+<head>
+    <!-- chrome://appcache-internals/ -->
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8">-->
+    <meta charset="utf-8">
+    <title>Cool App</title>
+    <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.no-icons.min.css" rel="stylesheet">
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome.css" rel="stylesheet">
+    <link href="../parse/css/tabs.css" rel="stylesheet">
+    <link href="../css/app.css" rel="stylesheet">
+    <!--=== IE DOES NOT WORK WITH REQUIREJS + ANGULARJS! -->
+    <!--=== common js -->
+    <script type="text/javascript" src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js'></script>
+    <script type="text/javascript" src='../angularjs/1.1.5/angular.js'></script>
+    <script type="text/javascript" src='../jquery/purl.js'></script>
+    <script type="text/javascript" src='https://www.parsecdn.com/js/parse-1.2.7.min.js'></script>
+    <script>
+        Parse.initialize("Ld70ODLxjXFkhhRux6kQqVCiJ4rQeXU8dISafNJa", "dLHhDNKnLimXHzSzxvQcGuwle5iLwnn3bFahDS9q");
+        window.console && console.log("Parse initialized.");
+    </script>
+    <script type="text/javascript" src='../parse/facebook.js'></script>
+    <script type="text/javascript" src='../js/google.js'></script>
+    <script type="text/javascript" src='../jquery/jquery-ui-1.10.2.custom.min.js'></script>
+    <script type="text/javascript" src='../js/dateFormat.js'></script>
+    <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.js'></script>
+    <script type="text/javascript" src='../js/loglevel.js'></script>
+    <!--=== app js -->
+    <script type="text/javascript" src='../parse/init.js'></script>
+    <script type="text/javascript" src='../js/jquery.bpopup.min.js'></script>
+    <script type="text/javascript" src='../html/migrate.js'></script>
+</head>
+<body ng-controller="ctrlRead">
+<!--
+<body>
+-->
+<div id="fb-root"></div>
+<div id="header" class="row-fluid">
+    <div class="span6">
+        <div ng-show="!backendReady">
+            &nbsp;<img src="/images/ajax-loader-sm-wait-transbg.gif" class="loading-indicator" alt="loading"/>
+            &nbsp;Processing (can be up to 20 seconds) ...<p>
+        </div>
+        <div ng-cloak ng-show="backendReady">
+            &nbsp;<span id="releaseLabel">{{mRelease}}</span> {{mBuild}} Welcome <span id=currentUserName></span>!
+        </div>
+    </div>
+    <div class="span6">
+        <div class="pull-right">
+            <a style="display:none;" id="myaccount" href="javascript:void(0);" onclick="location.href='/passwordchange/jsp/simple.jsp?username=' + $.url().param('username') + '&amp;logintype=' + $.url().param('logintype');">My Account</a>&nbsp;<span id=currentUser></span> <a href="javascript:logout();">Logout</a>
+        </div>
+    </div>
+</div>
+<ul id="globalnav">
+    <li><a id="homeLink" href="#" target="_new">Home</a></li>
+    <li><a id="aboutLink" href="#" target="_new">About</a>
+        <!--
+        <li><a href="#" class="here">About</a>
+            <ul>
+                <li><a href="#">Vision</a></li>
+                <li><a href="#">Team</a></li>
+                <li><a href="#">Culture</a></li>
+                <li><a href="#">Careers</a></li>
+                <li><a href="#" class="here">History</a></li>
+                <li><a href="#">Sponsorship</a></li>
+            </ul>
+        </li>
+        -->
+    <li><a id="manageLink" href="#" class="here">Manage</a></li>
+    <ul>
+        <!--
+        <li><a href="#">My Folders</a></li>
+        -->
+        <li><a id="manageCollections" href="javascript:void(0);" onclick="location.href='/mcrud/movie.html?username=' + $.url().param('username') + '&amp;logintype=' + $.url().param('logintype');" alt="Collections">Collections</a></li>
+        <li><a class="here" id="oldCollections" href="javascript:void(0);" onclick="location.href='/html/migrate.html?username=' + $.url().param('username') + '&amp;logintype=' + $.url().param('logintype');" alt="Collections">Migrate Collections</a></li>
+        <li><a style="display:none;" id="manageShowtime" href="javascript:void(0);" onclick="location.href='/html/calendar.html?username=' + $.url().param('username') + '&amp;logintype=' + $.url().param('logintype');" alt="Collections">Calendar</a></li>
+        <li><a style="display:none;" id="manageChannels" href="javascript:void(0);" onclick="location.href='/html/channel.html?username=' + $.url().param('username') + '&amp;logintype=' + $.url().param('logintype');" alt="Collections">Channel</a></li>
+    </ul>
+    <li><a id="helpLink" href="#" target="_new">Help</a></li>
+</ul>
+<div>
+    <div style="position:absolute;margin-top:100px;margin-left:250px;" ng-cloak ng-hide="true">
+        ****** If you are seeing this, please make sure you Mineenable the support of "Mixed Content" ******
+    </div>
+    <div style="position:absolute;margin-top:73px;margin-left:480px;margin-right:auto;" ng-show="error_message.length > 0" ng-bind-template="&nbsp;{{error_message}}"></div>
+
+    <div ng-cloak class="row-fluid">
+        <div class="span7">
+            <div style="position:relative;top:10px;margin-left:2px;margin-top:10px;margin-bottom:3px;width:70%;"
+                 ng-show="backendReady">
+                <input style="width:70%;" type="text" ng-model="query" ng-change="search()"
+                       class="input-large search-query" placeholder="Enter your search here">
+                <i ng-show="query.length > 0" ng-click="resetSearch()" class="icon-remove" style="width:10%;">
+                </i>
+                <label style="font-size:10px;" ng-show="query.length > 0">&nbsp;<mark>Click X to clear. Your collection is currently being filtered by the search term.</mark></label>
+            </div>
+        </div>
+        <!--<div class="span5">-->
+            <!--<div class="pull-right">-->
+                <!--<a href="#" ng-show="backendReady" style="position:relative;top:10px;margin-top:10px;width:auto;background:#98969E;" class="btn btn-primary pull-right" ng-click="migrateAllItems()" ng-bind-template="{{createButtonTitle}}">...</a>-->
+            <!--</div>-->
+        <!--</div>-->
+    </div>
+
+    <div style="position:relative;top:10px;margin-left:10px;width:95%;" ng-show="enterNew" ng-cloak>
+        <form class="form-horizontal" action="#">
+            <h2>Saving New Item</h2>
+
+            <div class="row">
+                <div class="span2" ng-bind-template="{{header3}}">...</div>
+                <div class="span8">
+                    <input type="text" class="input" ng-model="item.title" style="width:60%;" placeholder="This needs to be an easy to identify field.">
+                </div>
+            </div>
+            <div class="row">
+                <div class="span2" ng-bind-template="{{header4}}">...</div>
+                <div class="span8">
+                    <input type="text" class="input" ng-model="item.description" style="width:60%;">
+                </div>
+            </div>
+            <div class="row">
+                <div class="span2" ng-bind-template="{{header5}}">...</div>
+                <div class="span8">
+                    <input type="text" ng-model="item.url" style="width:100%;" placeholder="This needs to be a valid URL">
+                </div>
+            </div>
+            <div class="row">
+                <div class="span2" ng-bind-template="{{header6}}">...</div>
+                <div class="span8">
+                    <input type="checkbox" ng-model="item.shared">
+                </div>
+                <div class="span2">
+                    <input type="submit" style="background:#98969E;" class="btn btn-primary"
+                           value="{{saveButtonLabel}}" ng-disabled="!(item.title && item.url)" ng-click="createItem()">
+                    <a href="#" class="btn" ng-click="cancelSave()">Cancel</a>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div style="position:relative;top:13px;float:left;margin-left:10px;width:95%;" ng-show="editing" ng-cloak>
+        <form class="form-horizontal" action="#">
+            <h2>Migrating Existing Item</h2>
+            <div class="row">
+                <div class="span2" ng-bind-template="{{header2}}">...</div>
+                <div class="span5">
+                    <input style="width:100%;" type="text" class="uneditable-input" readonly=readonly ng-model="item.id">
+                </div>
+            </div>
+            <div class="row">
+                <div class="span2" ng-bind-template="{{header3}}">...</div>
+                <div class="span8">
+                    <input type="text" class="input" ng-model="item.title" style="width:60%;">
+                </div>
+            </div>
+            <div class="row">
+                <div class="span2" ng-bind-template="{{header4}}">...</div>
+                <div class="span8">
+                    <input type="text" class="input" ng-model="item.description" style="width:60%;">
+                </div>
+            </div>
+            <div class="row">
+                <div class="span2" ng-bind-template="{{header5}}">...</div>
+                <div class="span8">
+                    <input type="text" ng-model="item.url" style="width:100%;">
+                </div>
+            </div>
+            <div class="row">
+                <div class="span2" ng-bind-template="{{header6}}">...</div>
+                <div class="span8">
+                    <input type="checkbox" ng-model="item.shared">
+                </div>
+                <div class="span2">
+                    <input type="submit" style="background:#98969E;" class="btn btn-primary" ng-model="item" value="{{updateButtonLabel}}" ng-disabled="!(item.title)" ng-click="migrateItem()">
+                    <a href="#" class="btn" ng-click="cancelSave()">Cancel</a>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- TBD - might be useful in the future
+    <table style="position:relative;top:13px;width:100%;" ng-cloak>
+        <tbody>
+        <tr>
+            <td ng-cloak ng-show="movie_title" style="width:150px;" class="span2"><img style="padding-left: 5px;" ng-src="rt-158x158.png"></td>
+            <td ng-cloak ng-show="!movie_title" class="span2"><img style="padding-left: 5px;" ng-src="{{movie_thumbnail}}"></td>
+            <td><input type="checkbox" ng-model="movie.rt.checked"></td>
+            <td class="span2" ng-cloak ng-show="movie_title">{{movie_title}}</td>
+            <td></td>
+            <td ng-cloak ng-show="movie_url"><a target="_new" href={{movie_url}}>{{movie_url}}</a></td>
+        </tr>
+        <tr>
+            <td><img style="padding-left: 5px;" ng-src="{{movie_thumbnail2}}"></td>
+            <td><input type="checkbox" ng-model="movie.yt.checked"></td>
+            <td ng-cloak ng-show="movie_title2">{{movie_title2}}</td>
+            <td></td>
+            <td ng-cloak ng-show="movie_url2"><a target="_new" href={{movie_url2}}>{{movie_url2}}</a></td>
+        </tr>
+        <tr>
+            <td><img ng-src="facebook-96x96.jpg"></td>
+            <td><input type="checkbox" ng-model="movie.fb.checked"></td>
+            <td ng-cloak ng-show="movie_title3">{{movie_title3}}</td>
+            <td></td>
+            <td ng-cloak ng-show="movie_url3"><a target="_new" href={{movie_url3}}>{{movie_url3}}</a></td>
+        </tr>
+        </tbody>
+    </table>
+    -->
+
+    <div ng-cloak style="padding-top:10px;width:50%;left:20px;" ng-show="backendReady && pagedItems.length === 0">There is no movie in your collections.</div>
+
+    <div style="position:absolute;top:320px;" id="loadingTable">
+        &nbsp;<img src="/images/ajax-loader-sm-wait-transbg.gif" id="loading-indicator" alt="loading collection" />
+        &nbsp;<span style="width:200px;">Loading collection ...</span><p>
+    </div>
+    <table ng-show="backendReady" style="position:relative;top:13px;width:100%;height:200px;" ng-cloak class="table table-striped table-condensed table-hover">
+        <thead>
+        <tr>
+            <th class="{{thumbnail}}">Thumbnail&nbsp;<a href="#" ng-click="sort_by('thumbnail')"><i class="icon-sort"></i></a></th>
+            <th class="{{header2}}">Owner&nbsp;<a href="#" ng-click="sort_by('oid')"><i class="icon-sort"></i></a></th>
+            <th class="{{header2}}">Title&nbsp;<a href="#" ng-click="sort_by('title')"><i class="icon-sort"></i></a></th>
+            <th class="{{header3}}">Description&nbsp;<a href="#" ng-click="sort_by('description')"><i class="icon-sort"></i></a></th>
+            <th class="{{header4}}">Created Date&nbsp;<a href="#" ng-click="sort_by('createDate')"><i class="icon-sort"></i></a></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tfoot>
+        <tr>
+            <td colspan="8">
+                <div class="pagination pull-right">
+                    <ul>
+                        <li ng-class="{disabled: currentPage == 0}">
+                            <a href="#" ng-click="prevPage()">« Prev</a>
+                        </li>
+                        <li ng-repeat="n in range(pagedItems.length)"
+                            ng-class="{active: n == currentPage}"
+                            ng-click="setPage()">
+                            <a href="#" ng-bind="n + 1">1</a>
+                        </li>
+                        <li ng-class="{disabled: currentPage == pagedItems.length - 1}">
+                            <a href="#" ng-click="nextPage()">Next »</a>
+                        </li>
+                    </ul>
+                </div>
+            </td>
+        </tr>
+        </tfoot>
+        <tbody>
+        <tr>
+            <td ng-bind-template=""><br><br><br>&nbsp;...</td>
+        </tr>
+        <tr ng-repeat="item in pagedItems[currentPage] | orderBy:sortingOrder:reverse | filter:query" ng-animate="slide">
+            <!--<td ng-bind-template="{{item.id}}">...</td>-->
+            <td ng-show="getYoutubeVideoId(item.url)">
+                <div style="height:33px;">
+                    <a href="#nogo" title="small image"><img style="height:30px;"
+                            ng-src="https://img.youtube.com/vi/{{getYoutubeVideoId(item.url)}}/1.jpg" alt="youtube image 1">
+                    </a>
+                </div>
+            </td>
+            <td ng-show="!getYoutubeVideoId(item.url)"><img
+                    src="data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=" alt="no image found"></td>
+            <td ng-show="item.oid == objectId" ng-bind-template="Me">...</td>
+            <td ng-show="item.oid != objectId" ng-bind-template="{{item.owner}}">...</td>
+            <td ng-bind-template="{{item.title}}">...</td>
+            <td ng-bind-template="{{item.description}}">...</td>
+            <td style="width:180px;" ng-bind-template="{{item.createDate | date:'yyyy-MM-dd HH:mm:ss Z'}}">...</td>
+            <td>
+                <div class="content"></div>
+                <div id="element_to_pop_up" style="display:none;width:50%;height:50%;">Content of popup</div>
+            </td>
+            <td style="width:134px;">
+                <a href="#" ng-click="viewItem(item)">View</a>
+                &nbsp;|&nbsp;
+                <a href="#" ng-click="editItem(item)">Edit</a>
+                &nbsp;|&nbsp;
+                <a href="#" ng-click="deleteLegacyItem(item)">Purge</a>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<span id="authorizeButton"></span>
+<!--<script>-->
+	<!--var gHeaderReleaseBuildTitle;-->
+    <!--var gManageColMainTitle;-->
+    <!--var gSharedColMainTitle;-->
+    <!--var gManageShoMainTitle;-->
+    <!--var gManageChaMainTitle;-->
+    <!--var gHomeLink;-->
+    <!--var gAboutLink;-->
+    <!--var gHelpLink;-->
+    <!--var col1;-->
+    <!--var col2;-->
+    <!--var col3;-->
+    <!--var col4;-->
+    <!--var col5;-->
+    <!--var col6;-->
+    <!--var entry;-->
+    <!--function importGSS(json) {-->
+        <!--for (i = 0; i < json.feed.entry.length; i++) {-->
+            <!--entry = json.feed.entry[i];-->
+            <!--col1 = entry.gsx$index && entry.gsx$index.$t;-->
+            <!--col2 = entry.gsx$_cokwr && entry.gsx$_cokwr.$t;-->
+            <!--col3 = entry.gsx$_cpzh4 && entry.gsx$_cpzh4.$t;-->
+            <!--col4 = entry.gsx$_cre1l && entry.gsx$_cre1l.$t;-->
+            <!--col5 = entry.gsx$_chk2m && entry.gsx$_chk2m.$t;-->
+            <!--col6 = entry.gsx$_ciyn3 && entry.gsx$_ciyn3.$t;-->
+            <!--if (col1 && col2 && col3 && col4 && col5) {-->
+                <!--window.console && console.log('[' + (i + 1) + '] = ' + '[' + col1 + '] ' + '[' + col2 + '] ' + '[' + col3 + '] ' + '[' + col4 + '] ' + '[' + col5 + '] ' + '[' + col6 + '] ');-->
+                <!--if (col1 === 'header' &&-->
+                        <!--col2 === 'release' &&-->
+                        <!--col3 === 'build' &&-->
+                        <!--col4 === 'title' &&-->
+                        <!--col5 === 'text'-->
+                        <!--) {-->
+                	<!--gHeaderReleaseBuildTitle = col6;-->
+                    <!--document.getElementById("releaseLabel").innerHTML = col6;-->
+                    <!--window.console && console.log("movie.html:gHeaderReleaseBuildTitle set [" + gHeaderReleaseBuildTitle + "]");-->
+                <!--} else-->
+                <!--if (col1 === 'manage' &&-->
+                        <!--col2 === 'collections' &&-->
+                        <!--col3 === 'main' &&-->
+                        <!--col4 === 'title' &&-->
+                        <!--col5 === 'text'-->
+                        <!--) {-->
+                    <!--gManageColMainTitle = col6;-->
+                    <!--document.getElementById("manageCollections").innerHTML = col6;-->
+                    <!--window.console && console.log("movie.html:gManageColMainTitle set [" + gManageColMainTitle + "]");-->
+                <!--} else if (col1 === 'manage' &&-->
+                        <!--col2 === 'shared' &&-->
+                        <!--col3 === 'main' &&-->
+                        <!--col4 === 'title' &&-->
+                        <!--col5 === 'text'-->
+                        <!--) {-->
+                    <!--gSharedColMainTitle = col6;-->
+                    <!--document.getElementById("oldCollections").innerHTML = col6;-->
+                    <!--window.console && console.log("movie.html:gSharedColMainTitle set [" + gSharedColMainTitle + "]");-->
+                <!--} else-->
+                <!--if (col1 === 'manage' &&-->
+                        <!--col2 === 'shared' &&-->
+                        <!--col3 === 'main' &&-->
+                        <!--col4 === 'status' &&-->
+                        <!--col5 === 'active' &&-->
+                        <!--col6 === 'TRUE'-->
+                        <!--) {-->
+                    <!--$("#oldCollections").show();-->
+                    <!--window.console && console.log("movie.html:shared set [" + col6 + "]");-->
+                <!--} else if (col1 === 'manage' &&-->
+                        <!--col2 === 'showtime' &&-->
+                        <!--col3 === 'main' &&-->
+                        <!--col4 === 'title' &&-->
+                        <!--col5 === 'text'-->
+                        <!--) {-->
+                    <!--gManageShoMainTitle = col6;-->
+                    <!--document.getElementById("manageShowtime").innerHTML = col6;-->
+                    <!--$("#manageShowtime").show();-->
+                    <!--window.console && console.log("movie.html:gManageShoMainTitle set [" + gManageShoMainTitle + "]");-->
+                <!--} else if (col1 === 'manage' &&-->
+                        <!--col2 === 'channels' &&-->
+                        <!--col3 === 'main' &&-->
+                        <!--col4 === 'title' &&-->
+                        <!--col5 === 'text'-->
+                        <!--) {-->
+                    <!--gManageShoMainTitle = col6;-->
+                    <!--document.getElementById("manageChannels").innerHTML = col6;-->
+                    <!--$("#manageChannels").show();-->
+                    <!--window.console && console.log("movie.html:gManageShoMainTitle set [" + gManageShoMainTitle + "]");-->
+	            <!--} else if (col1 === 'home' &&-->
+	                    <!--col2 === 'index' &&-->
+	                    <!--col3 === 'main' &&-->
+	                    <!--col4 === 'brand' &&-->
+	                    <!--col5 === 'url'-->
+	                    <!--) {-->
+	               		<!--gHomeLink = col6;-->
+	               		<!--$("#homeLink").attr('href', gHomeLink);-->
+		                <!--window.console && console.log("movie.html:gHomeLink set [" + gHomeLink + "]");-->
+	            <!--} else if (col1 === 'about' &&-->
+	                    <!--col2 === 'index' &&-->
+	                    <!--col3 === 'main' &&-->
+	                    <!--col4 === 'brand' &&-->
+	                    <!--col5 === 'url'-->
+	                    <!--) {-->
+	            		<!--gAboutLink = col6;-->
+	               		<!--$("#aboutLink").attr('href', gAboutLink);-->
+		                <!--window.console && console.log("movie.html:gAboutLink set [" + gAboutLink + "]");-->
+	            <!--} else if (col1 === 'help' &&-->
+	                    <!--col2 === 'index' &&-->
+	                    <!--col3 === 'main' &&-->
+	                    <!--col4 === 'brand' &&-->
+	                    <!--col5 === 'url'-->
+	                    <!--) {-->
+	            		<!--gHelpLink = col6;-->
+	               		<!--$("#helpLink").attr('href', gHelpLink);-->
+		                <!--window.console && console.log("movie.html:gHelpLink set [" + gHelpLink + "]");-->
+                <!--} else if (col1 === 'manage' &&-->
+                        <!--col2 === 'collections' &&-->
+                        <!--col3 === 'main' &&-->
+                        <!--col4 === 'imdb' &&-->
+                        <!--col5 === 'enabled'-->
+                        <!--) {-->
+                    <!--$("#helpLink").attr('href', gHelpLink);-->
+                    <!--window.console && console.log("movie.html:gHelpLink set [" + gHelpLink + "]");-->
+                <!--}-->
+            <!--}-->
+        <!--}-->
+    <!--}-->
+<!--</script>-->
+</body>
+</html>

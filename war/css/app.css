@@ -1,0 +1,223 @@
+/** This style is used by 2share browser/device specific UI */
+
+/** {*/
+    /*border: 1px solid red;*/
+/*}*/
+
+body {
+    overflow-x: hidden;
+    /*overflow-y: hidden; /!* disable Chrome pull down refresh to save cost! *!/*/
+    padding-right: 6px;
+    padding-left: 5px;
+    /*background-color: #dde5ec;*/
+    margin:0 auto;
+}
+img {
+    /*max-width: 49%;*/
+    width:auto;
+    height:auto;
+}
+
+img.yt_img0 {
+    /*youtube cover 0 in movie ui*/
+    /*width:136px;*/
+    /*padding-left: 15px;*/
+}
+
+/* http://stackoverflow.com/questions/14927073/footer-template-blinks-even-using-ng-cloak-in-angularjs */
+[ng\:cloak], [ng-cloak], .ng-cloak {
+    display: none !important;
+}
+
+/* http://stackoverflow.com/questions/13847755/css-media-queries-for-screen-sizes */
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 480px) {
+    /* Styles */
+}
+
+/* Smartphones (landscape) ----------- */
+@media only screen
+and (min-width : 321px) {
+    /* Styles */
+}
+
+/* Smartphones (portrait) ----------- */
+@media only screen
+and (max-width : 320px) {
+    /* Styles */
+}
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px) {
+    /* Styles */
+}
+
+/* iPads (landscape) ----------- */
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
+and (orientation : landscape) {
+    /* Styles */
+}
+
+/* iPads (portrait) ----------- */
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
+and (orientation : portrait) {
+    /* Styles */
+}
+
+/* Desktops and laptops ----------- */
+@media only screen
+and (min-width : 1224px) {
+    /* Styles */
+}
+
+/* Large screens ----------- */
+@media only screen
+and (min-width : 1824px) {
+    /* Styles */
+}
+
+/* iPhone 4 ----------- */
+@media
+only screen and (-webkit-min-device-pixel-ratio : 1.5),
+only screen and (min-device-pixel-ratio : 1.5) {
+    /* Styles */
+}
+
+/* iPhone 5 ----------- */
+/* You've spent way to much on a phone */
+
+/* http://www.dreamweaverclub.com/dreamweaver-show-larger-image.php */
+#picture {width:100px; height: 80px;}
+#picture a.small, #picture a.small:visited { display:block; width:100px; height:100px; text-decoration:none; top:0; left:0; border:0;}
+#picture a img {border:0;}
+#picture a.small:hover {text-decoration:none;}
+#picture a .large {display:block; position:absolute; width:0; height:0; border:0; top:0; left:0;}
+#picture a.small:hover .large {display:block; position:absolute; top: 90px; left:150px; width:480px; height:320px; }
+
+
+/*
+Animation support - only for angularjs 1.1.5 !
+Source:
+http://www.nganimate.org/angularjs/ng-repeat/yo-yo-css3-keyframes-animation
+http://plnkr.co/edit/?p=preview
+*/
+
+.animate-enter,
+.animate-leave
+{
+    -webkit-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -moz-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -ms-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -o-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    position: relative;
+    display: block;
+}
+
+.animate-enter.animate-enter-active,
+.animate-leave {
+    opacity: 1;
+    top: 0;
+    height: 30px;
+}
+
+.animate-leave.animate-leave-active,
+.animate-enter {
+    opacity: 0;
+    top: -50px;
+    height: 0px;
+}
+
+/* form validation related (html 5) */
+/*input:not([ng-model="query"]):valid {*/
+    /*background-color: palegreen;*/
+/*}*/
+
+input:invalid {
+    background-color: #b1b6ca;
+    color: white;
+}
+
+
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+    color:    white;
+}
+input:-moz-placeholder, textarea:-moz-placeholder {
+    color:    white;
+}
+input::-moz-placeholder, textarea::-moz-placeholder {
+    color:    white;
+}
+input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+    color:    white;
+}
+
+/* the dialog styles above the mini apps */
+.dialog1 {
+    position:relative;
+    padding-top:1px;
+    padding-bottom:1px;
+    top:17px;
+    margin-left:10px;
+    padding-left:10px;
+    margin-bottom:13px;
+    width:90%;
+    background-color:rgba(174, 214, 231, 0.21);
+}
+
+/* media play related styles */
+/* thanks to http://support.galleria.io/discussions/questions/2595-can-thumbnail-nav-arrows-always-be-present */
+.galleria-thumb-nav-left,
+.galleria-thumb-nav-right {
+    /*cursor: pointer;*/
+    /*display: none;*/
+    /*background-position: -495px 5px;*/
+    /*position: absolute;*/
+    /*left: 0;*/
+    /*top: 0;*/
+    /*height: 40px;*/
+    /*width: 23px;*/
+
+    z-index: 3;
+    opacity: .8;
+    filter: alpha(opacity=80);
+    background-color: #999;
+}
+
+/* bootstrap related styles */
+.dropdown-menu {
+    height: auto;
+    min-width: 200px;  /* make it scrollable */
+    max-height: 400px;  /* make it scrollable */
+    overflow-x: hidden;
+}
+
+/* slot view for mobile adjustment */
+#slotview1 {
+    width: 99%;  /* workaround to remove horizontal overscroll issue */
+}
+
+/* slot view with leapstrap adjustment */
+#slotview2 {
+    margin-top: 22px;
+    width: 100%;
+    /*padding-left: 17px;*/
+}
+
+.img-responsive {max-width:100%;}
+
+.thumbnail > img {
+    min-width: 175px;
+}
+
+.navbar {
+    max-height: 80px;   /* so as it would never cover up the search box */
+}

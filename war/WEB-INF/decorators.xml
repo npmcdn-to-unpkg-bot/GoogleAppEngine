@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<decorators defaultdir="/WEB-INF/decorators">
+	<excludes>
+	    <!-- appstats -->
+		<pattern>/appstats/*</pattern>
+		<pattern>/stats/*</pattern>
+		<!-- 2share -->
+		<pattern>/passwordchange/jsp/*.jsp</pattern>
+		<pattern>/passwordchange/*</pattern>
+		<pattern>/nlogin</pattern>
+		<pattern>/ui/*</pattern>
+		<pattern>/galleria*/*</pattern>
+		<pattern>/parse/*</pattern>
+		<pattern>/mcrud/*</pattern>
+		<pattern>/html/*</pattern>
+		<pattern>/fullcalendar/*</pattern>
+		<pattern>/angularjs/*</pattern>
+		<pattern>/jquery/*</pattern>
+		<pattern>/CSS3Accordion/*</pattern>
+		<!-- n -->
+		<pattern>/n/*</pattern>	
+		<!-- static -->
+		<pattern>/static/*</pattern>
+		<!-- tapestry -->
+		<pattern>/pagecatalog</pattern>
+		<pattern>/servicestatus</pattern>
+		<!-- genius -->		
+		<pattern>/tpl/start.html</pattern>
+		<pattern>/template*</pattern>
+		<pattern>/social*</pattern>
+		<pattern>/Spry_1_6_1_022408/*</pattern>	
+		<!-- xmm -->
+		<pattern>/app/xmm</pattern>
+		<pattern>/remote_api</pattern>
+		<!-- eo -->
+		<pattern>/eo/html/*</pattern>
+		<pattern>/eo/*</pattern>
+		<!-- sgc -->
+		<pattern>/sgc/html/*</pattern>
+		<pattern>/sgc/employee*</pattern>
+		<pattern>/sgc/client*</pattern>
+		<pattern>/sgc/order*</pattern>
+		<pattern>/sgc/css/*</pattern>
+		<!-- sci -->
+		<pattern>/sci/go*</pattern>
+		<pattern>/sci/html/*</pattern>
+		<pattern>/cibt*</pattern>
+		<pattern>/sci/cr</pattern>
+		<pattern>/sci/ce</pattern>
+		<pattern>/sci/token*</pattern>
+		<pattern>/sci/admintokenstart</pattern>
+		<pattern>/sci/admintokensave*</pattern>
+		<pattern>/sci/videodatastart</pattern>
+		<pattern>/sci/serviceregistry*</pattern>
+		<pattern>/sci/jsp*</pattern>
+		<pattern>/sci/buyersave*</pattern>
+		<pattern>/sci/jsp/payment-form.jsp</pattern>
+		<pattern>/sci/svn*</pattern>
+		<pattern>/sci/bigtime*</pattern>
+		<!-- common -->
+		<pattern>/js/*</pattern>
+		<pattern>/*.png</pattern>
+		<pattern>/index.html</pattern>
+		<pattern>/index.php</pattern>
+		<pattern>/helloworld</pattern>
+		<pattern>/decorators*</pattern>
+		<pattern>/user*</pattern>
+		<pattern>/fail*</pattern>
+		<pattern>/sr</pattern>
+		<pattern>/go*</pattern>
+		<pattern>/jsp*</pattern>
+		<pattern>/css/*</pattern>
+	</excludes>
+<!--	
+	<decorator name="main" page="layout-main.jsp">  
+	</decorator>
+ -->
+ 	<decorator name="ypg2" page="ypglayout_admin.jsp">
+		<pattern>/gu2/*</pattern>
+		<pattern>/app/bizowner</pattern>
+		<pattern>/app/cashier</pattern>
+		<pattern>/app/sub</pattern>
+	</decorator>
+ 	<decorator name="ypg1" page="ypglayout_biz_owner.jsp">
+		<pattern>/gu/slogon.action</pattern>
+		<pattern>/gu1/*</pattern>
+	</decorator>
+ 	<decorator name="ypg" page="ypglayout.jsp">
+		<pattern>/gu/*</pattern>
+	</decorator>
+ 	<decorator name="layout" page="layout.jsp">
+		<pattern>/*</pattern>
+		<pattern>/token*</pattern>
+		<pattern>/admintoken*</pattern>
+		<pattern>/buyer*</pattern>
+		<pattern>/videodata*</pattern>
+	</decorator>
+	<decorator name="mobile" page="mobile.jsp">
+		<pattern>/m</pattern>
+		<pattern>/whereami.jsp</pattern>
+	</decorator>
+ 	<decorator name="chromeframe" page="chromeframe.jsp">
+	</decorator>
+</decorators>

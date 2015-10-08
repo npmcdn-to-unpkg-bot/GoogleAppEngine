@@ -1,0 +1,19 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="guestbook.Greeting" %>
+<%
+Greeting.init("CREATE TABLE `employee` ( `id` int(4) NOT NULL AUTO_INCREMENT,   `first_name` varchar(30) DEFAULT NULL,   `last_name` varchar(30) DEFAULT NULL,   `username` varchar(20) NOT NULL DEFAULT '',   `password` varchar(32) NOT NULL DEFAULT '',   `email` varchar(50) DEFAULT NULL,   `email_notify` tinyint(1) NOT NULL DEFAULT '0',   `phone` varchar(12) DEFAULT NULL,   `address` varchar(50) DEFAULT NULL,   `active` tinyint(1) NOT NULL DEFAULT '1',   `groupname` varchar(20) NOT NULL DEFAULT '',   `last4ssn` int(4) NOT NULL DEFAULT '0',   `badge_num` varchar(8) DEFAULT NULL,   `hiredate` date NOT NULL,   `startdate` date,   `supervisor_flag` tinyint(1) DEFAULT NULL,   PRIMARY KEY (`id`) )");out.println("1");
+Greeting.init("CREATE TABLE `customer` ( `id` int(4) NOT NULL AUTO_INCREMENT, `customerusername` varchar(32) NOT NULL, `customerpassword` varchar(32) NOT NULL, `emailaddress` varchar(255) NOT NULL, `firstname` varchar(64) DEFAULT NULL, `lastname` varchar(64) DEFAULT NULL, `city` varchar(64) DEFAULT NULL, `country` varchar(64) DEFAULT NULL, `website` varchar(256) DEFAULT NULL, `active` char NOT NULL DEFAULT b'1', `suspended` char NOT NULL DEFAULT b'0', `securityquestion` varchar(1024) DEFAULT NULL, `securityanswer` varchar(256) DEFAULT NULL, `createdfromipaddress` varchar(15) DEFAULT NULL, `adminid` varchar(32) DEFAULT NULL, `adminmemberid` varchar(32) DEFAULT NULL, `maxexecutioncount` int(11) NOT NULL, `executioncount` int(11) NOT NULL, `authorisedapps` varchar(2048) DEFAULT NULL, `timezone` varchar(128) DEFAULT NULL, `emailaddressconfirmed` char NOT NULL DEFAULT b'0', `inserted` varchar(33) NOT NULL, PRIMARY KEY (`id`), UNIQUE KEY `customerusername` (`customerusername`), KEY `customers_custid_index` (`customerusername`) )");out.println("2");
+Greeting.init("CREATE TABLE `workorder` ( `id` bigint NOT NULL AUTO_INCREMENT,     `datePerformed` date DEFAULT NULL,     `dateRequested` date DEFAULT NULL,     `address1` varchar(50) DEFAULT NULL,     `address2` varchar(50) DEFAULT NULL,     `addtionalService1` varchar(30) DEFAULT NULL,     `addtionalService2` varchar(30) DEFAULT NULL,     `addtionalService3` varchar(30) DEFAULT NULL,     `addtionalService4` varchar(30) DEFAULT NULL,     `addtionalService5` varchar(30) DEFAULT NULL,     `addtionalServiceComments` varchar(100) DEFAULT NULL,     `allergicInfo` varchar(30) DEFAULT NULL,     `childrenInfo` varchar(30) DEFAULT NULL,     `city` varchar(30) DEFAULT NULL,     `country` varchar(30) DEFAULT NULL,     `email` varchar(30) DEFAULT NULL,     `firstName` varchar(30) DEFAULT NULL,     `lastName` varchar(30) DEFAULT NULL,     `petComments` varchar(100) DEFAULT NULL,     `petInfo` varchar(30) DEFAULT NULL,     `phone` varchar(30) DEFAULT NULL,     `postal` varchar(30) DEFAULT NULL,     `primaryCleaningComments` varchar(100) DEFAULT NULL,     `primaryCleaningReason` varchar(30) DEFAULT NULL,     `residenceType` varchar(30) DEFAULT NULL,     `room1Info` varchar(30) DEFAULT NULL,     `room2Info` varchar(30) DEFAULT NULL,     `room3Info` varchar(30) DEFAULT NULL,     `specialInstruction` varchar(30) DEFAULT NULL,     `state` varchar(30) DEFAULT NULL,     `title` varchar(30) DEFAULT NULL,     `allergic` varchar(1) DEFAULT NULL,     `hasPet` varchar(1) DEFAULT NULL,     `alternatePhone` float DEFAULT NULL,     `bathRoom` float DEFAULT NULL,     `bedRoom` float DEFAULT NULL,     `children` float DEFAULT NULL,     `familySize` float DEFAULT NULL,     `hoursSpent` float DEFAULT NULL,     PRIMARY KEY (`id`) )");out.println("3");
+
+%>
+<html>
+  <head>
+    <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+  </head>
+
+  <body>
+
+	<p>INITIALIZED</p>
+
+  </body>
+</html>

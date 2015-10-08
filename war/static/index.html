@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<META HTTP-EQUIV="Refresh" CONTENT="2;URL=/gu/homeRegister.action">
+		<link rel="stylesheet" type="text/css" href="/css/ypgstyle.css" />
+		<script> 
+		function loadContent() 
+		{ 
+		   xmlHttp=GetXmlHttpObject() 
+		   if (xmlHttp==null) 
+		   { 
+		       return; 
+		   } 
+		      var url="/gu/header.jsp"
+		       
+		      xmlHttp.onreadystatechange=stateChanged; 
+		      xmlHttp.open("GET",url,true) 
+		      xmlHttp.send(null) 
+		       
+		    return    
+		} 
+		
+		function stateChanged() 
+		{ 
+		   if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete") 
+		   { 
+		     document.getElementById("includedContent").innerHTML=xmlHttp.responseText 
+		   } 
+		} 
+		function GetXmlHttpObject() 
+		      { 
+		      var objXMLHttp=null 
+		      if (window.XMLHttpRequest) 
+		         { 
+		         objXMLHttp=new XMLHttpRequest() 
+		         } 
+		      else if (window.ActiveXObject) 
+		         { 
+		         objXMLHttp=new ActiveXObject("Microsoft.XMLHTTP") 
+		         } 
+		      return objXMLHttp 
+		}
+		</script>
+<SCRIPT LANGUAGE = "JavaScript">
+<!--
+var secs
+var timerID = null
+var timerRunning = false
+var delay = 1000
+
+function InitializeTimer()
+{
+    // Set the length of the timer, in seconds
+    secs = 60
+    StopTheClock()
+    StartTheTimer()
+}
+
+function StopTheClock()
+{
+    if(timerRunning)
+        clearTimeout(timerID)
+    timerRunning = false
+}
+
+function StartTheTimer()
+{
+    if (secs==0)
+    {
+        StopTheClock()
+        // Here's where you put something useful that's
+        // supposed to happen after the allotted time.
+        // For example, you could display a message:
+        //alert("You have just wasted 10 seconds of your life.")
+	    document.getElementById("waitMessage").innerHTML='Loading ...'
+    }
+    else
+    {
+        self.status = secs
+        secs = secs - 1
+        timerRunning = true
+        timerID = self.setTimeout("StartTheTimer()", delay)
+	    document.getElementById("tickingContent").innerHTML=document.getElementById("tickingContent").innerHTML + '.'
+    }
+}
+//-->
+</SCRIPT>		
+	</head>
+<body onLoad="InitializeTimer()">
+	<div id="includedContent"></div>
+	<script>loadContent()</script>
+	<br>
+	<h1 id="waitMessage">Please wait a moment <div id="tickingContent"></div></h1>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="font/css/fontello.css" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600,700' rel='stylesheet' type='text/css'>
+</head>
+<body>
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.css"/>
+<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.js"></script>
+
+<div data-role="page" id="firstpage">
+    <!--Login Section-->
+    <div class="section" id="section1">
+        <div class="login-form">
+            <h1>Login</h1>
+            <p>You already have an account? Great! Login here.</p>
+            <div>
+                <form class="form-wrapper-01">
+                    <input id="1" class="inputbox email" type="text" placeholder="Email id" />
+                    <input id="2" class="inputbox password" type="password" placeholder="Password" />
+                    <p><a href="#" class="button">Login <i class="icon-paper-plane"></i></a></p>
+                </form>
+                <p>Forget password? It's ok. <a class="scroll" href="#section3">Recover here &raquo;</a></p>
+            </div>
+            <hr />
+            <p>Or you can Login with one of the following</p>
+            <div class="social"> <a href="#" class="facebook"><i class="icon-facebook"></i></a> <a href="#" class="twitter"><i class="icon-twitter"></i></a> <a href="#" class="google"><i class="icon-gplus"></i></a> </div>
+            <p>Don't have an account? <a class="scroll" href="#section2">Register Now &raquo;</a></p>
+        </div>
+    </div>
+    <!--END: Login Section-->
+</div>
+<div data-role="page" id="secondpage">
+    <div data-role="header"><h1>Swipe Right</h1></div>
+    <div data-role="content"><p>Swipe Right to get to the next page.</p></div>
+</div>
+</body>
+<script>
+    $(document).delegate("#firstpage", 'pageinit',function (evt) {
+        $(this).bind("swipeleft", function (e) {
+            $.mobile.changePage("#secondpage", {
+                transition: 'slide'
+            });
+        });
+    }).delegate("#secondpage", 'pageinit', function (evt) {
+                $(this).bind("swiperight", function (e) {
+                    $.mobile.changePage("#firstpage", {
+                        transition: 'slide',
+                        reverse: true
+                    });
+                });
+            });
+</script>
+</html>

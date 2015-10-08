@@ -1,0 +1,116 @@
+<html>
+<body onkeydown="keyDown(event);this.focus();">
+<script type="text/javascript">
+KEY_UP = 38;
+KEY_DOWN = 40;
+KEY_LEFT =  37;
+KEY_RIGHT = 39;
+KEY_PAGEUP = 33;
+KEY_PAGEDOWN = 33;
+KEY_LOWER_V = 27;
+KEY_OK = 13;
+var keyDown = function(event) {
+	if(event.keyCode == KEY_UP) {
+		document.getElementById("shop").style.top = "10px";
+		document.getElementById("shop").style.height = "250px";
+		document.getElementById("shop").style.left = "85px";
+		document.getElementById("shop").style.width = "86%";
+		//alert('KEY_UP');
+	} else if (event.keyCode == KEY_DOWN) {
+		document.getElementById("shop").style.top = "410px";
+		document.getElementById("shop").style.height = "250px";
+		document.getElementById("shop").style.left = "85px";
+		document.getElementById("shop").style.width = "86%";
+		//alert('KEY_DOWN');
+	} else if (event.keyCode == KEY_LEFT) {
+		document.getElementById("shop").style.left = "10px";
+		document.getElementById("shop").style.width = "43%";
+		document.getElementById("shop").style.top = "50px";
+		document.getElementById("shop").style.height = "80%";
+		//alert('KEY_LEFT');
+	} else if (event.keyCode == KEY_RIGHT) {
+		document.getElementById("shop").style.left = "720px";
+		document.getElementById("shop").style.width = "43%";
+		document.getElementById("shop").style.top = "50px";
+		document.getElementById("shop").style.height = "80%";
+		//alert('KEY_RIGHT');
+	} else if (event.keyCode == KEY_PAGEUP) {
+		document.getElementById("shop").style.left = "10px";
+		document.getElementById("shop").style.width = "400px";
+		document.getElementById("shop").style.top = "150px";
+		document.getElementById("shop").style.height = "320px";
+		//alert('KEY_RIGHT');
+	} else if (event.keyCode == KEY_PAGEDOWN) {
+		document.getElementById("shop").style.left = "720px";
+		document.getElementById("shop").style.width = "43%";
+		document.getElementById("shop").style.top = "50px";
+		document.getElementById("shop").style.height = "300px";
+		//alert('KEY_RIGHT');
+	} else if (event.keyCode == KEY_LOWER_V) {
+		document.getElementById("shop").style.left = "0px";
+		document.getElementById("shop").style.width = "0%";
+		document.getElementById("shop").style.top = "0px";
+		document.getElementById("shop").style.height = "0px";
+		//alert('KEY_RIGHT');
+	} else if (event.keyCode == KEY_OK) {
+		document.getElementById("shop").style.top = "50px";
+		document.getElementById("shop").style.left = "85px";
+		document.getElementById("shop").style.height = "80%";
+		document.getElementById("shop").style.width = "86%";
+		//alert('Ok');
+	} else{
+		//alert('Unknown key');
+	}
+}
+</script>
+<header>
+	<LINK REL=StyleSheet HREF="css/style.css" TYPE="text/css" MEDIA="screen">
+	<style>
+	#video {
+	  position: fixed;
+	  top: 50;
+	  left: 0;
+	  bottom: 0;
+	  right: 0;
+	  width: 100%;
+	  height: 100%,
+	  z-index: -1000;
+	  <!-- source: http://css-tricks.com/css-transparency-settings-for-all-broswers/ -->
+      filter:alpha(opacity=50);
+      -moz-opacity:0.5;
+      -khtml-opacity: 0.5;
+      opacity: 0.5;
+	}
+	#shop {
+	  position: fixed;
+	  top: 50;
+	  left: 85;
+	  z-index: 10;
+	  <!-- source: http://css-tricks.com/css-transparency-settings-for-all-broswers/ -->
+      filter:alpha(opacity=50);
+      -moz-opacity:0.5;
+      -khtml-opacity: 0.5;
+      opacity: 0.7;
+	}
+	</style>
+</header>
+	<a href="E-CommerceTV.htm">Back</a>
+	<div>
+		You need to use HTML 5 capable to view this demo page. A good HTML 5 browser is <a href="http://www.google.com/chrome">Google Chrome</a>. Due to the Amazon web app, you also need to have/enable Adobe Flash to view the shop.
+		<p>
+<iframe id="video" src="E-CommerceTV21.htm" width="910px" height="550px" scrolling="no" frameborder="0" marginwidth="0" marginheight="0" allowtransparency="true" background-color="transparent">
+		This browser does not support iframe
+</iframe>
+<iframe id="shop" src="E-CommerceProduct.htm" width="86%" height="80%" scrolling="no" frameborder="0" marginwidth="0" marginheight="0" allowtransparency="true" background-color="transparent">
+		This browser does not support iframe
+</iframe>
+	<div style="position:absolute;left:100px;top:620px;width:90%;">
+		&uarr; This is a "Shop" component. To navigate in the shop, click on it and use Up/Down/Left/Right arrow key. Click to select the product and Escape to close/exit a pop-up.<br>
+		To activate the docking mode, click on any background which is not the shop or the video. You can use the same arrow key to move the shop around on the screen. Use Page Up for minimized mode and Enter to restore the shop into the full screen/normal mode. Search feature does not work in some of the docking modes.
+	</div>
+		</p>
+  		<p>
+ 		</p>
+	</div>
+</body>
+</html>

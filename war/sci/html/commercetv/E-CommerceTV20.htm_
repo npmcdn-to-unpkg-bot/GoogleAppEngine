@@ -1,0 +1,53 @@
+<html>
+<header>
+	<LINK REL=StyleSheet HREF="css/style.css" TYPE="text/css" MEDIA="screen">
+	<style>
+	#shop {
+	  position: fixed;
+	  top: 50;
+	  left: 69;
+	  z-index: -10;
+	}
+	</style>
+
+	<script src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
+  	<script type="text/javascript" src="../fiostv/script/javascript/openlab/inc/jquery.metadata.js"></script>
+  	<script type="text/javascript" src="../fiostv/script/javascript/openlab/inc/jquery.mb.YTPlayer.js"></script>
+	<script>
+  		$(function(){
+    		$(".movie").mb_YTPlayer();
+  		});
+	</script>
+</header>
+<body>
+	<div>
+		Due to the Amazon web app, you also need to have/enable Adobe Flash to view the shop. PLEASE DO NOT click on any merchandise as it will hang the "Shop"!
+		<p>
+<!-- source: http://pupunzi.com/#mb.components/mb.YTPlayer/YTPlayer.html -->
+<!--
+<a id="bgndVideo" href="http://www.youtube.com/watch?v=BsekcY04xvQ"
+-->
+<a id="bgndVideo" href="http://www.youtube.com/watch?v=LRCPsVBceBQ"
+  class="movie {opacity:.5, isBgndMovie:{width:'window',mute:false}, ratio:'16/9',quality:'default'}">
+  background movie
+</a>
+		</p>
+  		<p>
+<iframe id="shop" src="E-CommerceProduct.htm" width="88%" height="81%" scrolling="no" frameborder="0" marginwidth="0" marginheight="0" allowtransparency="true" background-color="transparent">
+		This browser does not support iframe
+</iframe>
+	<div style="position:absolute;left:460px;top:600px">
+		&uarr; This is a "Shop" component. It is transparently overlaid on top of the video. Only the Up/Down/Left/Right arrow key works for now (mainly for navigation) to demonstrate the concept, nothing else work.
+	</div>
+<!--
+<iframe id="shop" src="http://www.windowshop.com/?tag=wschrome-20" width="910px" height="550px" scrolling="no" frameborder="0" marginwidth="0" marginheight="0" allowtransparency="true" background-color="transparent">
+		This browser does not support iframe
+</iframe>
+-->
+ 		</p>
+	</div>
+<script type="text/javascript">
+document.getElementById("shop")[0].contentWindow.document.body.focus();
+</script>
+</body>
+</html>
