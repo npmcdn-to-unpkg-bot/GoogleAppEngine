@@ -6,4 +6,4 @@ echo make sure gae app server is up and running
 lsof -P -n -i4TCP:8888 | grep LISTEN
 git config user.name
 git config user.email
-
+git branch
