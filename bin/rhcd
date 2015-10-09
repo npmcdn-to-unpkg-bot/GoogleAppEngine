@@ -1,0 +1,25 @@
+echo "Hit ctrl + break in 5 seconds if you have not done: C:\>rhc git-clone gae!!!"
+
+export LOCAL_CAPEDWARF=~/Downloads/CapeDwarf_WildFly_2.0.0.Final
+export CAPEDWARF=~/gae
+
+#sleep infinity
+sleep 5 
+
+### Local CapeDwarf Only ###
+rm -rf $LOCAL_CAPEDWARF/deployments/ROOT.war
+cp ../.openshift/config/standalone.xml $LOCAL_CAPEDWARF/standalone/configuration/
+cp ../.openshift/config/standalone-capedwarf.xml $LOCAL_CAPEDWARF/standalone/configuration/
+cp -R ../war $LOCAL_CAPEDWARF/standalone/deployments/ROOT.war/
+cp rcd $LOCAL_CAPEDWARF/bin
+
+#### OpenShift ###
+rm -rf $CAPEDWARF/deployments/ROOT.war
+cp -R ../war $CAPEDWARF/deployments/ROOT.war/
+cp skip_maven_build $CAPEDWARF/.openshift/markers
+cp rhcp $CAPEDWARF
+
+#cd $CAPEDWARF
+
+echo "cd $LOCAL_CAPEDWARF/bin and rcd or "
+echo "cd $CAPEDWARF and invoke rhcp now to push to OpenShift! :)"

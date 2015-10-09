@@ -1,0 +1,304 @@
+crud list service, response size 1864
+CrudService: doPost invoked
+CrudService:handleRequest() uid = [song] received
+MovieHandler:parseRequest() uid = [song] received
+action = ''
+UserHandler:getUserByName ...
+DEBUG 2015-09-04 19:52:50,596 DataNucleus.Cache - Level 1 Cache of type "soft" initialised
+DEBUG 2015-09-04 19:52:50,596 DataNucleus.Persistence - Object Manager "org.datanucleus.ObjectManagerImpl@2a9d29a3" opened for datastore "com.google.appengine.datanucleus.DatastoreManager@ab31bff" with txn="org.datanucleus.TransactionImpl@3418a230"
+querying user by name [song] ...
+DEBUG 2015-09-04 19:52:50,597 DataNucleus.Query - JPQL Single-String with "select u from app.model.User u where u.name = :name"
+DEBUG 2015-09-04 19:52:50,597 DataNucleus.Query - Query "SELECT u FROM app.model.User u WHERE u.name = :name" of language "JPQL" has been run before so reusing existing generic compilation
+DEBUG 2015-09-04 19:52:50,597 DataNucleus.Query - JPQL Query : Executing "SELECT u FROM app.model.User u WHERE u.name = :name" ...
+DEBUG 2015-09-04 19:52:50,597 DataNucleus.Query - Query compiled as : Kind=app.model.User Filter : name=song [QUERY-TYPE=NORMAL]
+DEBUG 2015-09-04 19:52:50,597 DataNucleus.Datastore.Native - Executing query in datastore for SELECT u FROM app.model.User u WHERE u.name = :name
+DEBUG 2015-09-04 19:52:50,599 DataNucleus.Connection - Created ManagedConnection using DatastoreService = com.google.appengine.api.datastore.DatastoreServiceImpl@4d86f5e5
+DEBUG 2015-09-04 19:52:50,599 DataNucleus.Connection - Connection added to the pool : com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl$DatastoreManagedConnection@5779b526 for key=org.datanucleus.ObjectManagerImpl@2a9d29a3 in factory=ConnectionFactory:nontx[com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl@23201117]
+DEBUG 2015-09-04 19:52:50,599 DataNucleus.Query - JPQL Query : Execution Time = 2 ms
+DEBUG 2015-09-04 19:52:50,599 DataNucleus.Cache - Object with id "app.model.User:User(4644337115725824)" not found in Level 1 cache [cache size = 0]
+DEBUG 2015-09-04 19:52:50,599 DataNucleus.Cache - Object with id "app.model.User:User(4644337115725824)" not found in Level 2 cache
+DEBUG 2015-09-04 19:52:50,600 DataNucleus.Cache - Object "app.model.User@7763fea7" (id="app.model.User:User(4644337115725824)") added to Level 1 cache (loadedFlags="[NNYNNN]")
+DEBUG 2015-09-04 19:52:50,601 DataNucleus.Cache - Object with id "app.model.Movie:User(4644337115725824)/Movie(5787829208612864)" not found in Level 1 cache [cache size = 1]
+DEBUG 2015-09-04 19:52:50,601 DataNucleus.Cache - Object "app.model.Movie@45e3c32d" (id="app.model.Movie:User(4644337115725824)/Movie(5787829208612864)") added to Level 1 cache (loadedFlags="[NNNNNNNNNNNYNNNNNNNNN]")
+DEBUG 2015-09-04 19:52:50,601 DataNucleus.Persistence - Object "app.model.Movie@45e3c32d" (id="app.model.Movie:User(4644337115725824)/Movie(5787829208612864)") is having the value in field "Modified" replaced by a SCO wrapper
+DEBUG 2015-09-04 19:52:50,602 DataNucleus.Cache - Object with id="app.model.Movie:User(4644337115725824)/Movie(5787829208612864)" taken from Level 2 cache (fields="[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 17, 16, 19, 18, 20]", version="") - represented as "app.model.Movie@45e3c32d"
+DEBUG 2015-09-04 19:52:50,602 DataNucleus.Lifecycle - Object "app.model.Movie@45e3c32d" (id="app.model.Movie:User(4644337115725824)/Movie(5787829208612864)") has a lifecycle change : "P_CLEAN"->"P_NONTRANS"
+DEBUG 2015-09-04 19:52:50,602 DataNucleus.Transaction - Object "app.model.Movie@45e3c32d" (id="app.model.Movie:User(4644337115725824)/Movie(5787829208612864)") being evicted from transactional cache
+DEBUG 2015-09-04 19:52:50,602 DataNucleus.Transaction - Object "app.model.Movie@45e3c32d" (id="app.model.Movie:User(4644337115725824)/Movie(5787829208612864)") is not transactional
+DEBUG 2015-09-04 19:52:50,602 DataNucleus.Connection - Connection found in the pool : com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl$DatastoreManagedConnection@5779b526 for key=org.datanucleus.ObjectManagerImpl@2a9d29a3 in factory=ConnectionFactory:nontx[com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl@23201117]
+DEBUG 2015-09-04 19:52:50,602 DataNucleus.Persistence - Object "app.model.User@7763fea7" field "movie" is replaced by a SCO wrapper of type "org.datanucleus.store.types.sco.backed.ArrayList" [cache-values=true, lazy-loading=false, queued-operations=true, allow-nulls=true]
+DEBUG 2015-09-04 19:52:50,602 DataNucleus.Persistence - Object "app.model.User@7763fea7" field "movie" is having its SCO wrapper initialised with a container with 1 values
+DEBUG 2015-09-04 19:52:50,602 DataNucleus.Cache - Object "app.model.User@7763fea7" (id="com.google.appengine.api.datastore.Key:User(4644337115725824)") added to Level 2 cache (fields="[0, 1, 2, 4]", version="")
+DEBUG 2015-09-04 19:52:50,603 DataNucleus.Connection - Connection found in the pool : com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl$DatastoreManagedConnection@5779b526 for key=org.datanucleus.ObjectManagerImpl@2a9d29a3 in factory=ConnectionFactory:nontx[com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl@23201117]
+DEBUG 2015-09-04 19:52:50,603 DataNucleus.Query - JPQL Query : Executing "SELECT u FROM app.model.User u WHERE u.name = :name" ...
+DEBUG 2015-09-04 19:52:50,603 DataNucleus.Query - Query compiled as : Kind=app.model.User Filter : name=song [QUERY-TYPE=NORMAL]
+DEBUG 2015-09-04 19:52:50,603 DataNucleus.Datastore.Native - Executing query in datastore for SELECT u FROM app.model.User u WHERE u.name = :name
+DEBUG 2015-09-04 19:52:50,603 DataNucleus.Connection - Connection found in the pool : com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl$DatastoreManagedConnection@5779b526 for key=org.datanucleus.ObjectManagerImpl@2a9d29a3 in factory=ConnectionFactory:nontx[com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl@23201117]
+DEBUG 2015-09-04 19:52:50,603 DataNucleus.Query - JPQL Query : Execution Time = 0 ms
+DEBUG 2015-09-04 19:52:50,604 DataNucleus.Cache - Object "app.model.User@7763fea7" (id="app.model.User:User(4644337115725824)") taken from Level 1 cache (loadedFlags="[YYYYYN]") [cache size = 2]
+DEBUG 2015-09-04 19:52:50,604 DataNucleus.Connection - Connection found in the pool : com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl$DatastoreManagedConnection@5779b526 for key=org.datanucleus.ObjectManagerImpl@2a9d29a3 in factory=ConnectionFactory:nontx[com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl@23201117]
+DEBUG 2015-09-04 19:52:50,604 DataNucleus.Query - JPQL Query : Executing "SELECT u FROM app.model.User u WHERE u.name = :name" ...
+DEBUG 2015-09-04 19:52:50,605 DataNucleus.Query - Query compiled as : Kind=app.model.User Filter : name=song [QUERY-TYPE=NORMAL]
+DEBUG 2015-09-04 19:52:50,605 DataNucleus.Datastore.Native - Executing query in datastore for SELECT u FROM app.model.User u WHERE u.name = :name
+DEBUG 2015-09-04 19:52:50,605 DataNucleus.Connection - Connection found in the pool : com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl$DatastoreManagedConnection@5779b526 for key=org.datanucleus.ObjectManagerImpl@2a9d29a3 in factory=ConnectionFactory:nontx[com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl@23201117]
+DEBUG 2015-09-04 19:52:50,605 DataNucleus.Query - JPQL Query : Execution Time = 1 ms
+DEBUG 2015-09-04 19:52:50,606 DataNucleus.Cache - Object "app.model.User@7763fea7" (id="app.model.User:User(4644337115725824)") taken from Level 1 cache (loadedFlags="[YYYYYN]") [cache size = 2]
+DEBUG 2015-09-04 19:52:50,606 DataNucleus.Connection - Connection found in the pool : com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl$DatastoreManagedConnection@5779b526 for key=org.datanucleus.ObjectManagerImpl@2a9d29a3 in factory=ConnectionFactory:nontx[com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl@23201117]
+DEBUG 2015-09-04 19:52:50,606 DataNucleus.Cache - Object with id="com.google.appengine.api.datastore.Key:User(4644337115725824)" removed from Level 2 cache
+DEBUG 2015-09-04 19:52:50,606 DataNucleus.Persistence - DetachOnClose : Closing manager so detaching all current objects ...
+DEBUG 2015-09-04 19:52:50,607 DataNucleus.Persistence - Detaching object from persistence : "app.model.User@7763fea7" (depth=0)
+DEBUG 2015-09-04 19:52:50,607 DataNucleus.Persistence - Detaching object from persistence : "app.model.Movie@45e3c32d" (depth=1)
+DEBUG 2015-09-04 19:52:50,607 DataNucleus.Persistence - Object "app.model.Movie@45e3c32d" (id="app.model.Movie:User(4644337115725824)/Movie(5787829208612864)") is having the SCO wrapper in field "Modified" replaced by the unwrapped value
+DEBUG 2015-09-04 19:52:50,607 DataNucleus.Lifecycle - Object "app.model.Movie@45e3c32d" (id="app.model.Movie:User(4644337115725824)/Movie(5787829208612864)") has a lifecycle change : "P_NONTRANS"->"DETACHED_CLEAN"
+DEBUG 2015-09-04 19:52:50,607 DataNucleus.Persistence - Disconnecting app.model.Movie@45e3c32d from StateManager[pc=app.model.Movie@45e3c32d, lifecycle=DETACHED_CLEAN]
+DEBUG 2015-09-04 19:52:50,607 DataNucleus.Cache - Object with id="app.model.Movie:User(4644337115725824)/Movie(5787829208612864)" being removed from Level 1 cache [current cache size = 2]
+DEBUG 2015-09-04 19:52:50,608 DataNucleus.Persistence - Object "app.model.User@7763fea7" (id="app.model.User:User(4644337115725824)") is having the SCO wrapper in field "movie" replaced by the unwrapped value
+DEBUG 2015-09-04 19:52:50,608 DataNucleus.Lifecycle - Object "app.model.User@7763fea7" (id="app.model.User:User(4644337115725824)") has a lifecycle change : "HOLLOW"->"DETACHED_CLEAN"
+DEBUG 2015-09-04 19:52:50,608 DataNucleus.Persistence - Disconnecting app.model.User@7763fea7 from StateManager[pc=app.model.User@7763fea7, lifecycle=DETACHED_CLEAN]
+DEBUG 2015-09-04 19:52:50,608 DataNucleus.Cache - Object with id="app.model.User:User(4644337115725824)" being removed from Level 1 cache [current cache size = 1]
+DEBUG 2015-09-04 19:52:50,608 DataNucleus.Persistence - DetachOnClose : completed detach
+DEBUG 2015-09-04 19:52:50,608 DataNucleus.Connection - Connection found in the pool : com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl$DatastoreManagedConnection@5779b526 for key=org.datanucleus.ObjectManagerImpl@2a9d29a3 in factory=ConnectionFactory:nontx[com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl@23201117] but owner object closing so closing connection
+DEBUG 2015-09-04 19:52:50,608 DataNucleus.Connection - Connection removed from the pool : com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl$DatastoreManagedConnection@5779b526 for key=org.datanucleus.ObjectManagerImpl@2a9d29a3 in factory=ConnectionFactory:nontx[com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl@23201117]
+DEBUG 2015-09-04 19:52:50,608 DataNucleus.Cache - Level 1 Cache cleared
+DEBUG 2015-09-04 19:52:50,608 DataNucleus.Persistence - Object Manager "org.datanucleus.ObjectManagerImpl@2a9d29a3" closed
+crud list service, response size 1864
+registry request id '08_21_2015_20_29.srt' found '...'
+stealth mode, tracking disabled
+CrudService: doGet invoked
+CrudService:handleRequest() uid = [undefined] received
+MovieHandler:parseRequest() uid = [undefined] received
+action = ''
+UserHandler:getUserByName ...
+DEBUG 2015-09-04 19:55:13,472 DataNucleus.Cache - Level 1 Cache of type "soft" initialised
+DEBUG 2015-09-04 19:55:13,472 DataNucleus.Persistence - Object Manager "org.datanucleus.ObjectManagerImpl@39cae649" opened for datastore "com.google.appengine.datanucleus.DatastoreManager@ab31bff" with txn="org.datanucleus.TransactionImpl@37d4e043"
+querying user by name [undefined] ...
+DEBUG 2015-09-04 19:55:13,472 DataNucleus.Query - JPQL Single-String with "select u from app.model.User u where u.name = :name"
+DEBUG 2015-09-04 19:55:13,473 DataNucleus.Query - Query "SELECT u FROM app.model.User u WHERE u.name = :name" of language "JPQL" has been run before so reusing existing generic compilation
+DEBUG 2015-09-04 19:55:13,473 DataNucleus.Query - JPQL Query : Executing "SELECT u FROM app.model.User u WHERE u.name = :name" ...
+DEBUG 2015-09-04 19:55:13,474 DataNucleus.Query - Query compiled as : Kind=app.model.User Filter : name=undefined [QUERY-TYPE=NORMAL]
+DEBUG 2015-09-04 19:55:13,474 DataNucleus.Datastore.Native - Executing query in datastore for SELECT u FROM app.model.User u WHERE u.name = :name
+DEBUG 2015-09-04 19:55:13,475 DataNucleus.Connection - Created ManagedConnection using DatastoreService = com.google.appengine.api.datastore.DatastoreServiceImpl@7433e2ba
+DEBUG 2015-09-04 19:55:13,475 DataNucleus.Connection - Connection added to the pool : com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl$DatastoreManagedConnection@7a6a5cef for key=org.datanucleus.ObjectManagerImpl@39cae649 in factory=ConnectionFactory:nontx[com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl@23201117]
+DEBUG 2015-09-04 19:55:13,475 DataNucleus.Query - JPQL Query : Execution Time = 2 ms
+DEBUG 2015-09-04 19:55:13,476 DataNucleus.Cache - Object with id "app.model.User:User(6473924464345088)" not found in Level 1 cache [cache size = 0]
+DEBUG 2015-09-04 19:55:13,476 DataNucleus.Cache - Object with id "app.model.User:User(6473924464345088)" not found in Level 2 cache
+DEBUG 2015-09-04 19:55:13,477 DataNucleus.Cache - Object "app.model.User@5cfb8db2" (id="app.model.User:User(6473924464345088)") added to Level 1 cache (loadedFlags="[NNYNNN]")
+DEBUG 2015-09-04 19:55:13,477 DataNucleus.Cache - Object "app.model.User@5cfb8db2" (id="com.google.appengine.api.datastore.Key:User(6473924464345088)") added to Level 2 cache (fields="[0, 1, 2, 3, 4]", version="")
+DEBUG 2015-09-04 19:55:13,478 DataNucleus.Connection - Connection found in the pool : com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl$DatastoreManagedConnection@7a6a5cef for key=org.datanucleus.ObjectManagerImpl@39cae649 in factory=ConnectionFactory:nontx[com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl@23201117]
+DEBUG 2015-09-04 19:55:13,478 DataNucleus.Query - JPQL Query : Executing "SELECT u FROM app.model.User u WHERE u.name = :name" ...
+DEBUG 2015-09-04 19:55:13,478 DataNucleus.Query - Query compiled as : Kind=app.model.User Filter : name=undefined [QUERY-TYPE=NORMAL]
+DEBUG 2015-09-04 19:55:13,479 DataNucleus.Datastore.Native - Executing query in datastore for SELECT u FROM app.model.User u WHERE u.name = :name
+DEBUG 2015-09-04 19:55:13,479 DataNucleus.Connection - Connection found in the pool : com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl$DatastoreManagedConnection@7a6a5cef for key=org.datanucleus.ObjectManagerImpl@39cae649 in factory=ConnectionFactory:nontx[com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl@23201117]
+DEBUG 2015-09-04 19:55:13,479 DataNucleus.Query - JPQL Query : Execution Time = 1 ms
+DEBUG 2015-09-04 19:55:13,480 DataNucleus.Cache - Object "app.model.User@5cfb8db2" (id="app.model.User:User(6473924464345088)") taken from Level 1 cache (loadedFlags="[YYYYYN]") [cache size = 1]
+DEBUG 2015-09-04 19:55:13,480 DataNucleus.Connection - Connection found in the pool : com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl$DatastoreManagedConnection@7a6a5cef for key=org.datanucleus.ObjectManagerImpl@39cae649 in factory=ConnectionFactory:nontx[com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl@23201117]
+DEBUG 2015-09-04 19:55:13,480 DataNucleus.Query - JPQL Query : Executing "SELECT u FROM app.model.User u WHERE u.name = :name" ...
+DEBUG 2015-09-04 19:55:13,480 DataNucleus.Query - Query compiled as : Kind=app.model.User Filter : name=undefined [QUERY-TYPE=NORMAL]
+DEBUG 2015-09-04 19:55:13,481 DataNucleus.Datastore.Native - Executing query in datastore for SELECT u FROM app.model.User u WHERE u.name = :name
+DEBUG 2015-09-04 19:55:13,481 DataNucleus.Connection - Connection found in the pool : com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl$DatastoreManagedConnection@7a6a5cef for key=org.datanucleus.ObjectManagerImpl@39cae649 in factory=ConnectionFactory:nontx[com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl@23201117]
+DEBUG 2015-09-04 19:55:13,481 DataNucleus.Query - JPQL Query : Execution Time = 1 ms
+DEBUG 2015-09-04 19:55:13,481 DataNucleus.Cache - Object "app.model.User@5cfb8db2" (id="app.model.User:User(6473924464345088)") taken from Level 1 cache (loadedFlags="[YYYYYN]") [cache size = 1]
+DEBUG 2015-09-04 19:55:13,481 DataNucleus.Connection - Connection found in the pool : com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl$DatastoreManagedConnection@7a6a5cef for key=org.datanucleus.ObjectManagerImpl@39cae649 in factory=ConnectionFactory:nontx[com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl@23201117]
+DEBUG 2015-09-04 19:55:13,482 DataNucleus.Cache - Object with id="com.google.appengine.api.datastore.Key:User(6473924464345088)" removed from Level 2 cache
+DEBUG 2015-09-04 19:55:13,482 DataNucleus.Persistence - DetachOnClose : Closing manager so detaching all current objects ...
+DEBUG 2015-09-04 19:55:13,482 DataNucleus.Persistence - Detaching object from persistence : "app.model.User@5cfb8db2" (depth=0)
+DEBUG 2015-09-04 19:55:13,482 DataNucleus.Lifecycle - Object "app.model.User@5cfb8db2" (id="app.model.User:User(6473924464345088)") has a lifecycle change : "HOLLOW"->"DETACHED_CLEAN"
+DEBUG 2015-09-04 19:55:13,482 DataNucleus.Persistence - Disconnecting app.model.User@5cfb8db2 from StateManager[pc=app.model.User@5cfb8db2, lifecycle=DETACHED_CLEAN]
+DEBUG 2015-09-04 19:55:13,482 DataNucleus.Cache - Object with id="app.model.User:User(6473924464345088)" being removed from Level 1 cache [current cache size = 1]
+DEBUG 2015-09-04 19:55:13,482 DataNucleus.Persistence - DetachOnClose : completed detach
+DEBUG 2015-09-04 19:55:13,482 DataNucleus.Connection - Connection found in the pool : com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl$DatastoreManagedConnection@7a6a5cef for key=org.datanucleus.ObjectManagerImpl@39cae649 in factory=ConnectionFactory:nontx[com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl@23201117] but owner object closing so closing connection
+DEBUG 2015-09-04 19:55:13,482 DataNucleus.Connection - Connection removed from the pool : com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl$DatastoreManagedConnection@7a6a5cef for key=org.datanucleus.ObjectManagerImpl@39cae649 in factory=ConnectionFactory:nontx[com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl@23201117]
+DEBUG 2015-09-04 19:55:13,482 DataNucleus.Cache - Level 1 Cache cleared
+DEBUG 2015-09-04 19:55:13,482 DataNucleus.Persistence - Object Manager "org.datanucleus.ObjectManagerImpl@39cae649" closed
+crud list service, response size 2
+CrudService: doGet invoked
+CrudService:handleRequest() uid = [song] received
+MovieHandler:parseRequest() uid = [song] received
+action = ''
+UserHandler:getUserByName ...
+DEBUG 2015-09-04 19:55:13,774 DataNucleus.Cache - Level 1 Cache of type "soft" initialised
+DEBUG 2015-09-04 19:55:13,774 DataNucleus.Persistence - Object Manager "org.datanucleus.ObjectManagerImpl@25f1c9aa" opened for datastore "com.google.appengine.datanucleus.DatastoreManager@ab31bff" with txn="org.datanucleus.TransactionImpl@24eecb5c"
+querying user by name [song] ...
+DEBUG 2015-09-04 19:55:13,774 DataNucleus.Query - JPQL Single-String with "select u from app.model.User u where u.name = :name"
+DEBUG 2015-09-04 19:55:13,775 DataNucleus.Query - Query "SELECT u FROM app.model.User u WHERE u.name = :name" of language "JPQL" has been run before so reusing existing generic compilation
+DEBUG 2015-09-04 19:55:13,775 DataNucleus.Query - JPQL Query : Executing "SELECT u FROM app.model.User u WHERE u.name = :name" ...
+DEBUG 2015-09-04 19:55:13,775 DataNucleus.Query - Query compiled as : Kind=app.model.User Filter : name=song [QUERY-TYPE=NORMAL]
+DEBUG 2015-09-04 19:55:13,775 DataNucleus.Datastore.Native - Executing query in datastore for SELECT u FROM app.model.User u WHERE u.name = :name
+DEBUG 2015-09-04 19:55:13,776 DataNucleus.Connection - Created ManagedConnection using DatastoreService = com.google.appengine.api.datastore.DatastoreServiceImpl@396917f5
+DEBUG 2015-09-04 19:55:13,776 DataNucleus.Connection - Connection added to the pool : com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl$DatastoreManagedConnection@22a3f345 for key=org.datanucleus.ObjectManagerImpl@25f1c9aa in factory=ConnectionFactory:nontx[com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl@23201117]
+DEBUG 2015-09-04 19:55:13,776 DataNucleus.Query - JPQL Query : Execution Time = 1 ms
+DEBUG 2015-09-04 19:55:13,777 DataNucleus.Cache - Object with id "app.model.User:User(4644337115725824)" not found in Level 1 cache [cache size = 0]
+DEBUG 2015-09-04 19:55:13,777 DataNucleus.Cache - Object with id "app.model.User:User(4644337115725824)" not found in Level 2 cache
+DEBUG 2015-09-04 19:55:13,778 DataNucleus.Cache - Object "app.model.User@39b848c7" (id="app.model.User:User(4644337115725824)") added to Level 1 cache (loadedFlags="[NNYNNN]")
+DEBUG 2015-09-04 19:55:13,779 DataNucleus.Cache - Object with id "app.model.Movie:User(4644337115725824)/Movie(5787829208612864)" not found in Level 1 cache [cache size = 1]
+DEBUG 2015-09-04 19:55:13,779 DataNucleus.Cache - Object "app.model.Movie@71b21e6b" (id="app.model.Movie:User(4644337115725824)/Movie(5787829208612864)") added to Level 1 cache (loadedFlags="[NNNNNNNNNNNYNNNNNNNNN]")
+DEBUG 2015-09-04 19:55:13,779 DataNucleus.Persistence - Object "app.model.Movie@71b21e6b" (id="app.model.Movie:User(4644337115725824)/Movie(5787829208612864)") is having the value in field "Modified" replaced by a SCO wrapper
+DEBUG 2015-09-04 19:55:13,780 DataNucleus.Cache - Object with id="app.model.Movie:User(4644337115725824)/Movie(5787829208612864)" taken from Level 2 cache (fields="[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 17, 16, 19, 18, 20]", version="") - represented as "app.model.Movie@71b21e6b"
+DEBUG 2015-09-04 19:55:13,780 DataNucleus.Lifecycle - Object "app.model.Movie@71b21e6b" (id="app.model.Movie:User(4644337115725824)/Movie(5787829208612864)") has a lifecycle change : "P_CLEAN"->"P_NONTRANS"
+DEBUG 2015-09-04 19:55:13,780 DataNucleus.Transaction - Object "app.model.Movie@71b21e6b" (id="app.model.Movie:User(4644337115725824)/Movie(5787829208612864)") being evicted from transactional cache
+DEBUG 2015-09-04 19:55:13,780 DataNucleus.Transaction - Object "app.model.Movie@71b21e6b" (id="app.model.Movie:User(4644337115725824)/Movie(5787829208612864)") is not transactional
+DEBUG 2015-09-04 19:55:13,780 DataNucleus.Connection - Connection found in the pool : com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl$DatastoreManagedConnection@22a3f345 for key=org.datanucleus.ObjectManagerImpl@25f1c9aa in factory=ConnectionFactory:nontx[com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl@23201117]
+DEBUG 2015-09-04 19:55:13,780 DataNucleus.Persistence - Object "app.model.User@39b848c7" field "movie" is replaced by a SCO wrapper of type "org.datanucleus.store.types.sco.backed.ArrayList" [cache-values=true, lazy-loading=false, queued-operations=true, allow-nulls=true]
+DEBUG 2015-09-04 19:55:13,780 DataNucleus.Persistence - Object "app.model.User@39b848c7" field "movie" is having its SCO wrapper initialised with a container with 1 values
+DEBUG 2015-09-04 19:55:13,781 DataNucleus.Cache - Object "app.model.User@39b848c7" (id="com.google.appengine.api.datastore.Key:User(4644337115725824)") added to Level 2 cache (fields="[0, 1, 2, 4]", version="")
+DEBUG 2015-09-04 19:55:13,781 DataNucleus.Connection - Connection found in the pool : com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl$DatastoreManagedConnection@22a3f345 for key=org.datanucleus.ObjectManagerImpl@25f1c9aa in factory=ConnectionFactory:nontx[com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl@23201117]
+DEBUG 2015-09-04 19:55:13,781 DataNucleus.Query - JPQL Query : Executing "SELECT u FROM app.model.User u WHERE u.name = :name" ...
+DEBUG 2015-09-04 19:55:13,781 DataNucleus.Query - Query compiled as : Kind=app.model.User Filter : name=song [QUERY-TYPE=NORMAL]
+DEBUG 2015-09-04 19:55:13,781 DataNucleus.Datastore.Native - Executing query in datastore for SELECT u FROM app.model.User u WHERE u.name = :name
+DEBUG 2015-09-04 19:55:13,782 DataNucleus.Connection - Connection found in the pool : com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl$DatastoreManagedConnection@22a3f345 for key=org.datanucleus.ObjectManagerImpl@25f1c9aa in factory=ConnectionFactory:nontx[com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl@23201117]
+DEBUG 2015-09-04 19:55:13,782 DataNucleus.Query - JPQL Query : Execution Time = 1 ms
+DEBUG 2015-09-04 19:55:13,782 DataNucleus.Cache - Object "app.model.User@39b848c7" (id="app.model.User:User(4644337115725824)") taken from Level 1 cache (loadedFlags="[YYYYYN]") [cache size = 2]
+DEBUG 2015-09-04 19:55:13,783 DataNucleus.Connection - Connection found in the pool : com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl$DatastoreManagedConnection@22a3f345 for key=org.datanucleus.ObjectManagerImpl@25f1c9aa in factory=ConnectionFactory:nontx[com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl@23201117]
+DEBUG 2015-09-04 19:55:13,783 DataNucleus.Query - JPQL Query : Executing "SELECT u FROM app.model.User u WHERE u.name = :name" ...
+DEBUG 2015-09-04 19:55:13,783 DataNucleus.Query - Query compiled as : Kind=app.model.User Filter : name=song [QUERY-TYPE=NORMAL]
+DEBUG 2015-09-04 19:55:13,783 DataNucleus.Datastore.Native - Executing query in datastore for SELECT u FROM app.model.User u WHERE u.name = :name
+DEBUG 2015-09-04 19:55:13,784 DataNucleus.Connection - Connection found in the pool : com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl$DatastoreManagedConnection@22a3f345 for key=org.datanucleus.ObjectManagerImpl@25f1c9aa in factory=ConnectionFactory:nontx[com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl@23201117]
+DEBUG 2015-09-04 19:55:13,784 DataNucleus.Query - JPQL Query : Execution Time = 1 ms
+DEBUG 2015-09-04 19:55:13,785 DataNucleus.Cache - Object "app.model.User@39b848c7" (id="app.model.User:User(4644337115725824)") taken from Level 1 cache (loadedFlags="[YYYYYN]") [cache size = 2]
+DEBUG 2015-09-04 19:55:13,785 DataNucleus.Connection - Connection found in the pool : com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl$DatastoreManagedConnection@22a3f345 for key=org.datanucleus.ObjectManagerImpl@25f1c9aa in factory=ConnectionFactory:nontx[com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl@23201117]
+DEBUG 2015-09-04 19:55:13,785 DataNucleus.Cache - Object with id="com.google.appengine.api.datastore.Key:User(4644337115725824)" removed from Level 2 cache
+DEBUG 2015-09-04 19:55:13,785 DataNucleus.Persistence - DetachOnClose : Closing manager so detaching all current objects ...
+DEBUG 2015-09-04 19:55:13,785 DataNucleus.Persistence - Detaching object from persistence : "app.model.User@39b848c7" (depth=0)
+DEBUG 2015-09-04 19:55:13,785 DataNucleus.Persistence - Detaching object from persistence : "app.model.Movie@71b21e6b" (depth=1)
+DEBUG 2015-09-04 19:55:13,785 DataNucleus.Persistence - Object "app.model.Movie@71b21e6b" (id="app.model.Movie:User(4644337115725824)/Movie(5787829208612864)") is having the SCO wrapper in field "Modified" replaced by the unwrapped value
+DEBUG 2015-09-04 19:55:13,786 DataNucleus.Lifecycle - Object "app.model.Movie@71b21e6b" (id="app.model.Movie:User(4644337115725824)/Movie(5787829208612864)") has a lifecycle change : "P_NONTRANS"->"DETACHED_CLEAN"
+DEBUG 2015-09-04 19:55:13,786 DataNucleus.Persistence - Disconnecting app.model.Movie@71b21e6b from StateManager[pc=app.model.Movie@71b21e6b, lifecycle=DETACHED_CLEAN]
+DEBUG 2015-09-04 19:55:13,786 DataNucleus.Cache - Object with id="app.model.Movie:User(4644337115725824)/Movie(5787829208612864)" being removed from Level 1 cache [current cache size = 2]
+DEBUG 2015-09-04 19:55:13,786 DataNucleus.Persistence - Object "app.model.User@39b848c7" (id="app.model.User:User(4644337115725824)") is having the SCO wrapper in field "movie" replaced by the unwrapped value
+DEBUG 2015-09-04 19:55:13,786 DataNucleus.Lifecycle - Object "app.model.User@39b848c7" (id="app.model.User:User(4644337115725824)") has a lifecycle change : "HOLLOW"->"DETACHED_CLEAN"
+DEBUG 2015-09-04 19:55:13,786 DataNucleus.Persistence - Disconnecting app.model.User@39b848c7 from StateManager[pc=app.model.User@39b848c7, lifecycle=DETACHED_CLEAN]
+DEBUG 2015-09-04 19:55:13,786 DataNucleus.Cache - Object with id="app.model.User:User(4644337115725824)" being removed from Level 1 cache [current cache size = 1]
+DEBUG 2015-09-04 19:55:13,786 DataNucleus.Persistence - DetachOnClose : completed detach
+DEBUG 2015-09-04 19:55:13,786 DataNucleus.Connection - Connection found in the pool : com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl$DatastoreManagedConnection@22a3f345 for key=org.datanucleus.ObjectManagerImpl@25f1c9aa in factory=ConnectionFactory:nontx[com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl@23201117] but owner object closing so closing connection
+DEBUG 2015-09-04 19:55:13,786 DataNucleus.Connection - Connection removed from the pool : com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl$DatastoreManagedConnection@22a3f345 for key=org.datanucleus.ObjectManagerImpl@25f1c9aa in factory=ConnectionFactory:nontx[com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl@23201117]
+DEBUG 2015-09-04 19:55:13,786 DataNucleus.Cache - Level 1 Cache cleared
+DEBUG 2015-09-04 19:55:13,786 DataNucleus.Persistence - Object Manager "org.datanucleus.ObjectManagerImpl@25f1c9aa" closed
+crud list service, response size 1855
+CrudService: doGet invoked
+CrudService:handleRequest() uid = [song] received
+MovieHandler:parseRequest() uid = [song] received
+action = ''
+UserHandler:getUserByName ...
+DEBUG 2015-09-04 19:55:13,833 DataNucleus.Cache - Level 1 Cache of type "soft" initialised
+DEBUG 2015-09-04 19:55:13,833 DataNucleus.Persistence - Object Manager "org.datanucleus.ObjectManagerImpl@ff96eae" opened for datastore "com.google.appengine.datanucleus.DatastoreManager@ab31bff" with txn="org.datanucleus.TransactionImpl@40d169b3"
+querying user by name [song] ...
+DEBUG 2015-09-04 19:55:13,833 DataNucleus.Query - JPQL Single-String with "select u from app.model.User u where u.name = :name"
+DEBUG 2015-09-04 19:55:13,834 DataNucleus.Query - Query "SELECT u FROM app.model.User u WHERE u.name = :name" of language "JPQL" has been run before so reusing existing generic compilation
+DEBUG 2015-09-04 19:55:13,834 DataNucleus.Query - JPQL Query : Executing "SELECT u FROM app.model.User u WHERE u.name = :name" ...
+DEBUG 2015-09-04 19:55:13,834 DataNucleus.Query - Query compiled as : Kind=app.model.User Filter : name=song [QUERY-TYPE=NORMAL]
+DEBUG 2015-09-04 19:55:13,834 DataNucleus.Datastore.Native - Executing query in datastore for SELECT u FROM app.model.User u WHERE u.name = :name
+DEBUG 2015-09-04 19:55:13,834 DataNucleus.Connection - Created ManagedConnection using DatastoreService = com.google.appengine.api.datastore.DatastoreServiceImpl@74728803
+DEBUG 2015-09-04 19:55:13,835 DataNucleus.Connection - Connection added to the pool : com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl$DatastoreManagedConnection@b3fb8af for key=org.datanucleus.ObjectManagerImpl@ff96eae in factory=ConnectionFactory:nontx[com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl@23201117]
+DEBUG 2015-09-04 19:55:13,835 DataNucleus.Query - JPQL Query : Execution Time = 1 ms
+DEBUG 2015-09-04 19:55:13,835 DataNucleus.Cache - Object with id "app.model.User:User(4644337115725824)" not found in Level 1 cache [cache size = 0]
+DEBUG 2015-09-04 19:55:13,835 DataNucleus.Cache - Object with id "app.model.User:User(4644337115725824)" not found in Level 2 cache
+DEBUG 2015-09-04 19:55:13,835 DataNucleus.Cache - Object "app.model.User@475eeee" (id="app.model.User:User(4644337115725824)") added to Level 1 cache (loadedFlags="[NNYNNN]")
+DEBUG 2015-09-04 19:55:13,836 DataNucleus.Cache - Object with id "app.model.Movie:User(4644337115725824)/Movie(5787829208612864)" not found in Level 1 cache [cache size = 1]
+DEBUG 2015-09-04 19:55:13,836 DataNucleus.Cache - Object "app.model.Movie@5a994d8b" (id="app.model.Movie:User(4644337115725824)/Movie(5787829208612864)") added to Level 1 cache (loadedFlags="[NNNNNNNNNNNYNNNNNNNNN]")
+DEBUG 2015-09-04 19:55:13,836 DataNucleus.Persistence - Object "app.model.Movie@5a994d8b" (id="app.model.Movie:User(4644337115725824)/Movie(5787829208612864)") is having the value in field "Modified" replaced by a SCO wrapper
+DEBUG 2015-09-04 19:55:13,837 DataNucleus.Cache - Object with id="app.model.Movie:User(4644337115725824)/Movie(5787829208612864)" taken from Level 2 cache (fields="[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 17, 16, 19, 18, 20]", version="") - represented as "app.model.Movie@5a994d8b"
+DEBUG 2015-09-04 19:55:13,837 DataNucleus.Lifecycle - Object "app.model.Movie@5a994d8b" (id="app.model.Movie:User(4644337115725824)/Movie(5787829208612864)") has a lifecycle change : "P_CLEAN"->"P_NONTRANS"
+DEBUG 2015-09-04 19:55:13,837 DataNucleus.Transaction - Object "app.model.Movie@5a994d8b" (id="app.model.Movie:User(4644337115725824)/Movie(5787829208612864)") being evicted from transactional cache
+DEBUG 2015-09-04 19:55:13,837 DataNucleus.Transaction - Object "app.model.Movie@5a994d8b" (id="app.model.Movie:User(4644337115725824)/Movie(5787829208612864)") is not transactional
+DEBUG 2015-09-04 19:55:13,837 DataNucleus.Connection - Connection found in the pool : com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl$DatastoreManagedConnection@b3fb8af for key=org.datanucleus.ObjectManagerImpl@ff96eae in factory=ConnectionFactory:nontx[com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl@23201117]
+DEBUG 2015-09-04 19:55:13,838 DataNucleus.Persistence - Object "app.model.User@475eeee" field "movie" is replaced by a SCO wrapper of type "org.datanucleus.store.types.sco.backed.ArrayList" [cache-values=true, lazy-loading=false, queued-operations=true, allow-nulls=true]
+DEBUG 2015-09-04 19:55:13,838 DataNucleus.Persistence - Object "app.model.User@475eeee" field "movie" is having its SCO wrapper initialised with a container with 1 values
+DEBUG 2015-09-04 19:55:13,838 DataNucleus.Cache - Object "app.model.User@475eeee" (id="com.google.appengine.api.datastore.Key:User(4644337115725824)") added to Level 2 cache (fields="[0, 1, 2, 4]", version="")
+DEBUG 2015-09-04 19:55:13,838 DataNucleus.Connection - Connection found in the pool : com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl$DatastoreManagedConnection@b3fb8af for key=org.datanucleus.ObjectManagerImpl@ff96eae in factory=ConnectionFactory:nontx[com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl@23201117]
+DEBUG 2015-09-04 19:55:13,838 DataNucleus.Query - JPQL Query : Executing "SELECT u FROM app.model.User u WHERE u.name = :name" ...
+DEBUG 2015-09-04 19:55:13,838 DataNucleus.Query - Query compiled as : Kind=app.model.User Filter : name=song [QUERY-TYPE=NORMAL]
+DEBUG 2015-09-04 19:55:13,839 DataNucleus.Datastore.Native - Executing query in datastore for SELECT u FROM app.model.User u WHERE u.name = :name
+DEBUG 2015-09-04 19:55:13,839 DataNucleus.Connection - Connection found in the pool : com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl$DatastoreManagedConnection@b3fb8af for key=org.datanucleus.ObjectManagerImpl@ff96eae in factory=ConnectionFactory:nontx[com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl@23201117]
+DEBUG 2015-09-04 19:55:13,839 DataNucleus.Query - JPQL Query : Execution Time = 1 ms
+DEBUG 2015-09-04 19:55:13,840 DataNucleus.Cache - Object "app.model.User@475eeee" (id="app.model.User:User(4644337115725824)") taken from Level 1 cache (loadedFlags="[YYYYYN]") [cache size = 2]
+DEBUG 2015-09-04 19:55:13,840 DataNucleus.Connection - Connection found in the pool : com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl$DatastoreManagedConnection@b3fb8af for key=org.datanucleus.ObjectManagerImpl@ff96eae in factory=ConnectionFactory:nontx[com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl@23201117]
+DEBUG 2015-09-04 19:55:13,840 DataNucleus.Query - JPQL Query : Executing "SELECT u FROM app.model.User u WHERE u.name = :name" ...
+DEBUG 2015-09-04 19:55:13,840 DataNucleus.Query - Query compiled as : Kind=app.model.User Filter : name=song [QUERY-TYPE=NORMAL]
+DEBUG 2015-09-04 19:55:13,841 DataNucleus.Datastore.Native - Executing query in datastore for SELECT u FROM app.model.User u WHERE u.name = :name
+DEBUG 2015-09-04 19:55:13,841 DataNucleus.Connection - Connection found in the pool : com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl$DatastoreManagedConnection@b3fb8af for key=org.datanucleus.ObjectManagerImpl@ff96eae in factory=ConnectionFactory:nontx[com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl@23201117]
+DEBUG 2015-09-04 19:55:13,841 DataNucleus.Query - JPQL Query : Execution Time = 1 ms
+DEBUG 2015-09-04 19:55:13,842 DataNucleus.Cache - Object "app.model.User@475eeee" (id="app.model.User:User(4644337115725824)") taken from Level 1 cache (loadedFlags="[YYYYYN]") [cache size = 2]
+DEBUG 2015-09-04 19:55:13,842 DataNucleus.Connection - Connection found in the pool : com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl$DatastoreManagedConnection@b3fb8af for key=org.datanucleus.ObjectManagerImpl@ff96eae in factory=ConnectionFactory:nontx[com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl@23201117]
+DEBUG 2015-09-04 19:55:13,842 DataNucleus.Cache - Object with id="com.google.appengine.api.datastore.Key:User(4644337115725824)" removed from Level 2 cache
+DEBUG 2015-09-04 19:55:13,842 DataNucleus.Persistence - DetachOnClose : Closing manager so detaching all current objects ...
+DEBUG 2015-09-04 19:55:13,842 DataNucleus.Persistence - Detaching object from persistence : "app.model.User@475eeee" (depth=0)
+DEBUG 2015-09-04 19:55:13,843 DataNucleus.Persistence - Detaching object from persistence : "app.model.Movie@5a994d8b" (depth=1)
+DEBUG 2015-09-04 19:55:13,843 DataNucleus.Persistence - Object "app.model.Movie@5a994d8b" (id="app.model.Movie:User(4644337115725824)/Movie(5787829208612864)") is having the SCO wrapper in field "Modified" replaced by the unwrapped value
+DEBUG 2015-09-04 19:55:13,843 DataNucleus.Lifecycle - Object "app.model.Movie@5a994d8b" (id="app.model.Movie:User(4644337115725824)/Movie(5787829208612864)") has a lifecycle change : "P_NONTRANS"->"DETACHED_CLEAN"
+DEBUG 2015-09-04 19:55:13,843 DataNucleus.Persistence - Disconnecting app.model.Movie@5a994d8b from StateManager[pc=app.model.Movie@5a994d8b, lifecycle=DETACHED_CLEAN]
+DEBUG 2015-09-04 19:55:13,843 DataNucleus.Cache - Object with id="app.model.Movie:User(4644337115725824)/Movie(5787829208612864)" being removed from Level 1 cache [current cache size = 2]
+DEBUG 2015-09-04 19:55:13,844 DataNucleus.Persistence - Object "app.model.User@475eeee" (id="app.model.User:User(4644337115725824)") is having the SCO wrapper in field "movie" replaced by the unwrapped value
+DEBUG 2015-09-04 19:55:13,844 DataNucleus.Lifecycle - Object "app.model.User@475eeee" (id="app.model.User:User(4644337115725824)") has a lifecycle change : "HOLLOW"->"DETACHED_CLEAN"
+DEBUG 2015-09-04 19:55:13,844 DataNucleus.Persistence - Disconnecting app.model.User@475eeee from StateManager[pc=app.model.User@475eeee, lifecycle=DETACHED_CLEAN]
+DEBUG 2015-09-04 19:55:13,844 DataNucleus.Cache - Object with id="app.model.User:User(4644337115725824)" being removed from Level 1 cache [current cache size = 1]
+DEBUG 2015-09-04 19:55:13,844 DataNucleus.Persistence - DetachOnClose : completed detach
+DEBUG 2015-09-04 19:55:13,844 DataNucleus.Connection - Connection found in the pool : com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl$DatastoreManagedConnection@b3fb8af for key=org.datanucleus.ObjectManagerImpl@ff96eae in factory=ConnectionFactory:nontx[com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl@23201117] but owner object closing so closing connection
+DEBUG 2015-09-04 19:55:13,844 DataNucleus.Connection - Connection removed from the pool : com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl$DatastoreManagedConnection@b3fb8af for key=org.datanucleus.ObjectManagerImpl@ff96eae in factory=ConnectionFactory:nontx[com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl@23201117]
+DEBUG 2015-09-04 19:55:13,844 DataNucleus.Cache - Level 1 Cache cleared
+DEBUG 2015-09-04 19:55:13,844 DataNucleus.Persistence - Object Manager "org.datanucleus.ObjectManagerImpl@ff96eae" closed
+Sep 04, 2015 7:55:13 PM com.google.appengine.tools.development.LocalResourceFileServlet doGet
+WARNING: No file found for: /mcrud/test sub only
+crud list service, response size 1864
+CrudService: doPost invoked
+CrudService:handleRequest() uid = [song] received
+MovieHandler:parseRequest() uid = [song] received
+action = ''
+UserHandler:getUserByName ...
+DEBUG 2015-09-04 19:56:03,105 DataNucleus.Cache - Level 1 Cache of type "soft" initialised
+DEBUG 2015-09-04 19:56:03,105 DataNucleus.Persistence - Object Manager "org.datanucleus.ObjectManagerImpl@623fd006" opened for datastore "com.google.appengine.datanucleus.DatastoreManager@ab31bff" with txn="org.datanucleus.TransactionImpl@4b726c4e"
+querying user by name [song] ...
+DEBUG 2015-09-04 19:56:03,105 DataNucleus.Query - JPQL Single-String with "select u from app.model.User u where u.name = :name"
+DEBUG 2015-09-04 19:56:03,106 DataNucleus.Query - Query "SELECT u FROM app.model.User u WHERE u.name = :name" of language "JPQL" has been run before so reusing existing generic compilation
+DEBUG 2015-09-04 19:56:03,106 DataNucleus.Query - JPQL Query : Executing "SELECT u FROM app.model.User u WHERE u.name = :name" ...
+DEBUG 2015-09-04 19:56:03,106 DataNucleus.Query - Query compiled as : Kind=app.model.User Filter : name=song [QUERY-TYPE=NORMAL]
+DEBUG 2015-09-04 19:56:03,106 DataNucleus.Datastore.Native - Executing query in datastore for SELECT u FROM app.model.User u WHERE u.name = :name
+DEBUG 2015-09-04 19:56:03,106 DataNucleus.Connection - Created ManagedConnection using DatastoreService = com.google.appengine.api.datastore.DatastoreServiceImpl@45249b94
+DEBUG 2015-09-04 19:56:03,106 DataNucleus.Connection - Connection added to the pool : com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl$DatastoreManagedConnection@66623502 for key=org.datanucleus.ObjectManagerImpl@623fd006 in factory=ConnectionFactory:nontx[com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl@23201117]
+DEBUG 2015-09-04 19:56:03,106 DataNucleus.Query - JPQL Query : Execution Time = 0 ms
+DEBUG 2015-09-04 19:56:03,107 DataNucleus.Cache - Object with id "app.model.User:User(4644337115725824)" not found in Level 1 cache [cache size = 0]
+DEBUG 2015-09-04 19:56:03,108 DataNucleus.Cache - Object with id "app.model.User:User(4644337115725824)" not found in Level 2 cache
+DEBUG 2015-09-04 19:56:03,108 DataNucleus.Cache - Object "app.model.User@39864ad1" (id="app.model.User:User(4644337115725824)") added to Level 1 cache (loadedFlags="[NNYNNN]")
+DEBUG 2015-09-04 19:56:03,109 DataNucleus.Cache - Object with id "app.model.Movie:User(4644337115725824)/Movie(5787829208612864)" not found in Level 1 cache [cache size = 1]
+DEBUG 2015-09-04 19:56:03,110 DataNucleus.Cache - Object "app.model.Movie@1f99fcd8" (id="app.model.Movie:User(4644337115725824)/Movie(5787829208612864)") added to Level 1 cache (loadedFlags="[NNNNNNNNNNNYNNNNNNNNN]")
+DEBUG 2015-09-04 19:56:03,110 DataNucleus.Persistence - Object "app.model.Movie@1f99fcd8" (id="app.model.Movie:User(4644337115725824)/Movie(5787829208612864)") is having the value in field "Modified" replaced by a SCO wrapper
+DEBUG 2015-09-04 19:56:03,111 DataNucleus.Cache - Object with id="app.model.Movie:User(4644337115725824)/Movie(5787829208612864)" taken from Level 2 cache (fields="[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 17, 16, 19, 18, 20]", version="") - represented as "app.model.Movie@1f99fcd8"
+DEBUG 2015-09-04 19:56:03,111 DataNucleus.Lifecycle - Object "app.model.Movie@1f99fcd8" (id="app.model.Movie:User(4644337115725824)/Movie(5787829208612864)") has a lifecycle change : "P_CLEAN"->"P_NONTRANS"
+DEBUG 2015-09-04 19:56:03,111 DataNucleus.Transaction - Object "app.model.Movie@1f99fcd8" (id="app.model.Movie:User(4644337115725824)/Movie(5787829208612864)") being evicted from transactional cache
+DEBUG 2015-09-04 19:56:03,111 DataNucleus.Transaction - Object "app.model.Movie@1f99fcd8" (id="app.model.Movie:User(4644337115725824)/Movie(5787829208612864)") is not transactional
+DEBUG 2015-09-04 19:56:03,112 DataNucleus.Connection - Connection found in the pool : com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl$DatastoreManagedConnection@66623502 for key=org.datanucleus.ObjectManagerImpl@623fd006 in factory=ConnectionFactory:nontx[com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl@23201117]
+DEBUG 2015-09-04 19:56:03,112 DataNucleus.Persistence - Object "app.model.User@39864ad1" field "movie" is replaced by a SCO wrapper of type "org.datanucleus.store.types.sco.backed.ArrayList" [cache-values=true, lazy-loading=false, queued-operations=true, allow-nulls=true]
+DEBUG 2015-09-04 19:56:03,112 DataNucleus.Persistence - Object "app.model.User@39864ad1" field "movie" is having its SCO wrapper initialised with a container with 1 values
+DEBUG 2015-09-04 19:56:03,113 DataNucleus.Cache - Object "app.model.User@39864ad1" (id="com.google.appengine.api.datastore.Key:User(4644337115725824)") added to Level 2 cache (fields="[0, 1, 2, 4]", version="")
+DEBUG 2015-09-04 19:56:03,113 DataNucleus.Connection - Connection found in the pool : com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl$DatastoreManagedConnection@66623502 for key=org.datanucleus.ObjectManagerImpl@623fd006 in factory=ConnectionFactory:nontx[com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl@23201117]
+DEBUG 2015-09-04 19:56:03,113 DataNucleus.Query - JPQL Query : Executing "SELECT u FROM app.model.User u WHERE u.name = :name" ...
+DEBUG 2015-09-04 19:56:03,114 DataNucleus.Query - Query compiled as : Kind=app.model.User Filter : name=song [QUERY-TYPE=NORMAL]
+DEBUG 2015-09-04 19:56:03,114 DataNucleus.Datastore.Native - Executing query in datastore for SELECT u FROM app.model.User u WHERE u.name = :name
+DEBUG 2015-09-04 19:56:03,115 DataNucleus.Connection - Connection found in the pool : com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl$DatastoreManagedConnection@66623502 for key=org.datanucleus.ObjectManagerImpl@623fd006 in factory=ConnectionFactory:nontx[com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl@23201117]
+DEBUG 2015-09-04 19:56:03,115 DataNucleus.Query - JPQL Query : Execution Time = 2 ms
+DEBUG 2015-09-04 19:56:03,115 DataNucleus.Cache - Object "app.model.User@39864ad1" (id="app.model.User:User(4644337115725824)") taken from Level 1 cache (loadedFlags="[YYYYYN]") [cache size = 2]
+DEBUG 2015-09-04 19:56:03,116 DataNucleus.Connection - Connection found in the pool : com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl$DatastoreManagedConnection@66623502 for key=org.datanucleus.ObjectManagerImpl@623fd006 in factory=ConnectionFactory:nontx[com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl@23201117]
+DEBUG 2015-09-04 19:56:03,116 DataNucleus.Query - JPQL Query : Executing "SELECT u FROM app.model.User u WHERE u.name = :name" ...
+DEBUG 2015-09-04 19:56:03,116 DataNucleus.Query - Query compiled as : Kind=app.model.User Filter : name=song [QUERY-TYPE=NORMAL]
+DEBUG 2015-09-04 19:56:03,117 DataNucleus.Datastore.Native - Executing query in datastore for SELECT u FROM app.model.User u WHERE u.name = :name
+DEBUG 2015-09-04 19:56:03,117 DataNucleus.Connection - Connection found in the pool : com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl$DatastoreManagedConnection@66623502 for key=org.datanucleus.ObjectManagerImpl@623fd006 in factory=ConnectionFactory:nontx[com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl@23201117]
+DEBUG 2015-09-04 19:56:03,117 DataNucleus.Query - JPQL Query : Execution Time = 1 ms
+DEBUG 2015-09-04 19:56:03,118 DataNucleus.Cache - Object "app.model.User@39864ad1" (id="app.model.User:User(4644337115725824)") taken from Level 1 cache (loadedFlags="[YYYYYN]") [cache size = 2]
+DEBUG 2015-09-04 19:56:03,118 DataNucleus.Connection - Connection found in the pool : com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl$DatastoreManagedConnection@66623502 for key=org.datanucleus.ObjectManagerImpl@623fd006 in factory=ConnectionFactory:nontx[com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl@23201117]
+DEBUG 2015-09-04 19:56:03,118 DataNucleus.Cache - Object with id="com.google.appengine.api.datastore.Key:User(4644337115725824)" removed from Level 2 cache
+DEBUG 2015-09-04 19:56:03,118 DataNucleus.Persistence - DetachOnClose : Closing manager so detaching all current objects ...
+DEBUG 2015-09-04 19:56:03,118 DataNucleus.Persistence - Detaching object from persistence : "app.model.User@39864ad1" (depth=0)
+DEBUG 2015-09-04 19:56:03,119 DataNucleus.Persistence - Detaching object from persistence : "app.model.Movie@1f99fcd8" (depth=1)
+DEBUG 2015-09-04 19:56:03,119 DataNucleus.Persistence - Object "app.model.Movie@1f99fcd8" (id="app.model.Movie:User(4644337115725824)/Movie(5787829208612864)") is having the SCO wrapper in field "Modified" replaced by the unwrapped value
+DEBUG 2015-09-04 19:56:03,119 DataNucleus.Lifecycle - Object "app.model.Movie@1f99fcd8" (id="app.model.Movie:User(4644337115725824)/Movie(5787829208612864)") has a lifecycle change : "P_NONTRANS"->"DETACHED_CLEAN"
+DEBUG 2015-09-04 19:56:03,119 DataNucleus.Persistence - Disconnecting app.model.Movie@1f99fcd8 from StateManager[pc=app.model.Movie@1f99fcd8, lifecycle=DETACHED_CLEAN]
+DEBUG 2015-09-04 19:56:03,119 DataNucleus.Cache - Object with id="app.model.Movie:User(4644337115725824)/Movie(5787829208612864)" being removed from Level 1 cache [current cache size = 2]
+DEBUG 2015-09-04 19:56:03,119 DataNucleus.Persistence - Object "app.model.User@39864ad1" (id="app.model.User:User(4644337115725824)") is having the SCO wrapper in field "movie" replaced by the unwrapped value
+DEBUG 2015-09-04 19:56:03,119 DataNucleus.Lifecycle - Object "app.model.User@39864ad1" (id="app.model.User:User(4644337115725824)") has a lifecycle change : "HOLLOW"->"DETACHED_CLEAN"
+DEBUG 2015-09-04 19:56:03,119 DataNucleus.Persistence - Disconnecting app.model.User@39864ad1 from StateManager[pc=app.model.User@39864ad1, lifecycle=DETACHED_CLEAN]
+DEBUG 2015-09-04 19:56:03,120 DataNucleus.Cache - Object with id="app.model.User:User(4644337115725824)" being removed from Level 1 cache [current cache size = 1]
+DEBUG 2015-09-04 19:56:03,120 DataNucleus.Persistence - DetachOnClose : completed detach
+DEBUG 2015-09-04 19:56:03,120 DataNucleus.Connection - Connection found in the pool : com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl$DatastoreManagedConnection@66623502 for key=org.datanucleus.ObjectManagerImpl@623fd006 in factory=ConnectionFactory:nontx[com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl@23201117] but owner object closing so closing connection
+DEBUG 2015-09-04 19:56:03,120 DataNucleus.Connection - Connection removed from the pool : com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl$DatastoreManagedConnection@66623502 for key=org.datanucleus.ObjectManagerImpl@623fd006 in factory=ConnectionFactory:nontx[com.google.appengine.datanucleus.DatastoreConnectionFactoryImpl@23201117]
+DEBUG 2015-09-04 19:56:03,120 DataNucleus.Cache - Level 1 Cache cleared
+DEBUG 2015-09-04 19:56:03,120 DataNucleus.Persistence - Object Manager "org.datanucleus.ObjectManagerImpl@623fd006" closed
+crud list service, response size 1864
