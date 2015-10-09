@@ -90,7 +90,7 @@ public class AppModule {
 			MappedConfiguration<String, Object> configuration) {
 		// reference:
 		// http://tapestry.apache.org/5.3/apidocs/constant-values.html
-		configuration.add(SymbolConstants.PRODUCTION_MODE, false);
+//		configuration.add(SymbolConstants.PRODUCTION_MODE, false);
 //		configuration.add(SymbolConstants.APPLICATION_VERSION, "0.1");
 		configuration.add("tapestry.thread-pool-enabled", false);
 		configuration.add("tapestry.application-version", 0);

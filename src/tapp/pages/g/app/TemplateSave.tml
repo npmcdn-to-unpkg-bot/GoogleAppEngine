@@ -2,6 +2,32 @@
  <head>
  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
  <title>Library</title>
+<<<<<<< HEAD
+        <style type="text/css">
+	        /* iPhone 2G-4S in portrait and landscape (source: http://stephen.io/mediaqueries/) */
+	        @media only screen
+	        and (min-device-width : 320px)
+	        and (max-device-width : 480px) {
+	            body {
+	                -webkit-text-size-adjust:80%;
+	                margin-left: 15px;
+	            }
+	            h2 {
+	                font-size: .75em;
+	                margin-top: 10px;
+	            }
+	        }
+	        /** iPhone 5 portrait and landscape (source: http://stephen.io/mediaqueries/) */
+	        @media only screen 
+			and (min-device-width : 320px) 
+			and (max-device-width : 568px) { 
+	            h2 {
+	                font-size: 1.75em;
+	            }
+			}
+		</style>
+=======
+>>>>>>> 2eb925d094e6ec5a442cea17398f6141cb3a3148
  <script src="/jquery/jquery-1.3.2.min.js"></script>
  <script type="text/javascript">
  <![CDATA[
@@ -40,8 +66,11 @@
  	function handlePrimaryKey(text) {
  		var retVal = text;
  		if(text != undefined) {
+<<<<<<< HEAD
+=======
 //			retVal = replaceAll(retVal, "5F", '_');
 //			retVal = replaceAll(retVal, "2D", '-');
+>>>>>>> 2eb925d094e6ec5a442cea17398f6141cb3a3148
 			retVal = replaceAll(retVal, '\\.', "_DOT_");
  			retVal = encodeURIComponent(retVal);	//http://xkr.us/articles/javascript/encode-compare/
  		}
@@ -55,8 +84,11 @@
 			if(!keepHtml) {
 				retVal = strip(retVal);
 			}
+<<<<<<< HEAD
+=======
 // 			retVal = nl2br(retVal);									//backend is using urldecode(text)
 //			retVal = retVal.replace(/[^%<>!,"'\/:\.\w]+/g, " ");	//backend is using urldecode(text)
+>>>>>>> 2eb925d094e6ec5a442cea17398f6141cb3a3148
  		}
  		return retVal;
  	}
@@ -130,11 +162,17 @@
  	}
  	function handleSendError(xhr2, url) {
 		//alert("handleSendError xhr2.status = " + xhr2.status);
+<<<<<<< HEAD
+		if(xhr2.status != 200) {
+			alert("Error: Not able to backup properly with '"+url+"' , status: " + xhr2.status + " statusText: " + xhr2.statusText); //not ok
+		}
+=======
 //  		if(xhr2.status != 0) { 
   			if(xhr2.status != 200) {
   				alert("Error: Not able to backup properly with '"+url+"' , status: " + xhr2.status + " statusText: " + xhr2.statusText); //not ok
   			}
 //  		}
+>>>>>>> 2eb925d094e6ec5a442cea17398f6141cb3a3148
  	}
 	function handleResponse(xhr2) {
 		//alert("handleReponse xhr2.status = " + xhr2.status + " .readyState " + xhr2.readyState);
@@ -182,6 +220,11 @@
 		resetSettings();
 	}
 	jQuery(document).ready(function(){
+<<<<<<< HEAD
+		resetSettings();
+		saveSettings();
+		jQuery("input.bck").attr("disabled","");
+=======
 //		jQuery('#form').bind('submit', function() { 
 //			alert('User clicked submit');
 //			backup();
@@ -189,6 +232,7 @@
 			saveSettings();
 			jQuery("input.bck").attr("disabled","");
 //		});
+>>>>>>> 2eb925d094e6ec5a442cea17398f6141cb3a3148
 	});
  ]]>
  </script>

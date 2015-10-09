@@ -1,29 +1,13 @@
 ﻿<!DOCTYPE html>
 <html>
-<!--
-<html debug="true">
-<html xmlns:ng="http://angularjs.org" id="ng:app" ng-app lang="en">
-<html manifest="movie.appcache" xmlns:ng="http://angularjs.org" id="ng:app" ng-app lang="en">
--->
 <head>
-    <!-- chrome://appcache-internals/ -->
-    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge">-->
     <meta charset="utf-8">
     <title>Cool App</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"> <!-- source: https://developer.apple -->
-
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     <script type="text/javascript" src='//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'></script>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap.min.css">
-    <!-- Optional theme -->
-    <!--<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap-theme.min.css">-->
-    <!-- Latest compiled and minified JavaScript -->
-    <!--<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.min.js"></script>-->
-    <!-- References: http://cdnjs.com/libraries/twitter-bootstrap -->
-    <!--<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/dropdown.min.js"></script> &lt;!&ndash; for the menu &ndash;&gt;-->
-    <!--<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/collapse.min.js"></script> &lt;!&ndash; for the mobile/collapsed view &ndash;&gt;-->
-
     <!--<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.js"></script>-->
     <!--<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.js"></script>-->
     <!--<script type="text/javascript" src='../js/ui-bootstrap-tpls-0.11.2.min.js'></script>-->
@@ -133,7 +117,7 @@
 
         //        }
     </script>
-    <script>var require = { urlArgs: 'a010' };</script>
+    <script>var require = { urlArgs: 'a012' };</script>
     <script type="text/javascript" src="../js/require.js" data-main="../js/main-movie"></script>
 </head>
 <body ng-controller="MovieController" id="m-ng-app" class="leap-interactive" leap-disable-tap="true" leap-disable-hover="true">
@@ -150,10 +134,6 @@
     }
 </script>
 <a href="#content" class="sr-only">Skip to main content</a>
-<!--
-<body ng-controller="ctrlRead" ng-init="loadItems();">
-<body>
--->
 <!-- angular-leap stuff -->
 <!--<div class="reveal"-->
      <!--leap-swipe-left="left()"-->
@@ -258,7 +238,11 @@
             <ul class="nav navbar-nav navbar-right" style="width:35%;">
                 <li><a class="leap-interactive" style="display: none;" id="myaccount" href="#" onclick="location.href='/passwordchange/jsp/simple.jsp?username=' + $.url().param('username') + '&amp;logintype=' + $.url().param('logintype');">My Account</a></li>
                 <li><a class="leap-interactive" href="javascript:logout();">Logout</a> </li>
-                <li style="padding-top: 27px;color: white;">Welcome <span id="currentUserName"></span>!</li>
+<!--<<<<<<< HEAD-->
+                <li style="padding-top: 15px;color: white;">Welcome <span id="currentUserName"></span>!</li>
+<!--=======-->
+                <!--<li style="padding-top: 27px;color: white;">Welcome <span id="currentUserName"></span>!</li>-->
+<!--&gt;>>>>>> 2eb925d094e6ec5a442cea17398f6141cb3a3148-->
             </ul>
         </div>
         <!--/.navbar-collapse -->
@@ -284,6 +268,7 @@
 <!--</ul>-->
 
 <div>
+    <div ng-cloak style="position:absolute;margin-top:22px;margin-left:0px;">Page {{page.number}} of {{page.totalPage<1?1:page.totalPage}}</div>
 <!--<div>-->
 <!--<div ng-view></div>-->
 <!--</div>-->
@@ -403,9 +388,9 @@
             </div>
             <br>
             <div class="span2">
-                <input type="submit" style="background:#98969E;" class="btn btn-primary"
+                <input id="createItem" type="submit" style="background:#98969E;" class="btn btn-primary"
                        value="{{saveButtonLabel}}" ng-disabled="!(item.url)" ng-click="createItem()">
-                <a class="btn" ng-click="cancelSave()">Cancel</a>
+                <a id="cancelSave" class="btn" ng-click="cancelSave()">Cancel</a>
             </div>
         </div>
     </form>
@@ -499,10 +484,10 @@
             </div>
             <br>
             <div class="span3">
-                <input type="submit" style="background:#98969E;" class="btn btn-primary" value="{{updateButtonLabel}}"
+                <input id="updateItem" type="submit" style="background:#98969E;" class="btn btn-primary" value="{{updateButtonLabel}}"
                        ng-disabled="!(item.title)" ng-click="updateItem()">
-                <a class="btn" ng-click="cancelSave()">Cancel</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a class="btn" ng-click="deleteItem(item)" ng-bind-template="Delete">Delete</a>
+                <a id="cancelSave2" class="btn" ng-click="cancelSave()">Cancel</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a id="deleteItem" class="btn" ng-click="deleteItem(item)" ng-bind-template="Delete">Delete</a>
                 <!--
                 -->
             </div>
@@ -790,11 +775,11 @@
             <div id="element_to_pop_up" style="display:none;width:50%;height:50%;">Content of popup</div>
         </td>
         <td style="width:134px;">
-            <a class="menu_links" ng-click="viewItem(item)">View</a>
+            <a id="viewItem2" class="menu_links" ng-click="viewItem(item)">View</a>
             &nbsp;|&nbsp;
-            <a class="menu_links" ng-click="editItem(item)">Edit</a>
+            <a id="editItem2" class="menu_links" ng-click="editItem(item)">Edit</a>
             &nbsp;|&nbsp;
-            <a class="menu_links" ng-click="deleteItem(item)" ng-bind-template="{{deleteLinkText}}">...</a>
+            <a id="deleteItem2" class="menu_links" ng-click="deleteItem(item)" ng-bind-template="{{deleteLinkText}}">...</a>
         </td>
     </tr>
     <tr>

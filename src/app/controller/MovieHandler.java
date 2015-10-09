@@ -11,6 +11,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.http.HttpServletRequest;
@@ -19,7 +20,6 @@ import org.apache.commons.lang3.SerializationUtils;
 import org.joda.time.DateTime;
 
 import tapp.model.ServiceRegistry;
-
 import app.common.AppUtils;
 import app.common.Constants;
 import app.common.DatastoreUtils;
@@ -85,8 +85,8 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
 	private String filter;
 	private String legacy;
 	private CalendarHandler calendarHandler;
-	private long maxPerPage = 6;	//this needs to be in sy with the front end UI!
-	private long pageNumber = 1;
+	private int maxPerPage = 6;	//this needs to be in sy with the front end UI!
+	private int pageNumber = 1;
 	//KISS cache for all users
 //	private HashMap allMoviesCache = new HashMap();
 
@@ -138,6 +138,9 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
 		return req.getParameter(reqName);
 	}
 	
+	/**
+	 * This is the main JSON parsing method into a Java object. It does not involve any datastore calls.
+	 */
 	public Object parseRequest(HttpServletRequest request) {
 	    //=== begin TBD
 		uid = getValue(request, Constants.UNIVERSAL_ID);
@@ -149,14 +152,14 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
 		if(uid != null && !uid.equals("null") && !uid.equals("undefined")) {
 			request.getSession().setAttribute(Constants.UNIVERSAL_ID, uid);
 		}
-		if(!SecurityUtils.isAuthenticated(request)) {
-			try {
-				throw new Exception(Constants.ERR_NOT_AUTHENTICATED);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
+if(!SecurityUtils.isAuthenticated(request)) {
+	try {
+		throw new Exception(Constants.ERR_NOT_AUTHENTICATED);
+	} catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+}
 	    //=== end TBD
 		Movie item = null;
 		oid = getValue(request, "oid");
@@ -187,7 +190,6 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
 				try {
 					item.setShared(new Boolean(temp2));
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
@@ -195,7 +197,6 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
 				try {
 					item.setChannelPattern(temp2);
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
@@ -250,7 +251,7 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
 		UserHandler uh = new UserHandler();
 		uh.doUpdateItem(item);
 	}
-	
+
 //	private void saveParent1(User item, Movie movie) throws Exception {
 //		UserHandler uh = new UserHandler();
 //		uh.doUpdateItem(item, movie);
@@ -290,7 +291,6 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
 		return cal;
 	}
 
-	
 //	public Object doCreateItem1(Object item) throws Exception {
 //		long id = -1;
 //		
@@ -306,7 +306,6 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
 //		
 //		return cal;
 //	}
-
 
 	/**
 	 * Get all items related to a logged in user.
@@ -349,6 +348,16 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
 				//end TBD JPA 2
 				//=== begin supporting pagination
 				//List tl = u.getMovie();	//.fetch(1,25);
+
+//c.f. JPA https://groups.google.com/forum/#!topic/google-appengine-java/UiMhX_JMOz4
+//c.f. JDO http://stackoverflow.com/questions/6867720/app-engine-java-syntax-for-setting-query-limit-and-start-offset
+				
+//				List ml = getMovies(maxPerPage, pageNumber);	//TODO causing Protractor subtitle play to fail for unknown reason!!!
+//				if(ml != null) {
+				if(u.getMovie() != null) {	//TODO need to avoid this as it is querying the datastore!!!
+//					totalItem = ml.size();
+				//=== begin supporting pagination
+				//List tl = u.getMovie();	//.fetch(1,25);
 				User cachedUser = CacheManager.getUserCache(u);
 				if(cachedUser != null) {
 					u = cachedUser;
@@ -360,8 +369,10 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
 				} else {
 					totalItem = 0;
 				}
+//				List tl = (List) AppUtils.getPagedResults(ml, maxPerPage, pageNumber);
 				List tl = (List) AppUtils.getPagedResults(u.getMovie(), maxPerPage, pageNumber);
 				//=== end supporting pagination
+				
 				if(action != null && !action.equals("")) {
 					l = filterScheduledMovies(tl);
 				} else {
@@ -399,6 +410,7 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
 				retVal = retVal.replaceAll("\\}\\{", "},{");
 				retVal = addMetaPage(retVal, totalItem);
 			}
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -410,22 +422,20 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
 	}
 
 	private String addMetaPage(String retVal, long totalItem) {
-//		if(totalItem > -1) {	//only if it is not from cache i.e. not -1
-			//=== includes metadata
-			String meta = "{" +
-	            "\"pageNumber\":" + pageNumber + "," +
-	            "\"maxPerPage\":" + maxPerPage + "," +	/* decided by the client */
-	            "\"totalItem\":" + totalItem + "," +
-	            "\"totalPage\":" + generateTotalPageForUI(maxPerPage, totalItem) +
-	         "}";
-			String finalContent = "";
-			if(totalItem > 0) {
-				finalContent = meta + "," + retVal;
-			} else {
-				finalContent = meta;
-			}
-			retVal = "[" + finalContent + "]";
+		//=== includes metadata
+		String meta = "{" +
+            "\"pageNumber\":" + pageNumber + "," +
+            "\"maxPerPage\":" + maxPerPage + "," +	/* decided by the client */
+            "\"totalItem\":" + totalItem + "," +
+            "\"totalPage\":" + generateTotalPageForUI(maxPerPage, totalItem) +
+         "}";
+		String finalContent = "";
+//		if(totalItem > 0) {
+			finalContent = meta + "," + retVal;
+//		} else {
+//			finalContent = meta;
 //		}
+		retVal = "[" + finalContent + "]";
 		
 		return retVal;
 	}
@@ -470,6 +480,7 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
 		try {
 			//=== end automatic user creation (e.g. for Facebook)
 			l = filterMovies(getMovies());
+//			l = filterMovies(getMovies(maxPerPage, pageNumber));	//TODO use this and not the above once it is done
 			l = AppUtils.getPagedResults(l, maxPerPage, pageNumber);
 			Iterator<Movie> it = l.iterator();
 			Movie cal = null;
@@ -512,7 +523,19 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
 
 		return results;
 	}
-	
+
+	public List<Movie> getMovies(int maxPerPage, int pageNumber) {
+		EntityManager mgr = getEntityManager();
+
+		Query query = mgr.createQuery("select m from Movie m where owner = '" + uid + "'");
+		if(pageNumber > 0) {
+			query.setFirstResult(pageNumber-1);	//starts from 0 thus minus 1
+			query.setMaxResults(maxPerPage);
+		}
+		List<Movie> resultList = query.getResultList();
+		return resultList;
+	}
+
 	private Collection<Movie> filterMovies(List<Movie> l) throws Exception {
 		List<Movie> nList = null;
 		
@@ -572,7 +595,6 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
 								Calendar c2 = (Calendar) calendarHandler.doGetItem(p2.getCalendarId());
 								retVal = c1.getStartDate().compareTo(c2.getStartDate());
 							} catch (Exception e) {
-								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
 			        	} else {
@@ -897,7 +919,6 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
         if(mov != null) {
 			System.out.println(mov.getClass().getName() + " object deleted with id '" + id + "' " + mov.getTitle() + " " + mov.getSearchResults() + " " + mov.getURL());
 		}
-
 		//=== clear the cache!
 //		CacheManager.clearUserCacheById(uid, allMoviesCache);
 
@@ -1120,7 +1141,6 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
 						//=== delete the legacy item	//TODO uncomment only after the above works!
 //						DatastoreUtils.removeLegacyMovie(uid, legacyKeyString);
 					} catch (Exception e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 					i++;

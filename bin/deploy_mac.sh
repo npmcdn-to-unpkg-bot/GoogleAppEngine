@@ -17,7 +17,8 @@ export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_45.jdk/Contents/Home
 export GAE_JAVA_SDK_HOME='/appengine-java-sdk'
 #export PATH=${PATH}:$JAVA_HOME/bin:$GAE_JAVA_SDK_HOME/bin
 PROJECT_HOME='/project_home'
+export JAVA_OPTS='-XX:MaxPermSize=1024m'
 #Reference: https://developers.google.com/appengine/docs/java/tools/uploadinganapp
-#$GAE_JAVA_SDK_HOME/bin/appcfg.sh --enable_jar_splitting update ${PROJECT_HOME}/GoogleAppEngine/war
+#$GAE_JAVA_SDK_HOME/bin/appcfg.sh ${JAVA_OPTS} --enable_jar_splitting update ${PROJECT_HOME}/GoogleAppEngine/war
 $GAE_JAVA_SDK_HOME/bin/appcfg.sh --use_java7 --enable_jar_splitting update ${PROJECT_HOME}/war
-#$GAE_JAVA_SDK_HOME/bin/appcfg.sh --no_cookies --use_java7 --enable_jar_splitting update ${PROJECT_HOME}/GoogleAppEngine/war
+#$GAE_JAVA_SDK_HOME/bin/appcfg.sh ${JAVA_OPTS} --no_cookies --use_java7 --enable_jar_splitting update ${PROJECT_HOME}/GoogleAppEngine/war

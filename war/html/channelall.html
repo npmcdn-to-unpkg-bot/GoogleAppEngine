@@ -22,6 +22,11 @@
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap-dropdown.min.js"></script>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap-collapse.min.js"></script>
     <!-- end bootstrap 2.x stuff -->
+    <!--<script type="text/javascript" src='../jquery/jquery.srt.js'></script>-->
+    <script src="../jquery/purl.js" type="text/javascript"></script>
+    <!--<script type="text/javascript" src='../jquery/YoutubeSubtitiles.js'></script>-->
+    <!-- http://ajax.cdnjs.com/ajax/libs/galleria/1.2.9/galleria.min.js -->
+    <!--<script type="text/javascript" src='//ajax.cdnjs.com/ajax/libs/galleria/1.2.9/galleria.min.js'></script>-->
     <script type="text/javascript" src='../jquery/jquery.srt.js'></script>
     <!-- http://ajax.cdnjs.com/ajax/libs/galleria/1.2.9/galleria.min.js -->
     <link href="../parse/css/tabs.css" rel="stylesheet">
@@ -34,6 +39,16 @@
         /*ul.play-link:hover, a.play-link:hover {*/
         /*background-color: pink;*/
         /*}*/
+/*<<<<<<< HEAD*/
+        /*.galleria-loader {*/
+            /*top:50%;*/
+            /*left:50%;*/
+        /*}*/
+        /*.galleria-container {*/
+            /*top: 10px;*/
+            /*/!*height: 500px;  *!//!* android friendly! *!/*/
+            /*height: auto;  /!* android friendly! *!/*/
+/*=======*/
         .galleria-container {
             top: 10px;
             height: 500px;
@@ -52,6 +67,32 @@
         /*.galleria-thumbnails {*/
         /*height: 100px;*/
         /*}*/
+
+        /** =============================== begin of mobile specific styles =============================== */
+        h2 {
+            margin-top: 44px;
+        }
+        /* iPhone 2G-4S in portrait and landscape (source: http://stephen.io/mediaqueries/) */
+        @media only screen
+        and (min-device-width : 320px)
+        and (max-device-width : 480px) {
+            h2 {
+                margin-top: 0px;
+            }
+        }
+        /** iPhone 5 portrait and landscape (source: http://stephen.io/mediaqueries/) */
+        @media only screen
+        and (min-device-width : 320px)
+        and (max-device-width : 568px) {
+            h2 {
+                margin-top: 0px;
+            }
+        }
+        /* IE devices styles only */
+        @-ms-viewport {
+            width: device-width;
+        }
+        /** =============================== end of mobile specific styles =============================== */
     </style>
     <script>
         /** this has to be BEFOFE requireJS for it to work! */
@@ -71,21 +112,18 @@
         }
         //        }
     </script>
-    <script>var require = { urlArgs: 'a003' };</script>
+    <script>var require = { urlArgs: 'a010' };</script>
     <script type="text/javascript" src="../js/require.js" data-main="../js/main-channelall"></script>
 </head>
-<body ng-controller="ctrlRead">
-<!--
-<body>
--->
+<body ng-controller="MovieController">
 <div id="fb-root"></div>
 <!--<div id="header" class="row-fluid">-->
-    <!--<div class="span6">-->
-        <!--<div ng-show="!backendReady">-->
-            <!--&nbsp;<img src="/images/ajax-loader-sm-wait-transbg.gif" id="loading-indicator" alt="processing" />-->
-            <!--&nbsp;Processing (can be up to 20 seconds) ...<p>-->
-        <!--</div>-->
-    <!--</div>-->
+<!--<div class="span6">-->
+<!--<div ng-show="!backendReady">-->
+<!--&nbsp;<img src="/images/ajax-loader-sm-wait-transbg.gif" id="loading-indicator" alt="processing" />-->
+<!--&nbsp;Processing (can be up to 20 seconds) ...<p>-->
+<!--</div>-->
+<!--</div>-->
 <!--</div>-->
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div id="processStatus" class="pull-left" style="padding-top:10px;padding-left:20px;" ng-show="!backendReady">
@@ -99,30 +137,10 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <div class="brand" id="serviceName" style="padding-left:20px;">...</div>
+            <div class="brand" id="serviceName" style="padding-left:20px;"></div>
             <div class="nav-collapse collapse">
                 <ul class="nav">
                     <li><a id="homeLink" href="#"><span id="homeText">Home</span></a></li>
-                    <!--
-                                        <li class="dropdown">
-                                            <a id="manageLink" data-toggle="dropdown" class="dropdown-toggle" href="#">Manage <b class="caret"></b></a>
-                                            <ul class="dropdown-menu">
-                                                <li class="nav-header">Collections</li>
-                                                <li><a class="here" id="manageCollections" href="javascript:void(0);" onclick="location.href='/mcrud/movie.html?username=' + $.url().param('username') + '&amp;logintype=' + $.url().param('logintype');">Collections</a></li>
-                                                <li><a href="#">Songs</a></li>
-                                                <li><a href="#">RSS</a></li>
-                                                &lt;!&ndash;<li class="divider"></li>&ndash;&gt;
-                            <li class="nav-header">Channels</li>
-                            <li><a id="manageChannels" href="javascript:void(0);" onclick="location.href='/html/channel.html?username=' + $.url().param('username') + '&amp;logintype=' + $.url().param('logintype');">Channel</a></li>
-                            <li><a href="#">Live Feeds</a></li>
-                            <li class="nav-header">Schedule</li>
-                            <li><a id="manageShowtime" href="javascript:void(0);" onclick="location.href='/html/calendar.html?username=' + $.url().param('username') + '&amp;logintype=' + $.url().param('logintype');">Calendar</a></li>
-                            <li class="nav-header">2Share</li>
-                            <li><a id="sharedCollections" href="javascript:void(0);" onclick="location.href='/html/shared.html?username=' + $.url().param('username') + '&amp;logintype=' + $.url().param('logintype');">Shared</a></li>
-                            <li><a href="#">Others</a></li>
-                        </ul>
-                    </li>
--->
                     <li class="active"><a id="playview1" href="javascript:void(0);" ng-click="play();">Play Now</a></li>
                     <li class="dropdown">
                         <a id="aboutLink" data-toggle="dropdown" class="dropdown-toggle" href="#">About <b class="caret"></b></a>
@@ -160,9 +178,17 @@
 <div ng-show="error_message" ng-bind-template="&nbsp;{{error_message}}"></div>
 
 <style>
-    #galleria0 { z-index:-100; position: absolute; top:150px; width:99%; height:480px; background: #000 }
-    #galleria1 { z-index:-100; position: absolute; top:85px; width:99%; height:640px; background: #000 }
-    #galleria2 { z-index:-100; position: absolute; top:85px; width:99%; height:640px; background: #000 }
+/*<<<<<<< HEAD*/
+    /*#galleria0 { z-index:-100; position: absolute; top:28px; width:99%; height:80%; background: #000 } /* video - not mobile friendly */
+    #galleria0 { z-index:-100; position: absolute; top:150px; width:99%; height:80%; background: #000 }  /* video + subtitle and works better on mobile !!! */
+    /*#galleria0 { z-index:-100; position: absolute; top:150px; width:99%; height:480px; background: #000 }*/
+    #galleria1 { z-index:-100; position: absolute; top:85px; width:99%; height:640px; background: #000 }  /* image */
+    #galleria2 { z-index:-100; position: absolute; top:85px; width:99%; height:640px; background: #000 }  /* text/rss */
+/*=======*/
+    /*#galleria0 { z-index:-100; position: absolute; top:150px; width:99%; height:480px; background: #000 }*/
+    /*#galleria1 { z-index:-100; position: absolute; top:85px; width:99%; height:640px; background: #000 }*/
+    /*#galleria2 { z-index:-100; position: absolute; top:85px; width:99%; height:640px; background: #000 }*/
+/*>>>>>>> 2eb925d094e6ec5a442cea17398f6141cb3a3148*/
     .galleria-info-text, .galleria-info-description {
         zoom: 1.5;
         display: inline;
@@ -216,7 +242,11 @@ http://support.galleria.io/kb/getting-started/quick-start
     <input id="i19" type=hidden value="" data-description="">
 </div>
 -->
+<!--<<<<<<< HEAD-->
+<!--<div id="title" style="z-index:500;margin-top:0px;margin-left:auto;margin-right:auto;width:100%;"></div>-->
+<!--=======-->
 <div id="title" style="margin-top:0px;margin-left:auto;margin-right:auto;width:100%;"></div>
+<!--&gt;>>>>>> 2eb925d094e6ec5a442cea17398f6141cb3a3148-->
 <div id="galleria0">
     <a id="v0" href=""><span class="video"></span></a>
     <a id="v1" href=""><span class="video"></span></a>
@@ -241,7 +271,7 @@ http://support.galleria.io/kb/getting-started/quick-start
 </div>
 
 <!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ FUTURE ENHANCEMENTS !!! :-) $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
-<!-- 
+<!--
 <div id="galleria1" style="left:-9999px">
     <img id="img0" src="../images/cross.jpg" alt="" />
     <img id="img1" src="../images/cross.jpg" alt="" />
@@ -263,7 +293,7 @@ http://support.galleria.io/kb/getting-started/quick-start
 <!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ FUTURE ENHANCEMENTS !!! :-) $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
 
 <div id=’facebookfeedholder’></div>
-</body>
+<script src="../js/prefsmovie.js" type="text/javascript"></script>
 <script>
     var showLog = false;
     var gHeaderReleaseBuildTitle;
@@ -288,7 +318,7 @@ http://support.galleria.io/kb/getting-started/quick-start
                     col3 === 'build' &&
                     col4 === 'title' &&
                     col5 === 'text'
-                    ) {
+            ) {
                 gHeaderReleaseBuildTitle = col6;
                 document.getElementById("releaseLabel").innerHTML = col6;
                 showLog && window.console && console.log("movie.html:gHeaderReleaseBuildTitle set [" + gHeaderReleaseBuildTitle + "]");
@@ -297,7 +327,7 @@ http://support.galleria.io/kb/getting-started/quick-start
                     col3 === 'main' &&
                     col4 === 'brand' &&
                     col5 === 'text'
-                    ) {
+            ) {
                 if(col6 === undefined) col6 = '';
                 gServiceName = col6;
                 document.getElementById("serviceName").innerHTML = col6;
@@ -307,7 +337,7 @@ http://support.galleria.io/kb/getting-started/quick-start
                     col3 === 'main' &&
                     col4 === 'playview' &&
                     col5 === 'text'
-                    ) {
+            ) {
                 gHomeText = col6;
                 document.getElementById("homeText").innerHTML = col6;
                 showLog && window.console && console.log("movie.html:gHomeText set [" + gHomeText + "]");
@@ -316,70 +346,25 @@ http://support.galleria.io/kb/getting-started/quick-start
                     col3 === 'main' &&
                     col4 === 'playview' &&
                     col5 === 'url'
-                    ) {
+            ) {
                 gHomeLink = col6;
                 $("#homeLink").attr('href', gHomeLink);
                 showLog && window.console && console.log("movie.html:gHomeLink set [" + gHomeLink + "]");
             }
-            /*
-             else
-             if (col1 === 'manage' &&
-             col2 === 'collections' &&
-             col3 === 'main' &&
-             col4 === 'title' &&
-             col5 === 'text'
-             ) {
-             document.getElementById("manageCollections").innerHTML = col6;
-             }
-             else if (col1 === 'manage' &&
-             col2 === 'showtime' &&
-             col3 === 'main' &&
-             col4 === 'title' &&
-             col5 === 'text'
-             ) {
-             document.getElementById("manageShowtime").innerHTML = col6;
-             $("#manageShowtime").show();
-             } else if (col1 === 'manage' &&
-             col2 === 'channels' &&
-             col3 === 'main' &&
-             col4 === 'title' &&
-             col5 === 'text'
-             ) {
-             document.getElementById("manageChannelsMain").innerHTML = col6;
-             $("#manageChannelsMain").show();
-             } else if (col1 === 'manage' &&
-             col2 === 'channels' &&
-             col3 === 'image' &&
-             col4 === 'title' &&
-             col5 === 'active' &&
-             col6 === 'TRUE'
-             ) {
-             $("#manageChannelsImage").show();
-             } else if (col1 === 'manage' &&
-             col2 === 'channels' &&
-             col3 === 'data' &&
-             col4 === 'title' &&
-             col5 === 'active' &&
-             col6 === 'TRUE'
-             ) {
-             $("#manageChannelsData").show();
-             } else if (col1 === 'manage' &&
-             col2 === 'channels' &&
-             col3 === 'image' &&
-             col4 === 'title' &&
-             col5 === 'text'
-             ) {
-             document.getElementById("manageChannelsImage").innerHTML = col6;
-             } else if (col1 === 'manage' &&
-             col2 === 'channels' &&
-             col3 === 'data' &&
-             col4 === 'title' &&
-             col5 === 'text'
-             ) {
-             document.getElementById("manageChannelsData").innerHTML = col6;
-             }
-             */
+            else if (col1 === 'manage' &&
+                    col2 === 'playview' &&
+                    col3 === 'advanced' &&
+                    col4 === 'subtitle' &&
+                    col5 === 'active' &&
+                    col6 === 'TRUE'
+            ) {
+                $('#subtitleDiv').show();
+            }
+            baseImportGSS(json);
         }
     }
 </script>
+<div id="subtitleDiv" style="top:50px;height:72px;">...</div>
+<!--<div id="subtitleDiv" style="top:360px;height:72px;">...</div>-->
+</body>
 </html>

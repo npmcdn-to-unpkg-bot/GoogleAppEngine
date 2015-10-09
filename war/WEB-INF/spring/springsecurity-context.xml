@@ -14,6 +14,7 @@
 		http://forum.springsource.org/showthread.php?88940-Help-migrating-Spring-security-2.5.6-filters-to-3.0.2-filters
 		http://code.google.com/p/googleappengine/wiki/WillItPlayInJava
 	-->
+	<http pattern="/error/**" security="none"/>
 	<!-- avoid redirect loop with /login.jsp -->
 	<http pattern="/login.jsp" security="none"/>
 	<http pattern="/web/**" security="none"/>
@@ -124,6 +125,8 @@
 
 		<form-login username-parameter="password" password-parameter="j_password" login-page="/login.jsp" login-processing-url="/j_spring_security_check" authentication-failure-url="/login.jsp" />
  		<logout logout-success-url="/login.jsp" logout-url="/logout" invalidate-session="true" />
+		<!-- http://www.baeldung.com/spring-security-session -->
+		<session-management session-fixation-protection="newSession"/>
 	</http>
 
 	<authentication-manager alias="authenticationManager">

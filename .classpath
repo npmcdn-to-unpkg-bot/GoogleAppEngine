@@ -2,14 +2,6 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/tapestry-core-5.3.7.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/tapestry-func-5.3.7.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/tapestry-ioc-5.3.7.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/tapestry-json-5.3.7.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/tapestry-test-5.3.7.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/tapestry-yuicompressor-5.3.7.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/tapestry5-annotations-5.3.7.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/plastic-5.3.7.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/slf4j-api-1.6.1.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/compass-2.3.0-beta1.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/joda-time-1.6.2.jar"/>
@@ -59,5 +51,13 @@
 	<classpathentry kind="lib" path="war/WEB-INF/lib/log4j-1.2.17.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/commons-fileupload-1.2.2.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/commons-codec-1.5.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/plastic-5.3.8.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/tapestry-core-5.3.8.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/tapestry-func-5.3.8.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/tapestry-ioc-5.3.8.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/tapestry-json-5.3.8.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/tapestry-test-5.3.8.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/tapestry-yuicompressor-5.3.8.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/tapestry5-annotations-5.3.8.jar"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>

@@ -115,17 +115,17 @@ public class TemplateStart {
 	public Object onActionFromDelete(Long id) {
 		Object retVal = null;
 		
-		if(!delete.isAuthorized()) /** hackable? */ {
-	        HttpServletRequest request = requestGlobals.getHTTPServletRequest(); 
-			delete.setUri(request.getRequestURL().toString());
-			delete.setAction("template:delete:genius");
-			delete.setMagicKey(":magickey");
-			retVal = delete;
-		} else
-		if(delete.isAuthorized()) {
+//		if(!delete.isAuthorized()) /** hackable? */ {
+//	        HttpServletRequest request = requestGlobals.getHTTPServletRequest(); 
+//			delete.setUri(request.getRequestURL().toString());
+//			delete.setAction("template:delete:genius");
+//			delete.setMagicKey(":magickey");
+//			retVal = delete;
+//		} else
+//		if(delete.isAuthorized()) {
 			beanManager.delete(id);
 			delete.setAuthorized(false);	/** TBD - the caller does not set this but rather the security service */
-		}
+//		}
 		
 		return retVal;
 	}

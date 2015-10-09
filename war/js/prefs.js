@@ -58,7 +58,11 @@ if(location.hostname.indexOf('aware') > -1 ||
     //2ShareIt
     //ref implementation
     //https://docs.google.com/spreadsheet/pub?key=0Aov1RWgHNTwLdFZyc3V1ZllPWU4yVUV2c3FQVDZEMEE&output=html
-    loadExternalScriptFile("https://spreadsheets.google.com/feeds/list/0AkAXtx48HdvbdE00RVp5OW4yQUl6RGZPcVFCY05NX2c/1/public/values?alt=json-in-script&amp;callback=importGSS");
+//<<<<<<< HEAD
+    loadExternalScriptFile("https://spreadsheets.google.com/feeds/list/1rHd8FkYXBQO7H7J0qcC7PMLQ0SjU4aWqKcUWSRTOLgc/1/public/values?alt=json-in-script&amp;callback=importGSS");
+//=======
+//    loadExternalScriptFile("https://spreadsheets.google.com/feeds/list/0AkAXtx48HdvbdE00RVp5OW4yQUl6RGZPcVFCY05NX2c/1/public/values?alt=json-in-script&amp;callback=importGSS");
+//>>>>>>> 2eb925d094e6ec5a442cea17398f6141cb3a3148
 }
 else
 if(location.hostname.indexOf('service') > -1 ||
@@ -66,6 +70,7 @@ if(location.hostname.indexOf('service') > -1 ||
     location.hostname.indexOf('lacaltunnel.me') > -1    //support localtunnel.me for moble debugging
 ) {
     //common
+    //https://docs.google.com/spreadsheets/d/1nZ5bITADCBoiUXnExeCy1ejaJOZBj6eyHwiuP1409aY/edit#gid=0
     loadExternalScriptFile("https://spreadsheets.google.com/feeds/list/0AkAXtx48HdvbdE00RVp5OW4yQUl6RGZPcVFCY05NX2c/1/public/values?alt=json-in-script&amp;callback=importGSS");
 }
 

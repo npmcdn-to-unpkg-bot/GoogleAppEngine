@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import app.common.Constants;
+import app.common.SecurityUtils;
 import app.model.Movie;
 import app.model.User;
 import app.model.UserEndpoint;
@@ -47,6 +48,12 @@ public class CrudService extends HttpServlet {
 		return retVal;
 	}
 
+	/**
+	 * Main method to call any supporting domain objects like a Movie by invoking their corresponding parseRequest(). See #1.
+	 * @param request
+	 * @return
+	 * @throws Exception
+	 */
 	private Object handleRequest(HttpServletRequest request) throws Exception {
 		Object item = null;
 
@@ -58,7 +65,7 @@ public class CrudService extends HttpServlet {
 		System.out.println("CrudService:handleRequest() uid = [" + uid + "] received");
 		while (it.hasNext()) {
 			h = (CrudServiceCallback) it.next();
-			item = h.parseRequest(request);
+			item = h.parseRequest(request);	//**** #1 here !!! ****
 			if (item != null) {
 				// get the type of operation
 				String action = getValue(request, "action");
@@ -184,6 +191,7 @@ public class CrudService extends HttpServlet {
 
 	private void handleServiceRequest(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		try {
+//			SecurityUtils.handleOWASPSession(request, response);	//OWASP
 			//response.setHeader("Cache-Control","no-cache");
 			// Set to expire far in the past.
 			response.setHeader("Expires", "-1");
@@ -198,6 +206,13 @@ public class CrudService extends HttpServlet {
 			response.setHeader("Pragma", "no-cache");
 			//=== set the content type we are sending back as JSON
 			//response.setContentType("application/json");
+			
+			//=== avoid "POST http://localhost:8888/ws/crud 403 (Forbidden)" from AngularJS 1.4
+			response.addHeader("Access-Control-Allow-Origin", "*");
+			response.addHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
+			response.addHeader("Access-Control-Max-Age", "3600");
+			response.addHeader("Access-Control-Allow-Headers", "x-requested-with");
+			
 			//=== supports any language (UNICODE) / i18n stuff with two lines of codes that specify "utf-8"
 			response.setCharacterEncoding("UTF-8");
 //			response.setContentType("text/json; charset=UTF-8");	//text/json type avoided: "Unexpected end of input" during jQuery's json.parse() on Chrome/Webkit browsers unfortunately

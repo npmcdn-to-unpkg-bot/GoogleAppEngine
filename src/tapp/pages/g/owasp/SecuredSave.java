@@ -17,6 +17,9 @@ import org.apache.tapestry5.services.RequestGlobals;
 
 import cloudserviceapi.service.manager.SecuredManager;
 
+import com.appspot.cloudserviceapi.common.BackupService;
+import com.appspot.cloudserviceapi.common.SettingsDBUtils;
+import com.appspot.cloudserviceapi.common.StringUtil;
 import com.appspot.cloudserviceapi.common.TapestryUtil;
 import com.appspot.cloudserviceapi.data.Datastore;
 import com.appspot.cloudserviceapi.data.Persistence;
@@ -57,20 +60,48 @@ public class SecuredSave {
 	//@SessionState	//didn't work
 	private Boolean justSaved;
 	
+	/** Backup Service Host */
+	public String getBackupServiceHost() {
+		return SettingsDBUtils.getSettings("backup.service.ip");
+	}
+
+	/** Service ID for Backup Service */
+	public String getUniqueSID() {
+		return com.appspot.cloudserviceapi.data.AppEngine.getName();
+	}
+
+	public String getUniqueWhat() {
+		return BackupService.getUniqueWhat(myBean);
+	}	
+
+	public String getUniqueCategory() {
+		return BackupService.getUniqueCategory(myBean);
+	}	
+
+	public String getDetailsInASCII() {
+		String retVal = "";
+		try {
+			retVal = myBean.getDetails()!=null?StringUtil.toASCIICode(myBean.getDetails()):"";
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return retVal;
+	}
+
 	public Object onActivate(Long id) {
 		Object retVal = null;
 		
-		if(CommonService.isAuthenticated()) {
-			//TBD - currently the same as authorized
-			System.out.println("authenticated:Template id '" + id + "'");
-			if (id.equals(0L)) {
-				myBean = new Secure();
-			} else {
-				myBean = (Secure) beanManager.getSecure(id);
-			}
-			this.id = id;
-		} else
-		if(edit.isAuthorized()) {
+////		if(CommonService.isAuthenticated()) {
+//			//TBD - currently the same as authorized
+//			System.out.println("authenticated:Template id '" + id + "'");
+//			if (id.equals(0L)) {
+//				myBean = new Secure();
+//			} else {
+//				myBean = (Secure) beanManager.getSecure(id);
+//			}
+//			this.id = id;
+//		} else
+//		if(edit.isAuthorized()) {
 			System.out.println("authorized:Template id '" + id + "'");
 			if (id.equals(0L)) {
 				myBean = new Secure();
@@ -78,14 +109,15 @@ public class SecuredSave {
 				myBean = (Secure) beanManager.getSecure(id);
 			}
 			this.id = id;
-		} else {
-	        HttpServletRequest request = requestGlobals.getHTTPServletRequest(); 
-			edit.setUri(request.getRequestURL().toString());
-			edit.setAction("template:update:secured");
-			edit.setMagicKey(":magickey");
-			retVal = edit;
-		}
-		
+//		} else {
+//	        HttpServletRequest request = requestGlobals.getHTTPServletRequest(); 
+//			edit.setUri(request.getRequestURL().toString());
+//			edit.setAction("template:update:secured");
+//			edit.setMagicKey(":magickey");
+//			retVal = edit;
+//		}
+//		
+
 		return retVal;
 	}
 

@@ -3,7 +3,7 @@ var GALLERIA_VERSION = '1.2.9';
 var GALLERIA_LIMIT = 10;     //limit to 10 movies/images only
 var galleria_type = 0;      //0 - video; 1 - image; 2 - RSS
 //var galleriaData = [];
-var cBuild = '0166';
+var cBuild = '0166a';
 var gDefaultPhoto = "../images/stock-photo-closeup-of-a-photographic-lens-106033496.jpg";
 //var gYTPlayer;  //global youtube player
 var ytplayer;
@@ -26,8 +26,8 @@ function loadMovie(username) {
 
     $.ajax({
         type: "POST",
-//        url: "/ws/crud?type=modelCalendar&uid=" + username + "&filter=next5",
-        url: "/ws/crud?type=modelMovie&uid=" + username + "&filter=next5",
+//        url: gCacheProxy + "/ws/crud?type=modelCalendar&origin=" + location.hostname + "&uid=" + username + "&filter=next5",
+        url: gCacheProxy + "/ws/crud?type=modelMovie&origin=" + location.hostname + "&uid=" + username + "&filter=next5",
         async: false,
         success: function(data) {
 
@@ -208,7 +208,7 @@ function loadMovieAll(username, log) {
 
     $.ajax({
         type: "POST",
-        url: "/ws/crud?type=modelMovie&uid=" + username + "&filter=next5",
+        url: gCacheProxy + "/ws/crud?type=modelMovie&origin=" + location.hostname + "&uid=" + username + "&filter=next5",
         async: false,
         success: function(data) {
 
@@ -272,11 +272,12 @@ function loadMovieAll(username, log) {
                 //=== http://support.galleria.io/kb/getting-started/quick-start
                 Galleria.loadTheme('/galleria-' + GALLERIA_VERSION + '/themes/classic/galleria.classic.min.js?ts=' + (new Date()).getTime());
                 Galleria.configure({
-                    dummy: '/images/noimage.jpg',
-                    imageCrop: true,
+                    //dummy: '/images/noimage.jpg',
+                    //imageCrop: true,
                     transition: 'fade',
                     carousel: true
                     , thumbnails: 'numbers'
+                    //, thumbnails: true
                 });
 
                 Galleria.run('#galleria' + galleria_type,{
@@ -357,7 +358,7 @@ function getNextShuffledUrl(startDatetime) {
 
     $.ajax({
         type: "GET",
-        url: "/ws/crud?type=modelMovie&uid=" + userid + "&filter=next5",
+        url: gCacheProxy + "/ws/crud?type=modelMovie&origin=" + location.hostname + "&uid=" + userid + "&filter=next5",
         //async: false,
         success: function(data) {
             if(data !== undefined) {
@@ -402,181 +403,241 @@ function getSubTitle(text) {
 }
 
 /** load movies in a random order for playback */
-function loadMovieShuffle(username, log) {
+function loadMovieShuffle(username) {
     //playNow();  //just a test
+    console && console.log("Parse username[" + username + "]");
 
     var stat = false;
     galleriaData = [];
     //username = "pub";
 
-    $.ajax({
-        type: "POST",
-        url: "/ws/crud?type=modelMovie&uid=" + username + "&filter=next5",
-        async: false,
-        success: function(data) {
+    var doIt = function(data) {
 
-            ////window.console && console.log("calendar event created, response = [" + data + "]");
-            if(typeof data !== 'undefined') {
-                var obj = jQuery.parseJSON(data);
-                var YOUTUBE_INDEX = 1;	//=== assumption: youtube is the second results!!!
-                var filterStr;
-                $("#playingOrsoon").attr("data-datetime", "1970,1,1,0,0,0");
-                $("#playingOrsoon").val("none");
-                obj = shuffle(obj);     //thanks to http://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array-in-javascript
-                filterStr = $.url().param('filter');     //support filter/hashtag
-                var j;
-                var temp = {};
-                for (var mcount1 = 0; mcount1 < obj.length; mcount1++) {
-                    if (mcount1 === App.header_index) {
-                        //=== parsing the metadata first
+        ////window.console && console.log("calendar event created, response = [" + data + "]");
+        if (typeof data !== 'undefined') {
+            var obj = jQuery.parseJSON(data);
+            var YOUTUBE_INDEX = 1;	//=== assumption: youtube is the second results!!!
+            var filterStr;
+            $("#playingOrsoon").attr("data-datetime", "1970,1,1,0,0,0");
+            $("#playingOrsoon").val("none");
+            obj = shuffle(obj);     //thanks to http://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array-in-javascript
+            filterStr = $.url().param('filter');     //support filter/hashtag
+            var j;
+            var temp = {};
+            for (var mcount1 = 0; mcount1 < obj.length; mcount1++) {
+                if (mcount1 === App.header_index) {
+                    //=== parsing the metadata first
 //                            $scope.page.server_number = obj[i].pageNumber;
 //                            $scope.page.server_max = obj[i].maxPerPage;
 //                            $scope.page.totalItem = obj[i].totalItem;
 //                            $scope.page.totalPage = obj[i].totalPage;
 //                            $scope.serviceCheck($scope.page);
-                    } else {
-                        //TODO need to check for empty movie here!!!
-                        try {
-                            //if(obj[mcount1].search_results && typeof obj[mcount1].search_results.value !== 'undefined') {
-                            //    temp = jQuery.parseJSON(obj[mcount1].search_results.value);
-                            //}
-                            var desc;
-                            if(typeof obj[mcount1].description !== 'undefined')
-                                desc = obj[mcount1].description.value;
-                            else
-                                desc = obj[mcount1].description;
-                            j = {id: obj[mcount1].id,
-                                //movie_url: temp[YOUTUBE_INDEX].movie_url,
-                                datetime: obj[mcount1].event_pattern, title: obj[mcount1].title, description: desc, url: obj[mcount1].u_r_l, createDate: obj[mcount1].modified, subtitle: getSubTitle(desc)};
-                            //alert('j.description = [' + j.description + "] filterStr = [" + filterStr + "]");
-                            //window.console && console.log('2aloadMoviePub: data[' + mcount1 + '] = id=' + j.id + " title=" + j.title + " desc=" + j.description + " url=" + j.url + " createDate=" + j.createDate);
-                            if (typeof j.url !== 'undefined') {
-                                if (typeof filterStr !== 'undefined' && filterStr.trim() !== '') {
-                                    if (j.description && j.description.indexOf(filterStr.trim()) > -1) {
-                                        galleriaData = handleMovie(j, galleriaData);
-                                        moviePreviewCount++;
-                                    }
-                                } else {
+                } else {
+                    //TODO need to check for empty movie here!!!
+                    try {
+                        //if(obj[mcount1].search_results && typeof obj[mcount1].search_results.value !== 'undefined') {
+                        //    temp = jQuery.parseJSON(obj[mcount1].search_results.value);
+                        //}
+                        var desc;
+                        if (typeof obj[mcount1].description !== 'undefined')
+                            desc = obj[mcount1].description.value;
+                        else
+                            desc = obj[mcount1].description;
+                        j = {
+                            id: obj[mcount1].id,
+                            //movie_url: temp[YOUTUBE_INDEX].movie_url,
+                            datetime: obj[mcount1].event_pattern,
+                            title: obj[mcount1].title,
+                            description: desc,
+                            url: obj[mcount1].u_r_l,
+                            createDate: obj[mcount1].modified,
+                            subtitle: getSubTitle(desc)
+                        };
+                        //alert('j.description = [' + j.description + "] filterStr = [" + filterStr + "]");
+                        //window.console && console.log('2aloadMoviePub: data[' + mcount1 + '] = id=' + j.id + " title=" + j.title + " desc=" + j.description + " url=" + j.url + " createDate=" + j.createDate);
+                        if (typeof j.url !== 'undefined') {
+                            if (typeof filterStr !== 'undefined' && filterStr.trim() !== '') {
+                                if (j.description && j.description.indexOf(filterStr.trim()) > -1) {
                                     galleriaData = handleMovie(j, galleriaData);
                                     moviePreviewCount++;
                                 }
+                            } else {
+                                galleriaData = handleMovie(j, galleriaData);
+                                moviePreviewCount++;
                             }
                         }
-                        catch (e) {
-                            //alert('Oops, I am dead :( Please refresh me? :)');
-                            console && console.log('channel.js loadMoviePub 1: An error has occurred: ' + e.message + ' - The application will not function correctly. Please contact the developer!');
-                        }
+                    }
+                    catch (e) {
+                        //alert('Oops, I am dead :( Please refresh me? :)');
+                        console && console.log('channel.js loadMoviePub 1: An error has occurred: ' + e.message + ' - The application will not function correctly. Please contact the developer!');
                     }
                 }
-                //alert('total movie = ' + moviePreviewCount);
-                if(moviePreviewCount === 0) {
-                    var msg = 'There is no movie in the collection.';
-                    //alert && alert(msg);
-                    console && console.error(msg);
-                }
+            }
+            //alert('total movie = ' + moviePreviewCount);
+            if (moviePreviewCount === 0) {
+                var msg = 'There is no movie in the collection.';
+                //alert && alert(msg);
+                console && console.log(msg);
+            }
 
-                //window.console && console.log("2 loading galleria ...");
-                //=== http://support.galleria.io/kb/getting-started/quick-start
-                Galleria.loadTheme('/galleria-' + GALLERIA_VERSION + '/themes/classic/galleria.classic.min.js?ts=' + (new Date()).getTime());
-                Galleria.configure({
-                    //dummy: '/images/noimage.jpg',
-                    //imageCrop: true,
-                    transition: 'fade'
-                    , carousel: true
-                    //http://galleria.io/docs/options/wait/
-                    , wait: true
-                    , thumbnails: 'numbers'
-                    , thumbQuality: 'auto'
-                    //http://galleria.io/docs/options/youtube/
-                    , youtube: { enablejsapi: 1, autoplay: 1 }
-                });
+            //window.console && console.log("2 loading galleria ...");
+            //=== http://support.galleria.io/kb/getting-started/quick-start
+            Galleria.loadTheme('/galleria-' + GALLERIA_VERSION + '/themes/classic/galleria.classic.min.js?ts=' + (new Date()).getTime());
+            Galleria.configure({
+                //dummy: '/images/noimage.jpg',
+                //imageCrop: true,
+                transition: 'fade'
+                , carousel: true
+                //http://galleria.io/docs/options/wait/
+                , wait: true
+                , thumbnails: 'numbers'
+                //, thumbnails: true
+                , lightbox: true
+                , trueFullscreen: true
+                , thumbQuality: 'auto'
+                //http://galleria.io/docs/options/youtube/
+                , youtube: {enablejsapi: 1, autoplay: 1}
+            });
 
 //                Galleria.run('#galleria' + galleria_type, {
 //                    dummy: '/images/noimage.jpg'
 //                    //,autoplay: 1000
 //                });
-                Galleria.run('#galleria' + galleria_type, {
-                    dataSource: galleriaData,
-                    showInfo: false,    /* turn off text 1 of 2 */
-                    _toggleInfo: false  /* turn off text 2 of 2 */
+            Galleria.run('#galleria' + galleria_type, {
+                dataSource: galleriaData,
+                showInfo: false, /* turn off text 1 of 2 */
+                _toggleInfo: false  /* turn off text 2 of 2 */
+            });
+
+            Galleria.ready(function () {
+                galleria = this;
+                //var player;
+                this.attachKeyboard({
+                    right: this.next,
+                    left: this.prev
                 });
-
-                Galleria.ready(function() {
-                    galleria = this;
-                    //var player;
-                    this.attachKeyboard({
-                        right: this.next,
-                        left: this.prev
-                    });
-                    this.bind('thumbnail', function(e) {
-                        e.thumbTarget.alt = 'My SEO optimized alt tag';
-                    });
-                    //=== http://support.galleria.io/discussions/questions/1502-stop-autoplay-on-any-kind-of-interaction
-                    var stateChange = function(e) {
-                        if ( e.data == 1 ) {
-                            $('#galleria').data('galleria').pause();
-                        }
-                    };
-                    this.bind('image', function(e) {
-                        if(e.galleriaData.iframe) {
-                            var temp = 'if'+new Date().getTime();
-                            e.imageTarget.id = temp;
-                            galleria.player = new YT.Player(temp, {
-                                playerVars: { 'autoplay': 1, 'controls': 1 },
-                                events: {
-                                    'onReady': onPlayerReady,
-                                    "onStateChange": onPlayerStateChange
-                                }
-                            });
-                        } else {
-                            iframe = false;
-                        }
-
-                        //=== http://support.galleria.io/discussions/questions/865-extending-galleria-external-play-buttoncaptions-etc
-                        /* get galleria info "out of" galleria stage! */
-                        data = e.galleriaData;
-                        if(data) {
-                            $('#title').html('<h2>' + data.title + '</h2><p>' + data.description + '</p>');
-                        }
-                    });
-
-//                this.bind("thumbnail", function(e) {
-//                    Galleria.log(this); // the gallery scope
-//                    Galleria.log(e) // the event object
-//                });
-
-                    $("#processStatus").hide();
+                this.bind('thumbnail', function (e) {
+                    e.thumbTarget.alt = 'My SEO optimized alt tag';
                 });
-                stat = true;
-                //window.console && console.log("before galleria event ... 3");
-                Galleria.on('loadstart', function(e) {
-                    var fSubtitle, trans;
-                    //trans = .5;
-                    var trans = 1.0;
-                    var sText = e.galleriaData.subtitle;
-                    if(isValidSubtitle(sText)) {
-                        fSubtitle = '/go/' + sText;
-                        //fSubtitle = '/static/sample.srt';  //just for test
-                        var sub1 = require('subsTitle');
-                        sub1.startSub();
-                    } else {
-                        $("#srt_url_data").val('');
-                        fSubtitle = "";
+                //=== http://support.galleria.io/discussions/questions/1502-stop-autoplay-on-any-kind-of-interaction
+                var stateChange = function (e) {
+                    if (e.data == 1) {
+                        $('#galleria').data('galleria').pause();
                     }
-                    //alert(fSubtitle);
-                    //TODO http://css-tricks.com/forums/topic/is-it-possible-to-adapt-font-size-to-div-width/
-                    $("#subtitleDiv").replaceWith("<div id=\"subtitleDiv\" style=\"top:50px;height:72px;font-size:24px;position: fixed;bottom: 10px;background: rgba(50,50,50,trans);width: 97%;z-index: 2000;color: rgb(220,220,220);text-align: center;\"><input type=\"text\" value=\"" + fSubtitle + "\" style=\"width:50%;height:70%;\" id=\"srt_url_data\" onfocus=\"if(this.value.length==0){this.value='Enter subtitle here (would not work in fullscreen mode for now).';}\"> <a class=\"btn-reverse\" href=\"#\" onclick=\"hideSubtitle();\" id=\"str_url_added\" style=\"margin-bottom:1px;\" name=\"str_url_added\"><i style=\"vertical-align: baseline;\" class=\"icon-remove-sign\"></i></a><label style=\"padding-left:10px;\" id=\"str_load_info\"></label><div class=\"srt\"></div><input alt=\"Delay of subtitles in seconds, can be postive or negative\" type=\"text\" style=\"width:2.5em;position:absolute;left:89%;bottom:9px;\" placeholder=\"<![CDATA[Delay/s]]>\" id=\"srt_delay\"/></div>");
-                    $("#srt_url_data").val(fSubtitle);
+                };
+                this.bind('image', function (e) {
+                    if (e.galleriaData.iframe) {
+                        var temp = 'if' + new Date().getTime();
+                        e.imageTarget.id = temp;
+                        galleria.player = new YT.Player(temp, {
+                            playerVars: {'autoplay': 1, 'controls': 1},
+                            events: {
+                                'onReady': onPlayerReady,
+                                "onStateChange": onPlayerStateChange
+                            }
+                        });
+                    } else {
+                        iframe = false;
+                    }
+
+                    //=== http://support.galleria.io/discussions/questions/865-extending-galleria-external-play-buttoncaptions-etc
+                    /* get galleria info "out of" galleria stage! */
+                    data = e.galleriaData;
+                    if (data) {
+                        $('#title').html('<h2>' + data.title + '</h2><p>' + data.description + '</p>');
+                    }
                 });
-                //window.console && console.log("2.1.0 galleria loaded");
-            }
-        },
-        error: function(jqXHR, error, errorThrown) {
-            var msg = error.mesage;
-            //alert && alert(msg);
-            console && console.error(msg);
+            });
+//            Galleria.run('#galleria' + galleria_type, {
+//                dataSource: galleriaData,
+//                showInfo: false,    /* turn off text 1 of 2 */
+//                _toggleInfo: false  /* turn off text 2 of 2 */
+//            });
+//
+//            Galleria.ready(function() {
+//                galleria = this;
+//                //var player;
+//                this.attachKeyboard({
+//                    right: this.next,
+//                    left: this.prev
+//                });
+//                this.bind('thumbnail', function(e) {
+//                    e.thumbTarget.alt = 'My SEO optimized alt tag';
+//                });
+//                //=== http://support.galleria.io/discussions/questions/1502-stop-autoplay-on-any-kind-of-interaction
+//                var stateChange = function(e) {
+//                    if ( e.data == 1 ) {
+//                        $('#galleria').data('galleria').pause();
+//                    }
+//                };
+//                this.bind('image', function(e) {
+//                    if(e.galleriaData.iframe) {
+//                        var temp = 'if'+new Date().getTime();
+//                        e.imageTarget.id = temp;
+//                        galleria.player = new YT.Player(temp, {
+//                            playerVars: { 'autoplay': 1, 'controls': 1 },
+//                            events: {
+//                                'onReady': onPlayerReady,
+//                                "onStateChange": onPlayerStateChange
+//                            }
+//                        });
+//                    } else {
+//                        iframe = false;
+//                    }
+//
+//                    //=== http://support.galleria.io/discussions/questions/865-extending-galleria-external-play-buttoncaptions-etc
+//                    /* get galleria info "out of" galleria stage! */
+//                    data = e.galleriaData;
+//                    if(data) {
+//                        $('#title').html('<h2>' + data.title + '</h2><p>' + data.description + '</p>');
+//                    }
+//                });
+//
+////                this.bind("thumbnail", function(e) {
+////                    Galleria.log(this); // the gallery scope
+////                    Galleria.log(e) // the event object
+////                });
+//
+//            $("#processStatus").hide();
+//        });
+            stat = true;
+            //window.console && console.log("before galleria event ... 3");
+            Galleria.on('loadstart', function (e) {
+                var fSubtitle, trans;
+                //trans = .5;
+                var trans = 0.5;
+                var sText = e.galleriaData.subtitle;
+                if (isValidSubtitle(sText)) {
+                    fSubtitle = '/go/' + sText;
+                    //fSubtitle = '/static/sample.srt';  //just for test
+                    var sub1 = require('subsTitle');
+                    sub1.startSub();
+                } else {
+                    $("#srt_url_data").val('');
+                    fSubtitle = "";
+                }
+                //alert(fSubtitle);
+                //TODO http://css-tricks.com/forums/topic/is-it-possible-to-adapt-font-size-to-div-width/
+                $("#subtitleDiv").replaceWith("<div id=\"subtitleDiv\" style=\"top:50px;height:72px;font-size:24px;position: fixed;bottom: 10px;background: rgba(50,50,50,"+ trans +");width: 99%;z-index: 2000;color: rgb(220,220,220);text-align: center;\"><input type=\"text\" value=\"" + fSubtitle + "\" style=\"width:50%;height:70%;\" id=\"srt_url_data\" onfocus=\"if(this.value.length==0){this.value='Enter subtitle here (would not work in fullscreen mode for now).';}\"> <a class=\"btn-reverse\" href=\"#\" onclick=\"hideSubtitle();\" id=\"str_url_added\" style=\"margin-bottom:1px;\" name=\"str_url_added\"><i style=\"vertical-align: baseline;\" class=\"icon-remove-sign\"></i></a><label style=\"padding-left:10px;\" id=\"str_load_info\"></label><div class=\"srt\"></div><input alt=\"Delay of subtitles in seconds, can be postive or negative\" type=\"text\" style=\"width:2.5em;position:absolute;left:89%;bottom:9px;\" placeholder=\"<![CDATA[Delay/s]]>\" id=\"srt_delay\"/></div>");
+                $("#srt_url_data").val(fSubtitle);
+            });
+            //window.console && console.log("2.1.0 galleria loaded");
         }
-    });
+    };
+    $.ajax({
+        type: "GET",
+        url: gCacheProxy + "/ws/crud?type=modelMovie&origin=" + location.hostname + "&uid=" + username + "&filter=next5"
+        //,
+        //async: false,
+        //success: function(data) {
+        }).done(doIt).fail(doIt);
+        //,
+        //error: function(jqXHR, error, errorThrown) {
+        //    var msg = error.mesage;
+        //    alert && alert(msg);
+        //    console && console.error(msg);
+        //}
+    //});
 
     return stat;
 }
@@ -769,7 +830,7 @@ function handleChannelType(type, username) {
                     try {
                         $.ajax({
                             type: "POST",
-                            url: "/ws/crud?type=modelMovie&uid=" + username,
+                            url: gCacheProxy + "/ws/crud?type=modelMovie&origin=" + location.hostname + "&uid=" + username,
                             //async: false,
                             success: function(data) {
 

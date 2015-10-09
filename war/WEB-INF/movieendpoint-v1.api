@@ -1,12 +1,12 @@
 {
   "extends" : "thirdParty.api",
   "abstract" : false,
-  "root" : "https://2-share.appspot.com/_ah/api",
+  "root" : "https://chudoonet.appspot.com/_ah/api",
   "name" : "movieendpoint",
   "version" : "v1",
   "defaultVersion" : false,
   "adapter" : {
-    "bns" : "https://2-share.appspot.com/_ah/spi",
+    "bns" : "https://chudoonet.appspot.com/_ah/spi",
     "deadline" : 65.0,
     "type" : "lily"
   },
@@ -24,38 +24,6 @@
     "maxAge" : 0
   },
   "methods" : {
-    "movieendpoint.movieEndpoint.updateMovie" : {
-      "path" : "movie",
-      "httpMethod" : "PUT",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "app.model.MovieEndpoint.updateMovie",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "movieendpoint.movieEndpoint.insertMovie" : {
-      "path" : "movie",
-      "httpMethod" : "POST",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "app.model.MovieEndpoint.insertMovie",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
     "movieendpoint.movieEndpoint.listMovie" : {
       "path" : "movie",
       "httpMethod" : "GET",
@@ -102,6 +70,38 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
+    "movieendpoint.movieEndpoint.insertMovie" : {
+      "path" : "movie",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "app.model.MovieEndpoint.insertMovie",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "movieendpoint.movieEndpoint.updateMovie" : {
+      "path" : "movie",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "app.model.MovieEndpoint.updateMovie",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
     "movieendpoint.movieEndpoint.removeMovie" : {
       "path" : "movie/{id}",
       "httpMethod" : "DELETE",
@@ -126,6 +126,21 @@
   },
   "descriptor" : {
     "schemas" : {
+      "CollectionResponse_Movie" : {
+        "id" : "CollectionResponse_Movie",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Movie"
+            }
+          },
+          "nextPageToken" : {
+            "type" : "string"
+          }
+        }
+      },
       "Movie" : {
         "id" : "Movie",
         "type" : "object",
@@ -190,12 +205,12 @@
           "url" : {
             "type" : "string"
           },
-          "title" : {
-            "type" : "string"
-          },
           "modified" : {
             "type" : "string",
             "format" : "date-time"
+          },
+          "title" : {
+            "type" : "string"
           }
         }
       },
@@ -219,11 +234,11 @@
           "parent" : {
             "$ref" : "Key"
           },
-          "complete" : {
-            "type" : "boolean"
-          },
           "namespace" : {
             "type" : "string"
+          },
+          "complete" : {
+            "type" : "boolean"
           }
         }
       },
@@ -404,10 +419,6 @@
         "id" : "Date",
         "type" : "object",
         "properties" : {
-          "time" : {
-            "type" : "string",
-            "format" : "int64"
-          },
           "hours" : {
             "type" : "integer"
           },
@@ -417,19 +428,23 @@
           "seconds" : {
             "type" : "integer"
           },
-          "date" : {
+          "time" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "month" : {
             "type" : "integer"
           },
           "year" : {
-            "type" : "integer"
-          },
-          "month" : {
             "type" : "integer"
           },
           "day" : {
             "type" : "integer"
           },
           "timezoneOffset" : {
+            "type" : "integer"
+          },
+          "date" : {
             "type" : "integer"
           }
         }
@@ -442,28 +457,15 @@
             "type" : "string"
           }
         }
-      },
-      "CollectionResponse_Movie" : {
-        "id" : "CollectionResponse_Movie",
-        "type" : "object",
-        "properties" : {
-          "items" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "Movie"
-            }
-          },
-          "nextPageToken" : {
-            "type" : "string"
-          }
-        }
       }
     },
     "methods" : {
-      "app.model.MovieEndpoint.updateMovie" : {
-        "request" : {
-          "$ref" : "Movie"
-        },
+      "app.model.MovieEndpoint.listMovie" : {
+        "response" : {
+          "$ref" : "CollectionResponse_Movie"
+        }
+      },
+      "app.model.MovieEndpoint.getMovie" : {
         "response" : {
           "$ref" : "Movie"
         }
@@ -476,12 +478,10 @@
           "$ref" : "Movie"
         }
       },
-      "app.model.MovieEndpoint.listMovie" : {
-        "response" : {
-          "$ref" : "CollectionResponse_Movie"
-        }
-      },
-      "app.model.MovieEndpoint.getMovie" : {
+      "app.model.MovieEndpoint.updateMovie" : {
+        "request" : {
+          "$ref" : "Movie"
+        },
         "response" : {
           "$ref" : "Movie"
         }

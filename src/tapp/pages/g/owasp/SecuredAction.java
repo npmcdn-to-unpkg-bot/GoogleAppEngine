@@ -116,7 +116,7 @@ public class SecuredAction {
 //					}
 //				}
 				ServiceRegistryDAO r = new ServiceRegistryDAO();
-				if(action != null) {
+				if(action != null) {	//for some reason, the action is NULL! thus this is no longer working!!!
 					String tokenAssigned;
 					try {
 						tokenAssigned = ServiceRegistryUtil.handleEndPoint(action, r);

@@ -9,7 +9,7 @@ var gEventArray = [];
 var gHref;
 var App = {
     major: '9',
-    minor: '0100e',
+    minor: '0103b',
     header_index: 0,   //metadata header
     movie_index: 1,     //the real movies data
     login_url: '/ui/index.html',
@@ -205,9 +205,10 @@ function purgeStates() {
         } catch (e) {
             alert("main-config.js purgeStates error: Not able to purge userid and logintype as storejs, error: " + e);
         }
-    } else {
-        window.console && console.log("main-config.js purgeStates error: Not able to purge userid and logintype as storejs is not valid!");
     }
+    //else {
+    //    console && console.log("main-config.js purgeStates error: Not able to purge userid and logintype as storejs is not valid!");
+    //}
 }
 
 typeof requirejs !== 'undefined' && requirejs(

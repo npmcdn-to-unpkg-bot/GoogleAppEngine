@@ -100,7 +100,7 @@ requirejs(['./main-config', './app'], function (common, app) {
                 if(//username &&
                     loadMovie(username)) {
                     $('#progress').hide();
-                    console && console.log("channel UI loaded");
+                    //console && console.log("channel UI loaded");
                 } else {
                     username = $.url().param('username');       //TBD security risk - need to get from third party API directly
                     alert("username [" + username + "]");

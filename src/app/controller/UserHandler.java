@@ -13,6 +13,8 @@ import javax.servlet.ServletContextListener;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.collections4.CollectionUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import tapp.model.sci.FiOSToken;
 
@@ -53,6 +55,7 @@ import com.google.appengine.api.datastore.Text;
  *
  */
 public class UserHandler implements CrudServiceCallback, ServletContextListener {
+    private static final Logger logger = LoggerFactory.getLogger(UserHandler.class);
 	private static UserEndpoint dao;
 	private String uid;
 
@@ -201,10 +204,15 @@ public class UserHandler implements CrudServiceCallback, ServletContextListener 
 		if(user == null) {
 			throw new Exception("UserHandler:getUserByName() User is null or empty!");
 		}
-		System.out.println("UserHandler:getUserByName ...");
+		User cachedUser = CacheManager.getUserCache(user);
+		if(cachedUser != null) {
+			return cachedUser;
+		}
+		
+		System.out.println("UserHandler#getUserByName ...");
 		EntityManager em = getEntityManager();
 		try {
-			System.out.println("querying user by name [" + user.getName() + "] ...");
+			logger.info("querying user by name [" + user.getName() + "]");
 		    String queryStr = String.format("select u from " + User.class.getName() + " u" +
 		    								" where u.name = :name");
             javax.persistence.Query query = em.createQuery(queryStr);
@@ -222,6 +230,7 @@ public class UserHandler implements CrudServiceCallback, ServletContextListener 
             if(user.getKey() != null) {
     		    user.setId(user.getKey().getId());    //GAEJ specific
             }
+			CacheManager.addUserCache(user);
 		} catch (Exception e) {
 			System.out.println("UserHandler:getUserByName exception: user [" + user.getName() + "] " + e);
 		} finally {

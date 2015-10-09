@@ -1,6 +1,11 @@
-var showLog = false;
+var showLog = true;
+//var showLog = false;
 var gHeaderReleaseBuildTitle;
+var gCacheProxy = '';
+var gAppId;
 var gServiceName;
+var gPlayNowShuffle = 'playNowShuffle';     //have to be unique, mainly for the cache to work
+var gPlayNowAllInSeq = 'playNowAllInSeq';   //have to be unique, mainly for the cache to work
 var gManageColMainTitle;
 var gSharedColMainTitle;
 var gManageShoMainTitle;
@@ -44,7 +49,8 @@ function showModernView(show) {
         $("#modernview6").hide();
     }
 }
-function importGSS(json) {
+/* just for the individual sheet */
+baseImportGSS = function importGSS(json) {
     for (var i = 0; i < json.feed.entry.length; i++) {
         entry = json.feed.entry[i];
         col1 = entry.gsx$index && entry.gsx$index.$t;
@@ -55,6 +61,25 @@ function importGSS(json) {
         col6 = entry.gsx$_ciyn3 && entry.gsx$_ciyn3.$t;
         if (col1 && col2 && col3 && col4 && col5) {
             showLog && window.console && console.log('[' + (i + 1) + '] = ' + '[' + col1 + '] ' + '[' + col2 + '] ' + '[' + col3 + '] ' + '[' + col4 + '] ' + '[' + col5 + '] ' + '[' + col6 + '] ');
+            if (col1 === 'cache' &&
+                col2 === 'proxy' &&
+                col3 === 'host' &&
+                col4 === 'rest' &&
+                col5 === 'url'
+            ) {
+                //alert('rest host cache proxy url [' + col6 + ']');
+                gCacheProxy = col6;
+                if(typeof gCacheProxy === 'undefined') gCacheProxy = '';
+            } else
+            if (col1 === 'cache' &&
+                col2 === 'proxy' &&
+                col3 === 'origin' &&
+                col4 === 'app' &&
+                col5 === 'id'
+            ) {
+                //alert('app id [' + col6 + ']');
+                gAppId = col6;
+            } else
             if (col1 === 'app' &&
                 col2 === 'common' &&
                 col3 === 'ui' &&
@@ -209,11 +234,15 @@ function importGSS(json) {
             ) {
                 if(col6 === undefined) col6 = '';
 
-                gManageShoMainTitle = col6;
-                document.getElementById("manageShowtime").innerHTML = col6;
-                $("#manageShowtime").show();
-                $("#manageShowtime1").show();
-                showLog && window.console && console.log("movie.html:gManageShoMainTitle set [" + gManageShoMainTitle + "]");
+                try {
+                    gManageShoMainTitle = col6;
+                    document.getElementById("manageShowtime").innerHTML = col6;
+                    $("#manageShowtime").show();
+                    $("#manageShowtime1").show();
+                    showLog && window.console && console.log("movie.html:gManageShoMainTitle set [" + gManageShoMainTitle + "]");
+                } catch (e) {
+                    console && console.log("showtime 1 error: " + e);
+                }
             } else if (col1 === 'manage' &&
                 col2 === 'channels' &&
                 col3 === 'main' &&
@@ -222,12 +251,16 @@ function importGSS(json) {
             ) {
                 if(col6 === undefined) col6 = '';
 
-                gManageShoMainTitle = col6;
-                document.getElementById("manageChannels").innerHTML = col6;
-                $("#manageChannels").show();
-                $("#manageChannels1").show();
-                //$("#playview").show();
-                showLog && window.console && console.log("movie.html:gManageShoMainTitle set [" + gManageShoMainTitle + "]");
+                try {
+                    gManageShoMainTitle = col6;
+                    document.getElementById("manageChannels").innerHTML = col6;
+                    $("#manageChannels").show();
+                    $("#manageChannels1").show();
+                    //$("#playview").show();
+                    showLog && window.console && console.log("movie.html:gManageShoMainTitle set [" + gManageShoMainTitle + "]");
+                } catch (e) {
+                    console && console.log("channels 1 error: " + e);
+                }
             } else if (col1 === 'about' &&
                 col2 === 'index' &&
                 col3 === 'main' &&
@@ -243,16 +276,17 @@ function importGSS(json) {
                 col5 === 'color'
             ) {
                 if (col4 === 'background') {
-                    $('body').css('background-color', col6);
-                } /*else if (col4 === 'table-text') {
+                    //$('body').css('background-color', col6);  //commented out as this interfere with Play Now subtitle background!!!
+                }
+                /*else if (col4 === 'table-text') {
                  $('#brand').css('color', col6);
                  } else if (col4 === 'navigator-text') {
                  $('#motto').css('color', col6);
-                 }*/
+                }*/
             }
         }
     }
-}
+};
 
 function requestUpgrade() {
     if (confirm("Do you really want to upgrade the collection? Upgrading the collection more than once can cause the duplicates in your collection!")) {

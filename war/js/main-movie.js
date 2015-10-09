@@ -7,7 +7,9 @@ requirejs.config({
 
     paths: {
         jquery: ['//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery', 'jquery-1.9.1'],    //for some reason, this is needed for IE 8 otherwise  'jQuery' is undefined or  '$' is undefined will occur
-//        jQueryUI: '//ajax.aspnetcdn.com/ajax/jquery.ui/1.9.1/jquery-ui.min',
+        jQueryUI: '../jquery/jquery-ui-1.10.2.custom.min',
+        //prefsMovie: 'prefsmovie',
+        //prefs: '../js/prefs',
         movieApp: ['../mcrud/movie'],
 //        lazyImage: ['../bower_components/afkl-lazy-image/release/lazy-image.min'],
         calendarApp: '../html/calendar',
@@ -24,16 +26,22 @@ requirejs.config({
 //            deps: ['jquery'],
 //            exports: '$'
 //        },
-        movieApp: {
-            deps: ['jquery', 'parse', 'angular']
-        },
-//        jQueryUI: {
-//            deps: ['jquery']
+//        prefs: {
+//            deps: ["jquery", "prefsMovie"],
+//            exports : 'prefs'
 //        },
+        movieApp: {
+            deps: ['jquery', 'calendarApp', 'parse', 'angular',
+                'prefsMovie',
+                'prefs']
+        },
+        jQueryUI: {
+            deps: ['jquery']
+        },
         calendarApp: {
             deps: ['jquery', 'parse'
 //                , 'fullCalendar',
-//                   ,'jQueryUI'
+                   ,'jQueryUI'
             ]
         },
         initUser: {
@@ -92,15 +100,13 @@ require(['./main-config', './app'], function (common, app) {
 
             angular.element(document).ready(function() {
                 try {
-                    console.log("main-movie.js angular.boostrap() begin 2e ...");
+                    //console.log("main-movie.js angular.boostrap() begin 2e ...");
                     // Registering a controller after app bootstrap
-                    //$controllerProvider.register('MovieController', MovieController);
-                    //$('body').attr('ng-controller', 'MovieController');
                     angular.bootstrap(document, ['app']);    //only for 1.3
                     //angular.bootstrap(document);    //only for 1.2 - this is the limitation of not able to upgrade to 1.3!
-                    console.log("main-movie.js angular.boostrap() end");
+                    //console.log("main-movie.js angular.boostrap() end");
                 } catch (e2) {
-                    alert('main-movie.js AngularJS 1.2 angular.bootstrap() 2 error [' + e2 + ']');
+                    console.log('main-movie.js AngularJS 1.2 angular.bootstrap() 2 error [' + e2 + ']');
                 }
 
                 //=== courtesy of http://jsfiddle.net/codef0rmer/hvf6X/

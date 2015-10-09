@@ -6,10 +6,13 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import app.model.Movie;
 import app.model.User;
 
 public class CacheManager {
+    private static final Logger logger = LoggerFactory.getLogger(CacheManager.class);
 	private static List<User> userCache = new ArrayList<User>();
 //	private static String separator = ",";
 
@@ -27,8 +30,8 @@ public class CacheManager {
 			User tmp = null;
 			for(int i=0; i<userCache.size(); i++) {
 				tmp = userCache.get(i);
-				System.out.println("tmp id [" + tmp.getId() + "] user id [" + user.getId() + "]");
-				if(tmp.getId().longValue() != user.getId().longValue()) {
+				logger.debug("CacheManager#updateUserCache: tmp id [" + tmp.getId() + "] user id [" + user.getId() + "]");
+				if(tmp != null && user != null && tmp.getId() != null && user.getId() != null && tmp.getId().longValue() != user.getId().longValue()) {
 					newUserCache.add(tmp);
 				} else {
 					newUserCache.add(user);
@@ -44,8 +47,8 @@ public class CacheManager {
 			User tmp = null;
 			for(int i=0; i<userCache.size(); i++) {
 				tmp = userCache.get(i);
-				System.out.println("tmp id [" + tmp.getId() + "] user id [" + user.getId() + "]");
-				if(tmp.getId().longValue() == user.getId().longValue()) {
+				if(tmp != null && user != null && tmp.getId() != null && user.getId() != null && tmp.getId().longValue() == user.getId().longValue()) {
+					logger.debug("CacheManager#getUserCache: tmp id [" + tmp.getId() + "] user id [" + user.getId() + "]");
 					u = tmp;
 					break;
 				} 
@@ -62,7 +65,7 @@ public class CacheManager {
 				Movie tmp1 = null;
 				for(int j=0; j<movieList.size(); j++) {
 					tmp1 = movieList.get(j);
-					if(tmp1.getId().longValue() != targetMovie.getId().longValue()) {
+					if(tmp1 != null && targetMovie != null && tmp1.getId() != null && targetMovie.getId() != null &&  tmp1.getId().longValue() != targetMovie.getId().longValue()) {
 						newMovieList.add(tmp1);
 					}
 				}
@@ -87,7 +90,7 @@ public class CacheManager {
 			Movie tmp1 = null;
 			for(int j=0; j<movieList.size(); j++) {
 				tmp1 = movieList.get(j);
-				if(tmp1.getId().longValue() != targetMovie.getId().longValue()) {
+				if(tmp1 != null && targetMovie != null && tmp1.getId().longValue() != targetMovie.getId().longValue()) {
 					newMovieList.add(tmp1);
 				}
 			}

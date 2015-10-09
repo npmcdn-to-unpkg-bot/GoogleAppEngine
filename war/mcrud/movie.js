@@ -195,7 +195,7 @@ function MovieController($scope, $filter, $http, $rootScope,
         var retVal = "";
 
         try {
-            retVal = '/html/channelshuffle.html?username=' + $.url().param('username') + '&logintype=' + $.url().param('logintype') + '&filter=' + hashtag.substr(1);
+            retVal = '/html/channelshuffle.html?username=' + $.url().param('username') + '&logintype=' + $.url().param('logintype') + '&filter=' + hashtag.substr(1) + '&type=' + gPlayNowShuffle;
         }
         catch (e) {
             //$console && $console.error('1.1.1.0 movie.js $scope.handleHashtag(): An error has occurred: ' + e.message + ' - The application will not function correctly. Please contact the developer!');
@@ -257,7 +257,8 @@ function MovieController($scope, $filter, $http, $rootScope,
     $scope.serviceCheck = function(page) {
         if(typeof page.server_max !== 'undefined' && typeof page.server_number !== 'undefined') {
             //TODO for some reason, search made page.number and page.max both 0s!!!
-            if (page.number > 0 && page.server_number !== page.number) {
+            if (page.number > 0 && page.server_number !== page.number && page.server_number !== 0) {    //page.server_number === 0 is the same as the client side page 1
+                alert('page.server_number [' + page.server_number + '] page.number [' + page.number + ']')
                 throw new Error("Page number " + page.number + " is out of sync with the server" +
                     "s page (" + page.server_number + "). The page number should be in sync/the same!");
             }
@@ -286,7 +287,7 @@ function MovieController($scope, $filter, $http, $rootScope,
         $scope.pagedItems.length = 0;
         $scope.searchResults.length = 0;
         //$console && $console.log('3.1 list reinit');
-        $http.get('/ws/crud?type=' + $scope.backendObject + "&uid=" + uid + "&maxPerPage=" + $scope.page.max + "&pageNumber=" + $scope.page.number )
+        $http.get(gCacheProxy + '/ws/crud?type=' + $scope.backendObject + "&origin=" + location.hostname + "&origin=" + location.hostname + "&origin=" + location.hostname + "&aid=" + gAppId + "&uid=" + uid + "&maxPerPage=" + $scope.page.max + "&pageNumber=" + $scope.page.number )
             .success(function (data, status1, headers, config) {
                 if(data.indexOf(App.NO_PARENT_ERR) > -1) {
                     alert(App.NO_PARENT_ERR_MSG);
@@ -382,30 +383,6 @@ function MovieController($scope, $filter, $http, $rootScope,
                     return;
                 }
 
-                //begin play now setup
-//                try {
-//                    $scope.templates =
-//                        [
-//                            { name1: 'Shuffle Mode', url: '/html/channelshuffle.html?username=' + $.url().param('username') + '&logintype=' + $.url().param('logintype')},
-//                            { name1: 'All In Sequence', url: '/html/channelall.html?username=' + $.url().param('username') + '&logintype=' + $.url().param('logintype')}
-//                        ];
-//                    var u, start = 2;   //after the above 2!
-//                    //=== begin play now setup
-//                    $scope.template = $scope.templates[0];   //default play now url
-//                    //=== begin hashtags processing
-//                    for (var l in $scope.parsedHashtags) {
-//                        $scope.templates[$scope.templates.length] = { name1: l, url: $scope.getHashtagUrl(l) };
-//                    }
-//                    //=== end hashtags processing
-//                    $scope.play = function () {
-//                        window.location = $scope.template.url;
-//                    };
-//                }catch (e) {
-//                    //$console && $console.error('2 movie.js loadItems(): An error has occurred: ' + e.message + ' - The application will not function correctly. Please contact the developer!');
-//                    alert("movie.js: 9a error: " + e);
-//                }
-                //=== end play now setup
-
                 $scope.renderPagedTable(true);
 
                 //$console && $console.log("items loaded [gBuild " + gBuild + "]");
@@ -435,7 +412,7 @@ function MovieController($scope, $filter, $http, $rootScope,
         $scope.backendReady = false;
         var uid = getUsername();
         //$console && $console.log('4.1 list reinit');
-        $http.get('/ws/crud?type=' + $scope.backendObject + "&uid=" + uid + "&maxPerPage=" + $scope.page.max + "&pageNumber=" + $scope.page.number )
+        $http.get(gCacheProxy + '/ws/crud?type=' + $scope.backendObject + "&origin=" + location.hostname + "&aid=" + gAppId + "&uid=" + uid + "&maxPerPage=" + $scope.page.max + "&pageNumber=" + $scope.page.number )
             .success(function (data, status1, headers, config) {
                 //$console && $console.log('loadItems success entered');
                 var j;
@@ -490,8 +467,8 @@ function MovieController($scope, $filter, $http, $rootScope,
                 try {
                     $scope.templates =
                         [
-                            { name1: 'Shuffle Mode', url: '/html/channelshuffle.html?username=' + $.url().param('username') + '&logintype=' + $.url().param('logintype')},
-                            { name1: 'All In Sequence', url: '/html/channelall.html?username=' + $.url().param('username') + '&logintype=' + $.url().param('logintype')}
+                            { name1: 'Shuffle Mode', url: '/html/channelshuffle.html?username=' + $.url().param('username') + '&logintype=' + $.url().param('logintype') + '&type=' + gPlayNowShuffle},
+                            { name1: 'All In Sequence', url: '/html/channelall.html?username=' + $.url().param('username') + '&logintype=' + $.url().param('logintype') + '&type=' + gPlayNowAllInSeq}
                         ];
                     //var start = 2;   //after the above 2!
                     //=== begin play now setup
@@ -562,8 +539,8 @@ function MovieController($scope, $filter, $http, $rootScope,
         //$console && $console.log('3list reinit');
 
         var endpoint;
-//        var host = $.url().attr('protocol') + '://' + $.url().attr('host');
-        var host = '';  //https://' + $.url().attr('host');
+        //var host = $.url().attr('protocol') + '://' + $.url().attr('host');
+        var host = gCacheProxy;  //https://' + $.url().attr('host');
 
         if (datasource === 2) {
             endpoint = host + '/ws/crud?type=' + $scope.backendObject + "&uid=" + uid + "&action=scheduled&filter=scheduled";
@@ -572,6 +549,7 @@ function MovieController($scope, $filter, $http, $rootScope,
         } else {
             endpoint = host + '/ws/crud?type=' + $scope.backendObject + "&uid=" + uid;
         }
+        endpoint = endpoint + "&origin=" + location.hostname + "&aid=" + gAppId
 
         $http.get(endpoint)
             .success(function (data, status, headers, config) {
@@ -1002,12 +980,13 @@ function MovieController($scope, $filter, $http, $rootScope,
                 "channelPattern=" + $scope.item.channelPattern + "&" +
                 "search_results=" + $scope.item.search_results + "&" +
                 "oid=" + oid + "&" +
-                "type=" + $scope.backendObject + "&action=create&uid=" + uid;
+                "type=" + $scope.backendObject + "&action=create&uid=" + uid
+                + "&origin=" + location.hostname + "&aid=" + gAppId;
             //alert('about to create [' + data + ']');
 //            $http.post('/ws/crud?', data)
             $http({
                 method: 'POST',
-                url: '/ws/crud',
+                url: gCacheProxy + '/ws/crud',
                 data: data,
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                 //headers: {'Content-type': 'application/json'}
@@ -1183,12 +1162,13 @@ function MovieController($scope, $filter, $http, $rootScope,
                 "channelPattern=" + $scope.item.channelPattern + "&" +
                 "search_results=" + $scope.item.search_results + "&" +
                 "oid=" + oid + "&" +
-                "type=" + $scope.backendObject + "&action=update&uid=" + uid;
+                "type=" + $scope.backendObject + "&action=update&uid=" + uid
+                + "&origin=" + location.hostname + "&aid=" + gAppId;
             //alert('about to update [' + data + ']');
 //            $http.post('/ws/crud?', data)
             $http({
                 method: 'POST',
-                url: '/ws/crud',
+                url: gCacheProxy + '/ws/crud',
                 data: data,
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                 //headers: {'Content-type': 'application/json'}
@@ -1242,15 +1222,15 @@ function MovieController($scope, $filter, $http, $rootScope,
                 var uid = getUsername();
                 var data = "id=" + item.id + "&" +
                     "oid=" + oid + "&" +
-                    "type=" + $scope.backendObject + "&action=delete&uid=" + uid;
-                //$console && $console.log("about to delete  [" + data + ']');
-                //$console && $console.log("deleteItem: before POST data [" + data + "]");
-//                $http.post('/ws/crud?', data)
+                    "type=" + $scope.backendObject + "&action=delete&uid=" + uid
+                    + "&origin=" + location.hostname + "&aid=" + gAppId;
                 $http({
                     method: 'POST',
-                    url: '/ws/crud',
+                    url: gCacheProxy + '/ws/crud',
                     data: data,
-                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+                    }
                 })
                     .success(function (response, status, headers, config) {
                         //$console && $console.log("deleteItem: checking response.id [" + response.id + "] with item.id [" + item.id + "]");
@@ -1270,8 +1250,8 @@ function MovieController($scope, $filter, $http, $rootScope,
                             $scope.editing = false;
                             $scope.backendReady = true;
                         }
-                    }
-                ).error(function (response, status, headers, config) {
+                    })
+                    .error(function (response, status, headers, config) {
                         $scope.error_message = response.error_message;
                         if(status !== 0) {	//TODO workaround to suppress the weird error! :(
                             alert("movie.js: 15 error: response [" + response + "] status [" + status + "] headers [" + headers + "] config [" + config + "]");
@@ -1312,7 +1292,7 @@ function MovieController($scope, $filter, $http, $rootScope,
 
         try {
             assert(swipe, "movie.js: swipe [" + swipe + "]");
-            window.console && console.log("movie.js: swipe [" + swipe + "]");
+            //console && console.log("movie.js: swipe [" + swipe + "]");
             if(swipe === 'right') {
                 //$scope.selectNextPage(page);
             } else
@@ -1490,10 +1470,8 @@ angular.module('app',[])//dependency 'ui.bootstrap' is conflicting with 1.4, thu
 		['$controllerProvider', '$httpProvider',
     function($controllerProvider, $httpProvider) {
         //alert('test');
-        console.log("movie.js app config called");
-        //************* THIS IS SOMEHOW NOT INVOKED FOR UNKNOWN REASON!!!!! *****************
+        //console.log("movie.js app config called");
         $controllerProvider.allowGlobals();     //thanks to 1.3
-        //gControllerProvider.allowGlobals();     //thanks to 1.3
         $httpProvider.defaults.useXDomain = true;
         delete $httpProvider.defaults.headers.common['X-Requested-With'];
         //$httpProvider.defaults.headers.get['Content-Type'] = $httpProvider.defaults.headers.put['Content-Type'] = $httpProvider.defaults.headers.post['Content-Type'] = 'text/plain; charset=UTF-8';
@@ -1504,7 +1482,7 @@ angular.module('app',[])//dependency 'ui.bootstrap' is conflicting with 1.4, thu
         //        alert(exception.message);
         //    };
         //}]);
-        console && console.log("movie.js config(): done")
+        //console && console.log("movie.js config(): done")
     }
 ]
 )
@@ -1526,28 +1504,44 @@ angular.module('app',[])//dependency 'ui.bootstrap' is conflicting with 1.4, thu
 
 //=== http://www.grobmeier.de/angular-js-binding-to-jquery-ui-datepicker-example-07092012.html#.UyIsZVFdVtZ
 //angular.module('app')
-.directive('myDatepicker', function ($parse) {
-    return function (scope, element, attrs, controller) {
-        var ngModel = $parse(attrs.ngModel);
-        $(function(){
-            element.datepicker({
-                showOn:"both",
-                changeYear:true,
-                changeMonth:true,
-                dateFormat:'yy-mm-dd',
-                maxDate: new Date(),
-                yearRange: '1920:2012',
-                onSelect:function (dateText, inst) {
-                    scope.$apply(function(scope){
-                        // Change binded variable
-                        ngModel.assign(scope, dateText);
-                    });
-                }
-            });
+//<<<<<<< HEAD
+.directive('datepicker', function() {
+    return function(scope, element, attrs) {
+        element.datepicker({
+            inline: true,
+            dateFormat: 'dd.mm.yy',
+            onSelect: function(dateText) {
+                var modelPath = $(this).attr('ng-model');
+                putObject(modelPath, scope, dateText);
+                scope.$apply();
+            }
         });
-    };
+    }
 })
-
+//=======
+//.directive('myDatepicker', function ($parse) {
+//    return function (scope, element, attrs, controller) {
+//        var ngModel = $parse(attrs.ngModel);
+//        $(function(){
+//            element.datepicker({
+//                showOn:"both",
+//                changeYear:true,
+//                changeMonth:true,
+//                dateFormat:'yy-mm-dd',
+//                maxDate: new Date(),
+//                yearRange: '1920:2012',
+//                onSelect:function (dateText, inst) {
+//                    scope.$apply(function(scope){
+//                        // Change binded variable
+//                        ngModel.assign(scope, dateText);
+//                    });
+//                }
+//            });
+//        });
+//    };
+//})
+//
+//>>>>>>> 2eb925d094e6ec5a442cea17398f6141cb3a3148
 /*
  This directive allows us to pass a function in on an enter key to do what we want.
  Courtesy of http://ericsaupe.com/angularjs-detect-enter-key-ngenter/

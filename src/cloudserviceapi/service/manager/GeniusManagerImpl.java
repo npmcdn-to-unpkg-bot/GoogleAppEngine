@@ -5,6 +5,13 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import tapp.model.ServiceRegistry;
+import app.controller.UserHandler;
+import app.model.Movie;
+import app.model.User;
 import tapp.model.ServiceRegistry;
 
 import com.appspot.cloudserviceapi.dao.GeniuDao;
@@ -16,6 +23,7 @@ import com.google.appengine.api.datastore.Transaction;
 
 public class GeniusManagerImpl implements GeniusManager {
 
+    private static final Logger logger = LoggerFactory.getLogger(GeniusManagerImpl.class);
 	private static List<Geniu> clonedList;	//used by UI to save datastore read free quota
 	public List<Geniu> getClonedList() {
 		return clonedList;
@@ -76,13 +84,27 @@ public class GeniusManagerImpl implements GeniusManager {
 		Geniu sr = null;
 		for(int i = 0; i < clonedList.size(); i++) {
 			sr = (Geniu)clonedList.get(i);
-			if(sr.getId() != null && sr.getId() == id) {
+			if(sr.getId() != null && sr.getId().longValue() == id) {
 				clonedList.remove(i);
 				break;
 			}
 		}
 	}
 
+//	private void removeCache1(Long id) {
+//		if(clonedList != null) {
+//			List<Geniu> newClonedList = new ArrayList<Geniu>();
+//			Geniu tmp1 = null;
+//			for(int j=0; j<clonedList.size(); j++) {
+//				tmp1 = clonedList.get(j);
+//				if(tmp1 != null && tmp1.getId().longValue() != id.longValue()) {
+//					newClonedList.add(tmp1);
+//				}
+//			}
+//			clonedList = newClonedList;
+//		}
+//	}
+	
 	public void save(Geniu myBean) throws Exception {
 		Transaction tx = null;
         tx = Datastore.getDS().beginTransaction();
@@ -131,6 +153,24 @@ public class GeniusManagerImpl implements GeniusManager {
 		}
 	}
 
+	public void updateCache1(Long long1, Geniu wo) {
+		List<Geniu> gl = getGenius();
+		List<Geniu> newclonedList = new ArrayList();
+		if(gl != null) {
+			Geniu tmp = null;
+			for(int i=0; i<gl.size(); i++) {
+				tmp = gl.get(i);
+				logger.debug("GeniusManagerImpl.java#updateCache: tmp id [" + tmp.getId() + "] Geniu id [" + wo.getId() + "]");
+				if(tmp != null && wo != null && tmp.getId() != null && tmp.getId().longValue() != long1) {
+					newclonedList.add(tmp);
+				} else {
+					newclonedList.add(wo);
+				}
+			}
+		}
+		clonedList = newclonedList;
+	}
+	
 	public Geniu getGeniu(Long id) {
 		Geniu retVal = null;
         Transaction tx = null;
@@ -145,23 +185,47 @@ public class GeniusManagerImpl implements GeniusManager {
 		return myBeans.toString();
 	}
 
+//	public void updateCache1(Geniu wo) {
+//		boolean found = false;
+//		List<Geniu> clonedList = getGenius();
+//		if(clonedList  != null) {
+//			Iterator<Geniu> itr = clonedList.iterator();
+//			Geniu sr = null;
+//			for(int i = 0; i < clonedList.size(); i++) {
+//				sr = (Geniu)clonedList.get(i);
+//				if(sr.getId() == wo.getId()) {
+//					clonedList.set(i, wo);
+//					found = true;
+//					break;
+//				}
+//			}
+//			if(!found) clonedList.add(wo);
+//		}
+//	}
+
 	public void updateCache(Geniu wo) {
-		boolean found = false;
-		List<Geniu> clonedList = getGenius();
-		if(clonedList  != null) {
-			Iterator<Geniu> itr = clonedList.iterator();
-			Geniu sr = null;
-			for(int i = 0; i < clonedList.size(); i++) {
-				sr = (Geniu)clonedList.get(i);
-				if(sr.getId() == wo.getId()) {
-					clonedList.set(i, wo);
-					found = true;
-					break;
+		List<Geniu> gl = getGenius();
+		List<Geniu> newclonedList = new ArrayList();
+		boolean existing = false;
+		if(gl != null) {
+			Geniu tmp = null;
+			for(int i=0; i<gl.size(); i++) {
+				tmp = gl.get(i);
+				logger.debug("GeniusManagerImpl.java#updateCache: tmp id [" + tmp.getId() + "] Geniu id [" + wo.getId() + "]");
+				if(tmp != null && wo != null && tmp.getId() != null && wo.getId() != null && tmp.getId().longValue() != wo.getId().longValue()) {
+					newclonedList.add(tmp);
+				} else {
+					existing = true;
+					newclonedList.add(wo);
 				}
 			}
-			if(!found) clonedList.add(wo);
+			if(!existing) {
+				newclonedList.add(wo);	//new!
+			}
 		}
+		clonedList = newclonedList;
 	}
+	
 
 	/** Warning: This will clear all entries in the cache and will cause a query for all the entries again from the datastore 
 	 * and it is EXPENSIVE (could consume around 10% of the datastore read!!!!) */

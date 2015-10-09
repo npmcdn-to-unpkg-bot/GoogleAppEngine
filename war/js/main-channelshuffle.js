@@ -40,7 +40,7 @@ requirejs.config({
             deps: ['jquery', 'purl', 'channelApp']
         },
         channelApp: {
-        	deps: ['galleria']
+        	deps: ['prefs', 'galleria']
         },
 //        initUser: {
 //            deps: ['movieApp']
@@ -92,7 +92,7 @@ require(['./main-config', './app'], function (common, app) {
                 })();
 
                 //noinspection CommaExpressionJS
-                if(loadMovieShuffle(Parse.User.current() && Parse.User.current().getUsername()), log) {
+                if(loadMovieShuffle(Parse.User.current() && Parse.User.current().getUsername())) {
                     $('#progress').hide();
                     console && console.log("main-channelshuffle: channel UI loaded");
                 }

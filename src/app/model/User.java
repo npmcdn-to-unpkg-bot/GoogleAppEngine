@@ -26,7 +26,8 @@ public class User implements Cloneable, Serializable {
     private Long id;
 	private String name;
     @OneToMany(cascade = CascadeType.ALL 
-    		, fetch = FetchType.EAGER
+//    		, fetch = FetchType.LAZY
+    		, fetch = FetchType.EAGER	//TODO to be turned off once the paginated movie query in MovieHandler is done
 //    		, orphanRemoval = true
 //    		, mappedBy="parent"		//memory intensive!!!
     		)	//FetchType.LAZY was not working for me (JPA1)!
@@ -37,11 +38,11 @@ public class User implements Cloneable, Serializable {
 //    		, mappedBy="parent"		//memory intensive!!!
     		)
 	private List<Calendar> calendar = new ArrayList<Calendar>();
-    @OneToMany(cascade = CascadeType.ALL
-    		, fetch = FetchType.EAGER
-    		, orphanRemoval = true
-    		//, mappedBy="parent"	//memory intensive!!!
-    		)
+//    @OneToMany(cascade = CascadeType.ALL
+//    		, fetch = FetchType.LAZY
+//    		//, orphanRemoval = true
+//    		//, mappedBy="parent"	//memory intensive!!!
+//    		)
 	private List<UserSecurityQuestion> securityQuestion = new ArrayList<UserSecurityQuestion>();
 
 	public Key getKey() {
