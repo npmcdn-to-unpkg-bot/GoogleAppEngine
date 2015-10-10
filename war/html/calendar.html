@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!--     <meta http-equiv="X-UA-Compatible" content="IE=edge">
- -->
     <meta charset="utf-8">
     <title>Cool App</title>
     <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.no-icons.min.css" rel="stylesheet">
@@ -95,24 +93,6 @@
             <div class="nav-collapse collapse">
                 <ul class="nav">
                     <li><a id="homeLink" href="#"><span id="homeText">Home</span></a></li>
-                    <!--<li class="dropdown">-->
-                        <!--<a id="manageLink" data-toggle="dropdown" class="dropdown-toggle" href="#">Manage <b class="caret"></b></a>-->
-                        <!--<ul class="dropdown-menu">-->
-                            <!--<li class="nav-header">Collections</li>-->
-                            <!--<li><a class="here" id="manageCollections" href="javascript:void(0);" onclick="location.href='/mcrud/movie.html?username=' + $.url().param('username') + '&amp;logintype=' + $.url().param('logintype');">Collections</a></li>-->
-                            <!--<li><a href="#">Songs</a></li>-->
-                            <!--<li><a href="#">RSS</a></li>-->
-                            <!--&lt;!&ndash;<li class="divider"></li>&ndash;&gt;-->
-                            <!--<li class="nav-header">Channels</li>-->
-                            <!--<li><a id="manageChannels" href="javascript:void(0);" onclick="location.href='/html/channel.html?username=' + $.url().param('username') + '&amp;logintype=' + $.url().param('logintype');">Channel</a></li>-->
-                            <!--<li><a href="#">Live Feeds</a></li>-->
-                            <!--<li class="nav-header">Schedule</li>-->
-                            <!--<li><a id="manageShowtime" href="javascript:void(0);" onclick="location.href='/html/calendar.html?username=' + $.url().param('username') + '&amp;logintype=' + $.url().param('logintype');">Calendar</a></li>-->
-                            <!--<li class="nav-header">2Share</li>-->
-                            <!--<li><a id="sharedCollections" href="javascript:void(0);" onclick="location.href='/html/shared.html?username=' + $.url().param('username') + '&amp;logintype=' + $.url().param('logintype');">Shared</a></li>-->
-                            <!--<li><a href="#">Others</a></li>-->
-                        <!--</ul>-->
-                    <!--</li>-->
                     <li class="active"><a id="manageShowtime" href="javascript:void(0);" onclick="location.href='/html/calendar.html?username=' + $.url().param('username') + '&amp;logintype=' + $.url().param('logintype');">Calendar</a></li>
                     <li><a id="manageChannels" href="javascript:void(0);" onclick="location.href='/html/channel.html?username=' + $.url().param('username') + '&amp;logintype=' + $.url().param('logintype');">Channel</a></li>
                     <li class="dropdown">
@@ -132,21 +112,7 @@
             </div>
         </div>
     </div>
-</div> <!-- / new bootrap based nav -->
-<!--<ul id="globalnav">-->
-    <!--<li><a href="#">Home</a></li>-->
-    <!--<li><a href="#">About</a>-->
-    <!--<li><a href="#" class="here">Manage</a></li>-->
-    <!--<ul>-->
-        <!--<li><a id="manageCollections" href="javascript:void(0);" onclick="location.href='/mcrud/movie.html?username=' + $.url().param('username') + '&amp;logintype=' + $.url().param('logintype');" alt="Collections">Collections</a></li>-->
-        <!--<li><a class="here" id="manageShowtime" href="javascript:void(0);" onclick="location.href='/html/calendar.html?username=' + $.url().param('username') + '&amp;logintype=' + $.url().param('logintype');" alt="Collections">Calendar</a></li>-->
-        <!--<li><a style="display:none;" id="allShowtime" href="javascript:void(0);" onclick="viewAllShowtime();">DEBUG ONLY&gt;All Events&lt;</a></li>-->
-        <!--<li><a style="display:none;" id="removeAllShowtime" href="javascript:void(0);" onclick="removeAllShowtime();">DEBUG ONLY&gt;Purge All Events&lt;</a></li>-->
-        <!--<li><a id="manageChannels" href="javascript:void(0);" onclick="location.href='/html/channel.html?username=' + $.url().param('username') + '&amp;logintype=' + $.url().param('logintype');" alt="Collections">Channel</a></li>-->
-
-    <!--</ul>-->
-    <!--<li><a href="#">Help</a></li>-->
-<!--</ul>-->
+</div>
 <div style="position:absolute;margin-top:100px;margin-left:250px;" ng-cloak ng-hide="true">
     ****** If you are seeing this, please make sure you enable the support of "Mixed Content" ******
 </div>
@@ -268,19 +234,6 @@
                 <input type="time" id="play-time" name="play-time" ng-model="userSelection.movie.playTime">
                 <!--<pre>{{userSelection.movie.playTime}}</pre>-->
             </div>
-            <!--<div style="display:none;" class="row advanced">-->
-                <!--<div class="span2" ng-bind-template="Advanced Settings">...</div>-->
-                <!--<div id="channelpattern2" class="span8" style="width:10%;">-->
-                    <!--<label for="channelpattern2">Channel Pattern:</label>-->
-                    <!--<input type="text" list="channelpattern_list" ng-model="item.channelPattern">-->
-                    <!--<datalist id="channelpattern_list">-->
-                        <!--<option value="D">Daily</option>-->
-                        <!--<option value="W">Weekly</option>-->
-                        <!--<option value="M">Monthly</option>-->
-                        <!--<option value="BY MAGIC">By Magic</option>-->
-                    <!--</datalist>-->
-                <!--</div>-->
-            <!--</div>-->
         </div>
         <div class="row">
             <div class="span3" style="float:right;">

@@ -24,6 +24,7 @@ loadExternalScriptFile = function (filename) {
 
 //dynamically load and add this .js file
 //************************************************************************************************
+//********* TO GET the ID e.g. 0AkAXtx48HdvbdHpSQzhiWUE4Y0R2WVdNSFc4Q1VMSHc,
 //********* DO NOT FORGET to publish the spreadsheet (File | Publish to the web ...) !!! *********
 //************************************************************************************************
 if(location.hostname.indexOf('cbiit') > -1 || location.hostname.indexOf('cadsr') > -1) {
@@ -58,20 +59,17 @@ if(location.hostname.indexOf('aware') > -1 ||
     //2ShareIt
     //ref implementation
     //https://docs.google.com/spreadsheet/pub?key=0Aov1RWgHNTwLdFZyc3V1ZllPWU4yVUV2c3FQVDZEMEE&output=html
-//<<<<<<< HEAD
     loadExternalScriptFile("https://spreadsheets.google.com/feeds/list/1rHd8FkYXBQO7H7J0qcC7PMLQ0SjU4aWqKcUWSRTOLgc/1/public/values?alt=json-in-script&amp;callback=importGSS");
-//=======
-//    loadExternalScriptFile("https://spreadsheets.google.com/feeds/list/0AkAXtx48HdvbdE00RVp5OW4yQUl6RGZPcVFCY05NX2c/1/public/values?alt=json-in-script&amp;callback=importGSS");
-//>>>>>>> 2eb925d094e6ec5a442cea17398f6141cb3a3148
 }
 else
 if(location.hostname.indexOf('service') > -1 ||
     location.hostname.indexOf('localhost') > -1 || //comment out this line to see how the default 2Share look and feel + behaviours!!!
     location.hostname.indexOf('lacaltunnel.me') > -1    //support localtunnel.me for moble debugging
 ) {
+    //alert('local prefs!');
     //common
     //https://docs.google.com/spreadsheets/d/1nZ5bITADCBoiUXnExeCy1ejaJOZBj6eyHwiuP1409aY/edit#gid=0
-    loadExternalScriptFile("https://spreadsheets.google.com/feeds/list/0AkAXtx48HdvbdE00RVp5OW4yQUl6RGZPcVFCY05NX2c/1/public/values?alt=json-in-script&amp;callback=importGSS");
+    loadExternalScriptFile("https://spreadsheets.google.com/feeds/list/1nZ5bITADCBoiUXnExeCy1ejaJOZBj6eyHwiuP1409aY/1/public/values?alt=json-in-script&amp;callback=importGSS");
 }
 
     //does nothing for now - just to suppress "Uncaught Error: No define call for ..." error

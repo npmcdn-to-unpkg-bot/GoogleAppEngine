@@ -547,6 +547,7 @@ function loadMovieShuffle(username) {
                         $('#title').html('<h2>' + data.title + '</h2><p>' + data.description + '</p>');
                     }
                 });
+                $("#processStatus").hide();
             });
 //            Galleria.run('#galleria' + galleria_type, {
 //                dataSource: galleriaData,

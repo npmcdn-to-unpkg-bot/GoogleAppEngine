@@ -2,7 +2,6 @@
  <head>
  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
  <title>Service Registry</title>
-<<<<<<< HEAD
  <style type="text/css">
     /* iPhone 2G-4S in portrait and landscape (source: http://stephen.io/mediaqueries/) */
     @media only screen
@@ -27,10 +26,6 @@
 	}
 	/** http://stackoverflow.com/questions/7073396/disable-zoom-on-input-focus-in-android-webpage */
 	input:focus { font-size: 16px!important}
-
-=======
- <style>
->>>>>>> 2eb925d094e6ec5a442cea17398f6141cb3a3148
  	.t-beaneditor-submit {
 		color: red;
  	}
@@ -281,16 +276,6 @@
  </script>
  </head>
  <body>
-<<<<<<< HEAD
-<!--
-<t:jquery.dialog t:clientId="delDialog">
-    ¿Are you sure to delete selected items?
-    <input t:type="submit" t:id="delYes" value="Yes" />
-    <input t:type="submit" t:id="delNo" value="No" t:mixins="dialogButtonHandler" t:dlgId="delDialog"/>
-</t:jquery.dialog>
--->
-=======
->>>>>>> 2eb925d094e6ec5a442cea17398f6141cb3a3148
 	<sec:ifNotGranted roles="ROLE_ADMIN, ROLE_SCI_ADMIN">
 	</sec:ifNotGranted>
    	<div style="margin:10px 5px 5px 2px;height:115px;display:inline;">
@@ -331,11 +316,7 @@
 
  		<t:parameter name="service">
 	 		<label t:type="Label" for="service"/>
-<<<<<<< HEAD
  			<input name="password" t:type="TextField" style="width:50%;" t:id="service" t:value="serviceRegistry.service" />
-=======
- 			<input t:type="TextField" style="width:50%;" t:id="service" t:value="serviceRegistry.service" />
->>>>>>> 2eb925d094e6ec5a442cea17398f6141cb3a3148
  			* must be unique
  		</t:parameter>
  		<t:parameter name="endpoint">
