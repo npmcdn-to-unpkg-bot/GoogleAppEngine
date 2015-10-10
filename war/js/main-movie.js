@@ -8,7 +8,7 @@ requirejs.config({
     paths: {
         jquery: ['//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery', 'jquery-1.9.1'],    //for some reason, this is needed for IE 8 otherwise  'jQuery' is undefined or  '$' is undefined will occur
         jQueryUI: '../jquery/jquery-ui-1.10.2.custom.min',
-        //prefsMovie: 'prefsmovie',
+        prefsMovie: 'prefsmovie',
         //prefs: '../js/prefs',
         movieApp: ['../mcrud/movie'],
 //        lazyImage: ['../bower_components/afkl-lazy-image/release/lazy-image.min'],
@@ -26,10 +26,10 @@ requirejs.config({
 //            deps: ['jquery'],
 //            exports: '$'
 //        },
-//        prefs: {
-//            deps: ["jquery", "prefsMovie"],
-//            exports : 'prefs'
-//        },
+        prefs: {
+            deps: ["jquery", "prefsMovie"],
+            exports : 'prefs'
+        },
         movieApp: {
             deps: ['jquery', 'calendarApp', 'parse', 'angular',
                 'prefsMovie',

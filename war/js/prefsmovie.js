@@ -293,4 +293,3 @@ function requestUpgrade() {
         window.open("/ws/crud?type=modelMovie&action=upgrade&uid=" + $.url().param('username'), "");
     }
 }
-

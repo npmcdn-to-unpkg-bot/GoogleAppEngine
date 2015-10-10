@@ -40,22 +40,17 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
-    "serviceregistryuserendpoint.serviceRegistryUserEndpoint.getServiceRegistryUser" : {
-      "path" : "serviceregistryuser/{id}",
-      "httpMethod" : "GET",
+    "serviceregistryuserendpoint.serviceRegistryUserEndpoint.insertServiceRegistryUser" : {
+      "path" : "serviceregistryuser",
+      "httpMethod" : "POST",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "tapp.model.ServiceRegistryUserEndpoint.getServiceRegistryUser",
+      "rosyMethod" : "tapp.model.ServiceRegistryUserEndpoint.insertServiceRegistryUser",
       "request" : {
-        "parameters" : {
-          "id" : {
-            "type" : "int64",
-            "required" : true
-          }
-        },
-        "body" : "empty"
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
@@ -86,6 +81,27 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
+    "serviceregistryuserendpoint.serviceRegistryUserEndpoint.getServiceRegistryUser" : {
+      "path" : "serviceregistryuser/{id}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "tapp.model.ServiceRegistryUserEndpoint.getServiceRegistryUser",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
     "serviceregistryuserendpoint.serviceRegistryUserEndpoint.removeServiceRegistryUser" : {
       "path" : "serviceregistryuser/{id}",
       "httpMethod" : "DELETE",
@@ -102,22 +118,6 @@
           }
         },
         "body" : "empty"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "serviceregistryuserendpoint.serviceRegistryUserEndpoint.insertServiceRegistryUser" : {
-      "path" : "serviceregistryuser",
-      "httpMethod" : "POST",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "tapp.model.ServiceRegistryUserEndpoint.insertServiceRegistryUser",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
@@ -252,7 +252,10 @@
           "$ref" : "ServiceRegistryUser"
         }
       },
-      "tapp.model.ServiceRegistryUserEndpoint.getServiceRegistryUser" : {
+      "tapp.model.ServiceRegistryUserEndpoint.insertServiceRegistryUser" : {
+        "request" : {
+          "$ref" : "ServiceRegistryUser"
+        },
         "response" : {
           "$ref" : "ServiceRegistryUser"
         }
@@ -262,15 +265,12 @@
           "$ref" : "CollectionResponse_ServiceRegistryUser"
         }
       },
-      "tapp.model.ServiceRegistryUserEndpoint.removeServiceRegistryUser" : {
+      "tapp.model.ServiceRegistryUserEndpoint.getServiceRegistryUser" : {
         "response" : {
           "$ref" : "ServiceRegistryUser"
         }
       },
-      "tapp.model.ServiceRegistryUserEndpoint.insertServiceRegistryUser" : {
-        "request" : {
-          "$ref" : "ServiceRegistryUser"
-        },
+      "tapp.model.ServiceRegistryUserEndpoint.removeServiceRegistryUser" : {
         "response" : {
           "$ref" : "ServiceRegistryUser"
         }
