@@ -2,7 +2,6 @@
 <html t:type="layoutwithsegments" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd" xmlns:sec="http://www.springframework.org/security/tags" xmlns:p="tapestry:parameter">
     <head>
         <title>Life (${total})</title>
-<<<<<<< HEAD
     	<meta name="viewport" content="initial-scale=1.07, user-scalable=no"/> <!-- source: https://developer.apple.com/library/ios/DOCUMENTATION/AppleApplications/Reference/SafariWebContent/UsingtheViewport/UsingtheViewport.html -->
         <link rel="stylesheet" type="text/css" href="/css/table.css"/>
         <style type="text/css">
@@ -27,9 +26,6 @@
 	                font-size: 1.75em;
 	            }
 			}
-=======
-        <style>
->>>>>>> 2eb925d094e6ec5a442cea17398f6141cb3a3148
 /** http://motyar.blogspot.com/2009/12/simplest-tooltip-with-pure-css.html# */
 td.description {
     text-decoration:none;
@@ -59,18 +55,12 @@ td.description:hover span, td.details:hover span {
 			</form>
     	</div>
 
-<<<<<<< HEAD
 		<p>
 		<t:pagelink t:page="g/social/SocialSave" context="0">Create Something</t:pagelink>&#160;&#160;&#160;
 		<t:pagelink t:page="sci/serviceregistrystart" context="0">Service Registry</t:pagelink>
 		</p><br/>
 
 				<table t:id="social1Grid" rowClass="literal:myRowClass" t:type="grid" pagerPosition="both" source="Socials" row="Social" add="delete" rowsPerPage="20" include="id,lastUpdatedDate,platform,what,details" reorder="id,lastUpdatedDate,platform,what,details">
-=======
-		<p><t:pagelink t:page="g/social/SocialSave" context="0">Create Something</t:pagelink></p><br/>
-
-				<table t:id="social1Grid" rowClass="literal:myRowClass" t:type="grid" pagerPosition="both" source="Socials" row="Social" add="delete" rowsPerPage="20" include="id,lastUpdatedDate,similarity,what,details,wordCount,frequencyCount" reorder="id,what,details,similarity">
->>>>>>> 2eb925d094e6ec5a442cea17398f6141cb3a3148
 					<t:parameter name="idCell">
 						<t:pagelink page="g/social/SocialSave" context="Social.id">${Social.id}</t:pagelink>
 					</t:parameter>
@@ -78,11 +68,7 @@ td.description:hover span, td.details:hover span {
 						<span>${Social.details}</span>${detailsExcerpt}
 					</p:detailsCell>
 					<p:lastUpdatedDateCell>
-<<<<<<< HEAD
-						${friendlyLastUpdatedTime}
-=======
 						<t:output format="message:month_year" value="Social.lastUpdatedDate"/>
->>>>>>> 2eb925d094e6ec5a442cea17398f6141cb3a3148
 					</p:lastUpdatedDateCell>					
 					<t:parameter name="deleteCell">
 						<sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_Social_ADMIN">

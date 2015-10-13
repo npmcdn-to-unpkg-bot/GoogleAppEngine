@@ -1,7 +1,6 @@
 <html t:type="layout" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd" xmlns:sec="http://www.springframework.org/security/tags">
  <head>
  <title>Library</title>
-<<<<<<< HEAD
          <style type="text/css">
 	        /* iPhone 2G-4S in portrait and landscape (source: http://stephen.io/mediaqueries/) */
 	        @media only screen
@@ -221,14 +220,6 @@
 			<input class="bck" type="button" name="backup2_1" id="backup2_1" value="Backup+Save" onclick="keepHtml = false; backupSave();" style="width:15%;" />&#160;&#160;
 			<input class="bck" type="button" name="backup2_2" id="backup2_2" value="Backup+Save+Tags" onclick="keepHtml = true; backupSave();" style="width:15%;" />
  	</div>
-=======
- </head>
- <body>
- 
-	<sec:ifNotGranted roles="ROLE_ADMIN, ROLE_SCI_ADMIN">
-		<div>Once saved, the data need couples of seconds to appear in the search (due to the background indexing process).</div>
-	</sec:ifNotGranted>
->>>>>>> 2eb925d094e6ec5a442cea17398f6141cb3a3148
  	<form t:id="form" t:type="beaneditform" object="Social" exclude="platform,createdDate,wordCount,frequencyCount" action="POST">
  		<t:parameter name="id">
  			<!--

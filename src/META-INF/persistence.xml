@@ -8,31 +8,11 @@
         <class>app.model.User</class>
         <class>app.model.Movie</class>
         <class>app.model.Calendar</class>
-        <!-- commented out as wicket/wicketopia are decommisioned -->
-        <!-- TBD
-        <class>tapp.model.eo.Activity</class>
-        <class>tapp.model.eo.CdActivityDetails</class>
-        <class>tapp.model.eo.ParentInput</class>
-        <class>tapp.model.eo.Student</class>
-        <class>tapp.model.eo.College</class>
-        <class>tapp.model.eo.Subject</class>
-        <class>tapp.model.eo.ProgramGoalsParentTarget</class>
-        <class>tapp.model.eo.Assessment</class>
-        <class>tapp.model.sci.FiOSToken</class>
-        <class>org.wicketopia.example.domain.entity.Person</class>
-        <class>com.appspot.cloudserviceapi.gunit.domain.BusinessOwner</class>
-        <class>com.appspot.cloudserviceapi.gunit.domain.Subordinate</class>
-        <class>com.appspot.cloudserviceapi.gunit.domain.Cashier</class>
-        <class>com.appspot.cloudserviceapi.media.xmm.Movie</class>
-        -->
 <!--
 Caused by: org.hibernate.MappingException: Repeated column in mapping for entity: com.appspot.cloudserviceapi.media.xmm.Movie column: id (should be mapped with insert="false" update="false")
 -->
 <!-- http://bpossolo.blogspot.com/2012/08/reducing-google-app-engine-cold-start.html -->
  		<exclude-unlisted-classes>true</exclude-unlisted-classes>
-<!--
-<property name="datanucleus.appengine.storageVersion" value="WRITE_OWNED_CHILD_KEYS_TO_PARENTS"/>
--->
         <properties>
             <!-- Spring Roo -->
             <property name="datanucleus.NontransactionalRead" value="true"/>

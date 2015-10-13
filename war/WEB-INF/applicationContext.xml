@@ -57,5 +57,4 @@
     <bean lazy-init="true" class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean" id="entityManagerFactory">
         <property name="persistenceUnitName" value="transactions-optional"/>
     </bean>
-
 </beans>
