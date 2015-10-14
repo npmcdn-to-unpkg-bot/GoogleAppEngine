@@ -55,7 +55,7 @@
 				text-overflow: ellipsis;
 				/*-ms-text-overflow: ellipsis;*/
 			}
-			.id { width:10px;height:20px; max-width:30px; word-wrap:break-word; }
+			.id { width:25px;height:20px; max-width:30px; word-wrap:break-word; }
 			.endpoint {
                 width:150px;
                 max-width:150px;
@@ -93,7 +93,7 @@
     </head>
     <body class="outer">
 
-<div id="landscape" class="landscape"><div><h5>Landscape Mode: Sorted by last updated (UPT) field (descending) by default <a href="#" onclick="showPortraitOnly();return false;">Portrait Mode</a></h5></div>
+<div id="landscape" class="landscape"><div><h4>Landscape Mode: Sorted by last updated (UPT) field (descending) by default <a onclick="showPortraitOnly();return false;" href="#" style="float:right;">Change to Portrait Mode</a></h4></div>
         <t:alerts/>
        	<div>
 	        <h2 style="display:inline">Service Registry Manager (${totalRows})</h2>
@@ -140,14 +140,14 @@
 		</table>
 </div>				
 
-<div id="portrait" class="portrait"><div><h4>Portrait Mode: Sorted by last visited (VIS) field (descending) by default <a href="#" onclick="showLandscapeOnly();return false;">Landscape Mode</a></h4></div>
+<div id="portrait" class="portrait"><div><h4>Portrait Mode: Sorted by last visited (VIS) field (descending) by default <a onclick="showLandscapeOnly();return false;" href="#" style="float:right;">Change to Landscape Mode</a></h4></div>
         <t:alerts/>
         <div>
 	        <h2 style="display:inline">Service Registry Manager (${totalRows})</h2>
 	        <span style="margin:5px;float:right;">User ID: ${loggedInUser} (${userAssignedRole})    <t:actionlink t:id="logout">Logout</t:actionlink></span>
 	        <p/><p/>
 			<form style="display:${searchBoxDisplay};top:25px;right:0;" action="/sci/jsp/search_service.jsp">
-				Search (e.g. \.text\(\) AND \.val\(\)) <input type="text" name="q" id="q1" value="" style="margin:5px 10px 5px 0px;width:50px;min-width:150px;font-size:12px;"/><a href='http://lucene.apache.org/java/2_9_1/queryparsersyntax.html'>?</a>&nbsp;&nbsp;<a href='http://www.javaranch.com/journal/2004/04/Lucene.html'>Syntax</a>
+				<img style="height:12px;margin-right:4px;" src="/images/google-web-search-m.png" alt="Search Icon"/>Search (e.g. \.text\(\) AND \.val\(\)) <input type="text" name="q" id="q1" value="" style="margin:5px 10px 5px 0px;width:50px;min-width:150px;font-size:12px;"/><a href='http://lucene.apache.org/java/2_9_1/queryparsersyntax.html'>?</a>&nbsp;&nbsp;<a href='http://www.javaranch.com/journal/2004/04/Lucene.html'>Syntax</a>
 			</form>
     	</div>
         <p>

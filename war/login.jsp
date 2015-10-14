@@ -13,31 +13,19 @@
             margin-left: 10px;
         }
         h2 {
-            margin-top: 0px;
-            margin-left: 5px;
+            font-size: 2.2em;
+            margin: 0 0 0 0;
         }
-
-        /* iPhone 2G-4S in portrait & landscape (source: http://stephen.io/mediaqueries/) */
-        @media only screen
-        and (min-device-width : 320px)
-        and (max-device-width : 480px) {
-            body {
-                -webkit-text-size-adjust:80%;
-                margin-left: 15px;
-            }
-            h2 {
-                font-size: .9em;
-                margin-top: 10px;
-            }
-            td, input {
-                font-size:.82em
-            }
+        .label, input {
+            font-size: 1.2em;
+            margin: 5px 0 5px 0;
         }
         /* IE styles only */
         @-ms-viewport {
                 width: device-width;
 		}
 	</style>
+    <link rel="stylesheet" href="/css/mobile.css" type="text/css" media="screen, projection, tv" />
 	<script type="text/javascript" src='//ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.js'></script>
 	<script>
 		jQuery.noConflict();	//http://wiki.apache.org/tapestry/Tapestry5HowToIntegrateJQuery
@@ -70,9 +58,9 @@
 
 <form id="loginForm" name="loginForm" action="j_spring_security_check" method="post">
         <table>
-          <tr><td>ID</td><td><input size="5" name="password" autocapitalize="off" autocorrect="off" id="usernameField" type="text" /></td></tr>
-          <tr><td>Password</td><td><input size="5" autocomplete="off" id="passwordField" type="password" name="j_password" /></td></tr>
-          <tr><td colspan="4" align="right"><input style="margin-top:10px;width:100%;height:100%;" type="submit" value="Submit" /></td></tr>
+<tr><td><span class="label">ID</span></td><td><input name="password" autocapitalize="off" autocorrect="off" id="usernameField" type="text" /></td></tr>
+          <tr><td><span class="label">PWD</span></td><td><input autocomplete="off" id="passwordField" type="password" name="j_password" /></td></tr>
+          <tr><td colspan="2"><input style="width:50%;height:100%;float:right" type="submit" value="Go" /></td></tr>
         </table>
 </form>
 
