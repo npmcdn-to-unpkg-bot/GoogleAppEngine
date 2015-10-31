@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿<!DOCTYPE html ng-app>
 <html>
 <head>
     <meta charset="utf-8">
@@ -13,7 +13,7 @@
     <!--<script type="text/javascript" src='../js/ui-bootstrap-tpls-0.11.2.min.js'></script>-->
 
     <!-- angular-leap stuff (thanks to view-source:https://angular-leap-instant.herokuapp.com/#/) -->
-    <!--<link href="../css/reveal.min.css" media="screen" rel="stylesheet" type="text/css" />-->
+    <link href="../css/reveal.min.css" media="screen" rel="stylesheet" type="text/css" />
 
 
     <!-- new experimental rich editor (source: https://github.com/mindmup/bootstrap-wysiwyg/blob/master/index.html) -->
@@ -110,14 +110,14 @@
 //                , enableDefaultMetaGestureActions: true
             });
             //swipe left and right support with LeapStrap
-            document.body.addEventListener("leap-dual-swipe", function(event){
-                var gesture = event.gesture;
-                assert(typeof gesture === 'undefined', 'movie.html: ' + gesture.type + " : " + gesture.direction);
-                //TODO to test the following!
-                setTimeout(function () {
-                    detectGesture(gesture);
-                }, 2000);
-            });
+//            document.body.addEventListener("leap-dual-swipe", function(event){
+//                var gesture = event.gesture;
+//                assert(typeof gesture === 'undefined', 'movie.html: ' + gesture.type + " : " + gesture.direction);
+//                //TODO to test the following!
+//                setTimeout(function () {
+//                    detectGesture(gesture);
+//                }, 2000);
+//            });
         });
 
         //        }
@@ -125,18 +125,19 @@
     <script>var require = { urlArgs: 'a014' };</script>
     <script type="text/javascript" src="../js/require.js" data-main="../js/main-movie"></script>
 </head>
+<!--suppress HtmlUnknownAttribute, HtmlUnknownAttribute, HtmlUnknownAttribute, HtmlUnknownAttribute, HtmlUnknownAttribute -->
 <body ng-controller="MovieController" id="m-ng-app" class="leap-interactive" leap-disable-tap="true" leap-disable-hover="true">
 <script>
-    function detectGesture(gesture) {
-        $scope.$apply(function () {
-            if(gesture.direction === 'right') {
-                document.querySelector("#leap-swipe-direction").value = "right";
-            } else
-            if(gesture.direction === 'left') {
-                document.querySelector("#leap-swipe-direction").value = "left";
-            }
-        });
-    }
+//    function detectGesture(gesture) {
+//        $scope.$apply(function () {
+//            if(gesture.direction === 'right') {
+//                document.querySelector("#leap-swipe-direction").value = "right";
+//            } else
+//            if(gesture.direction === 'left') {
+//                document.querySelector("#leap-swipe-direction").value = "left";
+//            }
+//        });
+//    }
 </script>
 <a href="#content" class="sr-only">Skip to main content</a>
 <!-- angular-leap stuff -->
@@ -269,7 +270,7 @@
 <!--</ul>-->
 
 <div id="content">
-    <div ng-cloak style="position:absolute;margin-top:22px;margin-left:0px;" ng-hide="page.number == 0">Page {{page.number}} of {{page.totalPage<1?1:page.totalPage}}</div>
+    <div ng-cloak style="position:absolute;margin-top:22px;margin-left:0px;" ng-hide="page.number == 0">Page {{page.number}} of {{page.totalPage && page.totalPage<1?1:page.totalPage}}</div>
 <!--<div>-->
 <!--<div ng-view></div>-->
 <!--</div>-->
@@ -292,7 +293,7 @@
 
 <div ng-cloak class="row-fluid">
     <div class="span7">
-        <div style="position:relative;top:50px;margin-left:2px;margin-top:40px;margin-bottom:3px;">
+        <div style="position:relative;margin-left:2px;margin-top:55px;margin-bottom:3px;">
             <input style="width:72%;" type="text" ng-model="query" ng-change="search()"
                    class="input-large search-query" placeholder="Enter your search here">
             <i ng-show="query.length > 0" ng-click="resetSearch()" class="fa fa-times">
@@ -525,7 +526,7 @@
         <div class="span4" ng-show="!userSelection.movie.playAllDay">
             <!--<input id="play-time" name="play-time" ng-model="dateString" type="datetime-local">-->
             <!--<input type="date" id="play-date" name="play-date" ng-model="playDate" required="required" onblur="createTemporaryEvent();">-->
-            <input id="dp" type="date" required="required" ng-model="userSelection.movie.playDate" name="play-date" my-datepicker/>
+            <input id="dp" type="date" required="required" ng-model="userSelection.movie.playDate" name="play-date" datepicker/>
             <!--<pre>{{userSelection.movie.playDate}}</pre>-->
             <input type="time" id="play-time" name="play-time" ng-model="userSelection.movie.playTime">
             <!--<pre>{{userSelection.movie.playTime}}</pre>-->
@@ -580,7 +581,7 @@
     </div>
 </div>
 
-<form><input style="width: 90%; border-width: 0;" id="leap-swipe-direction" ng-model="userSelection.gesture.swipe" value="{{userSelection.gesture.swipe}}"></form>
+<form ng-cloak><input style="padding-top:15px; width: 90%; border-width: 0;" id="leap-swipe-direction" ng-model="userSelection.gesture.swipe" value="{{userSelection.gesture.swipe}}"></form>
 
     <!-- OCEAN GALLERY  -->
 <!--<div id="oceanCarousel" class="carousel slide">-->
@@ -825,10 +826,6 @@
         baseImportGSS(json);
     }
 </script>
-<!-- angular-leap stuff -->
-<!--<script src="../bower_components/angular-leap/build/angular-leap.js" type="text/javascript"></script>-->
-<!--<script src="../bower_components/leapjs/leap-0.6.2.min.js" type="text/javascript"></script>-->
-
 <!--</div> &lt;!&ndash; begin - extra div just to disable Chrome pull down refresh to save cost! c.f. overflow-y: hidden in app.css &ndash;&gt;-->
 
 </body>

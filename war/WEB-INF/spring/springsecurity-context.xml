@@ -24,7 +24,7 @@
 	<http pattern="/nuke*/**" security="none"/>
 	<http pattern="/css/*" security="none"/>
 	<http pattern="/images/*" security="none"/>
-	<http pattern="/js/*" security="none"/>
+	<http pattern="/js/**" security="none"/>
 	<http pattern="/password" security="none"/>
 	<http pattern="/nlogin" security="none"/>
 	<http pattern="/ui/**/*" security="none"/>

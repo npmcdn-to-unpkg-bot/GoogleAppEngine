@@ -11,6 +11,7 @@ requirejs.config({
         prefsMovie: 'prefsmovie',
         //prefs: '../js/prefs',
         movieApp: ['../mcrud/movie'],
+        angularLeap: '../js/bower_components/angular-leap/build/angular-leap',
 //        lazyImage: ['../bower_components/afkl-lazy-image/release/lazy-image.min'],
         calendarApp: '../html/calendar',
         initUser: ['../parse/init']
@@ -30,8 +31,12 @@ requirejs.config({
             deps: ["jquery", "prefsMovie"],
             exports : 'prefs'
         },
+        angularLeap: {
+            deps: ["angular"],
+            exports : 'angularLeap'
+        },
         movieApp: {
-            deps: ['jquery', 'calendarApp', 'parse', 'angular',
+            deps: ['jquery', 'calendarApp', 'parse', 'angular', 'angularLeap',
                 'prefsMovie',
                 'prefs']
         },
@@ -56,7 +61,8 @@ requirejs.config({
 require(['./main-config', './app'], function (common, app) {
     require(
         ['jquery', 'purl', 'parse', 'facebook', 'angular',
-//            'angularAnimate',
+            'angularLeap',
+            //'angularAnimate',
             //'loglevel',
             'prefs',
             'movieApp',
@@ -69,7 +75,8 @@ require(['./main-config', './app'], function (common, app) {
             //, 'popup'
         ], function (
         $, purl, Parse, facebook, angular,
-//        angularAnimate,
+            angularLeap,
+            //angularAnimate,
             //loglevel,
             prefs,
             movie,

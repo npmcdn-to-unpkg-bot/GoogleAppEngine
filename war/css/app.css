@@ -202,6 +202,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 
 /* slot view for mobile adjustment */
 #slotview1 {
+    margin-top: -40px;
     width: 99%;  /* workaround to remove horizontal overscroll issue */
 }
 

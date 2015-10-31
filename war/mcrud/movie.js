@@ -1288,21 +1288,21 @@ function MovieController($scope, $filter, $http, $rootScope,
     $scope.$watch('userSelection.movie.playDate', function (playDate) {
         $scope.showTempEvent(playDate);
     });
-    $scope.$watch('userSelection.gesture.swipe', function (swipe) {
-
-        try {
-            assert(swipe, "movie.js: swipe [" + swipe + "]");
-            //console && console.log("movie.js: swipe [" + swipe + "]");
-            if(swipe === 'right') {
-                //$scope.selectNextPage(page);
-            } else
-            if(swipe === 'left') {
-                //$scope.selectPreviousPage(page);
-            }
-        } catch(e) {
-            window.console && console.log('movie.js watch 2 error [' + e + ']');
-        }
-    }, true);
+    //$scope.$watch('userSelection.gesture.swipe', function (swipe) {
+    //
+    //    try {
+    //        assert(swipe, "movie.js: swipe [" + swipe + "]");
+    //        console && console.log("movie.js: swipe [" + swipe + "]");
+    //        if(swipe === 'right') {
+    //            $scope.selectNextPage(page);
+    //        } else
+    //        if(swipe === 'left') {
+    //            $scope.selectPreviousPage(page);
+    //        }
+    //    } catch(e) {
+    //        window.console && console.log('movie.js watch 2 error [' + e + ']');
+    //    }
+    //}, true);
 
     //AngularJS 1.2+ stuff
     //$scope.$watch('title', function(value) {
@@ -1465,7 +1465,9 @@ function MovieController($scope, $filter, $http, $rootScope,
 
 //=== http://stackoverflow.com/questions/25111831/controller-not-a-function-got-undefined-while-defining-controllers-globally
 //=== http://blog.bulte.net/12-24-2013/angular-wordpress-cors.html
-angular.module('app',[])//dependency 'ui.bootstrap' is conflicting with 1.4, thus removed (c.f. http://stackoverflow.com/questions/26332202/using-ui-bootstrap-causing-issues-with-carousel)!
+/** Angular-Leap (https://github.com/angular-leap/angular-leap) does not work (yet) */
+angular.module('app', ['angularLeap'])
+//angular.module('app',[])//dependency 'ui.bootstrap' is conflicting with 1.4, thus removed (c.f. http://stackoverflow.com/questions/26332202/using-ui-bootstrap-causing-issues-with-carousel)!
 .config(
 		['$controllerProvider', '$httpProvider',
     function($controllerProvider, $httpProvider) {
@@ -1505,7 +1507,7 @@ angular.module('app',[])//dependency 'ui.bootstrap' is conflicting with 1.4, thu
 //=== http://www.grobmeier.de/angular-js-binding-to-jquery-ui-datepicker-example-07092012.html#.UyIsZVFdVtZ
 //angular.module('app')
 //<<<<<<< HEAD
-.directive('datepicker', function() {
+.directive('myDatepicker', function() {
     return function(scope, element, attrs) {
         element.datepicker({
             inline: true,
