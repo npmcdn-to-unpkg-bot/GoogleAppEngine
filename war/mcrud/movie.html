@@ -48,6 +48,11 @@
             overflow: hidden;
             text-overflow: ellipsis;
         }
+
+        /** offset the leapstrap header by 70px */
+        #content {
+            padding-top: 70px;
+        }
     </style>
 
     <!-- ********** Warning: the following css files have to be after the above - otherwise gallery thumbnails will fail to show up!!! ********** -->
@@ -57,8 +62,8 @@
     <!-- ********** Warning: the following css files have to be after the above - otherwise gallery thumbnails will fail to show up!!! ********** -->
 
     <!-- leapstrap/leapmotion stuff -->
-    <!--<link rel="stylesheet" href="//wilkesalex.github.io/leapstrap/dist/css/leapstrap.css" />-->
-    <!--<script src="//js.leapmotion.com/0.3.0-beta3/leap.js"></script>-->
+    <link rel="stylesheet" href="//wilkesalex.github.io/leapstrap/dist/css/leapstrap.css" />
+    <script src="//js.leapmotion.com/leap-0.6.4.min.js"></script>
     <!-- Include Leapstrap JS *** THIS IS ALSO REQUIRED FOR BOOSTRAP collapsible menu to work!!! -->
     <script src="//wilkesalex.github.io/leapstrap/dist/js/leapstrap.js"></script>
 
@@ -98,12 +103,12 @@
 //            });
 
             <!-- Init Leap, Set all "a" interactive, use 1 Leap cursor/finger -->
-//            LeapManager.init({
-////                interactiveSelector:"a",    //do not use this in PROD (use class="leap-interactive" instead)!!!
-//                maxCursors:1
-////                , enableMetaGestures: true
-////                , enableDefaultMetaGestureActions: true
-//            });
+            LeapManager.init({
+//                interactiveSelector:"a",    //do not use this in PROD (use class="leap-interactive" instead)!!!
+                maxCursors:1
+//                , enableMetaGestures: true
+//                , enableDefaultMetaGestureActions: true
+            });
             //swipe left and right support with LeapStrap
             document.body.addEventListener("leap-dual-swipe", function(event){
                 var gesture = event.gesture;
@@ -235,14 +240,10 @@
                 <li style="display: none;"><a class="leap-interactive" id="helpLink" href="#"><span id="helpText">Help</span></a>
                 </li>
             </ul>
-            <ul class="nav navbar-nav navbar-right" style="width:35%;">
+            <ul class="nav navbar-nav navbar-right">
                 <li><a class="leap-interactive" style="display: none;" id="myaccount" href="#" onclick="location.href='/passwordchange/jsp/simple.jsp?username=' + $.url().param('username') + '&amp;logintype=' + $.url().param('logintype');">My Account</a></li>
                 <li><a class="leap-interactive" href="javascript:logout();">Logout</a> </li>
-<!--<<<<<<< HEAD-->
-                <li style="padding-top: 15px;color: white;">Welcome <span id="currentUserName"></span>!</li>
-<!--=======-->
-                <!--<li style="padding-top: 27px;color: white;">Welcome <span id="currentUserName"></span>!</li>-->
-<!--&gt;>>>>>> 2eb925d094e6ec5a442cea17398f6141cb3a3148-->
+                <li style="color: white;"><a>Welcome <span id="currentUserName"></span>!</a></li>
             </ul>
         </div>
         <!--/.navbar-collapse -->
@@ -267,7 +268,7 @@
 <!--<li><a id="helpLink" href="#" target="_new">Help</a></li>-->
 <!--</ul>-->
 
-<div>
+<div id="content">
     <div ng-cloak style="position:absolute;margin-top:22px;margin-left:0px;" ng-hide="page.number == 0">Page {{page.number}} of {{page.totalPage<1?1:page.totalPage}}</div>
 <!--<div>-->
 <!--<div ng-view></div>-->
@@ -543,15 +544,15 @@
 
 <br>
 <div id="slotview1" class="row" style="display:none;" ng-cloak leap-swipe-right="selectPreviousPage(page)" leap-swipe-left="userclicked=true;selectNextPage(page)">
-    <div class="container" id="content">
-        <div class="leap-interactive" style="width: 90%;">
-            <a style="margin-top: 100px; z-index: 200;" class="carousel-control left" ng-show="page.number > 1" ng-click="page.number = 2;selectPreviousPage(page)" data-slide="prev">&lsaquo;&lsaquo;</a>
-            <a style="margin-top: 100px; margin-left: 60px; z-index: 200;" class="carousel-control left" ng-show="page.number > 1" ng-click="selectPreviousPage(page)" data-slide="prev">&lsaquo;</a>
+    <div class="container">
+        <div class="leap-interactive">
+            <a style="margin-top: 100px; z-index: 200; width: 70px;" class="carousel-control left" ng-show="page.number > 1" ng-click="page.number = 2;selectPreviousPage(page)" data-slide="prev">&lsaquo;&lsaquo;</a>
+            <a style="margin-top: 100px; margin-left: 80px; z-index: 200; width: 70px;" class="carousel-control left" ng-show="page.number > 1" ng-click="selectPreviousPage(page)" data-slide="prev">&lsaquo;</a>
         </div>
         <!--maxPerPage(page.max/limitTo/itemsPerPage) needs to be in sync with the backend's MovieHandler.java in order for the paging to work correctly! -->
-        <div class="leap-interactive" style="width: 90%;">
-            <a style="margin-right: 60px;margin-top: 126px; z-index: 200;" class="carousel-control right" ng-show="backendReady && page.number < page.totalPage" ng-click="userclicked=true;selectNextPage(page)" data-slide="next" ng-cloak>&rsaquo;</a>
-            <a style="margin-top: 126px; z-index: 200;" class="carousel-control right" ng-show="backendReady && page.number < page.totalPage" ng-click="userclicked=true;page.number = page.totalPage;selectNextPage(page)" data-slide="next" ng-cloak>&rsaquo;&rsaquo;</a>
+        <div class="leap-interactive">
+            <a style="margin-right: 80px;margin-top: 126px; z-index: 200; width: 70px;" class="carousel-control right" ng-show="backendReady && page.number < page.totalPage" ng-click="userclicked=true;selectNextPage(page)" data-slide="next" ng-cloak>&rsaquo;</a>
+            <a style="margin-top: 126px; z-index: 200; width: 70px;" class="carousel-control right" ng-show="backendReady && page.number < page.totalPage" ng-click="userclicked=true;page.number = page.totalPage;selectNextPage(page)" data-slide="next" ng-cloak>&rsaquo;&rsaquo;</a>
         </div>
         <div id="slotview2" class="col-md-12" ngcloak>
             <div style="background-color:lightgray;" class="col-md-2" ng-init="page = { max:6, number:1 }" ng-repeat="item in pagedItems[currentPage] | orderBy:sortingOrder:reverse | filter:query">
@@ -571,10 +572,10 @@
                     </a>
                 <!--</div>-->
             </div>
-        </div>
-        <div class="leap-interactive" style="width: 90%;">
-            <a style="margin-right: 60px;margin-top: 126px; z-index: 200;" class="carousel-control right" ng-show="backendReady && page.number < page.totalPage" ng-click="userclicked=true;selectNextPage(page)" data-slide="next" ng-cloak>&rsaquo;</a>
-            <a style="margin-top: 126px; z-index: 200;" class="carousel-control right" ng-show="backendReady && page.number < page.totalPage" ng-click="userclicked=true;page.number = page.totalPage;selectNextPage(page)" data-slide="next" ng-cloak>&rsaquo;&rsaquo;</a>
+            <!--<div class="leap-interactive" style="width: 90%;">-->
+                <!--<a style="margin-right: 60px;margin-top: 126px; z-index: 200;" class="carousel-control right" ng-show="backendReady && page.number < page.totalPage" ng-click="userclicked=true;selectNextPage(page)" data-slide="next" ng-cloak>&rsaquo;</a>-->
+                <!--<a style="margin-top: 126px; z-index: 200;" class="carousel-control right" ng-show="backendReady && page.number < page.totalPage" ng-click="userclicked=true;page.number = page.totalPage;selectNextPage(page)" data-slide="next" ng-cloak>&rsaquo;&rsaquo;</a>-->
+            <!--</div>-->
         </div>
     </div>
 </div>
@@ -766,7 +767,6 @@
         <td ng-show="!getYoutubeVideoId(item.url)">
             <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=" alt="dummy image"></td>
         <td ng-show="item.oid == objectId" ng-bind-template="Me">...</td>
-        <td ng-show="item.oid != objectId" ng-bind-template="{{item.owner}}">...</td>
         <td ng-bind-template="{{item.title}}">...</td>
         <td ng-bind-template="{{::item.description}}">...</td>
         <td style="width:180px;" ng-bind-template="{{item.createDate | date:'yyyy-MM-dd HH:mm:ss Z'}}">...</td>

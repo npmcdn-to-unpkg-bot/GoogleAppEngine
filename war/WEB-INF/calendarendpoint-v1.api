@@ -1,12 +1,12 @@
 {
   "extends" : "thirdParty.api",
   "abstract" : false,
-  "root" : "https://chudoonet.appspot.com/_ah/api",
+  "root" : "https://chudoon3t.appspot.com/_ah/api",
   "name" : "calendarendpoint",
   "version" : "v1",
   "defaultVersion" : false,
   "adapter" : {
-    "bns" : "https://chudoonet.appspot.com/_ah/spi",
+    "bns" : "https://chudoon3t.appspot.com/_ah/spi",
     "deadline" : 65.0,
     "type" : "lily"
   },
@@ -45,22 +45,17 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
-    "calendarendpoint.calendarEndpoint.removeCalendar" : {
-      "path" : "calendar/{id}",
-      "httpMethod" : "DELETE",
+    "calendarendpoint.calendarEndpoint.insertCalendar" : {
+      "path" : "calendar",
+      "httpMethod" : "POST",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "app.model.CalendarEndpoint.removeCalendar",
+      "rosyMethod" : "app.model.CalendarEndpoint.insertCalendar",
       "request" : {
-        "parameters" : {
-          "id" : {
-            "type" : "int64",
-            "required" : true
-          }
-        },
-        "body" : "empty"
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
@@ -82,17 +77,22 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
-    "calendarendpoint.calendarEndpoint.insertCalendar" : {
-      "path" : "calendar",
-      "httpMethod" : "POST",
+    "calendarendpoint.calendarEndpoint.removeCalendar" : {
+      "path" : "calendar/{id}",
+      "httpMethod" : "DELETE",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "app.model.CalendarEndpoint.insertCalendar",
+      "rosyMethod" : "app.model.CalendarEndpoint.removeCalendar",
       "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
@@ -248,14 +248,14 @@
           "name" : {
             "type" : "string"
           },
-          "parent" : {
-            "$ref" : "Key"
+          "complete" : {
+            "type" : "boolean"
           },
           "namespace" : {
             "type" : "string"
           },
-          "complete" : {
-            "type" : "boolean"
+          "parent" : {
+            "$ref" : "Key"
           }
         }
       },
@@ -281,7 +281,10 @@
           "$ref" : "Calendar"
         }
       },
-      "app.model.CalendarEndpoint.removeCalendar" : {
+      "app.model.CalendarEndpoint.insertCalendar" : {
+        "request" : {
+          "$ref" : "Calendar"
+        },
         "response" : {
           "$ref" : "Calendar"
         }
@@ -294,10 +297,7 @@
           "$ref" : "Calendar"
         }
       },
-      "app.model.CalendarEndpoint.insertCalendar" : {
-        "request" : {
-          "$ref" : "Calendar"
-        },
+      "app.model.CalendarEndpoint.removeCalendar" : {
         "response" : {
           "$ref" : "Calendar"
         }

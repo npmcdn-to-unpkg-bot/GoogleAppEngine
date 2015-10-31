@@ -1,12 +1,12 @@
 {
   "extends" : "thirdParty.api",
   "abstract" : false,
-  "root" : "https://chudoonet.appspot.com/_ah/api",
+  "root" : "https://chudoon3t.appspot.com/_ah/api",
   "name" : "serviceregistryuserendpoint",
   "version" : "v1",
   "defaultVersion" : false,
   "adapter" : {
-    "bns" : "https://chudoonet.appspot.com/_ah/spi",
+    "bns" : "https://chudoon3t.appspot.com/_ah/spi",
     "deadline" : 65.0,
     "type" : "lily"
   },
@@ -35,6 +35,27 @@
       "request" : {
         "body" : "autoTemplate(backendRequest)",
         "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "serviceregistryuserendpoint.serviceRegistryUserEndpoint.getServiceRegistryUser" : {
+      "path" : "serviceregistryuser/{id}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "tapp.model.ServiceRegistryUserEndpoint.getServiceRegistryUser",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
@@ -73,27 +94,6 @@
           "limit" : {
             "type" : "int32",
             "required" : false
-          }
-        },
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "serviceregistryuserendpoint.serviceRegistryUserEndpoint.getServiceRegistryUser" : {
-      "path" : "serviceregistryuser/{id}",
-      "httpMethod" : "GET",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "tapp.model.ServiceRegistryUserEndpoint.getServiceRegistryUser",
-      "request" : {
-        "parameters" : {
-          "id" : {
-            "type" : "int64",
-            "required" : true
           }
         },
         "body" : "empty"
@@ -252,6 +252,11 @@
           "$ref" : "ServiceRegistryUser"
         }
       },
+      "tapp.model.ServiceRegistryUserEndpoint.getServiceRegistryUser" : {
+        "response" : {
+          "$ref" : "ServiceRegistryUser"
+        }
+      },
       "tapp.model.ServiceRegistryUserEndpoint.insertServiceRegistryUser" : {
         "request" : {
           "$ref" : "ServiceRegistryUser"
@@ -263,11 +268,6 @@
       "tapp.model.ServiceRegistryUserEndpoint.listServiceRegistryUser" : {
         "response" : {
           "$ref" : "CollectionResponse_ServiceRegistryUser"
-        }
-      },
-      "tapp.model.ServiceRegistryUserEndpoint.getServiceRegistryUser" : {
-        "response" : {
-          "$ref" : "ServiceRegistryUser"
         }
       },
       "tapp.model.ServiceRegistryUserEndpoint.removeServiceRegistryUser" : {
