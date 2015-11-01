@@ -3,11 +3,6 @@ var uid;
 
 //var myApp = angular.module('app', ['summernote'], ctrlRead)   //summernote messed up with Bootstrap 2.3.1 woraround for mobile!!!
 //var myApp = angular.module('app', ['ui.bootstrap', 'afkl.lazyImage'], ctrlRead)
-/** Angular-Leap (https://github.com/angular-leap/angular-leap) does not work (yet) */
-/*var myApp = angular.module('app', ['ui.bootstrap', 'angular-leap'], ctrlRead);
- var myApp = angular.module('app', ['ui.bootstrap'], ctrlRead);
- */
-
 //=== https://docs.angularjs.org/api/ng/service/$sce
 //myApp.config(function($sce) {
 //    $sce.enabled(false);
@@ -1466,7 +1461,7 @@ function MovieController($scope, $filter, $http, $rootScope,
 //=== http://stackoverflow.com/questions/25111831/controller-not-a-function-got-undefined-while-defining-controllers-globally
 //=== http://blog.bulte.net/12-24-2013/angular-wordpress-cors.html
 /** Angular-Leap (https://github.com/angular-leap/angular-leap) does not work (yet) */
-angular.module('app', ['angularLeap'])
+angular.module('app', ['angularLeap', 'ngTouch'])
 //angular.module('app',[])//dependency 'ui.bootstrap' is conflicting with 1.4, thus removed (c.f. http://stackoverflow.com/questions/26332202/using-ui-bootstrap-causing-issues-with-carousel)!
 .config(
 		['$controllerProvider', '$httpProvider',

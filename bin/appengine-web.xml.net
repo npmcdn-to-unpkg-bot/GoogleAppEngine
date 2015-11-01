@@ -34,7 +34,8 @@
      	<include path="/ui/**/*.woff" />
 		<include path="/css/*.css" />
 		<include path="/images/*" />
-		<include path="/js/*" />
+		<include path="/js/*.js" />
+		<include path="/js/**/*.js" />
      	<include path="/galleria*/**.css" />
      	<include path="/galleria*/**.js" />
      	<include path="/galleria*/**.gif" />

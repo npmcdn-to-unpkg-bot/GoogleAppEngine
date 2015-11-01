@@ -62,6 +62,7 @@ typeof requirejs !== 'undefined' && requirejs.config({
         //===used by movie.html
         //bootstrap: '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min',
         angular: '//ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular',
+        angularTouch: '//ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular-touch',
         //angular: '//ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular',  //latest as at 4/6/2014
         //angular: '//ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular',
         //angular: '//ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular',    //with ability to turn off $sce!?
@@ -121,6 +122,10 @@ typeof requirejs !== 'undefined' && requirejs.config({
         angular: {
             deps: ["parse", "purl"],
             exports : 'angular'
+        },
+        angularTouch: {
+            deps: ["angular"],
+            exports : 'angularTouch'
         },
 //        angularSanitize: {
 //            deps: ["angular"],
@@ -219,6 +224,7 @@ typeof requirejs !== 'undefined' && requirejs(
         'angular',
 //        'angularSanitize',  //1.3 does not have this
         'angularBootstrap',
+        'angularTouch',
 //        'summernote',
 //        'angularSummernote',
         'loglevel',
@@ -233,6 +239,7 @@ typeof requirejs !== 'undefined' && requirejs(
         angular,
 //        angularSanitize,	//1.3 does not have this
         angularBootstrap,
+        angularTouch,
 //        angularAnimate,
 //        summernote,
 //        angularSummernote,

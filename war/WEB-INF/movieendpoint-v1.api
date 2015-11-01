@@ -1,12 +1,12 @@
 {
   "extends" : "thirdParty.api",
   "abstract" : false,
-  "root" : "https://2-share.appspot.com/_ah/api",
+  "root" : "https://chudoon3t.appspot.com/_ah/api",
   "name" : "movieendpoint",
   "version" : "v1",
   "defaultVersion" : false,
   "adapter" : {
-    "bns" : "https://2-share.appspot.com/_ah/spi",
+    "bns" : "https://chudoon3t.appspot.com/_ah/spi",
     "deadline" : 65.0,
     "type" : "lily"
   },
@@ -24,22 +24,6 @@
     "maxAge" : 0
   },
   "methods" : {
-    "movieendpoint.movieEndpoint.updateMovie" : {
-      "path" : "movie",
-      "httpMethod" : "PUT",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "app.model.MovieEndpoint.updateMovie",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
     "movieendpoint.movieEndpoint.insertMovie" : {
       "path" : "movie",
       "httpMethod" : "POST",
@@ -51,6 +35,27 @@
       "request" : {
         "body" : "autoTemplate(backendRequest)",
         "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "movieendpoint.movieEndpoint.removeMovie" : {
+      "path" : "movie/{id}",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "app.model.MovieEndpoint.removeMovie",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
@@ -81,27 +86,6 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
-    "movieendpoint.movieEndpoint.removeMovie" : {
-      "path" : "movie/{id}",
-      "httpMethod" : "DELETE",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "app.model.MovieEndpoint.removeMovie",
-      "request" : {
-        "parameters" : {
-          "id" : {
-            "type" : "int64",
-            "required" : true
-          }
-        },
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
     "movieendpoint.movieEndpoint.getMovie" : {
       "path" : "movie/{id}",
       "httpMethod" : "GET",
@@ -118,6 +102,22 @@
           }
         },
         "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "movieendpoint.movieEndpoint.updateMovie" : {
+      "path" : "movie",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "app.model.MovieEndpoint.updateMovie",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
@@ -460,7 +460,7 @@
       }
     },
     "methods" : {
-      "app.model.MovieEndpoint.updateMovie" : {
+      "app.model.MovieEndpoint.insertMovie" : {
         "request" : {
           "$ref" : "Movie"
         },
@@ -468,10 +468,7 @@
           "$ref" : "Movie"
         }
       },
-      "app.model.MovieEndpoint.insertMovie" : {
-        "request" : {
-          "$ref" : "Movie"
-        },
+      "app.model.MovieEndpoint.removeMovie" : {
         "response" : {
           "$ref" : "Movie"
         }
@@ -481,12 +478,15 @@
           "$ref" : "CollectionResponse_Movie"
         }
       },
-      "app.model.MovieEndpoint.removeMovie" : {
+      "app.model.MovieEndpoint.getMovie" : {
         "response" : {
           "$ref" : "Movie"
         }
       },
-      "app.model.MovieEndpoint.getMovie" : {
+      "app.model.MovieEndpoint.updateMovie" : {
+        "request" : {
+          "$ref" : "Movie"
+        },
         "response" : {
           "$ref" : "Movie"
         }

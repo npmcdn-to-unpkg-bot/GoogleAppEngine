@@ -545,7 +545,7 @@
 
 <br>
 <div id="slotview1" class="row" style="display:none;" ng-cloak leap-swipe-right="selectPreviousPage(page)" leap-swipe-left="userclicked=true;selectNextPage(page)">
-    <div class="container">
+    <div class="container" ngSwipeLeft="alert('left');" ngSwipeRight="alert('right');">
         <div class="leap-interactive">
             <a style="margin-top: 100px; z-index: 200; width: 70px;" class="carousel-control left" ng-show="page.number > 1" ng-click="page.number = 2;selectPreviousPage(page)" data-slide="prev">&lsaquo;&lsaquo;</a>
             <a style="margin-top: 100px; margin-left: 80px; z-index: 200; width: 70px;" class="carousel-control left" ng-show="page.number > 1" ng-click="selectPreviousPage(page)" data-slide="prev">&lsaquo;</a>
@@ -581,7 +581,8 @@
     </div>
 </div>
 
-<form ng-cloak><input style="padding-top:15px; width: 90%; border-width: 0;" id="leap-swipe-direction" ng-model="userSelection.gesture.swipe" value="{{userSelection.gesture.swipe}}"></form>
+<!-- this is supposed to be for LeapStrap support of left and right swipe but Angular-Leap's swipes are used instead??? -->
+<form ng-cloak><input style="padding-top:50px; width: 90%; border-width: 0;" id="leap-swipe-direction" ng-model="userSelection.gesture.swipe" value="{{userSelection.gesture.swipe}}"></form>
 
     <!-- OCEAN GALLERY  -->
 <!--<div id="oceanCarousel" class="carousel slide">-->
