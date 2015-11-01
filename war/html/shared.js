@@ -1,5 +1,6 @@
 'use strict';
 // App 0.0.1
+var mRelease = '0.0.1';
 var mBuild = '0167';
 var myApp = angular.module('app', [], ctrlRead);
 var uid;

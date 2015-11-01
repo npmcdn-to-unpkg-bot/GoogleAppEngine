@@ -14,6 +14,9 @@ function MovieController($scope, $filter, $http, $rootScope,
                          $timeout, dateFilter, $location
     , $sce
 ) {
+    var mc = this;
+    mc.error_message ="";
+
     $scope.singleClick = function() {
         alert('Single Click');
     }

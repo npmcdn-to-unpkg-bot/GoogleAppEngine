@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html ng-app>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -8,10 +8,6 @@
     <script type="text/javascript" src='//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'></script>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap.min.css">
-    <!--<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.js"></script>-->
-    <!--<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.js"></script>-->
-    <!--<script type="text/javascript" src='../js/ui-bootstrap-tpls-0.11.2.min.js'></script>-->
-
     <!-- angular-leap stuff (thanks to view-source:https://angular-leap-instant.herokuapp.com/#/) -->
     <link href="../css/reveal.min.css" media="screen" rel="stylesheet" type="text/css" />
 
@@ -70,8 +66,6 @@
     <!--<script type="text/javascript" src="https://getfirebug.com/firebug-lite.js#overrideConsole=false,startInNewWindow=false,startOpened=false,enableTrace=true"></script>-->
     <script>
         /** this has to be BEFOFE requireJS for it to work! */
-//        var isIE = !!window.ActiveXObject;
-//        if (isIE) {
         //=== http://stackoverflow.com/questions/13478303/correct-way-to-use-modernizr-to-detect-ie
         var IE = (!! window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1])) || NaN;
         if (IE < 9) {
@@ -87,10 +81,6 @@
         }
         //=== courtesy of http://pelicancafe.net/development/bootstrap/carousel.html
         $(document).ready(function () {
-//            $('#oceanCarousel').carousel({
-//                interval: false
-//            });
-
             //=== rich editor
 //            $('#editor').wysiwyg({
 //                hotKeys: {
@@ -126,7 +116,7 @@
     <script type="text/javascript" src="../js/require.js" data-main="../js/main-movie"></script>
 </head>
 <!--suppress HtmlUnknownAttribute, HtmlUnknownAttribute, HtmlUnknownAttribute, HtmlUnknownAttribute, HtmlUnknownAttribute -->
-<body ng-controller="MovieController" id="m-ng-app" class="leap-interactive" leap-disable-tap="true" leap-disable-hover="true">
+<body ng-controller="MovieController as mc" id="m-ng-app" class="leap-interactive" leap-disable-tap="true" leap-disable-hover="true">
 <script>
 //    function detectGesture(gesture) {
 //        $scope.$apply(function () {
@@ -172,7 +162,7 @@
         <div class="navbar-header">
             <a class="navbar-brand" id="serviceName" style="left: 20px;" href="#">
                 <div ng-show="!backendReady">
-                    <img src="/images/ajax-loader-transbg.gif" style="padding-right:10px;" class="loading-indicator img-responsive" alt="processing">
+                    <img src="../images/ajax-loader-transbg.gif" style="padding-right:10px;" class="loading-indicator img-responsive" alt="processing">
                 </div>
             </a>
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -270,7 +260,7 @@
 <!--</ul>-->
 
 <div id="content">
-    <div ng-cloak style="position:absolute;margin-top:22px;margin-left:0px;" ng-hide="page.number == 0">Page {{page.number}} of {{page.totalPage && page.totalPage<1?1:page.totalPage}}</div>
+    <div ng-cloak style="position:absolute;margin-top:22px;margin-left:0;" ng-hide="page.number == 0">Page {{page.number}} of {{page.totalPage && page.totalPage<1?1:page.totalPage}}</div>
 <!--<div>-->
 <!--<div ng-view></div>-->
 <!--</div>-->
@@ -289,7 +279,7 @@
 <div style="position:absolute;margin-top:100px;margin-left:250px;" ng-cloak ng-hide="true">
     ****** If you are seeing this, please make sure you enable the support of "Mixed Content" ******
 </div>
-<div style="position:absolute;margin-top:88px;margin-left:50px;margin-right:auto;" ng-show="error_message" ng-bind-template="&nbsp;{{error_message}}"></div>
+<div ng-cloak style="position:absolute;margin-top:88px;margin-left:50px;margin-right:auto;" ng-show="error_message">&nbsp;{{mc.error_message}}</div>
 
 <div ng-cloak class="row-fluid">
     <div class="span7">
@@ -304,9 +294,8 @@
     </div>
     <div class="span5">
         <div class="pull-right">
-            <a style="position:relative;margin-top:14px;width:auto;background:#98969E;"
-                    class="btn btn-primary btn-large pull-right" ng-click="newItem()"
-                    ng-bind-template="{{createButtonTitle}}">...</a>
+            <a ng-cloak style="position:relative;margin-top:14px;width:auto;background:#98969E;"
+                    class="btn btn-primary btn-large pull-right" ng-click="newItem()">{{createButtonTitle}}</a>
         </div>
     </div>
 </div>
@@ -316,7 +305,7 @@
         <h2>Saving New Item</h2>
 
         <div class="row">
-            <div class="span2" ng-bind-template="{{header3}}">...</div>
+            <div ng-cloak class="span2">{{header3}}</div>
             <div class="span8">
                 <input type="text" ng-enter="createItem()" required class="input" ng-model="item.title" style="width:80%;"
                        placeholder="Enter any easy to remember title or unique id.">
@@ -338,7 +327,7 @@
 //                    });
         </script>
         <div class="row">
-            <div class="span2" ng-bind-template="{{header4}}">...</div>
+            <div ng-cloak class="span2">{{header4}}</div>
             <div class="span8">
                 <input type="text" ng-enter="createItem()" ng-model="item.description" style="width:90%;">
                 <!--
@@ -363,14 +352,14 @@
             </div>
         </div>
         <div class="row">
-            <div class="span2" ng-bind-template="{{header5}}">...</div>
+            <div ng-cloak class="span2">{{header5}}</div>
             <div class="span8"><span style="display:inline-block">Input will be highlighted until a valid URL is entered</span>
                 <input type="url" ng-enter="createItem()" required ng-model="item.url" style="width:80%;"
                        placeholder="Enter any valid URL like YouTube URL.">
             </div>
         </div>
         <div style="display:none;" class="row advanced channel-pattern">
-            <div class="span2" ng-bind-template="Advanced Settings">...</div>
+            <div ng-cloak class="span2">Advanced Settings</div>
             <div id="channelpattern1" class="span8" style="width:10%;">
                 <label for="channelpattern1">Channel Pattern:</label>
                 <input type="text" list="channelpattern_list" ng-model="item.channelPattern">
@@ -384,7 +373,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="span2" ng-bind-template="{{header6}}">...</div>
+            <div ng-cloak class="span2">{{header6}}</div>
             <div class="span8">
                 <input type="checkbox" ng-model="item.shared">
             </div>
@@ -403,7 +392,7 @@
         <h2>Saving Existing Item <span ng-bind-html="item.title"></span></h2>
 
         <div class="row">
-            <div class="span2" ng-bind-template="{{header2}}">...</div>
+            <div ng-cloak class="span2">{{header2}}</div>
             <div class="span2">
                 <input type="text" class="uneditable-input" readonly=readonly ng-model="item.id" style="width:50%;">
             </div>
@@ -414,7 +403,7 @@
             <!--</div>-->
         <!--</div>-->
         <div class="row">
-            <div class="span2" ng-bind-template="{{header3}}">...</div>
+            <div ng-cloak class="span2">{{header3}}</div>
             <div class="span8">
                 <input type="text" ng-enter="updateItem()" class="input" ng-model="item.title" style="width:80%;">
             </div>
@@ -435,7 +424,7 @@
                     <!--});-->
         <!--</script>-->
         <div class="row">
-            <div class="span2" ng-bind-template="{{header4}}">...</div>
+            <div ng-cloak class="span2">{{header4}}</div>
             <div class="span8">
                 <input type="text" ng-enter="updateItem()" ng-model="item.description" style="width:90%;">
                 <!--
@@ -460,13 +449,13 @@
             </div>
         </div>
         <div class="row">
-            <div class="span2" ng-bind-template="{{header5}}">...</div>
+            <div ng-cloak class="span2">{{header5}}</div>
             <div class="span8">
                 <input type="url" ng-enter="updateItem()" ng-model="item.url" style="width:80%;">
             </div>
         </div>
         <div style="display:none;" class="row advanced channel-pattern">
-            <div class="span2" ng-bind-template="Advanced Settings">...</div>
+            <div ng-cloak class="span2">Advanced Settings</div>
             <div id="channelpattern2" class="span8" style="width:10%;">
                 <label for="channelpattern2">Channel Pattern:</label>
                 <input type="text" list="channelpattern_list" ng-model="item.channelPattern">
@@ -480,7 +469,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="span2" ng-bind-template="{{header6}}">...</div>
+            <div ng-cloak class="span2">{{header6}}</div>
             <div class="span7">
                 <input type="checkbox" ng-model="item.shared">
             </div>
@@ -516,13 +505,13 @@
     <form name="scheduleEventForm" class="row advanced channel-event" style="display:none;background-color: white;" action="#">
         <!--<div class="row">-->
         <!--<div class="span2" ng-bind-template="{{header7}}">...</div>-->
-        <div class="span2" ng-bind-template="{{header8}}">...</div>
+        <div ng-cloak class="span2">{{header8}}</div>
         <div class="span2">
             <!--<input type="checkbox" ng-model="item.shuffle">-->
             <input type="checkbox" ng-model="userSelection.movie.shuffleIt">
             <!--<pre>{{userSelection.movie.shuffleIt}}</pre>-->
         </div>
-        <div class="span2" ng-show="!userSelection.movie.playAllDay" ng-bind-template="{{header7}}">...</div>
+        <div ng-cloak class="span2" ng-show="!userSelection.movie.playAllDay">{{header7}}</div>
         <div class="span4" ng-show="!userSelection.movie.playAllDay">
             <!--<input id="play-time" name="play-time" ng-model="dateString" type="datetime-local">-->
             <!--<input type="date" id="play-date" name="play-date" ng-model="playDate" required="required" onblur="createTemporaryEvent();">-->
@@ -555,12 +544,12 @@
             <a style="margin-right: 80px;margin-top: 126px; z-index: 200; width: 70px;" class="carousel-control right" ng-show="backendReady && page.number < page.totalPage" ng-click="userclicked=true;selectNextPage(page)" data-slide="next" ng-cloak>&rsaquo;</a>
             <a style="margin-top: 126px; z-index: 200; width: 70px;" class="carousel-control right" ng-show="backendReady && page.number < page.totalPage" ng-click="userclicked=true;page.number = page.totalPage;selectNextPage(page)" data-slide="next" ng-cloak>&rsaquo;&rsaquo;</a>
         </div>
-        <div id="slotview2" class="col-md-12" ngcloak>
+        <div id="slotview2" class="col-md-12" ng-cloak>
             <div style="background-color:lightgray;" class="col-md-2" ng-init="page = { max:6, number:1 }" ng-repeat="item in pagedItems[currentPage] | orderBy:sortingOrder:reverse | filter:query">
                 <!--<a ng-show="page.number > 1" ng-click="selectPreviousPage(page)" class="ng-binding">« Previous</a>-->
                 <!--<span style="text:right;">{{item.id}}</span>-->
                 <!--<div class="container>-->
-                    <a style="float:right;" class="col-md-1 leap-interactive" leap-click-delay="5000" href="{{item.url}}">View</a>
+                    <a style="float:right;" class="col-md-1 leap-interactive" leap-click-delay="5000" ng-href="{{item.url}}">View</a>
                     <a style="width:70%;" class="col-md-1 thumbnail leap-interactive" leap-click-delay="5000" ng-show="!getYoutubeVideoId(item.url)" href="#" title="{{item.title}}">
                         <div class="glyphicon glyphicon-edit truncate" ng-click="editItemForCalendar(item);$event.preventDefault(); $event.stopPropagation();">{{item.title}}</div>
                         <span ng-if="$index >= (page.number-1)*page.max && $index < 1 + page.max">
@@ -583,30 +572,6 @@
 
 <!-- this is supposed to be for LeapStrap support of left and right swipe but Angular-Leap's swipes are used instead??? -->
 <form ng-cloak><input style="padding-top:50px; width: 90%; border-width: 0;" id="leap-swipe-direction" ng-model="userSelection.gesture.swipe" value="{{userSelection.gesture.swipe}}"></form>
-
-    <!-- OCEAN GALLERY  -->
-<!--<div id="oceanCarousel" class="carousel slide">-->
-    <!--<div class="carousel-inner">-->
-        <!--<div class="active item">-->
-            <!--<a href="#"><img src="../images/small/ocean01.jpg"></a>-->
-            <!--<a href="#"><img src="../images/small/ocean02.jpg"></a>-->
-            <!--<a href="#"><img src="../images/small/ocean03.jpg"></a>-->
-        <!--</div>-->
-        <!--<div class="item">-->
-            <!--<a href="#"><img src="../images/small/ocean04.jpg"></a>-->
-            <!--<a href="#"><img src="../images/small/ocean05.jpg"></a>-->
-            <!--<a href="#"><img src="../images/small/ocean06.jpg"></a>-->
-        <!--</div>-->
-        <!--<div class="item">-->
-            <!--<a href="#"><img src="../images/small/ocean07.jpg"></a>-->
-            <!--<a href="#"><img src="../images/small/ocean08.jpg"></a>-->
-            <!--<a href="#"><img src="../images/small/ocean09.jpg"></a>-->
-        <!--</div>-->
-    <!--</div>-->
-
-    <!--<a class="carousel-control left" href="#oceanCarousel" data-slide="prev">&lsaquo;</a>-->
-    <!--<a class="carousel-control right" href="#oceanCarousel" data-slide="next">&rsaquo;</a>-->
-<!--</div>-->
 
 <!--<div class="row" id="slotview1" style="display:none;width:100%;" ng-cloak>-->
 <!--<div class="span12" id="slotview2" style="display:none;width:100%;" ngcloak>-->
@@ -658,14 +623,14 @@
 <div ng-cloak style="padding-top:10px;width:50%;left:20px;" ng-show="page.totalItem == 0">You do not have any movie in your collection.</div>
 <!--<div ng-cloak style="padding-top:10px;width:50%;left:20px;" ng-hide="backendReady">Fetching ...</div>-->
 <div ng-hide="backendReady" style="position:absolute;top:250px;" id="loadingTable">
-    &nbsp;<img src="/images/ajax-loader-sm-wait-transbg.gif" id="loading-indicator" alt="loading collection">
+    &nbsp;<img src="../images/ajax-loader-sm-wait-transbg.gif" id="loading-indicator" alt="loading collection">
     &nbsp;<span style="width:200px;">Loading ...</span><p>
 </div>
 
 <!--<div ng-show="!backendReady"><br><br><br>&nbsp;...</div>-->
 <!-- begin of modern view -->
 <div class="row-fluid" id="modernview1" style="display:none;top:42px;padding-left:10%;padding-right:10%;width:80%;height:10px;" ng-hide="pagedItems.length === 0" ng-cloak>
-    <div ng-ini="page.max = 0" class="span12" id="modernview2" style="display:inline;height:80px;" ngcloak>
+    <div ng-ini="page.max = 0" class="span12" id="modernview2" style="display:inline;height:80px;" ng-cloak>
         <div class="center-in-span">
             <div class="pagination">
                 <ul>
@@ -688,7 +653,7 @@
 <div class="row" style="display:none;width:100%;" ng-cloak>
 </div>
 <div class="row" id="modernview3" style="display:none;width:100%;" ng-cloak>
-    <div class="span12" id="modernview6" style="display:none;" ngcloak>
+    <div class="span12" id="modernview6" style="display:none;" ng-cloak>
         <div class="span6" style="width:190px;height:auto;display:block;" ng-repeat="item in pagedItems[currentPage] | orderBy:sortingOrder:reverse | filter:query">
             <!--<span style="text:right;">{{item.id}}</span>-->
             <a class="leap-interactive" ng-click="editItemForCalendar(item)" href="#" title="{{item.title}} {{::item.description}}" ng-mouseLeave="handleDraggable(this, '{{item.url}}');" ng-mouseover="handleDraggable(this, '{{item.url}}');" data-movieid="{{item.id}}" data-movieUrl="{{item.url}}" data-movieTitle="{{item.title}}">
@@ -702,7 +667,7 @@
 </div>
 <p></p>
 <div class="row-fluid" id="modernview4" style="display:none;padding-left:10%;padding-right:10%;width:80%;" ng-hide="pagedItems.length === 0" ng-cloak>
-    <div class="span12" id="modernview5" style="display:none;height:10px;" ngcloak>
+    <div class="span12" id="modernview5" style="display:none;height:10px;" ng-cloak>
         <div class="center-in-span">
             <div class="pagination">
                 <ul>
@@ -757,7 +722,7 @@
     </tr>
     <tr ng-repeat="item in pagedItems[currentPage] | orderBy:sortingOrder:reverse | filter:query"
         ng-animate="'animate'">
-        <td ng-bind-template="{{item.id}}">...</td>
+        <td ng-cloak>{{item.id}}</td>
         <td>
             <div id="picture">
                 <a class="leap-interactive small" href="#" title="small image">
@@ -768,10 +733,10 @@
         </td>
         <td ng-show="!getYoutubeVideoId(item.url)">
             <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=" alt="dummy image"></td>
-        <td ng-show="item.oid == objectId" ng-bind-template="Me">...</td>
-        <td ng-bind-template="{{item.title}}">...</td>
-        <td ng-bind-template="{{::item.description}}">...</td>
-        <td style="width:180px;" ng-bind-template="{{item.createDate | date:'yyyy-MM-dd HH:mm:ss Z'}}">...</td>
+        <td ng-cloak ng-show="item.oid == objectId">Me</td>
+        <td ng-cloak>{{item.title}}</td>
+        <td ng-cloak>{{::item.description}}</td>
+        <td ng-cloak style="width:180px;">{{item.createDate | date:'yyyy-MM-dd HH:mm:ss Z'}}</td>
         <td>
             <div class="content"></div>
             <div id="element_to_pop_up" style="display:none;width:50%;height:50%;">Content of popup</div>
@@ -781,7 +746,7 @@
             &nbsp;|&nbsp;
             <a id="editItem2" class="menu_links" ng-click="editItem(item)">Edit</a>
             &nbsp;|&nbsp;
-            <a id="deleteItem2" class="menu_links" ng-click="deleteItem(item)" ng-bind-template="{{deleteLinkText}}">...</a>
+            <a ng-cloak id="deleteItem2" class="menu_links" ng-click="deleteItem(item)">{{deleteLinkText}}</a>
         </td>
     </tr>
     <tr>
@@ -799,7 +764,7 @@
 <!-- end of list view -->
 
 <div class="row-fluid" id="listview2" style="display:none;padding-left: 10%; padding-right: 10%; width: 80%;" ng-hide="pagedItems.length === 0">
-    <div class="span12" id="listview3" style="display:none;" ngcloak>
+    <div class="span12" id="listview3" style="display:none;" ng-cloak>
         <div class="center-in-span">
             <div class="pagination">
                 <ul>

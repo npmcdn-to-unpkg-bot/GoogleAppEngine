@@ -10,5 +10,6 @@
     <orderEntry type="library" name="angular2-DefinitelyTyped" level="application" />
     <orderEntry type="library" name="leap-0.6.4" level="application" />
     <orderEntry type="library" name="leapstrap" level="application" />
+    <orderEntry type="library" name="jquery" level="application" />
   </component>
 </module>
