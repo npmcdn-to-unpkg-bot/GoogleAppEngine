@@ -49,6 +49,11 @@
         #content {
             padding-top: 70px;
         }
+
+        /** media class of bootstrap 3 */
+        .media-body{
+            height: 50px;
+        }
     </style>
 
     <!-- ********** Warning: the following css files have to be after the above - otherwise gallery thumbnails will fail to show up!!! ********** -->
@@ -545,27 +550,37 @@
             <a style="margin-top: 126px; z-index: 200; width: 70px;" class="carousel-control right" ng-show="backendReady && page.number < page.totalPage" ng-click="userclicked=true;page.number = page.totalPage;selectNextPage(page)" data-slide="next" ng-cloak>&rsaquo;&rsaquo;</a>
         </div>
         <div id="slotview2" class="col-md-12" ng-cloak>
-            <div style="background-color:lightgray;" class="col-md-2" ng-init="page = { max:6, number:1 }" ng-repeat="item in pagedItems[currentPage] | orderBy:sortingOrder:reverse | filter:query">
-                <!--<a ng-show="page.number > 1" ng-click="selectPreviousPage(page)" class="ng-binding">« Previous</a>-->
-                <!--<span style="text:right;">{{item.id}}</span>-->
-                <!--<div class="container>-->
-                    <a style="float:right;" class="col-md-1 leap-interactive" leap-click-delay="5000" ng-href="{{item.url}}">View</a>
-                    <a style="width:70%;" class="col-md-1 thumbnail leap-interactive" leap-click-delay="5000" ng-show="!getYoutubeVideoId(item.url)" href="#" title="{{item.title}}">
-                        <div class="glyphicon glyphicon-edit truncate" ng-click="editItemForCalendar(item);$event.preventDefault(); $event.stopPropagation();">{{item.title}}</div>
-                        <span ng-if="$index >= (page.number-1)*page.max && $index < 1 + page.max">
-                        <img class="img-responsive" ng-show="!getYoutubeVideoId(item.url)" data-ng-src="{{::item.description}}" alt="no image found"/>
-                        </span>
-                    </a>
-                    <a style="width:70%;" class="col-md-1 thumbnail leap-interactive" leap-click-delay="5000" ng-show="getYoutubeVideoId(item.url)" href="#" title="{{item.title}} {{::item.description}}">
-                        <div class="glyphicon glyphicon-edit truncate" ng-click="editItemForCalendar(item);$event.preventDefault(); $event.stopPropagation();">{{item.title}}</div>
-                        <img class="img-responsive" ng-show="getYoutubeVideoId(item.url)" ng-src="https://img.youtube.com/vi/{{getYoutubeVideoId(item.url)}}/0.jpg" alt="youtube image 0"/>
-                    </a>
+            <div class="col-md-2 col-sm-4" ng-init="page = { max:6, number:1 }" ng-repeat="item in pagedItems[currentPage] | orderBy:sortingOrder:reverse | filter:query">
+                <!--<div class="container">-->
+                    <div class="media well">
+                        <a class="media-left media-bottom" ng-show="!getYoutubeVideoId(item.url)" href="#">
+                            <img class="img-responsive" ng-show="!getYoutubeVideoId(item.url)" data-ng-src="{{::item.description}}" alt="no image found"/>
+                        </a>
+                        <a class="media-left media-bottom" ng-click="editItemForCalendar(item);$event.preventDefault(); $event.stopPropagation();" href="#">
+                            <img class="img-responsive" ng-show="getYoutubeVideoId(item.url)" ng-src="https://img.youtube.com/vi/{{getYoutubeVideoId(item.url)}}/0.jpg" alt="youtube image 0"/>
+                        </a>
+                        <div class=”clearfix hidden-md”></div>
+                        <div class="media-body">
+                            <small class="media-heading"><a target="_new" href="{{item.url}}">Preview</a> - {{item.title}}</small>
+                            <!--<p>-->
+                                <!--<a class="leap-interactive" leap-click-delay="5000" ng-show="getYoutubeVideoId(item.url)" href="{{item.url}}" title="{{item.title}}">{{::item.description}}</a>-->
+                            <!--</p>-->
+                        </div>
+                    </div>
                 <!--</div>-->
+
+                    <!--<a style="float:right;" class="col-md-1 leap-interactive" leap-click-delay="5000" ng-href="{{item.url}}">View</a>-->
+                    <!--<a style="width:70%;" class="col-md-1 thumbnail leap-interactive" leap-click-delay="5000" ng-show="!getYoutubeVideoId(item.url)" href="#" title="{{item.title}}">-->
+                        <!--<div class="glyphicon glyphicon-edit truncate" ng-click="editItemForCalendar(item);$event.preventDefault(); $event.stopPropagation();">{{item.title}}</div>-->
+                        <!--<span ng-if="$index >= (page.number-1)*page.max && $index < 1 + page.max">-->
+                        <!--<img class="img-responsive" ng-show="!getYoutubeVideoId(item.url)" data-ng-src="{{::item.description}}" alt="no image found"/>-->
+                        <!--</span>-->
+                    <!--</a>-->
+                    <!--<a style="width:70%;" class="col-md-1 thumbnail leap-interactive" leap-click-delay="5000" ng-show="getYoutubeVideoId(item.url)" href="#" title="{{item.title}} {{::item.description}}">-->
+                        <!--<div class="glyphicon glyphicon-edit truncate" ng-click="editItemForCalendar(item);$event.preventDefault(); $event.stopPropagation();">{{item.title}}</div>-->
+                        <!--<img class="img-responsive" ng-show="getYoutubeVideoId(item.url)" ng-src="https://img.youtube.com/vi/{{getYoutubeVideoId(item.url)}}/0.jpg" alt="youtube image 0"/>-->
+                    <!--</a>-->
             </div>
-            <!--<div class="leap-interactive" style="width: 90%;">-->
-                <!--<a style="margin-right: 60px;margin-top: 126px; z-index: 200;" class="carousel-control right" ng-show="backendReady && page.number < page.totalPage" ng-click="userclicked=true;selectNextPage(page)" data-slide="next" ng-cloak>&rsaquo;</a>-->
-                <!--<a style="margin-top: 126px; z-index: 200;" class="carousel-control right" ng-show="backendReady && page.number < page.totalPage" ng-click="userclicked=true;page.number = page.totalPage;selectNextPage(page)" data-slide="next" ng-cloak>&rsaquo;&rsaquo;</a>-->
-            <!--</div>-->
         </div>
     </div>
 </div>
