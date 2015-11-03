@@ -76,6 +76,13 @@
             -webkit-box-orient: vertical;
             max-height: 3.6em; /* I needed this to get it to work */
         }
+
+        .carousel-control {
+            position: absolute; /* already here */
+            top: 50%;  /* Was top: 40% */
+            /*transform: translateY(-50%);*/
+        }
+
     </style>
     <!--<script type="text/javascript" src="https://getfirebug.com/firebug-lite.js#overrideConsole=false,startInNewWindow=false,startOpened=false,enableTrace=true"></script>-->
     <script>
@@ -549,15 +556,17 @@
 <br>
 <div id="slotview1" class="row" style="display:none;" ng-cloak leap-swipe-right="selectPreviousPage(page)" leap-swipe-left="userclicked=true;selectNextPage(page)">
     <div class="container" ngSwipeLeft="alert('left');" ngSwipeRight="alert('right');">
+        <!--<div class="carousel-inner">-->
         <div class="leap-interactive">
-            <a style="margin-top: 100px; z-index: 200; width: 70px;" class="carousel-control left" ng-show="page.number > 1" ng-click="page.number = 2;selectPreviousPage(page)" data-slide="prev">&lsaquo;&lsaquo;</a>
-            <a style="margin-top: 100px; margin-left: 80px; z-index: 200; width: 70px;" class="carousel-control left" ng-show="page.number > 1" ng-click="selectPreviousPage(page)" data-slide="prev">&lsaquo;</a>
+            <a style="z-index: 200; width: 70px;" class="carousel-control left" ng-show="page.number > 1" ng-click="page.number = 2;selectPreviousPage(page)" data-slide="prev">&lsaquo;&lsaquo;</a>
+            <a style="margin-left: 80px; z-index: 200; width: 70px;" class="carousel-control left" ng-show="page.number > 1" ng-click="selectPreviousPage(page)" data-slide="prev">&lsaquo;</a>
         </div>
         <!--maxPerPage(page.max/limitTo/itemsPerPage) needs to be in sync with the backend's MovieHandler.java in order for the paging to work correctly! -->
         <div class="leap-interactive">
-            <a style="margin-right: 80px;margin-top: 126px; z-index: 200; width: 70px;" class="carousel-control right" ng-show="backendReady && page.number < page.totalPage" ng-click="userclicked=true;selectNextPage(page)" data-slide="next" ng-cloak>&rsaquo;</a>
-            <a style="margin-top: 126px; z-index: 200; width: 70px;" class="carousel-control right" ng-show="backendReady && page.number < page.totalPage" ng-click="userclicked=true;page.number = page.totalPage;selectNextPage(page)" data-slide="next" ng-cloak>&rsaquo;&rsaquo;</a>
+            <a style="margin-right: 80px;z-index: 200; width: 70px;" class="carousel-control right" ng-show="backendReady && page.number < page.totalPage" ng-click="userclicked=true;selectNextPage(page)" data-slide="next" ng-cloak>&rsaquo;</a>
+            <a style="z-index: 200; width: 70px;" class="carousel-control right" ng-show="backendReady && page.number < page.totalPage" ng-click="userclicked=true;page.number = page.totalPage;selectNextPage(page)" data-slide="next" ng-cloak>&rsaquo;&rsaquo;</a>
         </div>
+        <!--</div>-->
         <div id="slotview2" class="col-md-12" ng-cloak>
             <div class="col-md-2 col-sm-4" ng-init="page = { max:6, number:1 }" ng-repeat="item in pagedItems[currentPage] | orderBy:sortingOrder:reverse | filter:query">
                 <!--<div class="container">-->
