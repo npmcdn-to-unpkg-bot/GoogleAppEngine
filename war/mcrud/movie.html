@@ -67,7 +67,14 @@
             padding-bottom: 16px;
         }
         .media-heading, .media-body {
-            height: 50px;
+            height: 54px;   /* this value need to set properly for .truncate_multiline to work! */
+        }
+        /** http://stackoverflow.com/questions/6222616/with-css-use-for-overflowed-block-of-multi-lines */
+        .truncate_multiline {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            max-height: 3.6em; /* I needed this to get it to work */
         }
     </style>
     <!--<script type="text/javascript" src="https://getfirebug.com/firebug-lite.js#overrideConsole=false,startInNewWindow=false,startOpened=false,enableTrace=true"></script>-->
@@ -563,7 +570,7 @@
                         </a>
                         <div class=”clearfix hidden-md”></div>
                         <div class="media-body">
-                            <h6 class="media-heading"><a target="_new" href="{{item.url}}">Preview</a> - {{item.title}}</h6>
+                            <h6 class="media-heading truncate_multiline"><a target="_new" href="{{item.url}}">Preview</a> - {{item.title}}</h6>
                             <!--<p>-->
                                 <!--<a class="leap-interactive" leap-click-delay="5000" ng-show="getYoutubeVideoId(item.url)" href="{{item.url}}" title="{{item.title}}">{{::item.description}}</a>-->
                             <!--</p>-->
