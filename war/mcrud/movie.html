@@ -25,6 +25,18 @@
     <!--angular-summernote dependencies -->
     <!--<script src="../js/angular-summernote.min.js"></script>-->
 
+    <!-- ********** Warning: the following css files have to be after the above - otherwise gallery thumbnails will fail to show up!!! ********** -->
+    <link href="../parse/css/tabs.css" rel="stylesheet">
+    <link href="../css/app.css" rel="stylesheet">
+    <link href="../css/carousel.css" rel="stylesheet">
+    <!-- ********** Warning: the following css files have to be after the above - otherwise gallery thumbnails will fail to show up!!! ********** -->
+
+    <!-- leapstrap/leapmotion stuff -->
+    <link rel="stylesheet" href="//wilkesalex.github.io/leapstrap/dist/css/leapstrap.css" />
+    <script src="//js.leapmotion.com/leap-0.6.4.min.js"></script>
+    <!-- Include Leapstrap JS *** THIS IS ALSO REQUIRED FOR BOOSTRAP collapsible menu to work!!! -->
+    <script src="//wilkesalex.github.io/leapstrap/dist/js/leapstrap.js"></script>
+
     <style>
         div.row-fluid [class*="span"] .center-in-span {
             margin:0 auto !important;
@@ -51,23 +63,13 @@
         }
 
         /** media class of bootstrap 3 */
-        .media-body{
+        .well {
+            padding-bottom: 16px;
+        }
+        .media-heading, .media-body {
             height: 50px;
         }
     </style>
-
-    <!-- ********** Warning: the following css files have to be after the above - otherwise gallery thumbnails will fail to show up!!! ********** -->
-    <link href="../parse/css/tabs.css" rel="stylesheet">
-    <link href="../css/app.css" rel="stylesheet">
-    <link href="../css/carousel.css" rel="stylesheet">
-    <!-- ********** Warning: the following css files have to be after the above - otherwise gallery thumbnails will fail to show up!!! ********** -->
-
-    <!-- leapstrap/leapmotion stuff -->
-    <link rel="stylesheet" href="//wilkesalex.github.io/leapstrap/dist/css/leapstrap.css" />
-    <script src="//js.leapmotion.com/leap-0.6.4.min.js"></script>
-    <!-- Include Leapstrap JS *** THIS IS ALSO REQUIRED FOR BOOSTRAP collapsible menu to work!!! -->
-    <script src="//wilkesalex.github.io/leapstrap/dist/js/leapstrap.js"></script>
-
     <!--<script type="text/javascript" src="https://getfirebug.com/firebug-lite.js#overrideConsole=false,startInNewWindow=false,startOpened=false,enableTrace=true"></script>-->
     <script>
         /** this has to be BEFOFE requireJS for it to work! */
@@ -561,7 +563,7 @@
                         </a>
                         <div class=”clearfix hidden-md”></div>
                         <div class="media-body">
-                            <small class="media-heading"><a target="_new" href="{{item.url}}">Preview</a> - {{item.title}}</small>
+                            <h6 class="media-heading"><a target="_new" href="{{item.url}}">Preview</a> - {{item.title}}</h6>
                             <!--<p>-->
                                 <!--<a class="leap-interactive" leap-click-delay="5000" ng-show="getYoutubeVideoId(item.url)" href="{{item.url}}" title="{{item.title}}">{{::item.description}}</a>-->
                             <!--</p>-->

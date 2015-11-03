@@ -77,6 +77,27 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
+    "movieendpoint.movieEndpoint.getMovie" : {
+      "path" : "movie/{id}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "app.model.MovieEndpoint.getMovie",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
     "movieendpoint.movieEndpoint.listMovie" : {
       "path" : "movie",
       "httpMethod" : "GET",
@@ -94,27 +115,6 @@
           "limit" : {
             "type" : "int32",
             "required" : false
-          }
-        },
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "movieendpoint.movieEndpoint.getMovie" : {
-      "path" : "movie/{id}",
-      "httpMethod" : "GET",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "app.model.MovieEndpoint.getMovie",
-      "request" : {
-        "parameters" : {
-          "id" : {
-            "type" : "int64",
-            "required" : true
           }
         },
         "body" : "empty"
@@ -187,15 +187,15 @@
             "type" : "string",
             "format" : "date-time"
           },
+          "url" : {
+            "type" : "string"
+          },
           "title" : {
             "type" : "string"
           },
           "modified" : {
             "type" : "string",
             "format" : "date-time"
-          },
-          "url" : {
-            "type" : "string"
           }
         }
       },
@@ -216,14 +216,14 @@
           "name" : {
             "type" : "string"
           },
-          "complete" : {
-            "type" : "boolean"
+          "parent" : {
+            "$ref" : "Key"
           },
           "namespace" : {
             "type" : "string"
           },
-          "parent" : {
-            "$ref" : "Key"
+          "complete" : {
+            "type" : "boolean"
           }
         }
       },
@@ -481,14 +481,14 @@
           "$ref" : "Movie"
         }
       },
-      "app.model.MovieEndpoint.listMovie" : {
-        "response" : {
-          "$ref" : "CollectionResponse_Movie"
-        }
-      },
       "app.model.MovieEndpoint.getMovie" : {
         "response" : {
           "$ref" : "Movie"
+        }
+      },
+      "app.model.MovieEndpoint.listMovie" : {
+        "response" : {
+          "$ref" : "CollectionResponse_Movie"
         }
       }
     }

@@ -24,14 +24,14 @@
     "maxAge" : 0
   },
   "methods" : {
-    "serviceregistryuserendpoint.serviceRegistryUserEndpoint.removeServiceRegistryUser" : {
+    "serviceregistryuserendpoint.serviceRegistryUserEndpoint.getServiceRegistryUser" : {
       "path" : "serviceregistryuser/{id}",
-      "httpMethod" : "DELETE",
+      "httpMethod" : "GET",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "tapp.model.ServiceRegistryUserEndpoint.removeServiceRegistryUser",
+      "rosyMethod" : "tapp.model.ServiceRegistryUserEndpoint.getServiceRegistryUser",
       "request" : {
         "parameters" : {
           "id" : {
@@ -45,14 +45,14 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
-    "serviceregistryuserendpoint.serviceRegistryUserEndpoint.getServiceRegistryUser" : {
+    "serviceregistryuserendpoint.serviceRegistryUserEndpoint.removeServiceRegistryUser" : {
       "path" : "serviceregistryuser/{id}",
-      "httpMethod" : "GET",
+      "httpMethod" : "DELETE",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "tapp.model.ServiceRegistryUserEndpoint.getServiceRegistryUser",
+      "rosyMethod" : "tapp.model.ServiceRegistryUserEndpoint.removeServiceRegistryUser",
       "request" : {
         "parameters" : {
           "id" : {
@@ -244,12 +244,12 @@
       }
     },
     "methods" : {
-      "tapp.model.ServiceRegistryUserEndpoint.removeServiceRegistryUser" : {
+      "tapp.model.ServiceRegistryUserEndpoint.getServiceRegistryUser" : {
         "response" : {
           "$ref" : "ServiceRegistryUser"
         }
       },
-      "tapp.model.ServiceRegistryUserEndpoint.getServiceRegistryUser" : {
+      "tapp.model.ServiceRegistryUserEndpoint.removeServiceRegistryUser" : {
         "response" : {
           "$ref" : "ServiceRegistryUser"
         }
