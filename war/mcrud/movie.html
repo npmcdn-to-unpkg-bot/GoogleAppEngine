@@ -78,7 +78,7 @@
         }
 
         .carousel-control {
-            position: absolute; /* already here */
+            /*position: absolute; !* already here *!*/
             top: 50%;  /* Was top: 40% */
             /*transform: translateY(-50%);*/
         }
@@ -120,36 +120,47 @@
 //                , enableMetaGestures: true
 //                , enableDefaultMetaGestureActions: true
             });
-            //swipe left and right support with LeapStrap
-//            document.body.addEventListener("leap-dual-swipe", function(event){
-//                var gesture = event.gesture;
-//                assert(typeof gesture === 'undefined', 'movie.html: ' + gesture.type + " : " + gesture.direction);
-//                //TODO to test the following!
-//                setTimeout(function () {
-//                    detectGesture(gesture);
-//                }, 2000);
-//            });
+
+            //https://developer.leapmotion.com/documentation/javascript/api/Leap.SwipeGesture.html
+            var controllerOptions = {enableGestures: true};
+            Leap.loop(controllerOptions, function(frame) {
+                // Display Gesture object data
+                if (frame.gestures.length > 0) {
+                    for (var i = 0; i < frame.gestures.length; i++) {
+                        var gesture = frame.gestures[i];
+                        if(gesture.type == "swipe") {
+                            //Classify swipe as either horizontal or vertical
+                            var isHorizontal = Math.abs(gesture.direction[0]) > Math.abs(gesture.direction[1]);
+                            //Classify as right-left or up-down
+                            if(isHorizontal){
+                                if(gesture.direction[0] > 0){
+                                    swipeDirection = "right";
+                                            document.querySelector("#leap-swipe-direction").value = "right";
+                                } else {
+                                    swipeDirection = "left";
+                                            document.querySelector("#leap-swipe-direction").value = "left";
+                                }
+                            } else { //vertical
+                                if(gesture.direction[1] > 0){
+                                    swipeDirection = "up";
+                                } else {
+                                    swipeDirection = "down";
+                                }
+                            }
+                            console.log(swipeDirection)
+                        }
+                    }
+                }
+            });
         });
 
-        //        }
+//        }
     </script>
     <script>var require = { urlArgs: 'a014' };</script>
     <script type="text/javascript" src="../js/require.js" data-main="../js/main-movie"></script>
 </head>
 <!--suppress HtmlUnknownAttribute, HtmlUnknownAttribute, HtmlUnknownAttribute, HtmlUnknownAttribute, HtmlUnknownAttribute -->
 <body ng-controller="MovieController as mc" id="m-ng-app" class="leap-interactive" leap-disable-tap="true" leap-disable-hover="true">
-<script>
-//    function detectGesture(gesture) {
-//        $scope.$apply(function () {
-//            if(gesture.direction === 'right') {
-//                document.querySelector("#leap-swipe-direction").value = "right";
-//            } else
-//            if(gesture.direction === 'left') {
-//                document.querySelector("#leap-swipe-direction").value = "left";
-//            }
-//        });
-//    }
-</script>
 <a href="#content" class="sr-only">Skip to main content</a>
 <!-- angular-leap stuff -->
 <!--<div class="reveal"-->
@@ -316,12 +327,12 @@
     <div class="span5">
         <div class="pull-right">
             <a ng-cloak style="position:relative;margin-top:14px;width:auto;background:#98969E;"
-                    class="btn btn-primary btn-large pull-right" ng-click="newItem()">{{createButtonTitle}}</a>
+                    class="btn btn-primary btn-large pull-right leap-interactive" ng-click="newItem()">{{createButtonTitle}}</a>
         </div>
     </div>
 </div>
 
-<div class="dialog1" ng-show="enterNew" ng-cloak>
+<div class="dialog1 leap-interactive" leap-disable-tap="true" leap-disable-hover="true" ng-show="enterNew" ng-cloak>
     <form class="form-horizontal" action="#">
         <h2>Saving New Item</h2>
 
@@ -402,13 +413,13 @@
             <div class="span2">
                 <input id="createItem" type="submit" style="background:#98969E;" class="btn btn-primary"
                        value="{{saveButtonLabel}}" ng-disabled="!(item.url)" ng-click="createItem()">
-                <a id="cancelSave" class="btn" ng-click="cancelSave()">Cancel</a>
+                <a id="cancelSave" class="btn leap-interactive" ng-click="cancelSave()">Cancel</a>
             </div>
         </div>
     </form>
 </div>
 
-<div class="dialog1" ng-show="editing" ng-cloak>
+<div class="dialog1 leap-interactive" leap-disable-tap="true" leap-disable-hover="true" ng-show="editing" ng-cloak>
     <form class="form-horizontal" action="#">
         <h2>Saving Existing Item <span ng-bind-html="item.title"></span></h2>
 
@@ -498,7 +509,7 @@
             <div class="span3">
                 <input id="updateItem" type="submit" style="background:#98969E;" class="btn btn-primary" value="{{updateButtonLabel}}"
                        ng-disabled="!(item.title)" ng-click="updateItem()">
-                <a id="cancelSave2" class="btn" ng-click="cancelSave()">Cancel</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a id="cancelSave2" class="btn leap-interactive" ng-click="cancelSave()">Cancel</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <a id="deleteItem" class="btn" ng-click="deleteItem(item)" ng-bind-template="Delete">Delete</a>
                 <!--
                 -->
@@ -546,25 +557,24 @@
         <div class="span2">
             <input type="submit" style="background:#98969E;" class="btn btn-primary" value="{{doneButtonLabel}}"
                    ng-disabled="!(item.title) || isDisabled" ng-click="scheduleItem(scheduleEventForm);">
-            <a class="btn" ng-click="cancelSaveForCalendar();">Cancel</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a class="btn " ng-click="cancelSaveForCalendar();">Cancel</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </div>
         <!--</div>-->
     </form>
 
 </div>
-
 <br>
 <div id="slotview1" class="row" style="display:none;" ng-cloak leap-swipe-right="selectPreviousPage(page)" leap-swipe-left="userclicked=true;selectNextPage(page)">
     <div class="container" ngSwipeLeft="alert('left');" ngSwipeRight="alert('right');">
         <!--<div class="carousel-inner">-->
         <div class="leap-interactive">
-            <a style="z-index: 200; width: 70px;" class="carousel-control left" ng-show="page.number > 1" ng-click="page.number = 2;selectPreviousPage(page)" data-slide="prev">&lsaquo;&lsaquo;</a>
-            <a style="margin-left: 80px; z-index: 200; width: 70px;" class="carousel-control left" ng-show="page.number > 1" ng-click="selectPreviousPage(page)" data-slide="prev">&lsaquo;</a>
+            <a style="z-index: 200; width: 70px;" class="carousel-control left leap-interactive" ng-show="page.number > 1" ng-click="page.number = 2;selectPreviousPage(page)" data-slide="prev">&lsaquo;&lsaquo;</a>
+            <a style="margin-left: 80px; z-index: 200; width: 70px;" class="carousel-control left leap-interactive" ng-show="page.number > 1" ng-click="selectPreviousPage(page)" data-slide="prev">&lsaquo;</a>
         </div>
         <!--maxPerPage(page.max/limitTo/itemsPerPage) needs to be in sync with the backend's MovieHandler.java in order for the paging to work correctly! -->
         <div class="leap-interactive">
-            <a style="margin-right: 80px;z-index: 200; width: 70px;" class="carousel-control right" ng-show="backendReady && page.number < page.totalPage" ng-click="userclicked=true;selectNextPage(page)" data-slide="next" ng-cloak>&rsaquo;</a>
-            <a style="z-index: 200; width: 70px;" class="carousel-control right" ng-show="backendReady && page.number < page.totalPage" ng-click="userclicked=true;page.number = page.totalPage;selectNextPage(page)" data-slide="next" ng-cloak>&rsaquo;&rsaquo;</a>
+            <a style="margin-right: 80px;z-index: 200; width: 70px;" class="carousel-control right leap-interactive" ng-show="backendReady && page.number < page.totalPage" ng-click="userclicked=true;selectNextPage(page)" data-slide="next" ng-cloak>&rsaquo;</a>
+            <a style="z-index: 200; width: 70px;" class="carousel-control right leap-interactive" ng-show="backendReady && page.number < page.totalPage" ng-click="userclicked=true;page.number = page.totalPage;selectNextPage(page)" data-slide="next" ng-cloak>&rsaquo;&rsaquo;</a>
         </div>
         <!--</div>-->
         <div id="slotview2" class="col-md-12" ng-cloak>
@@ -574,12 +584,12 @@
                         <a class="media-left media-bottom" ng-show="!getYoutubeVideoId(item.url)" href="#">
                             <img class="img-responsive" ng-show="!getYoutubeVideoId(item.url)" data-ng-src="{{::item.description}}" alt="no image found"/>
                         </a>
-                        <a class="media-left media-bottom" ng-click="editItemForCalendar(item);$event.preventDefault(); $event.stopPropagation();" href="#">
+                        <a class="media-left media-bottom leap-interactive" ng-click="editItemForCalendar(item);$event.preventDefault(); $event.stopPropagation();" href="#">
                             <img class="img-responsive" ng-show="getYoutubeVideoId(item.url)" ng-src="https://img.youtube.com/vi/{{getYoutubeVideoId(item.url)}}/0.jpg" alt="youtube image 0"/>
                         </a>
                         <div class=”clearfix hidden-md”></div>
                         <div class="media-body">
-                            <h6 class="media-heading truncate_multiline"><a target="_new" href="{{item.url}}">Preview</a> - {{item.title}}</h6>
+                            <h6 class="media-heading truncate_multiline"><a class="leap-interactive" target="_new" href="{{item.url}}">Preview</a> - {{item.title}}</h6>
                             <!--<p>-->
                                 <!--<a class="leap-interactive" leap-click-delay="5000" ng-show="getYoutubeVideoId(item.url)" href="{{item.url}}" title="{{item.title}}">{{::item.description}}</a>-->
                             <!--</p>-->
@@ -604,7 +614,7 @@
 </div>
 
 <!-- this is supposed to be for LeapStrap support of left and right swipe but Angular-Leap's swipes are used instead??? -->
-<form ng-cloak><input style="padding-top:50px; width: 90%; border-width: 0;" id="leap-swipe-direction" ng-model="userSelection.gesture.swipe" value="{{userSelection.gesture.swipe}}"></form>
+<form ng-cloak><input style="padding-top:50px; width: 90%; border-width: 0;" id="leap-swipe-direction" ng-model="userSelection.gesture" value="{{userSelection.gesture}}"></form>
 
 <!--<div class="row" id="slotview1" style="display:none;width:100%;" ng-cloak>-->
 <!--<div class="span12" id="slotview2" style="display:none;width:100%;" ngcloak>-->

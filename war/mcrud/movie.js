@@ -1268,6 +1268,7 @@ function MovieController($scope, $filter, $http, $rootScope,
     Date.prototype.timeNow = function () {
         return ((this.getHours() < 10)?"0":"") + this.getHours() +":"+ ((this.getMinutes() < 10)?"0":"") + this.getMinutes() +":"+ ((this.getSeconds() < 10)?"0":"") + this.getSeconds();
     };
+    //TODO begin watches are not working!
     $scope.$watch('userSelection.movie.playTime', function (playTime) {
         try {
             //alert("gTempEventId [" + gTempEventId + "]")
@@ -1286,21 +1287,23 @@ function MovieController($scope, $filter, $http, $rootScope,
     $scope.$watch('userSelection.movie.playDate', function (playDate) {
         $scope.showTempEvent(playDate);
     });
-    //$scope.$watch('userSelection.gesture.swipe', function (swipe) {
-    //
-    //    try {
-    //        assert(swipe, "movie.js: swipe [" + swipe + "]");
-    //        console && console.log("movie.js: swipe [" + swipe + "]");
-    //        if(swipe === 'right') {
-    //            $scope.selectNextPage(page);
-    //        } else
-    //        if(swipe === 'left') {
-    //            $scope.selectPreviousPage(page);
-    //        }
-    //    } catch(e) {
-    //        window.console && console.log('movie.js watch 2 error [' + e + ']');
-    //    }
-    //}, true);
+    $scope.$watch('userSelection.gesture', function (swipe) {
+        try {
+            alert("userSelection.gesture [" + swipe + "]")
+
+            assert(swipe, "movie.js: swipe [" + swipe + "]");
+            console && console.log("movie.js: swipe [" + swipe + "]");
+            if(swipe === 'right') {
+                $scope.selectNextPage(page);
+            } else
+            if(swipe === 'left') {
+                $scope.selectPreviousPage(page);
+            }
+        } catch(e) {
+            window.console && console.log('movie.js watch 2 error [' + e + ']');
+        }
+    });
+    //TODO end watches are not working!
 
     //AngularJS 1.2+ stuff
     //$scope.$watch('title', function(value) {
@@ -1342,9 +1345,7 @@ function MovieController($scope, $filter, $http, $rootScope,
             , playTime: new Date(dateFilter(new Date(),  'HH:mm'))   //new Date().timeNow()
             , playAllDay: false
         },
-        gesture: {
-            swipe: 'Swipe left/right with LeapMotion!'
-        }
+        gesture: 'Swipe left/right with LeapMotion!'
     };
 
     //TODO to call createTemporaryEvent() whenever shuffleIt checkbox is clicked!
@@ -1464,7 +1465,9 @@ function MovieController($scope, $filter, $http, $rootScope,
 //=== http://stackoverflow.com/questions/25111831/controller-not-a-function-got-undefined-while-defining-controllers-globally
 //=== http://blog.bulte.net/12-24-2013/angular-wordpress-cors.html
 /** Angular-Leap (https://github.com/angular-leap/angular-leap) does not work (yet) */
-angular.module('app', ['angularLeap', 'ngTouch'])
+angular.module('app', [
+    //'angularLeap',    //it breaks LeapStrap!!! :(
+    'ngTouch'])
 //angular.module('app',[])//dependency 'ui.bootstrap' is conflicting with 1.4, thus removed (c.f. http://stackoverflow.com/questions/26332202/using-ui-bootstrap-causing-issues-with-carousel)!
 .config(
 		['$controllerProvider', '$httpProvider',
