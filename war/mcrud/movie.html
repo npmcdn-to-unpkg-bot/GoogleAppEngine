@@ -134,27 +134,41 @@
                             //Classify as right-left or up-down
                             if(isHorizontal){
                                 if(gesture.direction[0] > 0){
-                                    swipeDirection = "right";
-                                            document.querySelector("#leap-swipe-direction").value = "right";
+//                                    swipeDirection = "right";
+                                    document.querySelector("#leap-swipe-direction").value = "You swiped right";
+                                    handleGesture("right");
                                 } else {
-                                    swipeDirection = "left";
-                                            document.querySelector("#leap-swipe-direction").value = "left";
+//                                    swipeDirection = "left";
+                                    document.querySelector("#leap-swipe-direction").value = "You swiped left";
+                                    handleGesture("left");
                                 }
                             } else { //vertical
                                 if(gesture.direction[1] > 0){
-                                    swipeDirection = "up";
+//                                    swipeDirection = "up";
                                 } else {
-                                    swipeDirection = "down";
+//                                    swipeDirection = "down";
                                 }
                             }
-                            console.log(swipeDirection)
+//                            console.log(swipeDirection)
                         }
                     }
                 }
             });
         });
 
-//        }
+        /** http://stackoverflow.com/questions/15424910/angularjs-access-scope-from-outside-js-function */
+        function handleGesture(direction) {
+            var scope = angular.element($("#m-ng-app")).scope();
+            if (direction == 'right') {
+                scope.$apply(function () {
+                    scope.selectNextPage(scope.page);
+                })
+            } else {
+                scope.$apply(function () {
+                    scope.selectPreviousPage(scope.page);
+                })
+            }
+        }
     </script>
     <script>var require = { urlArgs: 'a014' };</script>
     <script type="text/javascript" src="../js/require.js" data-main="../js/main-movie"></script>
@@ -582,7 +596,7 @@
                 <!--<div class="container">-->
                     <div class="media well">
                         <a class="media-left media-bottom" ng-show="!getYoutubeVideoId(item.url)" href="#">
-                            <img class="img-responsive" ng-show="!getYoutubeVideoId(item.url)" data-ng-src="{{::item.description}}" alt="no image found"/>
+                            <img class="img-responsive" data-ng-src="{{::item.description}}" alt="no image found"/>
                         </a>
                         <a class="media-left media-bottom leap-interactive" ng-click="editItemForCalendar(item);$event.preventDefault(); $event.stopPropagation();" href="#">
                             <img class="img-responsive" ng-show="getYoutubeVideoId(item.url)" ng-src="https://img.youtube.com/vi/{{getYoutubeVideoId(item.url)}}/0.jpg" alt="youtube image 0"/>
@@ -614,7 +628,7 @@
 </div>
 
 <!-- this is supposed to be for LeapStrap support of left and right swipe but Angular-Leap's swipes are used instead??? -->
-<form ng-cloak><input style="padding-top:50px; width: 90%; border-width: 0;" id="leap-swipe-direction" ng-model="userSelection.gesture" value="{{userSelection.gesture}}"></form>
+<form ng-cloak><input style="padding-top:50px; width: 90%; border-width: 0;" id="leap-swipe-direction"></form>
 
 <!--<div class="row" id="slotview1" style="display:none;width:100%;" ng-cloak>-->
 <!--<div class="span12" id="slotview2" style="display:none;width:100%;" ngcloak>-->

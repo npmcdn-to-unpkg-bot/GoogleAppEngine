@@ -1287,22 +1287,22 @@ function MovieController($scope, $filter, $http, $rootScope,
     $scope.$watch('userSelection.movie.playDate', function (playDate) {
         $scope.showTempEvent(playDate);
     });
-    $scope.$watch('userSelection.gesture', function (swipe) {
-        try {
-            alert("userSelection.gesture [" + swipe + "]")
-
-            assert(swipe, "movie.js: swipe [" + swipe + "]");
-            console && console.log("movie.js: swipe [" + swipe + "]");
-            if(swipe === 'right') {
-                $scope.selectNextPage(page);
-            } else
-            if(swipe === 'left') {
-                $scope.selectPreviousPage(page);
-            }
-        } catch(e) {
-            window.console && console.log('movie.js watch 2 error [' + e + ']');
-        }
-    });
+    //$scope.$watch('userSelection.gesture', function (swipe) {
+    //    try {
+    //        alert("userSelection.gesture [" + swipe + "]")
+    //
+    //        assert(swipe, "movie.js: swipe [" + swipe + "]");
+    //        console && console.log("movie.js: swipe [" + swipe + "]");
+    //        if(swipe === 'right') {
+    //            $scope.selectNextPage(page);
+    //        } else
+    //        if(swipe === 'left') {
+    //            $scope.selectPreviousPage(page);
+    //        }
+    //    } catch(e) {
+    //        window.console && console.log('movie.js watch 2 error [' + e + ']');
+    //    }
+    //});
     //TODO end watches are not working!
 
     //AngularJS 1.2+ stuff
@@ -1344,8 +1344,8 @@ function MovieController($scope, $filter, $http, $rootScope,
             , playDate: new Date(dateFilter(new Date(),  'yyyy-MM-dd'))  //'1976-02-14' //leading zero is not optional!!!
             , playTime: new Date(dateFilter(new Date(),  'HH:mm'))   //new Date().timeNow()
             , playAllDay: false
-        },
-        gesture: 'Swipe left/right with LeapMotion!'
+        }
+        //, gesture: 'Swipe left/right with LeapMotion!'
     };
 
     //TODO to call createTemporaryEvent() whenever shuffleIt checkbox is clicked!
@@ -1563,7 +1563,35 @@ angular.module('app', [
         });
     };
 })
+//http://stackoverflow.com/questions/21929226/bind-events-on-angularjs-element-directives-using-jquery
+    //.directive('sample', function () {
+    //    return {
+    //        restrict: "E",
+    //        replace: true,
+    //        transclude: true,
+    //        template: "<div ng-transclude></div>",
+    //        controller: function ($scope, $element) {
+    //            this.act = function (something) {
+    //                $($element).trigger("myEvent.sample", [something]);
+    //            };
+    //        }
+    //    };
+    //})
+    //.directive('item', function () {
+    //    return {
+    //        restrict: "E",
+    //        require: "^sample",
+    //        transclude: true,
+    //        template: "<a ng-transclude></a>",
+    //        link: function (scope, element, attributes, parentController) {
+    //            element.on("click", function(e) {
+    //                parentController.act(this.innerHTML);
+    //            });
+    //        }
+    //    }
+    //})
 ;
+
 
 //Error:
 //[$injector:modulerr] Failed to instantiate module app due to:TypeError: Cannot set property 'Content-Type' of undefined
