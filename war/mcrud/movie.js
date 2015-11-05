@@ -1467,7 +1467,8 @@ function MovieController($scope, $filter, $http, $rootScope,
 /** Angular-Leap (https://github.com/angular-leap/angular-leap) does not work (yet) */
 angular.module('app', [
     //'angularLeap',    //it breaks LeapStrap!!! :(
-    'ngTouch'])
+    'ngTouch'
+    ])
 //angular.module('app',[])//dependency 'ui.bootstrap' is conflicting with 1.4, thus removed (c.f. http://stackoverflow.com/questions/26332202/using-ui-bootstrap-causing-issues-with-carousel)!
 .config(
 		['$controllerProvider', '$httpProvider',
@@ -1563,33 +1564,6 @@ angular.module('app', [
         });
     };
 })
-//http://stackoverflow.com/questions/21929226/bind-events-on-angularjs-element-directives-using-jquery
-    //.directive('sample', function () {
-    //    return {
-    //        restrict: "E",
-    //        replace: true,
-    //        transclude: true,
-    //        template: "<div ng-transclude></div>",
-    //        controller: function ($scope, $element) {
-    //            this.act = function (something) {
-    //                $($element).trigger("myEvent.sample", [something]);
-    //            };
-    //        }
-    //    };
-    //})
-    //.directive('item', function () {
-    //    return {
-    //        restrict: "E",
-    //        require: "^sample",
-    //        transclude: true,
-    //        template: "<a ng-transclude></a>",
-    //        link: function (scope, element, attributes, parentController) {
-    //            element.on("click", function(e) {
-    //                parentController.act(this.innerHTML);
-    //            });
-    //        }
-    //    }
-    //})
 ;
 
 
