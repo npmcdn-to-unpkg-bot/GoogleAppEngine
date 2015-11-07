@@ -45,22 +45,6 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
-    "userendpoint.userEndpoint.insertUser" : {
-      "path" : "user",
-      "httpMethod" : "POST",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "app.model.UserEndpoint.insertUser",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
     "userendpoint.userEndpoint.listUser" : {
       "path" : "user",
       "httpMethod" : "GET",
@@ -86,22 +70,6 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
-    "userendpoint.userEndpoint.updateUser" : {
-      "path" : "user",
-      "httpMethod" : "PUT",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "app.model.UserEndpoint.updateUser",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
     "userendpoint.userEndpoint.removeUser" : {
       "path" : "user/{id}",
       "httpMethod" : "DELETE",
@@ -118,6 +86,38 @@
           }
         },
         "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "userendpoint.userEndpoint.insertUser" : {
+      "path" : "user",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "app.model.UserEndpoint.insertUser",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "userendpoint.userEndpoint.updateUser" : {
+      "path" : "user",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "app.model.UserEndpoint.updateUser",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
@@ -177,14 +177,14 @@
           "name" : {
             "type" : "string"
           },
-          "complete" : {
-            "type" : "boolean"
+          "parent" : {
+            "$ref" : "Key"
           },
           "namespace" : {
             "type" : "string"
           },
-          "parent" : {
-            "$ref" : "Key"
+          "complete" : {
+            "type" : "boolean"
           }
         }
       },
@@ -249,14 +249,14 @@
             "type" : "string",
             "format" : "date-time"
           },
+          "url" : {
+            "type" : "string"
+          },
           "modified" : {
             "type" : "string",
             "format" : "date-time"
           },
           "title" : {
-            "type" : "string"
-          },
-          "url" : {
             "type" : "string"
           }
         }
@@ -426,6 +426,9 @@
             "type" : "string",
             "format" : "int64"
           },
+          "date" : {
+            "type" : "integer"
+          },
           "month" : {
             "type" : "integer"
           },
@@ -436,9 +439,6 @@
             "type" : "integer"
           },
           "timezoneOffset" : {
-            "type" : "integer"
-          },
-          "date" : {
             "type" : "integer"
           }
         }
@@ -465,6 +465,16 @@
           "$ref" : "User"
         }
       },
+      "app.model.UserEndpoint.listUser" : {
+        "response" : {
+          "$ref" : "CollectionResponse_User"
+        }
+      },
+      "app.model.UserEndpoint.removeUser" : {
+        "response" : {
+          "$ref" : "User"
+        }
+      },
       "app.model.UserEndpoint.insertUser" : {
         "request" : {
           "$ref" : "User"
@@ -473,20 +483,10 @@
           "$ref" : "User"
         }
       },
-      "app.model.UserEndpoint.listUser" : {
-        "response" : {
-          "$ref" : "CollectionResponse_User"
-        }
-      },
       "app.model.UserEndpoint.updateUser" : {
         "request" : {
           "$ref" : "User"
         },
-        "response" : {
-          "$ref" : "User"
-        }
-      },
-      "app.model.UserEndpoint.removeUser" : {
         "response" : {
           "$ref" : "User"
         }

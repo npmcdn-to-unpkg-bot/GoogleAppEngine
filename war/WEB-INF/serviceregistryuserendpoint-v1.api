@@ -24,14 +24,14 @@
     "maxAge" : 0
   },
   "methods" : {
-    "serviceregistryuserendpoint.serviceRegistryUserEndpoint.insertServiceRegistryUser" : {
+    "serviceregistryuserendpoint.serviceRegistryUserEndpoint.updateServiceRegistryUser" : {
       "path" : "serviceregistryuser",
-      "httpMethod" : "POST",
+      "httpMethod" : "PUT",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "tapp.model.ServiceRegistryUserEndpoint.insertServiceRegistryUser",
+      "rosyMethod" : "tapp.model.ServiceRegistryUserEndpoint.updateServiceRegistryUser",
       "request" : {
         "body" : "autoTemplate(backendRequest)",
         "bodyName" : "resource"
@@ -86,14 +86,14 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
-    "serviceregistryuserendpoint.serviceRegistryUserEndpoint.updateServiceRegistryUser" : {
+    "serviceregistryuserendpoint.serviceRegistryUserEndpoint.insertServiceRegistryUser" : {
       "path" : "serviceregistryuser",
-      "httpMethod" : "PUT",
+      "httpMethod" : "POST",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "tapp.model.ServiceRegistryUserEndpoint.updateServiceRegistryUser",
+      "rosyMethod" : "tapp.model.ServiceRegistryUserEndpoint.insertServiceRegistryUser",
       "request" : {
         "body" : "autoTemplate(backendRequest)",
         "bodyName" : "resource"
@@ -244,7 +244,7 @@
       }
     },
     "methods" : {
-      "tapp.model.ServiceRegistryUserEndpoint.insertServiceRegistryUser" : {
+      "tapp.model.ServiceRegistryUserEndpoint.updateServiceRegistryUser" : {
         "request" : {
           "$ref" : "ServiceRegistryUser"
         },
@@ -262,7 +262,7 @@
           "$ref" : "ServiceRegistryUser"
         }
       },
-      "tapp.model.ServiceRegistryUserEndpoint.updateServiceRegistryUser" : {
+      "tapp.model.ServiceRegistryUserEndpoint.insertServiceRegistryUser" : {
         "request" : {
           "$ref" : "ServiceRegistryUser"
         },

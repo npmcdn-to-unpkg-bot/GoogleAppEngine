@@ -45,6 +45,27 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
+    "calendarendpoint.calendarEndpoint.removeCalendar" : {
+      "path" : "calendar/{id}",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "app.model.CalendarEndpoint.removeCalendar",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
     "calendarendpoint.calendarEndpoint.insertCalendar" : {
       "path" : "calendar",
       "httpMethod" : "POST",
@@ -72,27 +93,6 @@
       "request" : {
         "body" : "autoTemplate(backendRequest)",
         "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "calendarendpoint.calendarEndpoint.removeCalendar" : {
-      "path" : "calendar/{id}",
-      "httpMethod" : "DELETE",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "app.model.CalendarEndpoint.removeCalendar",
-      "request" : {
-        "parameters" : {
-          "id" : {
-            "type" : "int64",
-            "required" : true
-          }
-        },
-        "body" : "empty"
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
@@ -248,14 +248,14 @@
           "name" : {
             "type" : "string"
           },
-          "complete" : {
-            "type" : "boolean"
+          "parent" : {
+            "$ref" : "Key"
           },
           "namespace" : {
             "type" : "string"
           },
-          "parent" : {
-            "$ref" : "Key"
+          "complete" : {
+            "type" : "boolean"
           }
         }
       },
@@ -281,6 +281,11 @@
           "$ref" : "Calendar"
         }
       },
+      "app.model.CalendarEndpoint.removeCalendar" : {
+        "response" : {
+          "$ref" : "Calendar"
+        }
+      },
       "app.model.CalendarEndpoint.insertCalendar" : {
         "request" : {
           "$ref" : "Calendar"
@@ -293,11 +298,6 @@
         "request" : {
           "$ref" : "Calendar"
         },
-        "response" : {
-          "$ref" : "Calendar"
-        }
-      },
-      "app.model.CalendarEndpoint.removeCalendar" : {
         "response" : {
           "$ref" : "Calendar"
         }

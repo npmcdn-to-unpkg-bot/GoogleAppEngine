@@ -13,16 +13,18 @@
             margin-left: 10px;
         }
         h2 {
-            font-size: 2.2em;
+            font-size: 1.2em;
             margin: 0 0 0 0;
         }
         .label, input {
-            font-size: 1.2em;
+/*            font-size: 1.2em; */
             margin: 5px 0 5px 0;
+            max-width: 68%;
+            width: 52%;
         }
         /* IE styles only */
         @-ms-viewport {
-                width: device-width;
+       		width: device-width;
 		}
 	</style>
     <link rel="stylesheet" href="/css/mobile.css" type="text/css" media="screen, projection, tv" />
@@ -60,7 +62,7 @@
         <table>
 <tr><td><span class="label">ID</span></td><td><input name="password" autocapitalize="off" autocorrect="off" id="usernameField" type="text" /></td></tr>
           <tr><td><span class="label">PWD</span></td><td><input autocomplete="off" id="passwordField" type="password" name="j_password" /></td></tr>
-          <tr><td colspan="2"><input style="width:50%;height:100%;float:right" type="submit" value="Go" /></td></tr>
+          <tr><td colspan="2"><input style="height:100%;width:100%;margin-right:76px; float: right;" type="submit" value="Go" /></td></tr>
         </table>
 </form>
 
