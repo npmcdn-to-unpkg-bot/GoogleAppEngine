@@ -19,12 +19,25 @@
         .label, input {
 /*            font-size: 1.2em; */
             margin: 5px 0 5px 0;
-            max-width: 68%;
+            max-width: 65%;
             width: 52%;
         }
         /* IE styles only */
         @-ms-viewport {
        		width: device-width;
+		}
+		@media (min-width:801px) { /* tablet, landscape iPad, lo-res laptops ands desktops */
+			h2 {
+			    font-size: 3.2em;
+			}
+			table {
+				font-size: 1.2em;
+				margin: 0 auto; /* or margin: 0 auto 0 auto */
+			}
+		}
+		@media (min-width:1025px) { /* big landscape tablets, laptops, and desktops */ 
+		}
+		@media (min-width:1281px) { /* hi-res laptops and desktops */ 
 		}
 	</style>
     <link rel="stylesheet" href="/css/mobile.css" type="text/css" media="screen, projection, tv" />
@@ -62,7 +75,7 @@
         <table>
 <tr><td><span class="label">ID</span></td><td><input name="password" autocapitalize="off" autocorrect="off" id="usernameField" type="text" /></td></tr>
           <tr><td><span class="label">PWD</span></td><td><input autocomplete="off" id="passwordField" type="password" name="j_password" /></td></tr>
-          <tr><td colspan="2"><input style="height:100%;width:100%;margin-right:76px; float: right;" type="submit" value="Go" /></td></tr>
+          <tr><td colspan="2"><input style="height:100%;width:100%;margin-left:-3px;" type="submit" value="Go" /></td></tr>
         </table>
 </form>
 
