@@ -595,8 +595,8 @@
             <div class="col-md-2 col-sm-4" ng-init="page = { max:6, number:1 }" ng-repeat="item in pagedItems[currentPage] | orderBy:sortingOrder:reverse | filter:query">
                 <!--<div class="container">-->
                     <div class="media well">
-                        <a class="media-left media-bottom" ng-show="!getYoutubeVideoId(item.url)" href="#">
-                            <img class="img-responsive" data-ng-src="{{::item.description}}" alt="no image found"/>
+                        <a class="media-left media-bottom" ng-show="!getYoutubeVideoId(item.url)" ng-click="editItemForCalendar(item);$event.preventDefault(); $event.stopPropagation();" href="#">
+                            <img class="img-responsive" data-ng-src="{{::item.description}}" alt="Blank Image"/>
                         </a>
                         <a class="media-left media-bottom leap-interactive" ng-click="editItemForCalendar(item);$event.preventDefault(); $event.stopPropagation();" href="#">
                             <img class="img-responsive" ng-show="getYoutubeVideoId(item.url)" ng-src="https://img.youtube.com/vi/{{getYoutubeVideoId(item.url)}}/0.jpg" alt="youtube image 0"/>
@@ -615,7 +615,7 @@
                     <!--<a style="width:70%;" class="col-md-1 thumbnail leap-interactive" leap-click-delay="5000" ng-show="!getYoutubeVideoId(item.url)" href="#" title="{{item.title}}">-->
                         <!--<div class="glyphicon glyphicon-edit truncate" ng-click="editItemForCalendar(item);$event.preventDefault(); $event.stopPropagation();">{{item.title}}</div>-->
                         <!--<span ng-if="$index >= (page.number-1)*page.max && $index < 1 + page.max">-->
-                        <!--<img class="img-responsive" ng-show="!getYoutubeVideoId(item.url)" data-ng-src="{{::item.description}}" alt="no image found"/>-->
+                        <!--<img class="img-responsive" ng-show="!getYoutubeVideoId(item.url)" data-ng-src="{{::item.description}}" alt="Blank Image"/>-->
                         <!--</span>-->
                     <!--</a>-->
                     <!--<a style="width:70%;" class="col-md-1 thumbnail leap-interactive" leap-click-delay="5000" ng-show="getYoutubeVideoId(item.url)" href="#" title="{{item.title}} {{::item.description}}">-->
@@ -641,7 +641,7 @@
 <!--<a ng-click="selectNextPage(page)" class="ng-binding">Next »</a>-->
 <!--</div>-->
 <!--<div ng-show="!getYoutubeVideoId(item.url)">-->
-<!--<img ng-src="data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=" alt="no image found">-->
+<!--<img ng-src="data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=" alt="Blank Image">-->
 <!--</div>-->
 <!--</div>-->
 <!--</div>-->
@@ -718,7 +718,7 @@
             </a>
         </div>
         <div ng-show="!getYoutubeVideoId(item.url)">
-            <img ng-src="data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=" alt="no image found">
+            <img ng-src="data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=" alt="Blank Image">
         </div>
     </div>
 </div>

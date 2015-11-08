@@ -1,64 +1,66 @@
 package com.appspot.cloudserviceapi;
 
-import org.apache.cxf.transport.servlet.CXFServlet;
-
+//import org.apache.cxf.transport.servlet.CXFServlet;
+import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Server;
+import org.eclipse.jetty.server.handler.DefaultHandler;
 import org.eclipse.jetty.server.handler.HandlerList;
-import org.eclipse.jetty.servlet.DefaultServlet;
+import org.eclipse.jetty.server.handler.ResourceHandler;
+import org.eclipse.jetty.server.nio.SelectChannelConnector;
 import org.eclipse.jetty.servlet.ServletContextHandler;
-import org.eclipse.jetty.servlet.ServletHolder;
-import org.eclipse.jetty.util.resource.Resource;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.web.context.ContextLoaderListener;
-import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
+import app.controller.CrudService;
 
-import app.common.AppUtils;
-
-//import com.example.config.AppConfig;
-
-/** 
- * http://aredko.blogspot.com/2013/09/swagger-make-developers-to-love-working.html
+/**
+ * http://stackoverflow.com/questions/25815294/add-swagger-servlet-support-to-project-with-swagger-and-jaxrs
+ * @setup:
+ * 1. Make sure you add jetty jar files FIRST i.e. bin/jetty/*.jar
+ * 2. Folowed by all swagger jar files SECOND i.e. bin/swagger/*.jar
+ * 3. Project src/jar files LAST!
  */
 public class Starter {
-    private static final int SERVER_PORT = 8080;
-    private static final String CONTEXT_PATH = "rest";
- 
-    public static void main( final String[] args ) throws Exception {
-        Resource.setDefaultUseCaches( false );
-  
-        final Server server = new Server( SERVER_PORT );  
-//        System.setProperty( AppConfig.SERVER_PORT, Integer.toString( SERVER_PORT ) );
-//        System.setProperty( AppConfig.SERVER_HOST, "localhost" );
-//        System.setProperty( AppConfig.CONTEXT_PATH, CONTEXT_PATH );    
-        System.setProperty( "8081", Integer.toString( SERVER_PORT ) );
-        System.setProperty( "127.0.0.1", "localhost" );
-        System.setProperty( "/", CONTEXT_PATH );    
 
-        // Configuring Apache CXF servlet and Spring listener  
-        final ServletHolder servletHolder = new ServletHolder( new CXFServlet() );      
-        final ServletContextHandler context = new ServletContextHandler();   
-        context.setContextPath( "/" );
-        context.addServlet( servletHolder, "/" + CONTEXT_PATH + "/*" );     
-        context.addEventListener( new ContextLoaderListener() ); 
-     
-        context.setInitParameter( "contextClass", AnnotationConfigWebApplicationContext.class.getName() );
-//        context.setInitParameter( "contextConfigLocation", AppConfig.class.getName() );
-        context.setInitParameter( "contextConfigLocation", AppUtils.class.getName() );
-   
-        // Configuring Swagger as static web resource
-        final ServletHolder swaggerHolder = new ServletHolder( new DefaultServlet() );
-        final ServletContextHandler swagger = new ServletContextHandler();
-        swagger.setContextPath( "/swagger" );
-        swagger.addServlet( swaggerHolder, "/*" );
-//        swagger.setResourceBase( new ClassPathResource( "/webapp" ).getURI().toString() );
-//        swagger.setResourceBase( new ClassPathResource( "/war" ).getURI().toString() );
+	public static void main(String[] args) throws Exception {
+		Server server = new Server();
+		SelectChannelConnector connector = new SelectChannelConnector();
+		connector.setPort(8002);
+		server.addConnector(connector);
 
-        final HandlerList handlers = new HandlerList();
-        handlers.addHandler( context );
-        handlers.addHandler( swagger );
-   
-        server.setHandler( handlers );
-        server.start();
-        server.join(); 
-    }
+		// Setup web handler
+		final ResourceHandler webResourceHandler = new ResourceHandler();
+		webResourceHandler.setDirectoriesListed(false);
+		webResourceHandler.setWelcomeFiles(new String[] { "index.html" });
+		webResourceHandler.setResourceBase("webapp");
+
+		// Create servlet context
+		final ServletContextHandler servletContext = new ServletContextHandler(ServletContextHandler.SESSIONS);
+//		servletContext.addEventListener(new DefaultResteasyBootstrap());
+		servletContext.setContextPath("/");
+		servletContext.addServlet(CrudService.class, "/ws/crud");
+
+		// Setup Swagger handlers
+//		servletContext.addServlet(new ServletHolder(new SwaggerJaxrsConfig()), "");
+
+		// Add MyService Servlet
+//		final ServletHolder servletHolder = new ServletHolder(new HttpServletDispatcher());
+//		servletHolder.setInitParameter("javax.ws.rs.Application", MyServiceResource.class.getName());
+//		servletContext.addServlet(servletHolder, "/*");
+
+		// Add Admin Servlet
+//		final ServletHolder adminServletHolder = new ServletHolder(new HttpServletDispatcher());
+//		servletContext.addServlet(adminServletHolder, "/admin/*");
+
+		// Add Admin Servlets
+//		servletContext.addServlet(new ServletHolder(new PingServlet()), "/ping");
+//		servletContext.addServlet(new ServletHolder(new ThreadDumpServlet()), "/threadDump");
+
+		final HandlerList handlers = new HandlerList();
+		handlers.setHandlers(new Handler[] { webResourceHandler, // Web handler
+				servletContext, // Servlet handler
+				new DefaultHandler() }); // Default handler returns 404 (NOT
+											// FOUND) for anything else
+
+		server.setHandler(handlers);
+		server.start();
+		server.join();
+	}
 }

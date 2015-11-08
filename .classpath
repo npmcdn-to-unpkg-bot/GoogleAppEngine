@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="test"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/slf4j-api-1.6.1.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/compass-2.3.0-beta1.jar"/>
@@ -25,6 +26,7 @@
 	<classpathentry kind="lib" path="war/WEB-INF/lib/js.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/jslint4java-1.4.6.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/prettytime-1.0.8.Final.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/swagger-servlet-1.5.5-SNAPSHOT.jar"/>
 	<classpathentry kind="con" path="com.google.appengine.eclipse.core.GAE_CONTAINER"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/spring-aop-4.0.7.RELEASE.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/spring-aspects-4.0.0.RELEASE.jar"/>
@@ -59,5 +61,15 @@
 	<classpathentry kind="lib" path="war/WEB-INF/lib/tapestry-test-5.3.8.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/tapestry-yuicompressor-5.3.8.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/tapestry5-annotations-5.3.8.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/jackson-annotations-2.4.5.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/jackson-core-2.4.5.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/jackson-databind-2.4.5.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/jackson-dataformat-yaml-2.4.5.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/jackson-datatype-joda-2.4.5.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/swagger-annotations-1.5.5-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/swagger-core-1.5.5-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/swagger-models-1.5.5-SNAPSHOT.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Swagger"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Jetty"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>

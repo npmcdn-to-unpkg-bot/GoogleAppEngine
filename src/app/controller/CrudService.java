@@ -37,11 +37,11 @@ public class CrudService extends HttpServlet {
 	}
 
 	@Override
-	@ApiOperation(httpMethod = "GET", value = "Resource to get a user")
-	@ApiImplicitParams({
-		@ApiImplicitParam(name = "name", value = "User's name", required = true, dataType = "string", paramType = "query"),
-		@ApiImplicitParam(name = "email", value = "User's email", required = true, dataType = "string", paramType = "query"),
-	})
+	@ApiOperation(httpMethod = "GET", value = "Retrieve a resource")
+//	@ApiImplicitParams({
+//		@ApiImplicitParam(name = "name", value = "User's name", required = true, dataType = "string", paramType = "query"),
+//		@ApiImplicitParam(name = "email", value = "User's email", required = true, dataType = "string", paramType = "query"),
+//	})
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws IOException {
 //		doPost(request, response);
@@ -194,6 +194,7 @@ public class CrudService extends HttpServlet {
 	}
 	
 	@Override
+	@ApiOperation(httpMethod = "POST", value = "Add/change a resource")
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws IOException {
 		System.out.println("CrudService: doPost invoked");
