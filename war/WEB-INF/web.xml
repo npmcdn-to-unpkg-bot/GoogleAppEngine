@@ -121,6 +121,56 @@
 </filter-mapping>
 -->
 
+<!-- Swagger-Servlet stuff -->
+	<!-- sample servlet -->
+    <servlet>
+        <servlet-name>SampleServlet</servlet-name>
+        <servlet-class>app.controller.CrudService</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SampleServlet</servlet-name>
+        <url-pattern>/ws/crud/*</url-pattern>
+    </servlet-mapping>
+
+    <!-- swagger servlet reader -->
+    <servlet>
+        <servlet-name>DefaultServletConfig</servlet-name>
+        <servlet-class>io.swagger.servlet.config.DefaultServletConfig</servlet-class>
+        <load-on-startup>2</load-on-startup>
+        <init-param>
+            <param-name>swagger.resource.package</param-name>
+            <param-value>io.swagger.sample.servlet</param-value>
+        </init-param>
+        <init-param>
+            <param-name>swagger.api.basepath</param-name>
+            <param-value>http://localhost:8002</param-value>
+        </init-param>
+        <init-param>
+            <param-name>api.version</param-name>
+            <param-value>1.0.0</param-value>
+        </init-param>
+    </servlet>
+
+    <!-- swagger api declaration -->
+    <servlet>
+        <servlet-name>ApiDeclarationServlet</servlet-name>
+        <servlet-class>io.swagger.servlet.listing.ApiDeclarationServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ApiDeclarationServlet</servlet-name>
+        <url-pattern>/api/*</url-pattern>
+    </servlet-mapping>
+<!--
+    <filter>
+        <filter-name>ApiOriginFilter</filter-name>
+        <filter-class>io.swagger.sample.util.ApiOriginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>ApiOriginFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+-->
+
 <!-- Spring MVC stuff -->
 	<context-param>
 	  <param-name>contextClass</param-name>
@@ -837,7 +887,7 @@ java.lang.RuntimeException: Exception constructing service 'ApplicationContext':
   <servlet-class>com.google.api.server.spi.SystemServiceServlet</servlet-class>
   <init-param>
    <param-name>services</param-name>
-   <param-value>app.model.CalendarEndpoint,app.model.MovieEndpoint,app.model.UserEndpoint,com.bkper.server.api.TransactionEndpoint,tapp.model.ServiceRegistryUserEndpoint</param-value>
+   <param-value>app.controller.CrudService,app.model.CalendarEndpoint,app.model.MovieEndpoint,app.model.UserEndpoint,com.bkper.server.api.TransactionEndpoint,tapp.model.ServiceRegistryUserEndpoint</param-value>
   </init-param>
  </servlet>
  <servlet-mapping>

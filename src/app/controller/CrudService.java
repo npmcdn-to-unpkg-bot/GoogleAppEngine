@@ -1,5 +1,10 @@
 package app.controller;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -22,6 +27,7 @@ import com.appspot.cloudserviceapi.common.JsonUtil;
  * handling_crud_with_the_kendo_ui_jsp_wrappers.aspx
  */
 @SuppressWarnings("serial")
+@Api(value = "/ws/crud/")
 public class CrudService extends HttpServlet {
 	// === KISS: assume only one handler per object!
 	private static List<CrudServiceCallback> objectHandlers = new ArrayList<CrudServiceCallback>();
@@ -31,6 +37,11 @@ public class CrudService extends HttpServlet {
 	}
 
 	@Override
+	@ApiOperation(httpMethod = "GET", value = "Resource to get a user")
+	@ApiImplicitParams({
+		@ApiImplicitParam(name = "name", value = "User's name", required = true, dataType = "string", paramType = "query"),
+		@ApiImplicitParam(name = "email", value = "User's email", required = true, dataType = "string", paramType = "query"),
+	})
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws IOException {
 //		doPost(request, response);
