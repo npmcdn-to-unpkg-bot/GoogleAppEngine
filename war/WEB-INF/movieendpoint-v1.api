@@ -1,12 +1,12 @@
 {
   "extends" : "thirdParty.api",
   "abstract" : false,
-  "root" : "https://2-share.appspot.com/_ah/api",
+  "root" : "https://cloudiservice.appspot.com/_ah/api",
   "name" : "movieendpoint",
   "version" : "v1",
   "defaultVersion" : false,
   "adapter" : {
-    "bns" : "https://2-share.appspot.com/_ah/spi",
+    "bns" : "https://cloudiservice.appspot.com/_ah/spi",
     "deadline" : 65.0,
     "type" : "lily"
   },
@@ -24,47 +24,6 @@
     "maxAge" : 0
   },
   "methods" : {
-    "movieendpoint.movieEndpoint.listMovie" : {
-      "path" : "movie",
-      "httpMethod" : "GET",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "app.model.MovieEndpoint.listMovie",
-      "request" : {
-        "parameters" : {
-          "cursor" : {
-            "type" : "string",
-            "required" : false
-          },
-          "limit" : {
-            "type" : "int32",
-            "required" : false
-          }
-        },
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "movieendpoint.movieEndpoint.updateMovie" : {
-      "path" : "movie",
-      "httpMethod" : "PUT",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "app.model.MovieEndpoint.updateMovie",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
     "movieendpoint.movieEndpoint.removeMovie" : {
       "path" : "movie/{id}",
       "httpMethod" : "DELETE",
@@ -107,6 +66,31 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
+    "movieendpoint.movieEndpoint.listMovie" : {
+      "path" : "movie",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "app.model.MovieEndpoint.listMovie",
+      "request" : {
+        "parameters" : {
+          "cursor" : {
+            "type" : "string",
+            "required" : false
+          },
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
     "movieendpoint.movieEndpoint.insertMovie" : {
       "path" : "movie",
       "httpMethod" : "POST",
@@ -122,25 +106,26 @@
       "response" : {
         "body" : "autoTemplate(backendResponse)"
       }
+    },
+    "movieendpoint.movieEndpoint.updateMovie" : {
+      "path" : "movie",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "app.model.MovieEndpoint.updateMovie",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
     }
   },
   "descriptor" : {
     "schemas" : {
-      "CollectionResponse_Movie" : {
-        "id" : "CollectionResponse_Movie",
-        "type" : "object",
-        "properties" : {
-          "items" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "Movie"
-            }
-          },
-          "nextPageToken" : {
-            "type" : "string"
-          }
-        }
-      },
       "Movie" : {
         "id" : "Movie",
         "type" : "object",
@@ -419,6 +404,10 @@
         "id" : "Date",
         "type" : "object",
         "properties" : {
+          "time" : {
+            "type" : "string",
+            "format" : "int64"
+          },
           "hours" : {
             "type" : "integer"
           },
@@ -428,17 +417,13 @@
           "seconds" : {
             "type" : "integer"
           },
-          "time" : {
-            "type" : "string",
-            "format" : "int64"
-          },
-          "date" : {
+          "year" : {
             "type" : "integer"
           },
           "month" : {
             "type" : "integer"
           },
-          "year" : {
+          "date" : {
             "type" : "integer"
           },
           "day" : {
@@ -457,22 +442,24 @@
             "type" : "string"
           }
         }
+      },
+      "CollectionResponse_Movie" : {
+        "id" : "CollectionResponse_Movie",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Movie"
+            }
+          },
+          "nextPageToken" : {
+            "type" : "string"
+          }
+        }
       }
     },
     "methods" : {
-      "app.model.MovieEndpoint.listMovie" : {
-        "response" : {
-          "$ref" : "CollectionResponse_Movie"
-        }
-      },
-      "app.model.MovieEndpoint.updateMovie" : {
-        "request" : {
-          "$ref" : "Movie"
-        },
-        "response" : {
-          "$ref" : "Movie"
-        }
-      },
       "app.model.MovieEndpoint.removeMovie" : {
         "response" : {
           "$ref" : "Movie"
@@ -483,7 +470,20 @@
           "$ref" : "Movie"
         }
       },
+      "app.model.MovieEndpoint.listMovie" : {
+        "response" : {
+          "$ref" : "CollectionResponse_Movie"
+        }
+      },
       "app.model.MovieEndpoint.insertMovie" : {
+        "request" : {
+          "$ref" : "Movie"
+        },
+        "response" : {
+          "$ref" : "Movie"
+        }
+      },
+      "app.model.MovieEndpoint.updateMovie" : {
         "request" : {
           "$ref" : "Movie"
         },
