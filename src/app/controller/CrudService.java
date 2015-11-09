@@ -27,7 +27,7 @@ import com.appspot.cloudserviceapi.common.JsonUtil;
  * handling_crud_with_the_kendo_ui_jsp_wrappers.aspx
  */
 @SuppressWarnings("serial")
-@Api(value = "/ws/crud/")
+@Api(value = "/ws/")
 public class CrudService extends HttpServlet {
 	// === KISS: assume only one handler per object!
 	private static List<CrudServiceCallback> objectHandlers = new ArrayList<CrudServiceCallback>();
