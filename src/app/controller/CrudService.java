@@ -23,11 +23,11 @@ import app.model.UserEndpoint;
 import com.appspot.cloudserviceapi.common.JsonUtil;
 
 /**
- * http://www.kendoui.com/blogs/teamblog/posts/13-03-05/
- * handling_crud_with_the_kendo_ui_jsp_wrappers.aspx
+ * https://github.com/swagger-api/swagger-core/wiki/Annotations
+ * http://www.kendoui.com/blogs/teamblog/posts/13-03-05/handling_crud_with_the_kendo_ui_jsp_wrappers.aspx
  */
 @SuppressWarnings("serial")
-@Api(value = "/ws/")
+@Api(value = "/crud")
 public class CrudService extends HttpServlet {
 	// === KISS: assume only one handler per object!
 	private static List<CrudServiceCallback> objectHandlers = new ArrayList<CrudServiceCallback>();
@@ -37,11 +37,10 @@ public class CrudService extends HttpServlet {
 	}
 
 	@Override
-	@ApiOperation(httpMethod = "GET", value = "Retrieve a resource")
-//	@ApiImplicitParams({
-//		@ApiImplicitParam(name = "name", value = "User's name", required = true, dataType = "string", paramType = "query"),
-//		@ApiImplicitParam(name = "email", value = "User's email", required = true, dataType = "string", paramType = "query"),
-//	})
+	@ApiOperation(httpMethod = "GET", 
+	   value = "Resource to get an Item", 
+//	   response = SampleData.class, 
+	   nickname="getItem")
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws IOException {
 //		doPost(request, response);
@@ -194,7 +193,10 @@ public class CrudService extends HttpServlet {
 	}
 	
 	@Override
-	@ApiOperation(httpMethod = "POST", value = "Add/change a resource")
+	@ApiOperation(httpMethod = "POST", 
+	   value = "Resource to create/change an item", 
+//	   response = SampleData.class, 
+	   nickname="postItem")
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws IOException {
 		System.out.println("CrudService: doPost invoked");
