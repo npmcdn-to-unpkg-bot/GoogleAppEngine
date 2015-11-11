@@ -4,6 +4,14 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+import io.swagger.annotations.Contact;
+import io.swagger.annotations.Info;
+import io.swagger.annotations.License;
+import io.swagger.annotations.SwaggerDefinition;
+import io.swagger.annotations.Tag;
+import io.swagger.sample.model.SampleData;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -27,7 +35,23 @@ import com.appspot.cloudserviceapi.common.JsonUtil;
  * http://www.kendoui.com/blogs/teamblog/posts/13-03-05/handling_crud_with_the_kendo_ui_jsp_wrappers.aspx
  */
 @SuppressWarnings("serial")
-@Api(value = "/crud")
+@SwaggerDefinition(
+        info = @Info(
+                description = "2Share REST API",
+                version = "0.0.1",
+                title = "2Share Servlet",
+                termsOfService = "http://swagger.io/terms/",
+                contact = @Contact(name = "Adcoolguy", email = "apiteam@swagger.io", url = "http://swagger.io"),
+                license = @License(name = "Apache 2.0", url = "http://www.apache.org/licenses/LICENSE-2.0.html")
+        ),
+        consumes = {"application/json", "application/xml"},
+        produces = {"application/json", "application/xml"},
+        schemes = {SwaggerDefinition.Scheme.HTTP, SwaggerDefinition.Scheme.HTTPS},
+        tags = {@Tag(name = "users", description = "Operations about user"), 
+        		@Tag(name = "movies", description = "Operations about movie")		
+        }
+)
+@Api(value = "/ws/crud", description = "general purpose crud facade REST service")
 public class CrudService extends HttpServlet {
 	// === KISS: assume only one handler per object!
 	private static List<CrudServiceCallback> objectHandlers = new ArrayList<CrudServiceCallback>();
@@ -41,6 +65,22 @@ public class CrudService extends HttpServlet {
 	   value = "Resource to get an Item", 
 //	   response = SampleData.class, 
 	   nickname="getItem")
+    @ApiResponses({@ApiResponse(code = 400, message = "Invalid input", response = io.swagger.sample.model.ApiResponse
+            .class)})
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "uid", value = "User ID", required = true, dataType = "string", paramType =
+                    "query"),
+            @ApiImplicitParam(name = "type", value = "Item type", required = true, dataType = "string", paramType =
+                    "query")
+//            ,
+//            @ApiImplicitParam(name = "email", value = "User's email", required = true, dataType = "string", paramType
+//                    = "query"),
+//            @ApiImplicitParam(name = "age", value = "User's age", required = true, dataType = "integer", paramType =
+//                    "query"),
+//            @ApiImplicitParam(name = "dateOfBirth", value = "User's date of birth, in dd-MM-yyyy format", required =
+//                    true, dataType = "java.util.Date", paramType = "query")
+            }
+    )
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws IOException {
 //		doPost(request, response);
@@ -197,6 +237,16 @@ public class CrudService extends HttpServlet {
 	   value = "Resource to create/change an item", 
 //	   response = SampleData.class, 
 	   nickname="postItem")
+    @ApiResponses({@ApiResponse(code = 400, message = "Invalid input", response = io.swagger.sample.model.ApiResponse
+    .class)})
+	@ApiImplicitParams({
+		@ApiImplicitParam(name = "uid", value = "User ID", required = true, dataType = "string", paramType =
+		        "query"),
+		@ApiImplicitParam(name = "type", value = "Item type", required = true, dataType = "string", paramType =
+		        "query"),
+		@ApiImplicitParam(name = "data", value = "Item value", required = true, dataType = "string", paramType
+		        = "query")
+	})
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws IOException {
 		System.out.println("CrudService: doPost invoked");
