@@ -28,3 +28,21 @@ https://github.com/swagger-api/swagger-core/wiki/1.3--1.5-Migration
 ***General Setup***
 https://github.com/swagger-api/swagger-samples/tree/master/java/java-jaxrs-no-webxml just for the build as java-servlet build was broken.
 Once the build is successful, use the sample codes of https://github.com/swagger-api/swagger-samples/tree/master/java/java-servlet for everything!
+
+Jar files (13 files as at version 1.5.4 of Swagger-Servlet):
+
+	new file:   war/WEB-INF/lib/guava-18.0.jar
+	new file:   war/WEB-INF/lib/jackson-annotations-2.4.5.jar
+	new file:   war/WEB-INF/lib/jackson-core-2.4.5.jar
+	new file:   war/WEB-INF/lib/jackson-databind-2.4.5.jar
+	new file:   war/WEB-INF/lib/jackson-dataformat-yaml-2.4.5.jar
+	new file:   war/WEB-INF/lib/jackson-datatype-joda-2.4.5.jar
+	new file:   war/WEB-INF/lib/jsr311-api-1.1.jar
+	new file:   war/WEB-INF/lib/reflections-0.9.10.jar
+	new file:   war/WEB-INF/lib/swagger-annotations-1.5.5-SNAPSHOT.jar
+	new file:   war/WEB-INF/lib/swagger-core-1.5.5-SNAPSHOT.jar
+	new file:   war/WEB-INF/lib/swagger-jaxrs-1.5.5-SNAPSHOT.jar
+	new file:   war/WEB-INF/lib/swagger-models-1.5.5-SNAPSHOT.jar
+	new file:   war/WEB-INF/lib/swagger-servlet-1.5.5-SNAPSHOT.jar
+
+11/11/2015 11.41 am ET
