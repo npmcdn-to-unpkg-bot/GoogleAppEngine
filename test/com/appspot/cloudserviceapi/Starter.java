@@ -6,6 +6,7 @@ import io.swagger.config.ScannerFactory;
 import io.swagger.jaxrs.config.BeanConfig;
 import io.swagger.jaxrs.config.DefaultJaxrsScanner;
 import io.swagger.sample.util.ApiOriginFilter;
+import io.swagger.sample.util.Bootstrap_;
 import io.swagger.servlet.config.DefaultServletConfig;
 import io.swagger.servlet.listing.ApiDeclarationServlet;
 
@@ -50,8 +51,8 @@ public class Starter {
 //        beanConfig.setSchemes(new String[]{"http"});
         beanConfig.setDescription("This is a app.");
         beanConfig.setTitle("Swagger Petstore");
-//        beanConfig.setHost("127.0.0.1:8002/");
-        beanConfig.setBasePath("http://127.0.0.1:8002/");
+        beanConfig.setHost("127.0.0.1:8002/");
+        beanConfig.setBasePath("/api-docs");
         beanConfig.setFilterClass("io.swagger.sample.util.ApiAuthorizationFilterImpl");
         beanConfig.setResourcePackage("io.swagger.sample.resource");
         beanConfig.setContact("apiteam@swagger.io");
@@ -92,6 +93,9 @@ public class Starter {
 //        ServletContextHandler restContextHandler = new ServletContextHandler(ServletContextHandler.SESSIONS);
 //        restContextHandler.setContextPath("/ws/crud");
 //        restContextHandler.addServlet(h, "/*");
+//		servletContext.addServlet(Bootstrap_.class, "");
+//        serve("").with(Bootstrap.class);
+
         
 		final HandlerList handlers = new HandlerList();
 		handlers.setHandlers(new Handler[] { 

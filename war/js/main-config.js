@@ -9,7 +9,7 @@ var gEventArray = [];
 var gHref;
 var App = {
     major: '9',
-    minor: '0105d',
+    minor: '0105f',
     header_index: 0,   //metadata header
     movie_index: 1,     //the real movies data
     login_url: '/ui/index.html',
