@@ -20,11 +20,11 @@
     <!-- on a different server than the app server -->
 	<static-files>
 		<!-- swagger stuff -->
+		<include path="/swagger-ui.js" />
 		<include path="/swagger/css/*.css" />
 		<include path="/swagger/lib/*.js" />
 		<!-- common stuff -->
 		<include path="/static/**.srt" />
-      	<include path="/**.html" />
         <include path="/g/service/iui/**" />
         <include path="/tpl/**" />
       	<include path="/media/ihavepeopleskills.mp3" />
@@ -67,6 +67,8 @@
     </static-files>
     <!-- on the same server as the app server -->
 	<resource-files>
+      	<!-- swagger stuff -->
+      	<include path="/index_api.html" />
 		<!-- GU stuff -->
 		<include path="/struts/*" />
 		<!-- others -->
