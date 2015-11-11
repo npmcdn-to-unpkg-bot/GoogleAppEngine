@@ -3,7 +3,8 @@
 	<excludes>
 	    <!-- swagger -->
 		<pattern>/swagger-ui.js</pattern>
-	    <!-- appstats -->
+		<pattern>/index_api.html</pattern>
+			    <!-- appstats -->
 		<pattern>/appstats/*</pattern>
 		<pattern>/stats/*</pattern>
 		<!-- 2share -->

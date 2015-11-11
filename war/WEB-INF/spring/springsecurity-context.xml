@@ -14,9 +14,6 @@
 		http://forum.springsource.org/showthread.php?88940-Help-migrating-Spring-security-2.5.6-filters-to-3.0.2-filters
 		http://code.google.com/p/googleappengine/wiki/WillItPlayInJava
 	-->
-	<!-- swagger -->
-	<http pattern="/swagger-ui.js" security="none"/>
-	<http pattern="/swagger/**/*" security="none"/>
 	<http pattern="/error/**" security="none"/>
 	<!-- avoid redirect loop with /login.jsp -->
 	<http pattern="/login.jsp" security="none"/>
@@ -90,6 +87,8 @@
 	<http pattern="/jsp/g/search_all.jsp" security="none"/>
 	<http pattern="/go/**" security="none"/>
 	<http pattern="/media/**" security="none"/>
+	<http pattern="/" security="none"/>
+	<http pattern="/index.*" security="none"/>
 	<http pattern="/decorators/**" security="none"/>
 	<!-- http pattern="/login.jsp" security="none"  -->
 	<http pattern="/styles/**" security="none"/>
@@ -111,9 +110,9 @@
 	<http pattern="/wicket/**" security="none"/>
 
 	<http auto-config="false" use-expressions="true">
- 		<intercept-url pattern="/" access="hasAnyRole('ROLE_MANAGER','ROLE_ADMIN')" requires-channel="https" />
-   		<intercept-url pattern="/index_api.html" access="hasAnyRole('ROLE_MANAGER','ROLE_ADMIN')" requires-channel="https" />
-		<intercept-url pattern="/login.jsp" access="permitAll" requires-channel="https" />
+    	<intercept-url pattern="/" access="permitAll" />
+ 		<intercept-url pattern="/login.jsp" access="permitAll" requires-channel="https" />
+ 		<intercept-url pattern="/index_api.html" access="hasAnyRole('ROLE_MANAGER','ROLE_ADMIN')" />
 		<intercept-url pattern="/go/*/**" access="permitAll" />
 		<intercept-url pattern="/sr" access="permitAll" requires-channel="https" />
 		<intercept-url pattern="/sci" access="permitAll" />
