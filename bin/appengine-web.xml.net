@@ -31,6 +31,8 @@
       	<include path="/media/ihavepeopleskills.mp3" />
       	<include path="/media/ihavepeopleskills.mp4" />
 		<!-- 2share stuff -->
+     	<include path="/ui/index.html" />
+     	<include path="/ui/**/*.html" />
      	<include path="/ui/*.css" />
      	<include path="/ui/**/*.css" />
      	<include path="/ui/**/*.js" />

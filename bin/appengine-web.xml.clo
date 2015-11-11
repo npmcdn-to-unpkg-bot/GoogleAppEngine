@@ -18,15 +18,20 @@
 	<sessions-enabled>true</sessions-enabled>
     <!-- on a different server than the app server -->
 	<static-files>
-		<!-- favicon.ico -->
-		<include path="/favicon.ico" />
+      	<!-- swagger stuff -->
+		<include path="/swagger-ui.js" />
+		<include path="/swagger/css/*.css" />
+		<include path="/swagger/lib/*.js" />
 		<!-- common stuff -->
-      	<include path="/**.html" />
+        <include path="/index.html" />
+		<include path="/static/**.srt" />
         <include path="/g/service/iui/**" />
         <include path="/tpl/**" />
       	<include path="/media/ihavepeopleskills.mp3" />
       	<include path="/media/ihavepeopleskills.mp4" />
 		<!-- 2share stuff -->
+     	<include path="/ui/index.html" />
+     	<include path="/ui/**/*.html" />
      	<include path="/ui/*.css" />
      	<include path="/ui/**/*.css" />
      	<include path="/ui/**/*.js" />
@@ -50,7 +55,7 @@
      	<include path="/CSS3Accordion/**.css" />
      	<include path="/CSS3Accordion/**.js" />
      	<include path="/CSS3Accordion/**/*.*" />
-     	<include path="/angularjs/**.js" />     	
+     	<include path="/angularjs/**.js" />  
 		<!-- n stuff -->
      	<include path="/n/**/*" />     	   	
      	<!-- GU stuff -->
@@ -60,10 +65,12 @@
      	<!-- crud stuff -->
 		<exclude path="/**.php"/>
      	<!-- 2Share -->
-     	<exclude path="/ws/crud" />
+     	<exclude path="/ws/*" />
     </static-files>
     <!-- on the same server as the app server -->
 	<resource-files>
+      	<!-- swagger stuff -->
+      	<include path="/index_api.html" />
 		<!-- GU stuff -->
 		<include path="/struts/*" />
 		<!-- others -->
@@ -94,7 +101,7 @@
      	<include path="/app/resources/**/*.js" />
      	<include path="/app/resources/**/*.css" />
      	<!-- 2Share -->
-     	<exclude path="/ws/crud" />
+     	<exclude path="/ws/*" />
     </resource-files>
  	<admin-console>
  	    <!-- 3. https://developers.google.com/appengine/docs/java/tools/appstats

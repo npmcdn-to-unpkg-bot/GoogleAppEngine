@@ -19,17 +19,20 @@
 	<sessions-enabled>true</sessions-enabled>
     <!-- on a different server than the app server -->
 	<static-files>
-	  	<include path="/error/**.html" />
-		<!-- favicon.ico -->
-		<include path="/favicon.ico" />
+      	<!-- swagger stuff -->
+		<include path="/swagger-ui.js" />
+		<include path="/swagger/css/*.css" />
+		<include path="/swagger/lib/*.js" />
 		<!-- common stuff -->
+        <include path="/index.html" />
 		<include path="/static/**.srt" />
-      	<include path="/**.html" />
         <include path="/g/service/iui/**" />
         <include path="/tpl/**" />
       	<include path="/media/ihavepeopleskills.mp3" />
       	<include path="/media/ihavepeopleskills.mp4" />
 		<!-- 2share stuff -->
+     	<include path="/ui/index.html" />
+     	<include path="/ui/**/*.html" />
      	<include path="/ui/*.css" />
      	<include path="/ui/**/*.css" />
      	<include path="/ui/**/*.js" />
@@ -41,8 +44,8 @@
 		<include path="/js/**/*.js" />
      	<include path="/galleria*/**.css" />
      	<include path="/galleria*/**.js" />
-		<include path="/galleria*/**.gif" />
-		<include path="/galleria*/**.png" />
+     	<include path="/galleria*/**.gif" />
+     	<include path="/galleria*/**.png" />
      	<include path="/parse/css/*.css" />
      	<include path="/parse/*" />
      	<include path="/mcrud/*" />     	
@@ -67,6 +70,8 @@
     </static-files>
     <!-- on the same server as the app server -->
 	<resource-files>
+      	<!-- swagger stuff -->
+      	<include path="/index_api.html" />
 		<!-- GU stuff -->
 		<include path="/struts/*" />
 		<!-- others -->
