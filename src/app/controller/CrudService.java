@@ -11,7 +11,6 @@ import io.swagger.annotations.Info;
 import io.swagger.annotations.License;
 import io.swagger.annotations.SwaggerDefinition;
 import io.swagger.annotations.Tag;
-import io.swagger.sample.model.SampleData;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -23,10 +22,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import app.common.Constants;
-import app.common.SecurityUtils;
 import app.model.Movie;
 import app.model.User;
-import app.model.UserEndpoint;
 
 import com.appspot.cloudserviceapi.common.JsonUtil;
 
@@ -37,9 +34,9 @@ import com.appspot.cloudserviceapi.common.JsonUtil;
 @SuppressWarnings("serial")
 @SwaggerDefinition(
         info = @Info(
-                description = "2Share REST API",
+                title = "2Share REST API",
+                description = "CRUD Front-Controller Servlet",
                 version = "0.0.1",
-                title = "2Share Servlet",
                 termsOfService = "http://swagger.io/terms/",
                 contact = @Contact(name = "Adcoolguy", email = "apiteam@swagger.io", url = "http://swagger.io"),
                 license = @License(name = "Apache 2.0", url = "http://www.apache.org/licenses/LICENSE-2.0.html")
@@ -51,7 +48,7 @@ import com.appspot.cloudserviceapi.common.JsonUtil;
         		@Tag(name = "movies", description = "Operations about movie")		
         }
 )
-@Api(value = "/ws/crud", description = "general purpose crud facade REST service")
+@Api(value = "/ws/crud", description = "General purpose CRUD facade REST service")
 public class CrudService extends HttpServlet {
 	// === KISS: assume only one handler per object!
 	private static List<CrudServiceCallback> objectHandlers = new ArrayList<CrudServiceCallback>();
@@ -68,18 +65,16 @@ public class CrudService extends HttpServlet {
     @ApiResponses({@ApiResponse(code = 400, message = "Invalid input", response = io.swagger.sample.model.ApiResponse
             .class)})
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "uid", value = "User ID", required = true, dataType = "string", paramType =
-                    "query"),
-            @ApiImplicitParam(name = "type", value = "Item type", required = true, dataType = "string", paramType =
-                    "query")
-//            ,
-//            @ApiImplicitParam(name = "email", value = "User's email", required = true, dataType = "string", paramType
-//                    = "query"),
-//            @ApiImplicitParam(name = "age", value = "User's age", required = true, dataType = "integer", paramType =
-//                    "query"),
-//            @ApiImplicitParam(name = "dateOfBirth", value = "User's date of birth, in dd-MM-yyyy format", required =
-//                    true, dataType = "java.util.Date", paramType = "query")
-            }
+	    	@ApiImplicitParam(name = "origin", value = "Host ID", required = true, dataType = "string", paramType = "query"),
+	    	@ApiImplicitParam(name = "aid", value = "App ID", required = true, dataType = "string", paramType = "query"),
+            @ApiImplicitParam(name = "uid", value = "User ID", required = true, dataType = "string", paramType = "query"),
+            @ApiImplicitParam(allowableValues="modelMovie,modelUser,modelCalendar", name = "type", value = "Item type", required = true, dataType = "string", paramType = "query"),
+            @ApiImplicitParam(name = "id", value = "Item ID", required = false, dataType = "string", paramType = "query"),
+            @ApiImplicitParam(name = "maxPerPage", value = "Total items per page", required = false, dataType = "integer", paramType = "query"),
+            @ApiImplicitParam(name = "pageNumber", value = "Current page number (start with 1)", required = false, dataType = "integer", paramType = "query"),
+            @ApiImplicitParam(allowableValues="create,update,delete,migrate,migrate_delete,purgecalendar,scheduled,shared", name = "action", value = "Action to be performed on item(s)", required = false, dataType = "string", paramType = "query"),
+            @ApiImplicitParam(allowableValues="next5,ownedbyme,scheduled,shared", name = "filter", value = "Item filter", required = false, dataType = "string", paramType = "query")
+    	}
     )
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws IOException {
@@ -240,12 +235,21 @@ public class CrudService extends HttpServlet {
     @ApiResponses({@ApiResponse(code = 400, message = "Invalid input", response = io.swagger.sample.model.ApiResponse
     .class)})
 	@ApiImplicitParams({
-		@ApiImplicitParam(name = "uid", value = "User ID", required = true, dataType = "string", paramType =
-		        "query"),
-		@ApiImplicitParam(name = "type", value = "Item type", required = true, dataType = "string", paramType =
-		        "query"),
-		@ApiImplicitParam(name = "data", value = "Item value", required = true, dataType = "string", paramType
-		        = "query")
+    	@ApiImplicitParam(name = "origin", value = "Host ID", required = true, dataType = "string", paramType = "query"),
+    	@ApiImplicitParam(name = "aid", value = "App ID", required = true, dataType = "string", paramType = "query"),
+		@ApiImplicitParam(name = "uid", value = "User ID", required = true, dataType = "string", paramType = "query"),
+        @ApiImplicitParam(allowableValues="modelMovie,modelUser,modelCalendar", name = "type", value = "Item type", required = true, dataType = "string", paramType = "query"),
+        @ApiImplicitParam(allowableValues="create,update,delete", name = "action", value = "Action to be performed on item(s)", required = false, dataType = "string", paramType = "query"),
+        @ApiImplicitParam(allowableValues="next5", name = "filter", value = "Item filter", required = false, dataType = "string", paramType = "query"),
+		@ApiImplicitParam(name = "id", value = "Item ID", required = true, dataType = "string", paramType = "form"),
+		@ApiImplicitParam(name = "name", value = "Item name", required = false, dataType = "string", paramType = "form"),
+		@ApiImplicitParam(name = "title", value = "Item title", required = false, dataType = "string", paramType = "form"),
+		@ApiImplicitParam(name = "description", value = "Item description/image url", required = false, dataType = "string", paramType = "form"),
+		@ApiImplicitParam(name = "url", value = "Item url (YouTube)", required = false, dataType = "string", paramType = "form"),
+		@ApiImplicitParam(name = "shared", value = "Item is shared or not (not used)", required = false, dataType = "string", paramType = "form"),
+		@ApiImplicitParam(name = "channelPattern", value = "Channel ID (not used)", required = false, dataType = "string", paramType = "form"),
+		@ApiImplicitParam(name = "search_results", value = "JSONP search results (not used)", required = false, dataType = "string", paramType = "form"),
+		@ApiImplicitParam(name = "oid", value = "Owner (Creator) ID", required = true, dataType = "string", paramType = "form")
 	})
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws IOException {

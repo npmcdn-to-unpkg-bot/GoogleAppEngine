@@ -285,7 +285,7 @@ function MovieController($scope, $filter, $http, $rootScope,
         $scope.pagedItems.length = 0;
         $scope.searchResults.length = 0;
         //$console && $console.log('3.1 list reinit');
-        $http.get(gCacheProxy + '/ws/crud?type=' + $scope.backendObject + "&origin=" + location.hostname + "&origin=" + location.hostname + "&origin=" + location.hostname + "&aid=" + gAppId + "&uid=" + uid + "&maxPerPage=" + $scope.page.max + "&pageNumber=" + $scope.page.number )
+        $http.get(gCacheProxy + '/ws/crud?type=' + $scope.backendObject + "&origin=" + location.hostname + "&aid=" + gAppId + "&uid=" + uid + "&maxPerPage=" + $scope.page.max + "&pageNumber=" + $scope.page.number )
             .success(function (data, status1, headers, config) {
                 if(data.indexOf(App.NO_PARENT_ERR) > -1) {
                     alert(App.NO_PARENT_ERR_MSG);
