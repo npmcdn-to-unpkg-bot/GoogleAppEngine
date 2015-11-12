@@ -48,7 +48,7 @@ import com.appspot.cloudserviceapi.common.JsonUtil;
         		@Tag(name = "movies", description = "Operations about movie")		
         }
 )
-@Api(value = "/ws/crud", description = "General purpose CRUD facade REST service")
+@Api(value = "/ws", description = "General purpose CRUD facade REST service")
 public class CrudService extends HttpServlet {
 	// === KISS: assume only one handler per object!
 	private static List<CrudServiceCallback> objectHandlers = new ArrayList<CrudServiceCallback>();
@@ -59,15 +59,16 @@ public class CrudService extends HttpServlet {
 
 	@Override
 	@ApiOperation(httpMethod = "GET", 
-	   value = "Resource to get an Item", 
-//	   response = SampleData.class, 
-	   nickname="getItem")
+	   value = "Resource to get an Item" 
+//	   , response = SampleData.class
+	   , nickname="crud"
+	)
     @ApiResponses({@ApiResponse(code = 400, message = "Invalid input", response = io.swagger.sample.model.ApiResponse
             .class)})
     @ApiImplicitParams({
-	    	@ApiImplicitParam(name = "origin", value = "Host ID", required = true, dataType = "string", paramType = "query"),
-	    	@ApiImplicitParam(name = "aid", value = "App ID", required = true, dataType = "string", paramType = "query"),
-            @ApiImplicitParam(name = "uid", value = "User ID", required = true, dataType = "string", paramType = "query"),
+	    	@ApiImplicitParam(name = "origin", defaultValue = "localhost", value = "Host ID", required = true, dataType = "string", paramType = "query"),
+	    	@ApiImplicitParam(name = "aid", defaultValue = "test-local", value = "App ID", required = true, dataType = "string", paramType = "query"),
+            @ApiImplicitParam(name = "uid", defaultValue = "test", value = "User ID", required = true, dataType = "string", paramType = "query"),
             @ApiImplicitParam(allowableValues="modelMovie,modelUser,modelCalendar", name = "type", value = "Item type", required = true, dataType = "string", paramType = "query"),
             @ApiImplicitParam(name = "id", value = "Item ID", required = false, dataType = "string", paramType = "query"),
             @ApiImplicitParam(name = "maxPerPage", value = "Total items per page", required = false, dataType = "integer", paramType = "query"),
@@ -229,19 +230,20 @@ public class CrudService extends HttpServlet {
 	
 	@Override
 	@ApiOperation(httpMethod = "POST", 
-	   value = "Resource to create/change an item", 
-//	   response = SampleData.class, 
-	   nickname="postItem")
+	   value = "Resource to create/change an item" 
+//	   , response = SampleData.class 
+	   , nickname="crud"
+	)
     @ApiResponses({@ApiResponse(code = 400, message = "Invalid input", response = io.swagger.sample.model.ApiResponse
     .class)})
 	@ApiImplicitParams({
-    	@ApiImplicitParam(name = "origin", value = "Host ID", required = true, dataType = "string", paramType = "query"),
-    	@ApiImplicitParam(name = "aid", value = "App ID", required = true, dataType = "string", paramType = "query"),
-		@ApiImplicitParam(name = "uid", value = "User ID", required = true, dataType = "string", paramType = "query"),
+    	@ApiImplicitParam(name = "origin", defaultValue = "localhost", value = "Host ID", required = true, dataType = "string", paramType = "query"),
+    	@ApiImplicitParam(name = "aid", defaultValue = "test-local", value = "App ID", required = true, dataType = "string", paramType = "query"),
+        @ApiImplicitParam(name = "uid", defaultValue = "test", value = "User ID", required = true, dataType = "string", paramType = "query"),
         @ApiImplicitParam(allowableValues="modelMovie,modelUser,modelCalendar", name = "type", value = "Item type", required = true, dataType = "string", paramType = "query"),
-        @ApiImplicitParam(allowableValues="create,update,delete", name = "action", value = "Action to be performed on item(s)", required = false, dataType = "string", paramType = "query"),
+        @ApiImplicitParam(allowableValues="create,update,delete", defaultValue = "create", name = "action", value = "Action to be performed on item(s)", required = false, dataType = "string", paramType = "query"),
         @ApiImplicitParam(allowableValues="next5", name = "filter", value = "Item filter", required = false, dataType = "string", paramType = "query"),
-		@ApiImplicitParam(name = "id", value = "Item ID", required = true, dataType = "string", paramType = "form"),
+		@ApiImplicitParam(name = "id", value = "Item ID", required = false, dataType = "string", paramType = "form"),
 		@ApiImplicitParam(name = "name", value = "Item name", required = false, dataType = "string", paramType = "form"),
 		@ApiImplicitParam(name = "title", value = "Item title", required = false, dataType = "string", paramType = "form"),
 		@ApiImplicitParam(name = "description", value = "Item description/image url", required = false, dataType = "string", paramType = "form"),
@@ -249,7 +251,7 @@ public class CrudService extends HttpServlet {
 		@ApiImplicitParam(name = "shared", value = "Item is shared or not (not used)", required = false, dataType = "string", paramType = "form"),
 		@ApiImplicitParam(name = "channelPattern", value = "Channel ID (not used)", required = false, dataType = "string", paramType = "form"),
 		@ApiImplicitParam(name = "search_results", value = "JSONP search results (not used)", required = false, dataType = "string", paramType = "form"),
-		@ApiImplicitParam(name = "oid", value = "Owner (Creator) ID", required = true, dataType = "string", paramType = "form")
+		@ApiImplicitParam(name = "oid", defaultValue="z3BTzeuJtU", value = "Owner (Creator) ID", required = true, dataType = "string", paramType = "form")
 	})
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws IOException {
@@ -276,7 +278,7 @@ public class CrudService extends HttpServlet {
 			//response.setContentType("application/json");
 			
 			//=== avoid "POST http://localhost:8888/ws/crud 403 (Forbidden)" from AngularJS 1.4
-			response.addHeader("Access-Control-Allow-Origin", "*");
+			response.setHeader("Access-Control-Allow-Origin", "*");
 			response.addHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
 			response.addHeader("Access-Control-Max-Age", "3600");
 			response.addHeader("Access-Control-Allow-Headers", "x-requested-with");

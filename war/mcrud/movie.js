@@ -386,23 +386,26 @@ function MovieController($scope, $filter, $http, $rootScope,
                 //$console && $console.log("items loaded [gBuild " + gBuild + "]");
             }
         ).error(function (data, status, headers, config) {
-                if(typeof data === 'undefined') {
-                    $scope.error_message = status + ": unknown error, please try again later";
+            if(status == 0) {
+                alert("Server encountered an error. Is the cache service up and running?");
+            }
+            if(typeof data === 'undefined') {
+                $scope.error_message = status + ": unknown error, please try again later";
+            } else {
+                $scope.error_message = status + ": " + data;
+            }
+            if(typeof status !== 'undefined') {	//TODO workaround to suppress the weird error! :(
+                if(status == 0 /* yes, two aka == is on purpose */ && data.length === 0) {
+                    //TODO ignoring weird error from the server - maybe this error will be known/resolved one day by Google/us!??
+                    //$console && $console.log("movie.js: 9.1 error ignored [gBuild " + gBuild + "]");
+                } else
+                if (status.indexOf(App.gaej_server_error_msg) > -1) {
+                    alert("Server encountered an error. Please log out and try again later.");
                 } else {
-                    $scope.error_message = status + ": " + data;
+                    alert("movie.js: 9.2 error: data [" + data + "] status [" + status + "] headers [" + headers + "] config [" + config + "] Hint: Is the json response sent by the server proper?");
                 }
-                if(typeof status !== 'undefined') {	//TODO workaround to suppress the weird error! :(
-                    if(status == 0 /* yes, two aka == is on purpose */ && data.length === 0) {
-                        //TODO ignoring weird error from the server - maybe this error will be known/resolved one day by Google/us!??
-                        //$console && $console.log("movie.js: 9.1 error ignored [gBuild " + gBuild + "]");
-                    } else
-                    if (status.indexOf(App.gaej_server_error_msg) > -1) {
-                        alert("Server encountered an error. Please log out and try again later.");
-                    } else {
-                        alert("movie.js: 9.2 error: data [" + data + "] status [" + status + "] headers [" + headers + "] config [" + config + "] Hint: Is the json response sent by the server proper?");
-                    }
-                }
-            });
+            }
+        });
     };
 
     /** load the items just for the play now hash tags */
