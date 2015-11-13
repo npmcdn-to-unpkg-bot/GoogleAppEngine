@@ -182,8 +182,8 @@ if(!SecurityUtils.isAuthenticated(request)) {
 			item.setModified(new Date());
 			//view specific attributes
 			item.setTitle(getValue(request, "title"));
-			item.setDescription(new Text(getValue(request, "description")));
-			item.setSearchResults(new Text(getValue(request, "search_results")));
+			item.setDescription(new Text(getValue(request, "description")==null?"":getValue(request, "description")));
+			item.setSearchResults(new Text(getValue(request, "search_results")==null?"":getValue(request, "search_results")));
 			item.setURL(getValue(request, "url"));
 			String temp2 = null;
 			if((temp2 = getValue(request, "shared")) != null) {
@@ -413,6 +413,7 @@ if(!SecurityUtils.isAuthenticated(request)) {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+			throw e;
 		}
 
 		//=== update the cache for subsequent calls
