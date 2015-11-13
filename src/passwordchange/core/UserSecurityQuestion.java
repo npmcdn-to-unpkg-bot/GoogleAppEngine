@@ -123,10 +123,10 @@ public class UserSecurityQuestion implements Cloneable, Serializable {
     }
 
     public void setDateModified( java.util.Date _val ) {
-        setDateModified((Date)( _val != null ? new Date( _val.getTime()) : null ));
+    	setSQLDateModified((Date)( _val != null ? new Date( _val.getTime()) : null ));
     }
 
-    public void setDateModified( Date _val) {
+    public void setSQLDateModified( Date _val) {
         this.dateModified = _val;
     }
 

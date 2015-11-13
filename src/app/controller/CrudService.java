@@ -34,7 +34,7 @@ import com.appspot.cloudserviceapi.common.JsonUtil;
 @SuppressWarnings("serial")
 @SwaggerDefinition(
         info = @Info(
-                title = "2Share REST API",
+                title = "REST APIs",
                 description = "CRUD Front-Controller Servlet",
                 version = "0.0.1",
                 termsOfService = "http://swagger.io/terms/",
@@ -66,8 +66,11 @@ public class CrudService extends HttpServlet {
 //	   , response = SampleData.class
 	   , nickname="crud"
 	)
-    @ApiResponses({@ApiResponse(code = 400, message = "Invalid input", response = io.swagger.sample.model.ApiResponse
-            .class)})
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "Success", response = app.model.Movie.class),
+			@ApiResponse(code = HttpServletResponse.SC_BAD_REQUEST, message = "Invalid input")
+		}
+	)
     @ApiImplicitParams({
 	    	@ApiImplicitParam(name = "origin", defaultValue = "localhost", value = "Host ID", required = true, dataType = "string", paramType = "query"),
 	    	@ApiImplicitParam(name = "aid", defaultValue = "test-local", value = "App ID", required = true, dataType = "string", paramType = "query"),
@@ -237,25 +240,29 @@ public class CrudService extends HttpServlet {
 //	   , response = SampleData.class 
 	   , nickname="crud"
 	)
-    @ApiResponses({@ApiResponse(code = 400, message = "Invalid input", response = io.swagger.sample.model.ApiResponse
-    .class)})
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "Success", response = app.model.Movie.class),
+			@ApiResponse(code = HttpServletResponse.SC_BAD_REQUEST, message = "Invalid input")
+		}
+	)
 	@ApiImplicitParams({
-    	@ApiImplicitParam(name = "origin", defaultValue = "localhost", value = "Host ID", required = true, dataType = "string", paramType = "form"),
-    	@ApiImplicitParam(name = "aid", defaultValue = "test-local", value = "App ID", required = true, dataType = "string", paramType = "form"),
-        @ApiImplicitParam(name = "uid", defaultValue = "test", value = "User ID", required = true, dataType = "string", paramType = "form"),
-        @ApiImplicitParam(allowableValues="modelMovie,modelUser,modelCalendar", name = "type", value = "Item type", required = true, dataType = "string", paramType = "form"),
-        @ApiImplicitParam(allowableValues="create,update,delete", name = "action", value = "Action to be performed on item(s)", required = false, dataType = "string", paramType = "form"),
-        @ApiImplicitParam(allowableValues="next5", name = "filter", value = "Item filter", required = false, dataType = "string", paramType = "form"),
-		@ApiImplicitParam(name = "id", value = "Item ID", required = false, dataType = "string", paramType = "form"),
-		@ApiImplicitParam(name = "name", value = "Item name", required = false, dataType = "string", paramType = "form"),
-		@ApiImplicitParam(name = "title", value = "Item title", required = false, dataType = "string", paramType = "form"),
-		@ApiImplicitParam(name = "description", value = "Item description/image url", required = false, dataType = "string", paramType = "form"),
-		@ApiImplicitParam(name = "url", value = "Item url (YouTube)", required = false, dataType = "string", paramType = "form"),
-		@ApiImplicitParam(name = "shared", value = "Item is shared or not (not used)", required = false, dataType = "string", paramType = "form"),
-		@ApiImplicitParam(name = "channelPattern", value = "Channel ID (not used)", required = false, dataType = "string", paramType = "form"),
-		@ApiImplicitParam(name = "search_results", value = "JSONP search results (not used)", required = false, dataType = "string", paramType = "form"),
-		@ApiImplicitParam(name = "oid", value = "Owner (Creator) ID", required = false, dataType = "string", paramType = "form")
-	})
+	    	@ApiImplicitParam(name = "origin", defaultValue = "localhost", value = "Host ID", required = true, dataType = "string", paramType = "form"),
+	    	@ApiImplicitParam(name = "aid", defaultValue = "test-local", value = "App ID", required = true, dataType = "string", paramType = "form"),
+	        @ApiImplicitParam(name = "uid", defaultValue = "test", value = "User ID", required = true, dataType = "string", paramType = "form"),
+	        @ApiImplicitParam(allowableValues="modelMovie,modelUser,modelCalendar", name = "type", value = "Item type", required = true, dataType = "string", paramType = "form"),
+	        @ApiImplicitParam(allowableValues="create,update,delete", name = "action", value = "Action to be performed on item(s)", required = false, dataType = "string", paramType = "form"),
+	        @ApiImplicitParam(allowableValues="next5", name = "filter", value = "Item filter", required = false, dataType = "string", paramType = "form"),
+			@ApiImplicitParam(name = "id", value = "Item ID", required = false, dataType = "string", paramType = "form"),
+			@ApiImplicitParam(name = "name", value = "Item name", required = false, dataType = "string", paramType = "form"),
+			@ApiImplicitParam(name = "title", value = "Item title", required = false, dataType = "string", paramType = "form"),
+			@ApiImplicitParam(name = "description", value = "Item description/image url", required = false, dataType = "string", paramType = "form"),
+			@ApiImplicitParam(name = "url", value = "Item url (YouTube)", required = false, dataType = "string", paramType = "form"),
+			@ApiImplicitParam(name = "shared", value = "Item is shared or not (not used)", required = false, dataType = "string", paramType = "form"),
+			@ApiImplicitParam(name = "channelPattern", value = "Channel ID (not used)", required = false, dataType = "string", paramType = "form"),
+			@ApiImplicitParam(name = "search_results", value = "JSONP search results (not used)", required = false, dataType = "string", paramType = "form"),
+			@ApiImplicitParam(name = "oid", value = "Owner (Creator) ID", required = false, dataType = "string", paramType = "form")
+		}
+	)
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws IOException {
 		System.out.println("CrudService: doPost invoked");
@@ -302,7 +309,7 @@ public class CrudService extends HttpServlet {
 		} catch (Exception e) {
 			//e.printStackTrace();
 			response.setContentType("text/plain");
-			response.sendError(response.SC_FORBIDDEN, e.getMessage());
+			response.sendError(HttpServletResponse.SC_BAD_REQUEST, e.getMessage());
 		}
 	}
 }
