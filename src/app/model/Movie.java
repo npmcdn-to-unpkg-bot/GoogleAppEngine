@@ -1,5 +1,8 @@
 package app.model;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -22,6 +25,7 @@ import org.compass.annotations.SearchableProperty;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.Text;
 
+@ApiModel("User's Movie")
 @Searchable(alias = "2sharemov")
 @Entity
 public class Movie implements Cloneable, Serializable {
@@ -345,6 +349,7 @@ public class Movie implements Cloneable, Serializable {
 	private Date hashModified;
 	/** end of resource sharing properties */
 	
+	@ApiModelProperty(value = "movie's id", required = false)
 	public Long getId() {
 		return id;
 	}
@@ -361,6 +366,7 @@ public class Movie implements Cloneable, Serializable {
 		this.key = key;
 	}
 	
+	@ApiModelProperty(value = "movie's subtitle", required = false)
 	public Text getSubtitles() {
 		return subtitles;
 	}
@@ -409,6 +415,7 @@ public class Movie implements Cloneable, Serializable {
 		this.eventPattern = eventPattern;
 	}
 
+	@ApiModelProperty(value = "movie's title", required = false)
 	public String getTitle() {
 		return Title;
 	}
@@ -417,6 +424,7 @@ public class Movie implements Cloneable, Serializable {
 		Title = title;
 	}
 
+	@ApiModelProperty(value = "movie's description", required = false)
 	public Text getDescription() {
 		return description;
 	}
@@ -554,6 +562,7 @@ public class Movie implements Cloneable, Serializable {
 	}
 */
 
+	@ApiModelProperty(value = "movie's URL", required = false)
 	public String getURL() {
 		return URL;
 	}

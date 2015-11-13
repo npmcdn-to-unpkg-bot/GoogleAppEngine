@@ -1,5 +1,8 @@
 package app.model;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +20,7 @@ import passwordchange.core.UserSecurityQuestion;
 
 import com.google.appengine.api.datastore.Key;
 
+@ApiModel("Movie's Owner/Parent")
 @Entity
 public class User implements Cloneable, Serializable {
     @Id
@@ -53,6 +57,7 @@ public class User implements Cloneable, Serializable {
 		this.key = key;
 	}
 
+	@ApiModelProperty(value = "user's id", required = true)
 	public Long getId() {
 		return id;
 	}

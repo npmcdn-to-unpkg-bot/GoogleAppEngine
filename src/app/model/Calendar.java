@@ -1,5 +1,7 @@
 package app.model;
 
+import io.swagger.annotations.ApiModel;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -25,6 +27,7 @@ import app.controller.CalendarHelper;
 
 import com.google.appengine.api.datastore.Key;
 
+@ApiModel("Movie's Schedule")
 @Searchable(alias = "2sharecal")
 @Entity
 public class Calendar implements Cloneable, Serializable {

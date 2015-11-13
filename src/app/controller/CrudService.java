@@ -41,14 +41,17 @@ import com.appspot.cloudserviceapi.common.JsonUtil;
                 contact = @Contact(name = "Adcoolguy", email = "apiteam@swagger.io", url = "http://swagger.io"),
                 license = @License(name = "Apache 2.0", url = "http://www.apache.org/licenses/LICENSE-2.0.html")
         ),
-        consumes = {"application/json", "application/xml", "application/x-www-form-urlencoded"},
-        produces = {"application/json", "application/xml"},
-        schemes = {SwaggerDefinition.Scheme.HTTP, SwaggerDefinition.Scheme.HTTPS},
-        tags = {@Tag(name = "users", description = "Operations about user"), 
-        		@Tag(name = "movies", description = "Operations about movie")		
-        }
+        consumes = {"application/json", "application/x-www-form-urlencoded"},
+        produces = {"application/json"},
+        schemes = {SwaggerDefinition.Scheme.HTTP, SwaggerDefinition.Scheme.HTTPS}
+//        ,
+//        tags = {
+//        		@Tag(name = "users", description = "Operations on a user"), 
+//        		@Tag(name = "movies", description = "Operations on a movie"),
+//        		@Tag(name = "movies", description = "Operations on a calendar")
+//        }
 )
-@Api(value = "/ws", description = "General purpose CRUD facade REST service")
+@Api(value = "ws")
 public class CrudService extends HttpServlet {
 	// === KISS: assume only one handler per object!
 	private static List<CrudServiceCallback> objectHandlers = new ArrayList<CrudServiceCallback>();
