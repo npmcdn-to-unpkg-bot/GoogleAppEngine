@@ -77,7 +77,7 @@
         and (min-device-width : 320px)
         and (max-device-width : 480px) {
             h2 {
-                margin-top: 0px;
+                margin-top: 0;
             }
         }
         /** iPhone 5 portrait and landscape (source: http://stephen.io/mediaqueries/) */
@@ -85,7 +85,7 @@
         and (min-device-width : 320px)
         and (max-device-width : 568px) {
             h2 {
-                margin-top: 0px;
+                margin-top: 0;
             }
         }
         /* IE devices styles only */
@@ -93,6 +93,18 @@
             width: device-width;
         }
         /** =============================== end of mobile specific styles =============================== */
+    </style>
+    <style>
+        /*#galleria0 { z-index:-100; position: absolute; top:28px; width:99%; height:80%; background: #000 } /* video - not mobile friendly */
+        #galleria0 { z-index:-100; position: absolute; top:150px; width:99%; height:80%; background: #000 }  /* video + subtitle and works better on mobile !!! */
+        /*#galleria0 { z-index:-100; position: absolute; top:150px; width:99%; height:480px; background: #000 }*/
+        /*#galleria1 { z-index:-100; position: absolute; top:85px; width:99%; height:640px; background: #000 }  !* image *!*/
+        /*#galleria2 { z-index:-100; position: absolute; top:85px; width:99%; height:640px; background: #000 }  !* text/rss *!*/
+        .galleria-info-text, .galleria-info-description {
+            zoom: 1.5;
+            display: inline;
+            margin-left: 10px;
+        }
     </style>
     <script>
         /** this has to be BEFOFE requireJS for it to work! */
@@ -176,26 +188,6 @@
     ****** If you are seeing this, please make sure you enable the support of "Mixed Content" ******
 </div>
 <div ng-show="error_message" ng-bind-template="&nbsp;{{error_message}}"></div>
-
-<style>
-/*<<<<<<< HEAD*/
-    /*#galleria0 { z-index:-100; position: absolute; top:28px; width:99%; height:80%; background: #000 } /* video - not mobile friendly */
-    #galleria0 { z-index:-100; position: absolute; top:150px; width:99%; height:80%; background: #000 }  /* video + subtitle and works better on mobile !!! */
-    /*#galleria0 { z-index:-100; position: absolute; top:150px; width:99%; height:480px; background: #000 }*/
-    #galleria1 { z-index:-100; position: absolute; top:85px; width:99%; height:640px; background: #000 }  /* image */
-    #galleria2 { z-index:-100; position: absolute; top:85px; width:99%; height:640px; background: #000 }  /* text/rss */
-/*=======*/
-    /*#galleria0 { z-index:-100; position: absolute; top:150px; width:99%; height:480px; background: #000 }*/
-    /*#galleria1 { z-index:-100; position: absolute; top:85px; width:99%; height:640px; background: #000 }*/
-    /*#galleria2 { z-index:-100; position: absolute; top:85px; width:99%; height:640px; background: #000 }*/
-/*>>>>>>> 2eb925d094e6ec5a442cea17398f6141cb3a3148*/
-    .galleria-info-text, .galleria-info-description {
-        zoom: 1.5;
-        display: inline;
-        margin-left: 10px;
-    }
-</style>
-
 <!-- begin subtitle block -->
 <!--<div style="position:absolute;top:110px;color:white;" class="srt" data-video="galleria0" data-srt="/static/sample.srt"></div>-->
 <!-- end subtitle block -->
@@ -245,7 +237,7 @@ http://support.galleria.io/kb/getting-started/quick-start
 <!--<<<<<<< HEAD-->
 <!--<div id="title" style="z-index:500;margin-top:0px;margin-left:auto;margin-right:auto;width:100%;"></div>-->
 <!--=======-->
-<div id="title" style="margin-top:0px;margin-left:auto;margin-right:auto;width:100%;"></div>
+<div id="title" style="margin-top:0;margin-left:auto;margin-right:auto;width:100%;"></div>
 <!--&gt;>>>>>> 2eb925d094e6ec5a442cea17398f6141cb3a3148-->
 <div id="galleria0">
     <a id="v0" href=""><span class="video"></span></a>
@@ -305,7 +297,7 @@ http://support.galleria.io/kb/getting-started/quick-start
     var col6;
     var entry;
     function importGSS(json) {
-        for (i = 0; i < json.feed.entry.length; i++) {
+        for (var i = 0; i < json.feed.entry.length; i++) {
             entry = json.feed.entry[i];
             col1 = entry.gsx$index && entry.gsx$index.$t;
             col2 = entry.gsx$_cokwr && entry.gsx$_cokwr.$t;

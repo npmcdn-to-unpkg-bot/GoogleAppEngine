@@ -10,6 +10,7 @@ var gManageColMainTitle;
 var gSharedColMainTitle;
 var gManageShoMainTitle;
 var gManageChaMainTitle;
+var gHomeText;
 var gHomeLink;
 var gAboutLink;
 var gHelpLink;

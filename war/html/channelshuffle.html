@@ -58,7 +58,7 @@
         and (min-device-width : 320px)
         and (max-device-width : 480px) {
             h2 {
-                margin-top: 0px;
+                margin-top: 0;
             }
         }
         /** iPhone 5 portrait and landscape (source: http://stephen.io/mediaqueries/) */
@@ -66,7 +66,7 @@
         and (min-device-width : 320px)
         and (max-device-width : 568px) {
             h2 {
-                margin-top: 0px;
+                margin-top: 0;
             }
         }
         /* IE devices styles only */
@@ -74,6 +74,17 @@
             width: device-width;
         }
         /** =============================== end of mobile specific styles =============================== */
+    </style>
+    <style>
+        /*#galleria0 { z-index:-100; position: absolute; top:28px; width:99%; height:80%; background: #000 } /* video - not mobile friendly */
+        #galleria0 { z-index:-100; position: absolute; top:150px; width:99%; height:80%; background: #000 }  /* video + subtitle and works better on mobile !!! */
+        /*#galleria1 { z-index:-100; position: absolute; top:85px; width:99%; height:640px; background: #000 }  !* image *!*/
+        /*#galleria2 { z-index:-100; position: absolute; top:85px; width:99%; height:640px; background: #000 }  !* text/rss *!*/
+        .galleria-info-text, .galleria-info-description {
+            zoom: 1.5;
+            display: inline;
+            margin-left: 10px;
+        }
     </style>
     <script>
         /** this has to be BEFOFE requireJS for it to work! */
@@ -158,18 +169,6 @@
 </div>
 <div ng-show="error_message" ng-bind-template="&nbsp;{{error_message}}"></div>
 
-<style>
-    /*#galleria0 { z-index:-100; position: absolute; top:28px; width:99%; height:80%; background: #000 } /* video - not mobile friendly */
-    #galleria0 { z-index:-100; position: absolute; top:150px; width:99%; height:80%; background: #000 }  /* video + subtitle and works better on mobile !!! */
-    #galleria1 { z-index:-100; position: absolute; top:85px; width:99%; height:640px; background: #000 }  /* image */
-    #galleria2 { z-index:-100; position: absolute; top:85px; width:99%; height:640px; background: #000 }  /* text/rss */
-    .galleria-info-text, .galleria-info-description {
-        zoom: 1.5;
-        display: inline;
-        margin-left: 10px;
-    }
-</style>
-
 <!--
 
 <div id="galleria" ng-repeat="item in $scope.pagedItems[$scope.currentPage]">
@@ -213,7 +212,7 @@ http://support.galleria.io/kb/getting-started/quick-start
 </div>
 -->
 
-<div id="title" style="z-index:500;margin-top:0px;margin-left:auto;margin-right:auto;width:100%;"></div>
+<div id="title" style="z-index:500;margin-top:0;margin-left:auto;margin-right:auto;width:100%;"></div>
 <div id="galleria0">
     <!--<a id="v0" href="https://www.youtube.com/watch?v=OMCDiRogjXY"><span class="video"></span></a>-->
     <!--<a id="v1" href=""><span class="video"></span></a>-->
