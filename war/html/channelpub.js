@@ -107,14 +107,14 @@ function loadMoviePub(username, log) {
                 var j;
                 var temp = {};
                 for (var mcount1 = 0; mcount1 < obj.length; mcount1++) {
-                    if (mcount1 === App.header_index) {
+                    //if (mcount1 === App.header_index) {
                         //=== parsing the metadata first
 //                            $scope.page.server_number = obj[i].pageNumber;
 //                            $scope.page.server_max = obj[i].maxPerPage;
 //                            $scope.page.totalItem = obj[i].totalItem;
 //                            $scope.page.totalPage = obj[i].totalPage;
 //                            $scope.serviceCheck($scope.page);
-                    } else {
+//                    } else {
                         //TODO need to check for empty movie here!!!
                         try {
                             //if(obj[mcount1].search_results && typeof obj[mcount1].search_results.value !== 'undefined') {
@@ -146,7 +146,7 @@ function loadMoviePub(username, log) {
                             alert('Oops, I am dead :( Please refresh me? :)');
                             window.console && console.log('channelpub.js loadMoviePub 1: An error has occurred: ' + e.message + ' - The application will not function correctly. Please contact the developer!');
                         }
-                    }
+                    //}
                 }
                 if(moviePreviewCount === 0) {
                     alert('Unfortunately, I can not find the movie. Refreshing a page (and clearing the cache) might fix it.');

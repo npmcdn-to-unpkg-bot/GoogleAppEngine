@@ -19,7 +19,7 @@ var currentMoviePreviewCount = 1;
 $("#cBuild").val("(" + cBuild + ")");
 
 /** load my scheduled movies */
-function loadMovie(username) {
+function loadMovieScheduled(username) {
     var stat = false;
     //alert('channel.js loadMovie() entered');
     //window.console && console.log("**************>>>> cBuild = " + cBuild + "<<<<**************");
@@ -48,14 +48,14 @@ function loadMovie(username) {
                 $("#playingOrsoon").attr("data-datetime", "1970,1,1,0,0,0");
                 $("#playingOrsoon").val("none");
                 for (var i = 0; i < obj.length; i++) {
-                    if (i === App.header_index) {
+                    //if (i === App.header_index) {
                         //=== parsing the metadata first
 //                        $scope.page.server_number = data[i].pageNumber;
 //                        $scope.page.server_max = data[i].maxPerPage;
 //                        $scope.page.totalItem = data[i].totalItem;
 //                        $scope.page.totalPage = data[i].totalPage;
 //                        $scope.serviceCheck($scope.page);
-                    } else {
+//                    } else {
                         if (obj[i].search_results && obj[i].search_results.value !== undefined) {
                             temp = jQuery.parseJSON(obj[i].search_results.value);
                         }
@@ -111,7 +111,7 @@ function loadMovie(username) {
                             //alert('Oops, I am dead :( Please refresh me? :)');
                             console && console.log('channel.js loadMovie 1: An error has occurred: ' + e.message + ' - The application will not function correctly. Please contact the developer!');
                         }
-                    }
+                    //}
                 }
                 try{
                     //=== sort the preview icons
@@ -202,154 +202,29 @@ function loadMovie(username) {
     return stat;
 }
 
-/** load all movies (mine, shared, sheduled or otherwise */
-function loadMovieAll(username, log) {
+/** load shuffled movies */
+function loadMovieShuffle(username) {
     var stat = false;
 
-    $.ajax({
-        type: "POST",
-        url: gCacheProxy + "/ws/crud?type=modelMovie&origin=" + location.hostname + "&aid=" + gAppId + "&uid=" + username + "&filter=next5",
-        async: false,
-        success: function(data) {
-
-            ////window.console && console.log("calendar event created, response = [" + data + "]");
-            if(data !== undefined) {
-                var obj = jQuery.parseJSON(data);
-                var temp;
-                var YOUTUBE_INDEX = 1;	//=== assumption: youtube is the second results!!!
-                var tempMovieUrl;
-                $("#playingOrsoon").attr("data-datetime", "1970,1,1,0,0,0");
-                $("#playingOrsoon").val("none");
-                var j;
-                for (var i = 0; i < obj.length; i++) {
-                    if (i === App.header_index) {
-                        //=== parsing the metadata first
-//                            $scope.page.server_number = data[i].pageNumber;
-//                            $scope.page.server_max = data[i].maxPerPage;
-//                            $scope.page.totalItem = data[i].totalItem;
-//                            $scope.page.totalPage = data[i].totalPage;
-//                            $scope.serviceCheck($scope.page);
-                    } else {
-                        if (obj[i].search_results && obj[i].search_results.value !== undefined) {
-                            temp = jQuery.parseJSON(obj[i].search_results.value);
-                        }
-                        var desc;
-                        if(typeof obj[i].description !== 'undefined')
-                            desc = obj[i].description.value;
-                        else
-                            desc ="";
-                        j = {id: obj[i].id, movie_url: temp[YOUTUBE_INDEX].movie_url, datetime: obj[i].event_pattern, title: obj[i].title, description: desc, url: obj[i].u_r_l, createDate: obj[i].modified};
-                        //window.console && console.log('1loadMovieAll: data[' + i + '] = id=' + j.id + " title=" + j.title + " desc=" + j.description + " url=" + j.url + " createDate=" + j.createDate);
-                        try {
-                            if (j.url !== undefined) {
-                                $("#playingOrsoon").attr("data-datetime", j.datetime);
-                                //=== convert to youtube embed to avoid x-origin iframe issue (http://stackoverflow.com/questions/7168987/how-to-convert-a-youtube-video-url-to-the-iframe-embed-code-using-jquery-on-pag)
-                                tempMovieUrl = j.url;
-                                tempMovieUrl.replace(/(?:http:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?(.+)/g, 'https://www.youtube.com/embed/$1');
-                                $("#playingOrsoon").val(tempMovieUrl);
-
-                                $("#i" + moviePreviewCount).val(j.url);
-                                $("#i" + moviePreviewCount).attr("data-description", j.description);
-                                //window.console && console.log('saved j.url as ' + $("#i" + i).val());
-                                if (j.url.toLowerCase().indexOf("youtube.com") > -1) {
-                                    $("#v" + moviePreviewCount).attr("href", j.url);
-    //                                $("#v" + moviePreviewCount).attr("span", j.description);
-                                } else if (galleria_type === 1) {
-                                    $("#img" + i).attr("src", gDefaultPhoto);
-                                } else if (galleria_type === 2) {
-                                    $("#t" + i).attr("src", j.url);
-                                    $("#t" + i).attr("data-description", j.description);
-                                }
-                                moviePreviewCount++;
-                            }
-                        }
-                        catch (e) {
-                            //window.console && console.log('channel.js loadMovieAll: An error has occurred: ' + e.message + ' - The application will not function correctly. Please contact the developer!');
-                        }
-                    }
-                }
-                //window.console && console.log("1 loading galleria ...");
-                //=== http://support.galleria.io/kb/getting-started/quick-start
-                Galleria.loadTheme('/galleria-' + GALLERIA_VERSION + '/themes/classic/galleria.classic.min.js?ts=' + (new Date()).getTime());
-                Galleria.configure({
-                    //dummy: '/images/noimage.jpg',
-                    //imageCrop: true,
-                    transition: 'fade',
-                    carousel: true
-                    , thumbnails: 'numbers'
-                    //, thumbnails: true
-                });
-
-                Galleria.run('#galleria' + galleria_type,{
-                    dummy: '/images/noimage.jpg',
-                    youtube: { enablejsapi: 1},
-                    //,autoplay: 1000
-                    showInfo: false,    /* turn off text 1 of 2 */
-                    _toggleInfo: false  /* turn off text 2 of 2 */
-                });
-                Galleria.ready(function() {
-                    galleria = this;
-                    //var player;
-                    this.attachKeyboard({
-                        right: this.next,
-                        left: this.prev
-                    });
-                    this.bind('thumbnail', function(e) {
-                        e.thumbTarget.alt = 'My SEO optimized alt tag';
-                    });
-                    //=== http://support.galleria.io/discussions/questions/1502-stop-autoplay-on-any-kind-of-interaction
-                    var stateChange = function(e) {
-                        if ( e.data == 1 ) {
-                            $('#galleria').data('galleria').pause();
-                        }
-                    };
-                    this.bind('image', function(e) {
-                        if(e.galleriaData.iframe) {
-                            var temp = 'if'+new Date().getTime();
-                            e.imageTarget.id = temp;
-                            galleria.player = new YT.Player(temp, {
-                                playerVars: { 'autoplay': 1, 'controls': 1 },
-                                events: {
-                                    'onReady': onPlayerReady,
-                                    "onStateChange": onPlayerStateChange
-                                }
-                            });
-                        } else {
-                            iframe = false;
-                        }
-
-                        //=== http://support.galleria.io/discussions/questions/865-extending-galleria-external-play-buttoncaptions-etc
-                        /* get galleria info "out of" galleria stage! */
-                        data = e.galleriaData;
-                        if(data) {
-                            $('#title').html('<h2>' + data.title + '</h2><p>' + data.description + '</p>');
-                        }
-
-                    });
-
-                    $("#processStatus").hide();
-
-                });
-                stat = true;
-                //window.console && console.log("1galleria loaded");
-            }
-        },
-        error: function(jqXHR, error, errorThrown) {
-            var msg = error;
-            //alert && alert(msg);
-            console && console.error(msg);
-        }
-    });
+    stat = loadMovie(username, true);
 
     return stat;
 }
 
-//+ Jonas Raoni Soares Silva
-//@ http://jsfromhell.com/array/shuffle [v1.0]
+/** load all movies (mine, shared, sheduled or otherwise */
+function loadMovieAll(username, log) {
+    var stat = false;
+
+    stat = loadMovie(username);
+
+    return stat;
+}
+
+//@ http://jsfromhell.com/array/shuffle
 /** use only by Play Now as well as Play Later functionalities */
-function shuffle(o){ //v1.0
-    for(var j, x, i1 = o.length; i1; j = Math.floor(Math.random() * i1), x = o[--i1], o[i1] = o[j], o[j] = x);
-    return o;
+function shuffle(v) {
+    for(var j, x, i = v.length; i; j = parseInt(Math.random() * i), x = v[--i], v[i] = v[j], v[j] = x);
+    return v;
 }
 
 /** use by Play Later (scheduled play) in the Channel UI functionality */
@@ -390,26 +265,33 @@ function getSubTitle(text) {
     if(typeof text === 'undefined') return;
     var ret = '';
 
-    var t = text.split(" ");
-    var len = t.length;
-    for(var i=0;i<len;i++) {
-        if(t[i].lastIndexOf(".srt") > -1) {
-            ret = t[i].substr(1, t[i].lenght);
-            break;  //for now, only the first sub
+    try {
+        var t = text.split(" ");
+        var len = t.length;
+        for (var i = 0; i < len; i++) {
+            if (t[i].lastIndexOf(".srt") > -1) {
+                ret = t[i].substr(1, t[i].lenght);
+                break;  //for now, only the first sub
+            }
         }
+    } catch(e)
+    {
+        alert('getSubTitle: ' + e);
     }
-
     return ret;
 }
 
 /** load movies in a random order for playback */
-function loadMovieShuffle(username) {
+function loadMovie(username, shuffleFlag) {
     //playNow();  //just a test
     console && console.log("Parse username[" + username + "]");
 
     var stat = false;
     galleriaData = [];
     //username = "pub";
+
+    targetUrl = gCacheProxy + "/ws/crud?type=modelMovie&origin=" + location.hostname + "&aid=" + gAppId + "&uid=" + username + "&filter=next5";
+    //alert(targetUrl);
 
     var doIt = function(data) {
 
@@ -420,19 +302,22 @@ function loadMovieShuffle(username) {
             var filterStr;
             $("#playingOrsoon").attr("data-datetime", "1970,1,1,0,0,0");
             $("#playingOrsoon").val("none");
-            obj = shuffle(obj);     //thanks to http://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array-in-javascript
+            shuffleFlag && (obj = shuffle(obj));     //thanks to http://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array-in-javascript
+            //console.table(obj);
+
             filterStr = $.url().param('filter');     //support filter/hashtag
+            //alert('obj.length = ' + obj.length);
             var j;
             var temp = {};
             for (var mcount1 = 0; mcount1 < obj.length; mcount1++) {
-                if (mcount1 === App.header_index) {
+                //if (mcount1 === App.header_index) {
                     //=== parsing the metadata first
 //                            $scope.page.server_number = obj[i].pageNumber;
 //                            $scope.page.server_max = obj[i].maxPerPage;
 //                            $scope.page.totalItem = obj[i].totalItem;
 //                            $scope.page.totalPage = obj[i].totalPage;
 //                            $scope.serviceCheck($scope.page);
-                } else {
+//                } else {
                     //TODO need to check for empty movie here!!!
                     try {
                         //if(obj[mcount1].search_results && typeof obj[mcount1].search_results.value !== 'undefined') {
@@ -442,7 +327,7 @@ function loadMovieShuffle(username) {
                         if (typeof obj[mcount1].description !== 'undefined')
                             desc = obj[mcount1].description.value;
                         else
-                            desc = obj[mcount1].description;
+                            desc = "";
                         j = {
                             id: obj[mcount1].id,
                             //movie_url: temp[YOUTUBE_INDEX].movie_url,
@@ -454,7 +339,7 @@ function loadMovieShuffle(username) {
                             subtitle: getSubTitle(desc)
                         };
                         //alert('j.description = [' + j.description + "] filterStr = [" + filterStr + "]");
-                        //window.console && console.log('2aloadMoviePub: data[' + mcount1 + '] = id=' + j.id + " title=" + j.title + " desc=" + j.description + " url=" + j.url + " createDate=" + j.createDate);
+                        //window.console && console.log('2aloadMoviePub: data[' + mcount1 + '] = id=' + j.id + " title=" + j.title + " desc=" + j.description + " url=" + j.url + " createDate=" + j.createDate + ' filterStr=' + filterStr);
                         if (typeof j.url !== 'undefined') {
                             if (typeof filterStr !== 'undefined' && filterStr.trim() !== '') {
                                 if (j.description && j.description.indexOf(filterStr.trim()) > -1) {
@@ -471,7 +356,7 @@ function loadMovieShuffle(username) {
                         //alert('Oops, I am dead :( Please refresh me? :)');
                         console && console.log('channel.js loadMoviePub 1: An error has occurred: ' + e.message + ' - The application will not function correctly. Please contact the developer!');
                     }
-                }
+                //}
             }
             //alert('total movie = ' + moviePreviewCount);
             if (moviePreviewCount === 0) {
@@ -627,7 +512,7 @@ function loadMovieShuffle(username) {
     };
     $.ajax({
         type: "GET",
-        url: gCacheProxy + "/ws/crud?type=modelMovie&origin=" + location.hostname + "&aid=" + gAppId + "&uid=" + username + "&filter=next5"
+        url: targetUrl
         //,
         //async: false,
         //success: function(data) {
@@ -868,6 +753,7 @@ function handleChannelType(type, username) {
         }
         catch(e){
             //window.console && console.log('channel.js handleChannelType: An error has occurred: '+ e.message + ' - The application will not function correctly. Please contact the developer!');
+            alert('handleChannelType: ' + e);
         }
     }
     //=== http://support.galleria.io/kb/getting-started/quick-start
