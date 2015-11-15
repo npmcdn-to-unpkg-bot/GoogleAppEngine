@@ -75,7 +75,10 @@ public class CrudService extends HttpServlet {
 	    	@ApiImplicitParam(name = "origin", defaultValue = "localhost", value = "Host ID", required = true, dataType = "string", paramType = "query"),
 	    	@ApiImplicitParam(name = "aid", defaultValue = "test-local", value = "App ID", required = true, dataType = "string", paramType = "query"),
 	        @ApiImplicitParam(name = "uid", defaultValue = "test", value = "User ID", required = true, dataType = "string", paramType = "query"),
-	        @ApiImplicitParam(allowableValues="modelMovie,modelUser,modelCalendar", name = "type", value = "Item type", required = true, dataType = "string", paramType = "query"),
+//	        @ApiImplicitParam(allowableValues="1,2,3,4", name = "logintype", value = "Auth Type (1=local,2=FB,3=GOOG,4=TW)", required = false, dataType = "integer", paramType = "query"),
+	        @ApiImplicitParam(allowableValues="modelMovie,modelUser,modelCalendar"
+//	        		+ ",playNowShuffle,playNowAllInSeq,"
+	        		+ "", name = "type", value = "Item type", required = true, dataType = "string", paramType = "query"),
 	        @ApiImplicitParam(name = "id", value = "Item ID", required = false, dataType = "string", paramType = "query"),
 	        @ApiImplicitParam(name = "maxPerPage", value = "Total items per page", required = false, dataType = "integer", paramType = "query"),
 	        @ApiImplicitParam(name = "pageNumber", value = "Current page number (start with 1)", required = false, dataType = "integer", paramType = "query"),
