@@ -5,6 +5,9 @@
  */
 package com.appspot.cloudserviceapi.dto;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -25,6 +28,7 @@ import com.appspot.cloudserviceapi.common.SimilarityManager;
  *
  * @author generated
  */
+@ApiModel("Genius Model")
 @Searchable(alias="template")
 @PersistenceCapable(identityType = IdentityType.APPLICATION)
 public class Geniu //extends AbstractDto { 
@@ -72,6 +76,7 @@ implements Template, Cloneable, Serializable {
     // Public
     ////////////////////////////////////////////////////////////////////////////
 
+	@ApiModelProperty(value = "geniu's id", required = false)
     public Long getId() {
         return id;
     }
@@ -80,6 +85,7 @@ implements Template, Cloneable, Serializable {
         this.id = _val;
     }
 
+	@ApiModelProperty(value = "geniu's platform", required = false)
     public String getPlatform() {
         return platform;
     }
@@ -109,6 +115,7 @@ implements Template, Cloneable, Serializable {
 //		this.platform = platform;
 //	}
 
+	@ApiModelProperty(value = "geniu's what", required = false)
     public String getWhat() {
         return what;
     }
@@ -119,6 +126,7 @@ implements Template, Cloneable, Serializable {
         this.what = _val;
     }
 
+	@ApiModelProperty(value = "geniu's details", required = false)
     public String getDetails() {
         return details;
     }

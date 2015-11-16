@@ -1,6 +1,7 @@
 package app.model;
 
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -96,6 +97,7 @@ public class Calendar implements Cloneable, Serializable {
 		this.key = key;
 	}
 
+	@ApiModelProperty(value = "calendar's id", required = true)
 	public Long getId() {
 		return id;
 	}

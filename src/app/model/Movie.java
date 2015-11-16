@@ -349,7 +349,7 @@ public class Movie implements Cloneable, Serializable {
 	private Date hashModified;
 	/** end of resource sharing properties */
 	
-	@ApiModelProperty(value = "movie's id", required = false)
+	@ApiModelProperty(value = "movie's id", required = true)
 	public Long getId() {
 		return id;
 	}
