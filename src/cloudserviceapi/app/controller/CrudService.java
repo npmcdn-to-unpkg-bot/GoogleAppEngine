@@ -1,4 +1,4 @@
-package app.controller;
+package cloudserviceapi.app.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -51,7 +51,7 @@ import com.appspot.cloudserviceapi.common.JsonUtil;
 //        		@Tag(name = "movies", description = "Operations on a calendar")
 //        }
 )
-@Api(value = "ws")
+@Api(value = "ws", tags = "2Share")
 public class CrudService extends HttpServlet {
 	// === KISS: assume only one handler per object!
 	private static List<CrudServiceCallback> objectHandlers = new ArrayList<CrudServiceCallback>();

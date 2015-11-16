@@ -7,7 +7,7 @@ import java.util.Set;
 
 import javax.ws.rs.core.Application;
 
-import app.controller.CrudService;
+import cloudserviceapi.app.controller.CrudService;
 
 /**
  * http://thebesthacker.com/question/unable-to-configure-swagger-with-embedded-jetty-programmatically.html

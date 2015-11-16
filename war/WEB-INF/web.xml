@@ -27,13 +27,13 @@
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 	<listener>
-		<listener-class>app.controller.UserHandler</listener-class>
+		<listener-class>cloudserviceapi.app.controller.UserHandler</listener-class>
 	</listener>
 	<listener>
-		<listener-class>app.controller.MovieHandler</listener-class>
+		<listener-class>cloudserviceapi.app.controller.MovieHandler</listener-class>
 	</listener>
 	<listener>
-		<listener-class>app.controller.CalendarHandler</listener-class>
+		<listener-class>cloudserviceapi.app.controller.CalendarHandler</listener-class>
 	</listener>
 <!-- Url rewrite stuff -->
 <filter>
@@ -145,7 +145,7 @@
         <load-on-startup>2</load-on-startup>
         <init-param>
             <param-name>swagger.resource.package</param-name>
-            <param-value>app.controller</param-value>
+            <param-value>cloudserviceapi</param-value>
         </init-param>
         <init-param>
             <param-name>api.version</param-name>
@@ -332,7 +332,7 @@ java.lang.RuntimeException: Exception constructing service 'ApplicationContext':
 -->
 <servlet>
 	<servlet-name>CrudServlet</servlet-name>
-	<servlet-class>app.controller.CrudService</servlet-class>
+	<servlet-class>cloudserviceapi.app.controller.CrudService</servlet-class>
 </servlet>
 <servlet-mapping>
 	<servlet-name>CrudServlet</servlet-name>
@@ -692,12 +692,6 @@ java.lang.RuntimeException: Exception constructing service 'ApplicationContext':
     <url-pattern>/sci/bigtime</url-pattern>
   </servlet-mapping>
 -->
-  <servlet>
-    <description/>
-    <display-name>ServiceRegistryServlet</display-name>
-    <servlet-name>ServiceRegistryServlet</servlet-name>
-    <servlet-class>com.appspot.cloudserviceapi.sci.services.ServiceRegistryServlet</servlet-class>
-  </servlet>
   <servlet-mapping>
     <servlet-name>ServiceRegistryServlet</servlet-name>
     <url-pattern>/sci/go</url-pattern>
@@ -889,7 +883,7 @@ java.lang.RuntimeException: Exception constructing service 'ApplicationContext':
   <servlet-class>com.google.api.server.spi.SystemServiceServlet</servlet-class>
   <init-param>
    <param-name>services</param-name>
-   <param-value>app.controller.CrudService,app.model.CalendarEndpoint,app.model.MovieEndpoint,app.model.UserEndpoint,com.bkper.server.api.TransactionEndpoint,io.swagger.sample.servlet.SampleServlet,tapp.model.ServiceRegistryUserEndpoint</param-value>
+   <param-value>app.model.CalendarEndpoint,app.model.MovieEndpoint,app.model.UserEndpoint,cloudserviceapi.app.controller.CrudService,cloudserviceapi.service.manager.GeniusManagerImpl,com.bkper.server.api.TransactionEndpoint,io.swagger.sample.servlet.SampleServlet,tapp.model.ServiceRegistryUserEndpoint</param-value>
   </init-param>
  </servlet>
  <servlet-mapping>

@@ -23,7 +23,7 @@ import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
-import app.controller.CalendarHelper;
+import cloudserviceapi.app.controller.CalendarHelper;
 
 import com.google.appengine.api.datastore.Key;
 

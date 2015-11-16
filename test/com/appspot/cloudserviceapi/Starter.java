@@ -26,7 +26,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.context.request.SessionScope;
 
-import app.controller.CrudService;
+import cloudserviceapi.app.controller.CrudService;
 
 /**
  * https://github.com/swagger-api/swagger-ui/issues/711 

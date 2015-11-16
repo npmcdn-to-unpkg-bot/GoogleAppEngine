@@ -1,5 +1,5 @@
 <%@ page import="app.common.Constants" %>
-<%@ page import="app.controller.MovieHandler" %>
+<%@ page import="cloudserviceapi.app.controller.MovieHandler" %>
 
 <%
 //http://stackoverflow.com/questions/8013333/invalidating-session-in-jsp-servlet

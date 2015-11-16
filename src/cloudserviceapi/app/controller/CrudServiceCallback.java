@@ -1,4 +1,4 @@
-package app.controller;
+package cloudserviceapi.app.controller;
 
 import javax.servlet.http.HttpServletRequest;
 

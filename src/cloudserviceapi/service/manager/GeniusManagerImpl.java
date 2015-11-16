@@ -1,5 +1,8 @@
 package cloudserviceapi.service.manager;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -9,10 +12,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import tapp.model.ServiceRegistry;
-import app.controller.UserHandler;
 import app.model.Movie;
 import app.model.User;
 import tapp.model.ServiceRegistry;
+import cloudserviceapi.app.controller.UserHandler;
 
 import com.appspot.cloudserviceapi.dao.GeniuDao;
 import com.appspot.cloudserviceapi.dao.gae.DaoFactoryImpl;
@@ -21,6 +24,7 @@ import com.appspot.cloudserviceapi.dto.Geniu;
 import com.google.appengine.api.datastore.Transaction;
 //import com.spoledge.audao.db.dao.DaoException;
 
+@Api(value = "genius", tags = "Genius Manager")
 public class GeniusManagerImpl implements GeniusManager {
 
     private static final Logger logger = LoggerFactory.getLogger(GeniusManagerImpl.class);
@@ -32,6 +36,11 @@ public class GeniusManagerImpl implements GeniusManager {
 	private static GeniuDao dao = (new DaoFactoryImpl()).createGeniuDao(Datastore.getDS());
 	private List<Geniu> myBeans = getGenius();
 		
+	@ApiOperation(httpMethod = "GET", 
+			   value = "Resource to get an genius items" 
+//			   , response = SampleData.class
+			   , nickname="getGenius"
+			)
 	public List<Geniu> getGenius() {	//jprofiler - 60 ms invoked 6 times per rendered page (about 10 ms each)
         Transaction tx = null;
         tx = Datastore.getDS().beginTransaction();
