@@ -1,6 +1,8 @@
 package cloudserviceapi.service.manager;
 
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 
 import java.util.ArrayList;
@@ -37,10 +39,11 @@ public class GeniusManagerImpl implements GeniusManager {
 	private List<Geniu> myBeans = getGenius();
 		
 	@ApiOperation(httpMethod = "GET", 
-			   value = "Resource to get an genius items" 
-//			   , response = SampleData.class
+			   value = "Resource to get a genius list"
+			   , response = Geniu.class
+			   , responseContainer = "List"
 			   , nickname="getGenius"
-			)
+	)
 	public List<Geniu> getGenius() {	//jprofiler - 60 ms invoked 6 times per rendered page (about 10 ms each)
         Transaction tx = null;
         tx = Datastore.getDS().beginTransaction();
@@ -74,6 +77,13 @@ public class GeniusManagerImpl implements GeniusManager {
 		GeniusManagerImpl.dao = dao;
 	}
 
+	@ApiOperation(httpMethod = "POST", 
+			   value = "Resource to delete a genius item"
+			   , nickname="deleteGenius"
+	)
+    @ApiImplicitParams({
+    	@ApiImplicitParam(name = "id", value = "Item ID", required = true, dataType = "integer", paramType = "query")
+	})
 	public void delete(Long id) {
         Transaction tx = null;
 		try {
@@ -114,6 +124,13 @@ public class GeniusManagerImpl implements GeniusManager {
 //		}
 //	}
 	
+	@ApiOperation(httpMethod = "POST", 
+			   value = "Resource to create/update a genius item"
+			   , nickname="saveGenius"
+	)
+    @ApiImplicitParams({
+    	@ApiImplicitParam(name = "myBean", value = "Geniu bean", required = true, dataType = "com.appspot.cloudserviceapi.dto.Geniu", paramType = "query")
+	})
 	public void save(Geniu myBean) throws Exception {
 		Transaction tx = null;
         tx = Datastore.getDS().beginTransaction();
@@ -180,6 +197,13 @@ public class GeniusManagerImpl implements GeniusManager {
 		clonedList = newclonedList;
 	}
 	
+	@ApiOperation(httpMethod = "GET",
+			   value = "Resource to retrieve a genius item"
+			   , nickname="getGeniu"
+	)
+    @ApiImplicitParams({
+    	@ApiImplicitParam(name = "id", value = "Item id", required = true, dataType = "integer", paramType = "query")
+	})
 	public Geniu getGeniu(Long id) {
 		Geniu retVal = null;
         Transaction tx = null;

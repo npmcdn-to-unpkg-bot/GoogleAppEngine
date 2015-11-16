@@ -112,7 +112,9 @@
 	<http auto-config="false" use-expressions="true">
     	<intercept-url pattern="/" access="permitAll" />
  		<intercept-url pattern="/login.jsp" access="permitAll" requires-channel="https" />
+<!--
  		<intercept-url pattern="/index_api.html" access="hasAnyRole('ROLE_MANAGER','ROLE_ADMIN')" />
+-->
 		<intercept-url pattern="/go/*/**" access="permitAll" />
 		<intercept-url pattern="/sr" access="permitAll" requires-channel="https" />
 		<intercept-url pattern="/sci" access="permitAll" />
