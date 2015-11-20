@@ -26,7 +26,7 @@ import com.appspot.cloudserviceapi.dto.Geniu;
 import com.google.appengine.api.datastore.Transaction;
 //import com.spoledge.audao.db.dao.DaoException;
 
-@Api(value = "genius", tags = "Genius Manager")
+//@Api(value = "genius", tags = "Genius Manager")
 public class GeniusManagerImpl implements GeniusManager {
 
     private static final Logger logger = LoggerFactory.getLogger(GeniusManagerImpl.class);

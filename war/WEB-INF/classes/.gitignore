@@ -1,11 +1,16 @@
+/AddressBookAction-validator.xml
+/META-INF
 /app
 /cloudserviceapi
 /com
 /guestbook
 /io
+/jest
+/js
+/karma
 /org
 /passwordchange
 /synapticloop
 /tapp
-/web
 /views
+/web

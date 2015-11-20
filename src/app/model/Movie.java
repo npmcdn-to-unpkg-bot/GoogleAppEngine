@@ -25,7 +25,7 @@ import org.compass.annotations.SearchableProperty;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.Text;
 
-@ApiModel("User's Movie")
+@ApiModel("Movie for User")
 @Searchable(alias = "2sharemov")
 @Entity
 public class Movie implements Cloneable, Serializable {

@@ -145,6 +145,10 @@
         <load-on-startup>2</load-on-startup>
         <init-param>
             <param-name>swagger.resource.package</param-name>
+            <!--
+Caused by: java.security.AccessControlException: access denied ("java.io.FilePermission" "/Applications/appengine-java-sdk-1.9.25/lib/impl/agent/appengine-agentruntime.jar" "read")
+            <param-value>cloudserviceapi;com.appspot.cloudserviceapi.dto</param-value>
+            -->
             <param-value>cloudserviceapi</param-value>
         </init-param>
         <init-param>
@@ -883,7 +887,7 @@ java.lang.RuntimeException: Exception constructing service 'ApplicationContext':
   <servlet-class>com.google.api.server.spi.SystemServiceServlet</servlet-class>
   <init-param>
    <param-name>services</param-name>
-   <param-value>app.model.CalendarEndpoint,app.model.MovieEndpoint,app.model.UserEndpoint,cloudserviceapi.app.controller.CrudService,cloudserviceapi.service.manager.GeniusManagerImpl,com.bkper.server.api.TransactionEndpoint,io.swagger.sample.servlet.SampleServlet,tapp.model.ServiceRegistryUserEndpoint</param-value>
+   <param-value>app.model.CalendarEndpoint,app.model.MovieEndpoint,app.model.UserEndpoint,cloudserviceapi.app.controller.CrudService,cloudserviceapi.app.controller.MockService,com.bkper.server.api.TransactionEndpoint,io.swagger.sample.servlet.SampleServlet,tapp.model.ServiceRegistryUserEndpoint</param-value>
   </init-param>
  </servlet>
  <servlet-mapping>
