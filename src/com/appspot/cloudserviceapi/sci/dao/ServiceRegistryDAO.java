@@ -225,7 +225,7 @@ public class ServiceRegistryDAO {
 			ServiceRegistry sr = null;
 			for(int i = 0; i < clonedList.size(); i++) {
 				sr = clonedList.get(i);
-				if(!sr.getId().equals(wo.getId())) {
+				if(sr != null && wo != null && sr.getId() != null && wo.getId() != null && !sr.getId().equals(wo.getId())) {
 					newList.add(sr);
 				}
 			}

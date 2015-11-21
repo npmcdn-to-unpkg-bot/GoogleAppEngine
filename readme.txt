@@ -9,6 +9,9 @@ This project demonstrates the following features on the Google App Engine for Ja
 
 ****** Major Highlights ******
 
+Swagger UI 1.5.4
+. http://localhost:8888/index_api.html
+
 Spring MVC 4.0.7 Simplest Controller
 . http://localhost:8888/web/hello
 
@@ -54,6 +57,7 @@ $$$$$$ Third-Party/OSS Integrations $$$$$$
 . Google's UserService, URLFetch and Calendar Service
 . Spring Core 4.0.7
 . Spring Security 3.2.5
+. Spring Data JPA 1.3.0 (http://tommysiu.blogspot.com/2014/01/spring-data-on-gae-part-1.html)
 . Tapestry Spring Security (https://github.com/antalk/Tapestry-Spring-Security)
 . POI
 . Compass/Lucene 2.4.1 (JDO only)

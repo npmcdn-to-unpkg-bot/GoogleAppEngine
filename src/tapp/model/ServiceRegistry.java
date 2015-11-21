@@ -3,10 +3,17 @@ package tapp.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.jdo.annotations.FetchGroup;
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
+import javax.persistence.Basic;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Transient;
 
 import org.apache.tapestry5.beaneditor.Validate;
@@ -22,23 +29,13 @@ import com.google.appengine.api.datastore.Text;
 import com.persistent.utils.excel.ExcelColumn;
 import com.persistent.utils.excel.ExcelReport;
 
-/**
-org.apache.tapestry5.ioc.internal.OperationException
-Error invoking constructor public com.appspot.cloudserviceapi.sci.services.manager.ServiceRegistryManagerImpl() (for service 'ServiceRegistryManager'): java.lang.ExceptionInInitializerError
-trace
-Reloading class com.appspot.cloudserviceapi.sci.services.manager.ServiceRegistryManagerImpl.
-java.lang.ExceptionInInitializerError
-exception
-org.compass.core.engine.SearchEngineException: Failed to retrieve transaction locks; nested exception is org.apache.lucene.store.LockObtainFailedException: Lock obtain timed out: org.compass.needle.gae.GoogleAppEngineLockFactory$GoogleAppEngineLock@183e109
-org.compass.core.engine.SearchEngineException
-Failed to retrieve transaction locks; nested exception is org.apache.lucene.store.LockObtainFailedException: Lock obtain timed out: org.compass.needle.gae.GoogleAppEngineLockFactory$GoogleAppEngineLock@183e109
-org.apache.lucene.store.LockObtainFailedException
-Lock obtain timed out: org.compass.needle.gae.GoogleAppEngineLockFactory$GoogleAppEngineLock@183e109 
- */
 @Searchable(alias="scireg") //lock released for every restart in PMF, due to the above error
 @PersistenceCapable(identityType = IdentityType.APPLICATION)
+//@Entity
 public class ServiceRegistry implements Cloneable, Serializable {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Persistent(primaryKey = "true",valueStrategy=IdGeneratorStrategy.IDENTITY)
     @SearchableId(name = "id")
 	private Long id;
@@ -66,12 +63,16 @@ public class ServiceRegistry implements Cloneable, Serializable {
     private Long number;
     @SearchableProperty
     private Long hit = -1L;
+
     @SearchableProperty
     @Transient
 	private String description;
+
 //    @SearchableProperty	//org.compass.core.mapping.MappingException: No converter defined for type [com.google.appengine.api.datastore.Text] and getter DirectGetter(tapp.model.ServiceRegistry.descriptionText)
     @Persistent(defaultFetchGroup = "true") //https://groups.google.com/forum/#!topic/google-appengine-java/RAgJQoLJy3Q
+    @Basic(fetch=FetchType.EAGER)
     private Text descriptionText;
+
     private Boolean disabled = false;
     private Boolean useDescription = false;		//returns the description field instead of endpoint
     private Boolean useHtml = true;	//returns the endpoint as html content type/to be saved in rich text/html format
@@ -164,33 +165,30 @@ public class ServiceRegistry implements Cloneable, Serializable {
 	}
 
 	public String getDescription() {
-		String retVal = description;
-		if(descriptionText != null) {
+		String retVal = "";
+		if(descriptionText != null && descriptionText.getValue() != null) {
 			retVal = descriptionText.getValue();
 		}
-		return retVal;
+		description = retVal;
+
+		return description;
 	}
 
 	public void setDescription(String description) {
 		if(description != null) {
-			setDescriptionText(new Text(description));
+			descriptionText = new Text(description);
+
 			//TBD - Caused by: java.lang.IllegalArgumentException: description: String properties must be 500 characters or less.  Instead, use com.google.appengine.api.datastore.Text, which can store strings of any length.
 			//but break Compass search (NPE)
 			if(description.length() >= 500) {
 				this.description = description.substring(0,499);	//allow Compass to index first 500 characters only
+			} else {
+				this.description = description;
 			}
 		} else {
-			setDescriptionText(new Text(""));
+			descriptionText = new Text("");
 			this.description = "";
 		}
-	}
-
-	public void setDescriptionText(Text descriptionText) {
-			this.descriptionText = descriptionText;
-	}
-
-	public Text getDescriptionText() {
-		return descriptionText;
 	}
 
 	public String getSummary() {

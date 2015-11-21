@@ -115,13 +115,14 @@
 <!--
  		<intercept-url pattern="/index_api.html" access="hasAnyRole('ROLE_MANAGER','ROLE_ADMIN')" />
 -->
-		<intercept-url pattern="/go/*/**" access="permitAll" />
 		<intercept-url pattern="/sr" access="permitAll" requires-channel="https" />
+		<intercept-url pattern="/sci/s*" access="hasAnyRole('ROLE_USER_SCI','ROLE_ADMIN_SCI','ROLE_MANAGER','ROLE_ADMIN')" />
+		<intercept-url pattern="/sci/s*/**" access="hasAnyRole('ROLE_USER_SCI','ROLE_ADMIN_SCI','ROLE_MANAGER','ROLE_ADMIN')" />
+
+		<intercept-url pattern="/go/*/**" access="permitAll" />
 		<intercept-url pattern="/sci" access="permitAll" />
 		<intercept-url pattern="/userstart" access="permitAll" requires-channel="https" />
  		<!-- avoid redirect loop (thanks to http://bitcoinmex.blogspot.com/2013/03/spring-security-and-google-app-engine.html) -->
-		<intercept-url pattern="/sci/s*" access="hasAnyRole('ROLE_USER_SCI','ROLE_ADMIN_SCI','ROLE_MANAGER','ROLE_ADMIN')" />
-		<intercept-url pattern="/sci/s*/**" access="hasAnyRole('ROLE_USER_SCI','ROLE_ADMIN_SCI','ROLE_MANAGER','ROLE_ADMIN')" />
  		<intercept-url pattern="/g/**/*start/**" access="hasAnyRole('ROLE_MANAGER','ROLE_ADMIN')" />
 		<intercept-url pattern="/g/**/*save/**" access="hasAnyRole('ROLE_MANAGER','ROLE_ADMIN')" />
  		<intercept-url pattern="/_ah/**" access="permitAll" />
