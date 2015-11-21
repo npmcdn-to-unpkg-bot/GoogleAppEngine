@@ -3,11 +3,6 @@ package tapp.model;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.jdo.annotations.FetchGroup;
-import javax.jdo.annotations.IdGeneratorStrategy;
-import javax.jdo.annotations.IdentityType;
-import javax.jdo.annotations.PersistenceCapable;
-import javax.jdo.annotations.Persistent;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -20,23 +15,17 @@ import org.apache.tapestry5.beaneditor.Validate;
 import org.apache.tapestry5.beaneditor.Width;
 import org.compass.annotations.Searchable;
 import org.compass.annotations.SearchableId;
-import org.compass.annotations.SearchableMetaData;
 import org.compass.annotations.SearchableProperty;
 
-import com.appspot.cloudserviceapi.common.TimeUtil;
 import com.appspot.cloudserviceapi.data.URLCategory;
 import com.google.appengine.api.datastore.Text;
-import com.persistent.utils.excel.ExcelColumn;
-import com.persistent.utils.excel.ExcelReport;
 
 @Searchable(alias="scireg") //lock released for every restart in PMF, due to the above error
-@PersistenceCapable(identityType = IdentityType.APPLICATION)
-//@Entity
+@Entity
 public class ServiceRegistry implements Cloneable, Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Persistent(primaryKey = "true",valueStrategy=IdGeneratorStrategy.IDENTITY)
     @SearchableId(name = "id")
 	private Long id;
     @SearchableProperty
@@ -67,9 +56,7 @@ public class ServiceRegistry implements Cloneable, Serializable {
     @SearchableProperty
     @Transient
 	private String description;
-
 //    @SearchableProperty	//org.compass.core.mapping.MappingException: No converter defined for type [com.google.appengine.api.datastore.Text] and getter DirectGetter(tapp.model.ServiceRegistry.descriptionText)
-    @Persistent(defaultFetchGroup = "true") //https://groups.google.com/forum/#!topic/google-appengine-java/RAgJQoLJy3Q
     @Basic(fetch=FetchType.EAGER)
     private Text descriptionText;
 
