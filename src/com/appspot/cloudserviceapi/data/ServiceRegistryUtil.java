@@ -8,6 +8,7 @@ import tapp.model.ServiceRegistry;
 import app.common.Constants;
 
 import com.appspot.cloudserviceapi.sci.dao.ServiceRegistryDAO;
+import com.appspot.cloudserviceapi.sci.dao.ServiceRegistryRepository;
 
 public class ServiceRegistryUtil {
 
@@ -107,7 +108,7 @@ public class ServiceRegistryUtil {
 		}
 		return sr;
 	}
-	
+
 	/** Check if it a String is a SR endpoint i.e. in the format of ${sid} */
 	public static boolean isRedirectedEndPoint(String endPoint) throws Exception {
 		if(endPoint == null) throw new Exception("EndPoint is null or empty!");

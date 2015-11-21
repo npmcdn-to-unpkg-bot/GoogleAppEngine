@@ -7,12 +7,11 @@
 
     <!-- https://cloud.google.com/appengine/articles/spring_optimization -->
     <!-- context:component-scan base-package="com.appspot.cloudserviceapi.springmvc" -->
-	<bean name="/hello" class="com.appspot.cloudserviceapi.springmvc.controller.HelloController">
-	</bean>
-	<bean name="/service" class="com.appspot.cloudserviceapi.springmvc.controller.HelloRestController">
-	</bean>
-	
-    <bean id="jspViewResolver"
+	<bean name="/hello" class="com.appspot.cloudserviceapi.springmvc.controller.HelloController"></bean>
+	<bean name="/service" class="com.appspot.cloudserviceapi.springmvc.controller.HelloRestController"></bean>
+ 	<bean name="/srs" class="com.appspot.cloudserviceapi.springmvc.controller.ServiceRegistry"></bean>
+
+ 	<bean id="jspViewResolver"
           class="org.springframework.web.servlet.view.InternalResourceViewResolver"
           p:prefix="/WEB-INF/jsp/"
           p:suffix=".jsp" /> 

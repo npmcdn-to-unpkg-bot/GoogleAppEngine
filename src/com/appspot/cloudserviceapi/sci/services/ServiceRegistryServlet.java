@@ -8,19 +8,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import tapp.model.ServiceRegistry;
 
 import com.appspot.cloudserviceapi.common.Constants;
 import com.appspot.cloudserviceapi.common.StringUtil;
 import com.appspot.cloudserviceapi.data.ServiceRegistryUtil;
 import com.appspot.cloudserviceapi.sci.dao.ServiceRegistryDAO;
-//import com.appspot.cloudserviceapi.common.JSLintUtil;
-//import com.appspot.cloudserviceapi.common.PMDUtil;
-//import com.appspot.cloudserviceapi.test.CodesionSVNTest;
-//import com.newatlanta.commons.vfs.provider.gae.GaeVFS;
+import com.appspot.cloudserviceapi.sci.dao.ServiceRegistryRepository;
 
 @SuppressWarnings("serial")
 public class ServiceRegistryServlet extends HttpServlet {
+	@Autowired
+	ServiceRegistryRepository r;
 
 	public void init(ServletConfig config) throws ServletException {
 //	    GaeVFS.setRootPath(config.getServletContext().getRealPath("/"));
