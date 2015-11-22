@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import tapp.model.ServiceRegistry;
 
 import com.appspot.cloudserviceapi.data.EMF;
+import com.appspot.cloudserviceapi.sci.dao.ServiceRegistryDAO;
 import com.appspot.cloudserviceapi.sci.dao.ServiceRegistryRepository;
 
 @Controller
@@ -93,7 +94,9 @@ public class ServiceRegistryController {
         System.out.println("REST request to delete ServiceRegistry: " + id);
         try{
             if (id > -1){
-                repository.delete(id);
+            	//caused: javax.persistence.PersistenceException: Problem with query <SELECT count(x) FROM ServiceRegistry x WHERE x.id = :id AND 1 = 1>: Unexpected expression type while parsing query: org.datanucleus.query.expression.Literal
+                //repository.delete(id);
+        		(new ServiceRegistryDAO()).remove(id);
             }
         }
         catch (Exception e){
