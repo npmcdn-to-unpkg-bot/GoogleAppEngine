@@ -148,8 +148,10 @@
             <!--
 Caused by: java.security.AccessControlException: access denied ("java.io.FilePermission" "/Applications/appengine-java-sdk-1.9.25/lib/impl/agent/appengine-agentruntime.jar" "read")
             <param-value>cloudserviceapi;com.appspot.cloudserviceapi.dto</param-value>
-            -->
             <param-value>cloudserviceapi</param-value>
+            <param-value>cloudserviceapi;com.appspot.cloudserviceapi.springmvc.controller;tapp.model</param-value>
+            -->
+            <param-value>com.appspot.cloudserviceapi.springmvc.controller</param-value>
         </init-param>
         <init-param>
             <param-name>api.version</param-name>
@@ -164,7 +166,7 @@ Caused by: java.security.AccessControlException: access denied ("java.io.FilePer
     </servlet>
     <servlet-mapping>
         <servlet-name>ApiDeclarationServlet</servlet-name>
-        <url-pattern>/api/*</url-pattern>
+        <url-pattern>/swagger/*</url-pattern>
     </servlet-mapping>
 
     <filter>
@@ -197,7 +199,7 @@ Caused by: java.security.AccessControlException: access denied ("java.io.FilePer
     </servlet>
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
-        <url-pattern>/web/*</url-pattern>
+        <url-pattern>/api/*</url-pattern>
     </servlet-mapping>
     
     <!-- Enable escaping of form submission contents -->
@@ -887,7 +889,7 @@ java.lang.RuntimeException: Exception constructing service 'ApplicationContext':
   <servlet-class>com.google.api.server.spi.SystemServiceServlet</servlet-class>
   <init-param>
    <param-name>services</param-name>
-   <param-value>app.model.CalendarEndpoint,app.model.MovieEndpoint,app.model.UserEndpoint,cloudserviceapi.app.controller.CrudService,cloudserviceapi.app.controller.MockService,cloudserviceapi.app.controller.ServiceManager,com.bkper.server.api.TransactionEndpoint,io.swagger.sample.servlet.SampleServlet,tapp.model.ServiceRegistryUserEndpoint</param-value>
+   <param-value>app.model.CalendarEndpoint,app.model.MovieEndpoint,app.model.UserEndpoint,cloudserviceapi.app.controller.CrudService,cloudserviceapi.app.controller.MockService,cloudserviceapi.app.controller.ServiceManager,com.appspot.cloudserviceapi.springmvc.controller.ServiceRegistryController,com.bkper.server.api.TransactionEndpoint,io.swagger.sample.servlet.SampleServlet,tapp.model.ServiceRegistryUserEndpoint</param-value>
   </init-param>
  </servlet>
  <servlet-mapping>

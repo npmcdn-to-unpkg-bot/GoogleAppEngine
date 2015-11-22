@@ -855,4 +855,5 @@ You need at least 1.10.1 of Subversion client adapter, get it from http://subcli
 Good Reference -
 
 http://groups.google.com/group/google-appengine-java/web/will-it-play-in-app-engine
-ssshttp://code.google.com/p/kaptcha/
+http://code.google.com/p/kaptcha/
+http://www.javacodegeeks.com/2013/01/spring-data-jpa-and-pagination.html

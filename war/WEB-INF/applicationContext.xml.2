@@ -1,8 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <beans xmlns="http://www.springframework.org/schema/beans" 
+  xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+  xmlns:mvc="http://www.springframework.org/schema/mvc"
     xmlns:p="http://www.springframework.org/schema/p"
-    xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context" xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd         http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
-	<!-- Include the real spring config file just to make it work with Wildfly -->
+    xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context" xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd         
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd         
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd         
+    http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd         
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+    http://www.springframework.org/schema/data/jpa
+    http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+    http://www.springframework.org/schema/mvc
+	http://www.springframework.org/schema/mvc/spring-mvc.xsd
+    ">
+
+    <!-- Include the real spring config file just to make it work with Wildfly -->
 	<!--
         This will automatically locate any and all property files you have
         within your classpath, provided they fall under the META-INF/spring
@@ -50,11 +63,26 @@
         <context:exclude-filter expression="org.springframework.stereotype.Controller" type="annotation"/>
     context:component-scan
     -->
-    <bean class="org.springframework.orm.jpa.JpaTransactionManager" id="transactionManager">
-        <property name="entityManagerFactory" ref="entityManagerFactory"/>
-    </bean>
-    <tx:annotation-driven mode="aspectj" transaction-manager="transactionManager"/>
-    <bean lazy-init="true" class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean" id="entityManagerFactory">
+<!-- 
+<context:component-scan base-package="com.appspot.cloudserviceapi.sci.dao" />
+<mvc:annotation-driven />
+<context:annotation-config />
+-->
+<jpa:repositories base-package="com.appspot.cloudserviceapi.sci.dao" >
+</jpa:repositories>
+
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	
+	<bean class="org.springframework.orm.jpa.JpaTransactionManager" id="transactionManager">
+	    <constructor-arg ref="entityManagerFactory" />
+	</bean>
+	
+	<bean class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" id="entityManagerFactory">
         <property name="persistenceUnitName" value="transactions-optional"/>
-    </bean>
+	    <property name="packagesToScan" value="com.appspot.cloudserviceapi.sci.dao" />
+	    <property name="loadTimeWeaver">
+	        <bean class="org.springframework.instrument.classloading.SimpleLoadTimeWeaver" />
+	    </property>
+	</bean>
+
 </beans>

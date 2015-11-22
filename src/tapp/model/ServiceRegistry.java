@@ -1,5 +1,7 @@
 package tapp.model;
 
+import io.swagger.annotations.ApiModel;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -20,6 +22,7 @@ import org.compass.annotations.SearchableProperty;
 import com.appspot.cloudserviceapi.data.URLCategory;
 import com.google.appengine.api.datastore.Text;
 
+@ApiModel(value="ServiceRegistry", description="Registry for anything that needs to be accessible via web")
 @Searchable(alias="scireg") //lock released for every restart in PMF, due to the above error
 @Entity
 public class ServiceRegistry implements Cloneable, Serializable {

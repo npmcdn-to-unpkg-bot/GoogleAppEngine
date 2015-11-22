@@ -28,7 +28,7 @@ import cloudserviceapi.app.controller.CalendarHelper;
 
 import com.google.appengine.api.datastore.Key;
 
-@ApiModel("Schedule of Movie")
+@ApiModel(value="User", description="Schedule of Movie")
 @Searchable(alias = "2sharecal")
 @Entity
 public class Calendar implements Cloneable, Serializable {

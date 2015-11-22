@@ -59,7 +59,7 @@ public class ServiceManager extends HttpServlet {
 		// VALIDATION SHOULD BE DONE HERE AS WELL				
 						
 		CrudServiceCallback h = null;				
-		Iterator<CrudServiceCallback> it = objectHandlers.iterator();				
+		Iterator<CrudServiceCallback> it = objectHandlers.iterator();
 		String uid = getValue(request, Constants.UNIVERSAL_ID);				
 		System.out.println("ServiceManager:handleRequest() uid = [" + uid + "] received");				
 		while (it.hasNext()) {				

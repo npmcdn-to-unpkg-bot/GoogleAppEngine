@@ -20,7 +20,7 @@ import passwordchange.core.UserSecurityQuestion;
 
 import com.google.appengine.api.datastore.Key;
 
-@ApiModel("Owner or parent of the Movie")
+@ApiModel(value="User", description="Owner or parent of the Movie")
 @Entity
 public class User implements Cloneable, Serializable {
     @Id

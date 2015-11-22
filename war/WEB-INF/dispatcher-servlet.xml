@@ -1,19 +1,39 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:p="http://www.springframework.org/schema/p"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd http://www.springframework.org/schema/context  http://www.springframework.org/schema/context/spring-context-3.2.xsd">
-
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+  xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+  xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context" xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd         
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd         
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd         
+    http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd         
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+    http://www.springframework.org/schema/data/jpa
+    http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+    http://www.springframework.org/schema/mvc
+	http://www.springframework.org/schema/mvc/spring-mvc.xsd
+    ">
     <!-- https://cloud.google.com/appengine/articles/spring_optimization -->
     <!-- context:component-scan base-package="com.appspot.cloudserviceapi.springmvc" -->
 	<bean name="/hello" class="com.appspot.cloudserviceapi.springmvc.controller.HelloController"></bean>
 	<bean name="/service" class="com.appspot.cloudserviceapi.springmvc.controller.HelloRestController"></bean>
- 	<bean name="/srs" class="com.appspot.cloudserviceapi.springmvc.controller.ServiceRegistry"></bean>
+ 	<bean name="fusr" class="com.appspot.cloudserviceapi.springmvc.controller.ServiceRegistryController"></bean>
 
  	<bean id="jspViewResolver"
           class="org.springframework.web.servlet.view.InternalResourceViewResolver"
           p:prefix="/WEB-INF/jsp/"
           p:suffix=".jsp" /> 
  
+	<!-- activates annotation driven binding -->
+	<mvc:annotation-driven>
+		<mvc:argument-resolvers>
+			<bean class='org.springframework.data.web.PageableArgumentResolver'></bean>
+		</mvc:argument-resolvers>
+ 	    <mvc:message-converters>
+	        <bean class="org.springframework.http.converter.ResourceHttpMessageConverter"/>
+	        <bean class="org.springframework.http.converter.xml.Jaxb2RootElementHttpMessageConverter"/>
+	        <bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter"/>
+	    </mvc:message-converters>
+	</mvc:annotation-driven>
 </beans>
