@@ -4,6 +4,8 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 
 import java.util.List;
 
@@ -47,6 +49,10 @@ public class ServiceRegistryController {
 	    	@ApiImplicitParam(name = "pageNumber", defaultValue = "0", value = "Current page number (start from 0)", required = false, dataType = "integer", paramType = "query")
     	}
     )
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "Success")
+		}
+	)
 	@RequestMapping(method = RequestMethod.GET, produces = "application/json")
     public @ResponseBody Page<ServiceRegistry> getAllPlayers(Pageable pageable) {
         return repository.findAll(pageable);
@@ -57,6 +63,10 @@ public class ServiceRegistryController {
 	    	@ApiImplicitParam(name = "id", value = "Item unique id", required = true, dataType = "integer", paramType = "path")
     	}
     )
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "Success")
+		}
+	)
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = "application/json")
     public @ResponseBody ServiceRegistry getPlayer(@PathVariable("id") Long id) {
         return repository.findOne(id);
@@ -65,6 +75,11 @@ public class ServiceRegistryController {
 	@ApiOperation(httpMethod = "POST", value = "Resource to create/change an item" , nickname="fusr/save")
 	@ApiImplicitParams({
 	    	@ApiImplicitParam(name = "sr", defaultValue = "", value = "Service Registry JSON object", required = true, dataType = "tapp.model.ServiceRegistry", paramType = "body")
+		}
+	)
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "Success"),
+			@ApiResponse(code = 401, message = "Failure")
 		}
 	)
     @RequestMapping(value= "/save", method = RequestMethod.POST)
@@ -89,6 +104,11 @@ public class ServiceRegistryController {
     	@ApiImplicitParam(name = "id", value = "Item unique id", required = true, dataType = "integer", paramType = "path")
     	}
     )
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "Success"),
+			@ApiResponse(code = 401, message = "Failure")
+		}
+	)
     @RequestMapping(value= "/delete/{id}", method = RequestMethod.POST)
 	@Secured("ROLE_ADMIN")
     public ResponseEntity<ServiceRegistry> delete(@PathVariable Long id) {
