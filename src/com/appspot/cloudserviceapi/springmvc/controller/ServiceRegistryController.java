@@ -72,7 +72,8 @@ public class ServiceRegistryController {
     public ResponseEntity<ServiceRegistry> createOrUpdate(@RequestBody ServiceRegistry sr){
         try{
             if (sr != null){
-            	repository.save(sr);
+            	//repository.save(sr);
+        		(new ServiceRegistryDAO()).save(sr);
             }
         }
         catch (Exception e){
