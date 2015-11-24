@@ -8,6 +8,8 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 import javax.persistence.EntityManager;
 
+import org.joda.time.DateTime;
+
 import tapp.model.ServiceRegistry;
 
 import com.appspot.cloudserviceapi.common.Constants;
@@ -165,7 +167,13 @@ public class ServiceRegistryDAO {
 			clonedList = new ArrayList<ServiceRegistry>(woList.size());
 			try {
 				for (ServiceRegistry wo : woList) {
-					clonedList.add((ServiceRegistry) wo.clone());
+					//=== to avoid "Out of memory" error during run time, get only those latest entries up till a year back!
+					DateTime oneYearsAgo = new DateTime(); // should give you a DateTime representing 'now'
+					oneYearsAgo = oneYearsAgo.minusYears(1);            // should give you 1 year ago
+				    DateTime dt = new DateTime(wo.getLastUpdated());
+					if (wo.getLastUpdated() != null && dt.isBefore(oneYearsAgo)) {
+						clonedList.add((ServiceRegistry) wo.clone());
+					}
 				}
 			} catch (CloneNotSupportedException e) {
 				e.printStackTrace();
