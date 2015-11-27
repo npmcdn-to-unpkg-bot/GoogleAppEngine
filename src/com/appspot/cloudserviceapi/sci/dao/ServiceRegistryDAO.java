@@ -151,6 +151,8 @@ public class ServiceRegistryDAO {
 
 	//TBD - this could be the performance bottleneck hotspot! the size should be saved as a variable in a row/property instead
 	public List getCloneList() {
+		int limitForMemory = 500;
+		int count = 0;
 		//List<ServiceRegistry> clonedList = (List<ServiceRegistry>) CacheController.get(ALL_SR_LIST);
 		if(clonedList == null) {	//cut time from 1 ms to 4 micro s for every SR page rendered (in grid) or saved!
 			PersistenceManager pm = Persistence.getManager();
@@ -172,7 +174,10 @@ public class ServiceRegistryDAO {
 					oneYearsAgo = oneYearsAgo.minusYears(1);            // should give you 1 year ago
 				    DateTime dt = new DateTime(wo.getLastUpdated());
 					if (wo.getLastUpdated() != null && dt.isBefore(oneYearsAgo)) {
-						clonedList.add((ServiceRegistry) wo.clone());
+						if(count < limitForMemory) {
+							clonedList.add((ServiceRegistry) wo.clone());
+							count++;
+						}
 					}
 				}
 			} catch (CloneNotSupportedException e) {
