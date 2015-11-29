@@ -434,4 +434,8 @@ public class ServiceRegistryStart {
         return assetSource.getContextAsset(path, null);
     }
 
+    public long getFreeMemory() {
+        int mb = 1024*1024;
+    	return Runtime.getRuntime().freeMemory() / mb;
+    }
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html t:type="layout" t:title="SRM (${totalRows})" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd" xmlns:sec="http://www.springframework.org/security/tags" xmlns:p="tapestry:parameter">
+<html t:type="layout" t:title="SRM - ${freeMemory} MB" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd" xmlns:sec="http://www.springframework.org/security/tags" xmlns:p="tapestry:parameter">
     <head>
     	<!-- Spring 3 optimized for GAEJ released [b0002] -->
         <title>Service</title>
