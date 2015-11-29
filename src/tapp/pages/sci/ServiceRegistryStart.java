@@ -47,6 +47,7 @@ import com.appspot.cloudserviceapi.util.Compass;
 public class ServiceRegistryStart {
 
 	private String TCOUNT_UUID = "service.registry.count";
+    private int MB = 1024*1024;
 
 //	@Inject
 //    private static AlertManager alertManager;	//didn't work on GAEJ!!! :(
@@ -435,7 +436,11 @@ public class ServiceRegistryStart {
     }
 
     public long getFreeMemory() {
-        int mb = 1024*1024;
-    	return Runtime.getRuntime().freeMemory() / mb;
+    	return Runtime.getRuntime().freeMemory() / MB;
     }
+
+    public long getTotalMemory() {
+    	return Runtime.getRuntime().totalMemory() / MB;
+    }
+
 }
