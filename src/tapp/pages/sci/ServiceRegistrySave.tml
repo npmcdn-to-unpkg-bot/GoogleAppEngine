@@ -7,6 +7,12 @@
     @media only screen
     and (min-device-width : 320px)
     and (max-device-width : 480px) {
+        *, .t-beaneditor, input, textarea {
+        	font-size: x-large;
+        }
+		td {
+        	width: 450px;
+		}
         body {
             -webkit-text-size-adjust:80%;
             margin-left: 15px;
@@ -285,9 +291,9 @@
    		AppId [<span id="appid">${uniqueSID}</span>] Backup Service [<span id="host">${backupServiceHost}</span>] <a href="https://${backupServiceHost}/api/index.php/ServiceRegistry/${serviceRegistryService}-${uniqueSID}.xml">XML</a>&#160;<a href="https://${backupServiceHost}/api/index.php/ServiceRegistry/${serviceRegistryService}-${uniqueSID}.html">HTML</a>&#160;<a href="https://${backupServiceHost}/api/index.php/ServiceRegistry/${serviceRegistryService}-${uniqueSID}.txt">TXT</a>&#160;:
 	   	<iframe style="width:100%;height:65px;" id="url_iframe" name="url_iframe" src="https://${backupServiceHost}/api/index.php/ServiceRegistry/${serviceRegistryService}-${uniqueSID}.xml"></iframe>
 		<label for="backup1_1">Normal Backup:&#160;</label>
-			<input class="bck" name="backup1_1" id="backup1_1" value="Backup Only" onclick="backupOnly();" type="button" style="width:18%;"/>&#160;&#160;
+			<input class="bck" name="backup1_1" id="backup1_1" value="Backup" onclick="backupOnly();" type="button" style="width:18%;"/>&#160;&#160;
 		<label for="backup2_1">AJAX Backup:&#160;</label>
-			<input class="bck" name="backup2_1" id="backup2_1" value="Backup and Save" onclick="backupSave();" type="button" style="width:18%;"/>
+			<input class="bck" name="backup2_1" id="backup2_1" value="Backup+Save" onclick="backupSave();" type="button" style="width:18%;"/>
  	</div>
  	<!--
 	<span style="float:left;padding-left:3px;"><t:actionlink t:id="logout" context="serviceRegistry.service">Save and Logout</t:actionlink></span>

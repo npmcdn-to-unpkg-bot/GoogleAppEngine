@@ -1,14 +1,10 @@
-/app
-/cloudserviceapi
 /com
 /guestbook
 /io
-/jest
-/js
-/karma
 /org
 /passwordchange
-/synapticloop
 /tapp
-/views
 /web
+/app
+/cloudserviceapi
+/synapticloop
