@@ -78,6 +78,6 @@
 	<classpathentry kind="lib" path="war/WEB-INF/lib/swagger-models-1.5.5-SNAPSHOT.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Swagger"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Jetty"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/Home"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>

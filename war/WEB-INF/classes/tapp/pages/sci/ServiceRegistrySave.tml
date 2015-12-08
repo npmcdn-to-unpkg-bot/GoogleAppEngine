@@ -7,9 +7,20 @@
     @media only screen
     and (min-device-width : 320px)
     and (max-device-width : 480px) {
-        *, .t-beaneditor, input, textarea {
-        	font-size: x-large;
+    	#buttonCancel2 {
+    		position:absolute;
+    		left:15px;
+    	}
+        *, .t-beaneditor, label, input[type="submit"], input[type="text"], textarea, .bck {
+        	font-size: larger;
         }
+		/** http://stackoverflow.com/questions/7073396/disable-zoom-on-input-focus-in-android-webpage */
+		input:focus {
+			font-size: larger!important
+		}
+		#nav-section1, #nav-section2, #label1, #label2 {
+			font-size: 16px;
+		}
 		td {
         	width: 450px;
 		}
@@ -30,8 +41,6 @@
             font-size: 1.75em;
         }
 	}
-	/** http://stackoverflow.com/questions/7073396/disable-zoom-on-input-focus-in-android-webpage */
-	input:focus { font-size: 16px!important}
  	.t-beaneditor-submit {
 		color: red;
  	}
@@ -288,18 +297,19 @@
    	<!--
    	<div style="margin:10px 5px 5px 2px;height:115px;display:${backupServiceDisplay};">
    	-->
-   		AppId [<span id="appid">${uniqueSID}</span>] Backup Service [<span id="host">${backupServiceHost}</span>] <a href="https://${backupServiceHost}/api/index.php/ServiceRegistry/${serviceRegistryService}-${uniqueSID}.xml">XML</a>&#160;<a href="https://${backupServiceHost}/api/index.php/ServiceRegistry/${serviceRegistryService}-${uniqueSID}.html">HTML</a>&#160;<a href="https://${backupServiceHost}/api/index.php/ServiceRegistry/${serviceRegistryService}-${uniqueSID}.txt">TXT</a>&#160;:
+   		<div id="label1">AppId [<span id="appid">${uniqueSID}</span>] Backup Service [<span id="host">${backupServiceHost}</span>] <a href="https://${backupServiceHost}/api/index.php/ServiceRegistry/${serviceRegistryService}-${uniqueSID}.xml">XML</a>&#160;<a href="https://${backupServiceHost}/api/index.php/ServiceRegistry/${serviceRegistryService}-${uniqueSID}.html">HTML</a>&#160;<a href="https://${backupServiceHost}/api/index.php/ServiceRegistry/${serviceRegistryService}-${uniqueSID}.txt">TXT</a>&#160;:</div>
 	   	<iframe style="width:100%;height:65px;" id="url_iframe" name="url_iframe" src="https://${backupServiceHost}/api/index.php/ServiceRegistry/${serviceRegistryService}-${uniqueSID}.xml"></iframe>
-		<label for="backup1_1">Normal Backup:&#160;</label>
-			<input class="bck" name="backup1_1" id="backup1_1" value="Backup" onclick="backupOnly();" type="button" style="width:18%;"/>&#160;&#160;
-		<label for="backup2_1">AJAX Backup:&#160;</label>
-			<input class="bck" name="backup2_1" id="backup2_1" value="Backup+Save" onclick="backupSave();" type="button" style="width:18%;"/>
+		<label id="label1" for="backup1_1">ReqBack.:&#160;</label>
+			<input class="bck" name="backup1_1" id="backup1_1" value="Backup" onclick="backupOnly();" type="submit" style="width:18%;" />&#160;&#160;
+		<label id="label2" for="backup2_1">AsncBack.:&#160;</label>
+			<input class="bck" name="backup2_1" id="backup2_1" value="Backup+" onclick="backupSave();" type="submit" style="width:18%;" />
  	</div>
  	<!--
 	<span style="float:left;padding-left:3px;"><t:actionlink t:id="logout" context="serviceRegistry.service">Save and Logout</t:actionlink></span>
 	-->
+   	<p/>
    	<form>
-		<input id='buttonCancel' type='button' value='Exit' onclick='javascript:location.href="/sci/serviceregistrystart";'/>
+		<input id='buttonCancel1' type='button' value='Exit' onclick='javascript:location.href="/sci/serviceregistrystart";'/>
    	</form>
  	<form id="form" t:id="form" t:type="beaneditform" t:submitLabel="message:submit-label" object="serviceRegistry" reorder="oid,saveOnly,service,endpoint,summary,description,category,usedescription,usehtml" exclude="project,number,organization,owner,id,lastUpdated,lastAccessed,shorturl">
  		<t:parameter name="id">
@@ -377,9 +387,8 @@ Not sure why do I need two of description in order for it to show up :( ???
 		</t:parameter>
   		--> 
    	</form>
-   	<p/>
    	<form>
-		<input id='buttonCancel' type='button' value='Exit' onclick='javascript:location.href="/sci/serviceregistrystart";'/>
+		<input id='buttonCancel2' type='button' value='Exit' onclick='javascript:location.href="/sci/serviceregistrystart";'/>
    	</form>
    	<p/>
 	<div style="display:${advancedUIDisplay};" lass="t-beaneditor-row collapsible" id="nav-section2">[Raw Content] - click to toggle between collapse and expand<span></span></div>
