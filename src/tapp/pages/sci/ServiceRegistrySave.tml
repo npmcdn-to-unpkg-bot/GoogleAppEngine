@@ -332,7 +332,7 @@
 
  		<t:parameter name="service">
 	 		<label t:type="Label" for="service"/>
- 			<input name="password" t:type="TextField" style="width:50%;" t:id="service" t:value="serviceRegistry.service" />
+ 			<input name="password" t:type="TextField" style="width:50%;" t:id="service" t:value="serviceRegistry.service" autocapitalize="off" />
  			* must be unique
  		</t:parameter>
  		<t:parameter name="endpoint">

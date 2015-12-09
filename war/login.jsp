@@ -5,7 +5,11 @@
 
 <html>
 <head>
+<<<<<<< HEAD
     <title>C7i103k2</title>
+=======
+    <title>C7i103k3</title>
+>>>>>>> fdaac2e2ef378f6e9d0df8afe0a327114929ea26
     <meta name="viewport" content="initial-scale=2.3, user-scalable=no"> <!-- source: https://developer.apple.com/library/ios/DOCUMENTATION/AppleApplications/Reference/SafariWebContent/UsingtheViewport/UsingtheViewport.html -->
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<style>

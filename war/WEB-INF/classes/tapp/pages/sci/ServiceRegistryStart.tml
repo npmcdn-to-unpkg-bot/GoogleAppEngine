@@ -12,7 +12,7 @@
 	        and (max-device-width : 480px) {
 	            body {
 	                -webkit-text-size-adjust:80%;
-	                margin-left: 15px;
+	                margin-right: 15px;
 	            }
 	            h2 {
 	                font-size: .75em;
@@ -93,7 +93,7 @@
     </head>
     <body class="outer">
 
-<div id="landscape" class="landscape"><div><h4>Landscape Mode: Sorted by last updated (UPT) field (descending) by default <a onclick="showPortraitOnly();return false;" href="#" style="float:right;">Change to Portrait Mode</a></h4></div>
+<div id="landscape" class="landscape"><div><h4>Landscape Mode: Sorted by last updated (UPT) field (desc) by default <a onclick="showPortraitOnly();return false;" href="#" style="float:right;">Change to Portrait Mode</a></h4></div>
         <t:alerts/>
        	<div>
 	        <h2 style="display:inline">Service Registry Manager (${totalRows})</h2>
@@ -140,7 +140,7 @@
 		</table>
 </div>				
 
-<div id="portrait" class="portrait"><div><h4>Portrait Mode: Sorted by last visited (VIS) field (descending) by default <a onclick="showLandscapeOnly();return false;" href="#" style="float:right;">Change to Landscape Mode</a></h4></div>
+<div id="portrait" class="portrait"><div><h4>Portrait Mode: Sorted by last visited (VIS) field (desc) by default <a onclick="showLandscapeOnly();return false;" href="#" style="float:right;">Change to Landscape Mode</a></h4></div>
         <t:alerts/>
         <div>
 	        <h2 style="display:inline">Service Registry Manager (${totalRows})</h2>

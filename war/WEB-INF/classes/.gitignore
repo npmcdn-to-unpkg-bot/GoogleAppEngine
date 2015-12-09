@@ -1,22 +1,32 @@
 /AddressBookAction-validator.xml
+<<<<<<< HEAD
 /META-INF
 /app
 /cloudserviceapi
 /com
+=======
+/META-INF/
+/com/
+>>>>>>> fdaac2e2ef378f6e9d0df8afe0a327114929ea26
 /compass.cpm.xml
 /crud.xml
 /employee.xml
 /guest.properties
+<<<<<<< HEAD
 /guestbook
 /hibernate.cfg.xml.only_for_devserver
 /io
 /jest
 /js
 /karma
+=======
+/hibernate.cfg.xml.only_for_devserver
+>>>>>>> fdaac2e2ef378f6e9d0df8afe0a327114929ea26
 /log4j.properties
 /log4j.xml
 /log4j.xml_
 /model.cpm.xml
+<<<<<<< HEAD
 /org
 /package.properties
 /partner.xml
@@ -30,3 +40,24 @@
 /web
 /wicket.properties
 /wicketopia.application.properties
+=======
+/package.properties
+/partner.xml
+/passwordchange/
+/struts.out.xml
+/struts.properties
+/struts.xml
+/tapp/
+/jest/
+/wicket.properties
+/wicketopia.application.properties
+/app/
+/cloudserviceapi/
+/guestbook/
+/io/
+/js/
+/karma/
+/org/
+/views/
+/web/
+>>>>>>> fdaac2e2ef378f6e9d0df8afe0a327114929ea26
