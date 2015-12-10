@@ -13,38 +13,45 @@ import io.swagger.annotations.License;
 import io.swagger.annotations.SwaggerDefinition;						
 import io.swagger.annotations.Tag;						
 						
+
 import java.io.IOException;						
 import java.util.ArrayList;						
 import java.util.Iterator;						
 import java.util.List;						
 						
+
 import javax.servlet.http.HttpServlet;						
 import javax.servlet.http.HttpServletRequest;						
 import javax.servlet.http.HttpServletResponse;						
 						
+
 import app.common.Constants;						
 import app.model.Movie;						
 import app.model.User;						
 						
+
 import com.appspot.cloudserviceapi.common.JsonUtil;						
+import com.appspot.cloudserviceapi.data.AppEngine;
 						
 /**						
  * https://github.com/swagger-api/swagger-core/wiki/Annotations						
  */						
-@SuppressWarnings("serial")						
-@SwaggerDefinition(						
-        info = @Info(						
-                title = "REST APIs",						
-                description = "CRUD Front-Controller Servlet",						
-                version = "0.0.1",						
-                termsOfService = "http://swagger.io/terms/",						
-                contact = @Contact(name = "Adcoolguy", email = "apiteam@swagger.io", url = "http://swagger.io"),						
-                license = @License(name = "Apache 2.0", url = "http://www.apache.org/licenses/LICENSE-2.0.html")						
+@SuppressWarnings("serial")
+@SwaggerDefinition(
+        info = @Info(
+                title = "",	//"NOT USED" c.f. web.xml's swagger.api.title
+                version = "V0.0.1",		//"NOT USED" c.f. web.xml's api.version
+                description = "CRUD Servlet",
+                termsOfService = "http://swagger.io/terms/",
+                contact = @Contact(name = "Adcoolguy", email = "apiteam@swagger.io", url = "http://swagger.io"),
+                license = @License(name = "Apache 2.0", url = "http://www.apache.org/licenses/LICENSE-2.0.html")
         ),						
         consumes = {"application/json", "application/x-www-form-urlencoded"},						
-        produces = {"application/json"},						
-        schemes = {SwaggerDefinition.Scheme.HTTP, SwaggerDefinition.Scheme.HTTPS}						
-)						
+        produces = {"application/json"}
+//        ,						
+//        host = "http://chudoon3t.appspot.com" /*AppEngine.getHostName()*/,	//"NOT USED" c.f. web.xml swagger.api.basepath (needs to be prefixed with http(s)!!!)
+//        schemes = {SwaggerDefinition.Scheme.HTTP, SwaggerDefinition.Scheme.HTTPS}						
+)
 @Api(value = "ws", tags = "SR")						
 public class ServiceManager extends HttpServlet {
 	/**					

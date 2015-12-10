@@ -34,22 +34,18 @@ import com.appspot.cloudserviceapi.common.JsonUtil;
 @SuppressWarnings("serial")
 @SwaggerDefinition(
         info = @Info(
-                title = "REST APIs",
-                description = "CRUD Front-Controller Servlet",
-                version = "0.0.1",
+                title = "",	//"NOT USED" c.f. web.xml's swagger.api.title
+                version = "V0.0.1",		//"NOT USED" c.f. web.xml's api.version
+                description = "CRUD Servlet",
                 termsOfService = "http://swagger.io/terms/",
                 contact = @Contact(name = "Adcoolguy", email = "apiteam@swagger.io", url = "http://swagger.io"),
                 license = @License(name = "Apache 2.0", url = "http://www.apache.org/licenses/LICENSE-2.0.html")
-        ),
-        consumes = {"application/json", "application/x-www-form-urlencoded"},
-        produces = {"application/json"},
-        schemes = {SwaggerDefinition.Scheme.HTTP, SwaggerDefinition.Scheme.HTTPS}
-//        ,
-//        tags = {
-//        		@Tag(name = "users", description = "Operations on a user"), 
-//        		@Tag(name = "movies", description = "Operations on a movie"),
-//        		@Tag(name = "movies", description = "Operations on a calendar")
-//        }
+        ),						
+        consumes = {"application/json", "application/x-www-form-urlencoded"},						
+        produces = {"application/json"}
+//        ,						
+//        host = "http://chudoon3t.appspot.com" /*AppEngine.getHostName()*/,	//"NOT USED" c.f. web.xml swagger.api.basepath (needs to be prefixed with http(s)!!!)
+//        schemes = {SwaggerDefinition.Scheme.HTTP, SwaggerDefinition.Scheme.HTTPS}						
 )
 @Api(value = "ws", tags = "2Share")
 public class CrudService extends HttpServlet {

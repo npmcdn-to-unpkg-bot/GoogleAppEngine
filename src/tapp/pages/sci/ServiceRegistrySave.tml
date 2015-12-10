@@ -392,7 +392,7 @@ Not sure why do I need two of description in order for it to show up :( ???
    	</form>
    	<p/>
 	<div style="display:${advancedUIDisplay};" lass="t-beaneditor-row collapsible" id="nav-section2">[Raw Content] - click to toggle between collapse and expand<span></span></div>
-	<div>
+	<div style="word-wrap:break-word;">
 		<t:beandisplay object="serviceRegistry" lean="true" include="id,lastUpdated,lastAccessed,description"/>
 	</div>
  </body>

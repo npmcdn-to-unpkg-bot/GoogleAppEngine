@@ -152,7 +152,7 @@
 	        <span style="margin:5px;float:right;">User ID: ${loggedInUser} (${userAssignedRole})    <t:actionlink t:id="logout">Logout</t:actionlink></span>
 	        <p/><p/>
 			<form style="display:${searchBoxDisplay};top:25px;right:0;" action="/sci/jsp/search_service.jsp">
-				<img style="height:12px;margin-right:4px;" src="/images/google-web-search-m.png" alt="Search Icon"/>Search (e.g. \.text\(\) AND \.val\(\)) <input type="text" name="q" id="q1" value="" style="margin:5px 10px 5px 0px;width:50px;min-width:150px;font-size:12px;"/><a href='http://lucene.apache.org/java/2_9_1/queryparsersyntax.html'>?</a>&nbsp;&nbsp;<a href='http://www.javaranch.com/journal/2004/04/Lucene.html'>Syntax</a>
+				<img style="height:12px;margin-right:4px;" src="/images/google-web-search-m.png" alt="Search Icon"/>Search <input type="text" name="q" id="q1" value="" style="margin:5px 10px 5px 0px;width:50px;min-width:150px;font-size:12px;"/><a href='http://lucene.apache.org/java/2_9_1/queryparsersyntax.html'>?</a>&nbsp;&nbsp;<a href='http://www.javaranch.com/journal/2004/04/Lucene.html'>Syntax</a>
 			</form>
     	</div>
         <p>
