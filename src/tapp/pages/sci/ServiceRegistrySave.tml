@@ -1,13 +1,14 @@
 <html t:type="layout" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd" xmlns:sec="http://www.springframework.org/security/tags" xmlns:p="tapestry:parameter">
  <head>
  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+ <meta name="viewport" content="user-scalable=no"/> <!-- source: https://developer.apple.com/library/ios/DOCUMENTATION/AppleApplications/Reference/SafariWebContent/UsingtheViewport/UsingtheViewport.html -->
  <title>Service Registry</title>
  <style type="text/css">
     /* iPhone 2G-4S in portrait and landscape (source: http://stephen.io/mediaqueries/) */
     @media only screen
     and (min-device-width : 320px)
     and (max-device-width : 480px) {
-    	#buttonCancel2 {
+    	#buttonCancel2, #buttonCancel2:focus {
     		position:absolute;
     		left:8px;
     	}
@@ -15,7 +16,7 @@
         	font-size: 48px;
         }
 		/** http://stackoverflow.com/questions/7073396/disable-zoom-on-input-focus-in-android-webpage */
-		input:focus {
+		input:focus, .nozoom {
 			font-size: 48px!important
 		}
 		#nav-section1, #nav-section2, #label1, #label2 {
@@ -393,8 +394,8 @@ Not sure why do I need two of description in order for it to show up :( ???
 		</t:parameter>
   		--> 
    	</form>
-   	<form>
-		<input id='buttonCancel2' type='button' value='Exit' onclick='javascript:location.href="/sci/serviceregistrystart";'/>
+   	<form class="nozoom">
+		<input id='buttonCancel2' type='button' value='Exit' onclick='javascript:location.href="/sci/serviceregistrystart";' />
    	</form>
    	<p/>
 	<div style="display:${advancedUIDisplay};" lass="t-beaneditor-row collapsible" id="nav-section2">[Raw Content] - click to toggle between collapse and expand<span></span></div>

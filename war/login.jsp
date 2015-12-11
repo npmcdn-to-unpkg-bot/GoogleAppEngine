@@ -6,11 +6,11 @@
 <html>
 <head>
     <title>C7i103k6</title>
-    <meta name="viewport" content="initial-scale=2.3, user-scalable=no"> <!-- source: https://developer.apple.com/library/ios/DOCUMENTATION/AppleApplications/Reference/SafariWebContent/UsingtheViewport/UsingtheViewport.html -->
+    <meta name="viewport" content="initial-scale=2.3, user-scalable=no, width=device-width"> <!-- source: https://developer.apple.com/library/ios/DOCUMENTATION/AppleApplications/Reference/SafariWebContent/UsingtheViewport/UsingtheViewport.html -->
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<style>
         body {
-            margin-left: 10px;
+            margin-left: 8px;
         }
         h2 {
             font-size: 1.2em;
@@ -26,6 +26,15 @@
         @-ms-viewport {
        		width: device-width;
 		}
+	    /* iPhone 2G-4S in portrait and landscape (source: http://stephen.io/mediaqueries/) */
+	    @media only screen
+	    and (min-device-width : 320px)
+	    and (max-device-width : 480px) {
+	        body {
+	            -webkit-text-size-adjust:80%;
+	            overflow-y: hidden;
+	        }
+	    }
 		@media (min-width:801px) { /* tablet, landscape iPad, lo-res laptops ands desktops */
 			h2 {
 			    font-size: 3.2em;
@@ -33,7 +42,6 @@
 			table {
 				font-size: 1.2em;
 				margin: 0 auto; /* or margin: 0 auto 0 auto */
-	            overflow-y: hidden;
 			}
 		}
 		@media (min-width:1025px) { /* big landscape tablets, laptops, and desktops */ 
