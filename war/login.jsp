@@ -33,6 +33,7 @@
 			table {
 				font-size: 1.2em;
 				margin: 0 auto; /* or margin: 0 auto 0 auto */
+	            overflow-y: hidden;
 			}
 		}
 		@media (min-width:1025px) { /* big landscape tablets, laptops, and desktops */ 
