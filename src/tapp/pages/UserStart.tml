@@ -2,6 +2,7 @@
 <html t:type="layout" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
     <head>
         <title>User</title>
+    	<meta name="viewport" content="user-scalable=no, width=device-width"/> <!-- source: https://developer.apple.com/library/ios/DOCUMENTATION/AppleApplications/Reference/SafariWebContent/UsingtheViewport/UsingtheViewport.html -->
     </head>
     <body>
         <h1>User Management</h1>
