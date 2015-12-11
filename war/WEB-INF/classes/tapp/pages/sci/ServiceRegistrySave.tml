@@ -9,7 +9,7 @@
     and (max-device-width : 480px) {
     	#buttonCancel2 {
     		position:absolute;
-    		left:15px;
+    		left:8px;
     	}
         *, .t-beaneditor, label, input[type="submit"], input[type="text"], textarea, .bck {
         	font-size: 48px;
@@ -272,8 +272,8 @@
   jQuery(document).ready(function() {
     //collapsible management
     jQuery('.collapsible').collapsible({
-      defaultClose: 'nav-section1',
-      defaultOpen: 'nav-section2'
+      defaultClose: 'nav-section2',
+      defaultOpen: 'nav-section1'
     });
 	//jQuery(".t-beaneditor-submit").attr("disabled", "disabled");
 	jQuery(".t-beaneditor-submit").hide();
@@ -302,10 +302,7 @@
  <body>
 	<sec:ifNotGranted roles="ROLE_ADMIN, ROLE_SCI_ADMIN">
 	</sec:ifNotGranted>
-   	<div style="margin:10px 5px 5px 2px;height:115px;display:inline;">
-   	<!--
-   	<div style="margin:10px 5px 5px 2px;height:115px;display:${backupServiceDisplay};">
-   	-->
+   	<div style="margin:0px 5px 5px 2px;height:115px;display:${backupServiceDisplay};">
    		<div id="label1">AppId [<span id="appid">${uniqueSID}</span>] Backup Service [<span id="host">${backupServiceHost}</span>] <a href="https://${backupServiceHost}/api/index.php/ServiceRegistry/${serviceRegistryService}-${uniqueSID}.xml">XML</a>&#160;<a href="https://${backupServiceHost}/api/index.php/ServiceRegistry/${serviceRegistryService}-${uniqueSID}.html">HTML</a>&#160;<a href="https://${backupServiceHost}/api/index.php/ServiceRegistry/${serviceRegistryService}-${uniqueSID}.txt">TXT</a>&#160;:</div>
 	   	<iframe style="width:100%;height:65px;" id="url_iframe" name="url_iframe" src="https://${backupServiceHost}/api/index.php/ServiceRegistry/${serviceRegistryService}-${uniqueSID}.xml"></iframe>
 		<label id="label1" for="backup1_1">ReqBack.:&#160;</label>
@@ -361,7 +358,7 @@ Not sure why do I need two of description in order for it to show up :( ???
 	 		<input t:type="TextArea" style="width:70%;height:180px;" t:id="description" t:value="serviceRegistry.description" />
  		</t:parameter>
  		<t:parameter name="description">
-	<div class="t-beaneditor-row collapsible" id="nav-section2">&#160;[Full Content] - click to toggle between collapse and expand<span></span></div>
+	<div class="t-beaneditor-row collapsible" id="nav-section1">&#160;[Full Content] - click to toggle between collapse and expand<span></span></div>
 	<div>
  	 		<label t:type="Label" for="description"/>
  	 		<!-- http://docs.cksource.com/CKEditor_3.x/Developers_Guide/Output_Formatting -->
