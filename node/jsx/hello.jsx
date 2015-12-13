@@ -6,4 +6,5 @@ var APP = React.createClass({
     }
 });
 
-React.render(<APP />, document.body);
+//React.render(<APP />, document.body);
+React.render(<APP />, document.getElementById('hello'));

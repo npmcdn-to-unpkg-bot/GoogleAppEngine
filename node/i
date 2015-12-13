@@ -5,3 +5,7 @@ npm install -S riot
 npm install --save react react-dom babelify babel-preset-react
 
 sudo npm i -g browserify
+
+sudo npm i -g htmltojsx
+
+sudo npm install

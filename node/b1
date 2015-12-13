@@ -1,1 +1,4 @@
-riot -w tags riotjs/all.js
+./html2tag
+
+#riot -w tags riotjs/all.js
+riot tags riotjs/all.js
