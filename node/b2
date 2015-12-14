@@ -1,3 +1,0 @@
-./html2react
-
-browserify -t [ babelify --presets [ react ] ] jsx/*.jsx -o reactjs/bundle.js
