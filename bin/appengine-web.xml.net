@@ -103,6 +103,8 @@
      	<include path="/app/resources/**/*.css" />
      	<!-- 2Share -->
      	<exclude path="/ws/*" />
+     	<!-- NPM stuff -->
+     	<exclude path="/n/node_modules**/*"/>
     </resource-files>
  	<admin-console>
  	    <!-- 3. https://developers.google.com/appengine/docs/java/tools/appstats

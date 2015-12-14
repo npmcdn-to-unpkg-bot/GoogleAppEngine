@@ -66,6 +66,8 @@
 		<exclude path="/**.php"/>
      	<!-- 2Share -->
      	<exclude path="/ws/*" />
+     	<!-- NPM stuff -->
+     	<exclude path="/n/node_modules**/*"/>
     </static-files>
     <!-- on the same server as the app server -->
 	<resource-files>
