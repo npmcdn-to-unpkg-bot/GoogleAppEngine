@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="http://tablestrap.com/css/bootstrap.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <!-- place the custom tag anywhere inside the body -->
+    <hello></hello>
+    <sr-start></sr-start>
+
+    <!-- include riot.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/riot/2.3.11/riot+compiler.min.js"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/riot/2.3.11/riot.min.js"></script>-->
+    <!-- include the tag -->
+    <script src="tags/hello.tag" type="riot/tag"></script>
+    <script src="tags/sr-start.tag" type="riot/tag"></script>
+    <!--<script src="riotjs/all.js" ype="riot/tag"></script>-->
+    <!-- mount the tag -->
+    <script>riot.mount('*')</script>
+    <script src="https://netflix.github.io/falcor/build/falcor.browser.js"></script>
+    <script>
+        var model = new falcor.Model({source: new falcor.HttpDataSource('/model.json') });
+        var log = console.log.bind(console);
+        model.getValue(["todosById", 44].concat(["name"])).then(log)
+
+    </script>
+</body>
+</html>

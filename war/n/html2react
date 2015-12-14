@@ -1,0 +1,5 @@
+htmltojsx -c SRStart html/sr-table.html > jsx/sr-start.jsx
+
+echo "" >> jsx/sr-start.jsx
+
+echo "React.render(<SRStart />, document.getElementById('sr-start'))" >> jsx/sr-start.jsx
