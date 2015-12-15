@@ -1,0 +1,12 @@
+{
+  "jsonGraph": {
+    "todosById": {
+      "44": {
+        "name": "get milk from corner store"
+      }
+    },
+    "todos": {
+      "0": { "$type": "ref", "value": ["todosById", 44] }
+    }
+  }
+}

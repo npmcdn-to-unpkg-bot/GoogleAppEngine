@@ -1,0 +1,19 @@
+{
+  "name": "node",
+  "description": "",
+  "main": "index.js",
+  "license": "ISC",
+  "homepage": "https://github.com/adcoolguy/GoogleAppEngine",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "js/bower_components/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "swagger-js": "~2.1.9"
+  }
+}
