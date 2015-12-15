@@ -34,7 +34,7 @@ import com.appspot.cloudserviceapi.common.JsonUtil;
 @SuppressWarnings("serial")
 @SwaggerDefinition(
         info = @Info(
-                title = "",	//"NOT USED" c.f. web.xml's swagger.api.title
+                title = "CrudService",	//"NOT USED" c.f. web.xml's swagger.api.title
                 version = "V0.0.1",		//"NOT USED" c.f. web.xml's api.version
                 description = "CRUD Servlet",
                 termsOfService = "http://swagger.io/terms/",
@@ -47,7 +47,7 @@ import com.appspot.cloudserviceapi.common.JsonUtil;
 //        host = "http://chudoon3t.appspot.com" /*AppEngine.getHostName()*/,	//"NOT USED" c.f. web.xml swagger.api.basepath (needs to be prefixed with http(s)!!!)
 //        schemes = {SwaggerDefinition.Scheme.HTTP, SwaggerDefinition.Scheme.HTTPS}						
 )
-@Api(value = "ws", tags = "2Share")
+@Api(value = "ws", tags = "2share")
 public class CrudService extends HttpServlet {
 	// === KISS: assume only one handler per object!
 	private static List<CrudServiceCallback> objectHandlers = new ArrayList<CrudServiceCallback>();

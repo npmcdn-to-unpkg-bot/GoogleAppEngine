@@ -151,7 +151,7 @@ Caused by: java.security.AccessControlException: access denied ("java.io.FilePer
             <param-value>cloudserviceapi;com.appspot.cloudserviceapi.springmvc.controller;tapp.model</param-value>
             <param-value>com.appspot.cloudserviceapi.springmvc.controller</param-value>
             -->
-            <param-value>cloudserviceapi</param-value>
+            <param-value>cloudserviceapi.app.controller</param-value>
         </init-param>
 		<init-param>
             <param-name>swagger.api.title</param-name>
@@ -897,7 +897,7 @@ java.lang.RuntimeException: Exception constructing service 'ApplicationContext':
   <servlet-class>com.google.api.server.spi.SystemServiceServlet</servlet-class>
   <init-param>
    <param-name>services</param-name>
-   <param-value>app.model.CalendarEndpoint,app.model.MovieEndpoint,app.model.UserEndpoint,cloudserviceapi.app.controller.CrudService,cloudserviceapi.app.controller.ServiceManager,com.appspot.cloudserviceapi.springmvc.controller.ServiceRegistryController,com.bkper.server.api.TransactionEndpoint,io.swagger.sample.servlet.SampleServlet,tapp.model.ServiceRegistryUserEndpoint</param-value>
+   <param-value>app.model.CalendarEndpoint,app.model.MovieEndpoint,app.model.UserEndpoint,cloudserviceapi.app.controller.CrudService,cloudserviceapi.app.controller.SRCrudService,com.bkper.server.api.TransactionEndpoint,io.swagger.sample.servlet.SampleServlet,tapp.model.ServiceRegistryUserEndpoint</param-value>
   </init-param>
  </servlet>
  <servlet-mapping>

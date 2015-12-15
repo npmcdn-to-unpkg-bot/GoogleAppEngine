@@ -1,4 +1,4 @@
-package com.appspot.cloudserviceapi.springmvc.controller;
+package cloudserviceapi.app.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -6,6 +6,10 @@ import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
+import io.swagger.annotations.Contact;
+import io.swagger.annotations.Info;
+import io.swagger.annotations.License;
+import io.swagger.annotations.SwaggerDefinition;
 
 import java.util.List;
 
@@ -32,18 +36,33 @@ import com.appspot.cloudserviceapi.sci.dao.ServiceRegistryRepository;
 @Controller
 @RequestMapping(value = "/fusr", headers="Accept=*/*")
 @Secured("ROLE_USER")
-@Api(value = "api", tags = "Service Registry")
-public class ServiceRegistryController {
+@SwaggerDefinition(
+        info = @Info(
+                title = "ServiceManager",	//"NOT USED" c.f. web.xml's swagger.api.title
+                version = "V0.0.1",		//"NOT USED" c.f. web.xml's api.version
+                description = "CRUD Servlet",
+                termsOfService = "http://swagger.io/terms/",
+                contact = @Contact(name = "Adcoolguy", email = "apiteam@swagger.io", url = "http://swagger.io"),
+                license = @License(name = "Apache 2.0", url = "http://www.apache.org/licenses/LICENSE-2.0.html")
+        ),						
+        consumes = {"application/json", "application/x-www-form-urlencoded"},						
+        produces = {"application/json"}
+//        ,						
+//        host = "http://chudoon3t.appspot.com" /*AppEngine.getHostName()*/,	//"NOT USED" c.f. web.xml swagger.api.basepath (needs to be prefixed with http(s)!!!)
+//        schemes = {SwaggerDefinition.Scheme.HTTP, SwaggerDefinition.Scheme.HTTPS}						
+)
+@Api(value = "fusr", tags = "sr")
+public class SRCrudService {
 	@Autowired
     ServiceRegistryRepository repository;
 
-    public ServiceRegistryController() {
+    public SRCrudService() {
     	JpaRepositoryFactory jpaRepositoryFactory = new JpaRepositoryFactory(EMF.get().createEntityManager());
 
     	repository = jpaRepositoryFactory.getRepository(ServiceRegistryRepository.class);
 	}
 
-	@ApiOperation(httpMethod = "GET", value = "Resource to get all Items", nickname="fusr")
+	@ApiOperation(httpMethod = "GET", value = "Resource to get all Items", nickname="/")
     @ApiImplicitParams({
 	    	@ApiImplicitParam(name = "pagaSize", defaultValue = "6", value = "Max item per page", required = false, dataType = "integer", paramType = "query"),
 	    	@ApiImplicitParam(name = "pageNumber", defaultValue = "0", value = "Current page number (start from 0)", required = false, dataType = "integer", paramType = "query")
@@ -58,7 +77,7 @@ public class ServiceRegistryController {
         return repository.findAll(pageable);
     }
 
-	@ApiOperation(httpMethod = "GET", value = "Resource to get an Item" , nickname="fusr/{id}")
+	@ApiOperation(httpMethod = "GET", value = "Resource to get an Item" , nickname="{id}")
     @ApiImplicitParams({
 	    	@ApiImplicitParam(name = "id", value = "Item unique id", required = true, dataType = "integer", paramType = "path")
     	}
@@ -72,7 +91,7 @@ public class ServiceRegistryController {
         return repository.findOne(id);
     }
 
-	@ApiOperation(httpMethod = "POST", value = "Resource to create/change an item" , nickname="fusr/save")
+	@ApiOperation(httpMethod = "POST", value = "Resource to create/change an item" , nickname="save")
 	@ApiImplicitParams({
 	    	@ApiImplicitParam(name = "sr", defaultValue = "", value = "Service Registry JSON object", required = true, dataType = "tapp.model.ServiceRegistry", paramType = "body")
 		}
@@ -99,7 +118,7 @@ public class ServiceRegistryController {
         return new ResponseEntity<ServiceRegistry>(HttpStatus.OK);
     }
 
-	@ApiOperation(httpMethod = "POST", value = "Resource to delete an Item" , nickname="fusr/delete/{id}")
+	@ApiOperation(httpMethod = "POST", value = "Resource to delete an Item" , nickname="delete/{id}")
     @ApiImplicitParams({
     	@ApiImplicitParam(name = "id", value = "Item unique id", required = true, dataType = "integer", paramType = "path")
     	}
