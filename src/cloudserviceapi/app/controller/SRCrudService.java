@@ -62,7 +62,7 @@ public class SRCrudService {
     	repository = jpaRepositoryFactory.getRepository(ServiceRegistryRepository.class);
 	}
 
-	@ApiOperation(httpMethod = "GET", value = "Resource to get all Items", nickname="/")
+	@ApiOperation(httpMethod = "GET", value = "Resource to get all Items", nickname="all")
     @ApiImplicitParams({
 	    	@ApiImplicitParam(name = "pagaSize", defaultValue = "6", value = "Max item per page", required = false, dataType = "integer", paramType = "query"),
 	    	@ApiImplicitParam(name = "pageNumber", defaultValue = "0", value = "Current page number (start from 0)", required = false, dataType = "integer", paramType = "query")

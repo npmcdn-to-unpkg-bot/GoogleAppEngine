@@ -250,7 +250,7 @@ public class CrudService extends HttpServlet {
 	        @ApiImplicitParam(name = "uid", defaultValue = "test", value = "User ID", required = true, dataType = "string", paramType = "form"),
 	        @ApiImplicitParam(allowableValues="modelMovie,modelUser,modelCalendar", name = "type", value = "Item type", required = true, dataType = "string", paramType = "form"),
 	        @ApiImplicitParam(allowableValues="create,update,delete", name = "action", value = "Action to be performed on item(s)", required = false, dataType = "string", paramType = "form"),
-	        @ApiImplicitParam(allowableValues="next5", name = "filter", value = "Item filter", required = false, dataType = "string", paramType = "form"),
+	        @ApiImplicitParam(/*allowableValues="next5",*/ name = "filter", value = "Item filter e.g. next5", required = false, dataType = "string", paramType = "form"),
 			@ApiImplicitParam(name = "id", value = "Item ID", required = false, dataType = "string", paramType = "form"),
 			@ApiImplicitParam(name = "name", value = "Item name", required = false, dataType = "string", paramType = "form"),
 			@ApiImplicitParam(name = "title", value = "Item title", required = false, dataType = "string", paramType = "form"),
