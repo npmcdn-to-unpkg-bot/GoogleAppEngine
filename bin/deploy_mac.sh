@@ -1,7 +1,7 @@
 #! /usr/bin/env bash
 
 #Need to create soft link to your GAEJ home e.g.
-#ln -s /Applications/appengine-java-sdk-1.8.7 /appengine-java-sdk
+#ln -s /Applications/appengine-java-sdk-1.9.30 /appengine-java-sdk
 #sudo ln -s /Applications/appengine-java-sdk-1.8.8 /appengine-java-sdk
 #ln -s '/Users/ag/demo' /project_home
 #sudo chmod 755 /appengine-java-sdk/bin/appcfg.sh
