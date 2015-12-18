@@ -105,7 +105,8 @@
      	<include path="/app/resources/**/*.css" />
      	<!-- 2Share -->
      	<exclude path="/ws/*" />
-     	<!-- NPM stuff -->
+     	<!-- N stuff -->
+     	<include path="/fusr/*" />
      	<exclude path="/n/node_modules**/*"/>
     </resource-files>
  	<admin-console>

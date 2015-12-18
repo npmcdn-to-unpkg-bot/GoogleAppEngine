@@ -51,7 +51,7 @@ import com.appspot.cloudserviceapi.sci.dao.ServiceRegistryRepository;
 //        host = "http://chudoon3t.appspot.com" /*AppEngine.getHostName()*/,	//"NOT USED" c.f. web.xml swagger.api.basepath (needs to be prefixed with http(s)!!!)
 //        schemes = {SwaggerDefinition.Scheme.HTTP, SwaggerDefinition.Scheme.HTTPS}						
 )
-@Api(value = "fusr", tags = "sr")
+@Api(value = "api/fusr", tags = "sr")
 public class SRCrudService {
 	@Autowired
     ServiceRegistryRepository repository;
@@ -72,7 +72,7 @@ public class SRCrudService {
 			@ApiResponse(code = 200, message = "Success")
 		}
 	)
-	@RequestMapping(method = RequestMethod.GET, produces = "application/json")
+	@RequestMapping(value = "/all", method = RequestMethod.GET, produces = "application/json")
     public @ResponseBody Page<ServiceRegistry> getAllPlayers(Pageable pageable) {
         return repository.findAll(pageable);
     }

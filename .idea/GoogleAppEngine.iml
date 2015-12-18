@@ -12,5 +12,6 @@
     <orderEntry type="library" name="leapstrap" level="application" />
     <orderEntry type="library" name="jquery" level="application" />
     <orderEntry type="library" name="riot" level="application" />
+    <orderEntry type="library" name="angular" level="application" />
   </component>
 </module>

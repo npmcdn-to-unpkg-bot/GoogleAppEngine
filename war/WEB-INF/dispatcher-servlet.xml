@@ -18,7 +18,7 @@
     <!-- context:component-scan base-package="com.appspot.cloudserviceapi.springmvc" -->
 	<bean name="/hello" class="com.appspot.cloudserviceapi.springmvc.controller.HelloController"></bean>
 	<bean name="/service" class="com.appspot.cloudserviceapi.springmvc.controller.HelloRestController"></bean>
- 	<bean name="fusr" class="cloudserviceapi.app.controller.SRCrudService"></bean>
+ 	<bean name="/fusr" class="cloudserviceapi.app.controller.SRCrudService"></bean>
 
  	<bean id="jspViewResolver"
           class="org.springframework.web.servlet.view.InternalResourceViewResolver"

@@ -56,8 +56,6 @@
      	<include path="/CSS3Accordion/**.js" />
      	<include path="/CSS3Accordion/**/*.*" />
      	<include path="/angularjs/**.js" />  
-		<!-- n stuff -->
-     	<include path="/n/**/*" />     	   	
      	<!-- GU stuff -->
 		<include path="/static/**.html" />
       	<include path="/sgc/html/pc/css/style.css" />
@@ -66,11 +64,15 @@
 		<exclude path="/**.php"/>
      	<!-- 2Share -->
      	<exclude path="/ws/*" />
-     	<!-- NPM stuff -->
+     	<!-- n stuff -->
+     	<include path="/n/**/*"/>
      	<exclude path="/n/node_modules**/*"/>
     </static-files>
     <!-- on the same server as the app server -->
 	<resource-files>
+       	<!-- n stuff -->
+       	<include path="/error/custom_error.html" />
+	    <include path="/fusr/**" />
       	<!-- swagger stuff -->
       	<include path="/index_api.html" />
 		<!-- GU stuff -->

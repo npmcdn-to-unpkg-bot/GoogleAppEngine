@@ -5,13 +5,17 @@ Why?
 What else I need to know?
 . To ensure compatibility between the future's Web Component, please define all custom element names with more than one words separated by a hypen e.g. my-first-element!
 
+Apimatic (AngularJS)
+. c.f. https://apimatic.zendesk.com/hc/en-us/articles/210119918-Using-your-generated-Angular-JS-SDK
+. Apimatic artifacts were generated based on /swagger/swagger.json, renamed from ServiceManager-AngularJS to apimatic and moved into js/
+
 Swagger Client
 . The JavaScript client is based on https://www.npmjs.com/package/swagger-client
 
 FalcorJS
 . It is experimental and it is not ready (due to a need to have the JSON response in a form of JSONGraph mainly)
 
-Useful Resources:
+Other Useful Resources:
 
 https://facebook.github.io/react/html-jsx.html
 
