@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link href="http://tablestrap.com/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="../n_/assets/libs/bootstrap/3.1.0/styles/bootstrap.min.css" rel="stylesheet" type="text/css">
 </head>
 <body>
     <!-- place the custom tag anywhere inside the body -->
@@ -12,8 +12,9 @@
     <div id="mydata"></div>
 
     <!-- include riot.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/riot/2.3.11/riot+compiler.min.js"></script>
-    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/riot/2.3.11/riot.min.js"></script>-->
+    <!--- NOTES: YOU CAN NOT LOAD BOTH COMPILER and RIOT - YOU CAN ONLY LOAD ONE! --->
+    <script src="riotjs/2.3.11/riot+compiler.min.js"></script>
+    <!--<script src="riotjs/2.3.11/riot.js"></script>-->
     <!-- include the tag -->
     <script src="tags/hello.tag" type="riot/tag"></script>
     <script src="tags/sr-start.tag" type="riot/tag"></script>

@@ -13,5 +13,8 @@
     <orderEntry type="library" name="jquery" level="application" />
     <orderEntry type="library" name="riot" level="application" />
     <orderEntry type="library" name="angular" level="application" />
+    <orderEntry type="library" name="react" level="application" />
+    <orderEntry type="library" name="JSXTransformer" level="application" />
+    <orderEntry type="library" name="riot+compiler" level="application" />
   </component>
 </module>
