@@ -14,6 +14,7 @@
     "tests"
   ],
   "dependencies": {
-    "swagger-js": "~2.1.9"
+    "swagger-js": "~2.1.9",
+    "urijs": "uri.js#~1.17.0"
   }
 }

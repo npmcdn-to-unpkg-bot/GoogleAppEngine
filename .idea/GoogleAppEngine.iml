@@ -16,5 +16,6 @@
     <orderEntry type="library" name="react" level="application" />
     <orderEntry type="library" name="JSXTransformer" level="application" />
     <orderEntry type="library" name="riot+compiler" level="application" />
+    <orderEntry type="library" name="bootstrap" level="application" />
   </component>
 </module>
