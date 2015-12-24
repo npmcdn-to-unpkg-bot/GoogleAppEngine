@@ -32,7 +32,10 @@ import com.appspot.cloudserviceapi.sci.dao.ServiceRegistryDAO;
 import com.appspot.cloudserviceapi.sci.dao.ServiceRegistryRepository;
 
 @Controller
-@RequestMapping(value = "/fusr", headers="Accept=*/*", method = {RequestMethod.GET, RequestMethod.POST})
+@RequestMapping(value = "/fusr", 
+consumes={"text/plain", "application/json", "*/*"},
+produces={"application/json", "*/*"},
+method = {RequestMethod.GET, RequestMethod.POST})
 @Secured("ROLE_USER")
 @SwaggerDefinition(
         info = @Info(
@@ -99,9 +102,9 @@ public class SRCrudService {
 			@ApiResponse(code = 401, message = "Failure")
 		}
 	)
-    @RequestMapping(value= "/save", method = RequestMethod.POST)
+    @RequestMapping(value= "/save", method = RequestMethod.POST, consumes = {"application/json;charset=UTF-8"}, produces = {"application/json;charset=UTF-8"})
 	@Secured("ROLE_ADMIN")
-    public ResponseEntity<ServiceRegistry> createOrUpdate(@RequestBody ServiceRegistry sr){
+    public @ResponseBody ResponseEntity<ServiceRegistry> createOrUpdate(@RequestBody ServiceRegistry sr){
         try{
             if (sr != null){
             	//repository.save(sr);
@@ -126,9 +129,9 @@ public class SRCrudService {
 			@ApiResponse(code = 401, message = "Failure")
 		}
 	)
-    @RequestMapping(value= "/delete/{id}", method = RequestMethod.POST)
+    @RequestMapping(value= "/delete/{id}", method = RequestMethod.POST, produces = {"application/json"})
 	@Secured("ROLE_ADMIN")
-    public ResponseEntity<ServiceRegistry> delete(@PathVariable Long id) {
+    public @ResponseBody ResponseEntity<ServiceRegistry> delete(@PathVariable Long id) {
         System.out.println("REST request to delete ServiceRegistry: " + id);
         try{
             if (id > -1){
