@@ -11,8 +11,6 @@ import io.swagger.annotations.Info;
 import io.swagger.annotations.License;
 import io.swagger.annotations.SwaggerDefinition;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -34,7 +32,7 @@ import com.appspot.cloudserviceapi.sci.dao.ServiceRegistryDAO;
 import com.appspot.cloudserviceapi.sci.dao.ServiceRegistryRepository;
 
 @Controller
-@RequestMapping(value = "/fusr", headers="Accept=*/*")
+@RequestMapping(value = "/fusr", headers="Accept=*/*", method = {RequestMethod.GET, RequestMethod.POST})
 @Secured("ROLE_USER")
 @SwaggerDefinition(
         info = @Info(
