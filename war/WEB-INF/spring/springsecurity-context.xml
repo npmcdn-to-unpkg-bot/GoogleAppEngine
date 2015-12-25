@@ -78,9 +78,11 @@
 	<http pattern="/remote_api" security="none"/>
 	<http pattern="/_ah/remote_api" security="none"/>
 	<http pattern="/tpl/**" security="none"/>
-	<http pattern="/g/owasp/**" security="none"/>
+<!--
+ 	<http pattern="/g/owasp/**" security="none"/>
 	<http pattern="/g/app/**" security="none"/>
-	<http pattern="/g/social/**" security="none"/>
+ -->
+ 	<http pattern="/g/social/**" security="none"/>
 	<http pattern="/jsp/g/search_owasp.jsp" security="none"/>
 	<http pattern="/jsp/g/search_template.jsp" security="none"/>
 	<http pattern="/jsp/g/search_social.jsp" security="none"/>

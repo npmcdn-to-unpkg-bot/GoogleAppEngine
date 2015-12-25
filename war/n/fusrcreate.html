@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="srApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Create</title>
+    <link href="../n_/assets/libs/bootstrap/3.1.0/styles/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <style>
+        .form-horizontal input {
+            margin-left: 20px;
+        }
+    </style>
+    <!--<script src="http://code.jquery.com/jquery.min.js"></script>-->
+    <!--<script src="http://getbootstrap.com/dist/js/bootstrap.js"></script>-->
+    <script src="../js/bower_components/angular/angular.js"></script>
+    <!-- Helper files -->
+    <script src="js/apimatic/servicemanagerlib/Configuration.js"></script>
+    <script src="js/apimatic/servicemanagerlib/APIHelper.js"></script>
+    <script src="js/apimatic/servicemanagerlib/Http/Client/HttpContext.js"></script>
+    <script src="js/apimatic/servicemanagerlib/Http/Client/RequestClient.js"></script>
+    <script src="js/apimatic/servicemanagerlib/Http/Request/HttpRequest.js"></script>
+    <script src="js/apimatic/servicemanagerlib/Http/Response/HttpResponse.js"></script>
+
+    <!-- API Controllers -->
+    <script src="js/apimatic/servicemanagerlib/Controllers/SrController.js"></script>
+    <script src="js/apimatic/servicemanagerlib/Controllers/M2shareController.js"></script>
+
+    <!-- Models -->
+    <script src="js/apimatic/servicemanagerlib/Models/BaseModel.js"></script>
+    <script src="js/apimatic/servicemanagerlib/Models/Action14Enum.js"></script>
+    <script src="js/apimatic/servicemanagerlib/Models/CategoryEnum.js"></script>
+    <script src="js/apimatic/servicemanagerlib/Models/ActionEnum.js"></script>
+    <script src="js/apimatic/servicemanagerlib/Models/ServiceRegistry.js"></script>
+    <script src="js/apimatic/servicemanagerlib/Models/TypeEnum.js"></script>
+    <script src="js/apimatic/servicemanagerlib/Models/FilterEnum.js"></script>
+
+    <!-- Utils -->
+    <script src="js/bower_components/urijs/src/URI.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div ng-controller="PageCtrl as page">
+
+        <h1>Service Manager - Create</h1><br>
+        <!--<scan>{{message}}</scan>-->
+
+        <form class="form-horizontal" role="form">
+            <div class="form-group row">
+                <div class="control-group">
+                    <label for="title" class="col-sm-2 control-label">Service:</label>
+                        <input type="text" class="col-sm-10 form-control" id="title" ng-enter="page.createItem()" required ng-model="page.service" placeholder="Enter any easy to remember service name.">
+                </div>
+                <div class="control-group">
+                    <label for="desc" class="col-sm-2 control-label">Description:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="desc" ng-enter="page.createItem()" ng-model="page.description">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label for="endpoint" class="col-sm-2 control-label">URL:</label>
+                    <div class="col-sm-10">
+                        <input type="url" class="form-control" id="endpoint" ng-enter="page.createItem()" required ng-model="page.endpoint" placeholder="Enter any valid URL e.g. http://www.google.com.">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label for="createItem" class="col-sm-2 control-label"></label>
+                    <div class="col-sm-10">
+                        <input type="hidden" name="_method" value="POST">
+                        <input class="form-control btn btn-primary" id="createItem" type="submit" style="background:#98969E;"
+                           value="Save" ng-click="page.createItem()">
+                        <input class="form-control btn" id="cancelItem" value="Cancel" type="button" onclick="location.href='fusrstart.html'">
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+    <script>
+        var myApp = angular.module('srApp', ['ServiceManagerLib'])
+        myApp.controller('PageCtrl',function($scope,SrController) {
+            var self = this;
+            var qs = URI(location.href).query(true); // == e.g. { id : 4529987906437120 }
+//            console.log(qs);
+//            self.id = 0;
+            self.service = '';
+            self.description = '';
+            self.endpoint = '';
+
+            this.createItem = function() {
+                var input4createSave;
+                var json = {
+                    id: self.id,
+                    service: self.service,
+                    description: self.description,
+                    endpoint: self.endpoint
+                };
+                console.log(json);
+                input4createSave = {
+                    operation : "SrController.createSave",
+                    "json": json
+                }
+
+                SrController.createSave(input4createSave.json).then(function (result) {
+                    if(result == '') {
+                        location.href = "fusrstart.html";
+                    }
+                }, function (error) {
+                    console.log("Error encountered! Please try again.")
+                });
+            };
+
+//            console.log(qs);
+        })
+    </script>
+</body>
+</html>

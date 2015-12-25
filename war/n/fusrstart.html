@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="srApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Start</title>
+    <link href="../n_/assets/libs/bootstrap/3.1.0/styles/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <!--<script src="http://code.jquery.com/jquery.min.js"></script>-->
+    <!--<script src="http://getbootstrap.com/dist/js/bootstrap.js"></script>-->
+    <script src="../js/bower_components/angular/angular.min.js"></script>
+    <!-- Helper files -->
+    <script src="js/apimatic/servicemanagerlib/Configuration.js"></script>
+    <script src="js/apimatic/servicemanagerlib/APIHelper.js"></script>
+    <script src="js/apimatic/servicemanagerlib/Http/Client/HttpContext.js"></script>
+    <script src="js/apimatic/servicemanagerlib/Http/Client/RequestClient.js"></script>
+    <script src="js/apimatic/servicemanagerlib/Http/Request/HttpRequest.js"></script>
+    <script src="js/apimatic/servicemanagerlib/Http/Response/HttpResponse.js"></script>
+
+    <!-- API Controllers -->
+    <script src="js/apimatic/servicemanagerlib/Controllers/SrController.js"></script>
+    <script src="js/apimatic/servicemanagerlib/Controllers/M2shareController.js"></script>
+
+    <!-- Models -->
+    <script src="js/apimatic/servicemanagerlib/Models/BaseModel.js"></script>
+    <script src="js/apimatic/servicemanagerlib/Models/Action14Enum.js"></script>
+    <script src="js/apimatic/servicemanagerlib/Models/CategoryEnum.js"></script>
+    <script src="js/apimatic/servicemanagerlib/Models/ActionEnum.js"></script>
+    <script src="js/apimatic/servicemanagerlib/Models/ServiceRegistry.js"></script>
+    <script src="js/apimatic/servicemanagerlib/Models/TypeEnum.js"></script>
+    <script src="js/apimatic/servicemanagerlib/Models/FilterEnum.js"></script>
+</head>
+<body>
+    <div ng-controller="PageCtrl as page">
+
+        <h1>Service Manager</h1><br>
+        <!--<scan>{{message}}</scan>-->
+
+        <h4><a href="fusrcreate.html?id=0">Create New</a></h4>
+        <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr><td>ID</td><td>SERV</td><td>DESCRIPTION</td><td>S URL</td><td>VIS</td><td>UPT</td><td>ENDPOINT</td><td>HIT</td></tr>
+            </thead>
+            <tbody ng:repeat="i in srs.content">
+                <tr><td><a href="fusrupdate.html?id={{i.id}}">{{i.id}}</a></td><td>{{i.service}}</td><td>{{i.description}}</td><td>{{i.url}}</td><td>{{i.lastAccessed}}</td><td>{{i.lastUpdated}}</td><td>{{i.endpoint}}</td><td>{{i.hit}}</td></tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+    <script>
+        var myApp = angular.module('srApp', ['ServiceManagerLib'])
+        myApp.controller('PageCtrl',function($scope,SrController) {
+            var input = {
+                operation : "SrController.getAll",
+                pagaSize : 25,
+                pageNumber : 1
+            }
+
+            SrController.getAll(input.pagaSize,input.pageNumber).then(function(result){
+    
+                $scope.message = "The  "+input.operation +" of "+input.pagaSize +" and "+ input.pageNumber+" is "+result
+                $scope.srs = result;
+//                console.log($scope.srs);
+
+            }, function(error){
+                console.log("Error encountered! Please try again.")
+            })
+        })
+    </script>
+</body>
+</html>
