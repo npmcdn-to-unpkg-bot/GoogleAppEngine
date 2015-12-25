@@ -16,6 +16,7 @@ JSON Web Token (JWT)
 . The working codes are based on http://niels.nu/blog/2015/json-web-tokens.html
 . JWT protected api has to be /api/jwt/* as /api is already reserved for Spring MVC api (which is not JWT-enabled), aka /api/jwt/* are JWT-enabled REST services while /api/* where * is not jwt is not!
 . The configurations are done inside dispatcher-servlet.xml, web.xml as well as via @RequestMapping of UserController and ApiController
+. It's main dependency (if you are not using Maven, obviously this project does not use Maven), is https://github.com/jwtk/jjwt e.g. jjwt-0.7.0-SNAPSHOT.jar
 
 FalcorJS
 . It is experimental and it is not ready (due to a need to have the JSON response in a form of JSONGraph mainly)
