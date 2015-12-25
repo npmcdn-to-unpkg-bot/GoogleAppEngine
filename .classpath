@@ -4,7 +4,6 @@
 	<classpathentry kind="src" path="test"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/slf4j-api-1.6.1.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/compass-2.3.0-beta1.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/joda-time-1.6.2.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/httpclient-4.1.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/httpclient-cache-4.1.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/httpcore-4.1.jar"/>
@@ -34,6 +33,7 @@
 	<classpathentry kind="lib" path="war/WEB-INF/lib/jackson-mapper-asl-1.9.13.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/jackson-jaxrs-base-2.4.5.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/jackson-core-asl-1.9.13.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/jwt-angular-spring-0.0.1-SNAPSHOT-jar-with-dependencies.jar"/>
 	<classpathentry kind="con" path="com.google.appengine.eclipse.core.GAE_CONTAINER"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/spring-aop-4.0.7.RELEASE.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/spring-aspects-4.0.0.RELEASE.jar"/>
@@ -79,5 +79,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Swagger"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Jetty"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/joda-time-2.2.jar"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>

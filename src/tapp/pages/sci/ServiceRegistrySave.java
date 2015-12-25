@@ -164,7 +164,7 @@ public class ServiceRegistrySave {
 					//System.out.println("desc " + myBean.getDescription());
 					//myBean.setService(chosenService);
 					beanManager.save(myBean);
-					incrementTotalCount();
+//					incrementTotalCount();
 
 					System.out.println("service [" + myBean.getService() + "] saved");
 //				} else {

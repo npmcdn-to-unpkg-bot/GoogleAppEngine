@@ -615,7 +615,7 @@ Spring Optimization -
 
 Please review https://cloud.google.com/appengine/articles/spring_optimization, it's good to know that <constructor-arg name is discouraged etc.
 
-Also for component scan, besides the tag, check for and avoid @ComponentScan annotation too if possible.
+Also for component scan i.e. context:component-scan is not used, besides the tag, check for and avoid @ComponentScan annotation too if possible.
 
 
 Compass Issue -

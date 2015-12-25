@@ -19,7 +19,10 @@
 	<bean name="/hello" class="com.appspot.cloudserviceapi.springmvc.controller.HelloController"></bean>
 	<bean name="/service" class="com.appspot.cloudserviceapi.springmvc.controller.HelloRestController"></bean>
  	<bean name="/fusr" class="cloudserviceapi.app.controller.SRCrudService"></bean>
-
+ 	<!-- JWT-enabled APIs -->
+ 	<bean name="/user" class="com.nibado.example.jwtangspr.UserController"></bean>
+ 	<bean name="/jwt" class="com.nibado.example.jwtangspr.ApiController"></bean>
+ 	
  	<bean id="jspViewResolver"
           class="org.springframework.web.servlet.view.InternalResourceViewResolver"
           p:prefix="/WEB-INF/jsp/"

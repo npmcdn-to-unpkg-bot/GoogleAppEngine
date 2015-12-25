@@ -188,6 +188,15 @@ Caused by: java.security.AccessControlException: access denied ("java.io.FilePer
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
+   	<!-- Json Web Token (JWT) filter -->
+    <filter>
+        <filter-name>JwtFilter</filter-name>
+        <filter-class>com.nibado.example.jwtangspr.JwtFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>JwtFilter</filter-name>
+        <url-pattern>/api/jwt/*</url-pattern>
+    </filter-mapping>
 
 <!-- Spring MVC stuff -->
 	<context-param>

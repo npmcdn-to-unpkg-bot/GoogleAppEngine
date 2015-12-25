@@ -63,6 +63,7 @@
       	<include path="/sgc/html/pc/css/style.css" />
       	<include path="/sgc/css/style.css" />
      	<!-- n stuff -->
+     	<include path="/n/*"/>
      	<include path="/n/**/*"/>
       	<!-- crud stuff -->
 		<exclude path="/**.php"/>
