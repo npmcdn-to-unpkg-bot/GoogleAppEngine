@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <title>Start</title>
     <link href="js/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <!--<script src="js/bower_components/jquery/dist/jquery.min.js"></script>-->
+    <script src="js/bower_components/jquery/dist/jquery.min.js"></script>
     <!--<script src="js/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>-->
-    <script src="js/bower_components/angular/angular.min.js"></script>
+    <script src="js/bower_components/angular/angular.js"></script>
+
     <!-- Helper files -->
     <script src="js/apimatic/servicemanagerlib/Configuration.js"></script>
     <script src="js/apimatic/servicemanagerlib/APIHelper.js"></script>
@@ -27,11 +28,24 @@
     <script src="js/apimatic/servicemanagerlib/Models/ServiceRegistry.js"></script>
     <script src="js/apimatic/servicemanagerlib/Models/TypeEnum.js"></script>
     <script src="js/apimatic/servicemanagerlib/Models/FilterEnum.js"></script>
+    <!-- Main (home) app -->
+    <script src="app.js"></script>
 </head>
 <body>
+    <div class="row">
+        <div>
+            <div class="col-lg-6 col-xs-6"><h1>Service Manager</h1><br></div>
+            <div class="col-lg-6 col-xs-6">
+                <div class="col-lg-2 col-lg-push-10 col-md-2 col-md-push-0 col-sm-2 col-sm-push-0 col-xs-2 col-xs-push-0">
+                    <div id="mainCtrl" ng-controller="MainCtrl" class="pull-right">
+                        <h3><span class="label label-success">Success!</span><p><p> Welcome {{userName}}</h3>
+                        <a href ng-click="logout()">(logout)</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div ng-controller="PageCtrl as page">
-
-        <h1>Service Manager</h1><br>
         <!--<scan>{{message}}</scan>-->
 
         <h4><a href="fusrcreate.html?id=0">Create New</a></h4>
@@ -46,25 +60,33 @@
         </table>
         </div>
     </div>
+    <!-- SR app -->
     <script>
-        var myApp = angular.module('srApp', ['ServiceManagerLib'])
-        myApp.controller('PageCtrl',function($scope,SrController) {
+        <!-- override the settings with the current host/deployed env -->
+        angular.module('ServiceManagerLib').factory('Configuration', function() {
+            return {
+                BASEURI : location.origin
+            };
+        });
+        angular.module('srApp', ['ServiceManagerLib','myApp'])
+        .controller('PageCtrl',function($scope,SrController) {
             var input = {
                 operation : "SrController.getAll",
                 pagaSize : 25,
                 pageNumber : 1
-            }
+            };
 
             SrController.getAll(input.pagaSize,input.pageNumber).then(function(result){
     
-                $scope.message = "The  "+input.operation +" of "+input.pagaSize +" and "+ input.pageNumber+" is "+result
+                $scope.message = "The  "+input.operation +" of "+input.pagaSize +" and "+ input.pageNumber+" is "+result;
                 $scope.srs = result;
 //                console.log($scope.srs);
 
             }, function(error){
-                console.log("Error encountered! Please try again.")
+                console.log("Error '" + error + "' encountered! Please try again.")
             })
-        })
+        });
+
     </script>
 </body>
 </html>

@@ -1,7 +1,6 @@
-var appModule = angular.module('myApp', []);
-
-appModule.controller('MainCtrl', ['mainService','$scope','$http',
-        function(mainService, $scope, $http) {
+angular.module('myApp', [])
+    .controller('MainCtrl', ['mainService','$scope','$http',
+        function(mainService, $scope, $http, $compile) {
             $scope.greeting = 'Welcome to the JSON Web Token / AngularJR / Spring example!';
             $scope.token = null;
             $scope.error = null;
@@ -32,28 +31,32 @@ appModule.controller('MainCtrl', ['mainService','$scope','$http',
                 $scope.userName = '';
                 $scope.token = null;
                 $http.defaults.headers.common.Authorization = '';
+                location.href = "index.html";
             }
 
             $scope.loggedIn = function() {
+                if($scope.token !== null) location.href = "fusrstart.html";
                 return $scope.token !== null;
             }
-        } ]);
 
+            $scope.enter = function() {
+                location.href='fusrstart.html';
+            }
 
+        } ])
+    .service('mainService', function($http) {
+        return {
+            login : function(username) {
+                return $http.post('/api/user/login', {name: username}).then(function(response) {
+                    return response.data.token;
+                });
+            },
 
-appModule.service('mainService', function($http) {
-    return {
-        login : function(username) {
-            return $http.post('/api/user/login', {name: username}).then(function(response) {
-                return response.data.token;
-            });
-        },
-
-        hasRole : function(role) {
-            return $http.get('/api/jwt/role/' + role).then(function(response){
-                console.log(response);
-                return response.data;
-            });
-        }
-    };
-});
+            hasRole : function(role) {
+                return $http.get('/api/jwt/role/' + role).then(function(response){
+                    console.log(response);
+                    return response.data;
+                });
+            }
+        };
+    });
