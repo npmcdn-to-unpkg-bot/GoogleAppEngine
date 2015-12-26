@@ -1,5 +1,6 @@
 package cloudserviceapi.app.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import io.swagger.annotations.Api;
@@ -120,6 +121,9 @@ public class SRCrudService {
         try{
             if (sr != null){
             	//repository.save(sr);
+            	if(sr.getLastUpdated() == null) {
+            		sr.setLastUpdated(new Date());
+            	}
         		(new ServiceRegistryDAO()).save(sr);
             }
         }
