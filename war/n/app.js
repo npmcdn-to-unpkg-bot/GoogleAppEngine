@@ -1,3 +1,4 @@
+<!-- JWT and navigations stuff -->
 angular.module('myApp', [])
     .controller('MainCtrl', ['mainService','$scope','$http',
         function(mainService, $scope, $http, $compile) {

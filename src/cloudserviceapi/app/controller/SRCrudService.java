@@ -1,5 +1,7 @@
 package cloudserviceapi.app.controller;
 
+import java.util.List;
+
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -13,12 +15,17 @@ import io.swagger.annotations.SwaggerDefinition;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
+import org.springframework.data.domain.Sort.Order;
 import org.springframework.data.jpa.repository.support.JpaRepositoryFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,6 +37,7 @@ import tapp.model.ServiceRegistry;
 import com.appspot.cloudserviceapi.data.EMF;
 import com.appspot.cloudserviceapi.sci.dao.ServiceRegistryDAO;
 import com.appspot.cloudserviceapi.sci.dao.ServiceRegistryRepository;
+import com.appspot.cloudserviceapi.sci.dao.SortedServiceRegistryImpl;
 
 @Controller
 @RequestMapping(value = "/fusr", 
@@ -54,13 +62,16 @@ method = {RequestMethod.GET, RequestMethod.POST})
 )
 @Api(value = "api/fusr", tags = "sr")
 public class SRCrudService {
-	@Autowired
+//	@Autowired
     ServiceRegistryRepository repository;
+    SortedServiceRegistryImpl sortedRepository;
 
     public SRCrudService() {
     	JpaRepositoryFactory jpaRepositoryFactory = new JpaRepositoryFactory(EMF.get().createEntityManager());
 
     	repository = jpaRepositoryFactory.getRepository(ServiceRegistryRepository.class);
+    	
+    	sortedRepository = new SortedServiceRegistryImpl(repository);
 	}
 
 	@ApiOperation(httpMethod = "GET", value = "Resource to get all Items", nickname="all")
@@ -75,7 +86,8 @@ public class SRCrudService {
 	)
 	@RequestMapping(value = "/all", method = RequestMethod.GET, produces = "application/json")
     public @ResponseBody Page<ServiceRegistry> getAllPlayers(Pageable pageable) {
-        return repository.findAll(pageable);
+//        return repository.findAll(pageable);
+        return sortedRepository.findAll(pageable);
     }
 
 	@ApiOperation(httpMethod = "GET", value = "Resource to get an Item" , nickname="{id}")

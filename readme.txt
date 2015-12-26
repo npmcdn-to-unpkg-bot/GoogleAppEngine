@@ -57,7 +57,7 @@ $$$$$$ Third-Party/OSS Integrations $$$$$$
 . Google's UserService, URLFetch and Calendar Service
 . Spring Core 4.0.7
 . Spring Security 3.2.5
-. Spring Data JPA 1.3.0 (http://tommysiu.blogspot.com/2014/01/spring-data-on-gae-part-1.html)
+. Spring Data JPA 1.3.0 (http://tommysiu.blogspot.com/2014/01/spring-data-on-gae-part-1.html and http://www.petrikainulainen.net/programming/spring-framework/spring-data-jpa-tutorial-part-eight-adding-functionality-to-a-repository/)
 . Tapestry Spring Security (https://github.com/antalk/Tapestry-Spring-Security)
 . POI
 . Compass/Lucene 2.4.1 (JDO only)

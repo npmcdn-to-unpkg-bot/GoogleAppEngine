@@ -28,8 +28,10 @@
     <script src="js/apimatic/servicemanagerlib/Models/ServiceRegistry.js"></script>
     <script src="js/apimatic/servicemanagerlib/Models/TypeEnum.js"></script>
     <script src="js/apimatic/servicemanagerlib/Models/FilterEnum.js"></script>
+
     <!-- Main (home) app -->
     <script src="app.js"></script>
+    <script src="js/apimatic/custom_config.js"></script>
 </head>
 <body>
     <div class="row">
@@ -62,12 +64,6 @@
     </div>
     <!-- SR app -->
     <script>
-        <!-- override the settings with the current host/deployed env -->
-        angular.module('ServiceManagerLib').factory('Configuration', function() {
-            return {
-                BASEURI : location.origin
-            };
-        });
         angular.module('srApp', ['ServiceManagerLib','myApp'])
         .controller('PageCtrl',function($scope,SrController) {
             var input = {
