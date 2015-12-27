@@ -2,8 +2,8 @@
 <html lang="en" ng-app="srApp">
 <head>
     <meta charset="UTF-8">
-    <title>Create</title>
-    <link href="js/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <title>Update</title>
+    <link href="../js/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <style>
         .form-horizontal input {
             margin-left: 20px;
@@ -11,43 +11,48 @@
     </style>
     <!--<script src="js/bower_components/jquery/dist/jquery.min.js"></script>-->
     <!--<script src="js/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>-->
-    <script src="js/bower_components/angular/angular.min.js"></script>
+    <script src="../js/bower_components/angular/angular.min.js"></script>
     <!-- Helper files -->
-    <script src="js/apimatic/servicemanagerlib/Configuration.js"></script>
-    <script src="js/apimatic/servicemanagerlib/APIHelper.js"></script>
-    <script src="js/apimatic/servicemanagerlib/Http/Client/HttpContext.js"></script>
-    <script src="js/apimatic/servicemanagerlib/Http/Client/RequestClient.js"></script>
-    <script src="js/apimatic/servicemanagerlib/Http/Request/HttpRequest.js"></script>
-    <script src="js/apimatic/servicemanagerlib/Http/Response/HttpResponse.js"></script>
+    <script src="../js/apimatic/servicemanagerlib/Configuration.js"></script>
+    <script src="../js/apimatic/servicemanagerlib/APIHelper.js"></script>
+    <script src="../js/apimatic/servicemanagerlib/Http/Client/HttpContext.js"></script>
+    <script src="../js/apimatic/servicemanagerlib/Http/Client/RequestClient.js"></script>
+    <script src="../js/apimatic/servicemanagerlib/Http/Request/HttpRequest.js"></script>
+    <script src="../js/apimatic/servicemanagerlib/Http/Response/HttpResponse.js"></script>
 
     <!-- API Controllers -->
-    <script src="js/apimatic/servicemanagerlib/Controllers/SrController.js"></script>
-    <script src="js/apimatic/servicemanagerlib/Controllers/M2shareController.js"></script>
+    <script src="../js/apimatic/servicemanagerlib/Controllers/SrController.js"></script>
+    <script src="../js/apimatic/servicemanagerlib/Controllers/M2shareController.js"></script>
 
     <!-- Models -->
-    <script src="js/apimatic/servicemanagerlib/Models/BaseModel.js"></script>
-    <script src="js/apimatic/servicemanagerlib/Models/Action14Enum.js"></script>
-    <script src="js/apimatic/servicemanagerlib/Models/CategoryEnum.js"></script>
-    <script src="js/apimatic/servicemanagerlib/Models/ActionEnum.js"></script>
-    <script src="js/apimatic/servicemanagerlib/Models/ServiceRegistry.js"></script>
-    <script src="js/apimatic/servicemanagerlib/Models/TypeEnum.js"></script>
-    <script src="js/apimatic/servicemanagerlib/Models/FilterEnum.js"></script>
+    <script src="../js/apimatic/servicemanagerlib/Models/BaseModel.js"></script>
+    <script src="../js/apimatic/servicemanagerlib/Models/Action14Enum.js"></script>
+    <script src="../js/apimatic/servicemanagerlib/Models/CategoryEnum.js"></script>
+    <script src="../js/apimatic/servicemanagerlib/Models/ActionEnum.js"></script>
+    <script src="../js/apimatic/servicemanagerlib/Models/ServiceRegistry.js"></script>
+    <script src="../js/apimatic/servicemanagerlib/Models/TypeEnum.js"></script>
+    <script src="../js/apimatic/servicemanagerlib/Models/FilterEnum.js"></script>
 
     <!-- Utils -->
-    <script src="js/bower_components/urijs/src/URI.min.js"></script>
+    <script src="../js/bower_components/urijs/src/URI.min.js"></script>
+
     <!-- Main (home) app -->
     <!--<script src="app.js"></script>-->
-    <script src="js/apimatic/custom_config.js"></script>
+    <script src="../js/apimatic/custom_config.js"></script>
 </head>
 <body>
 <div class="container">
     <div ng-controller="PageCtrl as page">
 
-        <h1>Service Manager - Create</h1><br>
+        <h1>Service Manager - Update</h1><br>
         <!--<scan>{{message}}</scan>-->
 
         <form class="form-horizontal" role="form">
             <div class="form-group row">
+                <div class="control-group">
+                    <label for="id" class="col-sm-2 control-label">ID:</label>
+                    <input type="text" class="col-sm-10 form-control" id="id" value="{{page.id}}" required readonly>
+                </div>
                 <div class="control-group">
                     <label for="title" class="col-sm-2 control-label">Service:</label>
                         <input type="text" class="col-sm-10 form-control" id="title" ng-enter="page.createItem()" required ng-model="page.service" placeholder="Enter any easy to remember service name.">
@@ -68,8 +73,10 @@
                     <label for="createItem" class="col-sm-2 control-label"></label>
                     <div class="col-sm-10">
                         <input type="hidden" name="_method" value="POST">
+                        <input class="form-control btn btn-primary" id="deleteItem" type="button" style="background:#98969E;"
+                               value="Delete" ng-click="page.deleteItem()">
                         <input class="form-control btn btn-primary" id="createItem" type="submit" style="background:#98969E;"
-                           value="Save" ng-click="page.createItem()">
+                           value="Save" ng-disabled="!(page.endpoint)" ng-click="page.createItem()">
                         <input class="form-control btn" id="cancelItem" value="Cancel" type="button" onclick="location.href='fusrstart.html'">
                     </div>
                 </div>
@@ -85,10 +92,22 @@
             var self = this;
             var qs = URI(location.href).query(true); // == e.g. { id : 4529987906437120 }
 //            console.log(qs);
-//            self.id = 0;
-            self.service = '';
-            self.description = '';
-            self.endpoint = '';
+
+            var input4getId = {
+                operation : "SrController.getId",
+                id : qs.id
+            }
+
+            SrController.getId(input4getId.id).then(function(result){
+                $scope.message = "The  "+input4getId.operation +" of "+input4getId.id + " is "+result.service
+//                console.log(result);
+                self.id = result.id;
+                self.service = result.service;
+                self.description = result.description;
+                self.endpoint = result.endpoint;
+            }, function(error){
+                console.log("Error encountered! Please try again.")
+            });
 
             this.createItem = function() {
                 var input4createSave;
@@ -113,7 +132,20 @@
                 });
             };
 
-//            console.log(qs);
+            var input4createDeleteId = {
+                operation : "SrController.createDeleteId",
+                id : qs.id
+            }
+            this.deleteItem = function() {
+                SrController.createDeleteId(input4createDeleteId.id).then(function(result){
+                    console.log(result);
+                    if(result == '') {
+                        location.href = "fusrstart.html";
+                    }
+                }, function(error){
+                    console.log("Error encountered! Please try again.")
+                });
+            };
         })
     </script>
 </body>

@@ -1,6 +1,8 @@
 Why?
-. To evaluate and compare RiotJS with ReactJS implementation
+. To evaluate and compare AngularJS, RiotJS with ReactJS implementations
+. AngularJS (1.4+) supposed to be the "legacy" UI
 . RiotJS supposed to be 10 times smaller and faster compared to ReactJS
+. CRUD of SR is used as a model after app
 
 What else I need to know?
 . To ensure compatibility between the future's Web Component, please define all custom element names with more than one words separated by a hypen e.g. my-first-element!
@@ -20,6 +22,13 @@ JSON Web Token (JWT)
 
 FalcorJS
 . It is experimental and it is not ready (due to a need to have the JSON response in a form of JSONGraph mainly)
+
+Results
+. The non-scientific preliminary results
+AngularJS 25 hours
+ReactJS
+RiotJS
+. It does not include APIMATIC integrations and/or anything non-UI related
 
 Other Useful Resources:
 
