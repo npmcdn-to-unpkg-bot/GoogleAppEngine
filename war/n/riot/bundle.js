@@ -1,4 +1,8 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+riot.tag2('hello', '<h1>Hello World</h1>', '', '', function (opts) {});
+riot.tag2('sr-start', '<table class="table table-striped table-bordered"> <thead> <tr> <th>th is 0</th> <th>th is 1</th> <th>th is 2</th> <th>th is 3</th> <th>th is 4</th> <th>th is 5</th> </tr> </thead> <tbody> <tr> <td>cell is row 0, column 0</td> <td>cell is row 0, column 1</td> <td>cell is row 0, column 2</td> <td>cell is row 0, column 3</td> <td>cell is row 0, column 4</td> <td>cell is row 0, column 5</td> </tr> <tr> <td>cell is row 1, column 0</td> <td>cell is row 1, column 1</td> <td>cell is row 1, column 2</td> <td>cell is row 1, column 3</td> <td>cell is row 1, column 4</td> <td>cell is row 1, column 5</td> </tr> <tr> <td>cell is row 2, column 0</td> <td>cell is row 2, column 1</td> <td>cell is row 2, column 2</td> <td>cell is row 2, column 3</td> <td>cell is row 2, column 4</td> <td>cell is row 2, column 5</td> </tr> </tbody> </table>', '', '', function (opts) {});
+
+},{}],2:[function(require,module,exports){
 (function (Buffer){
 
 var insertCss = require('insert-css');
@@ -6,181 +10,7 @@ var css = Buffer("LyohCiAqIEJvb3RzdHJhcCB2My4zLjYgKGh0dHA6Ly9nZXRib290c3RyYXAuY2
 insertCss(css);
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":5,"insert-css":4}],2:[function(require,module,exports){
-var APP = React.createClass({
-    displayName: 'APP',
-
-    render: function () {
-        return React.createElement(
-            'h1',
-            null,
-            'Hello World'
-        );
-    }
-});
-
-//React.render(<APP />, document.body);
-React.render(React.createElement(APP, null), document.getElementById('hello'));
-
-},{}],3:[function(require,module,exports){
-var SRStart = React.createClass({
-  displayName: "SRStart",
-
-  render: function () {
-    return React.createElement(
-      "table",
-      { className: "table table-striped table-bordered" },
-      React.createElement(
-        "thead",
-        null,
-        React.createElement(
-          "tr",
-          null,
-          React.createElement(
-            "th",
-            null,
-            "th is 0"
-          ),
-          React.createElement(
-            "th",
-            null,
-            "th is 1"
-          ),
-          React.createElement(
-            "th",
-            null,
-            "th is 2"
-          ),
-          React.createElement(
-            "th",
-            null,
-            "th is 3"
-          ),
-          React.createElement(
-            "th",
-            null,
-            "th is 4"
-          ),
-          React.createElement(
-            "th",
-            null,
-            "th is 5"
-          )
-        )
-      ),
-      React.createElement(
-        "tbody",
-        null,
-        React.createElement(
-          "tr",
-          null,
-          React.createElement(
-            "td",
-            null,
-            "cell is row 0, column 0"
-          ),
-          React.createElement(
-            "td",
-            null,
-            "cell is row 0, column 1"
-          ),
-          React.createElement(
-            "td",
-            null,
-            "cell is row 0, column 2"
-          ),
-          React.createElement(
-            "td",
-            null,
-            "cell is row 0, column 3"
-          ),
-          React.createElement(
-            "td",
-            null,
-            "cell is row 0, column 4"
-          ),
-          React.createElement(
-            "td",
-            null,
-            "cell is row 0, column 5"
-          )
-        ),
-        React.createElement(
-          "tr",
-          null,
-          React.createElement(
-            "td",
-            null,
-            "cell is row 1, column 0"
-          ),
-          React.createElement(
-            "td",
-            null,
-            "cell is row 1, column 1"
-          ),
-          React.createElement(
-            "td",
-            null,
-            "cell is row 1, column 2"
-          ),
-          React.createElement(
-            "td",
-            null,
-            "cell is row 1, column 3"
-          ),
-          React.createElement(
-            "td",
-            null,
-            "cell is row 1, column 4"
-          ),
-          React.createElement(
-            "td",
-            null,
-            "cell is row 1, column 5"
-          )
-        ),
-        React.createElement(
-          "tr",
-          null,
-          React.createElement(
-            "td",
-            null,
-            "cell is row 2, column 0"
-          ),
-          React.createElement(
-            "td",
-            null,
-            "cell is row 2, column 1"
-          ),
-          React.createElement(
-            "td",
-            null,
-            "cell is row 2, column 2"
-          ),
-          React.createElement(
-            "td",
-            null,
-            "cell is row 2, column 3"
-          ),
-          React.createElement(
-            "td",
-            null,
-            "cell is row 2, column 4"
-          ),
-          React.createElement(
-            "td",
-            null,
-            "cell is row 2, column 5"
-          )
-        )
-      )
-    );
-  }
-});
-
-React.render(React.createElement(SRStart, null), document.getElementById('sr-start'));
-
-},{}],4:[function(require,module,exports){
+},{"buffer":4,"insert-css":3}],3:[function(require,module,exports){
 var inserted = {};
 
 module.exports = function (css, options) {
@@ -204,7 +34,7 @@ module.exports = function (css, options) {
     }
 };
 
-},{}],5:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 (function (global){
 /*!
  * The buffer module from node.js, for the browser.
@@ -1752,7 +1582,7 @@ function blitBuffer (src, dst, offset, length) {
 }
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"base64-js":6,"ieee754":7,"isarray":8}],6:[function(require,module,exports){
+},{"base64-js":5,"ieee754":6,"isarray":7}],5:[function(require,module,exports){
 var lookup = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
 
 ;(function (exports) {
@@ -1878,7 +1708,7 @@ var lookup = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
 	exports.fromByteArray = uint8ToBase64
 }(typeof exports === 'undefined' ? (this.base64js = {}) : exports))
 
-},{}],7:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
   var e, m
   var eLen = nBytes * 8 - mLen - 1
@@ -1964,11 +1794,11 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
   buffer[offset + i - d] |= s * 128
 }
 
-},{}],8:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 var toString = {}.toString;
 
 module.exports = Array.isArray || function (arr) {
   return toString.call(arr) == '[object Array]';
 };
 
-},{}]},{},[2,3,1]);
+},{}]},{},[1,2]);

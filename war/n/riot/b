@@ -1,4 +1,6 @@
 ./html2tag
 
 #riot -w tags riotjs/all.js
-riot tags riotjs/all.js
+riot tags all.js
+
+browserify -t babelify all.js -t brfs insert_css.js -o bundle.js

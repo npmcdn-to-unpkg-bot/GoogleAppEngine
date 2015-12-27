@@ -1,3 +1,6 @@
 ./html2react
 
-browserify -t [ babelify --presets [ react ] ] jsx/*.jsx -o reactjs/bundle.js
+browserify -t [ babelify --presets [ react ] ] jsx/*.jsx -t brfs insert_css.js -o bundle.js
+
+#Caused "Cannot find module './lib/auth'" by concatenify
+#browserify -t reactify -t concatenify app.js -t [ babelify --presets [ react ] ] jsx/*.jsx -t brfs insert_css.js -o bundle.js

@@ -1,6 +1,6 @@
 echo "<sr-start>" > tags/sr-start.tag
 
-cat html/sr-table.html >> tags/sr-start.tag
+cat ../template/sr-table.html >> tags/sr-start.tag
 
 echo "" >> tags/sr-start.tag
 

@@ -1,4 +1,4 @@
-htmltojsx -c SRStart html/sr-table.html > jsx/sr-start.jsx
+htmltojsx -c SRStart ../template/sr-table.html > jsx/sr-start.jsx
 
 echo "" >> jsx/sr-start.jsx
 

@@ -8,4 +8,6 @@ sudo npm i -g browserify
 
 sudo npm i -g htmltojsx
 
+sudo npm i -g brfs
+
 sudo npm install
