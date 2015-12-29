@@ -30,6 +30,12 @@ ReactJS
 RiotJS
 . It does not include APIMATIC integrations and/or anything non-UI related
 
+SwaggerClient
+. No code generations needed
+. Just look at the swagger.json and invoke anything in the format of tags.operationId e.g. pet.getPetById
+. Sadly by looking at the defacto Swagger UI interface, it is confusing to see what are the operation ids, thus tools like http://json2table.com/ is probably better
+. TODO
+
 Other Useful Resources:
 
 https://facebook.github.io/react/html-jsx.html

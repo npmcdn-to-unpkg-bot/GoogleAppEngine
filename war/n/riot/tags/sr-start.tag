@@ -1,40 +1,12 @@
 <sr-start>
-<table class="table table-striped table-bordered">
+    <div class="table-responsive">
+    <table class="table table-striped table-bordered">
     <thead>
-    <tr>
-        <th>th is 0</th>
-        <th>th is 1</th>
-        <th>th is 2</th>
-        <th>th is 3</th>
-        <th>th is 4</th>
-        <th>th is 5</th>
-    </tr>
+    <tr><td>ID</td><td>SERV</td><td>DESCRIPTION</td><td>S URL</td><td>VIS</td><td>UPT</td><td>ENDPOINT</td><td>HIT</td></tr>
     </thead>
-    <tbody>
-    <tr>
-        <td>cell is row 0, column 0</td>
-        <td>cell is row 0, column 1</td>
-        <td>cell is row 0, column 2</td>
-        <td>cell is row 0, column 3</td>
-        <td>cell is row 0, column 4</td>
-        <td>cell is row 0, column 5</td>
-    </tr>
-    <tr>
-        <td>cell is row 1, column 0</td>
-        <td>cell is row 1, column 1</td>
-        <td>cell is row 1, column 2</td>
-        <td>cell is row 1, column 3</td>
-        <td>cell is row 1, column 4</td>
-        <td>cell is row 1, column 5</td>
-    </tr>
-    <tr>
-        <td>cell is row 2, column 0</td>
-        <td>cell is row 2, column 1</td>
-        <td>cell is row 2, column 2</td>
-        <td>cell is row 2, column 3</td>
-        <td>cell is row 2, column 4</td>
-        <td>cell is row 2, column 5</td>
-    </tr>
+    <tbody each={ items }>
+    <tr><td><a href="fusrupdate.html?id={id}">{id}</a></td><td>{service}</td><td>{description}</td><td>{url}</td><td>{lastAccessed}</td><td>{lastUpdated}</td><td>{endpoint}</td><td>{hit}</td></tr>
     </tbody>
-</table>
+    </table>
+    </div>
 </sr-start>

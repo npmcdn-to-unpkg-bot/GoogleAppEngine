@@ -1,45 +1,20 @@
 var SRStart = React.createClass({
   render: function() {
+    var indents = [];
+    for (var i=0; i < this.props.list.length; i++) {
+      indents.push(<tr><td><a href="fusrupdate.html?id={objects[i].id}">{objects[i].id}</a></td><td>{objects[i].service}</td><td>{objects[i].description}</td><td>{objects[i].url}</td><td>{objects[i].lastAccessed}</td><td>{objects[i].lastUpdated}</td><td>{objects[i].endpoint}</td><td>{objects[i].hit}</td></tr>);
+    }
     return (
-
-      <table className="table table-striped table-bordered">
-        <thead>
-          <tr>
-            <th>th is 0</th>
-            <th>th is 1</th>
-            <th>th is 2</th>
-            <th>th is 3</th>
-            <th>th is 4</th>
-            <th>th is 5</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>cell is row 0, column 0</td>
-            <td>cell is row 0, column 1</td>
-            <td>cell is row 0, column 2</td>
-            <td>cell is row 0, column 3</td>
-            <td>cell is row 0, column 4</td>
-            <td>cell is row 0, column 5</td>
-          </tr>
-          <tr>
-            <td>cell is row 1, column 0</td>
-            <td>cell is row 1, column 1</td>
-            <td>cell is row 1, column 2</td>
-            <td>cell is row 1, column 3</td>
-            <td>cell is row 1, column 4</td>
-            <td>cell is row 1, column 5</td>
-          </tr>
-          <tr>
-            <td>cell is row 2, column 0</td>
-            <td>cell is row 2, column 1</td>
-            <td>cell is row 2, column 2</td>
-            <td>cell is row 2, column 3</td>
-            <td>cell is row 2, column 4</td>
-            <td>cell is row 2, column 5</td>
-          </tr>
-        </tbody>
-      </table>
+        <div className="table-responsive">
+          <table className="table table-striped table-bordered">
+            <thead>
+            <tr><td>ID</td><td>SERV</td><td>DESCRIPTION</td><td>S URL</td><td>VIS</td><td>UPT</td><td>ENDPOINT</td><td>HIT</td></tr>
+            </thead>
+            <tbody>
+            {indents}
+            </tbody>
+          </table>
+        </div>
     );
   }
 });
