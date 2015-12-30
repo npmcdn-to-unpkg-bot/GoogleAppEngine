@@ -1,6 +1,8 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 riot.tag2('hello', '<h1>Hello World</h1>', '', '', function (opts) {});
-riot.tag2('sr-start', '<div class="table-responsive"> <table class="table table-striped table-bordered"> <thead> <tr><td>ID</td><td>SERV</td><td>DESCRIPTION</td><td>S URL</td><td>VIS</td><td>UPT</td><td>ENDPOINT</td><td>HIT</td></tr> </thead> <tbody each="{srs.content}"> <tr><td><a href="fusrupdate.html?id={id}">{id}</a></td><td>{service}</td><td>{description}</td><td>{url}</td><td>{lastAccessed}</td><td>{lastUpdated}</td><td>{endpoint}</td><td>{hit}</td></tr> </tbody> </table> </div>', '', '', function (opts) {}, '{ }');
+riot.tag2('sr-start', '<div class="table-responsive"> <table class="table table-striped table-bordered"> <thead> <tr><td>ID</td><td>SERV</td><td>DESCRIPTION</td><td>S URL</td><td>VIS</td><td>UPT</td><td>ENDPOINT</td><td>HIT</td></tr> </thead> <tbody each="{item, index in list}"> <tr each="{item}"><td><a href="fusrupdate.html?id={id}">{id}</a></td><td>{service}</td><td>{description}</td><td>{url}</td><td>{lastAccessed}</td><td>{lastUpdated}</td><td>{endpoint}</td><td>{hit}</td></tr> </tbody> </table> </div>', '', '', function (opts) {
+        console.log("list size = " + opts.list.length);
+}, '{ }');
 
 },{}],2:[function(require,module,exports){
 (function (Buffer){

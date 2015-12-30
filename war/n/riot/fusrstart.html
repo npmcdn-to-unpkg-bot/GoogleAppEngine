@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="srApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Start</title>
+    <link href="../js/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <!--<script src="../js/bower_components/jquery/dist/jquery.min.js"></script>-->
+    <!--<script src="js/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>-->
+    <!--<script src="../js/bower_components/angular/angular.js"></script>-->
+
+    <!-- Main (home) app -->
+    <!--<script src="app.js"></script>-->
+</head>
+<body>
+    <div class="row">
+        <div>
+            <div class="col-lg-6 col-xs-6"><h1>Service Manager</h1><br></div>
+            <div class="col-lg-6 col-xs-6">
+                <div class="col-lg-2 col-lg-push-10 col-md-2 col-md-push-0 col-sm-2 col-sm-push-0 col-xs-2 col-xs-push-0">
+                    <div id="mainCtrl" ng-controller="MainCtrl" class="pull-right">
+                        <h3><span class="label label-success">Success!</span><p><p> Welcome {{userName}}</h3>
+                        <a href ng-click="logout()">(logout)</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--<hello></hello>-->
+    <h4><a href="fusrcreate.html?id=0">Create New</a></h4>
+    <sr-start></sr-start>
+    <div id="mydata"></div>
+
+    <!-- include riot.js -->
+    <!--- NOTES: YOU CAN NOT LOAD BOTH COMPILER and RIOT - YOU CAN ONLY LOAD ONE! --->
+    <script src="2.3.11/riot+compiler.min.js"></script>
+    <!--<script src="riotjs/2.3.11/riot.js"></script>-->
+    <script src='../js/bower_components/swagger-js/browser/swagger-client.js' type='text/javascript'></script>
+    <!-- include the tag -->
+    <script src="tags/hello.tag" type="riot/tag"></script>
+    <script src="tags/sr-start.tag" type="riot/tag"></script>
+    <!--<script src="bundle.js" type="riot/tag"></script>-->
+    <script>
+        window.swagger = new SwaggerClient({
+            url: location.origin + "/swagger/swagger.json",
+            success: function() {
+                swagger.sr.all({},{responseContentType: 'application/json'}, function(data) {
+                    //document.getElementById("mydata").innerHTML = JSON.stringify(data.obj);
+                    riot.mount('sr-start', { data: data.obj.content });
+                    //riot.mount('hello');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
