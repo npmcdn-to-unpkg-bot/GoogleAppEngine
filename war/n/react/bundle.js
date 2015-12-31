@@ -1779,18 +1779,18 @@ insertCss(css);
 }).call(this,require("buffer").Buffer)
 },{"buffer":2,"insert-css":8}],6:[function(require,module,exports){
 var APP = React.createClass({
-    displayName: "APP",
+    displayName: 'APP',
 
     render: function () {
         return React.createElement(
-            "h1",
+            'h1',
             null,
-            "Hello World"
+            'Hello World'
         );
     }
 });
 
-//React.render(<APP />, document.getElementById('hello'));
+React.render(React.createElement(APP, null), document.getElementById('hello'));
 
 },{}],7:[function(require,module,exports){
 window.swagger = new SwaggerClient({
@@ -1798,7 +1798,7 @@ window.swagger = new SwaggerClient({
   success: function () {
     swagger.sr.all({}, { responseContentType: 'application/json' }, function (data) {
       //document.getElementById("mydata").innerHTML = JSON.stringify(data.obj);
-      React.render(React.createElement(SRStart, { list: data.obj.content }), document.getElementById('sr-start'));
+      React.render(React.createElement(SRStart, { items: data.obj.content }), document.getElementById('sr-start'));
     });
   }
 });
@@ -1807,7 +1807,7 @@ var SRStart = React.createClass({
 
   render: function () {
     var indents = [];
-    var objects = this.props.list;
+    var objects = this.props.items;
     //console.log(this.props);
     for (var i = 0; i < objects.length; i++) {
       indents.push(React.createElement(
@@ -1818,7 +1818,7 @@ var SRStart = React.createClass({
           null,
           React.createElement(
             'a',
-            { href: 'fusrupdate.html?id={id}' },
+            { href: 'fusrupdate.html?id=' + objects[i].id },
             objects[i].id
           )
         ),
@@ -1923,7 +1923,7 @@ var SRStart = React.createClass({
   }
 });
 
-//React.render(<SRStart list={ data.content }/>, document.getElementById('sr-start'))
+//React.render(<SRUpdate items={ data.content }/>, document.getElementById('sr-start'))
 
 },{}],8:[function(require,module,exports){
 var inserted = {};

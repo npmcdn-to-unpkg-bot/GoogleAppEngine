@@ -34,7 +34,14 @@ SwaggerClient
 . No code generations needed
 . Just look at the swagger.json and invoke anything in the format of tags.operationId e.g. pet.getPetById
 . Sadly by looking at the defacto Swagger UI interface, it is confusing to see what are the operation ids, thus tools like http://json2table.com/ is probably better
-. TODO
+
+AngularJS to ReactJS in few sentences
+. Move all HTML codes into .jsx file
+. Added SwaggerClient codes to retrive the results from the backend/datastore
+. Add an HTML tag to mount a React component
+. Render the tag with the React component
+. Decorate all properties with {this.property} if required (for read only view)
+. Add event handler if applicable (for saving form etc)
 
 Other Useful Resources:
 

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create</title>
+    <link href="../js/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <style>
+        .form-horizontal input {
+            margin-left: 20px;
+        }
+    </style>
+    <script src="../js/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../js/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../js/bower_components/angular/angular.min.js"></script>
+
+    <!-- Utils -->
+    <script src="../js/bower_components/urijs/src/URI.min.js"></script>
+    <!-- Main (home) app -->
+    <script src="../ng/app.js"></script>
+</head>
+<body>
+<div id="sr-create"></div>
+
+    <script>
+        var myApp = angular.module('srApp', ['ServiceManagerLib'])
+        myApp.controller('PageCtrl',function($scope,SrController) {
+            var self = this;
+            var qs = URI(location.href).query(true); // == e.g. { id : 4529987906437120 }
+//            console.log(qs);
+//            self.id = 0;
+            self.service = '';
+            self.description = '';
+            self.endpoint = '';
+
+            this.createItem = function() {
+                var input4createSave;
+                var json = {
+                    id: self.id,
+                    service: self.service,
+                    description: self.description,
+                    endpoint: self.endpoint
+                };
+                console.log(json);
+                input4createSave = {
+                    operation : "SrController.createSave",
+                    "json": json
+                }
+
+                SrController.createSave(input4createSave.json).then(function (result) {
+                    if(result == '') {
+                        location.href = "fusrstart.html";
+                    }
+                }, function (error) {
+                    console.log("Error encountered! Please try again.")
+                });
+            };
+
+//            console.log(qs);
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update</title>
+    <link href="../js/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <!--<script src="../js/bower_components/jquery/dist/jquery.min.js"></script>-->
+    <!--<script src="js/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>-->
+    <script src="../js/bower_components/angular/angular.js"></script>
+    <script src="0.13.0-beta.1/react.js"></script>
+    <script src="0.13.0-beta.1/JSXTransformer.js"></script>
+    <script src='../js/bower_components/swagger-js/browser/swagger-client.js' type='text/javascript'></script>
+
+    <!-- Utils -->
+    <script src="../js/bower_components/urijs/src/URI.min.js"></script>
+
+    <!-- Main (home) app -->
+    <!--<script src="app.js"></script>-->
+</head>
+<body>
+    <div id="hello"></div>
+    <div id="sr-update"></div>
+    <div id="mydata"></div>
+
+    <!-- Main (home) app -->
+    <script src="../ng/app.js"></script>
+    <script type="text/jsx" src="jsx/hello.jsx"></script>
+    <script type="text/jsx" src="jsx/sr-update.jsx"></script>
+    <!--<script src="bundle.js"></script>-->
+<script>
+//        var myApp = angular.module('srApp', ['ServiceManagerLib'])
+//        myApp.controller('PageCtrl',function($scope,SrController) {
+//            var self = this;
+//            var qs = URI(location.href).query(true); // == e.g. { id : 4529987906437120 }
+//            var input4getId = {
+//                operation : "SrController.getId",
+//                id : qs.id
+//            }
+//
+//            SrController.getId(input4getId.id).then(function(result){
+//                $scope.message = "The  "+input4getId.operation +" of "+input4getId.id + " is "+result.service
+//                self.id = result.id;
+//                self.service = result.service;
+//                self.description = result.description;
+//                self.endpoint = result.endpoint;
+//            }, function(error){
+//                console.log("Error encountered! Please try again.")
+//            });
+//
+//            this.createItem = function() {
+//                var input4createSave;
+//                var json = {
+//                    id: self.id,
+//                    service: self.service,
+//                    description: self.description,
+//                    endpoint: self.endpoint
+//                };
+//                console.log(json);
+//                input4createSave = {
+//                    operation : "SrController.createSave",
+//                    "json": json
+//                }
+//
+//                SrController.createSave(input4createSave.json).then(function (result) {
+//                    if(result == '') {
+//                        location.href = "fusrstart.html";
+//                    }
+//                }, function (error) {
+//                    console.log("Error encountered! Please try again.")
+//                });
+//            };
+//
+//            var input4createDeleteId = {
+//                operation : "SrController.createDeleteId",
+//                id : qs.id
+//            }
+//            this.deleteItem = function() {
+//                SrController.createDeleteId(input4createDeleteId.id).then(function(result){
+//                    console.log(result);
+//                    if(result == '') {
+//                        location.href = "fusrstart.html";
+//                    }
+//                }, function(error){
+//                    console.log("Error encountered! Please try again.")
+//                });
+//            };
+//        })
+</script>
+</body>
+</html>
