@@ -1779,18 +1779,18 @@ insertCss(css);
 }).call(this,require("buffer").Buffer)
 },{"buffer":2,"insert-css":8}],6:[function(require,module,exports){
 var APP = React.createClass({
-    displayName: 'APP',
+    displayName: "APP",
 
     render: function () {
         return React.createElement(
-            'h1',
+            "h1",
             null,
-            'Hello World'
+            "Hello World"
         );
     }
 });
 
-React.render(React.createElement(APP, null), document.getElementById('hello'));
+//React.render(<APP />, document.getElementById('hello'));
 
 },{}],7:[function(require,module,exports){
 window.swagger = new SwaggerClient({
