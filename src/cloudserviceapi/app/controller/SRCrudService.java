@@ -135,9 +135,9 @@ public class SRCrudService {
         return new ResponseEntity<ServiceRegistry>(HttpStatus.OK);
     }
 
-	@ApiOperation(httpMethod = "POST", value = "Resource to delete an Item" , nickname="delete/{id}")
+	@ApiOperation(httpMethod = "POST", value = "Resource to delete an Item" , nickname="delete")
     @ApiImplicitParams({
-    	@ApiImplicitParam(name = "id", value = "Item unique id", required = true, dataType = "integer", paramType = "path")
+    	@ApiImplicitParam(name = "id", value = "Item unique id", required = true, dataType = "integer", paramType = "body")
     	}
     )
 	@ApiResponses(value = {
@@ -145,9 +145,9 @@ public class SRCrudService {
 			@ApiResponse(code = 401, message = "Failure")
 		}
 	)
-    @RequestMapping(value= "/delete/{id}", method = RequestMethod.POST, produces = {"application/json"})
+    @RequestMapping(value= "/delete", method = RequestMethod.POST, produces = {"application/json"})
 	@Secured("ROLE_ADMIN")
-    public @ResponseBody ResponseEntity<ServiceRegistry> delete(@PathVariable Long id) {
+    public @ResponseBody ResponseEntity<ServiceRegistry> delete(@RequestBody Long id) {
         System.out.println("REST request to delete ServiceRegistry: " + id);
         try{
             if (id > -1){

@@ -3,13 +3,12 @@ var SRUpdate = React.createClass({
         var component = this;
         console.log('SRUpdate booted');
         var item = { id: -1, service: '', description: '',  endpoint: '' };
-        var id = this.props.id;
         var qs = URI(location.href).query(true); // == e.g. { id : 4529987906437120 }
         window.swagger = new SwaggerClient({
             url: location.origin + "/swagger/swagger.json",
             success: function() {
                 swagger.sr.id({id: qs.id},{responseContentType: 'application/json'}, function(data) {
-                    document.getElementById("mydata").innerHTML = JSON.stringify(data.obj);
+                    //document.getElementById("mydata").innerHTML = JSON.stringify(data.obj);
                     //console.log(data.obj);
                     component.setState({
                         id: data.obj.id,
@@ -21,7 +20,10 @@ var SRUpdate = React.createClass({
             }
         });
 
-        return {item};
+        return {
+            item,
+            isSubmitting: true
+        };
     },
     render: function() {
         return (
@@ -53,8 +55,8 @@ var SRUpdate = React.createClass({
                                     <label htmlFor="createItem" className="col-sm-2 control-label" />
                                     <div className="col-sm-10">
                                         <input type="hidden" name="_method" defaultValue value="POST" />
-                                        <input className="form-control btn btn-primary" id="deleteItem" type="button" style={{background: '#98969E'}} defaultValue value="Delete" ng-click="page.deleteItem()" />
-                                        <input className="form-control btn btn-primary" id="createItem" type="button" style={{background: '#98969E'}} defaultValue value="Save" ng-disabled="!(page.endpoint)" onClick={this.updateItem} />
+                                        <input className="form-control btn btn-primary" id="deleteItem" type="button" style={{background: '#98969E'}} defaultValue value="Delete" onClick={this.deleteItem} />
+                                        <input className="form-control btn btn-primary" id="createItem" type="button" style={{background: '#98969E'}} defaultValue value="Save" disabled={this.state.isSubmitting} onClick={this.updateItem} />
                                         <input className="form-control btn" id="cancelItem" defaultValue value="Cancel" type="button" onClick={this.goHome} />
                                     </div>
                                 </div>
@@ -82,12 +84,22 @@ var SRUpdate = React.createClass({
                 swagger.sr.save(srJson,{responseContentType: 'application/json'}, function(data) {
                     //document.getElementById("mydata").innerHTML = JSON.stringify(data.obj);
                     //console.log(data.obj);
-                    component.goHome();
                 });
             }
         });
         console.log('SRUpdate input saved');
+    },
+    deleteItem: function() {
+        var component = this;
+        window.swagger = new SwaggerClient({
+            url: location.origin + "/swagger/swagger.json",
+            success: function() {
+                swagger.sr.delete({id: component.state.id},{responseContentType: 'application/json'}, function(data) {
+                    //document.getElementById("mydata").innerHTML = JSON.stringify(data.obj);
+                    //console.log(data.obj);
+                });
+            }
+        });
+        console.log('SRUpdate item deleted');
     }
 });
-
-React.render(<SRUpdate />, document.getElementById('sr-update'));
