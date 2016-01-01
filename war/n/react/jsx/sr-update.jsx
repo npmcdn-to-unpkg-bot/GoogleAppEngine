@@ -1,23 +1,22 @@
 var SRUpdate = React.createClass({
     getInitialState: function() {
+        var component = this;
         console.log('SRUpdate booted');
-        var item = { id: -1, service: 'TBD', description: '',  endpoint: '' };
+        var item = { id: -1, service: '', description: '',  endpoint: '' };
         var id = this.props.id;
         var qs = URI(location.href).query(true); // == e.g. { id : 4529987906437120 }
         window.swagger = new SwaggerClient({
-
             url: location.origin + "/swagger/swagger.json",
             success: function() {
                 swagger.sr.id({id: qs.id},{responseContentType: 'application/json'}, function(data) {
                     document.getElementById("mydata").innerHTML = JSON.stringify(data.obj);
-                    console.log(data.obj);
-                    //item = data.obj;
-                    item = {
+                    //console.log(data.obj);
+                    component.setState({
                         id: data.obj.id,
                         service: data.obj.service,
                         description: data.obj.description,
                         endpoint: data.obj.endpoint
-                    };
+                    });
                 });
             }
         });
@@ -32,22 +31,22 @@ var SRUpdate = React.createClass({
                             <div className="form-group row">
                                 <div className="control-group">
                                     <label htmlFor="id" className="col-sm-2 control-label">ID:</label>
-                                    <input type="text" className="col-sm-10 form-control" id="id" defaultValue value={this.state.item.id} required readOnly />
+                                    <input type="text" className="col-sm-10 form-control" id="id" defaultValue value={this.state.id} required readOnly />
                                 </div>
                                 <div className="control-group">
                                     <label htmlFor="title" className="col-sm-2 control-label">Service:</label>
-                                    <input type="text" className="col-sm-10 form-control" id="title" onkeydown="{this.updateItem}" required value={this.state.item.service} defaultvalue placeholder="Enter any easy to remember service name." />
+                                    <input type="text" className="col-sm-10 form-control" id="title" onkeydown="{this.updateItem}" required value={this.state.service} onChange={function(e){this.setState({service: e.target.value})}.bind(this)} defaultvalue placeholder="Enter any easy to remember service name." />
                                 </div>
                                 <div className="control-group">
                                     <label htmlFor="desc" className="col-sm-2 control-label">Description:</label>
                                     <div className="col-sm-10">
-                                        <input type="text" className="form-control" id="desc" onkeydown="{this.updateItem}" value={this.state.item.description} defaultvalue />
+                                        <input type="text" className="form-control" id="desc" onkeydown="{this.updateItem}" value={this.state.description} onChange={function(e){this.setState({description: e.target.value})}.bind(this)} defaultvalue />
                                     </div>
                                 </div>
                                 <div className="control-group">
                                     <label htmlFor="endpoint" className="col-sm-2 control-label">URL:</label>
                                     <div className="col-sm-10">
-                                        <input type="url" className="form-control" id="endpoint" onkeydown="{this.updateItem}" required value={this.state.item.endpoint} defaultvalue placeholder="Enter any valid URL e.g. http://www.google.com." />
+                                        <input type="url" className="form-control" id="endpoint" onkeydown="{this.updateItem}" required value={this.state.endpoint} onChange={function(e){this.setState({endpoint: e.target.value})}.bind(this)} defaultvalue placeholder="Enter any valid URL e.g. http://www.google.com." />
                                     </div>
                                 </div>
                                 <div className="control-group">
@@ -65,6 +64,7 @@ var SRUpdate = React.createClass({
         )
     },
     updateItem: function() {
+        console.log('SRUpdate input entered');
 
     }
 });
