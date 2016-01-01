@@ -25,7 +25,7 @@ var SRUpdate = React.createClass({
     },
     render: function() {
         return (
-                    <div className="container" onupdateevent="{this.updateItem}">
+                    <div className="container">
                         <h1>Service Manager - Update</h1><br />
                         <form className="form-horizontal" role="form">
                             <div className="form-group row">
@@ -35,18 +35,18 @@ var SRUpdate = React.createClass({
                                 </div>
                                 <div className="control-group">
                                     <label htmlFor="title" className="col-sm-2 control-label">Service:</label>
-                                    <input type="text" className="col-sm-10 form-control" id="title" onkeydown="{this.updateItem}" required value={this.state.service} onChange={function(e){this.setState({service: e.target.value})}.bind(this)} defaultvalue placeholder="Enter any easy to remember service name." />
+                                    <input type="text" className="col-sm-10 form-control" id="title" onKeyPress={this.updateItem} required value={this.state.service} onChange={function(e){this.setState({service: e.target.value})}.bind(this)} defaultvalue placeholder="Enter any easy to remember service name." />
                                 </div>
                                 <div className="control-group">
                                     <label htmlFor="desc" className="col-sm-2 control-label">Description:</label>
                                     <div className="col-sm-10">
-                                        <input type="text" className="form-control" id="desc" onkeydown="{this.updateItem}" value={this.state.description} onChange={function(e){this.setState({description: e.target.value})}.bind(this)} defaultvalue />
+                                        <input type="text" className="form-control" id="desc" onKeyPress={this.updateItem} value={this.state.description} onChange={function(e){this.setState({description: e.target.value})}.bind(this)} defaultvalue />
                                     </div>
                                 </div>
                                 <div className="control-group">
                                     <label htmlFor="endpoint" className="col-sm-2 control-label">URL:</label>
                                     <div className="col-sm-10">
-                                        <input type="url" className="form-control" id="endpoint" onkeydown="{this.updateItem}" required value={this.state.endpoint} onChange={function(e){this.setState({endpoint: e.target.value})}.bind(this)} defaultvalue placeholder="Enter any valid URL e.g. http://www.google.com." />
+                                        <input type="url" className="form-control" id="endpoint" onKeyPress={this.updateItem} required value={this.state.endpoint} onChange={function(e){this.setState({endpoint: e.target.value})}.bind(this)} defaultvalue placeholder="Enter any valid URL e.g. http://www.google.com." />
                                     </div>
                                 </div>
                                 <div className="control-group">
@@ -54,8 +54,8 @@ var SRUpdate = React.createClass({
                                     <div className="col-sm-10">
                                         <input type="hidden" name="_method" defaultValue value="POST" />
                                         <input className="form-control btn btn-primary" id="deleteItem" type="button" style={{background: '#98969E'}} defaultValue value="Delete" ng-click="page.deleteItem()" />
-                                        <input className="form-control btn btn-primary" id="createItem" type="submit" style={{background: '#98969E'}} defaultValue value="Save" ng-disabled="!(page.endpoint)" onclick="{this.props.onUpdateEvent}" />
-                                        <input className="form-control btn" id="cancelItem" defaultValue value="Cancel" type="button" onclick="location.href='fusrstart.html'" />
+                                        <input className="form-control btn btn-primary" id="createItem" type="button" style={{background: '#98969E'}} defaultValue value="Save" ng-disabled="!(page.endpoint)" onClick={this.updateItem} />
+                                        <input className="form-control btn" id="cancelItem" defaultValue value="Cancel" type="button" onClick={this.goHome} />
                                     </div>
                                 </div>
                             </div>
@@ -63,9 +63,30 @@ var SRUpdate = React.createClass({
                     </div>
         )
     },
+    goHome: function() {
+        location.href='fusrstart.html';
+    },
     updateItem: function() {
-        console.log('SRUpdate input entered');
-
+        var component = this;
+        window.swagger = new SwaggerClient({
+            url: location.origin + "/swagger/swagger.json",
+            success: function() {
+                var srJson = {
+                    sr: {
+                        id: component.state.id,
+                        service: component.state.service,
+                        description: component.state.description,
+                        endpoint: component.state.endpoint
+                    }
+                };
+                swagger.sr.save(srJson,{responseContentType: 'application/json'}, function(data) {
+                    //document.getElementById("mydata").innerHTML = JSON.stringify(data.obj);
+                    //console.log(data.obj);
+                    component.goHome();
+                });
+            }
+        });
+        console.log('SRUpdate input saved');
     }
 });
 
