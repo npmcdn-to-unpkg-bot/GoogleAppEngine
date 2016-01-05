@@ -22,20 +22,21 @@
     <script src="../js/bower_components/urijs/src/URI.min.js"></script>
 </head>
 <body>
+    <div id="mydata"></div>
     <!--<hello/>-->
     <sr-create/>
-    <div id="mydata"></div>
 
     <!-- Main (home) app -->
     <script src="../ng/app.js"></script>
     <!--<script src="tags/hello.tag" type="riot/tag"></script>-->
-    <!--<script src="tags/sr-update.tag" type="riot/tag"></script>-->
-    <!--<script src="tags/sr-create.tag" type="riot/tag"></script>-->
-    <script src="bundle.js"></script>
+    <script src="tags/sr-update.tag" type="riot/tag"></script>
+    <script src="tags/sr-create.tag" type="riot/tag"></script>
+    <!--<script src="bundle.js"></script>-->
 
     <script>
+        var item = {service: '', description: '', endpoint: ''};
         //riot.mount('hello');
-        riot.mount('sr-create');
+        riot.mount('sr-create', { data: item });
     </script>
 </body>
 </html>

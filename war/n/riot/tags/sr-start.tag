@@ -10,11 +10,11 @@
     </table>
     </div>
     <script>
-        this.list = opts.data;
-        this.on('mount', function () {
-            //console.log("data string size = " + opts.data.length);
-            console.log("sr-start tag mounted");
-            //console.log(this.list);
-        });
+    this.item = opts.data;
+    this.on('mount', function () {
+        //console.log("data string size = " + opts.data.length);
+        console.log("sr-start tag mounted");
+        //console.log(this.list);
+    });
     </script>
 </sr-start>

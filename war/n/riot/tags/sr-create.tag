@@ -1,5 +1,5 @@
 <sr-create>
-    <sr-update/>
+    <sr-update data={item} />
     <script>
     this.item = opts.data;
     this.on('mount', function () {

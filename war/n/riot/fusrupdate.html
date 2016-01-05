@@ -20,26 +20,24 @@
     <!--<script src="app.js"></script>-->
 </head>
 <body>
+    <div id="mydata"></div>
     <!--<hello/>-->
     <sr-update/>
-    <div id="mydata"></div>
 
     <!-- Main (home) app -->
     <script src="../ng/app.js"></script>
     <!--<script src="tags/hello.tag" type="riot/tag"></script>-->
-    <!--<script src="tags/sr-update.tag" type="riot/tag"></script>-->
-    <script src="bundle.js"></script>
+    <script src="tags/sr-update.tag" type="riot/tag"></script>
+    <!--<script src="bundle.js"></script>-->
     <script>
-        var item = {id: -1, service: '', description: '', endpoint: ''};
         var qs = URI(location.href).query(true); // == e.g. { id : 4529987906437120 }
         if(qs.id > 0) {
-            console.log(qs.id);
-            var item;
+//            console.log(qs.id);
             window.swagger = new SwaggerClient({
                 url: location.origin + "/swagger/swagger.json",
                 success: function () {
                     swagger.sr.id({id: qs.id}, {responseContentType: 'application/json'}, function (data) {
-                        console.log(data);
+//                        console.log(data);
 //                        document.getElementById("mydata").innerHTML = JSON.stringify(data.obj);
                         riot.mount('sr-update', { data: data.obj });
                     });
@@ -48,7 +46,6 @@
 
         }
         //riot.mount('hello');
-        riot.mount('sr-update');
     </script>
 </body>
 </html>
