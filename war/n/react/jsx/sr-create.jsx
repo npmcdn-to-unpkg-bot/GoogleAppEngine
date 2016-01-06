@@ -9,6 +9,7 @@ var SRCreate = React.createClass({
     },
     createItem: function() {
         var component = this;
+        var key = localStorage.getItem('userJWTToken');
         window.swagger = new SwaggerClient({
             url: location.origin + "/swagger/swagger.json",
             success: function() {
@@ -25,6 +26,9 @@ var SRCreate = React.createClass({
                     //console.log(data.obj);
                     component.goHome();
                 });
+            },
+            authorizations : {
+                someHeaderAuth: new SwaggerClient.ApiKeyAuthorization('Authorization', "Bearer " + key, 'header')
             }
         });
         console.log('SRCreate invoked');

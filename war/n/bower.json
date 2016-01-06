@@ -14,7 +14,7 @@
     "tests"
   ],
   "dependencies": {
-    "swagger-js": "~2.1.9",
+    "swagger-js": "~2.1.10",
     "urijs": "uri.js#~1.17.0",
     "jquery": "~2.1.4",
     "bootstrap": "~3.3.6",

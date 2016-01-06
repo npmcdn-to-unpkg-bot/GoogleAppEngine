@@ -1,3 +1,4 @@
+var key = localStorage.getItem('userJWTToken');
 window.swagger = new SwaggerClient({
   url: location.origin + "/swagger/swagger.json",
   success: function() {
@@ -5,6 +6,9 @@ window.swagger = new SwaggerClient({
       //document.getElementById("mydata").innerHTML = JSON.stringify(data.obj);
       React.render(<SRStart items={ data.obj.content }/>, document.getElementById('sr-start'));
     });
+  },
+  authorizations : {
+    someHeaderAuth: new SwaggerClient.ApiKeyAuthorization('Authorization', "Bearer " + key, 'header')
   }
 });
 var SRStart = React.createClass({

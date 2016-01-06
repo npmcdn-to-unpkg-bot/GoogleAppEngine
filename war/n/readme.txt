@@ -30,10 +30,11 @@ ReactJS
 RiotJS
 . It does not include APIMATIC integrations and/or anything non-UI related
 
-SwaggerClient
+SwaggerClient 2.1.10
 . No code generations needed
 . Just look at the swagger.json and invoke anything in the format of tags.operationId e.g. pet.getPetById
 . Sadly by looking at the defacto Swagger UI interface, it is confusing to see what are the operation ids, thus tools like http://json2table.com/ is probably better
+. Good reference is at https://libraries.io/npm/swagger-client/2.1.10
 
 AngularJS to ReactJS in few sentences
 . Move all HTML codes into .jsx file

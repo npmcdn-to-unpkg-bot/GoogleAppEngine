@@ -5,14 +5,13 @@ var SRUpdate = React.createClass({
         if(qs.id > 0) {
             var component = this;
             console.log('SRUpdate booted');
+            var key = localStorage.getItem('userJWTToken');
+            //var apiKeyAuth = new SwaggerClient.ApiKeyAuthorization( "Authorization", "Bearer " + key, "header" );
+            //window.swaggerUi.api.clientAuthorizations.add( "bearer", apiKeyAuth );
+            console.log( "Set bearer token: " + key );
             window.swagger = new SwaggerClient({
                 url: location.origin + "/swagger/swagger.json",
                 success: function () {
-                    var key = localStorage.getItem('userJWTToken');
-                    var apiKeyAuth = new SwaggerClient.ApiKeyAuthorization( "Authorization", "Bearer " + key, "header" );
-                    //window.swaggerUi.api.clientAuthorizations.add( "bearer", apiKeyAuth );
-                    console.log( "Set bearer token: " + key );
-
                     swagger.sr.id({id: qs.id}, {responseContentType: 'application/json'}, function (data) {
                         //document.getElementById("mydata").innerHTML = JSON.stringify(data.obj);
                         //console.log(data.obj);
@@ -23,6 +22,9 @@ var SRUpdate = React.createClass({
                             endpoint: data.obj.endpoint
                         });
                     });
+                },
+                authorizations : {
+                    someHeaderAuth: new SwaggerClient.ApiKeyAuthorization('Authorization', "Bearer " + key, 'header')
                 }
             });
         }
@@ -80,6 +82,7 @@ var SRUpdate = React.createClass({
         // while "window.event" (or "event") is IE's behavior
         if ( evt.keyCode === 13 ) {
             var component = this;
+            var key = localStorage.getItem('userJWTToken');
             window.swagger = new SwaggerClient({
                 url: location.origin + "/swagger/swagger.json",
                 success: function() {
@@ -96,6 +99,9 @@ var SRUpdate = React.createClass({
                         //console.log(data.obj);
                         component.goHome();
                     });
+                },
+                authorizations : {
+                    someHeaderAuth: new SwaggerClient.ApiKeyAuthorization('Authorization', "Bearer " + key, 'header')
                 }
             });
             console.log('SRUpdate input saved');
@@ -107,6 +113,7 @@ var SRUpdate = React.createClass({
     },
     deleteItem: function() {
         var component = this;
+        var key = localStorage.getItem('userJWTToken');
         window.swagger = new SwaggerClient({
             url: location.origin + "/swagger/swagger.json",
             success: function() {
@@ -115,6 +122,9 @@ var SRUpdate = React.createClass({
                     //console.log(data.obj);
                     component.goHome();
                 });
+            },
+            authorizations : {
+                someHeaderAuth: new SwaggerClient.ApiKeyAuthorization('Authorization', "Bearer " + key, 'header')
             }
         });
         console.log('SRUpdate item deleted');
