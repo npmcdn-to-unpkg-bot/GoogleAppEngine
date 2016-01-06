@@ -8,6 +8,11 @@ var SRUpdate = React.createClass({
             window.swagger = new SwaggerClient({
                 url: location.origin + "/swagger/swagger.json",
                 success: function () {
+                    var key = localStorage.getItem('userJWTToken');
+                    var apiKeyAuth = new SwaggerClient.ApiKeyAuthorization( "Authorization", "Bearer " + key, "header" );
+                    //window.swaggerUi.api.clientAuthorizations.add( "bearer", apiKeyAuth );
+                    console.log( "Set bearer token: " + key );
+
                     swagger.sr.id({id: qs.id}, {responseContentType: 'application/json'}, function (data) {
                         //document.getElementById("mydata").innerHTML = JSON.stringify(data.obj);
                         //console.log(data.obj);

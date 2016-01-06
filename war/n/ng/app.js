@@ -33,11 +33,18 @@ angular.module('myApp', [])
                 $scope.token = null;
                 $http.defaults.headers.common.Authorization = '';
                 location.href = "index.html";
+                // Clear the JWT token.
+                localStorage.removeItem('userJWTToken');
             }
 
             $scope.loggedIn = function() {
-                if($scope.token !== null) location.href = "fusrstart.html";
-                return $scope.token !== null;
+                var token = $scope.token;
+                if(token !== null) {
+                    // Save the JWT token.
+                    localStorage.setItem('userJWTToken', token);
+                    location.href = "fusrstart.html";
+                }
+                return token !== null;
             }
 
             $scope.enter = function() {
