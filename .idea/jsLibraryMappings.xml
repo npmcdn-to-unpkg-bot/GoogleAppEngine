@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
-    <file url="PROJECT" libraries="{JSXTransformer, angular, angular-ui-bootstrap-DefinitelyTyped, angular2-DefinitelyTyped, angularjs-DefinitelyTyped, bootstrap, bootstrap-DefinitelyTyped, jquery, leap-0.6.4, leapstrap, react, riot, riot+compiler}" />
     <includedPredefinedLibrary name="ECMAScript 6" />
   </component>
 </project>
