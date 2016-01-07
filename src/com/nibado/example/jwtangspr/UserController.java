@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.appspot.cloudserviceapi.security.spring.GaeUserDetails;
+import com.appspot.cloudserviceapi.security.spring.UserSecurityDAO;
+
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
@@ -23,16 +26,24 @@ public class UserController {
     private final Map<String, List<String>> userDb = new HashMap<>();
 
     public UserController() {
-        userDb.put("tom", Arrays.asList("user"));
-        userDb.put("sally", Arrays.asList("user", "admin"));
-        userDb.put("foo", Arrays.asList("user", "admin", "foo"));
+//        userDb.put("tom", Arrays.asList("user"));
+//        userDb.put("sally", Arrays.asList("user", "admin"));
+//        userDb.put("foo", Arrays.asList("user", "admin", "foo"));
     }
 
     @RequestMapping(value = "login", method = RequestMethod.POST)
     public LoginResponse login(@RequestBody final UserLogin login)
         throws ServletException {
-        if (login.name == null || !userDb.containsKey(login.name)) {
+    	//System.out.println("name [" + login.name + "] password [" + login.password + "]");
+		boolean authenticated = false;
+		GaeUserDetails usr = (new UserSecurityDAO()).getGaeUserDetails(login.name);
+		if(usr != null && usr.getPassword() != null && usr.getPassword().equals(login.password)) authenticated = true;
+        if (//login.name == null || !userDb.containsKey(login.name)
+        	!authenticated
+        	) {
             throw new ServletException("Invalid login");
+        } else {
+            userDb.put(login.name, Arrays.asList("user"));
         }
         return new LoginResponse(Jwts.builder().setSubject(login.name)
             .claim("roles", userDb.get(login.name)).setIssuedAt(new Date())

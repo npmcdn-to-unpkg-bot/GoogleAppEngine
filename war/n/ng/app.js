@@ -2,7 +2,7 @@
 angular.module('myApp', [])
     .controller('MainCtrl', ['mainService','$scope','$http',
         function(mainService, $scope, $http, $compile) {
-            $scope.greeting = 'Welcome to the JSON Web Token / AngularJR / Spring example!';
+            $scope.greeting = 'Welcome!';
             $scope.token = null;
             $scope.error = null;
             $scope.roleUser = false;
@@ -11,7 +11,7 @@ angular.module('myApp', [])
 
             $scope.login = function() {
                 $scope.error = null;
-                mainService.login($scope.userName).then(function(token) {
+                mainService.login($scope.userName, $scope.passWord).then(function(token) {
                     $scope.token = token;
                     $http.defaults.headers.common.Authorization = 'Bearer ' + token;
                     $scope.checkRoles();
@@ -19,6 +19,7 @@ angular.module('myApp', [])
                 function(error){
                     $scope.error = error
                     $scope.userName = '';
+                    $scope.passWord = '';
                 });
             }
 
@@ -54,8 +55,8 @@ angular.module('myApp', [])
         } ])
     .service('mainService', function($http) {
         return {
-            login : function(username) {
-                return $http.post('/api/user/login', {name: username}).then(function(response) {
+            login : function(username, pwd) {
+                return $http.post('/api/user/login', {name: username, password: pwd}).then(function(response) {
                     return response.data.token;
                 });
             },

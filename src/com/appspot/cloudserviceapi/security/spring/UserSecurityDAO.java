@@ -255,6 +255,25 @@ public class UserSecurityDAO {
 		return retVal;
 	}
 
+	public GaeUserDetails getGaeUserDetails(String userId) {
+		PersistenceManager pm = Persistence.getManager();
+
+		GaeUserDetails retVal = null;
+
+		Query q = pm.newQuery(GaeUserDetails.class, "userId == :userId");
+		q.setUnique(true);
+		
+		GaeUserDetails attachedUser = (GaeUserDetails) q.execute(userId);
+		
+		if(attachedUser != null) {
+			retVal = attachedUser;
+		}
+		
+		pm.close();
+		
+		return retVal;
+	}
+
 	public String getRole(String userId) {
 		PersistenceManager pm = Persistence.getManager();
 
