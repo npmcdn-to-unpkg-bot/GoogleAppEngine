@@ -21,7 +21,7 @@ angular.module('ServiceManagerLib').factory('SrController',function($q,Configura
 
             //prepare query string for API call
             var baseUri = Configuration.BASEURI
-            var queryBuilder = baseUri + "/api/fusr/all";
+            var queryBuilder = baseUri + "/api/jwt/fusr/all";
             
             //Process query parameters
             queryBuilder = APIHelper.appendUrlWithQueryParameters(queryBuilder, {
@@ -62,7 +62,7 @@ angular.module('ServiceManagerLib').factory('SrController',function($q,Configura
 
             //prepare query string for API call
             var baseUri = Configuration.BASEURI
-            var queryBuilder = baseUri + "/api/fusr/delete/{id}";
+            var queryBuilder = baseUri + "/api/jwt/fusr/delete/{id}";
             
             //Process template parameters
             queryBuilder = APIHelper.appendUrlWithTemplateParameters(queryBuilder, {
@@ -108,7 +108,7 @@ angular.module('ServiceManagerLib').factory('SrController',function($q,Configura
 
             //prepare query string for API call
             var baseUri = Configuration.BASEURI
-            var queryBuilder = baseUri + "/api/fusr/save";
+            var queryBuilder = baseUri + "/api/jwt/fusr/save";
             
             //validate and preprocess url
             var queryUrl = APIHelper.cleanUrl(queryBuilder);
@@ -159,7 +159,7 @@ angular.module('ServiceManagerLib').factory('SrController',function($q,Configura
 
             //prepare query string for API call
             var baseUri = Configuration.BASEURI
-            var queryBuilder = baseUri + "/api/fusr/{id}";
+            var queryBuilder = baseUri + "/api/jwt/fusr/{id}";
             
             //Process template parameters
             queryBuilder = APIHelper.appendUrlWithTemplateParameters(queryBuilder, {

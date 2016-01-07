@@ -1,4 +1,5 @@
 var key = localStorage.getItem('userJWTToken');
+console.log('sr-create.jsx: [' + key + ']');
 window.swagger = new SwaggerClient({
   url: location.origin + "/swagger/swagger.json",
   success: function() {

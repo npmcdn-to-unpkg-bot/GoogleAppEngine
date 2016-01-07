@@ -41,7 +41,7 @@ import com.appspot.cloudserviceapi.sci.dao.ServiceRegistryRepository;
 import com.appspot.cloudserviceapi.sci.dao.SortedServiceRegistryImpl;
 
 @Controller
-@RequestMapping(value = "/fusr", 
+@RequestMapping(value = "/jwt/fusr", 
 consumes={"text/plain", "application/json", "*/*"},
 produces={"application/json", "*/*"},
 method = {RequestMethod.GET, RequestMethod.POST})
@@ -61,7 +61,7 @@ method = {RequestMethod.GET, RequestMethod.POST})
 //        host = "http://chudoon3t.appspot.com" /*AppEngine.getHostName()*/,	//"NOT USED" c.f. web.xml swagger.api.basepath (needs to be prefixed with http(s)!!!)
 //        schemes = {SwaggerDefinition.Scheme.HTTP, SwaggerDefinition.Scheme.HTTPS}						
 )
-@Api(value = "api/fusr", tags = "sr")
+@Api(value = "api/jwt/fusr", tags = "sr")
 public class SRCrudService {
 //	@Autowired
     ServiceRegistryRepository repository;
