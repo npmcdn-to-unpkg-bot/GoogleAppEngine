@@ -1,3 +1,9 @@
+function redirectNonSSL(url) {
+    if(typeof url !== 'undefined'  && url.trim().indexOf('localhost') == -1 && url.trim().startsWith('http://')) {
+        if (window.location.protocol != "https:")
+            window.location.href = "https:" + window.location.href.substring(window.location.protocol.length);
+    }
+}
 function handleSSL(url) {
     if(typeof url !== 'undefined'  && url.trim().indexOf('localhost') == -1 && url.trim().startsWith('http://')) {
         var ret = url.trim().replace('http://', 'https://');

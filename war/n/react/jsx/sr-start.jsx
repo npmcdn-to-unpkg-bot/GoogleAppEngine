@@ -1,7 +1,7 @@
 var key = localStorage.getItem('userJWTToken');
-//console.log('sr-create.jsx: [' + key + '] location.origin [' + handleSSL(location.origin) + '] mockup url [' + handleSSL('http://mockup.com') + ']');
+//console.log('sr-create.jsx: [' + key + '] location.origin [' + location.origin + '] mockup url [' + handleSSL('http://mockup.com') + ']');
 window.swagger = new SwaggerClient({
-  url: handleSSL(location.origin) + "/swagger/swagger.json",
+  url: location.origin + "/swagger/swagger.json",
   success: function() {
     swagger.sr.all({},{responseContentType: 'application/json'}, function(data) {
       //document.getElementById("mydata").innerHTML = JSON.stringify(data.obj);

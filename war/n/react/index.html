@@ -11,8 +11,11 @@
 	<script src="../js/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="../js/bower_components/angular/angular.min.js"></script>
     <script src="../ng/app.js"></script>
+	<script>
+		redirectNonSSL(window.location.origin);
+	</script>
 </head>
-<body>
+
 <div class="container" ng-controller='MainCtrl'>
 	<h1>{{greeting}}</h1>
 	<div ng-show="!loggedIn()">
