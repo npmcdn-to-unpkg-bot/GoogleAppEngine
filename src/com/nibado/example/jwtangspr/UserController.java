@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.appspot.cloudserviceapi.common.Constants;
 import com.appspot.cloudserviceapi.security.spring.GaeUserDetails;
 import com.appspot.cloudserviceapi.security.spring.UserSecurityDAO;
 
@@ -47,7 +48,7 @@ public class UserController {
         }
         return new LoginResponse(Jwts.builder().setSubject(login.name)
             .claim("roles", userDb.get(login.name)).setIssuedAt(new Date())
-            .signWith(SignatureAlgorithm.HS256, "secretkey").compact());
+            .signWith(SignatureAlgorithm.HS256, Constants.JWT_SECRET_KEY).compact());
     }
 
     @SuppressWarnings("unused")

@@ -17,4 +17,7 @@ public class Constants {
 	public static final String LAUNCHER_URI = "/go";
 	public static final String SR_URI = "/sci";
 
+	//=== JWT
+	public static final String JWT_SECRET_KEY = "jwt_secret_key_01072016";
+
 }

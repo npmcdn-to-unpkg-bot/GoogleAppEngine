@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.web.filter.GenericFilterBean;
 
+import com.appspot.cloudserviceapi.common.Constants;
+
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureException;
@@ -30,7 +32,7 @@ public class JwtFilter extends GenericFilterBean {
         final String token = authHeader.substring(7); // The part after "Bearer "
 
         try {
-            final Claims claims = Jwts.parser().setSigningKey("secretkey")
+            final Claims claims = Jwts.parser().setSigningKey(Constants.JWT_SECRET_KEY)
                 .parseClaimsJws(token).getBody();
             request.setAttribute("claims", claims);
         }
