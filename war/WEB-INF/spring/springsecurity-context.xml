@@ -118,8 +118,7 @@
  		<intercept-url pattern="/index_api.html" access="hasAnyRole('ROLE_MANAGER','ROLE_ADMIN')" />
 -->
 		<intercept-url pattern="/sr" access="permitAll" requires-channel="https" />
-		<intercept-url pattern="/sci/s*" access="hasAnyRole('ROLE_USER_SCI','ROLE_ADMIN_SCI','ROLE_MANAGER','ROLE_ADMIN')" />
-		<intercept-url pattern="/sci/s*/**" access="hasAnyRole('ROLE_USER_SCI','ROLE_ADMIN_SCI','ROLE_MANAGER','ROLE_ADMIN')" />
+		<intercept-url pattern="/sci/*/**" access="hasAnyRole('ROLE_USER_SCI','ROLE_ADMIN_SCI','ROLE_MANAGER','ROLE_ADMIN')" />
 
 		<intercept-url pattern="/go/*/**" access="permitAll" />
 		<intercept-url pattern="/sci" access="permitAll" />

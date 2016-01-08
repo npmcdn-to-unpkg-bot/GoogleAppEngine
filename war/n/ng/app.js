@@ -1,7 +1,18 @@
+function handleSSL(url) {
+    if(typeof url !== 'undefined'  && url.trim().indexOf('localhost') == -1 && url.trim().startsWith('http://')) {
+        var ret = url.trim().replace('http://', 'https://');
+        console.log('url changed to SSL-based -> [' + ret + ']');
+        return ret;
+    } else {
+        return url;
+    }
+}
+
 <!-- JWT and navigations stuff -->
 angular.module('myApp', [])
     .controller('MainCtrl', ['mainService','$scope','$http',
         function(mainService, $scope, $http, $compile) {
+            $scope.status = 'Please sign in';
             $scope.greeting = 'Welcome!';
             $scope.token = null;
             $scope.error = null;
@@ -10,6 +21,7 @@ angular.module('myApp', [])
             $scope.roleFoo = false;
 
             $scope.login = function() {
+                $scope.status = "Logging in ...";
                 $scope.error = null;
                 mainService.login($scope.userName, $scope.passWord).then(function(token) {
                     $scope.token = token;
@@ -17,6 +29,7 @@ angular.module('myApp', [])
                     $scope.checkRoles();
                 },
                 function(error){
+                    $scope.status = "Invalid login. Please try again.";
                     $scope.error = error
                     $scope.userName = '';
                     $scope.passWord = '';

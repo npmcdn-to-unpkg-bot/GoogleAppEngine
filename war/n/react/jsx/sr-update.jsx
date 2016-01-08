@@ -10,7 +10,7 @@ var SRUpdate = React.createClass({
             //window.swaggerUi.api.clientAuthorizations.add( "bearer", apiKeyAuth );
             console.log( "Set bearer token: " + key );
             window.swagger = new SwaggerClient({
-                url: location.origin + "/swagger/swagger.json",
+                url: handleSSL(location.origin) + "/swagger/swagger.json",
                 success: function () {
                     swagger.sr.id({id: qs.id}, {responseContentType: 'application/json'}, function (data) {
                         //document.getElementById("mydata").innerHTML = JSON.stringify(data.obj);
@@ -84,7 +84,7 @@ var SRUpdate = React.createClass({
             var component = this;
             var key = localStorage.getItem('userJWTToken');
             window.swagger = new SwaggerClient({
-                url: location.origin + "/swagger/swagger.json",
+                url: handleSSL(location.origin) + "/swagger/swagger.json",
                 success: function() {
                     var srJson = {
                         sr: {
@@ -115,7 +115,7 @@ var SRUpdate = React.createClass({
         var component = this;
         var key = localStorage.getItem('userJWTToken');
         window.swagger = new SwaggerClient({
-            url: location.origin + "/swagger/swagger.json",
+            url: handleSSL(location.origin) + "/swagger/swagger.json",
             success: function() {
                 swagger.sr.delete({id: component.state.id},{responseContentType: 'application/json'}, function(data) {
                     //document.getElementById("mydata").innerHTML = JSON.stringify(data.obj);

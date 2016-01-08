@@ -11,7 +11,7 @@ var SRCreate = React.createClass({
         var component = this;
         var key = localStorage.getItem('userJWTToken');
         window.swagger = new SwaggerClient({
-            url: location.origin + "/swagger/swagger.json",
+            url: handleSSL(location.origin) + "/swagger/swagger.json",
             success: function() {
                 var srJson = {
                     sr: {

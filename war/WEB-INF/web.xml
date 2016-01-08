@@ -827,13 +827,13 @@ java.lang.RuntimeException: Exception constructing service 'ApplicationContext':
 <!-- comment out these in dev to avoid "WARNING: AUTH FAILURE: incorrect role for xxx" -->
             <url-pattern>/userstart</url-pattern>
             <url-pattern>/usersave/*</url-pattern>
+            <url-pattern>/postsettings</url-pattern>
+            <url-pattern>/settings</url-pattern>
+<!--
             <url-pattern>/sci/serviceregistrysave/*</url-pattern>
             <url-pattern>/g/app/templatesave/*</url-pattern>
             <url-pattern>/g/owasp/securedsave/*</url-pattern>
             <url-pattern>/g/social/socialsave/*</url-pattern>            
-            <url-pattern>/postsettings</url-pattern>
-            <url-pattern>/settings</url-pattern>
-<!--
 -->
 <!-- relegated to the Google authentication until Shiro is in place	
             <url-pattern>/app/*</url-pattern>
