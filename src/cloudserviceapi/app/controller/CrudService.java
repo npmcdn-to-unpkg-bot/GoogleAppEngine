@@ -43,9 +43,9 @@ import com.appspot.cloudserviceapi.common.JsonUtil;
         ),						
         consumes = {"application/json", "application/x-www-form-urlencoded"},						
         produces = {"application/json"}
-//        ,						
+        ,
 //        host = "http://chudoon3t.appspot.com" /*AppEngine.getHostName()*/,	//"NOT USED" c.f. web.xml swagger.api.basepath (needs to be prefixed with http(s)!!!)
-//        schemes = {SwaggerDefinition.Scheme.HTTP, SwaggerDefinition.Scheme.HTTPS}						
+        schemes = {SwaggerDefinition.Scheme.HTTPS, SwaggerDefinition.Scheme.HTTP}
 )
 @Api(value = "ws", tags = "2share")
 public class CrudService extends HttpServlet {
