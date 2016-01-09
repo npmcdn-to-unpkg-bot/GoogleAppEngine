@@ -1,4 +1,25 @@
 var SRUpdate = React.createClass({
+    propTypes: {
+        id: React.PropTypes.number,
+        service: React.PropTypes.string,
+        description: React.PropTypes.string,
+        endpoint: function (props, propName, component) {
+            if (typeof props[propName] !== 'undefined' && !this.isURL(props[propName])) {
+                return new Error('Invalid URL!');
+            }
+        }
+        //gender: React.PropTypes.oneOf(['M','F','NA']),
+        //node: React.PropTypes.node,
+        //cb: React.PropTypes.func.isRequired
+    },
+    isURL: function(value) {
+        //console.log(value);
+        var urlregex = new RegExp("^(http|https|ftp)\://([a-zA-Z0-9\.\-]+(\:[a-zA-Z0-9\.&amp;%\$\-]+)*@)*((25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9])\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9]|0)\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9]|0)\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[0-9])|([a-zA-Z0-9\-]+\.)*[a-zA-Z0-9\-]+\.(com|edu|gov|int|mil|net|org|biz|arpa|info|name|pro|aero|coop|museum|[a-zA-Z]{2}))(\:[0-9]+)*(/($|[a-zA-Z0-9\.\,\?\'\\\+&amp;%\$#\=~_\-]+))*$");
+        if (urlregex.test(value)) {
+            return (true);
+        }
+        return (false);
+    },
     getInitialState: function() {
         var item = {id: -1, service: '', description: '', endpoint: ''};
         var qs = URI(location.href).query(true); // == e.g. { id : 4529987906437120 }
@@ -19,7 +40,9 @@ var SRUpdate = React.createClass({
                             id: data.obj.id,
                             service: data.obj.service,
                             description: data.obj.description,
-                            endpoint: data.obj.endpoint
+                            endpoint: data.obj.endpoint,
+                            //enable save if url is valid
+                            isSubmitting: component.isURL(data.obj.endpoint)
                         });
                     });
                 },
@@ -30,7 +53,7 @@ var SRUpdate = React.createClass({
         }
         return {
             item,
-            isSubmitting: true
+            isSubmitting: false
         };
     },
     render: function() {
@@ -56,7 +79,7 @@ var SRUpdate = React.createClass({
                                 <div className="control-group">
                                     <label htmlFor="endpoint" className="col-sm-2 control-label">URL:</label>
                                     <div className="col-sm-10">
-                                        <input type="url" className="form-control" id="endpoint" onKeyDown={this.updateItem} required value={this.state.endpoint} onChange={function(e){this.setState({endpoint: e.target.value})}.bind(this)} defaultvalue placeholder="Enter any valid URL e.g. http://www.google.com." />
+                                        <input type="url" className="form-control" id="endpoint" onKeyDown={this.updateItem} required value={this.state.endpoint} onChange={function(e){this.setState({endpoint: e.target.value, isSubmitting: this.isURL(e.target.value)})}.bind(this)} onClick={this.updateItem} defaultvalue placeholder="Enter any valid URL e.g. http://www.google.com." />
                                     </div>
                                 </div>
                                 <div className="control-group">
@@ -64,7 +87,7 @@ var SRUpdate = React.createClass({
                                     <div className="col-sm-10">
                                         <input type="hidden" name="_method" defaultValue value="POST" />
                                         <input className="form-control btn btn-primary" id="deleteItem" type="button" style={{background: '#98969E'}} defaultValue value="Delete" onClick={this.deleteItem} />
-                                        <input className="form-control btn btn-primary" id="createItem" type="button" style={{background: '#98969E'}} defaultValue value="Save" disabled={this.state.isSubmitting} onClick={this.updateItem} />
+                                        <input className="form-control btn btn-primary" id="createItem" type="button" style={{background: '#98969E'}} defaultValue value="Save" disabled={!this.state.isSubmitting} onClick={this.save} />
                                         <input className="form-control btn" id="cancelItem" defaultValue value="Cancel" type="button" onClick={this.goHome} />
                                     </div>
                                 </div>
@@ -76,37 +99,38 @@ var SRUpdate = React.createClass({
     goHome: function() {
         location.href='fusrstart.html';
     },
+    save: function() {
+        var component = this;
+        var key = localStorage.getItem('userJWTToken');
+        window.swagger = new SwaggerClient({
+            url: location.origin + "/swagger/swagger.json",
+            success: function() {
+                var srJson = {
+                    sr: {
+                        id: component.state.id,
+                        service: component.state.service,
+                        description: component.state.description,
+                        endpoint: component.state.endpoint
+                    }
+                };
+                swagger.sr.save(srJson,{responseContentType: 'application/json'}, function(data) {
+                    //document.getElementById("mydata").innerHTML = JSON.stringify(data.obj);
+                    //console.log(data.obj);
+                    component.goHome();
+                });
+            },
+            authorizations : {
+                someHeaderAuth: new SwaggerClient.ApiKeyAuthorization('Authorization', "Bearer " + key, 'header')
+            }
+        });
+        console.log('SRUpdate input saved');
+    },
     updateItem: function(e) {
         var evt = e || window.event
         // "e" is the standard behavior (FF, Chrome, Safari, Opera),
         // while "window.event" (or "event") is IE's behavior
         if ( evt.keyCode === 13 ) {
-            var component = this;
-            var key = localStorage.getItem('userJWTToken');
-            window.swagger = new SwaggerClient({
-                url: location.origin + "/swagger/swagger.json",
-                success: function() {
-                    var srJson = {
-                        sr: {
-                            id: component.state.id,
-                            service: component.state.service,
-                            description: component.state.description,
-                            endpoint: component.state.endpoint
-                        }
-                    };
-                    swagger.sr.save(srJson,{responseContentType: 'application/json'}, function(data) {
-                        //document.getElementById("mydata").innerHTML = JSON.stringify(data.obj);
-                        //console.log(data.obj);
-                        component.goHome();
-                    });
-                },
-                authorizations : {
-                    someHeaderAuth: new SwaggerClient.ApiKeyAuthorization('Authorization', "Bearer " + key, 'header')
-                }
-            });
-            console.log('SRUpdate input saved');
-            // Do something
-
+            this.save();
             // You can disable the form submission this way:
             return false
         }
