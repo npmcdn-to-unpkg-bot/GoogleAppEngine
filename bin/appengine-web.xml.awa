@@ -21,9 +21,8 @@
     <!-- on a different server than the app server -->
 	<static-files>
       	<!-- swagger stuff -->
-		<include path="/swagger-ui.js" />
-		<include path="/swagger/css/*.css" />
-		<include path="/swagger/lib/*.js" />
+		<include path="/swagger/*" />
+		<include path="/swagger/**/*" />
 		<!-- common stuff -->
         <include path="/index.html" />
 		<include path="/static/**.srt" />

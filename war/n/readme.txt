@@ -13,6 +13,19 @@ Apimatic (AngularJS)
 
 Swagger Client
 . The JavaScript client is based on https://www.npmjs.com/package/swagger-client
+. For JWT support as API key, index_api.html (originally index.html) changed with the following:
+            //JWT hack: https://github.com/swagger-api/swagger-ui/issues/818
+            function addApiKeyAuthorization(){
+                var key = encodeURIComponent( $('#input_apiKey')[0].value );
+                if(key && key.trim() != "") {
+                    var apiKeyAuth = new SwaggerClient.ApiKeyAuthorization( "Authorization", "Bearer " + key, "header" );
+                    window.swaggerUi.api.clientAuthorizations.add( "bearer", apiKeyAuth );
+                    log( "Set bearer token: " + key );
+                }
+            }
+. Due to the issue https://github.com/swagger-api/swagger-ui/issues/1382, swagger-client.js is modified two times as at:
+this.schemes[1]; /*SWG1*/
+. All custom changes are tagged with SWG1
 
 JSON Web Token (JWT)
 . The working codes are based on http://niels.nu/blog/2015/json-web-tokens.html
