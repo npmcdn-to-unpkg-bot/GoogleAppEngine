@@ -23,8 +23,9 @@ Swagger Client
                     log( "Set bearer token: " + key );
                 }
             }
-. Due to the issue https://github.com/swagger-api/swagger-ui/issues/1382, swagger-client.js is modified two times as at:
-this.schemes[1]; /*SWG1*/
+. Due to the issue https://github.com/swagger-api/swagger-ui/issues/1382, swagger-client.js AND swagger-ui.js is modified at two places as at:
+    var pick; if(this.url.indexOf('localhost') == -1) pick = 1; else pick = 0;
+    this.schemes[pick]; /*SWG1*/
 . All custom changes are tagged with SWG1
 
 JSON Web Token (JWT)

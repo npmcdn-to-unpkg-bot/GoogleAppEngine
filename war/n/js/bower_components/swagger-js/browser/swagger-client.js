@@ -477,7 +477,8 @@ SwaggerClient.prototype.buildFromSpec = function (response) {
     if (typeof this.scheme === 'undefined' && typeof this.schemes === 'undefined' || this.schemes.length === 0) {
       this.scheme = location.scheme || 'http';
     } else if (typeof this.scheme === 'undefined') {
-        this.scheme = this.schemes[1] || location.scheme; /*SWG1*/
+        var pick; if(this.url.indexOf('localhost') == -1) pick = 1; else pick = 0;
+        this.scheme = this.schemes[pick] || location.scheme; /*SWG1*/
     }
 
     if (typeof this.host === 'undefined' || this.host === '') {
@@ -493,7 +494,8 @@ SwaggerClient.prototype.buildFromSpec = function (response) {
       this.scheme = 'http';
     }
     else if (typeof this.scheme === 'undefined') {
-      this.scheme = this.schemes[1]; /*SWG1*/
+      var pick; if(this.url.indexOf('localhost') == -1) pick = 1; else pick = 0;
+      this.scheme = this.schemes[pick]; /*SWG1*/
     }
   }
 
