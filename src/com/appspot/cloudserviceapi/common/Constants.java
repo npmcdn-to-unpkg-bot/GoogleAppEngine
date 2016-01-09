@@ -18,6 +18,6 @@ public class Constants {
 	public static final String SR_URI = "/sci";
 
 	//=== JWT
-	public static final String JWT_SECRET_KEY = "jwt_secret_key_01072016";
+	public static final String JWT_SECRET_KEY = "jwtsecretkey01072016";		//can not have special characters like _ !!! :(
 
 }
