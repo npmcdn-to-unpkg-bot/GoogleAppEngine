@@ -24,7 +24,7 @@ Swagger Client
                 }
             }
 . Due to the issue https://github.com/swagger-api/swagger-ui/issues/1382, swagger-client.js AND swagger-ui.js is modified at two places as at:
-    var pick; if(this.url.indexOf('localhost') == -1) pick = 1; else pick = 0;
+    var pick = 1; if(this.url.indexOf('localhost') > -1) pick = 0;
     this.schemes[pick]; /*SWG1*/
 . All custom changes are tagged with SWG1
 

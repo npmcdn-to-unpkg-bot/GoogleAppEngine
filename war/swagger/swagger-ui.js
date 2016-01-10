@@ -1672,8 +1672,8 @@ SwaggerClient.prototype.buildFromSpec = function (response) {
     location = this.parseUri(this.url);
     if (typeof this.scheme === 'undefined' && typeof this.schemes === 'undefined' || this.schemes.length === 0) {
       this.scheme = location.scheme || 'http';
-    } else if (typeof this.scheme === 'undefined')
-      var pick; if(this.url.indexOf('localhost') == -1) pick = 1; else pick = 0;
+    } else if (typeof this.scheme === 'undefined') {
+      var pick = 1; if(this.url.indexOf('localhost') > -1) pick = 0;
       this.scheme = this.schemes[pick] || location.scheme; /*SWG1*/
     }
 
@@ -1690,7 +1690,7 @@ SwaggerClient.prototype.buildFromSpec = function (response) {
       this.scheme = 'http';
     }
     else if (typeof this.scheme === 'undefined') {
-      var pick; if(this.url.indexOf('localhost') == -1) pick = 1; else pick = 0;
+      var pick = 1; if(this.url.indexOf('localhost') > -1) pick = 0;
       this.scheme = this.schemes[pick]; /*SWG1*/
     }
   }
