@@ -40,7 +40,8 @@
                 success: function(user) {
                     msg = "Logging in user " + $('#username').val() + " ...";
                     var username = Parse.User.current().getUsername();
-                    //alert(msg + " [" + user.id + "] updatedAt [" + user.updatedAt + "] cpattern [" + user.get("cpattern") + "]");
+                    console.log(msg + " [" + user.id + "] updatedAt [" + user.updatedAt + "] cpattern [" + user.get("cpattern") + "]");
+                    console.log(["User logged in", Parse.User.current()._sessionToken]);
                     $('#notice').text(msg);
                     //for angularJS (http://stackoverflow.com/questions/1370376/prevent-loss-of-variables-when-browser-reload-button-is-pressed)
                     window.location = gMovieURL + '?username='+username+'&logintype=1';
