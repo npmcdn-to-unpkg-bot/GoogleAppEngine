@@ -79,17 +79,17 @@ public class UserHandler implements CrudServiceCallback, ServletContextListener 
 	    //=== begin TBD
 		uid = getValue(request, Constants.UNIVERSAL_ID);
         //KISS store username - just for display not for real stuff to avoid security risk!!!
-		if(uid != null && !uid.equals("null") && !uid.equals("undefined")) {
-			request.getSession().setAttribute(Constants.UNIVERSAL_ID, uid);
-		}
-		if(!SecurityUtils.isAuthenticated(request)) {
-			try {
-				throw new Exception(Constants.ERR_NOT_AUTHENTICATED);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
+//		if(uid != null && !uid.equals("null") && !uid.equals("undefined")) {
+//			request.getSession().setAttribute(Constants.UNIVERSAL_ID, uid);
+//		}
+//		if(!SecurityUtils.isAuthenticated(request)) {
+//			try {
+//				throw new Exception(Constants.ERR_NOT_AUTHENTICATED);
+//			} catch (Exception e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//		}
 	    //=== end TBD
 	    User item = null;
 		Movie mChildItem = null;

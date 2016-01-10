@@ -128,26 +128,29 @@ function doLogout() {
 
     $("#gp-login-notice").hide();
 
-    try {
-        //window.console && console.log("removing app client session ...");
-        var removeSessionUrl = '/jsp/logout2Share.jsp';
-        $.ajax({
-            type: 'GET',
-            url: removeSessionUrl,
-            async: false,
-            success: function(data) {
-                //purgeStates();
-                window.location=gLogoutURL;
-            },
-            error: function(e) {
-                window.console && console.log("session cleanup error: " + e.message + "]");
-                alert("Logout error: " + e.message + ". Please try again.");
+    //try {
+    //    //window.console && console.log("removing app client session ...");
+    //    var removeSessionUrl = '/jsp/logout2Share.jsp';
+    //    $.ajax({
+    //        type: 'GET',
+    //        url: removeSessionUrl,
+    //        async: false,
+    //        success: function(data) {
+    //            //purgeStates();
+    //            window.location=gLogoutURL;
+    //        },
+    //        error: function(e) {
+    //            window.console && console.log("session cleanup error: " + e.message + "]");
+    //            alert("Logout error: " + e.message + ". Please try again.");
+    //
+    //        }
+    //    });
+    //} catch(e) {
+    //    window.console && console.log("Not able to logout and clean up the server side session, error: " + e);
+    //}
+    //===TODO JWT to clear the token!
 
-            }
-        });
-    } catch(e) {
-        window.console && console.log("Not able to logout and clean up the server side session, error: " + e);
-    }
+    window.location=gLogoutURL;
 
     //window.location=gLogoutURL;
 }

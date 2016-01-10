@@ -149,17 +149,17 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
 		
 		System.out.println("MovieHandler:parseRequest() uid = [" + uid + "] received");
 		//KISS store username - just for display not for real stuff to avoid security risk!!!
-		if(uid != null && !uid.equals("null") && !uid.equals("undefined")) {
-			request.getSession().setAttribute(Constants.UNIVERSAL_ID, uid);
-		}
-if(!SecurityUtils.isAuthenticated(request)) {
-	try {
-		throw new Exception(Constants.ERR_NOT_AUTHENTICATED);
-	} catch (Exception e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-}
+//		if(uid != null && !uid.equals("null") && !uid.equals("undefined")) {
+//			request.getSession().setAttribute(Constants.UNIVERSAL_ID, uid);
+//		}
+//		if(!SecurityUtils.isAuthenticated(request)) {
+//			try {
+//				throw new Exception(Constants.ERR_NOT_AUTHENTICATED);
+//			} catch (Exception e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//		}
 	    //=== end TBD
 		Movie item = null;
 		oid = getValue(request, "oid");
