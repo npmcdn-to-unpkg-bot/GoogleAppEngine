@@ -40,15 +40,18 @@
                 success: function(user) {
                     msg = "Logging in user " + $('#username').val() + " ...";
                     var username = Parse.User.current().getUsername();
-                    //console.log(msg + " [" + user.id + "] updatedAt [" + user.updatedAt + "] cpattern [" + user.get("cpattern") + "]");
-                    //console.log(["User logged in", Parse.User.current().getSessionToken()]);
+                    var userId4JWT = user.id;
+                    var pwd4JWT = Parse.User.current().getSessionToken();
+                    console.log(msg + " [" + userId4JWT + "] updatedAt [" + user.updatedAt + "] cpattern [" + user.get("cpattern") + "]");
+                    console.log(["User logged in", pwd4JWT]);
+                    var fd = JSON.stringify({name: userId4JWT, password: pwd4JWT});
                     $.ajax({
                         url : location.origin + "/api/user/login",
                         async: false,
                         type: "POST",
-                        contentType: "application/json; charset=utf-8",
-                        dataType: "json",
-                        data : {name: user.id, password: Parse.User.current().getSessionToken()},
+                        contentType: "application/json;charset=utf-8",
+                        dataType: "jsonp",
+                        data : fd,
                         success: function(data, textStatus, jqXHR)
                         {
                             console.log(data.token);
