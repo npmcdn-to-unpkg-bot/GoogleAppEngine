@@ -137,4 +137,13 @@ public class SecurityUtils {
         return retVal;
 	}
 
+	public static boolean isParseLogin(String targetSecurityToken) {
+		boolean retVal = false;
+
+		if(!StringUtils.isEmpty(targetSecurityToken) && targetSecurityToken.trim().startsWith("r:")) {
+			retVal = true;
+		}
+		
+        return retVal;
+	}
 }

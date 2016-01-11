@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import app.common.ParseHelper;
+
 import com.appspot.cloudserviceapi.common.Constants;
 import com.appspot.cloudserviceapi.security.spring.GaeUserDetails;
 import com.appspot.cloudserviceapi.security.spring.UserSecurityDAO;
@@ -38,7 +40,13 @@ public class UserController {
     	System.out.println("name [" + login.name + "] password [" + login.password + "]");
 		boolean authenticated = false;
 		GaeUserDetails usr = (new UserSecurityDAO()).getGaeUserDetails(login.name);
-		if(usr != null && usr.getPassword() != null && usr.getPassword().equals(login.password)) authenticated = true;
+		if(ParseHelper.isSessionValid(login.name, login.password)) {
+			authenticated = true;
+		}
+		else if(usr != null && usr.getPassword() != null && usr.getPassword().equals(login.password)) {
+			authenticated = true;
+		}
+
         if (//login.name == null || !userDb.containsKey(login.name)
         	!authenticated
         	) {
