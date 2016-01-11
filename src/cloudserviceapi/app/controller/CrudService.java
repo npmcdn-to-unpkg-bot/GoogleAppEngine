@@ -49,7 +49,7 @@ import com.appspot.cloudserviceapi.common.JsonUtil;
 //        	, SwaggerDefinition.Scheme.HTTP
 //        	}
 )
-@Api(value = "ws", tags = "2share")
+@Api(value = "api/jwt/ws", tags = "2share")
 public class CrudService extends HttpServlet {
 	// === KISS: assume only one handler per object!
 	private static List<CrudServiceCallback> objectHandlers = new ArrayList<CrudServiceCallback>();

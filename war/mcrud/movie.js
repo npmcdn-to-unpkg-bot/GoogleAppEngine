@@ -1481,6 +1481,7 @@ angular.module('app', [
         $controllerProvider.allowGlobals();     //thanks to 1.3
         $httpProvider.defaults.useXDomain = true;
         delete $httpProvider.defaults.headers.common['X-Requested-With'];
+        $httpProvider.defaults.headers.common.Authorization = 'Bearer ' + localStorage.setItem('2shareJWTToken');   //JWT support
         //$httpProvider.defaults.headers.get['Content-Type'] = $httpProvider.defaults.headers.put['Content-Type'] = $httpProvider.defaults.headers.post['Content-Type'] = 'text/plain; charset=UTF-8';
         //
         //$provide.decorator("$exceptionHandler", ['$delegate', function($delegate) {

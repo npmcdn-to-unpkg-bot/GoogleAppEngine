@@ -374,7 +374,7 @@ java.lang.RuntimeException: Exception constructing service 'ApplicationContext':
 </servlet>
 <servlet-mapping>
 	<servlet-name>CrudServlet</servlet-name>
-	<url-pattern>/ws/crud</url-pattern>
+	<url-pattern>/api/jwt/ws/crud</url-pattern>
 	<!--
  	<dispatcher>FORWARD</dispatcher>
 	<dispatcher>REQUEST</dispatcher>
