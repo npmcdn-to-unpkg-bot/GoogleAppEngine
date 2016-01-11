@@ -4,15 +4,15 @@ function redirectNonSSL(url) {
             window.location.href = "https:" + window.location.href.substring(window.location.protocol.length);
     }
 }
-function handleSSL(url) {
-    if(typeof url !== 'undefined'  && url.trim().indexOf('localhost') == -1 && url.trim().startsWith('http://')) {
-        var ret = url.trim().replace('http://', 'https://');
-        console.log('url changed to SSL-based -> [' + ret + ']');
-        return ret;
-    } else {
-        return url;
-    }
-}
+//function handleSSL(url) {
+//    if(typeof url !== 'undefined'  && url.trim().indexOf('localhost') == -1 && url.trim().startsWith('http://')) {
+//        var ret = url.trim().replace('http://', 'https://');
+//        console.log('url changed to SSL-based -> [' + ret + ']');
+//        return ret;
+//    } else {
+//        return url;
+//    }
+//}
 
 <!-- JWT and navigations stuff -->
 angular.module('myApp', [])

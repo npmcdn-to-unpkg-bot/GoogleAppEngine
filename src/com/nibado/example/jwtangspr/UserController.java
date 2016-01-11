@@ -35,7 +35,7 @@ public class UserController {
     @RequestMapping(value = "login", method = RequestMethod.POST)
     public LoginResponse login(@RequestBody final UserLogin login)
         throws ServletException {
-    	//System.out.println("name [" + login.name + "] password [" + login.password + "]");
+    	System.out.println("name [" + login.name + "] password [" + login.password + "]");
 		boolean authenticated = false;
 		GaeUserDetails usr = (new UserSecurityDAO()).getGaeUserDetails(login.name);
 		if(usr != null && usr.getPassword() != null && usr.getPassword().equals(login.password)) authenticated = true;

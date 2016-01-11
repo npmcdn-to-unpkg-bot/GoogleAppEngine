@@ -40,8 +40,23 @@
                 success: function(user) {
                     msg = "Logging in user " + $('#username').val() + " ...";
                     var username = Parse.User.current().getUsername();
-                    console.log(msg + " [" + user.id + "] updatedAt [" + user.updatedAt + "] cpattern [" + user.get("cpattern") + "]");
-                    console.log(["User logged in", Parse.User.current()._sessionToken]);
+                    //console.log(msg + " [" + user.id + "] updatedAt [" + user.updatedAt + "] cpattern [" + user.get("cpattern") + "]");
+                    //console.log(["User logged in", Parse.User.current().getSessionToken()]);
+                    $.ajax({
+                        url : location.origin + "/api/user/login",
+                        type: "POST",
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        data : {name: user.id, password: Parse.User.current().getSessionToken()},
+                        success: function(data, textStatus, jqXHR)
+                        {
+                            console.log(data.token);
+                        },
+                        error: function (jqXHR, textStatus, errorThrown)
+                        {
+                            console.log('index.js: jwt token request failure: ' + textStatus + ' [' + errorThrown + ']');
+                        }
+                    });
                     $('#notice').text(msg);
                     //for angularJS (http://stackoverflow.com/questions/1370376/prevent-loss-of-variables-when-browser-reload-button-is-pressed)
                     window.location = gMovieURL + '?username='+username+'&logintype=1';

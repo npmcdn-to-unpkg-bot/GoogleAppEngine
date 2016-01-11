@@ -19,7 +19,6 @@
 	<classpathentry kind="lib" path="war/WEB-INF/lib/commons-collections4-4.0-alpha1.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/gson-2.2.4.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/commons-lang3-3.1.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/Parse-1.3.4.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/esxx.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/js.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/jslint4java-1.4.6.jar"/>

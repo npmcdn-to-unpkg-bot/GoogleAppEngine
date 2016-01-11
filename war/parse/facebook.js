@@ -8,6 +8,8 @@ var gLogoutURL = App.login_url;
 //TBD not able to put this in AMD and make it to work, thus it is here! :(
 Parse.initialize("Ld70ODLxjXFkhhRux6kQqVCiJ4rQeXU8dISafNJa", "dLHhDNKnLimXHzSzxvQcGuwle5iLwnn3bFahDS9q");
 //window.console && console.log("main-config: Parse initialized (facebook.js).");
+//=== https://www.parse.com/tutorials/session-migration-tutorial
+Parse.User.enableRevocableSession();
 
 (function(d, debug){
     var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
