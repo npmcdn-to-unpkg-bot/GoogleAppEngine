@@ -44,6 +44,7 @@
                     //console.log(["User logged in", Parse.User.current().getSessionToken()]);
                     $.ajax({
                         url : location.origin + "/api/user/login",
+                        async: false,
                         type: "POST",
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
