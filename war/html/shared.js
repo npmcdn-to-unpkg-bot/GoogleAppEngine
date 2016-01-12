@@ -5,6 +5,8 @@ var mBuild = '0167';
 var myApp = angular.module('app', [], ctrlRead);
 var uid;
 
+$.ajaxSetup({headers: { 'Authorization': 'Bearer ' + localStorage.getItem('2shareJWTToken') }}); //JWT support
+
 function ctrlRead($scope, $filter, $http, $rootScope, $console, $timeout) {
     //var offline = true;  //DEV only
     var offline = false;  //need to be uncommented for production
@@ -138,7 +140,7 @@ function ctrlRead($scope, $filter, $http, $rootScope, $console, $timeout) {
     	$scope.pagedItems.length = 0;
         $scope.searchResults.length = 0;
 		window.console && console.log('4list reinit');
-        $http.get('/ws/crud?type=' + $scope.backendObject + "&action=shared&filter=sharedbyall")
+        $http.get('/api/jwt/ws/crud?type=' + $scope.backendObject + "&action=shared&filter=sharedbyall")
 	    .success(function(data, status, headers, config){
                 window.console && console.log('3success entered');
 	        var j;

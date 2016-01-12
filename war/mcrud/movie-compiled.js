@@ -277,7 +277,7 @@ $timeout, dateFilter, $location, $sce) {
         $scope.pagedItems.length = 0;
         $scope.searchResults.length = 0;
         //$console && $console.log('3.1 list reinit');
-        $http.get(gCacheProxy + '/ws/crud?type=' + $scope.backendObject + "&origin=" + location.hostname + "&aid=" + gAppId + "&uid=" + uid + "&maxPerPage=" + $scope.page.max + "&pageNumber=" + $scope.page.number).success(function (data, status1, headers, config) {
+        $http.get(gCacheProxy + '/api/jwt/ws/crud?type=' + $scope.backendObject + "&origin=" + location.hostname + "&aid=" + gAppId + "&uid=" + uid + "&maxPerPage=" + $scope.page.max + "&pageNumber=" + $scope.page.number).success(function (data, status1, headers, config) {
             if (data.indexOf(App.NO_PARENT_ERR) > -1) {
                 alert(App.NO_PARENT_ERR_MSG);
                 location.href = App.login_url;
@@ -398,7 +398,7 @@ $timeout, dateFilter, $location, $sce) {
         $scope.backendReady = false;
         var uid = getUsername();
         //$console && $console.log('4.1 list reinit');
-        $http.get(gCacheProxy + '/ws/crud?type=' + $scope.backendObject + "&origin=" + location.hostname + "&aid=" + gAppId + "&uid=" + uid + "&maxPerPage=" + $scope.page.max + "&pageNumber=" + $scope.page.number).success(function (data, status1, headers, config) {
+        $http.get(gCacheProxy + '/api/jwt/ws/crud?type=' + $scope.backendObject + "&origin=" + location.hostname + "&aid=" + gAppId + "&uid=" + uid + "&maxPerPage=" + $scope.page.max + "&pageNumber=" + $scope.page.number).success(function (data, status1, headers, config) {
             //$console && $console.log('loadItems success entered');
             var j;
             var htmlTitle;
@@ -522,11 +522,11 @@ $timeout, dateFilter, $location, $sce) {
         var host = gCacheProxy; //https://' + $.url().attr('host');
 
         if (datasource === 2) {
-            endpoint = host + '/ws/crud?type=' + $scope.backendObject + "&uid=" + uid + "&action=scheduled&filter=scheduled";
+            endpoint = host + '/api/jwt/ws/crud?type=' + $scope.backendObject + "&uid=" + uid + "&action=scheduled&filter=scheduled";
         } else if (datasource === 1) {
-            endpoint = host + '/ws/crud?type=' + $scope.backendObject + "&action=shared&filter=shared&uid=" + uid;
+            endpoint = host + '/api/jwt/ws/crud?type=' + $scope.backendObject + "&action=shared&filter=shared&uid=" + uid;
         } else {
-            endpoint = host + '/ws/crud?type=' + $scope.backendObject + "&uid=" + uid;
+            endpoint = host + '/api/jwt/ws/crud?type=' + $scope.backendObject + "&uid=" + uid;
         }
         endpoint = endpoint + "&origin=" + location.hostname + "&aid=" + gAppId;
 
@@ -944,10 +944,10 @@ $timeout, dateFilter, $location, $sce) {
             $scope.item.id = $scope.items.length + 1;
             var data = "id=" + $scope.item.id + "&" + "name=" + $scope.item.name + "&" + "title=" + $scope.item.title + "&" + "description=" + escapeJson($scope.item.description) + "&" + "url=" + $scope.item.url + "&" + "shared=" + $scope.item.shared + "&" + "channelPattern=" + $scope.item.channelPattern + "&" + "search_results=" + $scope.item.search_results + "&" + "oid=" + oid + "&" + "type=" + $scope.backendObject + "&action=create&uid=" + uid + "&origin=" + location.hostname + "&aid=" + gAppId;
             //alert('about to create [' + data + ']');
-            //            $http.post('/ws/crud?', data)
+            //            $http.post('/api/jwt/ws/crud?', data)
             $http({
                 method: 'POST',
-                url: gCacheProxy + '/ws/crud',
+                url: gCacheProxy + '/api/jwt/ws/crud',
                 data: data,
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
                 //headers: {'Content-type': 'application/json'}
@@ -1113,10 +1113,10 @@ $timeout, dateFilter, $location, $sce) {
             var uid = getUsername();
             var data = "id=" + $scope.item.id + "&" + "name=" + $scope.item.name + "&" + "title=" + $scope.item.title + "&" + "description=" + escapeJson($scope.item.description) + "&" + "url=" + $scope.item.url + "&" + "shared=" + $scope.item.shared + "&" + "channelPattern=" + $scope.item.channelPattern + "&" + "search_results=" + $scope.item.search_results + "&" + "oid=" + oid + "&" + "type=" + $scope.backendObject + "&action=update&uid=" + uid + "&origin=" + location.hostname + "&aid=" + gAppId;
             //alert('about to update [' + data + ']');
-            //            $http.post('/ws/crud?', data)
+            //            $http.post('/api/jwt/ws/crud?', data)
             $http({
                 method: 'POST',
-                url: gCacheProxy + '/ws/crud',
+                url: gCacheProxy + '/api/jwt/ws/crud',
                 data: data,
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
                 //headers: {'Content-type': 'application/json'}
@@ -1169,7 +1169,7 @@ $timeout, dateFilter, $location, $sce) {
                 var data = "id=" + item.id + "&" + "oid=" + oid + "&" + "type=" + $scope.backendObject + "&action=delete&uid=" + uid + "&origin=" + location.hostname + "&aid=" + gAppId;
                 $http({
                     method: 'POST',
-                    url: gCacheProxy + '/ws/crud',
+                    url: gCacheProxy + '/api/jwt/ws/crud',
                     data: data,
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'

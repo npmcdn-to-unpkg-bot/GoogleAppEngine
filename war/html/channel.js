@@ -18,6 +18,8 @@ var currentMoviePreviewCount = 1;
 
 $("#cBuild").val("(" + cBuild + ")");
 
+$.ajaxSetup({headers: { 'Authorization': 'Bearer ' + localStorage.getItem('2shareJWTToken') }}); //JWT support
+
 /** load my scheduled movies */
 function loadMovieScheduled(username) {
     var stat = false;
@@ -26,8 +28,8 @@ function loadMovieScheduled(username) {
 
     $.ajax({
         type: "POST",
-//        url: gCacheProxy + "/ws/crud?type=modelCalendar&origin=" + location.hostname + "&uid=" + username + "&filter=next5",
-        url: gCacheProxy + "/ws/crud?type=modelMovie&origin=" + location.hostname + "&aid=" + gAppId + "&uid=" + username + "&filter=next5",
+//        url: gCacheProxy + "/api/jwt/ws/crud?type=modelCalendar&origin=" + location.hostname + "&uid=" + username + "&filter=next5",
+        url: gCacheProxy + "/api/jwt/ws/crud?type=modelMovie&origin=" + location.hostname + "&aid=" + gAppId + "&uid=" + username + "&filter=next5",
         async: false,
         success: function(data) {
 
@@ -233,7 +235,7 @@ function getNextShuffledUrl(startDatetime) {
 
     $.ajax({
         type: "GET",
-        url: gCacheProxy + "/ws/crud?type=modelMovie&origin=" + location.hostname + "&aid=" + gAppId + "&uid=" + userid + "&filter=next5",
+        url: gCacheProxy + "/api/jwt/ws/crud?type=modelMovie&origin=" + location.hostname + "&aid=" + gAppId + "&uid=" + userid + "&filter=next5",
         //async: false,
         success: function(data) {
             if(data !== undefined) {
@@ -284,13 +286,13 @@ function getSubTitle(text) {
 /** load movies in a random order for playback */
 function loadMovie(username, shuffleFlag) {
     //playNow();  //just a test
-    console && console.log("Parse username[" + username + "]");
+    //console && console.log("Parse username[" + username + "]");
 
     var stat = false;
     galleriaData = [];
     //username = "pub";
 
-    targetUrl = gCacheProxy + "/ws/crud?type=modelMovie&origin=" + location.hostname + "&aid=" + gAppId + "&uid=" + username + "&filter=next5";
+    targetUrl = gCacheProxy + "/api/jwt/ws/crud?type=modelMovie&origin=" + location.hostname + "&aid=" + gAppId + "&uid=" + username + "&filter=next5";
     //alert(targetUrl);
 
     var doIt = function(data) {
@@ -716,7 +718,7 @@ function handleChannelType(type, username) {
                     try {
                         $.ajax({
                             type: "POST",
-                            url: gCacheProxy + "/ws/crud?type=modelMovie&origin=" + location.hostname + "&aid=" + gAppId + "&uid=" + username,
+                            url: gCacheProxy + "/api/jwt/ws/crud?type=modelMovie&origin=" + location.hostname + "&aid=" + gAppId + "&uid=" + username,
                             //async: false,
                             success: function(data) {
 

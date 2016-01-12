@@ -285,7 +285,7 @@ function MovieController($scope, $filter, $http, $rootScope,
         $scope.pagedItems.length = 0;
         $scope.searchResults.length = 0;
         //$console && $console.log('3.1 list reinit');
-        $http.get(gCacheProxy + '/ws/crud?type=' + $scope.backendObject + "&origin=" + location.hostname + "&aid=" + gAppId + "&uid=" + uid + "&maxPerPage=" + $scope.page.max + "&pageNumber=" + $scope.page.number )
+        $http.get(gCacheProxy + '/api/jwt/ws/crud?type=' + $scope.backendObject + "&origin=" + location.hostname + "&aid=" + gAppId + "&uid=" + uid + "&maxPerPage=" + $scope.page.max + "&pageNumber=" + $scope.page.number )
             .success(function (data, status1, headers, config) {
                 if(data.indexOf(App.NO_PARENT_ERR) > -1) {
                     alert(App.NO_PARENT_ERR_MSG);
@@ -413,7 +413,7 @@ function MovieController($scope, $filter, $http, $rootScope,
         $scope.backendReady = false;
         var uid = getUsername();
         //$console && $console.log('4.1 list reinit');
-        $http.get(gCacheProxy + '/ws/crud?type=' + $scope.backendObject + "&origin=" + location.hostname + "&aid=" + gAppId + "&uid=" + uid + "&maxPerPage=" + $scope.page.max + "&pageNumber=" + $scope.page.number )
+        $http.get(gCacheProxy + '/api/jwt/ws/crud?type=' + $scope.backendObject + "&origin=" + location.hostname + "&aid=" + gAppId + "&uid=" + uid + "&maxPerPage=" + $scope.page.max + "&pageNumber=" + $scope.page.number )
             .success(function (data, status1, headers, config) {
                 //$console && $console.log('loadItems success entered');
                 var j;
@@ -544,11 +544,11 @@ function MovieController($scope, $filter, $http, $rootScope,
         var host = gCacheProxy;  //https://' + $.url().attr('host');
 
         if (datasource === 2) {
-            endpoint = host + '/ws/crud?type=' + $scope.backendObject + "&uid=" + uid + "&action=scheduled&filter=scheduled";
+            endpoint = host + '/api/jwt/ws/crud?type=' + $scope.backendObject + "&uid=" + uid + "&action=scheduled&filter=scheduled";
         } else if (datasource === 1) {
-            endpoint = host + '/ws/crud?type=' + $scope.backendObject + "&action=shared&filter=shared&uid=" + uid;
+            endpoint = host + '/api/jwt/ws/crud?type=' + $scope.backendObject + "&action=shared&filter=shared&uid=" + uid;
         } else {
-            endpoint = host + '/ws/crud?type=' + $scope.backendObject + "&uid=" + uid;
+            endpoint = host + '/api/jwt/ws/crud?type=' + $scope.backendObject + "&uid=" + uid;
         }
         endpoint = endpoint + "&origin=" + location.hostname + "&aid=" + gAppId
 
@@ -984,10 +984,10 @@ function MovieController($scope, $filter, $http, $rootScope,
                 "type=" + $scope.backendObject + "&action=create&uid=" + uid
                 + "&origin=" + location.hostname + "&aid=" + gAppId;
             //alert('about to create [' + data + ']');
-//            $http.post('/ws/crud?', data)
+//            $http.post('/api/jwt/ws/crud?', data)
             $http({
                 method: 'POST',
-                url: gCacheProxy + '/ws/crud',
+                url: gCacheProxy + '/api/jwt/ws/crud',
                 data: data,
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                 //headers: {'Content-type': 'application/json'}
@@ -1166,10 +1166,10 @@ function MovieController($scope, $filter, $http, $rootScope,
                 "type=" + $scope.backendObject + "&action=update&uid=" + uid
                 + "&origin=" + location.hostname + "&aid=" + gAppId;
             //alert('about to update [' + data + ']');
-//            $http.post('/ws/crud?', data)
+//            $http.post('/api/jwt/ws/crud?', data)
             $http({
                 method: 'POST',
-                url: gCacheProxy + '/ws/crud',
+                url: gCacheProxy + '/api/jwt/ws/crud',
                 data: data,
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                 //headers: {'Content-type': 'application/json'}
@@ -1227,7 +1227,7 @@ function MovieController($scope, $filter, $http, $rootScope,
                     + "&origin=" + location.hostname + "&aid=" + gAppId;
                 $http({
                     method: 'POST',
-                    url: gCacheProxy + '/ws/crud',
+                    url: gCacheProxy + '/api/jwt/ws/crud',
                     data: data,
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
@@ -1472,28 +1472,20 @@ angular.module('app', [
     //'angularLeap',    //it breaks LeapStrap!!! :(
     'ngTouch'
     ])
+.config(['$httpProvider', '$controllerProvider',function ($httpProvider, $controllerProvider) {
+    //var sessionId = "{!$Api.Session_ID}";
+    $controllerProvider.allowGlobals();     //thanks to 1.3
+    $httpProvider.defaults.useXDomain = true;
+    delete $httpProvider.defaults.headers.common["X-Requested-With"];
+    //$httpProvider.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
+    //$httpProvider.defaults.headers.common["Accept"] = "application/json";
+    //$httpProvider.defaults.headers.common["content-type"] = "application/json";
+    //$httpProvider.defaults.headers.common['Authorization'] = "OAuth " + sessionId ;
+    //$httpProvider.defaults.headers.common['X-User-Agent'] = "MyClient" ;
+    $httpProvider.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('2shareJWTToken');   //JWT support
+    console && console.log("movie.js config(): done 6")
+}])
 //angular.module('app',[])//dependency 'ui.bootstrap' is conflicting with 1.4, thus removed (c.f. http://stackoverflow.com/questions/26332202/using-ui-bootstrap-causing-issues-with-carousel)!
-.config(
-		['$controllerProvider', '$httpProvider',
-    function($controllerProvider, $httpProvider) {
-        //alert('test');
-        //console.log("movie.js app config called");
-        $controllerProvider.allowGlobals();     //thanks to 1.3
-        $httpProvider.defaults.useXDomain = true;
-        delete $httpProvider.defaults.headers.common['X-Requested-With'];
-        $httpProvider.defaults.headers.common.Authorization = 'Bearer ' + localStorage.setItem('2shareJWTToken');   //JWT support
-        //$httpProvider.defaults.headers.get['Content-Type'] = $httpProvider.defaults.headers.put['Content-Type'] = $httpProvider.defaults.headers.post['Content-Type'] = 'text/plain; charset=UTF-8';
-        //
-        //$provide.decorator("$exceptionHandler", ['$delegate', function($delegate) {
-        //    return function(exception, cause) {
-        //        $delegate(exception, cause);
-        //        alert(exception.message);
-        //    };
-        //}]);
-        //console && console.log("movie.js config(): done")
-    }
-]
-)
 .controller('MovieController',
     ['$scope', '$filter', '$http', '$rootScope',
         //'loglevel',
@@ -1503,7 +1495,6 @@ angular.module('app', [
         MovieController //1.3 does not allow global and we need it to be as angular.bootstrap needs a global function
     ]
 )
-
 //MovieController.$inject = ['$scope', '$filter', '$http', '$rootScope',
 //    //'loglevel',
 //    '$timeout', 'dateFilter', '$location'

@@ -12,7 +12,9 @@ var username;
 //}
 //alert("calendar.js username [" + username + "]");
 
-gHref = "/ws/crud?type=modelCalendar&uid=" + username;
+gHref = "/api/jwt/ws/crud?type=modelCalendar&uid=" + username;
+
+$.ajaxSetup({headers: { 'Authorization': 'Bearer ' + localStorage.getItem('2shareJWTToken') }}); //JWT support
 
 function initCalendar() {
     var date = new Date();
@@ -91,7 +93,7 @@ function initCalendar() {
             firstHour: new Date().getHours(),
             eventDurationEditable: false,
             slotEventOverlap: false,
-            events: gHref, //"/ws/crud?type=modelCalendar&uid=" + username,
+            events: gHref, //"/api/jwt/ws/crud?type=modelCalendar&uid=" + username,
             droppable: true, // this allows things to be dropped onto the calendar !!!
             drop: function (date, allDay) { // this function is called when something is dropped
                 if (isOverlapped(date) === true) {
@@ -153,7 +155,7 @@ function initCalendar() {
                     //window.console && console.log("deleting calendar event id '" + event.id + "' repeated '" + frequency + "'");
                     $.ajax({
                         type: "POST",
-                        url: "/ws/crud",  // read the action attribute of the form
+                        url: "/api/jwt/ws/crud",  // read the action attribute of the form
                         data: $('#calendarForm').serialize(),
                         async: false,
                         success: function (data) {
@@ -273,7 +275,7 @@ function saveNewEvent(event) {
         //submit to backend first
         $.ajax({
             type: "POST",
-            url: "/ws/crud",  // read the action attribute of the form
+            url: "/api/jwt/ws/crud",  // read the action attribute of the form
             data: $('#calendarForm').serialize(),  // what data should go there?
             //http://stackoverflow.com/questions/5316697/jquery-return-data-after-ajax-call-success
             async: false,
@@ -594,7 +596,7 @@ function saveExistingEvent(event) {
     //submit to backend first
     $.ajax({
         type: "POST",
-        url: "/ws/crud",  // read the action attribute of the form
+        url: "/api/jwt/ws/crud",  // read the action attribute of the form
         data: $('#calendarForm').serialize(),  // what data should go there?
 //        dataType: "jsonp", // necessary for IE9
         crossDomain: true,
@@ -706,14 +708,14 @@ function handleNonDraggable(item) {
 }
 
 function viewAllShowtime() {
-    window.open("/ws/crud?type=modelCalendar&uid=" + username, "_new");
+    window.open("/api/jwt/ws/crud?type=modelCalendar&uid=" + username, "_new");
 }
 
 function removeAllShowtime() {
     var r=confirm("Please confirm to purge all your calendar events. The action can not be undone.");
     if (r==true)
     {
-        window.open("/ws/crud?type=modelMovie&uid=" + username + "&action=purgecalendar", "_new");
+        window.open("/api/jwt/ws/crud?type=modelMovie&uid=" + username + "&action=purgecalendar", "_new");
     }
     else
     {
@@ -725,7 +727,7 @@ function removeAllShowtime() {
 //TODO this call probably can be avoid if somehow we can just make use of the one which populate the fullcalendar events
 $.ajax({
     type: "GET",
-    url: "/ws/crud?type=modelCalendar&uid=" + username,
+    url: "/api/jwt/ws/crud?type=modelCalendar&uid=" + username,
     async: true,
     success: function(data) {
         ////window.console && console.log("calendar event created, response = [" + data + "]");

@@ -14,6 +14,7 @@ requirejs.config({
 //        channelApp: ['../html/channel'],
         movieApp: ['../mcrud/movie'],
         calendarApp: '../html/calendar',
+        angularTouch: '//ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular-touch',
         countDown: '../jquery/jquery.countdown',
         initUser: ['../parse/init']
     },
@@ -44,6 +45,10 @@ requirejs.config({
 //                   ,'jQueryUI'
             ]
         },
+        angularTouch: {
+            deps: ["angular"],
+            exports : 'angularTouch'
+        },
         initUser: {
             deps: ['movieApp']
         },
@@ -70,13 +75,15 @@ requirejs(['./main-config', './app'], function (common, app) {
         ['jquery', 'purl', 'parse', 'facebook', 'angular', 'loglevel', 'prefs',
             'movieApp',
             'calendarApp',
+            'angularTouch',
             'initUser', 'galleria', '../html/channel', 'countDown'], function (
         $, purl, Parse, facebook, angular, loglevel, prefs,
             movie,
             calendar,
+            angularTouch,
             init, galleria, channel, countDown) {
             $(document).ready(function() {
-                //loglevel.info("ready!");
+                //console.log("ready!");
                 //$('body').attr('ng-controller', 'MovieController');
                 //noinspection JSCheckFunctionSignatures
                 angular.bootstrap(document, ['app']);    //only for 1.3

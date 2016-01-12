@@ -291,6 +291,6 @@ baseImportGSS = function importGSS(json) {
 
 function requestUpgrade() {
     if (confirm("Do you really want to upgrade the collection? Upgrading the collection more than once can cause the duplicates in your collection!")) {
-        window.open("/ws/crud?type=modelMovie&action=upgrade&uid=" + $.url().param('username'), "");
+        window.open("/api/jwt/ws/crud?type=modelMovie&action=upgrade&uid=" + $.url().param('username'), "");
     }
 }

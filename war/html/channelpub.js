@@ -16,6 +16,8 @@ var currentMoviePreviewCount = 1;
 
 $("#cBuild").val("(" + cBuild + ")");
 
+$.ajaxSetup({headers: { 'Authorization': 'Bearer ' + localStorage.getItem('2shareJWTToken') }}); //JWT support
+
 //+ Jonas Raoni Soares Silva
 //@ http://jsfromhell.com/array/shuffle [v1.0]
 /** use only by Play Now as well as Play Later functionalities */
@@ -30,7 +32,7 @@ function getNextShuffledUrl(startDatetime) {
 
     $.ajax({
         type: "GET",
-        url: "/ws/crud?type=modelMovie&uid=" + userid + "&filter=next5",
+        url: "/api/jwt/ws/crud?type=modelMovie&uid=" + userid + "&filter=next5",
         async: false,
         success: function(data) {
             if(data !== undefined) {
@@ -91,7 +93,7 @@ function loadMoviePub(username, log) {
 
     $.ajax({
         type: "POST",
-        url: "/ws/crud?type=modelMovie&uid=" + username + "&filter=next5",
+        url: "/api/jwt/ws/crud?type=modelMovie&uid=" + username + "&filter=next5",
         async: false,
         success: function(data) {
 
@@ -450,7 +452,7 @@ function handleChannelType(type, username) {
                     try {
                         $.ajax({
                             type: "POST",
-                            url: "/ws/crud?type=modelMovie&uid=" + username,
+                            url: "/api/jwt/ws/crud?type=modelMovie&uid=" + username,
                             async: false,
                             success: function(data) {
 

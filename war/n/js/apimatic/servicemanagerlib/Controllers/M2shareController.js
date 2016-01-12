@@ -29,7 +29,7 @@ angular.module('ServiceManagerLib').factory('M2shareController',function($q,Conf
 
             //prepare query string for API call
             var baseUri = Configuration.BASEURI
-            var queryBuilder = baseUri + "/ws/crud";
+            var queryBuilder = baseUri + "/api/jwt/ws/crud";
             
             //Process query parameters
             queryBuilder = APIHelper.appendUrlWithQueryParameters(queryBuilder, {
@@ -107,7 +107,7 @@ angular.module('ServiceManagerLib').factory('M2shareController',function($q,Conf
 
             //prepare query string for API call
             var baseUri = Configuration.BASEURI
-            var queryBuilder = baseUri + "/ws/crud";
+            var queryBuilder = baseUri + "/api/jwt/ws/crud";
             
             //validate and preprocess url
             var queryUrl = APIHelper.cleanUrl(queryBuilder);

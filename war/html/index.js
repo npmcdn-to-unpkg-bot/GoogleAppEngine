@@ -14,6 +14,8 @@
      }
      });
      */
+    $.ajaxSetup({headers: { 'Authorization': 'Bearer ' + localStorage.getItem('2shareJWTToken') }}); //JWT support
+
     function handleUser(type) {
         $("#status").show();
 

@@ -61,7 +61,7 @@ function ctrlRead($scope, $filter, $http) {
     $scope.loadItems = function() {
     	$scope.items = [];	//clear everything and reload again :(
 		console.log('about to get the list');
-	    $http.get('/ws/crud?type=modelCalendar')
+	    $http.get('/api/jwt/ws/crud?type=modelCalendar')
 	    .success(function(data, status, headers, config){
 	        var j;
 			for (var i = 0; i < data.length; i++) {
