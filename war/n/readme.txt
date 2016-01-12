@@ -33,6 +33,10 @@ JSON Web Token (JWT)
 . JWT protected api has to be /api/jwt/* as /api is already reserved for Spring MVC api (which is not JWT-enabled), aka /api/jwt/* are JWT-enabled REST services while /api/* where * is not jwt is not!
 . The configurations are done inside dispatcher-servlet.xml, web.xml as well as via @RequestMapping of UserController and ApiController
 . It's main dependency (if you are not using Maven, obviously this project does not use Maven), is https://github.com/jwtk/jjwt e.g. jjwt-0.7.0-SNAPSHOT.jar
+. To apply a site specific secret key, say 1234567890, invoke:
+http://localhost:8888/postsettings?setting=1234567890&pincode=secretkey.common
+. To view it:
+http://localhost:8888/settings?pincode=secretkey.common
 
 FalcorJS
 . It is experimental and it is not ready (due to a need to have the JSON response in a form of JSONGraph mainly)
@@ -74,3 +78,6 @@ http://www.infoq.com/news/2015/08/falcor
 
 React.js Conf 2015 - The complementarity of React and Web Components
 https://www.youtube.com/watch?v=g0TD0efcwVg
+
+Known Issue
+None

@@ -192,7 +192,8 @@ Caused by: java.security.AccessControlException: access denied ("java.io.FilePer
     <filter>
         <filter-name>JwtFilter</filter-name>
         <filter-class>com.nibado.example.jwtangspr.JwtFilter</filter-class>
-    </filter>
+        <load-on-startup>1</load-on-startup>
+	</filter>
     <filter-mapping>
         <filter-name>JwtFilter</filter-name>
         <url-pattern>/api/jwt/*</url-pattern>

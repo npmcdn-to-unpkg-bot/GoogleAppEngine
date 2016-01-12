@@ -256,7 +256,8 @@ Configuration Tips -
 . To turn on backup service
 /postsettings?setting=true&pincode=advanced.ui.active
 /postsettings?setting=true&pincode=backup.service.active
-
+. Known Issue:
+Ocassional error: com.google.api.server.spi.config.ApiConfigException: class cloudserviceapi.app.controller.CrudService has no @Api annotation.
 
 Development Tips -
 

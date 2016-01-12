@@ -27,13 +27,13 @@
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 	<listener>
-		<listener-class>app.controller.UserHandler</listener-class>
+		<listener-class>cloudserviceapi.app.controller.UserHandler</listener-class>
 	</listener>
 	<listener>
-		<listener-class>app.controller.MovieHandler</listener-class>
+		<listener-class>cloudserviceapi.app.controller.MovieHandler</listener-class>
 	</listener>
 	<listener>
-		<listener-class>app.controller.CalendarHandler</listener-class>
+		<listener-class>cloudserviceapi.app.controller.CalendarHandler</listener-class>
 	</listener>
 <!-- Url rewrite stuff -->
 <filter>
@@ -80,7 +80,7 @@
 </filter>  
 <filter-mapping>
    	<filter-name>sitemesh</filter-name>  
-   	<url-pattern>/*</url-pattern>  
+   	<url-pattern>/*</url-pattern>
 	<dispatcher>FORWARD</dispatcher>
 	<dispatcher>REQUEST</dispatcher>
 	<dispatcher>INCLUDE</dispatcher>
@@ -121,6 +121,84 @@
 </filter-mapping>
 -->
 
+<!-- Swagger-Servlet stuff -->
+	<!-- sample servlet -->
+    <servlet>
+        <servlet-name>SampleServlet</servlet-name>
+        <servlet-class>io.swagger.sample.servlet.SampleServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SampleServlet</servlet-name>
+        <url-pattern>/sample/users/*</url-pattern>
+    </servlet-mapping>
+
+    <!--
+    <init-param>
+            <param-name>swagger.resource.package</param-name>
+            <param-value>io.swagger.sample.servlet</param-value>
+        </init-param>
+    -->
+    <!-- swagger servlet reader -->
+    <servlet>
+        <servlet-name>DefaultServletConfig</servlet-name>
+        <servlet-class>io.swagger.servlet.config.DefaultServletConfig</servlet-class>
+        <load-on-startup>2</load-on-startup>
+        <init-param>
+            <param-name>swagger.resource.package</param-name>
+            <!--
+Caused by: java.security.AccessControlException: access denied ("java.io.FilePermission" "/Applications/appengine-java-sdk-1.9.25/lib/impl/agent/appengine-agentruntime.jar" "read")
+            <param-value>cloudserviceapi;com.appspot.cloudserviceapi.dto</param-value>
+            <param-value>cloudserviceapi;com.appspot.cloudserviceapi.springmvc.controller;tapp.model</param-value>
+            <param-value>com.appspot.cloudserviceapi.springmvc.controller</param-value>
+            -->
+            <param-value>cloudserviceapi.app.controller</param-value>
+        </init-param>
+		<init-param>
+            <param-name>swagger.api.title</param-name>
+            <param-value>Swagger Specs</param-value>
+        </init-param>
+        <init-param>
+            <param-name>api.version</param-name>
+            <param-value>1.0.0</param-value>
+        </init-param>
+        <!--
+		<init-param>       
+            <param-name>swagger.api.basepath</param-name>
+            <param-value>http://chudoon3t.appspot.com</param-value>
+        </init-param>
+        -->
+	</servlet>
+
+    <!-- swagger api declaration -->
+    <servlet>
+        <servlet-name>ApiDeclarationServlet</servlet-name>
+        <servlet-class>io.swagger.servlet.listing.ApiDeclarationServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ApiDeclarationServlet</servlet-name>
+        <url-pattern>/swagger/*</url-pattern>
+    </servlet-mapping>
+
+    <filter>
+        <filter-name>ApiOriginFilter</filter-name>
+        <filter-class>io.swagger.sample.util.ApiOriginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>ApiOriginFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+   	<!-- Json Web Token (JWT) filter -->
+    <filter>
+        <filter-name>JwtFilter</filter-name>
+        <filter-class>com.nibado.example.jwtangspr.JwtFilter</filter-class>
+        <load-on-startup>1</load-on-startup>
+	</filter>
+    <filter-mapping>
+        <filter-name>JwtFilter</filter-name>
+        <url-pattern>/api/jwt/*</url-pattern>
+    </filter-mapping>
+
 <!-- Spring MVC stuff -->
 	<context-param>
 	  <param-name>contextClass</param-name>
@@ -128,7 +206,7 @@
 	</context-param>
     <!-- Handles Spring requests -->
     <servlet>
-        <servlet-name>cloudserviceapi</servlet-name>
+        <servlet-name>dispatcher</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
             <param-name>contextConfigLocation</param-name>
@@ -140,10 +218,23 @@
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
-        <servlet-name>cloudserviceapi</servlet-name>
-        <url-pattern>/web/*</url-pattern>
+        <servlet-name>dispatcher</servlet-name>
+        <url-pattern>/api/*</url-pattern>
     </servlet-mapping>
     
+<!-- https://mf9it.wordpress.com/2009/12/31/quicknotes-on-restful-spring/ -->    
+<filter>
+    <filter-name>hiddenHttpMethodFilter</filter-name>
+    <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
+</filter>
+ 
+<filter-mapping>
+    <filter-name>hiddenHttpMethodFilter</filter-name>
+    <servlet-name>dispatcher</servlet-name>
+</filter-mapping>
+
+
+
     <!-- Enable escaping of form submission contents -->
     <context-param>
         <param-name>defaultHtmlEscape</param-name>
@@ -280,11 +371,11 @@ java.lang.RuntimeException: Exception constructing service 'ApplicationContext':
 -->
 <servlet>
 	<servlet-name>CrudServlet</servlet-name>
-	<servlet-class>app.controller.CrudService</servlet-class>
+	<servlet-class>cloudserviceapi.app.controller.CrudService</servlet-class>
 </servlet>
 <servlet-mapping>
 	<servlet-name>CrudServlet</servlet-name>
-	<url-pattern>/ws/crud</url-pattern>
+	<url-pattern>/api/jwt/ws/crud</url-pattern>
 	<!--
  	<dispatcher>FORWARD</dispatcher>
 	<dispatcher>REQUEST</dispatcher>
@@ -640,12 +731,6 @@ java.lang.RuntimeException: Exception constructing service 'ApplicationContext':
     <url-pattern>/sci/bigtime</url-pattern>
   </servlet-mapping>
 -->
-  <servlet>
-    <description/>
-    <display-name>ServiceRegistryServlet</display-name>
-    <servlet-name>ServiceRegistryServlet</servlet-name>
-    <servlet-class>com.appspot.cloudserviceapi.sci.services.ServiceRegistryServlet</servlet-class>
-  </servlet>
   <servlet-mapping>
     <servlet-name>ServiceRegistryServlet</servlet-name>
     <url-pattern>/sci/go</url-pattern>
@@ -743,13 +828,13 @@ java.lang.RuntimeException: Exception constructing service 'ApplicationContext':
 <!-- comment out these in dev to avoid "WARNING: AUTH FAILURE: incorrect role for xxx" -->
             <url-pattern>/userstart</url-pattern>
             <url-pattern>/usersave/*</url-pattern>
+            <url-pattern>/postsettings</url-pattern>
+            <url-pattern>/settings</url-pattern>
+<!--
             <url-pattern>/sci/serviceregistrysave/*</url-pattern>
             <url-pattern>/g/app/templatesave/*</url-pattern>
             <url-pattern>/g/owasp/securedsave/*</url-pattern>
             <url-pattern>/g/social/socialsave/*</url-pattern>            
-            <url-pattern>/postsettings</url-pattern>
-            <url-pattern>/settings</url-pattern>
-<!--
 -->
 <!-- relegated to the Google authentication until Shiro is in place	
             <url-pattern>/app/*</url-pattern>
@@ -775,10 +860,10 @@ java.lang.RuntimeException: Exception constructing service 'ApplicationContext':
         </user-data-constraint>
 <!--        
 -->
-<!--        
         <auth-constraint>
             <role-name>admin</role-name>
         </auth-constraint>
+<!--        
 -->
     </security-constraint>
 
@@ -837,7 +922,7 @@ java.lang.RuntimeException: Exception constructing service 'ApplicationContext':
   <servlet-class>com.google.api.server.spi.SystemServiceServlet</servlet-class>
   <init-param>
    <param-name>services</param-name>
-   <param-value>app.model.CalendarEndpoint,app.model.MovieEndpoint,app.model.UserEndpoint,com.bkper.server.api.TransactionEndpoint,tapp.model.ServiceRegistryUserEndpoint</param-value>
+   <param-value>app.model.CalendarEndpoint,app.model.MovieEndpoint,app.model.UserEndpoint,cloudserviceapi.app.controller.CrudService,cloudserviceapi.app.controller.SRCrudService,com.bkper.server.api.TransactionEndpoint,io.swagger.sample.servlet.SampleServlet,tapp.model.ServiceRegistryUserEndpoint</param-value>
   </init-param>
  </servlet>
  <servlet-mapping>

@@ -150,7 +150,8 @@ function doLogout() {
     //} catch(e) {
     //    window.console && console.log("Not able to logout and clean up the server side session, error: " + e);
     //}
-    //===TODO JWT to clear the token!
+    //JWT to clear the token!
+    localStorage.removeItem('2shareJWTToken');
 
     window.location=gLogoutURL;
 
