@@ -13,6 +13,7 @@ public class ParseHelper {
 
 	public static boolean isSessionValid(String parseUserId, String targetSecurityToken) {
 		boolean retVal = true;
+		StringBuffer sb = new StringBuffer();
 
 		try {
 			//=== https://cloud.google.com/appengine/docs/java/urlfetch/
@@ -25,7 +26,10 @@ public class ParseHelper {
 		    String line;
 
 		    while ((line = reader.readLine()) != null) {
-		    	if(StringUtils.contains(line, "invalid session token")) {
+		    	sb.append(line);
+		    	if(StringUtils.contains(line, "invalid session token") 
+//		    	|| StringUtils.contains(line, "unauthorized")
+		    	) {
 		    		retVal = false;
 		    		break;
 		    	}
@@ -35,7 +39,8 @@ public class ParseHelper {
 			retVal = false;
 			e.printStackTrace();
 		}
-		
+
+		System.out.println(sb.toString());
         return retVal;
 	}
 }

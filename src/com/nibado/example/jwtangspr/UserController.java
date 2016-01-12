@@ -53,7 +53,8 @@ public class UserController {
     @RequestMapping(value = "login", method = RequestMethod.POST)
     public LoginResponse login(@RequestBody final UserLogin login)
         throws ServletException {
-    	System.out.println("name [" + login.name + "] password [" + login.password + "]");
+        //$$$$$$$$ THIS MUST BE COMMENTED OUT IN PRODUCTION !!!!!! $$$$$$$$$$
+    	//System.out.println("name [" + login.name + "] password [" + login.password + "]");
 		boolean authenticated = false;
 		if(SecurityUtils.isParseLogin(login.password) && ParseHelper.isSessionValid(login.name, login.password)) {
 			authenticated = true;

@@ -80,4 +80,4 @@ React.js Conf 2015 - The complementarity of React and Web Components
 https://www.youtube.com/watch?v=g0TD0efcwVg
 
 Known Issue
-None
+. Parse gives {"error":"unauthorized"} even if the session token is valid (ParseHelper.java)
