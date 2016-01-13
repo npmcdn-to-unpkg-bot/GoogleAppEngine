@@ -50,6 +50,17 @@
         h2 {
             font-size: 1.75em;
         }
+		.cke_toolbar {
+		    zoom: 1.8;
+		}
+		
+		.cke_reset_all, .cke_reset_all * {
+			font-size: 72px;
+		}
+		
+		.cke_skin_kama .cke_format .cke_text, .cke_skin_kama .cke_font .cke_text {
+		   	width: 72px;
+		}
 	}
  	.t-beaneditor-submit {
 		color: red;
