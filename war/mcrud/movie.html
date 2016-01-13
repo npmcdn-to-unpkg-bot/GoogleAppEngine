@@ -596,7 +596,7 @@
                 <!--<div class="container">-->
                     <div class="media well">
                         <a class="media-left media-bottom" ng-show="!getYoutubeVideoId(item.url)" ng-click="editItemForCalendar(item);$event.preventDefault(); $event.stopPropagation();" href="#">
-                            <img class="img-responsive" data-ng-src="{{::item.description}}" alt="Blank Image"/>
+                            <img class="img-responsive" data-ng-src="{{showURLOnly(item.description)}}" alt="Blank Image"/>
                         </a>
                         <a class="media-left media-bottom leap-interactive" ng-click="editItemForCalendar(item);$event.preventDefault(); $event.stopPropagation();" href="#">
                             <img class="img-responsive" ng-show="getYoutubeVideoId(item.url)" ng-src="https://img.youtube.com/vi/{{getYoutubeVideoId(item.url)}}/0.jpg" alt="youtube image 0"/>

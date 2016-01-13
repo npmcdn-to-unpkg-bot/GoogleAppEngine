@@ -178,6 +178,19 @@ function MovieController($scope, $filter, $http, $rootScope,
         return retVal;
     }
 
+    $scope.showURLOnly = function(value) {
+        var regexp = /((http|https):\/\/)?[A-Za-z0-9\.-]{3,}\.[A-Za-z]{2}/;
+        var ret = value.indexOf(' ') < 0 && regexp.test(value);
+
+        if(!ret) {
+            ret = "/n/dummy.html";
+        } else {
+            ret = value;
+        }
+
+        return ret;
+    }
+
     $scope.getYoutubeVideoId = function (youtube_url) {
         var youtube_id;
 

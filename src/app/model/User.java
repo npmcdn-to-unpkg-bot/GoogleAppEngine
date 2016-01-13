@@ -16,7 +16,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import passwordchange.core.UserSecurityQuestion;
+//import passwordchange.core.UserSecurityQuestion;
 
 import com.google.appengine.api.datastore.Key;
 
@@ -47,7 +47,7 @@ public class User implements Cloneable, Serializable {
 //    		//, orphanRemoval = true
 //    		//, mappedBy="parent"	//memory intensive!!!
 //    		)
-	private List<UserSecurityQuestion> securityQuestion = new ArrayList<UserSecurityQuestion>();
+//	private List<UserSecurityQuestion> securityQuestion = new ArrayList<UserSecurityQuestion>();
 
 	public Key getKey() {
 		return key;
@@ -90,13 +90,13 @@ public class User implements Cloneable, Serializable {
 		this.calendar = calendar;
 	}
 
-	public List<UserSecurityQuestion> getSecurityQuestion() {
-		return securityQuestion;
-	}
-
-	public void setSecurityQuestion(List<UserSecurityQuestion> securityQuestion) {
-		this.securityQuestion = securityQuestion;
-	}
+//	public List<UserSecurityQuestion> getSecurityQuestion() {
+//		return securityQuestion;
+//	}
+//
+//	public void setSecurityQuestion(List<UserSecurityQuestion> securityQuestion) {
+//		this.securityQuestion = securityQuestion;
+//	}
 	
 	@Override
 	public String toString() {
