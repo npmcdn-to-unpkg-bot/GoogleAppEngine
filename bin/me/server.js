@@ -6,7 +6,7 @@ var cache     = apicache.options({ debug: true }).middleware;
 var cors = require('cors');
 var bodyParser = require('body-parser');
 var qs = require('querystring');
-var uuid = 'Yellow v0.0.1 build 103g alpha';
+var uuid = 'Yellow v0.0.1 build 103h alpha';
 
 var ipaddress = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
 //var ipaddress = "162.251.112.180";
@@ -27,7 +27,7 @@ function setRestHost(aid) {
         if (aid.indexOf('localhost') > -1) {
             targetHost = 'http://127.0.0.1:8888'
         } else if (aid.indexOf('share') > -1) {
-            targetHost = 'https://2share.appspot.com'
+            targetHost = 'https://2-share.appspot.com'
         } else if (aid.indexOf('chudoo') > -1) {
             targetHost = 'https://chudoon3t.appspot.com'
         } else if (aid.indexOf('awa') > -1) {
