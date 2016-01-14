@@ -6,7 +6,7 @@ var cache     = apicache.options({ debug: true }).middleware;
 var cors = require('cors');
 var bodyParser = require('body-parser');
 //var qs = require('querystring');
-var uuid = 'Yellow v0.0.1 build 103c alpha';
+var uuid = 'Yellow v0.0.1 build 103d alpha';
 
 var ipaddress = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
 //var ipaddress = "162.251.112.180";
@@ -62,13 +62,20 @@ app.get('/api/jwt/ws/crud', cache('1 day'), function(req,res,next) {
     console.log('get called ' + count++ + ' : type ['+ type + ']')
     setRestHost(origin);
 
-    request(getItemsURL + '?uid=' + uid
-        + '&origin=' + origin
-        + '&type=' + type
-        + '&maxPerPage=' + maxPerPage
-        + '&pageNumber=' + pageNumber
-        + '&aid=' + aid
-        + '&filter=' + filter
+    request({
+        headers: {
+            'Authorization': 'Bearer xxx',
+        },
+        uri: getItemsURL + '?uid=' + uid
+          + '&origin=' + origin
+          + '&type=' + type
+          + '&maxPerPage=' + maxPerPage
+          + '&pageNumber=' + pageNumber
+          + '&aid=' + aid
+          + '&filter=' + filter,
+          body: formData,
+          method: 'GET'
+        }
         , function (error, response, body) {
         if (!error && response.statusCode == 200) {
   	        req.apicacheGroup = origin+"-"+aid+"-"+uid+"-"+type+"-"+filter;	//the key is the appId + user
@@ -97,25 +104,30 @@ app.post('/api/jwt/ws/crud', function(req, res, next) {
 
     setRestHost(origin);
     console.log("post id[" + id + "]")
-
-    request.post(postItemURL,
-        {
-            form: {
-                aid: aid,
-                uid: uid,
-                action: action,
-                type: type,
-                id: id,
-                oid: oid,
-                title: title,
-                description: description,
-                url: url,
-                shared: shared,
-                channelPattern: channelPattern,
-                search_results: search_results,
-                filter: filter
-            }
-        }, function (error, response, body) {
+    var formData = {
+        aid: aid,
+        uid: uid,
+        action: action,
+        type: type,
+        id: id,
+        oid: oid,
+        title: title,
+        description: description,
+        url: url,
+        shared: shared,
+        channelPattern: channelPattern,
+        search_results: search_results,
+        filter: filter
+    };
+    request.post({
+        headers: {
+            'Authorization': 'Bearer xxx',
+        },
+        uri: postItemURL,
+          body: formData,
+          method: 'POST'
+        }
+    	, function (error, response, body) {
         if (!error && response.statusCode == 200) {
             //=== update model (delete, update or insert)
             apicache.clear(origin+"-"+aid+"-"+uid+"-"+type+"-"+filter);
