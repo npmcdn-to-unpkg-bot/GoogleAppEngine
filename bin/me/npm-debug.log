@@ -1,0 +1,132 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'i', '-g', 'service' ]
+2 info using npm@1.4.21
+3 info using node@v0.10.30
+4 verbose cache add [ 'service', null ]
+5 verbose cache add name=undefined spec="service" args=["service",null]
+6 verbose parsed url { protocol: null,
+6 verbose parsed url   slashes: null,
+6 verbose parsed url   auth: null,
+6 verbose parsed url   host: null,
+6 verbose parsed url   port: null,
+6 verbose parsed url   hostname: null,
+6 verbose parsed url   hash: null,
+6 verbose parsed url   search: null,
+6 verbose parsed url   query: null,
+6 verbose parsed url   pathname: 'service',
+6 verbose parsed url   path: 'service',
+6 verbose parsed url   href: 'service' }
+7 silly lockFile 4cf5bc59-service service
+8 verbose lock service /Users/tanj3/.npm/4cf5bc59-service.lock
+9 silly lockFile 4cf5bc59-service service
+10 silly lockFile 4cf5bc59-service service
+11 verbose addNamed [ 'service', '' ]
+12 verbose addNamed [ null, '*' ]
+13 silly lockFile 22ebbaa8-service service@
+14 verbose lock service@ /Users/tanj3/.npm/22ebbaa8-service.lock
+15 silly addNameRange { name: 'service', range: '*', hasData: false }
+16 verbose request where is /service
+17 verbose request registry https://registry.npmjs.org/
+18 verbose request id 61a6bdcea7bfdd5f
+19 verbose url raw /service
+20 verbose url resolving [ 'https://registry.npmjs.org/', './service' ]
+21 verbose url resolved https://registry.npmjs.org/service
+22 verbose request where is https://registry.npmjs.org/service
+23 info trying registry request attempt 1 at 10:54:03
+24 http GET https://registry.npmjs.org/service
+25 http 200 https://registry.npmjs.org/service
+26 silly registry.get cb [ 200,
+26 silly registry.get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+26 silly registry.get     etag: '"7GU3FUGTDY4500OC6R8D96OB9"',
+26 silly registry.get     'content-type': 'application/json',
+26 silly registry.get     'cache-control': 'max-age=60',
+26 silly registry.get     'content-length': '3355',
+26 silly registry.get     'accept-ranges': 'bytes',
+26 silly registry.get     date: 'Tue, 22 Sep 2015 14:54:00 GMT',
+26 silly registry.get     via: '1.1 varnish',
+26 silly registry.get     age: '0',
+26 silly registry.get     connection: 'keep-alive',
+26 silly registry.get     'x-served-by': 'cache-iad2149-IAD',
+26 silly registry.get     'x-cache': 'MISS',
+26 silly registry.get     'x-cache-hits': '0',
+26 silly registry.get     'x-timer': 'S1442933640.619655,VS0,VE17',
+26 silly registry.get     vary: 'Accept' } ]
+27 silly addNameRange number 2 { name: 'service', range: '*', hasData: true }
+28 silly addNameRange versions [ 'service', [ '0.1.0', '0.1.1', '0.1.2', '0.1.3', '0.1.4' ] ]
+29 verbose addNamed [ 'service', '0.1.4' ]
+30 verbose addNamed [ '0.1.4', '0.1.4' ]
+31 silly lockFile 3c845e7b-service-0-1-4 service@0.1.4
+32 verbose lock service@0.1.4 /Users/tanj3/.npm/3c845e7b-service-0-1-4.lock
+33 silly lockFile 7200dab4-js-org-service-service-0-1-4-tgz https://registry.npmjs.org/service/-/service-0.1.4.tgz
+34 verbose lock https://registry.npmjs.org/service/-/service-0.1.4.tgz /Users/tanj3/.npm/7200dab4-js-org-service-service-0-1-4-tgz.lock
+35 verbose addRemoteTarball [ 'https://registry.npmjs.org/service/-/service-0.1.4.tgz',
+35 verbose addRemoteTarball   'd0ab9ffbc2b9d5875af8b01dec36339784525b44' ]
+36 info retry fetch attempt 1 at 10:54:04
+37 verbose fetch to= /var/folders/6b/y3rz_j890xv2sd1kyrtlw35wsgrg3x/T/npm-9968-vW0vFW-U/registry.npmjs.org/service/-/service-0.1.4.tgz
+38 http GET https://registry.npmjs.org/service/-/service-0.1.4.tgz
+39 http 200 https://registry.npmjs.org/service/-/service-0.1.4.tgz
+40 silly lockFile 7200dab4-js-org-service-service-0-1-4-tgz https://registry.npmjs.org/service/-/service-0.1.4.tgz
+41 silly lockFile 7200dab4-js-org-service-service-0-1-4-tgz https://registry.npmjs.org/service/-/service-0.1.4.tgz
+42 silly lockFile 3c845e7b-service-0-1-4 service@0.1.4
+43 silly lockFile 3c845e7b-service-0-1-4 service@0.1.4
+44 silly lockFile 22ebbaa8-service service@
+45 silly lockFile 22ebbaa8-service service@
+46 silly resolved [ { name: 'service',
+46 silly resolved     version: '0.1.4',
+46 silly resolved     description: 'Make init.d scripts for node apps',
+46 silly resolved     homepage: 'https://github.com/iamcal/service.js',
+46 silly resolved     main: './service',
+46 silly resolved     repository: { type: 'git', url: 'git://github.com/iamcal/service.js.git' },
+46 silly resolved     dependencies: { daemon: '>=0.3.0' },
+46 silly resolved     _id: 'service@0.1.4',
+46 silly resolved     engines: { node: '*' },
+46 silly resolved     _engineSupported: true,
+46 silly resolved     _npmVersion: '0.3.18',
+46 silly resolved     _nodeVersion: 'v0.4.3',
+46 silly resolved     directories: {},
+46 silly resolved     files: [ '' ],
+46 silly resolved     _defaultsLoaded: true,
+46 silly resolved     dist:
+46 silly resolved      { shasum: 'd0ab9ffbc2b9d5875af8b01dec36339784525b44',
+46 silly resolved        tarball: 'http://registry.npmjs.org/service/-/service-0.1.4.tgz' },
+46 silly resolved     _shasum: 'd0ab9ffbc2b9d5875af8b01dec36339784525b44',
+46 silly resolved     _from: 'service@',
+46 silly resolved     _resolved: 'https://registry.npmjs.org/service/-/service-0.1.4.tgz' } ]
+47 info install service@0.1.4 into /usr/local/lib
+48 info installOne service@0.1.4
+49 verbose lib/node_modules/service unbuild
+50 verbose tar unpack /Users/tanj3/.npm/service/0.1.4/package.tgz
+51 silly lockFile 6f905f4c-r-local-lib-node-modules-service tar:///usr/local/lib/node_modules/service
+52 verbose lock tar:///usr/local/lib/node_modules/service /Users/tanj3/.npm/6f905f4c-r-local-lib-node-modules-service.lock
+53 silly lockFile dbba18d5-j3-npm-service-0-1-4-package-tgz tar:///Users/tanj3/.npm/service/0.1.4/package.tgz
+54 verbose lock tar:///Users/tanj3/.npm/service/0.1.4/package.tgz /Users/tanj3/.npm/dbba18d5-j3-npm-service-0-1-4-package-tgz.lock
+55 silly gunzTarPerm modes [ '755', '644' ]
+56 error Error: EACCES, mkdir '/usr/local/lib/node_modules/service'
+56 error  { [Error: EACCES, mkdir '/usr/local/lib/node_modules/service']
+56 error   errno: 3,
+56 error   code: 'EACCES',
+56 error   path: '/usr/local/lib/node_modules/service',
+56 error   fstream_type: 'Directory',
+56 error   fstream_path: '/usr/local/lib/node_modules/service',
+56 error   fstream_class: 'DirWriter',
+56 error   fstream_stack:
+56 error    [ '/usr/local/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:36:23',
+56 error      '/usr/local/lib/node_modules/npm/node_modules/mkdirp/index.js:37:53',
+56 error      'Object.oncomplete (fs.js:107:15)' ] }
+57 error Please try running this command again as root/Administrator.
+58 error System Darwin 13.4.0
+59 error command "node" "/usr/local/bin/npm" "i" "-g" "service"
+60 error cwd /Users/tanj3/me
+61 error node -v v0.10.30
+62 error npm -v 1.4.21
+63 error path /usr/local/lib/node_modules/service
+64 error fstream_path /usr/local/lib/node_modules/service
+65 error fstream_type Directory
+66 error fstream_class DirWriter
+67 error code EACCES
+68 error errno 3
+69 error stack Error: EACCES, mkdir '/usr/local/lib/node_modules/service'
+70 error fstream_stack /usr/local/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:36:23
+70 error fstream_stack /usr/local/lib/node_modules/npm/node_modules/mkdirp/index.js:37:53
+70 error fstream_stack Object.oncomplete (fs.js:107:15)
+71 verbose exit [ 3, true ]

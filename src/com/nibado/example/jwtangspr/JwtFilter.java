@@ -23,6 +23,7 @@ import io.jsonwebtoken.SignatureException;
 public class JwtFilter implements Filter {
 
 	private static String JWTSecretKeyDB = "jwtsecretkey01072016";
+	private static long hit = 0;
 
 	public void init(FilterConfig cfg) {
     	String temp = SettingsDBUtils.getSettings("secretkey.common");
@@ -40,7 +41,8 @@ public class JwtFilter implements Filter {
                          final ServletResponse res,
                          final FilterChain chain) throws IOException, ServletException {
         final HttpServletRequest request = (HttpServletRequest) req;
-
+        final String referrer = "[" + hit++ + "] " + request.getHeader("referer") + " -> " + request.getRequestURL();
+        System.out.println("JwtFilter: referrer [" + referrer + "]");
         final String authHeader = request.getHeader("Authorization");
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
             throw new ServletException("Missing or invalid Authorization header.");
