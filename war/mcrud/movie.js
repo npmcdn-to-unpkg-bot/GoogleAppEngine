@@ -206,7 +206,7 @@ function MovieController($scope, $filter, $http, $rootScope,
         var retVal = "";
 
         try {
-            retVal = '/html/channelshuffle.html?username=' + $.url().param('username') + '&logintype=' + $.url().param('logintype') + '&filter=' + hashtag.substr(1) + '&type=' + gPlayNowShuffle;
+            retVal = '/html/channelshuffle.html?username=' + $.url().param('username') + '&logintype=' + $.url().param('logintype') + '&filter=' + hashtag.substr(1) + '&type=' + gPlayNowShuffle + '&cache=' + gCacheProxy;
         }
         catch (e) {
             //$console && $console.error('1.1.1.0 movie.js $scope.handleHashtag(): An error has occurred: ' + e.message + ' - The application will not function correctly. Please contact the developer!');
@@ -481,8 +481,8 @@ function MovieController($scope, $filter, $http, $rootScope,
                 try {
                     $scope.templates =
                         [
-                            { name1: 'Shuffle Mode', url: '/html/channelshuffle.html?username=' + $.url().param('username') + '&logintype=' + $.url().param('logintype') + '&type=' + gPlayNowShuffle},
-                            { name1: 'All In Sequence', url: '/html/channelall.html?username=' + $.url().param('username') + '&logintype=' + $.url().param('logintype') + '&type=' + gPlayNowAllInSeq}
+                            { name1: 'Shuffle Mode', url: '/html/channelshuffle.html?username=' + $.url().param('username') + '&logintype=' + $.url().param('logintype') + '&type=' + gPlayNowShuffle + '&cache=' + gCacheProxy},
+                            { name1: 'All In Sequence', url: '/html/channelall.html?username=' + $.url().param('username') + '&logintype=' + $.url().param('logintype') + '&type=' + gPlayNowAllInSeq + '&cache=' + gCacheProxy}
                         ];
                     //var start = 2;   //after the above 2!
                     //=== begin play now setup

@@ -17,6 +17,7 @@ import javax.servlet.ServletContextListener;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang3.SerializationUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.joda.time.DateTime;
 
 import tapp.model.ServiceRegistry;
@@ -209,11 +210,11 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
 	
 	private void parsePagedRequest(HttpServletRequest request) {
 		String t = getValue(request, "pageNumber");
-		if(t != null) {
+		if(t != null && StringUtils.isNumeric(t)) {
 			pageNumber = Integer.valueOf(t);
 		}
 		t = getValue(request, "maxPerPage");
-		if(t != null) {
+		if(t != null && StringUtils.isNumeric(t)) {
 			maxPerPage = Integer.valueOf(t);
 		}
 	}

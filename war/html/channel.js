@@ -3,7 +3,7 @@ var GALLERIA_VERSION = '1.2.9';
 var GALLERIA_LIMIT = 10;     //limit to 10 movies/images only
 var galleria_type = 0;      //0 - video; 1 - image; 2 - RSS
 //var galleriaData = [];
-var cBuild = '0166a';
+var cBuild = '0166b';
 var gDefaultPhoto = "../images/stock-photo-closeup-of-a-photographic-lens-106033496.jpg";
 //var gYTPlayer;  //global youtube player
 var ytplayer;
@@ -17,11 +17,22 @@ var currentMoviePreviewCount = 1;
 //end === play all and shuffle shares the following two counts, thus opening two separate windows for all and shuffle use case is not suppported! :(
 
 $("#cBuild").val("(" + cBuild + ")");
-
-$.ajaxSetup({headers: { 'Authorization': 'Bearer ' + localStorage.getItem('2shareJWTToken') }}); //JWT support
+if(typeof gCacheProxy === 'undefined' || gCacheProxy.trim() == '') {
+    gCacheProxy = $.url().param('cache');
+}
+$.ajaxSetup({
+    headers: {
+        'Authorization': 'Bearer ' + localStorage.getItem('2shareJWTToken'),
+        //'Accept-Encoding': 'gzip, deflate, sdch',
+        //'Accept-Language': 'en-US,en;q=0.8',
+        'Accept': 'application/json, text/plain, */*',
+        'Cache-Control': 'no-cache'
+    }
+}); //JWT support
 
 /** load my scheduled movies */
 function loadMovieScheduled(username) {
+    console.log('loadMovieScheduled ' + gCacheProxy);
     var stat = false;
     //alert('channel.js loadMovie() entered');
     //window.console && console.log("**************>>>> cBuild = " + cBuild + "<<<<**************");
@@ -232,6 +243,7 @@ function shuffle(v) {
 /** use by Play Later (scheduled play) in the Channel UI functionality */
 function getNextShuffledUrl(startDatetime) {
     var randomUrl = "";
+    console.log('getNextShuffledUrl ' + gCacheProxy);
 
     $.ajax({
         type: "GET",
@@ -287,6 +299,7 @@ function getSubTitle(text) {
 function loadMovie(username, shuffleFlag) {
     //playNow();  //just a test
     //console && console.log("Parse username[" + username + "]");
+    console.log('loadMovie ' + gCacheProxy);
 
     var stat = false;
     galleriaData = [];
@@ -688,6 +701,7 @@ function handleChannelType(type, username) {
     //window.console && console.log('handleChannelType entered');
     var data = [];
     galleria_type = type;
+    console.log('handleChannelType ' + gCacheProxy);
 
     for (var i = 0; i < GALLERIA_LIMIT; i++) {
         //window.console && console.log('retrieved j.url as ' + $("#i" + i).val());

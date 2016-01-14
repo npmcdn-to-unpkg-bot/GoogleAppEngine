@@ -6,7 +6,7 @@ var cache     = apicache.options({ debug: true }).middleware;
 var cors = require('cors');
 var bodyParser = require('body-parser');
 var qs = require('querystring');
-var uuid = 'Yellow v0.0.1 build 103h alpha';
+var uuid = 'Yellow v0.0.1 build 103h2 alpha';
 
 var ipaddress = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
 //var ipaddress = "162.251.112.180";
@@ -61,7 +61,6 @@ app.get('/api/jwt/ws/crud', cache('1 day'), function(req,res,next) {
 
     console.log('get called ' + count++ + ' : type ['+ type + ']')
     setRestHost(origin);
-
     request({
         headers: {
             'Authorization': jwtHeader,
@@ -82,6 +81,8 @@ app.get('/api/jwt/ws/crud', cache('1 day'), function(req,res,next) {
             res.send(body)
             console.log("apicacheGroup [" + req.apicacheGroup + "] added into cache")
             //res.send(body + " type[" + type + "] uid[" + uid + "]")
+        } else {
+            console.log("apicacheGroup GET error [" + error + "] response [" + response + "] body [" + body + "]")
         }
     })
 });
@@ -136,6 +137,8 @@ app.post('/api/jwt/ws/crud', function(req, res, next) {
 
             res.send(body)
             //res.send(body + " type[" + type + "] uid[" + uid + "]")
+        } else {
+            console.log("apicacheGroup POST error [" + error + "] response [" + response + "] body [" + body + "]")
         }
     })
 });

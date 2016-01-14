@@ -54,7 +54,7 @@ public class JwtFilter implements Filter {
 
         try {
             //$$$$$$$$ THIS MUST BE COMMENTED OUT IN PRODUCTION !!!!!! $$$$$$$$$$
-            //System.out.println("secretkey [" + JwtFilter.getJWTSecretKeyDB() + "]");
+//            System.out.println("secretkey [" + JwtFilter.getJWTSecretKeyDB() + "]");
             final Claims claims = Jwts.parser().setSigningKey(JwtFilter.getJWTSecretKeyDB())
                 .parseClaimsJws(token).getBody();
             request.setAttribute("claims", claims);
