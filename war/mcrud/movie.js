@@ -400,7 +400,7 @@ function MovieController($scope, $filter, $http, $rootScope,
             }
         ).error(function (data, status, headers, config) {
             if(status == 0) {
-                alert("Server encountered an error. Is the cache service up and running?");
+                alert("Server encountered an error. #cache service#");
             }
             if(typeof data === 'undefined') {
                 $scope.error_message = status + ": unknown error, please try again later";

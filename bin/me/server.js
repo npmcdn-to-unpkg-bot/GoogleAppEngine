@@ -5,8 +5,8 @@ var apicache  = require('apicache');
 var cache     = apicache.options({ debug: true }).middleware;
 var cors = require('cors');
 var bodyParser = require('body-parser');
-//var qs = require('querystring');
-var uuid = 'Yellow v0.0.1 build 103d alpha';
+var qs = require('querystring');
+var uuid = 'Yellow v0.0.1 build 103g alpha';
 
 var ipaddress = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
 //var ipaddress = "162.251.112.180";
@@ -14,7 +14,6 @@ var port = process.env.OPENSHIFT_NODEJS_PORT || 8080; //uncomment this for OpenS
 //var port = 8082;    //use this when debugging with node-inspector as it is already using 8080
 
 var uid = ''
-//var targetHost = 'http://chudoonet.appspot.com'
 var targetHost = 'http://127.0.0.1:8888'
 var getItemsURL = targetHost + '/api/jwt/ws/crud'
 var postItemURL = targetHost + '/api/jwt/ws/crud'
@@ -28,10 +27,9 @@ function setRestHost(aid) {
         if (aid.indexOf('localhost') > -1) {
             targetHost = 'http://127.0.0.1:8888'
         } else if (aid.indexOf('share') > -1) {
-            //targetHost = 'https://2share.appspot.com'
-            targetHost = 'https://cloudaware.appspot.com'
+            targetHost = 'https://2share.appspot.com'
         } else if (aid.indexOf('chudoo') > -1) {
-            targetHost = 'https://chudoonet.appspot.com'
+            targetHost = 'https://chudoon3t.appspot.com'
         } else if (aid.indexOf('awa') > -1) {
             targetHost = 'https://cloudaware.appspot.com'
         }
@@ -45,6 +43,8 @@ function setRestHost(aid) {
 }
 
 app.get('/api/jwt/ws/crud', cache('1 day'), function(req,res,next) {
+    var jwtHeader = req.get('Authorization');
+    console.log('get jwtHeader [' + jwtHeader + ']');
     var origin = req.query.origin;
     var type = req.query.type;	//e.g. modelMovie
     var maxPerPage = req.query.maxPerPage;
@@ -64,7 +64,7 @@ app.get('/api/jwt/ws/crud', cache('1 day'), function(req,res,next) {
 
     request({
         headers: {
-            'Authorization': 'Bearer xxx',
+            'Authorization': jwtHeader,
         },
         uri: getItemsURL + '?uid=' + uid
           + '&origin=' + origin
@@ -73,7 +73,6 @@ app.get('/api/jwt/ws/crud', cache('1 day'), function(req,res,next) {
           + '&pageNumber=' + pageNumber
           + '&aid=' + aid
           + '&filter=' + filter,
-          body: formData,
           method: 'GET'
         }
         , function (error, response, body) {
@@ -87,6 +86,8 @@ app.get('/api/jwt/ws/crud', cache('1 day'), function(req,res,next) {
     })
 });
 app.post('/api/jwt/ws/crud', function(req, res, next) {
+    var jwtHeader = req.get('Authorization');
+    console.log('post jwtHeader [' + jwtHeader + ']');
     var origin = req.body.origin;
     var aid = req.body.aid;
     var uid = req.body.uid;
@@ -119,13 +120,14 @@ app.post('/api/jwt/ws/crud', function(req, res, next) {
         search_results: search_results,
         filter: filter
     };
-    request.post({
-        headers: {
-            'Authorization': 'Bearer xxx',
-        },
-        uri: postItemURL,
-          body: formData,
-          method: 'POST'
+    request({
+            headers: {
+                'Authorization': jwtHeader,
+            },
+            uri: postItemURL + '?uid=' + uid + '&'
+            + qs.stringify(formData),
+            //body: JSON.stringify(formData),
+            method: 'POST'
         }
     	, function (error, response, body) {
         if (!error && response.statusCode == 200) {

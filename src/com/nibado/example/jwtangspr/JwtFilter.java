@@ -14,6 +14,7 @@ import org.datanucleus.util.StringUtils;
 import org.springframework.web.filter.GenericFilterBean;
 
 import com.appspot.cloudserviceapi.common.Constants;
+import com.appspot.cloudserviceapi.common.HttpUtil;
 import com.appspot.cloudserviceapi.common.SettingsDBUtils;
 
 import io.jsonwebtoken.Claims;
@@ -41,8 +42,9 @@ public class JwtFilter implements Filter {
                          final ServletResponse res,
                          final FilterChain chain) throws IOException, ServletException {
         final HttpServletRequest request = (HttpServletRequest) req;
-        final String referrer = "[" + hit++ + "] " + request.getHeader("referer") + " -> " + request.getRequestURL();
-        System.out.println("JwtFilter: referrer [" + referrer + "]");
+//        final String referrer = "[" + hit++ + "] " + request.getHeader("referer") + " -> " + request.getRequestURL();
+//        System.out.println("JwtFilter: referrer [" + referrer + "]");
+//        HttpUtil.dumpAllHttpRequests("JWT", request);
         final String authHeader = request.getHeader("Authorization");
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
             throw new ServletException("Missing or invalid Authorization header.");
