@@ -1420,7 +1420,7 @@ function MovieController($scope, $filter, $http, $rootScope,
         $scope.restoreStates();
 
         url = //$location.host + ':' + $location.port +
-            url + '?username=' + $scope.userid + '&logintype=' + $scope.logintype;
+            url + '?username=' + $scope.userid + '&logintype=' + $scope.logintype + '&cache=' + gCacheProxy;
         //alert(url);
 //        $location.path(url);  //TODO didn't work for some reason with relative path
         window.location = url;

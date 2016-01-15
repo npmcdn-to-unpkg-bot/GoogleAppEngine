@@ -17,8 +17,12 @@ var currentMoviePreviewCount = 1;
 //end === play all and shuffle shares the following two counts, thus opening two separate windows for all and shuffle use case is not suppported! :(
 
 $("#cBuild").val("(" + cBuild + ")");
-if(typeof gCacheProxy === 'undefined' || gCacheProxy.trim() == '') {
-    gCacheProxy = $.url().param('cache');
+try {
+    if (typeof gCacheProxy === 'undefined' || gCacheProxy.trim() == '') {
+        gCacheProxy = $.url().param('cache');
+    }
+} catch (e) {
+    console.log('channel.js 111 ' + e);
 }
 $.ajaxSetup({
     headers: {
@@ -299,7 +303,7 @@ function getSubTitle(text) {
 function loadMovie(username, shuffleFlag) {
     //playNow();  //just a test
     //console && console.log("Parse username[" + username + "]");
-    console.log('loadMovie ' + gCacheProxy);
+    //console.log('loadMovie ' + gCacheProxy);
 
     var stat = false;
     galleriaData = [];
@@ -312,8 +316,8 @@ function loadMovie(username, shuffleFlag) {
 
         ////window.console && console.log("calendar event created, response = [" + data + "]");
         if (typeof data !== 'undefined') {
-            console.table(data);
-            console.log(username);
+            //console.table(data);
+            //console.log(username);
             var obj = jQuery.parseJSON(JSON.stringify(data));
             var YOUTUBE_INDEX = 1;	//=== assumption: youtube is the second results!!!
             var filterStr;

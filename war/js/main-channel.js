@@ -6,7 +6,7 @@ requirejs.config({
     paths: {
 //      jquery: '//ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery',
         jquery: ['//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery', 'jquery-1.9.1'],    //for some reason, this is needed for IE 8 otherwise  'jQuery' is undefined or  '$' is undefined will occur
-//        purl: '../jquery/purl',
+        //purl: '../jquery/purl',
 //        parse: 'https://www.parsecdn.com/js/parse-1.2.7.min',
         //===used by channel.html
         galleria: ['../galleria-1.2.9/galleria-1.2.9.min'],
@@ -110,7 +110,7 @@ requirejs(['./main-config', './app'], function (common, app) {
                     //console && console.log("channel UI loaded");
                 } else {
                     username = $.url().param('username');       //TBD security risk - need to get from third party API directly
-                    alert("username [" + username + "]");
+                    console && console.log("222 username [" + username + "]");
                 }
 
                 //var playTime = new Date ( 2013, 7-1, 27, 14, 13, 0 );
