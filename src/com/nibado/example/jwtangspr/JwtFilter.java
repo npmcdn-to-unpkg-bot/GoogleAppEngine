@@ -44,7 +44,7 @@ public class JwtFilter implements Filter {
         final HttpServletRequest request = (HttpServletRequest) req;
 //        final String referrer = "[" + hit++ + "] " + request.getHeader("referer") + " -> " + request.getRequestURL();
 //        System.out.println("JwtFilter: referrer [" + referrer + "]");
-//        HttpUtil.dumpAllHttpRequests("JWT", request);
+        HttpUtil.dumpAllHttpRequests("JWT", request);
         final String authHeader = request.getHeader("Authorization");
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
             throw new ServletException("Missing or invalid Authorization header.");

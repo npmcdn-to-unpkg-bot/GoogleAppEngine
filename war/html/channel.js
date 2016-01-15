@@ -312,7 +312,9 @@ function loadMovie(username, shuffleFlag) {
 
         ////window.console && console.log("calendar event created, response = [" + data + "]");
         if (typeof data !== 'undefined') {
-            var obj = jQuery.parseJSON(data);
+            console.table(data);
+            console.log(username);
+            var obj = jQuery.parseJSON(JSON.stringify(data));
             var YOUTUBE_INDEX = 1;	//=== assumption: youtube is the second results!!!
             var filterStr;
             $("#playingOrsoon").attr("data-datetime", "1970,1,1,0,0,0");

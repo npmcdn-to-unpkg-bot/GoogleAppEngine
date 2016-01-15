@@ -4,4 +4,4 @@
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_21.jdk/Contents/Home export PATH=$JAVA_HOME/bin:$PATH
 
 
-java -javaagent:/appengine-java-sdk/lib/agent/appengine-agent.jar -classpath /appengine-java-sdk/lib/appengine-tools-api.jar com.google.appengine.tools.development.DevAppServerMain --port=8888 --address=0.0.0.0 ../war
+java -Xmx2048m -javaagent:/appengine-java-sdk/lib/agent/appengine-agent.jar -classpath /appengine-java-sdk/lib/appengine-tools-api.jar com.google.appengine.tools.development.DevAppServerMain --port=8888 --address=0.0.0.0 ../war
