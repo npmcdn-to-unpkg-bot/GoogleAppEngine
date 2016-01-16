@@ -21,7 +21,6 @@ var SRUpdate = React.createClass({
         return (false);
     },
     getInitialState: function() {
-        var item = {id: -1, service: '', description: '', endpoint: ''};
         var qs = URI(location.href).query(true); // == e.g. { id : 4529987906437120 }
         if(qs.id > 0) {
             var component = this;
@@ -52,7 +51,7 @@ var SRUpdate = React.createClass({
             });
         }
         return {
-            item,
+            service: '', description: '', endpoint: '',
             isSubmitting: false
         };
     },
@@ -64,31 +63,31 @@ var SRUpdate = React.createClass({
                             <div className="form-group row">
                                 <div className="control-group">
                                     <label htmlFor="id" className="col-sm-2 control-label">ID:</label>
-                                    <input type="text" className="col-sm-10 form-control" id="id" defaultValue value={this.state.id} required readOnly />
+                                    <input type="text" className="col-sm-10 form-control" ref="id" value={this.state.id} required readOnly />
                                 </div>
                                 <div className="control-group">
                                     <label htmlFor="title" className="col-sm-2 control-label">Service:</label>
-                                    <input type="text" className="col-sm-10 form-control" id="title" onKeyDown={this.updateItem} required value={this.state.service} ref="service" onChange={function(e){this.setState({service: e.target.value})}.bind(this)} defaultvalue placeholder="Enter any easy to remember service name." />
+                                    <input type="text" className="col-sm-10 form-control" ref="title" onKeyUp={this.updateItem} required value={this.state.service} ref="service" onChange={function(e){this.setState({service: e.target.value})}.bind(this)} placeholder="Enter any easy to remember service name." />
                                 </div>
                                 <div className="control-group">
                                     <label htmlFor="desc" className="col-sm-2 control-label">Description:</label>
                                     <div className="col-sm-10">
-                                        <input type="text" className="form-control" id="desc" onKeyDown={this.updateItem} value={this.state.description} onChange={function(e){this.setState({description: e.target.value})}.bind(this)} defaultvalue />
+                                        <input type="text" className="form-control" ref="desc" onKeyUp={this.updateItem} value={this.state.description} onChange={function(e){this.setState({description: e.target.value})}.bind(this)} />
                                     </div>
                                 </div>
                                 <div className="control-group">
                                     <label htmlFor="endpoint" className="col-sm-2 control-label">URL:</label>
                                     <div className="col-sm-10">
-                                        <input type="url" className="form-control" id="endpoint" onKeyDown={this.updateItem} required value={this.state.endpoint} onChange={function(e){this.setState({endpoint: e.target.value, isSubmitting: this.isURL(e.target.value)})}.bind(this)} onClick={this.updateItem} defaultvalue placeholder="Enter any valid URL e.g. http://www.google.com." />
+                                        <input type="url" className="form-control" ref="endpoint" onKeyUp={this.updateItem} required value={this.state.endpoint} onChange={function(e){this.setState({endpoint: e.target.value, isSubmitting: this.isURL(e.target.value)})}.bind(this)} onClick={this.updateItem} placeholder="Enter any valid URL e.g. http://www.google.com." />
                                     </div>
                                 </div>
                                 <div className="control-group">
                                     <label htmlFor="createItem" className="col-sm-2 control-label" />
                                     <div className="col-sm-10">
-                                        <input type="hidden" name="_method" defaultValue value="POST" />
-                                        <input className="form-control btn btn-primary" id="deleteItem" type="button" style={{background: '#98969E'}} defaultValue value="Delete" onClick={this.deleteItem} />
-                                        <input className="form-control btn btn-primary" id="createItem" type="button" style={{background: '#98969E'}} defaultValue value="Save" disabled={!this.state.isSubmitting} onClick={this.save} />
-                                        <input className="form-control btn" id="cancelItem" defaultValue="Cancel" type="button" onClick={this.goHome} />
+                                        <input type="hidden" name="_method" defaultValue="POST" />
+                                        <input className="form-control btn btn-primary" ref="deleteItem" type="button" style={{background: '#98969E'}} defaultValue="Delete" onClick={this.deleteItem} />
+                                        <input className="form-control btn btn-primary" ref="createItem" type="button" style={{background: '#98969E'}} defaultValue="Save" disabled={!this.state.isSubmitting} onClick={this.save} />
+                                        <input className="form-control btn" ref="cancelItem" defaultValue="Cancel" type="button" onClick={this.goHome} />
                                     </div>
                                 </div>
                             </div>
@@ -109,11 +108,13 @@ var SRUpdate = React.createClass({
                 var srJson = {
                     sr: {
                         id: component.state.id,
-                        service: component.refs.service.value,   //component.state.service,
+                        service: component.state.service,
                         description: component.state.description,
                         endpoint: component.state.endpoint
                     }
                 };
+                console.log(component.state);
+                console.log(srJson.sr);
                 swagger.sr.save(srJson,{responseContentType: 'application/json'}, function(data) {
                     //document.getElementById("mydata").innerHTML = JSON.stringify(data.obj);
                     //console.log(data.obj);
@@ -127,12 +128,13 @@ var SRUpdate = React.createClass({
         console.log('SRUpdate input saved');
     },
     updateItem: function(e) {
-        var item = this.item;
-        this.setState({
-            item,
-            isSubmitting: false
-        });
-
+        //this.setState({
+        //    id: this.state.id,
+        //    service: this.refs.service.value,
+        //    description: this.refs.desc.value,
+        //    endpoint: this.refs.endpoint.value,
+        //    isSubmitting: false
+        //});
         var evt = e || window.event
         // "e" is the standard behavior (FF, Chrome, Safari, Opera),
         // while "window.event" (or "event") is IE's behavior
