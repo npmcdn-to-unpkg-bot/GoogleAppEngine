@@ -68,7 +68,7 @@ var SRUpdate = React.createClass({
                                 </div>
                                 <div className="control-group">
                                     <label htmlFor="title" className="col-sm-2 control-label">Service:</label>
-                                    <input type="text" className="col-sm-10 form-control" id="title" onKeyDown={this.updateItem} required value={this.state.service} onChange={function(e){this.setState({service: e.target.value})}.bind(this)} defaultvalue placeholder="Enter any easy to remember service name." />
+                                    <input type="text" className="col-sm-10 form-control" id="title" onKeyDown={this.updateItem} required value={this.state.service} ref="service" onChange={function(e){this.setState({service: e.target.value})}.bind(this)} defaultvalue placeholder="Enter any easy to remember service name." />
                                 </div>
                                 <div className="control-group">
                                     <label htmlFor="desc" className="col-sm-2 control-label">Description:</label>
@@ -102,13 +102,14 @@ var SRUpdate = React.createClass({
     save: function() {
         var component = this;
         var key = localStorage.getItem('userJWTToken');
+        //console.log('sr-update.jsx save: ' + component.refs.service.value + ' ' + component.state.service);
         window.swagger = new SwaggerClient({
             url: location.origin + "/swagger/swagger.json",
             success: function() {
                 var srJson = {
                     sr: {
                         id: component.state.id,
-                        service: component.state.service,
+                        service: component.refs.service.value,   //component.state.service,
                         description: component.state.description,
                         endpoint: component.state.endpoint
                     }

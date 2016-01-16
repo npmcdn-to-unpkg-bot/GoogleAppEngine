@@ -5,7 +5,7 @@ window.swagger = new SwaggerClient({
   success: function() {
     swagger.sr.all({},{responseContentType: 'application/json'}, function(data) {
       //document.getElementById("mydata").innerHTML = JSON.stringify(data.obj);
-      React.render(<SRStart items={ data.obj.content }/>, document.getElementById('sr-start'));
+      ReactDOM.render(<SRStart items={ data.obj.content }/>, document.getElementById('sr-start'));
     });
   },
   authorizations : {
@@ -35,4 +35,4 @@ var SRStart = React.createClass({
   }
 });
 
-//React.render(<SRUpdate items={ data.content }/>, document.getElementById('sr-start'))
+//ReactDOM.render(<SRUpdate items={ data.content }/>, document.getElementById('sr-start'))

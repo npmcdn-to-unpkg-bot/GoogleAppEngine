@@ -35,4 +35,4 @@ var SRCreate = React.createClass({
     }
 });
 
-React.render(<SRCreate />, document.getElementById('sr-create'));
+ReactDOM.render(<SRCreate />, document.getElementById('sr-create'));
