@@ -1,1 +1,1 @@
-React.render(<SRUpdate />, document.getElementById('sr-update'));
+ReactDOM.render(<SRUpdate />, document.getElementById('sr-update'));

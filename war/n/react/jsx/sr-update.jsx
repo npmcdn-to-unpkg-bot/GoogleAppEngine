@@ -88,7 +88,7 @@ var SRUpdate = React.createClass({
                                         <input type="hidden" name="_method" defaultValue value="POST" />
                                         <input className="form-control btn btn-primary" id="deleteItem" type="button" style={{background: '#98969E'}} defaultValue value="Delete" onClick={this.deleteItem} />
                                         <input className="form-control btn btn-primary" id="createItem" type="button" style={{background: '#98969E'}} defaultValue value="Save" disabled={!this.state.isSubmitting} onClick={this.save} />
-                                        <input className="form-control btn" id="cancelItem" defaultValue value="Cancel" type="button" onClick={this.goHome} />
+                                        <input className="form-control btn" id="cancelItem" defaultValue="Cancel" type="button" onClick={this.goHome} />
                                     </div>
                                 </div>
                             </div>
@@ -127,6 +127,12 @@ var SRUpdate = React.createClass({
         console.log('SRUpdate input saved');
     },
     updateItem: function(e) {
+        var item = this.item;
+        this.setState({
+            item,
+            isSubmitting: false
+        });
+
         var evt = e || window.event
         // "e" is the standard behavior (FF, Chrome, Safari, Opera),
         // while "window.event" (or "event") is IE's behavior
