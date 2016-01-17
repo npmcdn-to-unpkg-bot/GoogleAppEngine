@@ -3,6 +3,8 @@ package cloudserviceapi.app.controller;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -68,13 +70,19 @@ public class SRCrudService {
 //	@Autowired
     ServiceRegistryRepository repository;
     SortedServiceRegistryImpl sortedRepository;
+    EntityManager entityManager;
 
     public SRCrudService() {
-    	JpaRepositoryFactory jpaRepositoryFactory = new JpaRepositoryFactory(EMF.get().createEntityManager());
+        entityManager = EMF.get().createEntityManager();
+    	JpaRepositoryFactory jpaRepositoryFactory = new JpaRepositoryFactory(entityManager);
 
     	repository = jpaRepositoryFactory.getRepository(ServiceRegistryRepository.class);
-    	
-    	sortedRepository = new SortedServiceRegistryImpl(repository);
+
+    	try {
+			sortedRepository = new SortedServiceRegistryImpl(repository, entityManager);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	@ApiOperation(httpMethod = "GET", value = "Resource to get all Items", nickname="all")
