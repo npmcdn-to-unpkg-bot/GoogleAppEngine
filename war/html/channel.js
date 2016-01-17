@@ -383,6 +383,7 @@ function loadMovie(username, shuffleFlag) {
             if (moviePreviewCount === 0) {
                 var msg = 'There is no movie in the collection.';
                 //alert && alert(msg);
+                $('#processStatus').text(msg);
                 console && console.log(msg);
             }
 

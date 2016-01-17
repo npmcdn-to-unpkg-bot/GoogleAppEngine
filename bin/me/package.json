@@ -8,11 +8,7 @@
     "application",
     "openshift"
   ],
-  "author": {
-    "name": "OpenShift",
-    "email": "ramr@example.org",
-    "url": "http://www.openshift.com/"
-  },
+  "author": "OpenShift <ramr@example.org> (http://www.openshift.com/)",
   "homepage": "http://www.openshift.com/",
   "repository": {
     "type": "git",
@@ -24,13 +20,20 @@
   },
   "dependencies": {
     "apicache": "0.0.12",
-    "body-parser": "^1.14.0",
+    "body-parser": "^1.14.2",
     "cors": "^2.7.1",
-    "express": "~3.4.4",
-    "request": "^2.62.0"
+    "express": "^3.4.8",
+    "request": "^2.67.0"
   },
   "devDependencies": {},
   "bundleDependencies": [],
   "private": true,
-  "main": "server.js"
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "bugs": {
+    "url": "https://github.com/openshift/origin-server/issues"
+  },
+  "license": "ISC"
 }
