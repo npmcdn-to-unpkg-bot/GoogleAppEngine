@@ -147,6 +147,9 @@
                 });
             };
         })
+        .config(['$httpProvider', '$controllerProvider',function ($httpProvider, $controllerProvider) {
+            $httpProvider.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('2shareJWTToken');   //JWT support
+        }]);
     </script>
 </body>
 </html>

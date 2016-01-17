@@ -4,7 +4,7 @@ var SRUpdate = React.createClass({
         service: React.PropTypes.string,
         description: React.PropTypes.string,
         endpoint: function (props, propName, component) {
-            if (typeof props[propName] !== 'undefined' && !this.isURL(props[propName])) {
+            if (typeof props[propName] !== 'undefined' && !component.isURL(props[propName])) {
                 return new Error('Invalid URL!');
             }
         }

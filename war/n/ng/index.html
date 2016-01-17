@@ -16,10 +16,15 @@
 <div class="container" ng-controller='MainCtrl'>
 	<h1>{{greeting}}</h1>
 	<div ng-show="!loggedIn()">
-		Please log in (tom and sally are valid names)</br>
+		<div>{{status}}</div>
+		<p></p>
 		<form ng-submit="login()">
-			Username: <input type="text" ng-model="userName"/><span><input type="submit" value="Login"/>
-			Password: <input type="text" ng-model="passWord"/><span><input type="submit" value="Password"/>
+			<table>
+				<tr><td>USR: </td><td><input type="text" ng-model="userName" focus="true"/></td></tr>
+				<tr><td>PWD: </td><td><input type="password" ng-model="passWord"/></td></tr>
+			</table>
+			<p></p>
+			<input type="submit" value="Login"/>
 		</form>
 	</div>
 	<div class="alert alert-danger" role="alert" ng-show="error.data.message">
