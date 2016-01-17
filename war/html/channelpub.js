@@ -16,7 +16,7 @@ var currentMoviePreviewCount = 1;
 
 $("#cBuild").val("(" + cBuild + ")");
 
-$.ajaxSetup({headers: { 'Authorization': 'Bearer ' + localStorage.getItem('2shareJWTToken') }}); //JWT support
+$.ajaxSetup({headers: { 'Authorization': 'Bearer ' + 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI3MHA0TXoxdGlZIiwicm9sZXMiOlsidXNlciJdLCJpYXQiOjE0NTMwNTI5Mzd9.sWFBowb1DTwUI4W-iDmDnKt9d1YTgqU6rXgY_nL-B4s' }}); //JWT support
 
 //+ Jonas Raoni Soares Silva
 //@ http://jsfromhell.com/array/shuffle [v1.0]
@@ -155,7 +155,7 @@ function loadMoviePub(username, log) {
                 }
                 //window.console && console.log("2 loading galleria ...");
                 //=== http://support.galleria.io/kb/getting-started/quick-start
-                Galleria.loadTheme('/galleria/themes/classic/galleria.classic.min.js?ts=' + (new Date()).getTime());
+                Galleria.loadTheme('/galleria-1.2.9/themes/classic/galleria.classic.min.js?ts=' + (new Date()).getTime());
                 Galleria.configure({
                     dummy: '/images/noimage.jpg',
                     imageCrop: true,
@@ -499,7 +499,7 @@ function handleChannelType(type, username) {
         }
     }
     //=== http://support.galleria.io/kb/getting-started/quick-start
-    Galleria.loadTheme('/galleria/themes/classic/galleria.classic.min.js?ts=' + (new Date()).getTime());
+    Galleria.loadTheme('/galleria-1.2.9/themes/classic/galleria.classic.min.js?ts=' + (new Date()).getTime());
     //window.console && console.log("type is [" + type + "]");
     if(type === 0) {
         /* VIDEO */
