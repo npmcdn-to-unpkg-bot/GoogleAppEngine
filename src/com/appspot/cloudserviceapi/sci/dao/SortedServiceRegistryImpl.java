@@ -46,7 +46,7 @@ public class SortedServiceRegistryImpl implements SortedServiceRegistryRepositor
 				  )
 				);
 		
-		// Clears the cache to avoid inconsistency
+		//=== clears the cache to avoid inconsistency with SR2#1
 		entityManager.clear();
 
 		return repository.findAll(page2);

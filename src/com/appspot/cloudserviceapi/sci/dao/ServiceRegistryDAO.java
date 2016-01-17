@@ -8,6 +8,8 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 import javax.persistence.EntityManager;
 
+import javax.transaction.Transaction;
+
 import org.joda.time.DateTime;
 
 import tapp.model.ServiceRegistry;
@@ -221,12 +223,15 @@ public class ServiceRegistryDAO {
 		 * System.err.println("Id can not be zero!"); return; }
 		 */
 		PersistenceManager pm = Persistence.getManager();
+		javax.jdo.Transaction tx = pm.currentTransaction();
 		try {
-			pm.makePersistent(wo);
+		    tx.begin();
+			pm.makePersistent(wo);	//SR2#1
 			//List<ServiceRegistry> clonedList = (List<ServiceRegistry>) CacheController.get(ALL_SR_LIST);
 			//update the cache too
 			updateCache(wo);
 			//CacheController.put(ALL_SR_LIST, clonedList);
+		    tx.commit();
 		} finally {
 			pm.close();
 		}
