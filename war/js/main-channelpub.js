@@ -2,7 +2,7 @@ requirejs.config({
     paths: {
         jquery: ['//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery', 'jquery-1.9.1'],    //for some reason, this is needed for IE 8 otherwise  'jQuery' is undefined or  '$' is undefined will occur
         purl: '../jquery/purl',
-        galleria: ['../galleria/galleria-1.2.9.min'],
+        galleria: ['../galleria-1.2.9/galleria-1.2.9.min'],
         subsTitle: ['../jquery/YoutubeSubtitiles'],
         channelApp: ['../html/channelpub']
     },

@@ -61,7 +61,7 @@ td.description:hover span, td.details:hover span {
 		
 		<p>
 		<t:pagelink t:page="g/app/TemplateSave" context="0">Create Something</t:pagelink>&#160;&#160;&#160;
-		<t:pagelink t:page="sci/serviceregistrystart" context="0">Service Registry</t:pagelink>
+		<t:pagelink id="srstart1" t:page="sci/serviceregistrystart" context="0">Service Registry</t:pagelink>
 		</p><br/>
 
 				<table t:id="genius1Grid" rowClass="literal:myRowClass" t:type="grid" pagerPosition="both" source="Templates" row="Template" add="delete" rowsPerPage="20" include="id,lastUpdatedDate,platform,what,details" reorder="id,lastUpdatedDate,platform,what,details">

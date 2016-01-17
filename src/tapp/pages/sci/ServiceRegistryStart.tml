@@ -113,7 +113,7 @@
     	</div>
         <p>
         <t:pagelink t:page="sci/ServiceRegistrySave" context="0">Create New</t:pagelink>&#160;&#160;&#160;
-		<t:pagelink t:page="g/app/templatestart" context="0" style="display:${geniusStartDisplay};">Genius</t:pagelink>
+		<t:pagelink id="geniusstart1" t:page="g/app/templatestart" context="0" style="display:${geniusStartDisplay};">Genius</t:pagelink>
         </p>
 
         <t:form t:id="form1">
@@ -160,7 +160,7 @@
       </div>
         <p>
         <t:pagelink t:page="sci/ServiceRegistrySave" context="0">Create New</t:pagelink>&#160;&#160;&#160;
-		<t:pagelink t:page="g/app/templatestart" context="0" style="display:${geniusStartDisplay};">Genius</t:pagelink>
+		<t:pagelink id="geniusstart2" t:page="g/app/templatestart" context="0" style="display:${geniusStartDisplay};">Genius</t:pagelink>
         </p>
 
         <t:form t:id="form2">
