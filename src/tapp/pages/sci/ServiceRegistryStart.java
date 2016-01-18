@@ -202,9 +202,9 @@ public class ServiceRegistryStart {
 //			ServiceRegistry sr = dao.findServiceRegistryByService(Constants.APP_ID_MASK);
 //			if(sr != null) {
 //				cachedHostName = sr.getEndpoint();
-				if(cachedHostName != null && (cachedHostName.equals("localhost") || cachedHostName.equals("127.0.0.1"))) {	//TODO future enhancement should avoid this check on PROD	
-//					cachedHostName += ".appspot.com";
-//				} else {
+				if(cachedHostName != null && !cachedHostName.equals("localhost") && !cachedHostName.equals("127.0.0.1")) {	//TODO future enhancement should avoid this check on PROD
+					cachedHostName = AppEngine.getHostName();
+				} else {
 					cachedHostName += ":8888";
 				}
 //			} else {
