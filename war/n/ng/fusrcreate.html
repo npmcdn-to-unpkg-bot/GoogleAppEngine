@@ -13,25 +13,24 @@ Con<!DOCTYPE html>
     <script src="js/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="../js/bower_components/angular/angular.min.js"></script>
     <!-- Helper files -->
-    <script src="../js/apimatic/servicemanagerlib/Configuration.js"></script>
-    <script src="../js/apimatic/servicemanagerlib/APIHelper.js"></script>
-    <script src="../js/apimatic/servicemanagerlib/Http/Client/HttpContext.js"></script>
-    <script src="../js/apimatic/servicemanagerlib/Http/Client/RequestClient.js"></script>
-    <script src="../js/apimatic/servicemanagerlib/Http/Request/HttpRequest.js"></script>
-    <script src="../js/apimatic/servicemanagerlib/Http/Response/HttpResponse.js"></script>
+    <script src="../js/apimatic/crudservicelib/Configuration.js"></script>
+    <script src="../js/apimatic/crudservicelib/APIHelper.js"></script>
+    <script src="../js/apimatic/crudservicelib/Http/Client/HttpContext.js"></script>
+    <script src="../js/apimatic/crudservicelib/Http/Client/RequestClient.js"></script>
+    <script src="../js/apimatic/crudservicelib/Http/Request/HttpRequest.js"></script>
+    <script src="../js/apimatic/crudservicelib/Http/Response/HttpResponse.js"></script>
 
     <!-- API Controllers -->
-    <script src="../js/apimatic/servicemanagerlib/Controllers/SrController.js"></script>
-    <script src="../js/apimatic/servicemanagerlib/Controllers/M2shareController.js"></script>
+    <script src="../js/apimatic/crudservicelib/Controllers/SrController.js"></script>
+    <script src="../js/apimatic/crudservicelib/Controllers/M2shareController.js"></script>
 
     <!-- Models -->
-    <script src="../js/apimatic/servicemanagerlib/Models/BaseModel.js"></script>
-    <script src="../js/apimatic/servicemanagerlib/Models/Action14Enum.js"></script>
-    <script src="../js/apimatic/servicemanagerlib/Models/CategoryEnum.js"></script>
-    <script src="../js/apimatic/servicemanagerlib/Models/ActionEnum.js"></script>
-    <script src="../js/apimatic/servicemanagerlib/Models/ServiceRegistry.js"></script>
-    <script src="../js/apimatic/servicemanagerlib/Models/TypeEnum.js"></script>
-    <script src="../js/apimatic/servicemanagerlib/Models/FilterEnum.js"></script>
+    <script src="../js/apimatic/crudservicelib/Models/BaseModel.js"></script>
+    <script src="../js/apimatic/crudservicelib/Models/CategoryEnum.js"></script>
+    <script src="../js/apimatic/crudservicelib/Models/ActionEnum.js"></script>
+    <script src="../js/apimatic/crudservicelib/Models/ServiceRegistry.js"></script>
+    <script src="../js/apimatic/crudservicelib/Models/TypeEnum.js"></script>
+    <script src="../js/apimatic/crudservicelib/Models/FilterEnum.js"></script>
 
     <!-- Utils -->
     <script src="../js/bower_components/urijs/src/URI.min.js"></script>
@@ -80,7 +79,7 @@ Con<!DOCTYPE html>
 </div>
 
     <script>
-        var myApp = angular.module('srApp', ['ServiceManagerLib'])
+        var myApp = angular.module('srApp', ['CrudServiceLib'])
         myApp.controller('PageCtrl',function($scope,SrController) {
             var self = this;
             var qs = URI(location.href).query(true); // == e.g. { id : 4529987906437120 }
