@@ -168,6 +168,14 @@ updateCache() if it helps.
 
 ****** Miscellaneous
 
+SR hit count is disabled by default. To enable it, do:
+
+. To apply a site specific secret key, say 1234567890, invoke:
+http://localhost:8888/postsettings?setting=true&pincode=sr.hit.count.enabled
+. To view it:
+http://localhost:8888/settings?pincode=sr.hit.count.enabled
+
+
 Also in development (not fully working, yet), using -
 
 . Gig for Scaffolding (http://code.google.com/p/gig/wiki/CRUDScaffolding)

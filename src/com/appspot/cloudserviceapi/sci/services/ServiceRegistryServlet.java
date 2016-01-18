@@ -2,17 +2,20 @@ package com.appspot.cloudserviceapi.sci.services;
 
 import java.io.IOException;
 
+import javax.servlet.FilterConfig;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.datanucleus.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import tapp.model.ServiceRegistry;
 
 import com.appspot.cloudserviceapi.common.Constants;
+import com.appspot.cloudserviceapi.common.SettingsDBUtils;
 import com.appspot.cloudserviceapi.common.StringUtil;
 import com.appspot.cloudserviceapi.data.ServiceRegistryUtil;
 import com.appspot.cloudserviceapi.sci.dao.ServiceRegistryDAO;
@@ -23,8 +26,26 @@ public class ServiceRegistryServlet extends HttpServlet {
 	@Autowired
 	ServiceRegistryRepository r;
 
+	private static boolean hitCountEnabled;
+
+	public static boolean isHitCountEnabled() {
+		return hitCountEnabled;
+	}
+
+	public static void setHitCountEnabled(boolean hitCountEnabled) {
+		ServiceRegistryServlet.hitCountEnabled = hitCountEnabled;
+	}
+
 	public void init(ServletConfig config) throws ServletException {
 //	    GaeVFS.setRootPath(config.getServletContext().getRealPath("/"));
+    	String temp = SettingsDBUtils.getSettings("sr.hit.count.enabled");
+    	if(!StringUtils.isEmpty(temp) && !temp.startsWith("${")) {
+    		setHitCountEnabled(Boolean.valueOf(temp));
+    		System.out.println("Hit count enabled in datastore detected.");
+    	} else {
+    		System.out.println("Hit count disabled.");
+    	}
+		System.out.println("ServiceRegistryServlet initialized.");
 	}
 	
 	public void doGet(final HttpServletRequest request,
@@ -128,7 +149,7 @@ public class ServiceRegistryServlet extends HttpServlet {
 					ServiceRegistry firstRedirectedSR = null;
 					String endPoint = sr.getEndpoint();
 					if(!useDescription && !ServiceRegistryUtil.isRedirectedEndPoint(endPoint) && isUrl(endPoint)) {
-						ServiceRegistryUtil.countHit(sr, r, request);
+						ServiceRegistryUtil.countHit(sr, r, request, hitCountEnabled);
 						response.sendRedirect(endPoint);
 					} else 
 					if(!useDescription && ServiceRegistryUtil.isRedirectedEndPoint(endPoint)) {
@@ -146,16 +167,16 @@ public class ServiceRegistryServlet extends HttpServlet {
 						}
 						//=== begin - support getting the content of the redirected service!!!
 						if(!isUrl(finalEndPoint) && !useDescription1) {
-							ServiceRegistryUtil.countHit(sr, r, request);
+							ServiceRegistryUtil.countHit(sr, r, request, hitCountEnabled);
 							resp = firstRedirectedSR.getEndpoint();	//returns the content of the endpoint (which is not supposed to be an URL)
 							response.getWriter().print(resp.trim());
 						} else
 						//it is a redirection
 						if(isUrl(finalEndPoint) && !useDescription1) {
-							ServiceRegistryUtil.countHit(sr, r, request);
+							ServiceRegistryUtil.countHit(sr, r, request, hitCountEnabled);
 							response.sendRedirect(finalEndPoint);
 						} else {
-							ServiceRegistryUtil.countHit(sr, r, request);
+							ServiceRegistryUtil.countHit(sr, r, request, hitCountEnabled);
 							resp = firstRedirectedSR.getDescription();	//returns the description content
 							response.getWriter().print(resp.trim());
 						}
@@ -187,22 +208,22 @@ public class ServiceRegistryServlet extends HttpServlet {
 							resp = description.trim();
 						}
 						if(resp != null) {
-							ServiceRegistryUtil.countHit(sr, r, request);
+							ServiceRegistryUtil.countHit(sr, r, request, hitCountEnabled);
 							response.getWriter().print(resp.trim());
 						}
 					} else {
 						if(isUrl(endPoint)) {
-							ServiceRegistryUtil.countHit(sr, r, request);
+							ServiceRegistryUtil.countHit(sr, r, request, hitCountEnabled);
 							response.sendRedirect(endPoint);
 						} else {
-							ServiceRegistryUtil.countHit(sr, r, request);
+							ServiceRegistryUtil.countHit(sr, r, request, hitCountEnabled);
 							resp = endPoint;	//just returns the content
 							response.getWriter().print(resp.trim());
 						}
 					}
 				}
 				else if(sr != null && disabled) {
-					ServiceRegistryUtil.countHit(sr, r, request);	//for tracking purpose only including DOS attack
+					ServiceRegistryUtil.countHit(sr, r, request, hitCountEnabled);	//for tracking purpose only including DOS attack
 					resp = "<html>Sorry, the service [" + serviceName + "] is currently disabled. Please contact the administrator for details.</html>";
 					response.getWriter().println(resp);
 				}

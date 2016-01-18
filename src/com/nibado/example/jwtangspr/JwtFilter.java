@@ -32,7 +32,9 @@ public class JwtFilter implements Filter {
     		setJWTSecretKeyDB(temp);
     		System.out.println("JWT secret key in datastore detected.");
     	} else {
-    		System.out.println("Default JWT secret key used." + JWTSecretKeyDB);
+    		System.out.println("Default JWT secret key used."
+    		//+ JWTSecretKeyDB
+    		);
     	}
 		System.out.println("JwtFilter initialized.");
 	}

@@ -75,20 +75,24 @@ public class ServiceRegistryUtil {
 		return endPoint;
 	}
 	
-	public static void countHit(ServiceRegistry u, ServiceRegistryDAO r, HttpServletRequest request) {
-		Long temp = u.getHit();
-		if(temp == null) {
-			temp = new Long(0);
-		}
-//		if(request.getParameter(Constants.STEALTH_MODE) == null) {
-		if(request.getParameter(Constants.COUNT_HIT_MODE) != null) {
-			u.setHit(temp + 1L);
-			u.setLastAccessed(new Date());
-			System.out.println(u.getService() + " hit " + u.getHit());
-			r.save(u);
-			r.updateCache(u);
+	public static void countHit(ServiceRegistry u, ServiceRegistryDAO r, HttpServletRequest request, boolean hitCountEnabled) {
+		if(hitCountEnabled) {
+			if(request.getParameter(Constants.STEALTH_MODE) == null) {
+//			if(request.getParameter(Constants.COUNT_HIT_MODE) != null) {
+				Long temp = u.getHit();
+				if(temp == null) {
+					temp = new Long(0);
+				}
+				u.setHit(temp + 1L);
+				u.setLastAccessed(new Date());
+				System.out.println(u.getService() + " hit " + u.getHit());
+				r.save(u);
+				r.updateCache(u);
+			} else {
+				System.out.println("stealth mode, tracking disabled");
+			}
 		} else {
-			System.out.println("stealth mode, tracking disabled");
+			System.out.println("hit count disabled, tracking disabled");
 		}
 	}
 
