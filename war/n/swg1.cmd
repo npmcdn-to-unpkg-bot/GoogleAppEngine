@@ -1,0 +1,1 @@
+copy js\swagger-client.js.SWG1 js\bower_components\swagger-js\browser\swagger-client.js
