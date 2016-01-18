@@ -147,7 +147,7 @@ public class SRCrudService {
 
 	@ApiOperation(httpMethod = "POST", value = "Resource to delete an Item" , nickname="delete")
     @ApiImplicitParams({
-    	@ApiImplicitParam(name = "id", value = "Item unique id", required = true, dataType = "integer", paramType = "body")
+    	@ApiImplicitParam(name = "id", value = "Item unique id", required = true, dataType = "string", paramType = "body")	//SR2#2 datatype has to be a string due to Apimatic (https://mail.google.com/mail/u/0/#inbox/15252575a5c9dd9f)
     	}
     )
 	@ApiResponses(value = {
