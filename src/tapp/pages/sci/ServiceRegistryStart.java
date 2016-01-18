@@ -80,7 +80,7 @@ public class ServiceRegistryStart {
     
     private String currentExcerpt;
 	
-    private String cachedHostName;
+    private static String cachedHostName;
     
     @Component
     private Form form1;
@@ -91,8 +91,8 @@ public class ServiceRegistryStart {
 
     private long totalRows = 0;
     
-    @Inject
-    private Request request;
+//    @Inject
+//    private Request request;
     @InjectComponent
     private Zone myZone;
     private String indexStatusMessage;
@@ -197,20 +197,21 @@ public class ServiceRegistryStart {
 
 	public String getHostName() {
 		if(cachedHostName == null) {
-			ServiceRegistryDAO dao = new ServiceRegistryDAO();
-			ServiceRegistry sr = dao.findServiceRegistryByService(Constants.APP_ID_MASK);
-			if(sr != null) {
-				cachedHostName = sr.getEndpoint();
-				if(cachedHostName != null && !cachedHostName.equals("localhost")) {	//TODO future enhancement should avoid this check on PROD	
-					cachedHostName += ".appspot.com";
-				} else {
+			cachedHostName = requestGlobals.getHTTPServletRequest().getRemoteHost();
+//			ServiceRegistryDAO dao = new ServiceRegistryDAO();
+//			ServiceRegistry sr = dao.findServiceRegistryByService(Constants.APP_ID_MASK);
+//			if(sr != null) {
+//				cachedHostName = sr.getEndpoint();
+				if(cachedHostName != null && (cachedHostName.equals("localhost") || cachedHostName.equals("127.0.0.1"))) {	//TODO future enhancement should avoid this check on PROD	
+//					cachedHostName += ".appspot.com";
+//				} else {
 					cachedHostName += ":8888";
 				}
-			} else {
-				cachedHostName = AppEngine.getHostName();
-			}
-			System.out.println("cachedHostName set to [" + cachedHostName + "]");
+//			} else {
+//				cachedHostName = AppEngine.getHostName();
+//			}
 		}
+		System.out.println("cachedHostName set to [" + cachedHostName + "]");
 		
 		return cachedHostName;
 	}
