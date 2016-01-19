@@ -29,6 +29,7 @@ Swagger Client
 . All custom changes are tagged with SWG1
 . If you overwrite the changes with bower install for some reason, the changed copy has extenstion .SWG1 e.g.
 c:\GoogleAppEngine>copy war\n\js\swagger-client.js.SWG1 war\n\js\bower_components\swagger-js\browser\swagger-client.js
+c:\GoogleAppEngine>copy war\n\js\swagger-ui.js.SWG1 war\swagger\swagger-ui.js
 
 JSON Web Token (JWT)
 . The working codes are based on http://niels.nu/blog/2015/json-web-tokens.html
