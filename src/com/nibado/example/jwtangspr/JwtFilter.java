@@ -62,7 +62,7 @@ public class JwtFilter implements Filter {
             request.setAttribute("claims", claims);
         }
         catch (final SignatureException e) {
-            throw new ServletException("Invalid token.");
+            throw new ServletException("Invalid token: " + e);
         }
 
         chain.doFilter(req, res);

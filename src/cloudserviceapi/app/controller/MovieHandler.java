@@ -508,6 +508,7 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
 	 */
 	public List<Movie> getMovies() {
 		EntityManager mgr = getEntityManager();
+		mgr.clear();	//clear the cache, if any
 
 		List<Movie> results = new ArrayList(), child = null;
 		List<Movie> parent = mgr.createQuery("select u from " + User.class.getName() + " u").getResultList();
@@ -797,6 +798,8 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
 		Key parentKey = KeyFactory.createKey(User.class.getSimpleName(), u.getKey().getId());
 		Key key = KeyFactory.createKey(parentKey, Movie.class.getSimpleName(), newCal.getId());
 		m = mgr.find(Movie.class, key);
+		if(m == null) throw new Exception("Item by id [" + newCal.getId() + "] can not be found! Key [" + key + "]");
+
 		if(type != null && type.equals(Constants.MOVIE_MODEL_ID)) {
 			//not touching the calendar id and event pattern!
 		} else
