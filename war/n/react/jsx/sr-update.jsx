@@ -85,7 +85,7 @@ var SRUpdate = React.createClass({
                                     <label htmlFor="createItem" className="col-sm-2 control-label" />
                                     <div className="col-sm-10">
                                         <input type="hidden" name="_method" defaultValue="POST" />
-                                        <input className="form-control btn btn-primary" ref="deleteItem" type="button" style={{background: '#98969E'}} defaultValue="Delete" onClick={() => {if(confirm('Delete the item?')) {this.deleteItem};}} />
+                                        <input className="form-control btn btn-primary" ref="deleteItem" type="button" style={{background: '#98969E'}} defaultValue="Delete" onClick={() => {if(confirm('Delete the item?')) {this.deleteItem()};}} />
                                         <input className="form-control btn btn-primary" ref="createItem" type="button" style={{background: '#98969E'}} defaultValue="Save" disabled={!this.state.isSubmitting} onClick={this.save} />
                                         <input className="form-control btn" ref="cancelItem" defaultValue="Cancel" type="button" onClick={this.goHome} />
                                     </div>
