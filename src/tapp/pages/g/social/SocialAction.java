@@ -127,7 +127,7 @@ public class SocialAction {
 					
 					if(u != null) {
 						tokenAssigned = u.getEndpoint();
-						ServiceRegistryUtil.countHit(u, r, requestGlobals.getHTTPServletRequest());
+						ServiceRegistryUtil.countHit(u, r, requestGlobals.getHTTPServletRequest(), false);
 						if(token != null && tokenAssigned != null && (token.trim().equals(tokenAssigned.trim()))) {
 							System.out.println("access granted for '" + action + "' on " + uri);
 							//HttpServletRequest request = requestGlobals.getHTTPServletRequest();

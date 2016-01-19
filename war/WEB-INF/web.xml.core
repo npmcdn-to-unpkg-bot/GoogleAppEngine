@@ -482,7 +482,6 @@ java.lang.RuntimeException: Exception constructing service 'ApplicationContext':
 
 <!--    
 	begin Password Change Station
--->
   <servlet>
      <servlet-name>MainServlet</servlet-name>
      <servlet-class>passwordchange.core.MainServlet</servlet-class>
@@ -531,8 +530,6 @@ java.lang.RuntimeException: Exception constructing service 'ApplicationContext':
      <servlet-name>MainServlet</servlet-name>
      <url-pattern>/passwordchange/promptQuestion3</url-pattern>
   </servlet-mapping>
-<!--
-  -->
    <servlet-mapping>     
      <servlet-name>MainServlet</servlet-name>
      <url-pattern>/passwordchange/validateQuestion1</url-pattern>
@@ -553,7 +550,6 @@ java.lang.RuntimeException: Exception constructing service 'ApplicationContext':
      <servlet-name>MainServlet</servlet-name>
      <url-pattern>/passwordchange/setupPassword</url-pattern>
   </servlet-mapping>
-<!--
 	end Password Change Station
 -->
 
@@ -740,6 +736,7 @@ java.lang.RuntimeException: Exception constructing service 'ApplicationContext':
     <display-name>ServiceRegistryServlet</display-name>
     <servlet-name>ServiceRegistryServlet</servlet-name>
     <servlet-class>com.appspot.cloudserviceapi.sci.services.ServiceRegistryServlet</servlet-class>
+    <load-on-startup>2</load-on-startup>
   </servlet>
   <servlet-mapping>
     <servlet-name>ServiceRegistryServlet</servlet-name>

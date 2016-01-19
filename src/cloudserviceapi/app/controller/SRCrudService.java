@@ -65,7 +65,7 @@ method = {RequestMethod.GET, RequestMethod.POST})
         	, SwaggerDefinition.Scheme.HTTP
         	}
 )
-@Api(value = "api/jwt/fusr", tags = "sr")
+@io.swagger.annotations.Api(value = "api/jwt/fusr", tags = "sr")
 public class SRCrudService {
 //	@Autowired
     ServiceRegistryRepository repository;
