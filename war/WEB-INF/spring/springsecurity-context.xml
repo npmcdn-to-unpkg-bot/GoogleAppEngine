@@ -81,8 +81,8 @@
 <!--
  	<http pattern="/g/owasp/**" security="none"/>
 	<http pattern="/g/app/**" security="none"/>
- -->
  	<http pattern="/g/social/**" security="none"/>
+-->
 	<http pattern="/jsp/g/search_owasp.jsp" security="none"/>
 	<http pattern="/jsp/g/search_template.jsp" security="none"/>
 	<http pattern="/jsp/g/search_social.jsp" security="none"/>
@@ -121,13 +121,13 @@
 -->
 		<intercept-url pattern="/sci/*/**" access="hasAnyRole('ROLE_USER_SCI','ROLE_ADMIN_SCI','ROLE_MANAGER','ROLE_ADMIN')" />
 		<intercept-url pattern="/sr" access="permitAll" requires-channel="https" />
-
+		<intercept-url pattern="/g/*/**" access="hasAnyRole('ROLE_USER_SCI','ROLE_ADMIN_SCI','ROLE_MANAGER','ROLE_ADMIN')" />
 		<intercept-url pattern="/go/*/**" access="permitAll" />
 		<intercept-url pattern="/sci" access="permitAll" />
+		<intercept-url pattern="/g" access="permitAll" />
 		<intercept-url pattern="/userstart" access="permitAll" requires-channel="https" />
  		<!-- avoid redirect loop (thanks to http://bitcoinmex.blogspot.com/2013/03/spring-security-and-google-app-engine.html) -->
- 		<intercept-url pattern="/g/**/*start/**" access="hasAnyRole('ROLE_MANAGER','ROLE_ADMIN')" />
-		<intercept-url pattern="/g/**/*save/**" access="hasAnyRole('ROLE_MANAGER','ROLE_ADMIN')" />
+ 		<intercept-url pattern="/g/**/*" access="hasAnyRole('ROLE_MANAGER','ROLE_ADMIN')" />
  		<intercept-url pattern="/_ah/**" access="permitAll" />
 
 		<form-login username-parameter="password" password-parameter="j_password" login-page="/login.jsp" login-processing-url="/j_spring_security_check" authentication-failure-url="/login.jsp" />
