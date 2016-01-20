@@ -6,6 +6,7 @@ window.swagger = new SwaggerClient({
     swagger.sr.all({},{responseContentType: 'application/json'}, function(data) {
       //document.getElementById("mydata").innerHTML = JSON.stringify(data.obj);
       ReactDOM.render(<SRStart items={ data.obj.content }/>, document.getElementById('sr-start'));
+      $('#sr-start-table').stacktable();
     });
   },
   authorizations : {
@@ -22,7 +23,7 @@ var SRStart = React.createClass({
     }
     return (
         <div className="table-responsive">
-          <table className="table table-striped table-bordered">
+          <table id="sr-start-table" className="table table-striped table-bordered">
             <thead>
             <tr><td>ID</td><td>SERV</td><td>DESCRIPTION</td><td>S URL</td><td>VIS</td><td>UPT</td><td>ENDPOINT</td><td>HIT</td></tr>
             </thead>

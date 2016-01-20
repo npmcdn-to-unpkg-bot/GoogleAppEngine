@@ -59,7 +59,7 @@ var SRUpdate = React.createClass({
         return (
                     <div className="container">
                         <h1>Service Manager - Update</h1><br />
-                        <form className="form-horizontal" role="form">
+                        <form id="sr-update-table" className="form-horizontal" role="form">
                             <div className="form-group row">
                                 <div className="control-group">
                                     <label htmlFor="id" className="col-sm-2 control-label">ID:</label>
