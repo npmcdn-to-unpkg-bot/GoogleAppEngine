@@ -46,7 +46,7 @@ import com.appspot.cloudserviceapi.util.Compass;
 
 public class ServiceRegistryStart {
 
-	private String TCOUNT_UUID = "service.registry.count";
+//	private String TCOUNT_UUID = "service.registry.count";
     private int MB = 1024*1024;
 
 //	@Inject
@@ -170,14 +170,14 @@ public class ServiceRegistryStart {
 		if(ServiceRegistryHelper.isUpdateAllowed(id)) {
 			try {
 				beanManager.delete(id);
-				decrementTotalCount();
+//				decrementTotalCount();
 			} catch (Exception e) {
 				//e.printStackTrace();
 				// TODO is this a real issue or due to improper implementation?
 				if(e.getMessage() != null && !e.getMessage().equals("Cannot read fields from a deleted object")) {
 					form1.recordError("Sorry, not able to delete Service Id '" + id + "' due to an error [" + e.getMessage() + "].");
 				} else {
-					decrementTotalCount();
+//					decrementTotalCount();
 				}
 			}
 		} else {
@@ -189,11 +189,11 @@ public class ServiceRegistryStart {
 		}
 	}
 
-	private void decrementTotalCount() {
-		totalRows = totalRows-1;
-		SettingsDBUtils.updateSettings(TCOUNT_UUID, String.valueOf(totalRows));
+//	private void decrementTotalCount() {
+//		totalRows = totalRows-1;
+//		SettingsDBUtils.updateSettings(TCOUNT_UUID, String.valueOf(totalRows));
 //		initTotalRows();
-	}
+//	}
 
 	public String getHostName() {
 		if(cachedHostName == null) {
@@ -370,9 +370,9 @@ public class ServiceRegistryStart {
 	public String getGeniusStartDisplay() {
 		String retVal = "none";
 		
-		if(SecurityUtils.isAdmin(UserRole.ROLE_ADMIN_SCI.toString()) || SecurityUtils.isAdmin(UserRole.ROLE_ADMIN.toString())) {
+//		if(SecurityUtils.isAdmin(UserRole.ROLE_ADMIN_SCI.toString()) || SecurityUtils.isAdmin(UserRole.ROLE_ADMIN.toString())) {
 			retVal = "inline";
-		}
+//		}
 		return retVal;
 	}
 	

@@ -22,12 +22,13 @@ import app.common.SecurityUtils;
 import com.appspot.cloudserviceapi.common.HTMLUtil;
 import com.appspot.cloudserviceapi.common.SettingsDBUtils;
 import com.appspot.cloudserviceapi.sci.dao.ServiceRegistryDAO;
+import com.appspot.cloudserviceapi.sci.services.ServiceRegistryServlet;
 import com.appspot.cloudserviceapi.sci.services.manager.ServiceRegistryManager;
 import com.appspot.cloudserviceapi.security.spring.UserRole;
 
 public class ServiceRegistrySave {
 
-	private String TCOUNT_UUID = "service.registry.count";
+//	private String TCOUNT_UUID = "service.registry.count";
 
 	private ServiceRegistry myBean;
 
@@ -91,11 +92,11 @@ public class ServiceRegistrySave {
 //		}
 //	}
 
-	private void incrementTotalCount() {
-		totalRows = totalRows+1;
-		SettingsDBUtils.updateSettings(TCOUNT_UUID, String.valueOf(totalRows));
+//	private void incrementTotalCount() {
+//		totalRows = totalRows+1;
+//		SettingsDBUtils.updateSettings(TCOUNT_UUID, String.valueOf(totalRows));
 //		initTotalRows();
-	}
+//	}
 
     public void onActivate(Long id) {
     	System.out.println("ServiceRegistry id '" + id + "'");
@@ -234,8 +235,7 @@ public class ServiceRegistrySave {
 	/** Backup Service On/Off Switched */
 	public String getBackupServiceDisplay() {
 		String retVal = "none";
-		String temp = SettingsDBUtils.getSettings("backup.service.active"); 
-		if(temp != null && temp.equals("true")) {
+		if(ServiceRegistryServlet.isBackupServiceEnabled()) {
 			retVal = "inline";
 		}
 		return retVal;
@@ -246,10 +246,10 @@ public class ServiceRegistrySave {
 	public String getAdvancedUIDisplay() {
 		String retVal = "none";
 		
-		String temp = SettingsDBUtils.getSettings("advanced.ui.active");
-		if(temp != null && temp.equals("true")) {
-			retVal = "inline";
-		}
+//		String temp = SettingsDBUtils.getSettings("advanced.ui.active");
+//		if(temp != null && temp.equals("true")) {
+//			retVal = "inline";
+//		}
 		return retVal;
 	}
 

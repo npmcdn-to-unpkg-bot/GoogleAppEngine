@@ -26,7 +26,17 @@ public class ServiceRegistryServlet extends HttpServlet {
 	@Autowired
 	ServiceRegistryRepository r;
 
+	//=== common db based settings of SR
 	private static boolean hitCountEnabled;
+	private static boolean backupServiceEnabled;
+
+	public static boolean isBackupServiceEnabled() {
+		return backupServiceEnabled;
+	}
+
+	public static void setBackupServiceEnabled(boolean backupServiceEnabled) {
+		ServiceRegistryServlet.backupServiceEnabled = backupServiceEnabled;
+	}
 
 	public static boolean isHitCountEnabled() {
 		return hitCountEnabled;
@@ -44,6 +54,13 @@ public class ServiceRegistryServlet extends HttpServlet {
     		System.out.println("Hit count enabled in datastore detected.");
     	} else {
     		System.out.println("Hit count disabled.");
+    	}
+    	temp = SettingsDBUtils.getSettings("sr.backup.service.enabled");
+    	if(!StringUtils.isEmpty(temp) && !temp.startsWith("${")) {
+    		setBackupServiceEnabled(Boolean.valueOf(temp));
+    		System.out.println("Backup service enabled in datastore detected.");
+    	} else {
+    		System.out.println("Backup service disabled.");
     	}
 		System.out.println("ServiceRegistryServlet initialized.");
 	}

@@ -231,7 +231,7 @@
 	   	<iframe style="width:100%;height:100%;" id="url_iframe" name="url_iframe" src="https://${backupServiceHost}/api/index.php/ServiceRegistry/${serviceRegistry.service}-${uniqueSID}.xml"></iframe>
 		<label for="backup1_1">Normal Backup:&#160;</label>
 			<input class="bck" name="backup1_1" id="backup1_1" value="Backup Only" onclick="backupOnly();" type="button" style="width:18%;"/>&#160;&#160;
-		<label for="backup2_1">AJAX Backup:&#160;</label>
+		<label for="backup2_1">Backup+:&#160;</label>
 			<input class="bck" name="backup2_1" id="backup2_1" value="Backup and Save" onclick="backupSave();" type="button" style="width:18%;"/>
  	</div>
  	<form t:id="form" t:type="beaneditform" t:submitLabel="message:submit-label" object="serviceRegistry" reorder="saveOnly,service,endpoint,usehtml,description,usedescription" exclude="project,number,organization,owner,id,lastUpdated,lastAccessed,shorturl">

@@ -23,6 +23,7 @@ import com.appspot.cloudserviceapi.common.StringUtil;
 import com.appspot.cloudserviceapi.data.Datastore;
 import com.appspot.cloudserviceapi.data.Persistence;
 import com.appspot.cloudserviceapi.dto.Geniu;
+import com.appspot.cloudserviceapi.sci.services.ServiceRegistryServlet;
 
 public class TemplateSave {
 
@@ -167,6 +168,16 @@ public class TemplateSave {
 			retVal = myBean.getDetails()!=null?StringUtil.toASCIICode(myBean.getDetails()):"";
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+		return retVal;
+	}
+	
+	//TODO to replace with Spring Security's security annotation/tag
+	/** Backup Service On/Off Switched */
+	public String getBackupServiceDisplay() {
+		String retVal = "none";
+		if(ServiceRegistryServlet.isBackupServiceEnabled()) {
+			retVal = "inline";
 		}
 		return retVal;
 	}

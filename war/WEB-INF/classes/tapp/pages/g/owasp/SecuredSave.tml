@@ -217,7 +217,7 @@
 		<label for="backup1_1">Normal Backup:&#160;</label>
 			<input class="bck" type="button" name="backup1_1" id="backup1_1" value="Backup" onclick="keepHtml = false; backupOnly();" style="width:15%;"/>&#160;&#160;
 			<input class="bck" type="button" name="backup1_2" id="backup1_2" value="Backup+Tags" onclick="keepHtml = true; backupOnly();" style="width:15%;" />&#160;&#160;
-		<label for="backup2_1">AJAX Backup:&#160;</label>
+		<label for="backup2_1">Backup+:&#160;</label>
 			<input class="bck" type="button" name="backup2_1" id="backup2_1" value="Backup+Save" onclick="keepHtml = false; backupSave();" style="width:15%;" />&#160;&#160;
 			<input class="bck" type="button" name="backup2_2" id="backup2_2" value="Backup+Save+Tags" onclick="keepHtml = true; backupSave();" style="width:15%;" />
  	</div>

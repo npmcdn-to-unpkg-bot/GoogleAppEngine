@@ -262,8 +262,8 @@ Configuration Tips -
 2Share
 
 . To turn on backup service
-/postsettings?setting=true&pincode=advanced.ui.active
-/postsettings?setting=true&pincode=backup.service.active
+http://localhost:8888/postsettings?setting=true&pincode=advanced.ui.active
+http://localhost:8888/postsettings?setting=true&pincode=sr.backup.service.enabled
 . Known Issue:
 Ocassional error: com.google.api.server.spi.config.ApiConfigException: class cloudserviceapi.app.controller.CrudService has no @Api annotation.
 
