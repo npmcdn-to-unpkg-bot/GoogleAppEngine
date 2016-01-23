@@ -82,5 +82,8 @@ http://www.infoq.com/news/2015/08/falcor
 React.js Conf 2015 - The complementarity of React and Web Components
 https://www.youtube.com/watch?v=g0TD0efcwVg
 
+How to use tables to structurize forms in HTML and about alternatives, like fieldset
+https://www.cs.tut.fi/~jkorpela/forms/tables.html
+
 Known Issue
 . Parse gives {"error":"unauthorized"} even if the session token is valid (ParseHelper.java)

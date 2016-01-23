@@ -59,8 +59,8 @@ var SRUpdate = React.createClass({
         return (
                     <div className="container">
                         <h1>Service Manager - Update</h1><br />
-                        <form id="sr-update-table" className="form-horizontal" role="form">
-                            <div className="form-group row">
+                        <form className="form-horizontal" role="form">
+                            <div id="sr-update-table">
                                 <div className="control-group">
                                     <label htmlFor="id" className="col-sm-2 control-label">ID:</label>
                                     <input type="text" className="col-sm-10 form-control" ref="id" value={this.state.id} required readOnly />
