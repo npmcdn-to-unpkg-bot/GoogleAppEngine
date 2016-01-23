@@ -62,7 +62,7 @@ public class CrudService extends HttpServlet {
 	@ApiOperation(httpMethod = "GET", 
 	   value = "Resource to get an Item" 
 //	   , response = SampleData.class
-	   , nickname="crud"
+	   , nickname="get"
 	)
 	@ApiResponses(value = {
 			@ApiResponse(code = 200, message = "Success", response = app.model.Movie.class),
@@ -239,7 +239,7 @@ public class CrudService extends HttpServlet {
 	@ApiOperation(httpMethod = "POST", 
 	   value = "Resource to create/change an item" 
 //	   , response = SampleData.class 
-	   , nickname="crud"
+	   , nickname="save"
 	)
 	@ApiResponses(value = {
 			@ApiResponse(code = 200, message = "Success", response = app.model.Movie.class),
