@@ -37,7 +37,9 @@ AngularJS with Data-URI (data-ng-src)
 . Please turn off PNG crush!
 
 Elasticsearch Integration
-. Pending
+. ElasticSearch 1.2
+. Elastic Kibana 3.1.2.07
+. Swagger for Elasticsearch (https://github.com/timschlechter/swagger-for-elasticsearch)
 
 Genius Service
 . To support delete action, add a Service Registry (SR) with a prefix "template:delete:[genius appId]" e.g.

@@ -30,11 +30,41 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="readme.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/readme.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="246">
+              <caret line="41" column="88" selection-start-line="41" selection-start-column="88" selection-end-line="41" selection-end-column="88" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="fusrstart.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/war/n/react/fusrstart.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+            <state relative-caret-position="124">
+              <caret line="28" column="36" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="36" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/war/n/react/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="94">
+              <caret line="46" column="132" selection-start-line="46" selection-start-column="132" selection-end-line="46" selection-end-column="132" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/war/n/ng/app.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="162">
+              <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -43,7 +73,7 @@
       <file leaf-file-name="stacktable.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/war/js/stacktable.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1185">
+            <state relative-caret-position="1200">
               <caret line="79" column="2" selection-start-line="79" selection-start-column="2" selection-end-line="79" selection-end-column="2" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
@@ -52,21 +82,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="stacktable.css" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/war/js/stacktable.css">
+      <file leaf-file-name="stacktable.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/war/css/stacktable.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="30" column="19" selection-start-line="30" selection-start-column="19" selection-end-line="30" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="milligram.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/war/js/milligram.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="1" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
+            <state relative-caret-position="315">
+              <caret line="21" column="16" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -75,8 +95,8 @@
       <file leaf-file-name="sr-start.jsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/war/n/react/jsx/sr-start.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+            <state relative-caret-position="317">
+              <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -95,7 +115,7 @@
       <file leaf-file-name="sr-update.jsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/war/n/react/jsx/sr-update.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-318">
+            <state relative-caret-position="139">
               <caret line="71" column="51" selection-start-line="71" selection-start-column="51" selection-end-line="71" selection-end-column="51" />
               <folding />
             </state>
@@ -106,7 +126,7 @@
         <entry file="file://$PROJECT_DIR$/war/n/react/fusrupdate.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="180">
-              <caret line="12" column="39" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="39" />
+              <caret line="12" column="40" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -125,10 +145,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/readme.txt" />
         <option value="$PROJECT_DIR$/war/n/readme.txt" />
         <option value="$PROJECT_DIR$/war/js/stacktable.js" />
-        <option value="$PROJECT_DIR$/war/n/react/index.html" />
         <option value="$PROJECT_DIR$/war/n/react/jsx/mount-sr-update.jsx" />
         <option value="$PROJECT_DIR$/war/js/milligram.css" />
         <option value="$PROJECT_DIR$/war/n/react/jsx/sr-start.jsx" />
@@ -137,6 +155,9 @@
         <option value="$PROJECT_DIR$/war/n/react/fusrupdate.html" />
         <option value="$PROJECT_DIR$/war/n/react/fusrcreate.html" />
         <option value="$PROJECT_DIR$/war/js/stacktable.css" />
+        <option value="$PROJECT_DIR$/readme.txt" />
+        <option value="$PROJECT_DIR$/war/n/react/index.html" />
+        <option value="$PROJECT_DIR$/war/n/ng/app.js" />
       </list>
     </option>
   </component>
@@ -482,6 +503,28 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="ng" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GoogleAppEngine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GoogleAppEngine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="war" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="n" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -591,6 +634,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GoogleAppEngine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GoogleAppEngine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="war" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -771,7 +832,7 @@
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
-    <property name="SearchEverywhereHistoryKey" value="Service&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/src/tapp/pages/sci/ServiceRegistryStart.tml&#10;stack&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/war/js/stacktable.css&#10;TemplateSave.tml&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/src/tapp/pages/g/app/TemplateSave.tml&#10;read&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/readme.txt&#10;Servi&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/src/tapp/pages/sci/ServiceRegistrySave.tml&#10;login.jsp&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/war/login.jsp&#10;ServiceRe&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/src/tapp/pages/sci/ServiceRegistrySave.tml&#10;stacktable.js&#9;ACTION&#9;null&#10;index.html&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/war/n/react/index.html&#10;readme.txt&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/readme.txt&#10;workspace&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/.idea/workspace.xml" />
+    <property name="SearchEverywhereHistoryKey" value="app.js&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/war/n/ng/app.js&#10;Service&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/src/tapp/pages/sci/ServiceRegistryStart.tml&#10;stack&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/war/js/stacktable.css&#10;TemplateSave.tml&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/src/tapp/pages/g/app/TemplateSave.tml&#10;read&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/readme.txt&#10;Servi&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/src/tapp/pages/sci/ServiceRegistrySave.tml&#10;login.jsp&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/war/login.jsp&#10;ServiceRe&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/src/tapp/pages/sci/ServiceRegistrySave.tml&#10;stacktable.js&#9;ACTION&#9;null&#10;index.html&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/war/n/react/index.html&#10;readme.txt&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/readme.txt&#10;workspace&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/.idea/workspace.xml" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
   </component>
   <component name="RecentsManager">
@@ -783,11 +844,11 @@
       <recent name="$PROJECT_DIR$/war/html" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/war/css" />
       <recent name="$PROJECT_DIR$/war/images" />
       <recent name="$PROJECT_DIR$/war" />
       <recent name="$PROJECT_DIR$/war/fullcalendar" />
       <recent name="$PROJECT_DIR$/war/html" />
-      <recent name="$PROJECT_DIR$/war/html/dnn" />
     </key>
   </component>
   <component name="RunManager" selected="JavaScript Debug.calendar.htm">
@@ -1196,7 +1257,7 @@
     <frame x="0" y="23" width="1382" height="744" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21418235" sideWeight="0.6026273" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27351665" sideWeight="0.6026273" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289256" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32656023" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39703703" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1220,7 +1281,10 @@
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.tml" />
   </component>
   <component name="Vcs.Log.UiProperties">
-    <option name="RECENTLY_FILTERED_USERS">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
       <collection />
     </option>
   </component>
@@ -1439,14 +1503,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/war/n/ng/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/war/n/js/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1476,14 +1532,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/readme.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3915">
-          <caret line="261" column="6" selection-start-line="261" selection-start-column="6" selection-end-line="261" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/tapp/pages/sci/ServiceRegistrySave.tml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2040">
@@ -1496,14 +1544,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="312">
           <caret line="145" column="31" selection-start-line="145" selection-start-column="31" selection-end-line="145" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/war/n/react/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="25" column="57" selection-start-line="25" selection-start-column="57" selection-end-line="25" selection-end-column="57" />
           <folding />
         </state>
       </provider>
@@ -1564,32 +1604,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/war/n/react/jsx/sr-start.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/war/js/stacktable.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1185">
-          <caret line="79" column="2" selection-start-line="79" selection-start-column="2" selection-end-line="79" selection-end-column="2" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/war/n/react/jsx/sr-update.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-318">
-          <caret line="71" column="51" selection-start-line="71" selection-start-column="51" selection-end-line="71" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/war/js/milligram.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -1598,10 +1612,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/war/n/react/fusrstart.html">
+    <entry file="file://$PROJECT_DIR$/war/n/react/fusrupdate.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+        <state relative-caret-position="180">
+          <caret line="12" column="40" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="40" />
           <folding />
         </state>
       </provider>
@@ -1614,18 +1628,68 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/war/n/react/fusrupdate.html">
+    <entry file="file://$PROJECT_DIR$/war/css/stacktable.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="39" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="39" />
+        <state relative-caret-position="315">
+          <caret line="21" column="16" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/war/js/stacktable.css">
+    <entry file="file://$PROJECT_DIR$/war/n/react/jsx/sr-update.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="19" selection-start-line="30" selection-start-column="19" selection-end-line="30" selection-end-column="19" />
+        <state relative-caret-position="139">
+          <caret line="71" column="51" selection-start-line="71" selection-start-column="51" selection-end-line="71" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/n/react/jsx/sr-start.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/readme.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="246">
+          <caret line="41" column="88" selection-start-line="41" selection-start-column="88" selection-end-line="41" selection-end-column="88" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/js/stacktable.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1200">
+          <caret line="79" column="2" selection-start-line="79" selection-start-column="2" selection-end-line="79" selection-end-column="2" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/n/react/fusrstart.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="124">
+          <caret line="28" column="36" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/n/react/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="94">
+          <caret line="46" column="132" selection-start-line="46" selection-start-column="132" selection-end-line="46" selection-end-column="132" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/n/ng/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
           <folding />
         </state>
       </provider>
