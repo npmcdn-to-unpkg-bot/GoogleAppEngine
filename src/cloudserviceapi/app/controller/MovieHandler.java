@@ -542,7 +542,7 @@ public class MovieHandler implements CrudServiceCallback, ServletContextListener
 	private Collection<Movie> filterMovies(List<Movie> l) throws Exception {
 		List<Movie> nList = null;
 		
-		if(filter == null || filter.isEmpty()) {
+		if(filter == null || filter.isEmpty() || filter.equals("undefined")) {
 			nList = l;
 		} else
 		if(l != null) {

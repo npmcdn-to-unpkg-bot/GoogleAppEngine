@@ -60,11 +60,56 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/war/n/ng/app.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="177">
               <caret line="65" column="17" selection-start-line="65" selection-start-column="17" selection-end-line="65" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="movie.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/war/mcrud/movie.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="405" column="77" selection-start-line="405" selection-start-column="77" selection-end-line="405" selection-end-column="77" />
+              <folding>
+                <element signature="e#12663#18911#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="movie.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/war/mcrud/movie.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="109">
+              <caret line="308" column="179" selection-start-line="308" selection-start-column="128" selection-end-line="308" selection-end-column="179" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="movie-compiled.js.map" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/war/mcrud/movie-compiled.js.map">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="108">
+              <caret line="0" column="70021" selection-start-line="0" selection-start-column="70021" selection-end-line="0" selection-end-column="70021" />
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="sourcemapFileViewerProvider">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="migrate.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/war/html/migrate.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="126">
+              <caret line="512" column="26" selection-start-line="512" selection-start-column="26" selection-end-line="512" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -82,51 +127,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="stacktable.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/war/css/stacktable.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" column="16" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="sr-start.jsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/war/n/react/jsx/sr-start.jsx">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="317">
               <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="fusrcreate.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/war/n/react/fusrcreate.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sr-update.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/war/n/react/jsx/sr-update.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="139">
-              <caret line="71" column="51" selection-start-line="71" selection-start-column="51" selection-end-line="71" selection-end-column="51" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="fusrupdate.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/war/n/react/fusrupdate.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="40" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -158,6 +163,8 @@
         <option value="$PROJECT_DIR$/readme.txt" />
         <option value="$PROJECT_DIR$/war/n/react/index.html" />
         <option value="$PROJECT_DIR$/war/n/ng/app.js" />
+        <option value="$PROJECT_DIR$/war/mcrud/movie.html" />
+        <option value="$PROJECT_DIR$/war/mcrud/movie.js" />
       </list>
     </option>
   </component>
@@ -633,6 +640,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="mcrud" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GoogleAppEngine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GoogleAppEngine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="war" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -832,7 +857,7 @@
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
-    <property name="SearchEverywhereHistoryKey" value="app.js&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/war/n/ng/app.js&#10;Service&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/src/tapp/pages/sci/ServiceRegistryStart.tml&#10;stack&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/war/js/stacktable.css&#10;TemplateSave.tml&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/src/tapp/pages/g/app/TemplateSave.tml&#10;read&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/readme.txt&#10;Servi&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/src/tapp/pages/sci/ServiceRegistrySave.tml&#10;login.jsp&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/war/login.jsp&#10;ServiceRe&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/src/tapp/pages/sci/ServiceRegistrySave.tml&#10;stacktable.js&#9;ACTION&#9;null&#10;index.html&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/war/n/react/index.html&#10;readme.txt&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/readme.txt&#10;workspace&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/.idea/workspace.xml" />
+    <property name="SearchEverywhereHistoryKey" value="movie.html&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/war/mcrud/movie.html&#10;app.js&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/war/n/ng/app.js&#10;Service&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/src/tapp/pages/sci/ServiceRegistryStart.tml&#10;stack&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/war/js/stacktable.css&#10;TemplateSave.tml&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/src/tapp/pages/g/app/TemplateSave.tml&#10;read&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/readme.txt&#10;Servi&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/src/tapp/pages/sci/ServiceRegistrySave.tml&#10;login.jsp&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/war/login.jsp&#10;ServiceRe&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/src/tapp/pages/sci/ServiceRegistrySave.tml&#10;stacktable.js&#9;ACTION&#9;null&#10;index.html&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/war/n/react/index.html&#10;readme.txt&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/readme.txt&#10;workspace&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/.idea/workspace.xml" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
   </component>
   <component name="RecentsManager">
@@ -1257,7 +1282,7 @@
     <frame x="0" y="23" width="1382" height="744" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27351665" sideWeight="0.6026273" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27351665" sideWeight="0.6026273" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289256" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32656023" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39703703" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1276,6 +1301,26 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24964131" sideWeight="0.7208672" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.327787" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289256" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3116279" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32656023" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39076924" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31782946" sideWeight="0.9986413" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27351665" sideWeight="0.6026273" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24964131" sideWeight="0.7208672" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39703703" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987398" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38196722" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.tml" />
@@ -1338,34 +1383,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/war/html/widget/2flowchart.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="38" column="6" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/war/js/raphael-2.1.0.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/war/html/widget/2sequence.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="34" column="12" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/war/js/flowchart-1.2.6.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/war/js/flowchart-1.2.5.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1691,6 +1708,43 @@
         <state relative-caret-position="177">
           <caret line="65" column="17" selection-start-line="65" selection-start-column="17" selection-end-line="65" selection-end-column="17" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/mcrud/movie-compiled.js.map">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="0" column="70021" selection-start-line="0" selection-start-column="70021" selection-end-line="0" selection-end-column="70021" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="sourcemapFileViewerProvider">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/html/migrate.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="512" column="26" selection-start-line="512" selection-start-column="26" selection-end-line="512" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/mcrud/movie.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="109">
+          <caret line="308" column="179" selection-start-line="308" selection-start-column="128" selection-end-line="308" selection-end-column="179" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/mcrud/movie.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="405" column="77" selection-start-line="405" selection-start-column="77" selection-end-line="405" selection-end-column="77" />
+          <folding>
+            <element signature="e#12663#18911#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

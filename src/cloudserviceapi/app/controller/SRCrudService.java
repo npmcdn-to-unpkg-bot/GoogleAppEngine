@@ -125,7 +125,7 @@ public class SRCrudService {
 			@ApiResponse(code = 401, message = "Failure")
 		}
 	)
-    @RequestMapping(value= "/save", method = RequestMethod.POST, consumes = {"application/json;charset=UTF-8"}, produces = {"application/json;charset=UTF-8"})
+    @RequestMapping(value= "/saveSR", method = RequestMethod.POST, consumes = {"application/json;charset=UTF-8"}, produces = {"application/json;charset=UTF-8"})
 	@Secured("ROLE_ADMIN")
     public @ResponseBody ResponseEntity<ServiceRegistry> createOrUpdate(@RequestBody ServiceRegistry sr){
         try{

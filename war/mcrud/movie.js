@@ -300,7 +300,7 @@ function MovieController($scope, $filter, $http, $rootScope,
         //$console && $console.log('3.1 list reinit');
         $http.get(gCacheProxy + '/api/jwt/ws/crud?type=' + $scope.backendObject + "&origin=" + location.hostname + "&aid=" + gAppId + "&uid=" + uid + "&maxPerPage=" + $scope.page.max + "&pageNumber=" + $scope.page.number )
             .success(function (data, status1, headers, config) {
-                if(data.indexOf(App.NO_PARENT_ERR) > -1) {
+                if(typeof data !== 'undefined' && data.indexOf(App.NO_PARENT_ERR) > -1) {
                     alert(App.NO_PARENT_ERR_MSG);
                     location.href = App.login_url;
                 }
@@ -403,16 +403,20 @@ function MovieController($scope, $filter, $http, $rootScope,
                 alert("Server encountered an error. #cache service#");
             }
             if(typeof data === 'undefined') {
-                $scope.error_message = status + ": unknown error, please try again later";
+                console && console.log(status + ": unknown error (empty list?), please try again later");
+                //TODO begin seems to be zero item will give this weird error, so make it ok for now!!!
+                $scope.page.totalPage = 1;
+                $scope.backendReady = true;
+                //TODO end
             } else {
-                $scope.error_message = status + ": " + data;
+                console && console.log(status + ": " + data);
             }
             if(typeof status !== 'undefined') {	//TODO workaround to suppress the weird error! :(
-                if(status == 0 /* yes, two aka == is on purpose */ && data.length === 0) {
+                if(status == 0 /* yes, two aka == is on purpose */ && typeof data !== 'undefined' && data.length === 0) {
                     //TODO ignoring weird error from the server - maybe this error will be known/resolved one day by Google/us!??
                     //$console && $console.log("movie.js: 9.1 error ignored [gBuild " + gBuild + "]");
                 } else
-                if (status.indexOf(App.gaej_server_error_msg) > -1) {
+                if (typeof status !== 'undefined' && status.indexOf(App.gaej_server_error_msg) > -1) {
                     alert("Server encountered an error. Please log out and try again later.");
                 } else {
                     alert("movie.js: 9.2 error: data [" + data + "] status [" + status + "] headers [" + headers + "] config [" + config + "] Hint: Is the json response sent by the server proper?");
@@ -569,7 +573,7 @@ function MovieController($scope, $filter, $http, $rootScope,
             .success(function (data, status, headers, config) {
                 //$console && $console.log('4success entered');
                 var j;
-                if (data !== undefined) {
+                if (typeof data !== 'undefined') {
                     if (data.length === 0) {
                         $("#loadingTable").hide();
                         $("#emptyTable").show();

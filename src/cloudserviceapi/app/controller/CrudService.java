@@ -239,7 +239,7 @@ public class CrudService extends HttpServlet {
 	@ApiOperation(httpMethod = "POST", 
 	   value = "Resource to create/change an item" 
 //	   , response = SampleData.class 
-	   , nickname="save"
+	   , nickname="save2Share"
 	)
 	@ApiResponses(value = {
 			@ApiResponse(code = 200, message = "Success", response = app.model.Movie.class),
