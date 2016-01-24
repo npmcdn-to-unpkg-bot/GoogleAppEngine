@@ -115,7 +115,7 @@ var SRUpdate = React.createClass({
                 };
                 console.log(component.state);
                 console.log(srJson.sr);
-                swagger.sr.save(srJson,{responseContentType: 'application/json'}, function(data) {
+                swagger.sr.saveSR(srJson,{responseContentType: 'application/json'}, function(data) {
                     //document.getElementById("mydata").innerHTML = JSON.stringify(data.obj);
                     //console.log(data.obj);
                     component.goHome();

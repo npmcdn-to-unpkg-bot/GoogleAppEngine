@@ -115,7 +115,7 @@ public class SRCrudService {
         return repository.findOne(id);
     }
 
-	@ApiOperation(httpMethod = "POST", value = "Resource to create/change an item" , nickname="save")
+	@ApiOperation(httpMethod = "POST", value = "Resource to create/change an item" , nickname="saveSR")
 	@ApiImplicitParams({
 	    	@ApiImplicitParam(name = "sr", defaultValue = "", value = "Service Registry JSON object", required = true, dataType = "tapp.model.ServiceRegistry", paramType = "body")
 		}

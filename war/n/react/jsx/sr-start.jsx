@@ -19,7 +19,7 @@ var SRStart = React.createClass({
     var objects = this.props.items;
     //console.log(this.props);
     for (var i=0; i < objects.length; i++) {
-      indents.push(<tr key={i}><td><a href={'fusrupdate.html?id='+objects[i].id}>{objects[i].id}</a></td><td>{objects[i].service}</td><td>{objects[i].description}</td><td>{objects[i].url}</td><td>{objects[i].lastAccessed}</td><td>{objects[i].lastUpdated}</td><td>{objects[i].endpoint}</td><td>{objects[i].hit}</td></tr>);
+      indents.push(<tr key={i}><td><a href={'fusrupdate.html?id='+objects[i].id}>{objects[i].id}</a></td><td>{objects[i].service}</td><td dangerouslySetInnerHTML={{__html: objects[i].description}} /><td>{objects[i].url}</td><td>{objects[i].lastAccessed}</td><td>{objects[i].lastUpdated}</td><td>{objects[i].endpoint}</td><td>{objects[i].hit}</td></tr>);
     }
     return (
         <div className="table-responsive">
