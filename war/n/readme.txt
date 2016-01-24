@@ -67,6 +67,8 @@ AngularJS to ReactJS in few sentences
 
 Other Useful Resources:
 
+https://github.com/souporserious/react-trix
+
 https://facebook.github.io/react/html-jsx.html
 
 https://cdnjs.com/libraries/riot

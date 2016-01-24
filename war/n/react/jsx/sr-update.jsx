@@ -38,6 +38,7 @@ var SRUpdate = React.createClass({
                         component.setState({
                             id: data.obj.id,
                             service: data.obj.service,
+                            summary: data.obj.summary,
                             description: data.obj.description,
                             endpoint: data.obj.endpoint,
                             //enable save if url is valid
@@ -68,6 +69,12 @@ var SRUpdate = React.createClass({
                                 <div className="control-group">
                                     <label htmlFor="title" className="col-sm-2 control-label">Service:</label>
                                     <input type="text" className="col-sm-10 form-control" ref="title" onKeyUp={this.updateItem} required value={this.state.service} ref="service" onChange={function(e){this.setState({service: e.target.value})}.bind(this)} placeholder="Enter any easy to remember service name." />
+                                </div>
+                                <div className="control-group">
+                                    <label htmlFor="summary" className="col-sm-2 control-label">Summary:</label>
+                                    <div className="col-sm-10">
+                                        <input type="text" className="form-control" ref="summary" onKeyUp={this.updateItem} value={this.state.summary} onChange={function(e){this.setState({summary: e.target.value})}.bind(this)} />
+                                    </div>
                                 </div>
                                 <div className="control-group">
                                     <label htmlFor="desc" className="col-sm-2 control-label">Description:</label>
@@ -109,6 +116,7 @@ var SRUpdate = React.createClass({
                     sr: {
                         id: component.state.id,
                         service: component.state.service,
+                        summary: component.state.summary,
                         description: component.state.description,
                         endpoint: component.state.endpoint
                     }
