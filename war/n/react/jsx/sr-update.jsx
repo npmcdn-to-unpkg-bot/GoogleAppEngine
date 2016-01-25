@@ -70,18 +70,18 @@ var SRUpdate = React.createClass({
                                 </div>
                                 <div className="control-group">
                                     <label htmlFor="title" className="col-sm-2 control-label">Service:</label>
-                                    <input type="text" className="col-sm-10 form-control" ref="title" onKeyUp={this.updateItem} required value={this.state.service} ref="service" onChange={function(e){this.setState({service: e.target.value})}.bind(this)} placeholder="Enter any easy to remember service name." />
+                                    <input type="text" className="col-sm-10 form-control" ref="title" onKeyUp={this.save} required value={this.state.service} ref="service" onChange={function(e){this.setState({service: e.target.value})}.bind(this)} placeholder="Enter any easy to remember service name." />
                                 </div>
                                 <div className="control-group">
                                     <label htmlFor="summary" className="col-sm-2 control-label">Summary:</label>
                                     <div className="col-sm-10">
-                                        <input type="text" className="form-control" ref="summary" onKeyUp={this.updateItem} value={this.state.summary} onChange={function(e){this.setState({summary: e.target.value})}.bind(this)} />
+                                        <input type="text" className="form-control" ref="summary" onKeyUp={this.save} value={this.state.summary} onChange={function(e){this.setState({summary: e.target.value})}.bind(this)} />
                                     </div>
                                 </div>
                                 <div className="control-group">
                                     <label htmlFor="desc" className="col-sm-2 control-label">Description:</label>
                                     <div className="col-sm-10">
-                                        <input type="text" className="form-control" ref="descriptionRaw" onKeyUp={this.updateItem} value={this.state.descriptionRaw} onChange={function(e){this.setState({descriptionRaw: e.target.value})}.bind(this)} />
+                                        <input type="text" className="form-control" ref="descriptionRaw" onKeyUp={this.save} value={this.state.descriptionRaw} onChange={function(e){this.setState({descriptionRaw: e.target.value})}.bind(this)} />
                                         <input id="x" ref="desc" type="hidden" name="content" />
                                         <trix-editor style={divStyle} input="x"></trix-editor>
                                     </div>
@@ -89,7 +89,7 @@ var SRUpdate = React.createClass({
                                 <div className="control-group">
                                     <label htmlFor="endpoint" className="col-sm-2 control-label">URL:</label>
                                     <div className="col-sm-10">
-                                        <input type="url" className="form-control" ref="endpoint" onKeyUp={this.updateItem} required value={this.state.endpoint} onChange={function(e){this.setState({endpoint: e.target.value, isSubmitting: this.isURL(e.target.value)})}.bind(this)} onClick={this.updateItem} placeholder="Enter any valid URL e.g. http://www.google.com." />
+                                        <input type="url" className="form-control" ref="endpoint" onKeyUp={this.save} required value={this.state.endpoint} onChange={function(e){this.setState({endpoint: e.target.value, isSubmitting: this.isURL(e.target.value)})}.bind(this)} onClick={this.save} placeholder="Enter any valid URL e.g. http://www.google.com." />
                                     </div>
                                 </div>
                                 <div className="control-group">
@@ -97,7 +97,7 @@ var SRUpdate = React.createClass({
                                     <div className="col-sm-10">
                                         <input type="hidden" name="_method" defaultValue="POST" />
                                         <input className="form-control btn btn-primary" ref="deleteItem" type="button" style={{background: '#98969E'}} defaultValue="Delete" onClick={() => {if(confirm('Delete the item?')) {this.deleteItem()};}} />
-                                        <input className="form-control btn btn-primary" ref="createItem" type="button" style={{background: '#98969E'}} defaultValue="Save" disabled={!this.state.isSubmitting} onClick={this.save} />
+                                        <input className="form-control btn btn-primary" ref="createItem" type="button" style={{background: '#98969E'}} defaultValue="Save" disabled={!this.state.isSubmitting} onClick={this.updateItem} />
                                         <input className="form-control btn" ref="cancelItem" defaultValue="Cancel" type="button" onClick={this.goHome} />
                                     </div>
                                 </div>
@@ -109,37 +109,55 @@ var SRUpdate = React.createClass({
     goHome: function() {
         location.href='fusrstart.html';
     },
-    save: function() {
-        var component = this;
-        var key = localStorage.getItem('userJWTToken');
-        //console.log('sr-update.jsx save: ' + component.refs.service.value + ' ' + component.state.service);
-        window.swagger = new SwaggerClient({
-            url: location.origin + "/swagger/swagger.json",
-            success: function() {
-                var srJson = {
-                    sr: {
-                        id: component.state.id,
-                        service: component.state.service,
-                        summary: component.state.summary,
-                        description: component.refs.desc.value,
-                        endpoint: component.state.endpoint
-                    }
-                };
-                //console.log(component.state);
-                console.log(srJson.sr);
-                swagger.sr.saveSR(srJson, {responseContentType: 'application/json'}, function (data) {
-                    //document.getElementById("mydata").innerHTML = JSON.stringify(data.obj);
-                    //console.log(data.obj);
-                    component.goHome();
-                });
-            },
-            authorizations : {
-                someHeaderAuth: new SwaggerClient.ApiKeyAuthorization('Authorization', "Bearer " + key, 'header')
-            }
-        });
-        console.log('SRUpdate input saved');
+    updateItem: function() {
+        if(typeof this.props.createItemCallback !== 'undefined') {
+            console.log('SRCreate-SRUpdate ...');
+            this.props.createItemCallback(this);
+        } else {
+            var component = this;
+            var key = localStorage.getItem('userJWTToken');
+            //console.log('sr-update.jsx updateItem: ' + component.refs.service.value + ' ' + component.state.service);
+            window.swagger = new SwaggerClient({
+                url: location.origin + "/swagger/swagger.json",
+                success: function () {
+                    swagger.sr.existsSR_service({service: component.state.service}, {responseContentType: 'application/json'}, function(data) {
+                        console.log(data.obj);
+                        if(data.obj && typeof data !== 'undefined' && typeof data.obj !== 'undefined') {
+                            if(data.obj && data.obj.service != component.state.service) {
+                                //hmm...
+                            } else {
+                                status = 'service [' + component.state.service + '] exists!';
+                                alert(status);
+                            }
+                        } else {
+                            //console.log('createItem() unknown error!');
+                            var srJson = {
+                                sr: {
+                                    id: component.state.id,
+                                    service: component.state.service,
+                                    summary: component.state.summary,
+                                    description: component.refs.desc.value,
+                                    endpoint: component.state.endpoint
+                                }
+                            };
+                            //console.log(component.state);
+                            console.log(srJson.sr);
+                            swagger.sr.saveSR(srJson, {responseContentType: 'application/json'}, function (data) {
+                                //document.getElementById("mydata").innerHTML = JSON.stringify(data.obj);
+                                //console.log(data.obj);
+                                component.goHome();
+                            });
+                        }
+                    });
+                },
+                authorizations: {
+                    someHeaderAuth: new SwaggerClient.ApiKeyAuthorization('Authorization', "Bearer " + key, 'header')
+                }
+            });
+            console.log('SRUpdate input saved');
+        }
     },
-    updateItem: function(e) {
+    save: function(e) {
         this.setState({
         //    id: this.state.id,
         //    service: this.refs.service.value,
@@ -152,7 +170,7 @@ var SRUpdate = React.createClass({
         // "e" is the standard behavior (FF, Chrome, Safari, Opera),
         // while "window.event" (or "event") is IE's behavior
         if ( evt.keyCode === 13 ) {
-            this.save();
+            this.updateItem();
             // You can disable the form submission this way:
             return false
         }

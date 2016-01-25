@@ -97,7 +97,7 @@ public class SRCrudService {
 		}
 	)
 	@RequestMapping(value = "/all", method = RequestMethod.GET, produces = "application/json")
-    public @ResponseBody Page<ServiceRegistry> getAllPlayers(Pageable pageable) {
+    public @ResponseBody Page<ServiceRegistry> getAllSRs(Pageable pageable) {
 //        return repository.findAll(pageable);
         return sortedRepository.findAll(pageable);
     }
@@ -112,7 +112,7 @@ public class SRCrudService {
 		}
 	)
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = "application/json")
-    public @ResponseBody ServiceRegistry getPlayer(@PathVariable("id") Long id) {
+    public @ResponseBody ServiceRegistry getSR(@PathVariable("id") Long id) {
         return repository.findOne(id);
     }
 
@@ -175,9 +175,9 @@ public class SRCrudService {
         return new ResponseEntity<ServiceRegistry>(HttpStatus.OK);
     }
 	
-	@ApiOperation(httpMethod = "GET", value = "Resource to check for existence of an Item" , nickname="exists/{id}")
+	@ApiOperation(httpMethod = "GET", value = "Resource to check for existence of an Item" , nickname="existsSR/{service}")
     @ApiImplicitParams({
-    	@ApiImplicitParam(name = "id", value = "Item unique id", required = true, dataType = "string", paramType = "path")
+    	@ApiImplicitParam(name = "service", value = "Item unique service", required = true, dataType = "string", paramType = "path")
     	}
     )
 	@ApiResponses(value = {
@@ -185,8 +185,8 @@ public class SRCrudService {
 			@ApiResponse(code = 401, message = "Failure")
 		}
 	)
-    @RequestMapping(value= "/exists/{id}", method = RequestMethod.GET, produces = {"application/json"})
-    public @ResponseBody ServiceRegistry exists(@PathVariable("id") String service) {
+    @RequestMapping(value= "/existsSR/{service}", method = RequestMethod.GET, produces = {"application/json"})
+    public @ResponseBody ServiceRegistry existsSR(@PathVariable("service") String service) {
         System.out.println("REST request to check a ServiceRegistry: " + service);
         ServiceRegistry ret = null;
         try{
