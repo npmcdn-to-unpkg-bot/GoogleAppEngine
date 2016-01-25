@@ -26,7 +26,7 @@ var SRCreate = React.createClass({
                     } else {
                         console.log('createItem() unknown error!');
                         //if(data.obj && data.obj.service != component.state.service) {
-                        component.updateItem();
+                        component.saveNow(component);
                         //}
                     }
                 });

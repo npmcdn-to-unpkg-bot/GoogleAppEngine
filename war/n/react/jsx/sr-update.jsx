@@ -109,6 +109,25 @@ var SRUpdate = React.createClass({
     goHome: function() {
         location.href='fusrstart.html';
     },
+    saveNow: function(component) {
+        //console.log('createItem() unknown error!');
+        var srJson = {
+            sr: {
+                id: component.state.id,
+                service: component.state.service,
+                summary: component.state.summary,
+                description: component.refs.desc.value,
+                endpoint: component.state.endpoint
+            }
+        };
+        //console.log(component.state);
+        console.log(srJson.sr);
+        swagger.sr.saveSR(srJson, {responseContentType: 'application/json'}, function (data) {
+            //document.getElementById("mydata").innerHTML = JSON.stringify(data.obj);
+            //console.log(data.obj);
+            component.goHome();
+        });
+    },
     updateItem: function() {
         if(typeof this.props.createItemCallback !== 'undefined') {
             console.log('SRCreate-SRUpdate ...');
@@ -126,27 +145,15 @@ var SRUpdate = React.createClass({
                             if(data.obj && data.obj.service != component.state.service) {
                                 //hmm...
                             } else {
-                                status = 'service [' + component.state.service + '] exists!';
-                                alert(status);
+                                if(data.obj && data.obj.id == component.state.id) {
+                                    component.saveNow(component); //if it is the current item we are editing, it is fine to save! :)
+                                } else {
+                                    status = 'service [' + component.state.service + '] exists!';
+                                    alert(status);
+                                }
                             }
                         } else {
-                            //console.log('createItem() unknown error!');
-                            var srJson = {
-                                sr: {
-                                    id: component.state.id,
-                                    service: component.state.service,
-                                    summary: component.state.summary,
-                                    description: component.refs.desc.value,
-                                    endpoint: component.state.endpoint
-                                }
-                            };
-                            //console.log(component.state);
-                            console.log(srJson.sr);
-                            swagger.sr.saveSR(srJson, {responseContentType: 'application/json'}, function (data) {
-                                //document.getElementById("mydata").innerHTML = JSON.stringify(data.obj);
-                                //console.log(data.obj);
-                                component.goHome();
-                            });
+                            component.saveNow(component);
                         }
                     });
                 },
