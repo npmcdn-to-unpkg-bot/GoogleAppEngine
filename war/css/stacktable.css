@@ -1,0 +1,43 @@
+.stacktable { width: 100%; }
+.st-head-row { padding-top: 1em; }
+.st-head-row.st-head-row-main { font-size: 1.5em; padding-top: 0; }
+.st-key { width: 49%; text-align: right; padding-right: 1%; }
+.st-val { width: 49%; padding-left: 1%; }
+
+/* RESPONSIVE EXAMPLE */
+
+.stacktable.large-only { display: table; }
+.stacktable.small-only { display: none; }
+
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 568px) {
+  .stacktable.large-only {  display: none;  }
+  .stacktable.small-only {
+    display: table;
+  }
+  div, * input, select, textarea, a, h3, td, .button.button-outline {
+    font-size: 2.5rem;
+  }
+  input[type='text'], input[type='url'], input[type='button'], input[type='submit'] {
+    font-size: 3.5rem;
+    height: 50%;
+  }
+  label {
+    font-size: 2rem;
+  }
+}
+
+/* COMMON STYLES */
+body {
+  padding: 12px;
+}
+input[type='url'] {
+  margin-top: 12px;
+}
+input, input[type='text'], input[type='url'] {
+  margin-bottom: 12px;
+}
+input[type='button'], input[type='submit'] {
+  margin-top: 30px;
+}
