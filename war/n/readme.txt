@@ -65,6 +65,11 @@ AngularJS to ReactJS in few sentences
 . Decorate all properties with {this.property} if required (for read only view)
 . Add event handler if applicable (for saving form etc)
 
+OWASP Notes:
+. ReactJS
+-dangerouslySetInnerHTML should only be called if it is not directly from the user input; otherwise it has to be sanitized before submission
+
+
 Other Useful Resources:
 
 https://github.com/souporserious/react-trix
