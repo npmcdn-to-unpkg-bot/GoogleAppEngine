@@ -69,6 +69,8 @@ Other Useful Resources:
 
 https://github.com/souporserious/react-trix
 
+https://github.com/basecamp/trix
+
 https://facebook.github.io/react/html-jsx.html
 
 https://cdnjs.com/libraries/riot

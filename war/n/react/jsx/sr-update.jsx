@@ -26,9 +26,7 @@ var SRUpdate = React.createClass({
             var component = this;
             console.log('SRUpdate booted');
             var key = localStorage.getItem('userJWTToken');
-            //var apiKeyAuth = new SwaggerClient.ApiKeyAuthorization( "Authorization", "Bearer " + key, "header" );
-            //window.swaggerUi.api.clientAuthorizations.add( "bearer", apiKeyAuth );
-            console.log( "Set bearer token: " + key );
+            //console.log( "Set bearer token: " + key );
             window.swagger = new SwaggerClient({
                 url: location.origin + "/swagger/swagger.json",
                 success: function () {
@@ -44,6 +42,7 @@ var SRUpdate = React.createClass({
                             //enable save if url is valid
                             isSubmitting: component.isURL(data.obj.endpoint)
                         });
+                        document.querySelector("trix-editor").editor.insertHTML(component.state.description);
                     });
                 },
                 authorizations : {
@@ -57,8 +56,11 @@ var SRUpdate = React.createClass({
         };
     },
     render: function() {
+        var divStyle = {
+            minHeight: '300px'
+        };
         return (
-                    <div className="container">
+                    <div>
                         <h1>Service Manager - Update</h1><br />
                         <form className="form-horizontal" role="form">
                             <div id="sr-update-table">
@@ -79,7 +81,9 @@ var SRUpdate = React.createClass({
                                 <div className="control-group">
                                     <label htmlFor="desc" className="col-sm-2 control-label">Description:</label>
                                     <div className="col-sm-10">
-                                        <input type="text" className="form-control" ref="desc" onKeyUp={this.updateItem} value={this.state.description} onChange={function(e){this.setState({description: e.target.value})}.bind(this)} />
+                                        <input type="text" className="form-control" ref="descriptionRaw" onKeyUp={this.updateItem} value={this.state.descriptionRaw} onChange={function(e){this.setState({descriptionRaw: e.target.value})}.bind(this)} />
+                                        <input id="x" ref="desc" type="hidden" name="content" />
+                                        <trix-editor style={divStyle} input="x"></trix-editor>
                                     </div>
                                 </div>
                                 <div className="control-group">
@@ -117,13 +121,13 @@ var SRUpdate = React.createClass({
                         id: component.state.id,
                         service: component.state.service,
                         summary: component.state.summary,
-                        description: component.state.description,
+                        description: component.refs.desc.value,
                         endpoint: component.state.endpoint
                     }
                 };
-                console.log(component.state);
+                //console.log(component.state);
                 console.log(srJson.sr);
-                swagger.sr.saveSR(srJson,{responseContentType: 'application/json'}, function(data) {
+                swagger.sr.saveSR(srJson, {responseContentType: 'application/json'}, function (data) {
                     //document.getElementById("mydata").innerHTML = JSON.stringify(data.obj);
                     //console.log(data.obj);
                     component.goHome();
@@ -136,13 +140,14 @@ var SRUpdate = React.createClass({
         console.log('SRUpdate input saved');
     },
     updateItem: function(e) {
-        //this.setState({
+        this.setState({
         //    id: this.state.id,
         //    service: this.refs.service.value,
-        //    description: this.refs.desc.value,
+            description: this.refs.desc.value
         //    endpoint: this.refs.endpoint.value,
         //    isSubmitting: false
-        //});
+        });
+        //console.log(this.state);
         var evt = e || window.event
         // "e" is the standard behavior (FF, Chrome, Safari, Opera),
         // while "window.event" (or "event") is IE's behavior

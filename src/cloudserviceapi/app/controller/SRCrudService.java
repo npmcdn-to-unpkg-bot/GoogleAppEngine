@@ -16,6 +16,7 @@ import io.swagger.annotations.Info;
 import io.swagger.annotations.License;
 import io.swagger.annotations.SwaggerDefinition;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -172,5 +173,31 @@ public class SRCrudService {
         }
 
         return new ResponseEntity<ServiceRegistry>(HttpStatus.OK);
+    }
+	
+	@ApiOperation(httpMethod = "GET", value = "Resource to check for existence of an Item" , nickname="exists/{id}")
+    @ApiImplicitParams({
+    	@ApiImplicitParam(name = "id", value = "Item unique id", required = true, dataType = "string", paramType = "path")
+    	}
+    )
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "Success", response = ServiceRegistry.class),
+			@ApiResponse(code = 401, message = "Failure")
+		}
+	)
+    @RequestMapping(value= "/exists/{id}", method = RequestMethod.GET, produces = {"application/json"})
+    public @ResponseBody ServiceRegistry exists(@PathVariable("id") String service) {
+        System.out.println("REST request to check a ServiceRegistry: " + service);
+        ServiceRegistry ret = null;
+        try{
+            if (!StringUtils.isEmpty(service)) {
+        		ret = (new ServiceRegistryDAO()).findServiceRegistryByService(service);
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return ret;
     }
 }

@@ -5,7 +5,7 @@ var SRCreate = React.createClass({
         )
     },
     goHome: function() {
-        location.href='fusrstart.html';
+        //location.href='fusrstart.html';
     },
     createItem: function() {
         var component = this;
@@ -13,18 +13,26 @@ var SRCreate = React.createClass({
         window.swagger = new SwaggerClient({
             url: location.origin + "/swagger/swagger.json",
             success: function() {
-                var srJson = {
-                    sr: {
-                        id: component.state.id,
-                        service: component.state.service,
-                        description: component.state.description,
-                        endpoint: component.state.endpoint
-                    }
-                };
-                swagger.sr.saveSR(srJson,{responseContentType: 'application/json'}, function(data) {
-                    //document.getElementById("mydata").innerHTML = JSON.stringify(data.obj);
-                    //console.log(data.obj);
-                    component.goHome();
+                swagger.sr.id({id: component.state.id}, {responseContentType: 'application/json'}, function(data) {
+                    console.log(data);
+                    //TODO if exists, warn the user if it will be replace the current content?
+
+
+
+                    
+                    var srJson = {
+                        sr: {
+                            id: component.state.id,
+                            service: component.state.service,
+                            description: component.state.description,
+                            endpoint: component.state.endpoint
+                        }
+                    };
+                    swagger.sr.saveSR(srJson, {responseContentType: 'application/json'}, function (data) {
+                        //document.getElementById("mydata").innerHTML = JSON.stringify(data.obj);
+                        //console.log(data.obj);
+                        //component.goHome();
+                    });
                 });
             },
             authorizations : {
