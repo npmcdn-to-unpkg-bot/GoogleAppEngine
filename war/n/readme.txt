@@ -72,6 +72,8 @@ OWASP Notes:
 
 Other Useful Resources:
 
+https://github.com/larrymyers/react-mini-router
+
 https://github.com/souporserious/react-trix
 
 https://github.com/basecamp/trix
