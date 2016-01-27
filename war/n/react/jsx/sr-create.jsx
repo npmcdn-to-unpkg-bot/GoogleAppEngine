@@ -38,5 +38,3 @@ var SRCreate = React.createClass({
         console.log('SRCreate invoked');
     }
 });
-
-ReactDOM.render(<SRCreate />, document.getElementById('sr-create'));
