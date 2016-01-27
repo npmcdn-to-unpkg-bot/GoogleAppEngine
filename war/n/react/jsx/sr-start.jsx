@@ -59,8 +59,8 @@ var SRStart = React.createClass({
     }
     return (
         <div>
-          <h4><a href="/n/react/fusrcreate.html?id=0">Create New</a></h4>
-          {/* <h4><a href="/fusrcreate">Create New</a></h4> */}
+          {/* <h4><a href="/n/react/fusrcreate.html?id=0">Create New</a></h4>*/}
+          <h4><a href="#/create">Create New</a></h4>
           {/* <h4><Link {...this.props} to="/fusrcreate" activeStyle={ACTIVE}>Create New</Link></h4> */}
           <div className="table-responsive">
             <table id="sr-start-table" className="table table-striped table-bordered">

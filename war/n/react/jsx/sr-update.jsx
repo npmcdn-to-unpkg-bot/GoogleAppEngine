@@ -22,6 +22,7 @@ var SRUpdate = React.createClass({
     },
     getInitialState: function() {
         var qs = URI(location.href).query(true); // == e.g. { id : 4529987906437120 }
+        if(typeof qs.id === 'undefined') qs.id = 0;
         if(qs.id > 0) {
             var component = this;
             console.log('SRUpdate booted');

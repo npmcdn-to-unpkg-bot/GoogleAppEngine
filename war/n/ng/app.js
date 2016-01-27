@@ -15,7 +15,7 @@ function redirectNonSSL(url) {
 //}
 
 <!-- JWT and navigations stuff -->
-angular.module('myApp', [])
+angular.module('myApp', ['ui.router'])
     .controller('MainCtrl', ['mainService','$scope','$http',
         function(mainService, $scope, $http, $compile) {
             $scope.status = 'Please sign in';
@@ -62,13 +62,13 @@ angular.module('myApp', [])
                 if(token !== null) {
                     // Save the JWT token.
                     localStorage.setItem('userJWTToken', token);
-                    location.href = "fusrstart.html";
+                    location.href = "app.html";
                 }
                 return token !== null;
             }
 
             $scope.enter = function() {
-                location.href='fusrstart.html';
+                location.href='app.html';
             }
 
         } ])
@@ -87,6 +87,23 @@ angular.module('myApp', [])
                 });
             }
         };
+    })
+    .config(function($stateProvider, $urlRouterProvider) {
+        $urlRouterProvider.otherwise('/home');
+
+        $stateProvider
+            .state('home', {
+                url: '/home',
+                templateUrl: '../react/fusrstart.html'
+            })
+            .state('update', {
+                url: '/update',
+                templateUrl: '../react/fusrupdate.html'
+            })
+            .state('create', {
+                url: '/create',
+                templateUrl: '../react/fusrcreate.html'
+            });
     });
 
 // Common directive for Focus
