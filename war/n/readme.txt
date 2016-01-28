@@ -72,6 +72,8 @@ OWASP Notes:
 
 Other Useful Resources:
 
+http://www.ng-newsletter.com/posts/angular-ui-router.html
+
 https://github.com/larrymyers/react-mini-router
 
 https://github.com/souporserious/react-trix

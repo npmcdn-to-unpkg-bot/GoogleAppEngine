@@ -14,10 +14,50 @@ function redirectNonSSL(url) {
 //    }
 //}
 
+//console.log("app.js 2 $state:");
+//console.log($state);
+
 <!-- JWT and navigations stuff -->
 angular.module('myApp', ['ui.router'])
-    .controller('MainCtrl', ['mainService','$scope','$http',
-        function(mainService, $scope, $http, $compile) {
+    .config(function($stateProvider, $urlRouterProvider) {
+        $urlRouterProvider.otherwise('/home');
+
+        $stateProvider
+            .state('home', {
+                url: '/home',
+                templateUrl: '../react/fusrstart.html',
+                controller: function($scope, $stateParams, $state) {
+                    $scope.$state = $state;
+                    if(typeof SRStart !== 'undefined') {
+                        ReactDOM.render(React.createElement(SRStart, {$state: $state}), document.getElementById('sr-start'));
+                    }
+                }
+            })
+            .state('update', {
+                url: '/update',
+                templateUrl: '../react/fusrupdate.html',
+                controller: function($scope, $stateParams, $state) {
+                    //$scope.inboxId = $stateParams.inboxId;
+                    //console.log('app.js $stateProvider update: ', $stateParams);
+                    ReactDOM.render(React.createElement(SRUpdate, {$state: $state, id: $stateParams.obj.id}), document.getElementById('sr-update'));
+                },
+                params: {
+                    obj: null
+                }
+            })
+            .state('create', {
+                url: '/create',
+                templateUrl: '../react/fusrcreate.html',
+                controller: function($scope, $stateParams, $state) {
+                    //$scope.inboxId = $stateParams.inboxId;
+                    ReactDOM.render(React.createElement(SRCreate, {$state: $state}), document.getElementById('sr-create'));
+                }
+            });
+
+
+    })
+    .controller('MainCtrl', ['mainService','$scope','$http', '$state',
+        function(mainService, $scope, $http, $compile, $state) {
             $scope.status = 'Please sign in';
             $scope.greeting = 'Welcome!';
             $scope.token = null;
@@ -87,23 +127,6 @@ angular.module('myApp', ['ui.router'])
                 });
             }
         };
-    })
-    .config(function($stateProvider, $urlRouterProvider) {
-        $urlRouterProvider.otherwise('/home');
-
-        $stateProvider
-            .state('home', {
-                url: '/home',
-                templateUrl: '../react/fusrstart.html'
-            })
-            .state('update', {
-                url: '/update',
-                templateUrl: '../react/fusrupdate.html'
-            })
-            .state('create', {
-                url: '/create',
-                templateUrl: '../react/fusrcreate.html'
-            });
     });
 
 // Common directive for Focus

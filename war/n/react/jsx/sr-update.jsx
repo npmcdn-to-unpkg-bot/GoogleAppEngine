@@ -22,7 +22,13 @@ var SRUpdate = React.createClass({
     },
     getInitialState: function() {
         var qs = URI(location.href).query(true); // == e.g. { id : 4529987906437120 }
-        if(typeof qs.id === 'undefined') qs.id = 0;
+        if(typeof qs.id === 'undefined') {
+            if(typeof this.props.id !== 'undefined') {
+                qs.id = this.props.id;  //TODO anti-pattern to refer to props in here???
+            } else {
+                qs.id = 0;
+            }
+        }
         if(qs.id > 0) {
             var component = this;
             console.log('SRUpdate booted');
@@ -60,6 +66,11 @@ var SRUpdate = React.createClass({
         var divStyle = {
             minHeight: '300px'
         };
+        var delStyle = {background: '#98969E'};
+        if(this.props.title === 'Create') delStyle = {display: 'none'};
+        this.state.$state=this.props.$state;
+
+        console.log('sr-update.jsx render(): ', this.props);
         return (
                     <div>
                         <h1>Service Manager - Update</h1><br />
@@ -97,7 +108,7 @@ var SRUpdate = React.createClass({
                                     <label htmlFor="createItem" className="col-sm-2 control-label" />
                                     <div className="col-sm-10">
                                         <input type="hidden" name="_method" defaultValue="POST" />
-                                        <input className="form-control btn btn-primary" ref="deleteItem" type="button" style={{background: '#98969E'}} defaultValue="Delete" onClick={() => {if(confirm('Delete the item?')) {this.deleteItem()};}} />
+                                        <input className="form-control btn btn-primary" ref="deleteItem" type="button" style={delStyle} defaultValue="Delete" onClick={() => {if(confirm('Delete the item?')) {this.deleteItem()};}} />
                                         <input className="form-control btn btn-primary" ref="createItem" type="button" style={{background: '#98969E'}} defaultValue="Save" disabled={!this.state.isSubmitting} onClick={this.updateItem} />
                                         <input className="form-control btn" ref="cancelItem" defaultValue="Cancel" type="button" onClick={this.goHome} />
                                     </div>
@@ -108,7 +119,8 @@ var SRUpdate = React.createClass({
         )
     },
     goHome: function() {
-        location.href='fusrstart.html';
+        //location.href='fusrstart.html';
+        this.state.$state.go('home');
     },
     saveNow: function(component) {
         //console.log('createItem() unknown error!');

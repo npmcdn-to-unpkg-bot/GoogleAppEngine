@@ -1,11 +1,8 @@
 var SRCreate = React.createClass({
     render: function() {
         return (
-            <SRUpdate createItemCallback={this.createItem} />
+            <SRUpdate title="Create" $state={this.props.$state} createItemCallback={this.createItem} />
         )
-    },
-    goHome: function() {
-        //location.href='fusrstart.html';
     },
     createItem: function(component) {
         var key = localStorage.getItem('userJWTToken');

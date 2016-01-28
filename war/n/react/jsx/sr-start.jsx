@@ -17,6 +17,9 @@ var SRStart = React.createClass({
   //    router: router
   //  }
   //},
+  propTypes: {
+    $state: React.PropTypes.func.required
+  },
   //start: function() {
   getInitialState: function() {
     var component = this;
@@ -27,7 +30,7 @@ var SRStart = React.createClass({
         swagger.sr.all({},{responseContentType: 'application/json'}, function(data) {
           //document.getElementById("mydata").innerHTML = JSON.stringify(data.obj);
           component.state.items = data.obj.content;
-          ReactDOM.render(<SRStart items={ data.obj.content }/>, document.getElementById('sr-start'));
+          ReactDOM.render(<SRStart $state={component.state.$state} items={ data.obj.content }/>, document.getElementById('sr-start'));
           $('#sr-start-table').stacktable();
         });
       },
@@ -38,14 +41,25 @@ var SRStart = React.createClass({
 
     return items;
   },
+  goUpdate: function(id, e) {
+    var obj = {
+      id: id
+    }
+    //console.log('sr-start.jsx goUpdate: ', id, this.state);
+    this.state.$state.go('update', {obj: obj});
+  },
   render: function() {
     var indents = [];
-    var objects = this.state.items; //this.props.items;
+    var objects = this.state.items;
+    this.state.$state=this.props.$state;
     //console.log(this.props);
     if(objects) {
       for (var i = 0; i < objects.length; i++) {
+        var boundItemClick = this.goUpdate.bind(this, objects[i].id);
+
         indents.push(<tr key={i}>
-          <td><a href={'fusrupdate.html?id='+objects[i].id}>{objects[i].id}</a></td>
+
+          <td><a onClick={boundItemClick}>{objects[i].id}</a></td>
           <td><a target="_new" href={location.origin+'/go/'+objects[i].service+'?incog=true'}>{objects[i].service}</a>
           </td>
           <td dangerouslySetInnerHTML={{__html: objects[i].description}}/>
@@ -59,7 +73,6 @@ var SRStart = React.createClass({
     }
     return (
         <div>
-          {/* <h4><a href="/n/react/fusrcreate.html?id=0">Create New</a></h4>*/}
           <h4><a href="#/create">Create New</a></h4>
           {/* <h4><Link {...this.props} to="/fusrcreate" activeStyle={ACTIVE}>Create New</Link></h4> */}
           <div className="table-responsive">
@@ -100,4 +113,4 @@ var SRStart = React.createClass({
   //}
 });
 
-//ReactDOM.render(<SRStart />, document.getElementById('sr-start'));
+ReactDOM.render(<SRStart $state />, document.getElementById('sr-start'));
