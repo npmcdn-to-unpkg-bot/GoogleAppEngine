@@ -27,7 +27,7 @@ angular.module('myApp', ['ui.router'])
                 url: '/home',
                 templateUrl: '../react/fusrstart.html',
                 controller: function($scope, $stateParams, $state) {
-                    $scope.$state = $state;
+                    window.$state = $state; //TODO how do we avoid global here???!!!
                     if(typeof SRStart !== 'undefined') {
                         ReactDOM.render(React.createElement(SRStart, {$state: $state}), document.getElementById('sr-start'));
                     }

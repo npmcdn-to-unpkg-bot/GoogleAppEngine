@@ -17,9 +17,9 @@ var SRStart = React.createClass({
   //    router: router
   //  }
   //},
-  propTypes: {
-    $state: React.PropTypes.func.required
-  },
+  //propTypes: {
+  //  $state: React.PropTypes.func.required
+  //},
   //start: function() {
   getInitialState: function() {
     var component = this;
@@ -30,7 +30,7 @@ var SRStart = React.createClass({
         swagger.sr.all({},{responseContentType: 'application/json'}, function(data) {
           //document.getElementById("mydata").innerHTML = JSON.stringify(data.obj);
           component.state.items = data.obj.content;
-          ReactDOM.render(<SRStart $state={component.state.$state} items={ data.obj.content }/>, document.getElementById('sr-start'));
+          ReactDOM.render(<SRStart $state={window.$state} items={ data.obj.content }/>, document.getElementById('sr-start'));
           $('#sr-start-table').stacktable();
         });
       },
@@ -46,12 +46,13 @@ var SRStart = React.createClass({
       id: id
     }
     //console.log('sr-start.jsx goUpdate: ', id, this.state);
+    if(typeof this.state.$state === 'undefined') this.state.$state = window.$state;  //TODO workaround until this bug is fixed! :(
     this.state.$state.go('update', {obj: obj});
   },
   render: function() {
     var indents = [];
     var objects = this.state.items;
-    this.state.$state=this.props.$state;
+    if(typeof this.props.$state !== 'undefined') this.state.$state=this.props.$state;
     //console.log(this.props);
     if(objects) {
       for (var i = 0; i < objects.length; i++) {
