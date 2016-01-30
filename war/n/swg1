@@ -1,0 +1,2 @@
+cp -f js/swagger-ui.js.SWG1 ../swagger/swagger-ui.js
+cp -f js/swagger-client.js.SWG1 js/bower_components/swagger-js/browser/swagger-client.js
