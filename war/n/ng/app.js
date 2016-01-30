@@ -1,18 +1,20 @@
+var gVersion = "0.0.1R1";
+
 function redirectNonSSL(url) {
     if(typeof url !== 'undefined'  && url.trim().indexOf('localhost') == -1 && url.trim().startsWith('http://')) {
         if (window.location.protocol != "https:")
             window.location.href = "https:" + window.location.href.substring(window.location.protocol.length);
     }
 }
-//function handleSSL(url) {
-//    if(typeof url !== 'undefined'  && url.trim().indexOf('localhost') == -1 && url.trim().startsWith('http://')) {
-//        var ret = url.trim().replace('http://', 'https://');
-//        console.log('url changed to SSL-based -> [' + ret + ']');
-//        return ret;
-//    } else {
-//        return url;
-//    }
-//}
+function handleSSL(url) {
+    if(typeof url !== 'undefined'  && url.trim().indexOf('localhost') == -1 && url.trim().startsWith('http://')) {
+        var ret = url.trim().replace('http://', 'https://');
+        console.log('url changed to SSL-based -> [' + ret + ']');
+        return ret;
+    } else {
+        return url;
+    }
+}
 
 //console.log("app.js 2 $state:");
 //console.log($state);
@@ -58,6 +60,7 @@ angular.module('myApp', ['ui.router'])
     })
     .controller('MainCtrl', ['mainService','$scope','$http', '$state',
         function(mainService, $scope, $http, $compile, $state) {
+            $scope.version = gVersion;
             $scope.status = 'Please sign in';
             $scope.greeting = 'Welcome!';
             $scope.token = null;

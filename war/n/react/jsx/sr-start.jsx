@@ -24,6 +24,7 @@ var SRStart = React.createClass({
   getInitialState: function() {
     var component = this;
     var items = {};
+    //console.log('sr-start.jsx getInitialState(): handleSSL(location.origin) = [' + handleSSL(location.origin) + ']');
     window.swagger = new SwaggerClient({
       url: location.origin + "/swagger/swagger.json",
       success: function() {
