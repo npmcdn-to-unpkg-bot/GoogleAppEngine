@@ -1,0 +1,3 @@
+war/WEB-INF/classes
+war/swagger/swagger-ui.js
+war/n/js/bower_components/swagger-js/browser/swagger-client.js

@@ -72,6 +72,8 @@ OWASP Notes:
 
 Other Useful Resources:
 
+https://github.com/angular-ui/ui-router/wiki/URL-Routing
+
 http://www.ng-newsletter.com/posts/angular-ui-router.html
 
 https://github.com/larrymyers/react-mini-router

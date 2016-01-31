@@ -70,7 +70,7 @@ var SRUpdate = React.createClass({
         if(this.props.title === 'Create') delStyle = {display: 'none'};
         this.state.$state=this.props.$state;
 
-        console.log('sr-update.jsx render(): ', this.props);
+        //console.log('sr-update.jsx render(): ', this.props);
         return (
                     <div>
                         <h1>Service Manager - Update</h1><br />
@@ -133,8 +133,8 @@ var SRUpdate = React.createClass({
                 endpoint: component.state.endpoint
             }
         };
-        //console.log(component.state);
-        console.log(srJson.sr);
+        //console.log('sr-update.jsx saveNow(): ' + component.state);
+        //console.log(srJson.sr);
         swagger.sr.saveSR(srJson, {responseContentType: 'application/json'}, function (data) {
             //document.getElementById("mydata").innerHTML = JSON.stringify(data.obj);
             //console.log(data.obj);
@@ -143,7 +143,7 @@ var SRUpdate = React.createClass({
     },
     updateItem: function() {
         if(typeof this.props.createItemCallback !== 'undefined') {
-            console.log('SRCreate-SRUpdate ...');
+            //console.log('SRCreate-SRUpdate ...');
             this.props.createItemCallback(this);
         } else {
             var component = this;

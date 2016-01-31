@@ -9,7 +9,7 @@ var SRCreate = React.createClass({
         window.swagger = new SwaggerClient({
             url: location.origin + "/swagger/swagger.json",
             success: function() {
-                console.log(component.state.service);
+                //console.log('sr-create.jsx createItem(): ' + component.state.service);
                 //swagger.sr.id({id: 'h'}, {responseContentType: 'application/json'}, function (data) {
                 swagger.sr.existsSR_service({service: component.state.service}, {responseContentType: 'application/json'}, function(data) {
                     console.log(data.obj);
@@ -32,6 +32,6 @@ var SRCreate = React.createClass({
                 someHeaderAuth: new SwaggerClient.ApiKeyAuthorization('Authorization', "Bearer " + key, 'header')
             }
         });
-        console.log('SRCreate invoked');
+        //console.log('SRCreate invoked');
     }
 });

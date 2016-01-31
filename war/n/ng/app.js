@@ -1,4 +1,4 @@
-var gVersion = "0.0.1R1";
+var gVersion = "0.0.1R3";
 
 function redirectNonSSL(url) {
     if(typeof url !== 'undefined'  && url.trim().indexOf('localhost') == -1 && url.trim().startsWith('http://')) {
@@ -36,12 +36,14 @@ angular.module('myApp', ['ui.router'])
                 }
             })
             .state('update', {
-                url: '/update',
+                url: '/update/{id:int}',
                 templateUrl: '../react/fusrupdate.html',
                 controller: function($scope, $stateParams, $state) {
                     //$scope.inboxId = $stateParams.inboxId;
                     //console.log('app.js $stateProvider update: ', $stateParams);
-                    ReactDOM.render(React.createElement(SRUpdate, {$state: $state, id: $stateParams.obj.id}), document.getElementById('sr-update'));
+                    var id = $stateParams.id;    //$stateParams.obj.id;
+                    //console.log('app.js id = [' + id + ']');
+                    ReactDOM.render(React.createElement(SRUpdate, {$state: $state, id: id}), document.getElementById('sr-update'));
                 },
                 params: {
                     obj: null

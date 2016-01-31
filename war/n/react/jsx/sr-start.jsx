@@ -23,7 +23,7 @@ var SRStart = React.createClass({
   //start: function() {
   getInitialState: function() {
     var component = this;
-    var items = {};
+    var items = {processingMessage: 'Rendering ...'};
     //console.log('sr-start.jsx getInitialState(): handleSSL(location.origin) = [' + handleSSL(location.origin) + ']');
     window.swagger = new SwaggerClient({
       url: location.origin + "/swagger/swagger.json",
@@ -31,6 +31,7 @@ var SRStart = React.createClass({
         swagger.sr.all({},{responseContentType: 'application/json'}, function(data) {
           //document.getElementById("mydata").innerHTML = JSON.stringify(data.obj);
           component.state.items = data.obj.content;
+          component.state.processingMessage = "";   //done!
           ReactDOM.render(<SRStart $state={window.$state} items={ data.obj.content }/>, document.getElementById('sr-start'));
           $('#sr-start-table').stacktable();
         });
@@ -42,6 +43,7 @@ var SRStart = React.createClass({
 
     return items;
   },
+  //TODO: for some reason, this cause "Uncaught Invariant Violation: ReactMount: Two valid but unequal nodes with the same `data-reactid`: .0.1.0.1.$0.0.0" error with stacktable.js!
   goUpdate: function(id, e) {
     var obj = {
       id: id
@@ -53,15 +55,23 @@ var SRStart = React.createClass({
   render: function() {
     var indents = [];
     var objects = this.state.items;
-    if(typeof this.props.$state !== 'undefined') this.state.$state=this.props.$state;
-    //console.log(this.props);
+    if(typeof this.props.$state !== 'undefined') {
+      this.state.$state = this.props.$state;
+      //var newState = React.addons.update(this.state.$state, {
+      //    $set : this.props.$state
+      //});
+      //this.setState(newState);
+      //console.log('sr-start.jsx render(): this.state.$state [' + this.state.$state + ']');
+    }
     if(objects) {
+      var boundItemClick;
       for (var i = 0; i < objects.length; i++) {
-        var boundItemClick = this.goUpdate.bind(this, objects[i].id);
+        boundItemClick = this.goUpdate.bind(this, objects[i].id);
 
         indents.push(<tr key={i}>
 
-          <td><a onClick={boundItemClick}>{objects[i].id}</a></td>
+          <td><a href={'#/update/' + objects[i].id}>{objects[i].id}</a></td>
+          {/* <td><a onClick={boundItemClick}>{objects[i].id}</a></td> Uncaught Invariant Violation: ReactMount: Two valid but unequal nodes with the same `data-reactid`: .0.1.0.1.$0.0.0invariant */}
           <td><a target="_new" href={location.origin+'/go/'+objects[i].service+'?incog=true'}>{objects[i].service}</a>
           </td>
           <td dangerouslySetInnerHTML={{__html: objects[i].description}}/>
@@ -95,6 +105,7 @@ var SRStart = React.createClass({
               {indents}
               </tbody>
             </table>
+            <div>{this.state.processingMessage}</div>
           </div>
         </div>
     );
