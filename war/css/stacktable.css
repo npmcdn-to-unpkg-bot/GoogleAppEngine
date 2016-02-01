@@ -29,9 +29,6 @@ and (max-device-width : 568px) {
 }
 
 /* COMMON STYLES */
-body {
-  padding: 12px;
-}
 input[type='url'] {
   margin-top: 12px;
 }

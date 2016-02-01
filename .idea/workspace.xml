@@ -34,18 +34,8 @@
       <file leaf-file-name="sr-update.jsx" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/war/n/react/jsx/sr-update.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="92" column="0" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/war/n/react/app.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="165">
+              <caret line="74" column="46" selection-start-line="74" selection-start-column="25" selection-end-line="74" selection-end-column="46" />
               <folding />
             </state>
           </provider>
@@ -74,8 +64,18 @@
       <file leaf-file-name="app.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/war/n/react/app.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="41" column="52" selection-start-line="41" selection-start-column="52" selection-end-line="41" selection-end-column="52" />
+            <state relative-caret-position="58">
+              <caret line="46" column="64" selection-start-line="46" selection-start-column="64" selection-end-line="46" selection-end-column="64" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="stacktable.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/war/css/stacktable.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="130">
+              <caret line="30" column="19" selection-start-line="30" selection-start-column="19" selection-end-line="30" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -84,8 +84,8 @@
       <file leaf-file-name="fusrstart.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/war/n/react/fusrstart.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="72" selection-start-line="2" selection-start-column="72" selection-end-line="2" selection-end-column="72" />
+            <state relative-caret-position="0">
+              <caret line="0" column="30" selection-start-line="0" selection-start-column="30" selection-end-line="0" selection-end-column="47" />
               <folding />
             </state>
           </provider>
@@ -114,8 +114,8 @@
       <file leaf-file-name="sr-start.jsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/war/n/react/jsx/sr-start.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="33" column="59" selection-start-line="33" selection-start-column="59" selection-end-line="33" selection-end-column="59" />
+            <state relative-caret-position="400">
+              <caret line="87" column="34" selection-start-line="87" selection-start-column="34" selection-end-line="87" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -162,14 +162,14 @@
         <option value="$PROJECT_DIR$/war/n/react/fusrcreate.html" />
         <option value="$PROJECT_DIR$/war/n/react/jsx/app.jsx" />
         <option value="$PROJECT_DIR$/war/n/swg1" />
-        <option value="$PROJECT_DIR$/war/n/react/fusrstart.html" />
         <option value="$PROJECT_DIR$/war/n/react/jsx/sr-create.jsx" />
-        <option value="$PROJECT_DIR$/war/css/stacktable.css" />
         <option value="$PROJECT_DIR$/war/n/ng/app.js" />
         <option value="$PROJECT_DIR$/war/n/readme.txt" />
         <option value="$PROJECT_DIR$/war/n/react/app.html" />
         <option value="$PROJECT_DIR$/war/n/react/jsx/react-trix/loading.jsx" />
         <option value="$PROJECT_DIR$/war/n/react/jsx/sr-start.jsx" />
+        <option value="$PROJECT_DIR$/war/n/react/fusrstart.html" />
+        <option value="$PROJECT_DIR$/war/css/stacktable.css" />
         <option value="$PROJECT_DIR$/war/n/react/jsx/sr-update.jsx" />
       </list>
     </option>
@@ -642,7 +642,7 @@
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
-    <property name="SearchEverywhereHistoryKey" value="stackta&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/war/css/stacktable.css&#10;purl.js&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/war/jquery/purl.js&#10;stackt&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/war/css/stacktable.css&#10;index.html&#9;FILE&#9;file://C:/GoogleAppEngine/war/n/react/index1.html&#10;bower&#9;FILE&#9;file://C:/GoogleAppEngine/war/n/bower.json&#10;app.js&#9;FILE&#9;file://C:/GoogleAppEngine/war/n/ng/app.js&#10;ServiceRegistryStart.tml&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/src/tapp/pages/sci/ServiceRegistryStart.tml&#10;milli&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/war/js/milligram.css&#10;stack&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/war/css/stacktable.css&#10;trix.css&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/war/js/trix.css&#10;movie.html&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/war/mcrud/movie.html&#10;Service&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/src/tapp/pages/sci/ServiceRegistryStart.tml&#10;TemplateSave.tml&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/src/tapp/pages/g/app/TemplateSave.tml&#10;read&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/readme.txt&#10;Servi&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/src/tapp/pages/sci/ServiceRegistrySave.tml&#10;login.jsp&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/war/login.jsp&#10;ServiceRe&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/src/tapp/pages/sci/ServiceRegistrySave.tml&#10;stacktable.js&#9;ACTION&#9;null&#10;readme.txt&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/readme.txt&#10;workspace&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/.idea/workspace.xml" />
+    <property name="SearchEverywhereHistoryKey" value="stack&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/war/css/stacktable.css&#10;stackta&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/war/css/stacktable.css&#10;purl.js&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/war/jquery/purl.js&#10;stackt&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/war/css/stacktable.css&#10;index.html&#9;FILE&#9;file://C:/GoogleAppEngine/war/n/react/index1.html&#10;bower&#9;FILE&#9;file://C:/GoogleAppEngine/war/n/bower.json&#10;app.js&#9;FILE&#9;file://C:/GoogleAppEngine/war/n/ng/app.js&#10;ServiceRegistryStart.tml&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/src/tapp/pages/sci/ServiceRegistryStart.tml&#10;milli&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/war/js/milligram.css&#10;trix.css&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/war/js/trix.css&#10;movie.html&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/war/mcrud/movie.html&#10;Service&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/src/tapp/pages/sci/ServiceRegistryStart.tml&#10;TemplateSave.tml&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/src/tapp/pages/g/app/TemplateSave.tml&#10;read&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/readme.txt&#10;Servi&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/src/tapp/pages/sci/ServiceRegistrySave.tml&#10;login.jsp&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/war/login.jsp&#10;ServiceRe&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/src/tapp/pages/sci/ServiceRegistrySave.tml&#10;stacktable.js&#9;ACTION&#9;null&#10;readme.txt&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/readme.txt&#10;workspace&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/.idea/workspace.xml" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
   </component>
   <component name="RecentsManager">
@@ -1065,7 +1065,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1382" height="744" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21490593" sideWeight="0.6026273" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289256" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1384,14 +1384,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/war/css/stacktable.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/war/n/readme.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1185">
@@ -1404,22 +1396,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="25" selection-start-line="0" selection-start-column="25" selection-end-line="0" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/war/n/react/fusrstart.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="72" selection-start-line="2" selection-start-column="72" selection-end-line="2" selection-end-column="72" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/war/n/react/app.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="41" column="52" selection-start-line="41" selection-start-column="52" selection-end-line="41" selection-end-column="52" />
           <folding />
         </state>
       </provider>
@@ -1440,14 +1416,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/war/n/react/jsx/sr-start.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="33" column="59" selection-start-line="33" selection-start-column="59" selection-end-line="33" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/war/n/react/jsx/mount-sr-update.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -1456,10 +1424,42 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/war/n/react/jsx/sr-start.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="87" column="34" selection-start-line="87" selection-start-column="34" selection-end-line="87" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/n/react/fusrstart.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="30" selection-start-line="0" selection-start-column="30" selection-end-line="0" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/n/react/app.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="58">
+          <caret line="46" column="64" selection-start-line="46" selection-start-column="64" selection-end-line="46" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/css/stacktable.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="30" column="19" selection-start-line="30" selection-start-column="19" selection-end-line="30" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/war/n/react/jsx/sr-update.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="92" column="0" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
+        <state relative-caret-position="165">
+          <caret line="74" column="46" selection-start-line="74" selection-start-column="25" selection-end-line="74" selection-end-column="46" />
           <folding />
         </state>
       </provider>

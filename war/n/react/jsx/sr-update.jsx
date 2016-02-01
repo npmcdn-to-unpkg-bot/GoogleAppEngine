@@ -72,7 +72,7 @@ var SRUpdate = React.createClass({
 
         //console.log('sr-update.jsx render(): ', this.props);
         return (
-                    <div>
+                    <div className="container">
                         <h1>Service Manager - Update</h1><br />
                         <form className="form-horizontal" role="form">
                             <div id="sr-update-table">
