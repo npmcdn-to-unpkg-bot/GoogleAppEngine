@@ -85,6 +85,12 @@ var SRUpdate = React.createClass({
                                     <input type="text" className="col-sm-10 form-control" ref="title" onKeyUp={this.save} required value={this.state.service} ref="service" onChange={function(e){this.setState({service: e.target.value})}.bind(this)} placeholder="Enter any easy to remember service name." />
                                 </div>
                                 <div className="control-group">
+                                    <label htmlFor="endpoint" className="col-sm-2 control-label">URL:</label>
+                                    <div className="col-sm-10">
+                                        <input type="url" className="form-control" ref="endpoint" onKeyUp={this.save} required value={this.state.endpoint} onChange={function(e){this.setState({endpoint: e.target.value, isSubmitting: this.isURL(e.target.value)})}.bind(this)} onClick={this.save} placeholder="Enter any valid URL e.g. http://www.google.com." />
+                                    </div>
+                                </div>
+                                <div className="control-group">
                                     <label htmlFor="summary" className="col-sm-2 control-label">Summary:</label>
                                     <div className="col-sm-10">
                                         <input type="text" className="form-control" ref="summary" onKeyUp={this.save} value={this.state.summary} onChange={function(e){this.setState({summary: e.target.value})}.bind(this)} />
@@ -96,12 +102,6 @@ var SRUpdate = React.createClass({
                                         <input type="text" className="form-control" ref="descriptionRaw" onKeyUp={this.save} value={this.state.descriptionRaw} onChange={function(e){this.setState({descriptionRaw: e.target.value})}.bind(this)} />
                                         <input id="x" ref="desc" type="hidden" name="content" />
                                         <trix-editor style={divStyle} input="x"></trix-editor>
-                                    </div>
-                                </div>
-                                <div className="control-group">
-                                    <label htmlFor="endpoint" className="col-sm-2 control-label">URL:</label>
-                                    <div className="col-sm-10">
-                                        <input type="url" className="form-control" ref="endpoint" onKeyUp={this.save} required value={this.state.endpoint} onChange={function(e){this.setState({endpoint: e.target.value, isSubmitting: this.isURL(e.target.value)})}.bind(this)} onClick={this.save} placeholder="Enter any valid URL e.g. http://www.google.com." />
                                     </div>
                                 </div>
                                 <div className="control-group">
