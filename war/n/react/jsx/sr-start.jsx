@@ -34,6 +34,7 @@ var SRStart = React.createClass({
           component.state.processingMessage = "";   //done!
           ReactDOM.render(<SRStart $state={window.$state} items={ data.obj.content }/>, document.getElementById('sr-start'));
           $('#sr-start-table').stacktable();
+          ReactDOM.render(<AppAutocomplete/>, document.getElementById('app-autocomplete'));
         });
       },
       authorizations : {
@@ -43,7 +44,6 @@ var SRStart = React.createClass({
 
     return items;
   },
-  //TODO: for some reason, this cause "Uncaught Invariant Violation: ReactMount: Two valid but unequal nodes with the same `data-reactid`: .0.1.0.1.$0.0.0" error with stacktable.js!
   goUpdate: function(id, e) {
     var obj = {
       id: id
@@ -85,7 +85,10 @@ var SRStart = React.createClass({
     }
     return (
         <div>
-          <h4><a className="button" href="#/create">Create New</a></h4>
+          <h4>
+            <a className="float-left" className="button" href="#/create">Create New</a>
+            <div className="float-right" id="app-autocomplete"></div>
+          </h4>
           {/* <h4><Link {...this.props} to="/fusrcreate" activeStyle={ACTIVE}>Create New</Link></h4> */}
           <div className="table-responsive">
             <table id="sr-start-table" className="table table-striped table-bordered">
