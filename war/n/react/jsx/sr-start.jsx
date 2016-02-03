@@ -85,7 +85,7 @@ var SRStart = React.createClass({
     }
     return (
         <div>
-          <h4>
+          <h4 className="clearfix">
             <a className="float-left" className="button" href="#/create">Create New</a>
             <div className="float-right" id="app-autocomplete"></div>
           </h4>

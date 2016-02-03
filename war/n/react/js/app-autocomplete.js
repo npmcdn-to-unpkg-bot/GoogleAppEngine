@@ -1,34 +1,110 @@
 "use strict";
 
 var styles = {
+    item: {
+        padding: '2px 6px',
+        cursor: 'default'
+    },
+
+    highlightedItem: {
+        color: 'white',
+        background: 'hsl(250, 50%, 50%)',
+        padding: '2px 6px',
+        cursor: 'default'
+    },
+
+    menu: {
+        border: 'solid 1px #ccc'
+    }
 };
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var AppAutocomplete = React.createClass({
-    render: function() {
-        var component = this;
+    displayName: 'App',
+
+    getInitialState: function getInitialState() {
+        return {
+            unitedStates: getStates(),
+            loading: false
+        };
+    },
+
+    render: function render() {
+        var _this = this;
+
         return React.createElement(
-            "div",
+            'div',
             null,
             React.createElement(Autocomplete, {
-                initialValue: "Ma",
-                items: getStates(),
+                items: this.state.unitedStates,
                 getItemValue: function (item) {
                     return item.name;
                 },
-                shouldItemRender: matchStateToTerm,
-                sortItems: sortStates,
+                onSelect: function () {
+                    return _this.setState({ unitedStates: [] });
+                },
+                onChange: function (event, value) {
+                    _this.setState({ loading: true });
+                    fakeRequest(value, function (items) {
+                        _this.setState({ unitedStates: items, loading: false });
+                    });
+                },
                 renderItem: function (item, isHighlighted) {
                     return React.createElement(
-                        "div",
+                        'div',
                         {
                             style: isHighlighted ? styles.highlightedItem : styles.item,
-                            key: item.abbr
+                            key: item.abbr,
+                            id: item.abbr
                         },
                         item.name
+                    );
+                },
+                renderMenu: function (items, value, style) {
+                    return React.createElement(
+                        'div',
+                        { style: _extends({}, styles.menu, style) },
+                        value === '' ? React.createElement(
+                            'div',
+                            { style: { padding: 6 } },
+                            'Type of the name of a United State'
+                        ) : _this.state.loading ? React.createElement(
+                            'div',
+                            { style: { padding: 6 } },
+                            'Loading...'
+                        ) : items.length === 0 ? React.createElement(
+                            'div',
+                            { style: { padding: 6 } },
+                            'No matches for ',
+                            value
+                        ) : _this.renderItems(items)
                     );
                 }
             })
         );
+    },
+
+    renderItems: function renderItems(items) {
+        console.log(items);
+        return items.map(function (item, index) {
+            var text = item.props.children;
+            if (index === 0 || items[index - 1].props.children.charAt(0) !== text.charAt(0)) {
+                var style = {
+                    background: '#eee',
+                    color: '#454545',
+                    padding: '2px 6px',
+                    fontWeight: 'bold'
+                };
+                return [React.createElement(
+                    'div',
+                    { style: style },
+                    text.charAt(0)
+                ), item];
+            } else {
+                return item;
+            }
+        });
     }
 });
 
@@ -99,6 +175,17 @@ function sortStates(a, b, value) {
         a.name.toLowerCase().indexOf(value.toLowerCase()) >
         b.name.toLowerCase().indexOf(value.toLowerCase()) ? 1 : -1
     )
+}
+
+function fakeRequest (value, cb) {
+    if (value === '')
+        return getStates()
+    var items = getStates().filter((state) => {
+        return matchStateToTerm(state, value)
+    })
+    setTimeout(() => {
+        cb(items)
+    }, 500)
 }
 
 //ReactDOM.render(React.createElement(AppAutocomplete, null), document.getElementById('app-autocomplete'));

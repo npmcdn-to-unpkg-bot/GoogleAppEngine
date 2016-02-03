@@ -51,6 +51,7 @@ var SRUpdate = React.createClass({
                         });
                         document.querySelector("trix-editor").editor.insertHTML(component.state.description);
                     });
+                    ReactDOM.render(<AppAutocomplete/>, document.getElementById('app-autocomplete'));
                 },
                 authorizations : {
                     someHeaderAuth: new SwaggerClient.ApiKeyAuthorization('Authorization', "Bearer " + key, 'header')
@@ -68,12 +69,16 @@ var SRUpdate = React.createClass({
         };
         var delStyle = {background: '#98969E'};
         if(this.props.title === 'Create') delStyle = {display: 'none'};
-        this.state.$state=this.props.$state;
+        this.state.$state=this.props.$state;    //TODO this is actually an anti-pattern!
 
         //console.log('sr-update.jsx render(): ', this.props);
         return (
                     <div className="container">
-                        <h1>Service Manager - Update</h1><br />
+                        <h3 className="clearfix">
+                            <div className="float-left" >Service Manager - Update</div>
+                            <div className="float-right" id="app-autocomplete"></div>
+                        </h3>
+
                         <form className="form-horizontal" role="form">
                             <div id="sr-update-table">
                                 <div className="control-group">
