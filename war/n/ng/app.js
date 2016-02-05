@@ -1,4 +1,4 @@
-var gVersion = "0.0.1R5";
+var gVersion = "0.0.1R5a";
 
 function redirectNonSSL(url) {
     if(typeof url !== 'undefined'  && url.trim().indexOf('localhost') == -1 && url.trim().startsWith('http://')) {

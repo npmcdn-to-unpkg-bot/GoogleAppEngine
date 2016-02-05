@@ -1,9 +1,9 @@
 #! /usr/bin/env bash
 
 #Need to create soft link to your GAEJ home e.g.
-#ln -s /Applications/appengine-java-sdk-1.9.30 /appengine-java-sdk
+#ln -s /Applications/appengine-java-sdk-1.9.31 /appengine-java-sdk
 #sudo ln -s /Applications/appengine-java-sdk-1.8.8 /appengine-java-sdk
-#ln -s '/Users/ag/demo' /project_home
+#ln -s '/Users/macbook/GoogleAppEngine' /project_home
 #sudo chmod 755 /appengine-java-sdk/bin/appcfg.sh
 
 #Also need to make sure Java is installed properly, generally available at /usr/bin/java and 

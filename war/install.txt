@@ -1,0 +1,7 @@
+KISS:
+
+1. cd war/n/react and install npm and run npm i
+2. cd war/n and bower i
+3. cd war/ and bower i
+
+Enjoy!

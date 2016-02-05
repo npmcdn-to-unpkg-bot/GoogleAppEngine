@@ -177,15 +177,14 @@ function sortStates(a, b, value) {
     )
 }
 
-function fakeRequest (value, cb) {
-    if (value === '')
-        return getStates()
-    var items = getStates().filter((state) => {
-        return matchStateToTerm(state, value)
-    })
-    setTimeout(() => {
-        cb(items)
-    }, 500)
+function fakeRequest(value, cb) {
+    if (value === '') return getStates();
+    var items = getStates().filter(function (state) {
+        return matchStateToTerm(state, value);
+    });
+    setTimeout(function () {
+        cb(items);
+    }, 500);
 }
 
 //ReactDOM.render(React.createElement(AppAutocomplete, null), document.getElementById('app-autocomplete'));
