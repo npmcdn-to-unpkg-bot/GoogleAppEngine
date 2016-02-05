@@ -18,4 +18,5 @@ export JAVA_OPTS='-XX:MaxPermSize=1024m'
 #Reference: https://developers.google.com/appengine/docs/java/tools/uploadinganapp
 #$GAE_JAVA_SDK_HOME/bin/appcfg.sh ${JAVA_OPTS} --enable_jar_splitting update ${PROJECT_HOME}/GoogleAppEngine/war
 echo $GAE_JAVA_SDK_HOME/bin/appcfg.sh --use_java7 --enable_jar_splitting update ${PROJECT_HOME}/war
+#$GAE_JAVA_SDK_HOME/bin/appcfg.sh --no_cookies --use_java7 --enable_jar_splitting update ${PROJECT_HOME}/war
 $GAE_JAVA_SDK_HOME/bin/appcfg.sh --use_java7 --enable_jar_splitting update ${PROJECT_HOME}/war
