@@ -1,7 +1,7 @@
 #! /usr/bin/env bash
 
 #Need to create soft link to your GAEJ home e.g.
-#ln -s /Applications/appengine-java-sdk-1.9.31 /appengine-java-sdk
+#ln -s /Applications/appengine-java-sdk-1.9.32 /appengine-java-sdk
 #sudo ln -s /Applications/appengine-java-sdk-1.8.8 /appengine-java-sdk
 #ln -s '/Users/macbook/GoogleAppEngine' /project_home
 #sudo chmod 755 /appengine-java-sdk/bin/appcfg.sh
@@ -17,6 +17,7 @@ PROJECT_HOME='/project_home'
 export JAVA_OPTS='-XX:MaxPermSize=1024m'
 #Reference: https://developers.google.com/appengine/docs/java/tools/uploadinganapp
 #$GAE_JAVA_SDK_HOME/bin/appcfg.sh ${JAVA_OPTS} --enable_jar_splitting update ${PROJECT_HOME}/GoogleAppEngine/war
-echo $GAE_JAVA_SDK_HOME/bin/appcfg.sh --use_java7 --enable_jar_splitting update ${PROJECT_HOME}/war
+echo $GAE_JAVA_SDK_HOME/bin/appcfg.sh --oauth2 --use_java7 --enable_jar_splitting update ${PROJECT_HOME}/war
+#rm ~/.appcfg_cookies
 #$GAE_JAVA_SDK_HOME/bin/appcfg.sh --no_cookies --use_java7 --enable_jar_splitting update ${PROJECT_HOME}/war
 $GAE_JAVA_SDK_HOME/bin/appcfg.sh --use_java7 --enable_jar_splitting update ${PROJECT_HOME}/war
