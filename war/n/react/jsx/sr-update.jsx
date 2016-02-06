@@ -75,8 +75,8 @@ var SRUpdate = React.createClass({
         return (
                     <div className="container">
                         <h3 className="clearfix">
-                            <div className="float-left" >Service Manager - Update</div>
-                            <div className="float-right" id="app-autocomplete"></div>
+                            <div className="pull-left" >Service Manager - Update</div>
+                            <div className="pull-right" id="app-autocomplete"></div>
                         </h3>
 
                         <form className="form-horizontal" role="form">

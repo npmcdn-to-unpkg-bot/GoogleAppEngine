@@ -86,8 +86,8 @@ var SRStart = React.createClass({
     return (
         <div>
           <h4 className="clearfix">
-            <a className="float-left" className="button" href="#/create">Create New</a>
-            <div className="float-right" id="app-autocomplete"></div>
+            <a className="pull-left" className="button" href="#/create">Create New</a>
+            <div className="pull-right" id="app-autocomplete"></div>
           </h4>
           {/* <h4><Link {...this.props} to="/fusrcreate" activeStyle={ACTIVE}>Create New</Link></h4> */}
           <div className="table-responsive">

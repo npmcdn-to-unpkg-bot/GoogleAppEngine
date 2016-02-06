@@ -69,7 +69,7 @@ var AppAutocomplete = React.createClass({
                         value === '' ? React.createElement(
                             'div',
                             { style: { padding: 6 } },
-                            'Type of the name of a United State'
+                            'Enter any search keyword'
                         ) : _this.state.loading ? React.createElement(
                             'div',
                             { style: { padding: 6 } },
@@ -115,6 +115,9 @@ var r = {};
 function getES(term) {
     $.get('https://es-n3t.rhcloud.com/service_registry/_search?size=100&pretty&q='+term, function(result) {
         if(typeof result !== 'undefined') {
+            searchedResults = [];
+            arr = [];
+            r = {};
             //console.log('app-autocomplete.js getES(): term [' + term + '] result [' + result.hits.total + ']');
             r = result.hits.hits;
             //console.log(r);
@@ -124,7 +127,7 @@ function getES(term) {
                 arr.push(h._source);
             }
             searchedResults = arr.reduce(function(all, item, index) {
-                all.push({abbr: item.service, name: item.summary});
+                all.push({abbr: item.service.substr(0,2), name: item.service + " [" + item.summary + "]"});
                 return all;
             }, []);
         }
@@ -133,8 +136,6 @@ function getES(term) {
 
 function getStates(value) {
     getES(value);
-
-    //TODO to use JavaScript reduce to convert ES results into the following format! :p
 
     return searchedResults;     //[
 //        {abbr: "AL", name: "Alabama"},
@@ -211,7 +212,7 @@ function fakeRequest(value, cb) {
     });
     setTimeout(function () {
         cb(items);
-    }, 500);
+    }, 100);
 }
 
 //ReactDOM.render(React.createElement(AppAutocomplete, null), document.getElementById('app-autocomplete'));

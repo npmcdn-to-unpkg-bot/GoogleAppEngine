@@ -20,9 +20,9 @@
     "bootstrap": "~3.3.6",
     "angular": "angularjs#~1.4.8",
     "react": "~0.14.6",
-    "milligram": "~1.0.3",
     "react-mini-router": "~2.0.0",
     "angular-ui-router": "~0.2.17",
-    "jQuery.scrollIntoView": "jquery-scroll-into-view#*"
+    "jQuery.scrollIntoView": "jquery-scroll-into-view#*",
+    "milligram": "^1.1.0"
   }
 }

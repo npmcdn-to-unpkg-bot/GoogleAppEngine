@@ -38,9 +38,9 @@
             <div class="col-lg-6 col-xs-6"><h1>Service Manager</h1><br></div>
             <div class="col-lg-6 col-xs-6">
                 <div class="col-lg-2 col-lg-push-10 col-md-2 col-md-push-0 col-sm-2 col-sm-push-0 col-xs-2 col-xs-push-0">
-                    <div id="mainCtrl" ng-controller="MainCtrl" class="pull-right">
-                        <h3><span class="label label-success">Success!</span><p><p> Welcome {{userName}}</h3>
-                        <a href ng-click="logout()">(logout)</a>
+                    <div id="mainCtrl" ng-controller="MainCtrl">
+                        <h3><span class="pull-left label label-success">Success!</span><p><p> Welcome {{userName}}</h3>
+                        <a class="pull-right" href ng-click="logout()">(logout)</a>
                     </div>
                 </div>
             </div>
