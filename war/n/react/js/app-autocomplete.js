@@ -41,7 +41,12 @@ var AppAutocomplete = React.createClass({
                 getItemValue: function (item) {
                     return item.name;
                 },
-                onSelect: function () {
+                onSelect: function (value) {
+                    var index = value.indexOf('-');
+                    var index2 = value.indexOf('[');
+                    var service = value.substr(0, index);
+                    var appId = value.substr(index+1, index2-index-2);
+                    console.log('app-autocomplete.js onSelect(): value [' + value + '] service [' + service + '] appId [' + appId + ']');
                     return _this.setState({ unitedStates: [] });
                 },
                 onChange: function (event, value) {
@@ -113,25 +118,27 @@ var searchedResults = [];
 var arr = [];
 var r = {};
 function getES(term) {
-    $.get('https://es-n3t.rhcloud.com/service_registry/_search?size=100&pretty&q='+term, function(result) {
-        if(typeof result !== 'undefined') {
-            searchedResults = [];
-            arr = [];
-            r = {};
-            //console.log('app-autocomplete.js getES(): term [' + term + '] result [' + result.hits.total + ']');
-            r = result.hits.hits;
-            //console.log(r);
-            var h;
-            for(var i = 0; i<r.length; i++) {
-                h = r[i];
-                arr.push(h._source);
+    if(typeof term !== 'undefined') {
+        $.get('https://es-n3t.rhcloud.com/service_registry/_search?size=100&pretty&q='+term, function(result) {
+            if (typeof result !== 'undefined') {
+                searchedResults = [];
+                arr = [];
+                r = {};
+                //console.log('app-autocomplete.js getES(): term [' + term + '] result [' + result.hits.total + ']');
+                r = result.hits.hits;
+                //console.log(r);
+                var h;
+                for (var i = 0; i < r.length; i++) {
+                    h = r[i];
+                    arr.push(h._source);
+                }
+                searchedResults = arr.reduce(function (all, item, index) {
+                    all.push({abbr: item.service.substr(0, 2), name: item.service + " [" + item.summary + "]"});
+                    return all;
+                }, []);
             }
-            searchedResults = arr.reduce(function(all, item, index) {
-                all.push({abbr: item.service.substr(0,2), name: item.service + " [" + item.summary + "]"});
-                return all;
-            }, []);
-        }
-    });
+        });
+    }
 }
 
 function getStates(value) {
