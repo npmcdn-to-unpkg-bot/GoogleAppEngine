@@ -85,9 +85,15 @@ var SRStart = React.createClass({
     }
     return (
         <div>
+          <div id="popup"></div>
           <h4 className="clearfix">
-            <a className="pull-left" className="button" href="#/create">Create New</a>
-            <div className="pull-right" id="app-autocomplete"></div>
+            <a className="pull-left button" href="#/create">Create New</a>
+              <div className="pull-right input-group">
+                  <span className="pull-right input-group-btn" style={{top: '-5px'}} >
+                      <div className="btn btn-clear glyphicon glyphicon-remove" type="button" onClick={this.clearSearch}></div>
+                  </span>
+                  <div className="pull-right" id="app-autocomplete" ref="searchbox" />
+              </div>
           </h4>
           {/* <h4><Link {...this.props} to="/fusrcreate" activeStyle={ACTIVE}>Create New</Link></h4> */}
           <div className="table-responsive">
@@ -112,6 +118,12 @@ var SRStart = React.createClass({
           </div>
         </div>
     );
+  }
+  ,
+  clearSearch: function() {
+        <!--ReactDOM.render(<AppAutocomplete/>, document.getElementById('app-autocomplete'));-->
+        //TODO how to set the states of the child component???
+        console.log('sr-update.jsx clearSearch()');
   }
   //,
   //render: function() {

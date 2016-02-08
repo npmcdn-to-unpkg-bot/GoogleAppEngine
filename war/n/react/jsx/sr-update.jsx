@@ -76,7 +76,7 @@ var SRUpdate = React.createClass({
                     <div className="container">
                         <h3 className="clearfix">
                             <div className="pull-left" >Service Manager - Update</div>
-                            <div className="pull-right" id="app-autocomplete"></div>
+                            <div className="pull-right"><i className="glyphicon glyphicon-remove"></i><span id="app-autocomplete"></span></div>
                         </h3>
 
                         <form className="form-horizontal" role="form">

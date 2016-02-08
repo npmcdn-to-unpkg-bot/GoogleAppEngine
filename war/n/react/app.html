@@ -26,6 +26,15 @@
     <!-- Utils -->
     <script src="../js/bower_components/urijs/src/URI.min.js"></script>
     <script src="../js/bower_components/jQuery.scrollIntoView/jquery.scrollIntoView.min.js"></script>
+    <style>
+        #popup iframe {
+            top: 260px;
+            border: 2px solid #111111;
+            background: lightblue;
+            position: relative;
+        }
+    </style>
+
 </head>
 <body>
     <div ng-app="myApp">
@@ -34,7 +43,9 @@
         <div ui-view>
             Loading ...
         </div>
-        <!-- ElasticSearch -->
+        <script src="./js/react-iframe.min.js"></script>
+        <script type="text/jsx" src="./jsx/app-iframe.jsx"></script>
+        <!-- ElasticSearch app -->
         <script src="./js/Autocomplete.js"></script>
         <script src="./js/app-autocomplete.js"></script>
         <!--<script type="text/jsx" src="jsx/hello.jsx"></script>-->

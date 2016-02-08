@@ -47,9 +47,16 @@ var AppAutocomplete = React.createClass({
                     var service = value.substr(0, index);
                     var appId = value.substr(index+1, index2-index-2);
                     console.log('app-autocomplete.js onSelect(): value [' + value + '] service [' + service + '] appId [' + appId + ']');
+                    _this.popup = React.createElement(AppIframe, {url: 'https://'+appId+'.appspot.com/go/'+service, width: '60%', height: '60%'});
+                    ReactDOM.render(_this.popup, document.getElementById('popup'));
+
                     return _this.setState({ unitedStates: [] });
                 },
                 onChange: function (event, value) {
+                    if(typeof _this.popup !== 'undefined') {
+                        _this.popup = React.createElement(AppIframe, {url: '', hide: true});
+                        ReactDOM.render(_this.popup, document.getElementById('popup'));
+                    }
 //                    console.log('app-autocomplete.js onChange(): value [' + value + ']');
                     _this.setState({ loading: true });
                     fakeRequest(value, function (items) {

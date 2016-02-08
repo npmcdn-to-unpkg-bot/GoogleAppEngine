@@ -72,6 +72,8 @@ OWASP Notes:
 
 Other Useful Resources:
 
+https://github.com/rackt/react-autocomplete/blob/master/examples/custom-menu/app.js
+
 https://milligram.github.io/
 
 https://github.com/angular-ui/ui-router/wiki/URL-Routing
@@ -95,6 +97,10 @@ http://tablestrap.com/
 http://sssslide.com/speakerdeck.com/btholt/falcorjs-and-react
 
 http://www.infoq.com/news/2015/08/falcor
+
+http://stackoverflow.com/questions/34658260/iframe-border-showing-in-webview-react-native
+
+https://github.com/svenanders/react-iframe/blob/master/dist/react-iframe.min.js
 
 React.js Conf 2015 - The complementarity of React and Web Components
 https://www.youtube.com/watch?v=g0TD0efcwVg
