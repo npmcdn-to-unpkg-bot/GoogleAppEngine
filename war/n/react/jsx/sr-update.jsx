@@ -166,8 +166,9 @@ var SRUpdate = React.createClass({
                                 if(data.obj && data.obj.id == component.state.id) {
                                     component.saveNow(component); //if it is the current item we are editing, it is fine to save! :)
                                 } else {
-                                    status = 'service [' + component.state.service + '] exists!';
-                                    alert(status);
+                                    //status = 'service [' + component.state.service + '] exists!';
+                                    //alert(status);
+                                    component.replaceItem(component, data.obj);
                                 }
                             }
                         } else {
@@ -199,6 +200,28 @@ var SRUpdate = React.createClass({
             // You can disable the form submission this way:
             return false
         }
+    },
+    replaceItem: function (component, json) {
+        swagger.sr.existsSR_service({service: component.state.service}, {responseContentType: 'application/json'}, function(data) {
+            console.log(data.obj);
+            if(data.obj && typeof data !== 'undefined' && typeof data.obj !== 'undefined') {
+                if(data.obj && data.obj.service != component.state.service) {
+                    //hmm...
+                } else {
+                    //yes or no?
+                    if(confirm('Replace the current item? If you choose Ok, you will loose the changes if any!')) {
+                        //replace it with the one found if yes
+                        component.state.id = json.id;
+                        component.state.service = json.service;
+                        component.state.summary = json.summary;
+                        component.state.desc = json.description;
+                        component.state.endpoint = json.endpoint;
+                    }
+                }
+            } else {
+                component.saveNow(component);
+            }
+        });
     },
     deleteItem: function() {
         var component = this;

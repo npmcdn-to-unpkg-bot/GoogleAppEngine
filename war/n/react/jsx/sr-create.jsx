@@ -17,8 +17,13 @@ var SRCreate = React.createClass({
                         if(data.obj && data.obj.service != component.state.service) {
                             //hmm...
                         } else {
-                            status = 'service [' + component.state.service + '] exists!';
-                            alert(status);
+                            if(typeof data.obj !== 'undefined' && data.obj.id == component.state.id) {
+                                component.saveNow(component); //if it is the current item we are editing, it is fine to save! :)
+                            } else {
+                                //status = 'service [' + component.state.service + '] exists!';
+                                //alert(status);
+                                component.replaceItem(component, data.obj);
+                            }
                         }
                     } else {
                         console.log('createItem() unknown error!');
