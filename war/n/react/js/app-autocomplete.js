@@ -23,7 +23,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 var AppAutocomplete = React.createClass({
     displayName: 'App',
 
-    getInitialState: function getInitialState() {
+    getInitialState: function() {
         return {
             unitedStates: getStates(),
             loading: false
@@ -57,7 +57,6 @@ var AppAutocomplete = React.createClass({
                         _this.popup = React.createElement(AppIframe, {url: '', hide: true});
                         ReactDOM.render(_this.popup, document.getElementById('popup'));
                     }
-//                    console.log('app-autocomplete.js onChange(): value [' + value + ']');
                     _this.setState({ loading: true });
                     fakeRequest(value, function (items) {
                         _this.setState({ unitedStates: items, loading: false });
@@ -145,6 +144,10 @@ function getES(term) {
                 }, []);
             }
         });
+    } else {
+        searchedResults = [];
+        arr = [];
+        r = {};
     }
 }
 
