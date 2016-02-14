@@ -11,3 +11,7 @@ git checkout war/WEB-INF/web.xml
 git checkout .idea/workspace.xml
 
 git checkout war/WEB-INF/appengine-web.xml
+
+git checkout .idea/misc.xml
+
+git checkout .idea/modules.xml
