@@ -18,8 +18,11 @@ import com.appspot.cloudserviceapi.common.Constants;
 import com.appspot.cloudserviceapi.common.SettingsDBUtils;
 import com.appspot.cloudserviceapi.common.StringUtil;
 import com.appspot.cloudserviceapi.data.ServiceRegistryUtil;
+import com.appspot.cloudserviceapi.data.URLCategory;
 import com.appspot.cloudserviceapi.sci.dao.ServiceRegistryDAO;
 import com.appspot.cloudserviceapi.sci.dao.ServiceRegistryRepository;
+
+import app.common.DalekUtils;
 
 @SuppressWarnings("serial")
 public class ServiceRegistryServlet extends HttpServlet {
@@ -213,14 +216,15 @@ public class ServiceRegistryServlet extends HttpServlet {
 						} else {
 //							resp = endPoint + System.getProperty("line.separator") + description;
 						}
-//						resp = description.substring(1, description.length());	//TBD - temporary solution, until the char is known
-						//resp = StringUtil.safeString(description);
+						if(sr.getCategory() != null && sr.getCategory() == URLCategory.DALEKJS) {
+							DalekUtils d = new DalekUtils();
+							resp = DalekUtils.header + d.parse(description) + DalekUtils.footer;
+						} else
 						if(request.getParameter("xray") != null) {
 							resp = StringUtil.toASCIICode(description);
-						} if(request.getParameter("xml") != null) {
+						} else
+						if(request.getParameter("xml") != null) {
 							resp = description.substring(1, description.length());	//TBD - temporary solution, until the char is filtered properly
-//							resp = description.replaceAll("\u00A0", "");	//remove control character 160 10 in XML for ckeditor
-//							resp = description.trim();
 						} else {
 							resp = description.trim();
 						}

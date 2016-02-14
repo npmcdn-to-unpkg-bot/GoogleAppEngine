@@ -7,6 +7,7 @@ public enum URLCategory {
 	INCOMING, /* could be used as a graph relationship - unidirectional */
 	OUTGOING, /* could be used as a graph relationship - unidirectional */
 	SCIENCE, BUSINESS, WORLD, SPORTS, ENTERTAINMENT, HEALTH, POLITICS, SOCIETY,
-	GOVERNMENT, CODE, AUDIO, VIDEO, IMAGE, GAME
+	GOVERNMENT, CODE, AUDIO, VIDEO, IMAGE, GAME,
+	DALEKJS, PROTRACTOR
 
 }
