@@ -23,6 +23,7 @@ import com.appspot.cloudserviceapi.sci.dao.ServiceRegistryDAO;
 import com.appspot.cloudserviceapi.sci.dao.ServiceRegistryRepository;
 
 import app.common.DalekUtils;
+import app.common.ProtractorUtils;
 
 @SuppressWarnings("serial")
 public class ServiceRegistryServlet extends HttpServlet {
@@ -198,6 +199,11 @@ public class ServiceRegistryServlet extends HttpServlet {
 						} else {
 							ServiceRegistryUtil.countHit(sr, r, request, hitCountEnabled);
 							resp = firstRedirectedSR.getDescription();	//returns the description content
+							
+							if(resp != null) {
+								resp = handleTestScripts(sr.getCategory(), firstRedirectedSR);
+							}
+							
 							response.getWriter().print(resp.trim());
 						}
 						//=== end - support getting the content of the redirected service!!!
@@ -216,9 +222,8 @@ public class ServiceRegistryServlet extends HttpServlet {
 						} else {
 //							resp = endPoint + System.getProperty("line.separator") + description;
 						}
-						if(sr.getCategory() != null && sr.getCategory() == URLCategory.DALEKJS) {
-							DalekUtils d = new DalekUtils();
-							resp = DalekUtils.header + d.parse(description) + DalekUtils.footer;
+						if(sr.getCategory() != null) {
+							resp = handleTestScripts(sr.getCategory(), sr);
 						} else
 						if(request.getParameter("xray") != null) {
 							resp = StringUtil.toASCIICode(description);
@@ -272,6 +277,22 @@ public class ServiceRegistryServlet extends HttpServlet {
 			resp = "";	//"<html>Service must be specified with request parameter \"s\". [" + serviceName + "]</html>";
 			response.getWriter().println(resp);
 		}
+	}
+
+	private String handleTestScripts(URLCategory type, ServiceRegistry sr) {
+		String resp = sr.getDescription();
+		if(type == URLCategory.DALEKJS) {
+			DalekUtils d = new DalekUtils();
+			resp = DalekUtils.header + d.parse(resp) + DalekUtils.footer;
+		} else
+		if(type == URLCategory.PROTRACTOR) {
+			ProtractorUtils p = new ProtractorUtils();
+			resp = ProtractorUtils.header + p.parse(resp) + ProtractorUtils.footer;
+		} else {
+			//TODO do I need to serve here -- could be buggy here!!!
+		}
+	
+		return resp;
 	}
 
 	private ServiceRegistry handleRedirectedService(String serviceName, ServiceRegistryDAO r) throws Exception {

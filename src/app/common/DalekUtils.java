@@ -102,22 +102,23 @@ public class DalekUtils {
 	public static void main(String[] args) {
 		DalekUtils d = new DalekUtils();
 		String host = "https://chudoon3t.appspot.com";
-		String s = "open https://chudoon3t.appspot.com/n\n"+
-					"waitForPageToLoad\n"+
-					"\n"+
-					"waitForElementPresent css=input[type=\"text\"]\n"+
-					"click css=input[type=\"text\"]\n"+
-					"waitForPageToLoad				\n";
-//		"open " + host + "/n" + "\n" +
-//		"\n" +
-//		"type css=input[type=\"text\"] test" + "\n" +
-//		"\n" +
-//		"type css=input[type=\"password\"] test1234" + "\n" +
-//		"\n" +
-//		"click css=input[type=\"submit\"]" + "\n" +
-//		"\n" +
-//		"waitForElementPresent css=a.pull-right" + "\n" +
-//		"assertText css=input[type=\"submit\"] *Login*";
+		String s = 
+//				"open https://chudoon3t.appspot.com/n\n"+
+//					"waitForPageToLoad\n"+
+//					"\n"+
+//					"waitForElementPresent css=input[type=\"text\"]\n"+
+//					"click css=input[type=\"text\"]\n"+
+//					"waitForPageToLoad				\n";
+		"open " + host + "/n" + "\n" +
+		"\n" +
+		"type css=input[type=\"text\"] test" + "\n" +
+		"\n" +
+		"type css=input[type=\"password\"] test1234" + "\n" +
+		"\n" +
+		"click css=input[type=\"submit\"]" + "\n" +
+		"\n" +
+		"waitForElementPresent css=a.pull-right" + "\n" +
+		"assertText css=input[type=\"submit\"] *Login*";
 		String finalScript = null;
 		finalScript = DalekUtils.header + d.parse(s) + DalekUtils.footer;
 //		System.out.print("finalScript = [");
