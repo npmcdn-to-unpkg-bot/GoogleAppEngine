@@ -9,16 +9,16 @@ public class DalekUtils {
 	public static boolean debug = true;
 //	public static boolean debug = false;
 	
-	public static String header = "var u = require('./l.js');"+
-"var multipleBackspaces = '\uE023' + (new Array(500).join('\uE003'));"+
-"module.exports = {"+
-"        'DalekJS Hi Res Test for cdecurate': function (test) {";
+	public static String header = "var u = require('./l.js');"+ "\n" +
+"var multipleBackspaces = '\uE023' + (new Array(500).join('\uE003'));"+ "\n" +
+"module.exports = {"+ "\n" +
+"        'DalekJS Hi Res Test for cdecurate': function (test) {"+ "\n";
 
-	public static String footer = ".done();"+
-"        }"+
+	public static String footer = ".done();"+ "\n" +
+"        }"+ "\n" +
 "};";
 
-	public String toScript(String v) {
+	private String toScript(String v) {
 		StringBuffer sb = new StringBuffer();
 		if(!StringUtils.isEmpty(v)) {
 			String cmd = null; String sel = null; String val = null;
@@ -50,7 +50,10 @@ public class DalekUtils {
 					cmd = cmd.replaceAll("click", ".click('{{}}')");
 				} else
 				if(cmd.equals("waitForElementPresent")) {
-					cmd = cmd.replaceAll("waitForElementPresent", ".wait(5000)");
+					cmd = cmd.replaceAll("waitForElementPresent", ".wait(1000)");
+				} else
+				if(cmd.equals("pause")) {
+					cmd = cmd.replaceAll("pause", ".wait({{}})");
 				} else
 				if(cmd.equals("assertText")) {
 					cmd = cmd.replaceAll("assertText", ".assert.attr('{{}}', 'value', '{{text}}')");
@@ -90,8 +93,9 @@ public class DalekUtils {
 				if(debug) {
 					System.out.println(t1);
 				}
-				if(t1 != null && t1.trim() != "" && t1.trim().length() > 1 && t1.trim().indexOf("//") > 0) {
-					sb.append(t1).append("\n\n");
+				sb.append(t1);
+				if(t1 != null && t1.trim() != "" && t1.trim().length() > 1 || t1.trim().indexOf("//") == 0) {
+					sb.append("\n");
 				}
 			}
 
