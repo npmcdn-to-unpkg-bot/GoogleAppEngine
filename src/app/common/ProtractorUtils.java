@@ -26,7 +26,8 @@ public class ProtractorUtils {
 	public String toScript(String v) {
 		StringBuffer sb = new StringBuffer();
 		if(!StringUtils.isEmpty(v)) {
-			String cmd = null; String sel = null; String val = null;
+			String cmd = null; String sel = null; String val = "";
+			v = TestScriptHelper.encodeSelector(v);
 			StringTokenizer st = new java.util.StringTokenizer (v, " \t");
 			while (st.hasMoreElements()) {
 				cmd = (String) st.nextElement();
@@ -39,7 +40,9 @@ public class ProtractorUtils {
 					sel = (String) st.nextElement();
 					sel = sel.replaceAll("css=", "");
 					sel = sel.trim();
-					val = (String) st.nextElement();
+					while (st.hasMoreElements()) {					
+						val += (String) st.nextElement() + " ";
+					}
 					val = val.trim();
 				} catch (Exception e) {
 					//e.printStackTrace();	//TODO bad we know!
