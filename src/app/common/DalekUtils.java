@@ -27,8 +27,8 @@ public class DalekUtils {
 				cmd = (String) st.nextElement();
 				cmd = cmd.trim();
 
-				if(cmd == null || cmd.trim().length() < 2) {
-					continue;	//if anything not supported, ignore it!
+				if(cmd == null || cmd.trim().length() < 2 || cmd.trim().indexOf("//") == 0) {
+					continue;	//if anything not supported or a comment, ignore it!
 				}
 				try {
 					sel = (String) st.nextElement();
@@ -90,7 +90,9 @@ public class DalekUtils {
 				if(debug) {
 					System.out.println(t1);
 				}
-				sb.append(t1).append("\n\n");
+				if(t1 != null && t1.trim() != "" && t1.trim().length() > 1 && t1.trim().indexOf("//") > 0) {
+					sb.append(t1).append("\n\n");
+				}
 			}
 
 		}
