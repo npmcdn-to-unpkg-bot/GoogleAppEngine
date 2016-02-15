@@ -6,6 +6,9 @@ import org.datanucleus.util.StringUtils;
 
 public class DalekUtils {
 
+	public static boolean debug = true;
+//	public static boolean debug = false;
+	
 	public static String header = "var u = require('./l.js');"+
 "var multipleBackspaces = '\uE023' + (new Array(500).join('\uE003'));"+
 "module.exports = {"+
@@ -19,20 +22,29 @@ public class DalekUtils {
 		StringBuffer sb = new StringBuffer();
 		if(!StringUtils.isEmpty(v)) {
 			String cmd = null; String sel = null; String val = null;
-			StringTokenizer st = new java.util.StringTokenizer (v, " ");
+			StringTokenizer st = new java.util.StringTokenizer (v, " \t");
 			while (st.hasMoreElements()) {
 				cmd = (String) st.nextElement();
+				cmd = cmd.trim();
+
+				if(cmd == null || cmd.trim().length() < 2) {
+					continue;	//if anything not supported, ignore it!
+				}
 				try {
 					sel = (String) st.nextElement();
 					sel = sel.replaceAll("css=", "");
+					sel = sel.trim();
 					val = (String) st.nextElement();
+					val = val.trim();
 				} catch (Exception e) {
 					//e.printStackTrace();	//TODO bad we know!
 				}
 				//=== parse command first
 				if(cmd.equals("open")) {
 					cmd = cmd.replaceAll("open", ";test.open('{{}}').resize({width: 1216, height: 935})");
-					cmd = cmd.replaceAll("\\{\\{\\}\\}", sel);
+					if(sel != null) {
+						cmd = cmd.replaceAll("\\{\\{\\}\\}", sel);
+					}
 				} else
 				if(cmd.equals("click")) {
 					cmd = cmd.replaceAll("click", ".click('{{}}')");
@@ -45,10 +57,17 @@ public class DalekUtils {
 				} else
 				if(cmd.equals("type")) {
 					cmd = cmd.replaceAll("type", ".waitForElement('{{}}', 32000).type('{{}}', '{{text}}')");
+				} else {
+					continue;	//if anything not supported, ignore it!
 				}
+				
 				//=== process command interpolation
-				cmd = cmd.replaceAll("\\{\\{\\}\\}", sel);
-				cmd = cmd.replaceAll("\\{\\{text\\}\\}", val);
+				if(sel != null) {
+					cmd = cmd.replaceAll("\\{\\{\\}\\}", sel);
+				}
+				if(val != null) {
+					cmd = cmd.replaceAll("\\{\\{text\\}\\}", val);
+				}
 				
 				sb.append(cmd);
 			}
@@ -63,10 +82,14 @@ public class DalekUtils {
 			StringTokenizer st = new java.util.StringTokenizer (seleniumString, "\t\n", true);
 			while (st.hasMoreElements()) {
 				t = (String) st.nextElement();
-//				System.out.print(t);
-//				System.out.print(" ---> ");
+				if(debug) {
+					System.out.print(t);
+					System.out.print(" ---> ");
+				}
 				t1 = toScript(t);
-//				System.out.println(t1);
+				if(debug) {
+					System.out.println(t1);
+				}
 				sb.append(t1).append("\n\n");
 			}
 
@@ -77,12 +100,22 @@ public class DalekUtils {
 	public static void main(String[] args) {
 		DalekUtils d = new DalekUtils();
 		String host = "https://chudoon3t.appspot.com";
-		String s = "open " + host + "/n" + "\n" +
-		"type css=input[type=\"text\"] test" + "\n" +
-		"type css=input[type=\"password\"] test1234" + "\n" +
-		"click css=input[type=\"submit\"]" + "\n" +
-		"waitForElementPresent css=a.pull-right" + "\n" +
-		"assertText css=input[type=\"submit\"] *Login*";
+		String s = "open https://chudoon3t.appspot.com/n\n"+
+					"waitForPageToLoad\n"+
+					"\n"+
+					"waitForElementPresent css=input[type=\"text\"]\n"+
+					"click css=input[type=\"text\"]\n"+
+					"waitForPageToLoad				\n";
+//		"open " + host + "/n" + "\n" +
+//		"\n" +
+//		"type css=input[type=\"text\"] test" + "\n" +
+//		"\n" +
+//		"type css=input[type=\"password\"] test1234" + "\n" +
+//		"\n" +
+//		"click css=input[type=\"submit\"]" + "\n" +
+//		"\n" +
+//		"waitForElementPresent css=a.pull-right" + "\n" +
+//		"assertText css=input[type=\"submit\"] *Login*";
 		String finalScript = null;
 		finalScript = DalekUtils.header + d.parse(s) + DalekUtils.footer;
 //		System.out.print("finalScript = [");
