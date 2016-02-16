@@ -1,15 +1,19 @@
 package app.common;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.StringTokenizer;
 
 import org.datanucleus.util.StringUtils;
 
+import com.appspot.cloudserviceapi.common.RemoveHTMLReader;
 import com.appspot.cloudserviceapi.common.StringUtil;
 
 public class DalekUtils {
 
-	public static boolean debug = true;
-//	public static boolean debug = false;
+//	public static boolean debug = true;
+	public static boolean debug = false;
 	
 	public static String header = "var u = require('./l.js');"+ "\n" +
 "var multipleBackspaces = '\uE023' + (new Array(500).join('\uE003'));"+ "\n" +
@@ -20,7 +24,7 @@ public class DalekUtils {
 "        }"+ "\n" +
 "};";
 
-	private String toScript(String v) {
+	public String toScript(String v) {
 		StringBuffer sb = new StringBuffer();
 		if(!StringUtils.isEmpty(v)) {
 			String cmd = null; String sel = null; String val = "";
@@ -148,9 +152,31 @@ public class DalekUtils {
 		"assertText css=input[type=\"submit\"] exact:*Exact String - * should be kept*" + "\n" +
 		"assertText css=input[type=\"submit\"] *Login*";
 		String finalScript = null;
-		finalScript = DalekUtils.header + d.parse(s) + DalekUtils.footer;
-//		System.out.print("finalScript = [");
+//		finalScript = DalekUtils.header + d.parse(s) + DalekUtils.footer;
+//		System.out.print(finalScript);
+		
+		BufferedReader in;
+		StringBuffer sb = new StringBuffer();
+		try {
+			String t1 = null;
+			in = new BufferedReader(new FileReader(System.getProperty("user.dir") + 
+//					"/src/app/common/sele_ci.txt"
+				"/src/app/common/sele_ui.txt"
+//					"/src/app/common/sele_di.txt"
+			));
+			// Read line by line, printing lines to the console
+			String line;
+			while ((line = in.readLine()) != null) {
+				t1 = d.toScript(line) + "\n";
+				//System.out.println(t1);
+				sb.append(t1);
+			}
+			in.close(); // Close the stream.
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finalScript = DalekUtils.header + sb.toString() + DalekUtils.footer;
 		System.out.print(finalScript);
-//		System.out.println("]");
 	}
 }
