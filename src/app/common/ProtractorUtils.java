@@ -76,6 +76,10 @@ public class ProtractorUtils {
 					cmd = cmd.replaceAll("\\{\\{\\}\\}", sel);
 				}
 				if(val != null) {
+					if(val.trim().indexOf("exact:") == -1) {
+						//=== remove all selenium wildcard characters if it is not an exact match (that might include * as part of the value itself)
+						val = val.replaceAll("\\*", "");
+					}
 					cmd = cmd.replaceAll("\\{\\{text\\}\\}", val);
 				}
 				
@@ -100,8 +104,9 @@ public class ProtractorUtils {
 				if(debug) {
 					System.out.println(t1);
 				}
-				if(t1 != null && t1.trim() != "" && t1.trim().length() > 1 && t1.trim().indexOf("//") > 0) {
-					sb.append(t1).append("\n\n");
+				sb.append(t1);
+				if(t1 != null && t1.trim() != "" && t1.trim().length() > 1 || t1.trim().indexOf("//") == 0) {
+					sb.append("\n");
 				}
 			}
 
@@ -128,6 +133,7 @@ public class ProtractorUtils {
 		"click css=input[type=\"submit\"]" + "\n" +
 		"\n" +
 		"waitForElementPresent css=a.pull-right" + "\n" +
+		"assertText css=input[type=\"submit\"] exact:*Exact String - * should be kept*" + "\n" +
 		"assertText css=input[type=\"submit\"] *Login*";
 		String finalScript = null;
 		finalScript = ProtractorUtils.header + p.parse(s) + ProtractorUtils.footer;
