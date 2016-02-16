@@ -72,6 +72,10 @@ public class DalekUtils {
 					cmd = cmd.replaceAll("\\{\\{\\}\\}", sel);
 				}
 				if(val != null) {
+					if(val.trim().indexOf("exact:") == -1) {
+						//=== remove all selenium wildcard characters if it is not an exact match (that might include * as part of the value itself)
+						val = val.replaceAll("\\*", "");
+					}
 					cmd = cmd.replaceAll("\\{\\{text\\}\\}", val);
 				}
 				
@@ -125,6 +129,7 @@ public class DalekUtils {
 		"click css=input[type=\"submit\"]" + "\n" +
 		"\n" +
 		"waitForElementPresent css=a.pull-right" + "\n" +
+		"assertText css=input[type=\"submit\"] exact:*Exact String - * should be kept*" + "\n" +
 		"assertText css=input[type=\"submit\"] *Login*";
 		String finalScript = null;
 		finalScript = DalekUtils.header + d.parse(s) + DalekUtils.footer;
