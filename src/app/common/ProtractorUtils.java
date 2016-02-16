@@ -65,10 +65,10 @@ public class ProtractorUtils {
 				if(cmd.equals("pause")) {
 					if(!StringUtils.isEmpty(sel) && StringUtil.isNumber(sel)) {
 						if(Integer.valueOf(sel).intValue() == 0) {
-							cmd = cmd.replaceAll("pause", "browser.switchTo().alert().dismiss();");
+							cmd = cmd.replaceAll("pause", "browser.sleep(3000);browser.switchTo().alert().dismiss();");
 						} else
 						if(Integer.valueOf(sel).intValue() == 1) {
-							cmd = cmd.replaceAll("pause", "browser.switchTo().alert().accept();");
+							cmd = cmd.replaceAll("pause", "browser.sleep(3000);browser.switchTo().alert().accept();");
 						} else {
 							cmd = cmd.replaceAll("pause", "browser.sleep({{}});");
 						}
