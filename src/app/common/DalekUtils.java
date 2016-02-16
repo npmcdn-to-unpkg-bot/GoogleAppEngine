@@ -4,6 +4,8 @@ import java.util.StringTokenizer;
 
 import org.datanucleus.util.StringUtils;
 
+import com.appspot.cloudserviceapi.common.StringUtil;
+
 public class DalekUtils {
 
 	public static boolean debug = true;
@@ -56,10 +58,23 @@ public class DalekUtils {
 					cmd = cmd.replaceAll("waitForElementPresent", ".wait(1000)");
 				} else
 				if(cmd.equals("pause")) {
-					cmd = cmd.replaceAll("pause", ".wait({{}})");
+					if(!StringUtils.isEmpty(sel) && StringUtil.isNumber(sel)) {
+						if(Integer.valueOf(sel).intValue() == 0) {
+							cmd = cmd.replaceAll("pause", ".dismiss()");
+						} else
+						if(Integer.valueOf(sel).intValue() == 1) {
+							cmd = cmd.replaceAll("pause", ".accept()");
+						} else {
+							cmd = cmd.replaceAll("pause", ".wait({{}})");
+						}
+					}
 				} else
 				if(cmd.equals("assertText")) {
-					cmd = cmd.replaceAll("assertText", ".assert.attr('{{}}', 'value', '{{text}}')");
+					cmd = cmd.replaceAll("assertText", 
+							".assert.attr('{{}}', 'value', '{{text}}')" + "\n" +
+							"// .assert.exists('{{}}').to.contain('{{text}}', '{{msg}}')" + "\n" +
+							"// .assert.title().is('{{text}}')"
+					);
 				} else
 				if(cmd.equals("type")) {
 					cmd = cmd.replaceAll("type", ".waitForElement('{{}}', 32000).type('{{}}', '{{text}}')");
@@ -128,6 +143,7 @@ public class DalekUtils {
 		"\n" +
 		"click css=input[type=\"submit\"]" + "\n" +
 		"\n" +
+		"pause 1" + "\n" +
 		"waitForElementPresent css=a.pull-right" + "\n" +
 		"assertText css=input[type=\"submit\"] exact:*Exact String - * should be kept*" + "\n" +
 		"assertText css=input[type=\"submit\"] *Login*";

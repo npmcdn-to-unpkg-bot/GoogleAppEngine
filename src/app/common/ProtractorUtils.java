@@ -4,6 +4,8 @@ import java.util.StringTokenizer;
 
 import org.datanucleus.util.StringUtils;
 
+import com.appspot.cloudserviceapi.common.StringUtil;
+
 public class ProtractorUtils {
 
 	public static boolean debug = true;
@@ -60,9 +62,36 @@ public class ProtractorUtils {
 				if(cmd.equals("waitForElementPresent")) {
 					cmd = cmd.replaceAll("waitForElementPresent", "browser.sleep(5000);");
 				} else
+				if(cmd.equals("pause")) {
+					if(!StringUtils.isEmpty(sel) && StringUtil.isNumber(sel)) {
+						if(Integer.valueOf(sel).intValue() == 0) {
+							cmd = cmd.replaceAll("pause", "browser.switchTo().alert().dismiss();");
+						} else
+						if(Integer.valueOf(sel).intValue() == 1) {
+							cmd = cmd.replaceAll("pause", "browser.switchTo().alert().accept();");
+						} else {
+							cmd = cmd.replaceAll("pause", "browser.sleep({{}});");
+						}
+					}
+				} else
 				if(cmd.equals("assertText")) {
 					cmd = cmd.replaceAll("assertText", "it('assert: has text', function () {" + "\n" +
-						"expect(element(by.cssContainingText('body', '{{text}}')).getText()).toContain('{{text}}');});" + "\n" +
+						"	expect(element(by.cssContainingText('body', '{{text}}')).getText()).toContain('{{text}}');" + "\n" +
+						"	console.log('assert: has text done');" + "\n" +
+						"});" + "\n" +
+						"/*" + "\n" +
+						"it('assert: has text input', function () {"+ "\n" +
+						"	expect(element(by.css('{{}}')).isPresent()).toBe(true);"+ "\n" +
+						"	expect(element(by.css('{{}}')).getAttribute('value')).toBe('{{text}}');"+ "\n" +
+						"	console.log('assert: has text input done');" + "\n" +
+						"});" + "\n" +
+						"*/" + "\n" +
+						"/*" + "\n" +
+						"it('assert: window title', function () {" + "\n" +
+						"	expect(browser.driver.getTitle()).toBe('{{text}}');" + "\n" +
+						"	console.log('assert: window title done');" + "\n" +
+						"});" + "\n" +
+						"*/" + "\n" +
 						"});");
 				} else
 				if(cmd.equals("type")) {
