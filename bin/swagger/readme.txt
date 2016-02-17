@@ -47,4 +47,6 @@ Jar files (13 files as at version 1.5.4 of Swagger-Servlet):
 
 Source: https://github.com/swagger-api/swagger-core
 
-11/11/2015 11.41 am ET
+Swagger Wiki: https://github.com/swagger-api/swagger-core/wiki/Annotations-1.5.X
+
+2/17/2016 7.02 am ET
