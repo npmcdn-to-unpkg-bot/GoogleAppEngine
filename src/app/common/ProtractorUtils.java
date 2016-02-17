@@ -25,6 +25,8 @@ public class ProtractorUtils {
 				"        }" + "\n" +
 				"};";
 
+	private String firstLine = "";
+
 	public String toScript(String v) {
 		StringBuffer sb = new StringBuffer();
 		if(!StringUtils.isEmpty(v)) {
@@ -121,10 +123,15 @@ public class ProtractorUtils {
 	public String parse(String seleniumString) {
 		StringBuffer sb = new StringBuffer();
 		if(!StringUtils.isEmpty(seleniumString)) {
+			long lineNotIgnored = 0;
 			String t = null; String t1 = null;
 			StringTokenizer st = new java.util.StringTokenizer (seleniumString, "\t\n", true);
 			while (st.hasMoreElements()) {
 				t = (String) st.nextElement();
+				if(!StringUtils.isEmpty(t.trim()) && lineNotIgnored == 0) {
+					firstLine = t;
+					lineNotIgnored++;
+				}
 				if(debug) {
 					System.out.print(t);
 					System.out.print(" ---> ");
@@ -169,5 +176,10 @@ public class ProtractorUtils {
 //		System.out.print("finalScript = [");
 		System.out.print(finalScript);
 //		System.out.println("]");
+	}
+
+	public String getFirstLine() {
+		// TODO Auto-generated method stub
+		return "{{}}";
 	}
 }

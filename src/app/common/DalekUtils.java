@@ -18,11 +18,17 @@ public class DalekUtils {
 	public static String header = "var u = require('./l.js');"+ "\n" +
 "var multipleBackspaces = '\uE023' + (new Array(500).join('\uE003'));"+ "\n" +
 "module.exports = {"+ "\n" +
-"        'DalekJS Hi Res Test for cdecurate': function (test) {"+ "\n";
+"        'DalekJS E2E Test for {{}}': function (test) {"+ "\n";
 
 	public static String footer = ".done();"+ "\n" +
 "        }"+ "\n" +
 "};";
+
+	private String firstLine = "";
+
+	public String getFirstLine() {
+		return firstLine;
+	}
 
 	public String toScript(String v) {
 		StringBuffer sb = new StringBuffer();
@@ -76,6 +82,7 @@ public class DalekUtils {
 				if(cmd.equals("assertText")) {
 					cmd = cmd.replaceAll("assertText", 
 							".assert.attr('{{}}', 'value', '{{text}}')" + "\n" +
+							"// .assert.exists('{{}}').to.be(true, '{{msg}}')" + "\n" +
 							"// .assert.exists('{{}}').to.contain('{{text}}', '{{msg}}')" + "\n" +
 							"// .assert.title().is('{{text}}')"
 					);
@@ -107,10 +114,15 @@ public class DalekUtils {
 	public String parse(String seleniumString) {
 		StringBuffer sb = new StringBuffer();
 		if(!StringUtils.isEmpty(seleniumString)) {
+			long lineNotIgnored = 0;
 			String t = null; String t1 = null;
 			StringTokenizer st = new java.util.StringTokenizer (seleniumString, "\t\n", true);
 			while (st.hasMoreElements()) {
 				t = (String) st.nextElement();
+				if(!StringUtils.isEmpty(t.trim()) && lineNotIgnored == 0) {
+					firstLine = t;
+					lineNotIgnored++;
+				}
 				if(debug) {
 					System.out.print(t);
 					System.out.print(" ---> ");
@@ -167,16 +179,20 @@ public class DalekUtils {
 			// Read line by line, printing lines to the console
 			String line;
 			while ((line = in.readLine()) != null) {
-				t1 = d.toScript(line) + "\n";
+//				t1 = d.toScript(line);
+				t1 = line;
 				//System.out.println(t1);
-				sb.append(t1);
+				sb.append(t1).append("\n");
 			}
 			in.close(); // Close the stream.
+			String temp = d.parse(sb.toString());
+			String f = d.getFirstLine();
+			finalScript = DalekUtils.header.replaceAll("\\{\\{\\}\\}", f) + temp + DalekUtils.footer;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		finalScript = DalekUtils.header + sb.toString() + DalekUtils.footer;
+//		finalScript = DalekUtils.header + sb.toString() + DalekUtils.footer;
 		System.out.print(finalScript);
 	}
 }
