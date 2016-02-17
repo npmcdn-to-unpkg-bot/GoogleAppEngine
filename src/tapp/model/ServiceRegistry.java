@@ -1,6 +1,7 @@
 package tapp.model;
 
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -27,46 +28,67 @@ import com.google.appengine.api.datastore.Text;
 @Entity
 public class ServiceRegistry implements Cloneable, Serializable {
 
+	@ApiModelProperty(value = "unique id", required = false)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @SearchableId(name = "id")
 	private Long id;
+	@ApiModelProperty(value = "last updated date", required = false)
     @SearchableProperty
 	private Date lastUpdated;	//updated by admin generally
+	@ApiModelProperty(value = "last accessed date", required = false)
     @SearchableProperty
 	private Date lastAccessed;	//updated by hit count/client access
+	@ApiModelProperty(value = "categories", allowableValues = "TECHNOLOGY, RELATIONSHIP, INCOMING, OUTGOING, SCIENCE, BUSINESS, WORLD, SPORTS, ENTERTAINMENT, HEALTH, POLITICS, SOCIETY, GOVERNMENT, CODE, AUDIO, VIDEO, IMAGE, GAME, DALEKJS, PROTRACTOR", required = true)
+	//@JsonProperty(value = "enum", required = false)
     @SearchableProperty
 	private URLCategory category;
+	@ApiModelProperty(value = "service id, unique and primary", required = false)
     @SearchableProperty
 	private String service;
+	@ApiModelProperty(value = "owner name", required = false)
     @SearchableProperty
 	private String owner;
+	@ApiModelProperty(value = "project id", required = false)
     @SearchableProperty
 	private String project;
+	@ApiModelProperty(value = "organization id", required = false)
     @SearchableProperty
 	private String organization;
+	@ApiModelProperty(value = "url", required = true)
     @SearchableProperty
 	private String endpoint;
+	@ApiModelProperty(value = "summary", required = false)
     @SearchableProperty //@SearchableMetaData(name = "summary1")
 	private String summary;
+	@ApiModelProperty(value = "short url", required = false)
     @SearchableProperty
     private String shortUrl;
+	@ApiModelProperty(value = "general purpose count", required = false)
     @SearchableProperty
     private Long number;
+	@ApiModelProperty(value = "hit count", required = false)
     @SearchableProperty
     private Long hit = -1L;
 
+	@ApiModelProperty(value = "description", required = false)
     @SearchableProperty
     @Transient
 	private String description;
+	@ApiModelProperty(value = "description (rich text)", required = false)
 //    @SearchableProperty	//org.compass.core.mapping.MappingException: No converter defined for type [com.google.appengine.api.datastore.Text] and getter DirectGetter(tapp.model.ServiceRegistry.descriptionText)
     @Basic(fetch=FetchType.EAGER)
     private Text descriptionText;
 
+	@ApiModelProperty(value = "enabled/disabled flag", required = false)
     private Boolean disabled = false;
+	@ApiModelProperty(value = "use the description instead of the url field as output", required = false)
     private Boolean useDescription = false;		//returns the description field instead of endpoint
+	@ApiModelProperty(value = "save and display description as html", required = false)
     private Boolean useHtml = true;	//returns the endpoint as html content type/to be saved in rich text/html format
+	@ApiModelProperty(value = "save only flag", required = false)
     private Boolean saveOnly = false;	//stays if the saveOnly is true
+	@ApiModelProperty(value = "owner id", required = false)
     private String oid;	//owner's id
 
 	public String getOid() {

@@ -45,4 +45,6 @@ Jar files (13 files as at version 1.5.4 of Swagger-Servlet):
 	new file:   war/WEB-INF/lib/swagger-models-1.5.5-SNAPSHOT.jar
 	new file:   war/WEB-INF/lib/swagger-servlet-1.5.5-SNAPSHOT.jar
 
+Source: https://github.com/swagger-api/swagger-core
+
 11/11/2015 11.41 am ET
