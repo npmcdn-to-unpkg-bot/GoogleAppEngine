@@ -7,10 +7,16 @@ var SRUpdate = React.createClass({
             if (typeof props[propName] !== 'undefined' && !component.isURL(props[propName])) {
                 return new Error('Invalid URL!');
             }
-        }
-        //gender: React.PropTypes.oneOf(['M','F','NA']),
-        //node: React.PropTypes.node,
-        //cb: React.PropTypes.func.isRequired
+        },
+        category: React.PropTypes.oneOf(this.getCategories),
+        useDescription: React.PropTypes.bool,
+        useHtml: React.PropTypes.bool,
+        hit: React.PropTypes.number,
+        disabled: React.PropTypes.bool
+    },
+    getCategories: function() {
+        return ['TECHNOLOGY','RELATIONSHIP','INCOMING','OUTGOING','SCIENCE','BUSINESS','WORLD','SPORTS','ENTERTAINMENT','HEALTH','POLITICS','SOCIETY','GOVERNMENT','CODE','AUDIO','VIDEO',
+            'IMAGE','GAME','DALEKJS','PROTRACTOR'];
     },
     isURL: function(value) {
         //console.log(value);
@@ -46,6 +52,11 @@ var SRUpdate = React.createClass({
                             summary: data.obj.summary,
                             description: data.obj.description,
                             endpoint: data.obj.endpoint,
+                            category: data.obj.category,
+                            useDescription: data.obj.useDescription,
+                            useHtml: data.obj.useHtml,
+                            hit: data.obj.hit,
+                            disabled: data.obj.disabled,
                             //enable save if url is valid
                             isSubmitting: component.isURL(data.obj.endpoint)
                         });
@@ -65,12 +76,17 @@ var SRUpdate = React.createClass({
     },
     render: function() {
         var divStyle = {
-            minHeight: '300px'
+            minHeight: '300px',
+            marginBottom: '15px'
         };
         var delStyle = {background: '#98969E'};
         if(this.props.title === 'Create') delStyle = {display: 'none'};
         this.state.$state=this.props.$state;    //TODO this is actually an anti-pattern!
-
+        var options = [];
+        var cat = this.getCategories();
+        for (var i = 0; i < cat.length; i++) {
+            options.push(<option key={i} value={cat[i]}>{cat[i]}</option>);
+        }
         //console.log('sr-update.jsx render(): ', this.props);
         return (
                     <div className="container">
@@ -106,6 +122,50 @@ var SRUpdate = React.createClass({
                                         <input type="text" className="form-control" ref="descriptionRaw" onKeyUp={this.save} value={this.state.descriptionRaw} onChange={function(e){this.setState({descriptionRaw: e.target.value})}.bind(this)} />
                                         <input id="x" ref="desc" type="hidden" name="content" />
                                         <trix-editor style={divStyle} input="x"></trix-editor>
+                                    </div>
+                                </div>
+                                <div className="control-group">
+                                    <label htmlFor="category" className="col-sm-2 control-label">Category:</label>
+                                    <div className="col-sm-10">
+                                        <select className="form-control" onChange={function(e){this.setState({category: e.target.value})}.bind(this)} ref="category" value={this.state.category}>
+                                            {options}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className="control-group">
+                                    <label htmlFor="useDescription" className="col-sm-2 control-label">Use the Content:</label>
+                                    <div className="col-sm-10">
+                                        <input className="form-control" type="checkbox"
+                                               name="useDescription"
+                                               checked={this.state.useDescription}
+                                               onClick={this.save}
+                                               value={this.state.useDescription} />
+                                    </div>
+                                </div>
+                                <div className="control-group">
+                                    <label htmlFor="useHtml" className="col-sm-2 control-label">Use the Content:</label>
+                                    <div className="col-sm-10">
+                                        <input className="form-control" type="checkbox"
+                                               name="useHtml"
+                                               checked={this.state.useHtml}
+                                               onClick={this.save}
+                                               value={this.state.useHtml} />
+                                    </div>
+                                </div>
+                                <div className="control-group">
+                                    <label htmlFor="hit" className="col-sm-2 control-label">Hit:</label>
+                                    <div className="col-sm-10">
+                                        <input type="text" className="form-control" ref="hit" onKeyUp={this.save} value={this.state.hit} onChange={function(e){this.setState({hit: e.target.value})}.bind(this)} />
+                                    </div>
+                                </div>
+                                <div className="control-group">
+                                    <label htmlFor="disabled" className="col-sm-2 control-label">Disabled:</label>
+                                    <div className="col-sm-10">
+                                        <input className="form-control" type="checkbox"
+                                               name="disabled"
+                                               checked={this.state.disabled}
+                                               onClick={this.save}
+                                               value={this.state.disabled} />
                                     </div>
                                 </div>
                                 <div className="control-group">
