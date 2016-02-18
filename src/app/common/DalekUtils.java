@@ -116,7 +116,7 @@ public class DalekUtils {
 		if(!StringUtils.isEmpty(seleniumString)) {
 			long lineNotIgnored = 0;
 			String t = null; String t1 = null;
-			StringTokenizer st = new java.util.StringTokenizer (seleniumString, "\t\n", true);
+			StringTokenizer st = new java.util.StringTokenizer (seleniumString, "\n", true);
 			while (st.hasMoreElements()) {
 				t = (String) st.nextElement();
 				if(!StringUtils.isEmpty(t.trim()) && lineNotIgnored == 0) {
@@ -172,8 +172,8 @@ public class DalekUtils {
 		try {
 			String t1 = null;
 			in = new BufferedReader(new FileReader(System.getProperty("user.dir") + 
-//					"/src/app/common/sele_ci.txt"
-				"/src/app/common/sele_ui.txt"
+				"/src/app/common/sele_ci.txt"
+//				"/src/app/common/sele_ui.txt"
 //					"/src/app/common/sele_di.txt"
 			));
 			// Read line by line, printing lines to the console
