@@ -69,10 +69,20 @@ var SRUpdate = React.createClass({
                 }
             });
         }
+
         return {
             service: '', description: '', endpoint: '',
             isSubmitting: false
         };
+    },
+    onChangeDescription() {
+        this.setState({useDescription: !this.state.useDescription});
+    },
+    onChangeHtml() {
+        this.setState({useHtml: !this.state.useHtml});
+    },
+    onChangeDisabled() {
+        this.setState({disabled: !this.state.disabled});
     },
     render: function() {
         var divStyle = {
@@ -138,18 +148,18 @@ var SRUpdate = React.createClass({
                                         <input className="form-control" type="checkbox"
                                                name="useDescription"
                                                checked={this.state.useDescription}
-                                               onClick={this.save}
-                                               value={this.state.useDescription} />
+                                               onChange={this.onChangeDescription}
+                                               />
                                     </div>
                                 </div>
                                 <div className="control-group">
-                                    <label htmlFor="useHtml" className="col-sm-2 control-label">Use the Content:</label>
+                                    <label htmlFor="useHtml" className="col-sm-2 control-label">Save as HTML:</label>
                                     <div className="col-sm-10">
                                         <input className="form-control" type="checkbox"
                                                name="useHtml"
                                                checked={this.state.useHtml}
-                                               onClick={this.save}
-                                               value={this.state.useHtml} />
+                                               onChange={this.onChangeHtml}
+                                               />
                                     </div>
                                 </div>
                                 <div className="control-group">
@@ -164,8 +174,8 @@ var SRUpdate = React.createClass({
                                         <input className="form-control" type="checkbox"
                                                name="disabled"
                                                checked={this.state.disabled}
-                                               onClick={this.save}
-                                               value={this.state.disabled} />
+                                               onChange={this.onChangeDisabled}
+                                               />
                                     </div>
                                 </div>
                                 <div className="control-group">
@@ -188,13 +198,20 @@ var SRUpdate = React.createClass({
     },
     saveNow: function(component) {
         //console.log('createItem() unknown error!');
+        //console.log('saveNow() component.state.disabled [' + component.state.disabled + ']');
+        //console.log('saveNow() component.state.useDescription [' + component.state.useDescription + ']');
         var srJson = {
             sr: {
                 id: component.state.id,
                 service: component.state.service,
                 summary: component.state.summary,
                 description: component.refs.desc.value,
-                endpoint: component.state.endpoint
+                endpoint: component.state.endpoint,
+                category: component.state.category,
+                useDescription: component.state.useDescription,
+                useHtml: component.state.useHtml,
+                hit: component.state.hit,
+                disabled: component.state.disabled
             }
         };
         //console.log('sr-update.jsx saveNow(): ' + component.state);
@@ -251,7 +268,7 @@ var SRUpdate = React.createClass({
         //    isSubmitting: false
         });
         //console.log(this.state);
-        var evt = e || window.event
+        var evt = e || window.event;
         // "e" is the standard behavior (FF, Chrome, Safari, Opera),
         // while "window.event" (or "event") is IE's behavior
         if ( evt.keyCode === 13 ) {
