@@ -85,9 +85,12 @@ var SRUpdate = React.createClass({
         this.setState({disabled: !this.state.disabled});
     },
     render: function() {
-        var divStyle = {
+        var editorStyle = {
             minHeight: '300px',
             marginBottom: '15px'
+        };
+        var categoryStyle = {
+            marginBottom: '25px'
         };
         var delStyle = {background: '#98969E'};
         if(this.props.title === 'Create') delStyle = {display: 'none'};
@@ -131,46 +134,32 @@ var SRUpdate = React.createClass({
                                     <div className="col-sm-10">
                                         <input type="text" className="form-control" ref="descriptionRaw" onKeyUp={this.save} value={this.state.descriptionRaw} onChange={function(e){this.setState({descriptionRaw: e.target.value})}.bind(this)} />
                                         <input id="x" ref="desc" type="hidden" name="content" />
-                                        <trix-editor style={divStyle} input="x"></trix-editor>
+                                        <trix-editor style={editorStyle} input="x"></trix-editor>
                                     </div>
                                 </div>
                                 <div className="control-group">
                                     <label htmlFor="category" className="col-sm-2 control-label">Category:</label>
-                                    <div className="col-sm-10">
+                                    <div className="col-sm-10" style={categoryStyle}>
                                         <select className="form-control" onChange={function(e){this.setState({category: e.target.value})}.bind(this)} ref="category" value={this.state.category}>
                                             {options}
                                         </select>
                                     </div>
-                                </div>
-                                <div className="control-group">
-                                    <label htmlFor="useDescription" className="col-sm-2 control-label">Use the Content:</label>
                                     <div className="col-sm-10">
-                                        <input className="form-control" type="checkbox"
-                                               name="useDescription"
-                                               checked={this.state.useDescription}
-                                               onChange={this.onChangeDescription}
-                                               />
-                                    </div>
-                                </div>
-                                <div className="control-group">
-                                    <label htmlFor="useHtml" className="col-sm-2 control-label">Save as HTML:</label>
-                                    <div className="col-sm-10">
+                                    <label htmlFor="useDescription" >Use the Content:</label>
+                                    <input className="form-control" type="checkbox"
+                                           name="useDescription"
+                                           checked={this.state.useDescription}
+                                           onChange={this.onChangeDescription}
+                                    />
+                                    <label htmlFor="useHtml" >Save as HTML:</label>
                                         <input className="form-control" type="checkbox"
                                                name="useHtml"
                                                checked={this.state.useHtml}
                                                onChange={this.onChangeHtml}
                                                />
-                                    </div>
-                                </div>
-                                <div className="control-group">
-                                    <label htmlFor="hit" className="col-sm-2 control-label">Hit:</label>
-                                    <div className="col-sm-10">
+                                    <label htmlFor="hit" >Hit:</label>
                                         <input type="text" className="form-control" ref="hit" onKeyUp={this.save} value={this.state.hit} onChange={function(e){this.setState({hit: e.target.value})}.bind(this)} />
-                                    </div>
-                                </div>
-                                <div className="control-group">
-                                    <label htmlFor="disabled" className="col-sm-2 control-label">Disabled:</label>
-                                    <div className="col-sm-10">
+                                    <label htmlFor="disabled" >Disabled:</label>
                                         <input className="form-control" type="checkbox"
                                                name="disabled"
                                                checked={this.state.disabled}
