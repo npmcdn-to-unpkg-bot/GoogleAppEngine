@@ -81,8 +81,8 @@ public class DalekUtils {
 				} else
 				if(cmd.equals("assertText")) {
 					cmd = cmd.replaceAll("assertText", 
-							".assert.attr('{{}}', 'value', '{{text}}')" + "\n" +
-							"// .assert.exists('{{}}').to.be(true, '{{msg}}')" + "\n" +
+							".assert.exists('{{}}')" + "\n" +
+							"// .assert.attr('{{}}', 'value', '{{text}}')" + "\n" +
 							"// .assert.exists('{{}}').to.contain('{{text}}', '{{msg}}')" + "\n" +
 							"// .assert.title().is('{{text}}')"
 					);
@@ -186,7 +186,7 @@ public class DalekUtils {
 			}
 			in.close(); // Close the stream.
 			String temp = d.parse(sb.toString());
-			String f = d.getFirstLine();
+			String f = d.getFirstLine().replaceAll("\n", "");
 			finalScript = DalekUtils.header.replaceAll("\\{\\{\\}\\}", f) + temp + DalekUtils.footer;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

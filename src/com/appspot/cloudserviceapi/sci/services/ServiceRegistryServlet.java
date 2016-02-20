@@ -284,12 +284,14 @@ public class ServiceRegistryServlet extends HttpServlet {
 		if(type == URLCategory.DALEKJS) {
 			DalekUtils d = new DalekUtils();
 			String temp = d.parse(resp);
-			resp = DalekUtils.header.replaceAll("\\{\\{\\}\\}", d.getFirstLine()) + temp + DalekUtils.footer;
+			String f = d.getFirstLine().replaceAll("\n", "");
+			resp = DalekUtils.header.replaceAll("\\{\\{\\}\\}", f) + temp + DalekUtils.footer;
 		} else
 		if(type == URLCategory.PROTRACTOR) {
 			ProtractorUtils p = new ProtractorUtils();
 			String temp = p.parse(resp);
-			resp = ProtractorUtils.header.replaceAll("\\{\\{\\}\\}", p.getFirstLine()) + temp + ProtractorUtils.footer;
+			String f = p.getFirstLine().replaceAll("\n", "");
+			resp = ProtractorUtils.header.replaceAll("\\{\\{\\}\\}", f) + temp + ProtractorUtils.footer;
 		} else {
 			//TODO do I need to serve here -- could be buggy here!!!
 		}
