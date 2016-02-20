@@ -82,13 +82,14 @@ public class DalekUtils {
 				if(cmd.equals("assertText")) {
 					cmd = cmd.replaceAll("assertText", 
 							".assert.exists('{{}}')" + "\n" +
+							"// .assert.text('{{}}').to.contain('{{text}}', '{{msg}}')" + "\n" +
 							"// .assert.attr('{{}}', 'value', '{{text}}')" + "\n" +
-							"// .assert.exists('{{}}').to.contain('{{text}}', '{{msg}}')" + "\n" +
 							"// .assert.title().is('{{text}}')"
 					);
 				} else
 				if(cmd.equals("type")) {
-					cmd = cmd.replaceAll("type", ".waitForElement('{{}}', 32000).type('{{}}', '{{text}}')");
+					cmd = cmd.replaceAll("type", "// .waitForElement('{{}}', 32000).type('{{}}', multipleBackspaces)" + "\n" +
+							".waitForElement('{{}}', 32000).type('{{}}', '{{text}}')");
 				} else {
 					continue;	//if anything not supported, ignore it!
 				}
