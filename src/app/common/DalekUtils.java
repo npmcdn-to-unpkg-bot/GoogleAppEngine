@@ -120,7 +120,7 @@ public class DalekUtils {
 			while (st.hasMoreElements()) {
 				t = (String) st.nextElement();
 				if(!StringUtils.isEmpty(t.trim()) && lineNotIgnored == 0) {
-					firstLine = t;
+					firstLine = t.trim();
 					lineNotIgnored++;
 				}
 				if(debug) {
