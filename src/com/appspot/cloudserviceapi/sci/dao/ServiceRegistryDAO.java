@@ -153,7 +153,7 @@ public class ServiceRegistryDAO {
 
 	//TBD - this could be the performance bottleneck hotspot! the size should be saved as a variable in a row/property instead
 	public List getCloneList() {
-		int limitForMemory = 500;
+		int limitForMemory = 50;
 		int count = 0;
 		//List<ServiceRegistry> clonedList = (List<ServiceRegistry>) CacheController.get(ALL_SR_LIST);
 		if(clonedList == null) {	//cut time from 1 ms to 4 micro s for every SR page rendered (in grid) or saved!
