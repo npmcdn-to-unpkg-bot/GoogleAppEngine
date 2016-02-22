@@ -98,6 +98,9 @@ public class ProtractorUtils {
 				} else
 				if(cmd.equals("type")) {
 					cmd = cmd.replaceAll("type", "browser.wait(element(by.css('{{}}')).isPresent(), 32000);element(by.css('{{}}')).sendKeys('{{val}}');");
+				} else
+				if(cmd.equals("keyPress")) {
+					cmd = cmd.replaceAll("keyPress", "browser.wait(element(by.css('{{}}')).isPresent(), 32000);element(by.css('{{}}')).sendKeys('\n');");	//support only newline/carriage return for now
 				} else {
 					continue;	//if anything not supported, ignore it!
 				}

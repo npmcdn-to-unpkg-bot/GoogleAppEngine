@@ -90,6 +90,9 @@ public class DalekUtils {
 				if(cmd.equals("type")) {
 					cmd = cmd.replaceAll("type", "// .waitForElement('{{}}', 32000).type('{{}}', multipleBackspaces)" + "\n" +
 							".waitForElement('{{}}', 32000).type('{{}}', '{{text}}')");
+				} else
+				if(cmd.equals("keyPress")) {
+					cmd = cmd.replaceAll("keyPress", ".waitForElement('{{}}', 32000).type('{{}}', '\n')");	//support only newline/carriage return for now
 				} else {
 					continue;	//if anything not supported, ignore it!
 				}
