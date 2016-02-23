@@ -93,6 +93,9 @@ public class DalekUtils {
 				} else
 				if(cmd.equals("sendKeys")) {
 					cmd = cmd.replaceAll("sendKeys", ".waitForElement('{{}}', 32000).type('{{}}', '{{text}}')");
+					if(!StringUtils.isEmpty(val) && val.trim().equals("${KEY_ENTER}")) {
+						cmd = cmd.replaceAll("\\{\\{text\\}\\}", "\\\\n");
+					}
 				} else
 				if(cmd.equals("keyPress")) {
 					cmd = cmd.replaceAll("keyPress", ".waitForElement('{{}}', 32000).type('{{}}', '\n')");	//support only newline/carriage return for now
@@ -110,7 +113,6 @@ public class DalekUtils {
 						val = val.replaceAll("\\*", "");
 					}
 					cmd = cmd.replaceAll("\\{\\{text\\}\\}", val);
-					cmd = cmd.replaceAll("\\$\\{KEY_ENTER\\}", "\n");
 				}
 				
 				sb.append(cmd);
@@ -180,8 +182,8 @@ public class DalekUtils {
 		try {
 			String t1 = null;
 			in = new BufferedReader(new FileReader(System.getProperty("user.dir") + 
-				"/src/app/common/sele_ci.txt"
-//				"/src/app/common/sele_ui.txt"
+//				"/src/app/common/sele_ci.txt"
+				"/src/app/common/sele_ui.txt"
 //					"/src/app/common/sele_di.txt"
 			));
 			// Read line by line, printing lines to the console
