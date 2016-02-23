@@ -91,6 +91,9 @@ public class DalekUtils {
 					cmd = cmd.replaceAll("type", "// .waitForElement('{{}}', 32000).type('{{}}', multipleBackspaces)" + "\n" +
 							".waitForElement('{{}}', 32000).type('{{}}', '{{text}}')");
 				} else
+				if(cmd.equals("sendKeys")) {
+					cmd = cmd.replaceAll("sendKeys", ".waitForElement('{{}}', 32000).type('{{}}', '{{text}}')");
+				} else
 				if(cmd.equals("keyPress")) {
 					cmd = cmd.replaceAll("keyPress", ".waitForElement('{{}}', 32000).type('{{}}', '\n')");	//support only newline/carriage return for now
 				} else {
@@ -107,6 +110,7 @@ public class DalekUtils {
 						val = val.replaceAll("\\*", "");
 					}
 					cmd = cmd.replaceAll("\\{\\{text\\}\\}", val);
+					cmd = cmd.replaceAll("\\$\\{KEY_ENTER\\}", "\n");
 				}
 				
 				sb.append(cmd);
