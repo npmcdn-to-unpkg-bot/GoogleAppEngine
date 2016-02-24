@@ -64,15 +64,8 @@ typeof requirejs !== 'undefined' && requirejs.config({
         //===used by movie.html
         //bootstrap: '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min',
         angular: '//ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular',
-        //angular: '//ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular',  //latest as at 4/6/2014
-        //angular: '//ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular',
-        //angular: '//ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular',    //with ability to turn off $sce!?
-        //angular: '//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular',    //with  net::ERR_CONNECTION_REFUSED
 //        angularSanitize: '//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-sanitize',    //http://stackoverflow.com/questions/19770156/how-to-output-html-through-angularjs-template
-        //angularAnimate: '//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-animate.min',
-        //summernote: '../js/summernote',
-        //angularSummernote: '../js/angular-summernote.min',
-
+        angularHint: 'hint',
         init: '../parse/init',  //cache and user initialization
         //===used by calendar.html
         jQueryUI: '../jquery/jquery-ui-1.10.2.custom.min',
@@ -123,6 +116,10 @@ typeof requirejs !== 'undefined' && requirejs.config({
         angular: {
             deps: ["parse", "purl"],
             exports : 'angular'
+        },
+        angularHint: {
+            deps: ["angular"],
+            exports : 'angularHint'
         },
 //        angularSanitize: {
 //            deps: ["angular"],
@@ -219,6 +216,7 @@ typeof requirejs !== 'undefined' && requirejs(
         'purl',
         //'parse', 'facebook',
         'angular',
+        'angularHint',
 //        'angularSanitize',  //1.3 does not have this
         'angularBootstrap',
 //        'summernote',
@@ -233,6 +231,7 @@ typeof requirejs !== 'undefined' && requirejs(
         purl,
         //Parse, facebook,
         angular,
+        angularHint,
 //        angularSanitize,	//1.3 does not have this
         angularBootstrap,
 //        angularAnimate,
