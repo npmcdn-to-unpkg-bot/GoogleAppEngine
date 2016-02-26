@@ -20,10 +20,10 @@ public class ProtractorUtils {
 			"browser.ignoreSynchronization = true; /* set this false for AngularJS app */" + "\n" +
 			"beforeEach(function() {" + "\n";
 
-	public static String footer = "  });" + "\n" +
+	public static String footer = "  //});" + "\n" +
 				"});" +  "\n" +
-				"        }" + "\n" +
-				"};";
+				"        //}" + "\n" +
+				"//};";
 
 	private String firstLine = "";
 
@@ -93,8 +93,7 @@ public class ProtractorUtils {
 						"	expect(browser.driver.getTitle()).toBe('{{text}}');" + "\n" +
 						"	console.log('assert: window title done');" + "\n" +
 						"});" + "\n" +
-						"*/" + "\n" +
-						"});");
+						"*/");
 				} else
 				if(cmd.equals("type")) {
 					cmd = cmd.replaceAll("type", "browser.wait(element(by.css('{{}}')).isPresent(), 32000);element(by.css('{{}}')).sendKeys('{{val}}');");
