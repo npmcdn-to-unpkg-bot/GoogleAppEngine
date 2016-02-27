@@ -18,12 +18,12 @@ public class ProtractorUtils {
 			"jasmine.DEFAULT_TIMEOUT_INTERVAL = 6000000;" + "\n" +
 			"/* for non-angular page */" + "\n" +
 			"browser.ignoreSynchronization = true; /* set this false for AngularJS app */" + "\n" +
-			"beforeEach(function() {" + "\n";
+			"beforeEach(function() {" + "\n" +
+			"   //any initialization here"  +  "\n" +
+			"});" +  "\n" +
+			"it('spec', function () {"  +  "\n";
 
-	public static String footer = "  //});" + "\n" +
-				"});" +  "\n" +
-				"        //}" + "\n" +
-				"//};";
+	public static String footer = "});" +  "\n";
 
 	private String firstLine = "";
 
