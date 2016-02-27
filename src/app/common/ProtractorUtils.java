@@ -1,5 +1,7 @@
 package app.common;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.util.StringTokenizer;
 
 import org.datanucleus.util.StringUtils;
@@ -8,8 +10,8 @@ import com.appspot.cloudserviceapi.common.StringUtil;
 
 public class ProtractorUtils {
 
-	public static boolean debug = true;
-//	public static boolean debug = false;
+//	public static boolean debug = true;
+	public static boolean debug = false;
 	
 	public static String header = "var u = require('l.js');var fs = require('fs');" + "\n" +
 			"describe('protractor e2e tests', function() {" + "\n" +
@@ -178,6 +180,34 @@ public class ProtractorUtils {
 //		System.out.print("finalScript = [");
 		System.out.print(finalScript);
 //		System.out.println("]");
+		
+		BufferedReader in;
+		StringBuffer sb = new StringBuffer();
+		try {
+			String t1 = null;
+			in = new BufferedReader(new FileReader(System.getProperty("user.dir") + 
+				"/src/app/common/sele_cu.txt"
+//				"/src/app/common/sele_ci.txt"
+//				"/src/app/common/sele_ui.txt"
+//					"/src/app/common/sele_di.txt"
+			));
+			// Read line by line, printing lines to the console
+			String line;
+			while ((line = in.readLine()) != null) {
+//				t1 = d.toScript(line);
+				t1 = line;
+				//System.out.println(t1);
+				sb.append(t1).append("\n");
+			}
+			in.close(); // Close the stream.
+			String temp = p.parse(sb.toString());
+			String f = p.getFirstLine().replaceAll("\n", "");
+			finalScript = ProtractorUtils.header.replaceAll("\\{\\{\\}\\}", f) + temp + ProtractorUtils.footer;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.print(finalScript);
 	}
 
 	public String getFirstLine() {
