@@ -99,6 +99,7 @@ public class ProtractorUtils {
 				} else
 				if(cmd.equals("type")) {
 					cmd = cmd.replaceAll("type", "browser.wait(element(by.css('{{}}')).isPresent(), 32000);element(by.css('{{}}')).sendKeys('{{val}}');");
+					cmd = cmd.replaceAll("\\{\\{val\\}\\}", val);
 				} else
 				if(cmd.equals("keyPress")) {
 					cmd = cmd.replaceAll("keyPress", "browser.wait(element(by.css('{{}}')).isPresent(), 32000);element(by.css('{{}}')).sendKeys('\n');");	//support only newline/carriage return for now
@@ -129,7 +130,7 @@ public class ProtractorUtils {
 		if(!StringUtils.isEmpty(seleniumString)) {
 			long lineNotIgnored = 0;
 			String t = null; String t1 = null;
-			StringTokenizer st = new java.util.StringTokenizer (seleniumString, "\t\n", true);
+			StringTokenizer st = new java.util.StringTokenizer (seleniumString, "\n", true);
 			while (st.hasMoreElements()) {
 				t = (String) st.nextElement();
 				if(!StringUtils.isEmpty(t.trim()) && lineNotIgnored == 0) {
@@ -156,30 +157,22 @@ public class ProtractorUtils {
 	
 	public static void main(String[] args) {
 		ProtractorUtils p = new ProtractorUtils();
-		String host = "https://chudoon3t.appspot.com";
-		String s = 
-//				"open https://chudoon3t.appspot.com/n\n"+
-//					"waitForPageToLoad\n"+
-//					"\n"+
-//					"waitForElementPresent css=input[type=\"text\"]\n"+
-//					"click css=input[type=\"text\"]\n"+
-//					"waitForPageToLoad				\n";
-		"open " + host + "/n" + "\n" +
-		"\n" +
-		"type css=input[type=\"text\"] test" + "\n" +
-		"\n" +
-		"type css=input[type=\"password\"] test1234" + "\n" +
-		"\n" +
-		"click css=input[type=\"submit\"]" + "\n" +
-		"\n" +
-		"waitForElementPresent css=a.pull-right" + "\n" +
-		"assertText css=input[type=\"submit\"] exact:*Exact String - * should be kept*" + "\n" +
-		"assertText css=input[type=\"submit\"] *Login*";
+//		String host = "https://chudoon3t.appspot.com";
+//		String s = 
+//		"open " + host + "/n" + "\n" +
+//		"\n" +
+//		"type css=input[type=\"text\"] test" + "\n" +
+//		"\n" +
+//		"type css=input[type=\"password\"] test1234" + "\n" +
+//		"\n" +
+//		"click css=input[type=\"submit\"]" + "\n" +
+//		"\n" +
+//		"waitForElementPresent css=a.pull-right" + "\n" +
+//		"assertText css=input[type=\"submit\"] exact:*Exact String - * should be kept*" + "\n" +
+//		"assertText css=input[type=\"submit\"] *Login*";
 		String finalScript = null;
-		finalScript = ProtractorUtils.header + p.parse(s) + ProtractorUtils.footer;
-//		System.out.print("finalScript = [");
-		System.out.print(finalScript);
-//		System.out.println("]");
+//		finalScript = ProtractorUtils.header + p.parse(s) + ProtractorUtils.footer;
+//		System.out.print(finalScript);
 		
 		BufferedReader in;
 		StringBuffer sb = new StringBuffer();
