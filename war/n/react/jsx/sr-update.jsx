@@ -141,7 +141,7 @@ var SRUpdate = React.createClass({
                                 <div className="control-group">
                                     <label htmlFor="desc" className="col-sm-2 control-label">Description:</label>
                                     <div className="col-sm-10">
-                                        <Editor ref="desc" editorState={editorState} onChange={this.onChange} />
+                                        <Editor ref="desc" suppressContentEditableWarning editorState={editorState} onChange={this.onChange} />
                                     </div>
                                 </div>
                                 <div className="control-group">
