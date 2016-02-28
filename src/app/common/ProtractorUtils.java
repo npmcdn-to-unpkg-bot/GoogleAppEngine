@@ -25,7 +25,7 @@ public class ProtractorUtils {
 			"});" +  "\n" +
 			"it('spec', function () {"  +  "\n";
 
-	public static String footer = "});" +  "\n";
+	public static String footer = " })" +  "\n" + "});" +  "\n";
 
 	private String firstLine = "";
 
