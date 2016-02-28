@@ -1,3 +1,4 @@
+var Editor = Draft.Editor;
 var SRUpdate = React.createClass({
     propTypes: {
         id: React.PropTypes.number,
@@ -27,6 +28,7 @@ var SRUpdate = React.createClass({
         return (false);
     },
     getInitialState: function() {
+        var component = this;
         var qs = URI(location.href).query(true); // == e.g. { id : 4529987906437120 }
         if(typeof qs.id === 'undefined') {
             if(typeof this.props.id !== 'undefined') {
@@ -36,7 +38,6 @@ var SRUpdate = React.createClass({
             }
         }
         if(qs.id > 0) {
-            var component = this;
             console.log('SRUpdate booted');
             var key = localStorage.getItem('userJWTToken');
             //console.log( "Set bearer token: " + key );
@@ -70,7 +71,13 @@ var SRUpdate = React.createClass({
             });
         }
 
+//        this.state = { editorState: Draft.EditorState.createEmpty() };
+        this.onChange = function (editorState) {
+          return component.setState({ editorState: editorState });
+        };
+
         return {
+            editorState: Draft.EditorState.createEmpty(),
             service: '', description: '', endpoint: '',
             isSubmitting: false
         };
@@ -85,6 +92,8 @@ var SRUpdate = React.createClass({
         this.setState({disabled: !this.state.disabled});
     },
     render: function() {
+        var editorState = this.state.editorState;
+
         var editorStyle = {
             minHeight: '300px',
             marginBottom: '15px'
@@ -132,9 +141,7 @@ var SRUpdate = React.createClass({
                                 <div className="control-group">
                                     <label htmlFor="desc" className="col-sm-2 control-label">Description:</label>
                                     <div className="col-sm-10">
-                                        <input type="text" className="form-control" ref="descriptionRaw" onKeyUp={this.save} value={this.state.descriptionRaw} onChange={function(e){this.setState({descriptionRaw: e.target.value})}.bind(this)} />
-                                        <input id="x" ref="desc" type="hidden" name="content" />
-                                        <trix-editor style={editorStyle} input="x"></trix-editor>
+                                        <Editor ref="desc" editorState={editorState} onChange={this.onChange} />
                                     </div>
                                 </div>
                                 <div className="control-group">
