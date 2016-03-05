@@ -6,6 +6,7 @@ import java.security.SecureRandom;
 import org.apache.tapestry5.SymbolConstants;
 //import org.apache.tapestry5.beanvalidator.BeanValidatorConfigurer;	//gone since 5.3.2
 import org.apache.tapestry5.ioc.Configuration;
+import org.apache.tapestry5.ioc.IOCSymbols;
 import org.apache.tapestry5.ioc.MappedConfiguration;
 import org.apache.tapestry5.ioc.OrderedConfiguration;
 import org.apache.tapestry5.ioc.ServiceBinder;
@@ -100,11 +101,10 @@ public class AppModule {
 //		configuration.add(SymbolConstants.PRODUCTION_MODE, false);
 //		configuration.add(SymbolConstants.APPLICATION_VERSION, "0.1");
 //		configuration.add(SymbolConstants.SESSION_LOCKING_ENABLED, false);		//TODO 5.4
-		configuration.add(SymbolConstants.RESTRICTIVE_ENVIRONMENT, true);		//TODO 5.4 - http://tapestry.apache.org/5.4/apidocs/org/apache/tapestry5/SymbolConstants.html#EXECUTION_MODE
-		configuration.add("tapestry.thread-pool-enabled", false);
 		configuration.add("tapestry.application-version", 0);
 //		configuration.add(Trait.SCRIPTACULOUS, false); 
-		// configuration.add(IOCSymbols.THREAD_POOL_ENABLED, false);
+		configuration.add(SymbolConstants.RESTRICTIVE_ENVIRONMENT, true);		//TODO 5.4 - http://tapestry.apache.org/5.4/apidocs/org/apache/tapestry5/SymbolConstants.html#EXECUTION_MODE
+		configuration.add(IOCSymbols.THREAD_POOL_ENABLED, false);
 		// turn off redirect after post
 		// c.f.
 		// http://tapestry.1045711.n5.nabble.com/Implication-of-client-side-redirect-td2429849.html
