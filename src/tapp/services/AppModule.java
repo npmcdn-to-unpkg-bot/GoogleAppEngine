@@ -13,6 +13,8 @@ import org.apache.tapestry5.ioc.ServiceBinder;
 import org.apache.tapestry5.ioc.annotations.Contribute;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.ioc.annotations.SubModule;
+import org.apache.tapestry5.ioc.services.ApplicationDefaults;
+import org.apache.tapestry5.ioc.services.SymbolProvider;
 import org.apache.tapestry5.services.BeanBlockContribution;
 import org.apache.tapestry5.services.HttpServletRequestFilter;
 import org.apache.tapestry5.services.LibraryMapping;
@@ -94,6 +96,8 @@ public class AppModule {
 	  configuration.add("/ws/.*");
 	}
 	
+	@ApplicationDefaults
+    @Contribute(SymbolProvider.class)
 	public static void contributeApplicationDefaults(
 			MappedConfiguration<String, Object> configuration) {
 		// reference:
@@ -123,7 +127,7 @@ public class AppModule {
 //        configuration.add(JQuerySymbolConstants.SUPPRESS_PROTOTYPE, "false");
 
 		System.out
-				.println("AppModule contributeApplicationDefaults() done. App is ready.");
+				.println("AppModule contributeApplicationDefaults() done. App is ready [5.4].");
 	}
 
 	/**
