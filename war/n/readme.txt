@@ -73,6 +73,8 @@ https://github.com/souporserious/react-trix
 
 Other Useful Resources:
 
+http://facebook.github.io/draft-js/docs/quickstart-rich-styling.html#content
+
 https://github.com/rackt/react-autocomplete/blob/master/examples/custom-menu/app.js
 
 https://milligram.github.io/

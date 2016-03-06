@@ -1,4 +1,6 @@
 var Editor = Draft.Editor;
+var RichUtils = Draft.RichUtils;
+
 var SRUpdate = React.createClass({
     propTypes: {
         id: React.PropTypes.number,
@@ -71,7 +73,7 @@ var SRUpdate = React.createClass({
             });
         }
 
-//        this.state = { editorState: Draft.EditorState.createEmpty() };
+        this.state = {editorState: Draft.EditorState.createEmpty()};
         this.onChange = function (editorState) {
           return component.setState({ editorState: editorState });
         };
@@ -138,10 +140,10 @@ var SRUpdate = React.createClass({
                                         <input type="text" className="form-control" ref="summary" onKeyUp={this.save} value={this.state.summary} onChange={function(e){this.setState({summary: e.target.value})}.bind(this)} />
                                     </div>
                                 </div>
-                                <div className="control-group">
+                                <div className="control-group clearfix">
                                     <label htmlFor="desc" className="col-sm-2 control-label">Description:</label>
                                     <div className="col-sm-10">
-                                        <Editor ref="desc" suppressContentEditableWarning editorState={editorState} onChange={this.onChange} />
+                                        <Editor ref="desc" handleKeyCommand={this.handleKeyCommand} suppressContentEditableWarning editorState={editorState} onChange={this.onChange} />
                                     </div>
                                 </div>
                                 <div className="control-group">
@@ -187,6 +189,15 @@ var SRUpdate = React.createClass({
                         </form>
                     </div>
         )
+    },
+    handleKeyCommand(command) {
+        editorState = this.state;
+        newState = RichUtils.handleKeyCommand(editorState, command);
+        if (newState) {
+            this.onChange(newState);
+            return true;
+        }
+        return false;
     },
     goHome: function() {
         //location.href='fusrstart.html';
