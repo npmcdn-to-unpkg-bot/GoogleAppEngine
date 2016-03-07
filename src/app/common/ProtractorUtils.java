@@ -4,15 +4,16 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.StringTokenizer;
 
-import org.datanucleus.util.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
-import com.appspot.cloudserviceapi.common.StringUtil;
+//import com.appspot.cloudserviceapi.common.StringUtil;
 
 public class ProtractorUtils {
 
 //	public static boolean debug = true;
 	public static boolean debug = false;
-	
+	long lineCount = 0;
+
 	public static String header = "var u = require('l.js');var fs = require('fs');" + "\n" +
 			"describe('protractor e2e tests', function() {" + "\n" +
 			"browser.manage().timeouts().pageLoadTimeout(60000);" + "\n" +
@@ -32,7 +33,7 @@ public class ProtractorUtils {
 	public String toScript(String v) {
 		StringBuffer sb = new StringBuffer();
 		if(!StringUtils.isEmpty(v)) {
-			String cmd = null; String sel = null; String val = "";
+			String cmd = null; String sel = null; String val = ""; String console = "";
 			v = TestScriptHelper.encodeSelector(v);
 			StringTokenizer st = new java.util.StringTokenizer (v, " \t");
 			while (st.hasMoreElements()) {
@@ -67,7 +68,7 @@ public class ProtractorUtils {
 					cmd = cmd.replaceAll("waitForElementPresent", "browser.sleep(5000);");
 				} else
 				if(cmd.equals("pause")) {
-					if(!StringUtils.isEmpty(sel) && StringUtil.isNumber(sel)) {
+					if(!StringUtils.isEmpty(sel) && StringUtils.isNumericSpace(sel)) {
 						if(Integer.valueOf(sel).intValue() == 0) {
 							cmd = cmd.replaceAll("pause", "browser.sleep(3000);browser.switchTo().alert().dismiss();");
 						} else
@@ -146,6 +147,9 @@ public class ProtractorUtils {
 					System.out.println(t1);
 				}
 				sb.append(t1);
+				if(t1 != null && t1.trim().length() > 0) {
+					sb.append("console.log('" + ++lineCount + "');" + "\n");
+				}
 				if(t1 != null && t1.trim() != "" && t1.trim().length() > 1 || t1.trim().indexOf("//") == 0) {
 					sb.append("\n");
 				}
@@ -179,8 +183,8 @@ public class ProtractorUtils {
 		try {
 			String t1 = null;
 			in = new BufferedReader(new FileReader(System.getProperty("user.dir") + 
-				"/src/app/common/sele_cu.txt"
-//				"/src/app/common/sele_ci.txt"
+//				"/src/app/common/sele_cu.txt"
+				"/src/app/common/sele_ci.txt"
 //				"/src/app/common/sele_ui.txt"
 //					"/src/app/common/sele_di.txt"
 			));
