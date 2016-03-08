@@ -65,7 +65,7 @@ public class ProtractorUtils {
 					cmd = cmd.replaceAll("click", "element(by.css('{{}}')).click();");
 				} else
 				if(cmd.equals("waitForElementPresent")) {
-					cmd = cmd.replaceAll("waitForElementPresent", "browser.sleep(5000);");
+					cmd = cmd.replaceAll("waitForElementPresent", "browser.sleep(800);");
 				} else
 				if(cmd.equals("pause")) {
 					if(!StringUtils.isEmpty(sel) && StringUtils.isNumericSpace(sel)) {
