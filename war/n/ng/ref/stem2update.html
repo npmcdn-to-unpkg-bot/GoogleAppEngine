@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="pageApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Update</title>
+    <link href="../js/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <style>
+        .form-horizontal input {
+            margin-left: 20px;
+        }
+    </style>
+    <script src="../js/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../js/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../js/bower_components/angular/angular.js"></script>
+    <script src='../js/swagger-client.js' type='text/javascript'></script>
+    <script src="../js/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="../js/bower_components/urijs/src/URI.min.js"></script>
+    <script src="../js/app.js"></script>
+</head>
+<body>
+<div class="container">
+    <div ng-controller="PageUpdateController as page">
+
+        <h1>Update</h1><br>
+        <!--<scan>{{message}}</scan>-->
+
+        <form class="form-horizontal" role="form">
+            <div class="form-group row">
+                <div class="control-group">
+                    <label for="id" class="col-sm-2 control-label">ID:</label>
+                    <input type="text" class="col-sm-10 form-control" id="id" value="{{page.item.id}}" required readonly>
+                </div>
+                <div class="control-group">
+                    <label for="title" class="col-sm-2 control-label">What:</label>
+                        <input type="text" class="col-sm-10 form-control" id="title" ng-enter="page.createItem()"
+                               required ng-model="page.item.what" placeholder="Enter any easy to remember name.">
+                </div>
+                <div class="control-group">
+                    <label for="desc" class="col-sm-2 control-label">How:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="desc" ng-enter="page.createItem()"
+                               ng-model="page.item.how">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label for="createItem" class="col-sm-2 control-label"></label>
+                    <div class="col-sm-10" ng-controller="AppCtrl as app">
+                        <input type="hidden" name="_method" value="POST">
+                        <input class="form-control btn btn-primary" id="deleteItem" type="button" style="background:#98969E;"
+                               value="Delete" ng-click="app.deleteItem(page.item)">
+                        <input class="form-control btn btn-primary" id="createItem" type="submit" style="background:#98969E;"
+                           value="Save" ng-click="app.updateItem(page.item)">
+                        <input class="form-control btn" id="cancelItem" value="Cancel" type="button"
+                               onclick="location.href='stem2start.html'">
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div id="mydata" ng-hide="!page.processingMessage">Loading...</div>
+    </div>
+</div>
+<script>
+    var gitems;
+    angular.module('pageApp', ['myApp','stemApp'])
+            .controller('PageUpdateController',function($scope) {
+                var component = this;
+                var qs = URI(location.href).query(true); // == e.g. { id : 4529987906437120 }
+                if(typeof qs.id === 'undefined') {
+                    if(typeof this.props.id === 'undefined') {
+                        qs.id = -1;
+                    }
+                }
+
+                window.swagger = new SwaggerClient({
+//                url: location.origin + "/api/swagger.json",
+                    url: webHost + "/swagger.json",
+                    success: function() {
+                        swagger.Powerups.Powerups_findById({id: qs.id},{responseContentType: 'application/json'},
+                                function(data) {
+                        document.getElementById("mydata").innerHTML = JSON.stringify(data.obj);
+                            $scope.$apply(function() {
+                                component.item = data.obj;
+                                component.processingMessage = "";   //done!
+//                        $('#sr-start-table').stacktable();
+                            });
+                        });
+                    }
+//                ,
+//                authorizations : {
+//                    someHeaderAuth: new SwaggerClient.ApiKeyAuthorization('Authorization', "Bearer " + key, 'header')
+//                }
+                });
+                /*
+                 */
+
+                })
+            .config(['$httpProvider', '$controllerProvider',function ($httpProvider, $controllerProvider) {
+                $httpProvider.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('stemJWTToken');   //JWT support
+            }]);
+
+</script>
+</body>
+</html>
