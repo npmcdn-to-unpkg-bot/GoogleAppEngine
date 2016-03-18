@@ -71,6 +71,7 @@ require(['./main-config', './app'], function (common, app) {
             ) {
             $(document).ready(function () {
                 Parse.initialize("Ld70ODLxjXFkhhRux6kQqVCiJ4rQeXU8dISafNJa", "dLHhDNKnLimXHzSzxvQcGuwle5iLwnn3bFahDS9q");
+               	Parse.serverURL = '//toshare.herokuapp.com/parse';	//note lower case /parse
                 window.console && console.log("main-index1: Parse initialized.");
             });
 

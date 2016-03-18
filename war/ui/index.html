@@ -75,7 +75,7 @@
         });
     </script>
     <script type="text/javascript" src='../js/detectmob.js'></script>
-
+    <script type="text/javascript" src="//www.parsecdn.com/js/parse-latest.js"></script>
     <script>
         /** this has to be BEFOFE requireJS to avoid reloading it twice! */
 //    if ("https:" === document.location.protocol) {
@@ -139,6 +139,12 @@
             //alert(screen.availWidth);
             resizeTargets();
             $(window).resize(resizeTargets);
+            
+           	//TBD not able to put this in AMD and make it to work, thus it is here! :(
+           	Parse.initialize("Ld70ODLxjXFkhhRux6kQqVCiJ4rQeXU8dISafNJa", "dLHhDNKnLimXHzSzxvQcGuwle5iLwnn3bFahDS9q");
+           	Parse.serverURL = '//toshare.herokuapp.com/parse';	//note lower case /parse
+           	window.console && console.log("index.html: New Parse initialized.");
+           	//Parse.User.enableRevocableSession();
         });
         function resizeTargets() {
             $(".section").each(function() {

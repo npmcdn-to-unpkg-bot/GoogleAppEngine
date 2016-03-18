@@ -69,8 +69,11 @@ OWASP Notes:
 . ReactJS
 -dangerouslySetInnerHTML should only be called if it is not directly from the user input; otherwise it has to be sanitized before submission
 
+https://github.com/souporserious/react-trix
 
 Other Useful Resources:
+
+http://facebook.github.io/draft-js/docs/quickstart-rich-styling.html#content
 
 https://github.com/rackt/react-autocomplete/blob/master/examples/custom-menu/app.js
 
@@ -82,7 +85,6 @@ http://www.ng-newsletter.com/posts/angular-ui-router.html
 
 https://github.com/larrymyers/react-mini-router
 
-https://github.com/souporserious/react-trix
 
 https://github.com/basecamp/trix
 

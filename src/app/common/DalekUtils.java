@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.StringTokenizer;
 
-import org.datanucleus.util.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import com.appspot.cloudserviceapi.common.RemoveHTMLReader;
 import com.appspot.cloudserviceapi.common.StringUtil;
@@ -182,8 +182,9 @@ public class DalekUtils {
 		try {
 			String t1 = null;
 			in = new BufferedReader(new FileReader(System.getProperty("user.dir") + 
+				"/src/app/common/sele_cu.txt"
 //				"/src/app/common/sele_ci.txt"
-				"/src/app/common/sele_ui.txt"
+//				"/src/app/common/sele_ui.txt"
 //					"/src/app/common/sele_di.txt"
 			));
 			// Read line by line, printing lines to the console
