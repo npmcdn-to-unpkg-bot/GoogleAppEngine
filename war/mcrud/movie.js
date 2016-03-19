@@ -298,7 +298,7 @@ function MovieController($scope, $filter, $http, $rootScope,
         $scope.pagedItems.length = 0;
         $scope.searchResults.length = 0;
         //$console && $console.log('3.1 list reinit');
-        $http.get(gCacheProxy + '/api/jwt/ws/crud?type=' + $scope.backendObject + "&origin=" + location.hostname + "&aid=" + gAppId + "&uid=" + uid + "&maxPerPage=" + $scope.page.max + "&pageNumber=" + $scope.page.number )
+        $http.get(gCacheProxy + '/api/jwt/ws/crud?type=' + $scope.backendObject + "&origin=" + location.hostname + "&aid=" + gAppId + "&uid=" + uid + "&maxPerPage=" + $scope.page.max + "&pageNumber=" + $scope.page.number, {timeout: 90000} )
             .success(function (data, status1, headers, config) {
                 if(typeof data !== 'undefined' && data.indexOf(App.NO_PARENT_ERR) > -1) {
                     alert(App.NO_PARENT_ERR_MSG);
@@ -1500,6 +1500,7 @@ angular.module('app', [
     //$httpProvider.defaults.headers.common['Authorization'] = "OAuth " + sessionId ;
     //$httpProvider.defaults.headers.common['X-User-Agent'] = "MyClient" ;
     $httpProvider.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('2shareJWTToken');   //JWT support
+    $httpProvider.defaults.timeout = 90000; //GAEJ friendly, 90 seconds wait!
     console && console.log("movie.js config(): done 6")
 }])
 //angular.module('app',[])//dependency 'ui.bootstrap' is conflicting with 1.4, thus removed (c.f. http://stackoverflow.com/questions/26332202/using-ui-bootstrap-causing-issues-with-carousel)!

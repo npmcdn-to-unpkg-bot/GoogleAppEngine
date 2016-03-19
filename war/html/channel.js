@@ -222,6 +222,7 @@ function loadMovieScheduled(username) {
 /** load shuffled movies */
 function loadMovieShuffle(username) {
     var stat = false;
+    console.log('channel.js loadMovieShuffle: username [' + username + ']');
 
     stat = loadMovie(username, true);
 
@@ -307,8 +308,7 @@ function loadMovie(username, shuffleFlag) {
 
     var stat = false;
     galleriaData = [];
-    //username = "pub";
-
+    //debugger
     targetUrl = gCacheProxy + "/api/jwt/ws/crud?type=modelMovie&origin=" + location.hostname + "&aid=" + gAppId + "&uid=" + username + "&filter=next5";
     //alert(targetUrl);
 
@@ -317,7 +317,7 @@ function loadMovie(username, shuffleFlag) {
         ////window.console && console.log("calendar event created, response = [" + data + "]");
         if (typeof data !== 'undefined') {
             //console.table(data);
-            //console.log(username);
+            console.log('channel.js loadMovie() username [' + username + ']');
             var obj = jQuery.parseJSON(JSON.stringify(data));
             var YOUTUBE_INDEX = 1;	//=== assumption: youtube is the second results!!!
             var filterStr;
@@ -879,7 +879,7 @@ window.onerror = function(msg, url, line, col, error) {
     extra += !error ? '' : '\nerror: ' + error;
 
     // You can view the information in an alert to see things working like this:
-    alert("Error: " + msg + "\nurl: " + url + "\nline: " + line + extra);
+    alert("channel.js onerror: " + msg + "\nurl: " + url + "\nline: " + line + extra);
 
     // TODO: Report this error via ajax so you can keep track
     //       of what pages have JS issues

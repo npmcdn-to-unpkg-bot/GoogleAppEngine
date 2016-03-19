@@ -94,7 +94,7 @@ typeof requirejs !== 'undefined' && requirejs.config({
             exports: 'Parse'
         },
         facebook: {
-            deps: ["jquery", "parse"],
+            deps: ["jquery", "parse", "storejs"],
             exports: 'facebook'
         },
         google: {
@@ -254,6 +254,8 @@ typeof requirejs !== 'undefined' && requirejs(
         ////=== https://www.parse.com/tutorials/session-migration-tutorial
         //Parse.User.enableRevocableSession();
         Parse = parse;
+        store.set('userid', parse.User.current().getUsername());
+        //debugger
         $(document).ready(function () {
             (function(d, debug){
                 var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];

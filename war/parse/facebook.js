@@ -22,9 +22,10 @@ function logoutWithoutPrompt() {
     logoutParse();
 
     //TODO clean up the states saved with store.js here
-//    if(store !== undefined) {
-//        store.clear();
-//    }
+    if(typeof store !== 'undefined') {
+        purgeStates();
+        store.clear();
+    }
 
     //window.console && console.log("facebook.js logoutWithoutPrompt() invoked!");
 }
