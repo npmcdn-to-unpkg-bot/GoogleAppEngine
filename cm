@@ -1,1 +1,5 @@
-git commit -am'$1'
+#!/bin/sh
+ 
+FIRST_ARGUMENT="$1"
+
+git commit -am"$FIRST_ARGUMENT"
