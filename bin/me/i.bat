@@ -1,1 +1,1 @@
-npm i && npm nodemon -g
+npm i && npm i nodemon -g
