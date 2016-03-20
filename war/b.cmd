@@ -1,1 +1,0 @@
-npm i bower -g && bower i && cd n && bower i && cd react && npm i && cd ..

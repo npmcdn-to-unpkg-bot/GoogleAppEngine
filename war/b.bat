@@ -1,0 +1,1 @@
+%NPMBINPATH%\bower i && cd n && %NPMBINPATH%\bower i && cd react && npm i && cd .. && swg1 && cd ..
