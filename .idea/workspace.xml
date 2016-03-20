@@ -24,22 +24,22 @@
     <favorites_list name="GoogleAppEngine" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/war/html/index.js">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/war/ui/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="19" column="7" selection-start-line="19" selection-start-column="7" selection-end-line="20" selection-end-column="0" />
+            <state relative-caret-position="405">
+              <caret line="27" column="161" selection-start-line="27" selection-start-column="161" selection-end-line="27" selection-end-column="161" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/war/ui/index.html">
+      <file leaf-file-name="app.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/war/n/react/app.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="127" column="55" selection-start-line="127" selection-start-column="55" selection-end-line="127" selection-end-column="55" />
+            <state relative-caret-position="435">
+              <caret line="29" column="44" selection-start-line="29" selection-start-column="44" selection-end-line="29" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -48,9 +48,15 @@
       <file leaf-file-name="init.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/war/parse/init.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="26" column="30" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="30" />
-              <folding />
+            <state relative-caret-position="390">
+              <caret line="27" column="30" selection-start-line="27" selection-start-column="30" selection-end-line="27" selection-end-column="30" />
+              <folding>
+                <marker date="1458442181000" expanded="true" signature="37:181" placeholder="//..." />
+                <marker date="1458442181000" expanded="true" signature="186:338" placeholder="/*...*/" />
+                <marker date="1458442181000" expanded="true" signature="443:678" placeholder="{...}" />
+                <marker date="1458442181000" expanded="true" signature="497:672" placeholder="{...}" />
+                <marker date="1458442181000" expanded="true" signature="1091:1151" placeholder="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -58,13 +64,26 @@
       <file leaf-file-name="channel.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/war/html/channel.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="319" column="48" selection-start-line="319" selection-start-column="48" selection-end-line="319" selection-end-column="48" />
+            <state relative-caret-position="4785">
+              <caret line="319" column="36" selection-start-line="319" selection-start-column="36" selection-end-line="319" selection-end-column="36" />
               <folding>
-                <marker date="1458409410104" expanded="true" signature="26848:26866" placeholder="..." />
-                <marker date="1458409410104" expanded="true" signature="26903:26928" placeholder="..." />
-                <marker date="1458409410104" expanded="true" signature="26981:26999" placeholder="..." />
-                <marker date="1458409410104" expanded="true" signature="27151:27201" placeholder="..." />
+                <marker date="1458442181000" expanded="true" signature="156:212" placeholder="//..." />
+                <marker date="1458442181000" expanded="true" signature="844:973" placeholder="{...}" />
+                <marker date="1458442181000" expanded="true" signature="984:1027" placeholder="{...}" />
+                <marker date="1458442181000" expanded="true" signature="1040:1331" placeholder="{...}" />
+                <marker date="1458442181000" expanded="true" signature="1055:1329" placeholder="{&quot;Accept&quot;: 'application/json, text/plain, */*'...}" />
+                <marker date="1458442181000" expanded="true" signature="1142:1232" placeholder="//..." />
+                <marker date="1458442181000" expanded="true" signature="1349:1380" placeholder="/**...*/" />
+                <marker date="1458442181000" expanded="true" signature="1501:1644" placeholder="//..." />
+                <marker date="1458442181000" expanded="true" signature="1657:12455" placeholder="{&quot;type&quot;: &quot;POST&quot;...}" />
+                <marker date="1458442181000" expanded="true" signature="2019:12278" placeholder="{...}" />
+                <marker date="1458442181000" expanded="true" signature="2157:12268" placeholder="{...}" />
+                <marker date="1458442181000" expanded="true" signature="2225:2325" placeholder="//..." />
+                <marker date="1458442181000" expanded="true" signature="2943:7902" placeholder="{...}" />
+                <marker date="1458442181000" expanded="true" signature="2965:3427" placeholder="//..." />
+                <marker date="1458442181000" expanded="true" signature="3524:3633" placeholder="{...}" />
+                <marker date="1458442181000" expanded="true" signature="3894:4186" placeholder="{...}" />
+                <marker date="1458442181000" expanded="true" signature="12543:12567" placeholder="{...}" />
               </folding>
             </state>
           </provider>
@@ -73,9 +92,15 @@
       <file leaf-file-name="main-config.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/war/js/main-config.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.448276">
-              <caret line="148" column="0" selection-start-line="145" selection-start-column="0" selection-end-line="148" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="2265">
+              <caret line="151" column="0" selection-start-line="151" selection-start-column="0" selection-end-line="151" selection-end-column="0" />
+              <folding>
+                <marker date="1458442181000" expanded="true" signature="11895:13259" placeholder="{...}" />
+                <marker date="1458442181000" expanded="true" signature="11895:13267" placeholder="{...}" />
+                <marker date="1458442181000" expanded="true" signature="11896:12319" placeholder="//..." />
+                <marker date="1458442181000" expanded="true" signature="12360:12560" placeholder="{...}" />
+                <marker date="1458442181000" expanded="true" signature="12561:13249" placeholder="//..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -83,9 +108,13 @@
       <file leaf-file-name="movie.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/war/mcrud/movie.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
+            <state relative-caret-position="4515">
               <caret line="301" column="0" selection-start-line="301" selection-start-column="0" selection-end-line="301" selection-end-column="0" />
-              <folding />
+              <folding>
+                <marker date="1458442181000" expanded="true" signature="551:12597" placeholder="{...}" />
+                <marker date="1458442181000" expanded="true" signature="72349:72407" placeholder="{...}" />
+                <marker date="1458442181000" expanded="true" signature="72349:72408" placeholder="[...]" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -93,18 +122,28 @@
       <file leaf-file-name="movie.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/war/mcrud/movie.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
+            <state relative-caret-position="2580">
               <caret line="172" column="42" selection-start-line="172" selection-start-column="42" selection-end-line="172" selection-end-column="42" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main-channelshuffle.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main-channelshuffle.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/war/js/main-channelshuffle.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.33142856">
-              <caret line="80" column="16" selection-start-line="80" selection-start-column="16" selection-end-line="80" selection-end-column="16" />
+            <state relative-caret-position="164">
+              <caret line="81" column="47" selection-start-line="81" selection-start-column="47" selection-end-line="81" selection-end-column="47" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="appengine-web.xml.net" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/bin/appengine-web.xml.net">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="62" column="26" selection-start-line="62" selection-start-column="24" selection-end-line="62" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -113,18 +152,8 @@
       <file leaf-file-name="facebook.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/war/parse/facebook.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="25" column="15" selection-start-line="25" selection-start-column="15" selection-end-line="25" selection-end-column="15" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main-config-compiled.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/war/js/main-config-compiled.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="193" column="9" selection-start-line="193" selection-start-column="9" selection-end-line="193" selection-end-column="9" />
+            <state relative-caret-position="0">
+              <caret line="0" column="13" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -147,7 +176,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/war/n/react/jsx/sr-create.jsx" />
-        <option value="$PROJECT_DIR$/war/n/react/app.html" />
         <option value="$PROJECT_DIR$/war/n/react/js/app-autocomplete.js" />
         <option value="$PROJECT_DIR$/war/n/react/jsx/sr-start.jsx" />
         <option value="$PROJECT_DIR$/war/n/react/jsx/sr-update.jsx" />
@@ -162,6 +190,7 @@
         <option value="$PROJECT_DIR$/war/parse/facebook.js" />
         <option value="$PROJECT_DIR$/war/js/main-config.js" />
         <option value="$PROJECT_DIR$/war/js/main-channelshuffle.js" />
+        <option value="$PROJECT_DIR$/war/n/react/app.html" />
       </list>
     </option>
   </component>
@@ -170,12 +199,8 @@
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
   </component>
-  <component name="NamedScopeManager">
-    <order />
-  </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
+    <option name="y" value="23" />
     <option name="width" value="1382" />
     <option name="height" value="754" />
   </component>
@@ -237,10 +262,11 @@
       <autoscrollToSource ProjectPane="true" />
       <autoscrollFromSource ProjectPane="true" />
       <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -305,24 +331,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="parse" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GoogleAppEngine" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GoogleAppEngine" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="war" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="n" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -337,100 +345,13 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="war" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="n" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="react" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GoogleAppEngine" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GoogleAppEngine" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="war" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="n" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="react" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jsx" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GoogleAppEngine" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GoogleAppEngine" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="war" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mcrud" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GoogleAppEngine" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GoogleAppEngine" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="war" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GoogleAppEngine" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GoogleAppEngine" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="war" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="html" />
+              <option name="myItemId" value="bin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -445,7 +366,7 @@
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
-    <property name="SearchEverywhereHistoryKey" value="channelsh&#9;FILE&#9;file://C:/GoogleAppEngine/war/html/channelshuffle.html&#10;index.html&#9;FILE&#9;file://C:/GoogleAppEngine/war/ui/index.html&#10;app.js&#9;FILE&#9;file://C:/GoogleAppEngine/war/js/app.js&#10;movie.js&#9;FILE&#9;file://C:/GoogleAppEngine/war/mcrud/movie.js&#10;main-conf&#9;FILE&#9;file://C:/GoogleAppEngine/war/js/main-config.js&#10;main-channel&#9;FILE&#9;file://C:/GoogleAppEngine/war/js/main-channelshuffle.js&#10;channel.js&#9;FILE&#9;file://C:/GoogleAppEngine/war/html/channel.js&#10;index.js&#9;FILE&#9;file://C:/GoogleAppEngine/war/html/index.js&#10;main-in&#9;FILE&#9;file://C:/GoogleAppEngine/war/js/main-index.js&#10;sr-u&#9;FILE&#9;file://C:/GoogleAppEngine/war/n/react/jsx/sr-update.jsx&#10;stack&#9;FILE&#9;file:///Users/macbook/GoogleAppEngine/war/css/stacktable.css&#10;readme.txt&#9;FILE&#9;file:///Users/macbook/GoogleAppEngine/war/n/readme.txt&#10;stackta&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/war/css/stacktable.css&#10;purl.js&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/war/jquery/purl.js&#10;stackt&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/war/css/stacktable.css&#10;bower&#9;FILE&#9;file://C:/GoogleAppEngine/war/n/bower.json&#10;ServiceRegistryStart.tml&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/src/tapp/pages/sci/ServiceRegistryStart.tml&#10;milli&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/war/js/milligram.css&#10;trix.css&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/war/js/trix.css&#10;movie.html&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/war/mcrud/movie.html&#10;Service&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/src/tapp/pages/sci/ServiceRegistryStart.tml&#10;TemplateSave.tml&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/src/tapp/pages/g/app/TemplateSave.tml&#10;read&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/readme.txt&#10;Servi&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/src/tapp/pages/sci/ServiceRegistrySave.tml&#10;login.jsp&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/war/login.jsp&#10;ServiceRe&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/src/tapp/pages/sci/ServiceRegistrySave.tml&#10;stacktable.js&#9;ACTION&#9;null&#10;workspace&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/.idea/workspace.xml" />
+    <property name="SearchEverywhereHistoryKey" value="appeng&#9;FILE&#9;file:///Users/macbook/GoogleAppEngine/bin/appengine-web.xml.net&#10;app.ht&#9;FILE&#9;file:///Users/macbook/GoogleAppEngine/war/n/react/app.html&#10;appengine-web.xml.ne&#9;FILE&#9;file:///Users/macbook/GoogleAppEngine/bin/appengine-web.xml.net&#10;channelsh&#9;FILE&#9;file://C:/GoogleAppEngine/war/html/channelshuffle.html&#10;index.html&#9;FILE&#9;file://C:/GoogleAppEngine/war/ui/index.html&#10;app.js&#9;FILE&#9;file://C:/GoogleAppEngine/war/js/app.js&#10;movie.js&#9;FILE&#9;file://C:/GoogleAppEngine/war/mcrud/movie.js&#10;main-conf&#9;FILE&#9;file://C:/GoogleAppEngine/war/js/main-config.js&#10;main-channel&#9;FILE&#9;file://C:/GoogleAppEngine/war/js/main-channelshuffle.js&#10;channel.js&#9;FILE&#9;file://C:/GoogleAppEngine/war/html/channel.js&#10;index.js&#9;FILE&#9;file://C:/GoogleAppEngine/war/html/index.js&#10;main-in&#9;FILE&#9;file://C:/GoogleAppEngine/war/js/main-index.js&#10;sr-u&#9;FILE&#9;file://C:/GoogleAppEngine/war/n/react/jsx/sr-update.jsx&#10;stack&#9;FILE&#9;file:///Users/macbook/GoogleAppEngine/war/css/stacktable.css&#10;readme.txt&#9;FILE&#9;file:///Users/macbook/GoogleAppEngine/war/n/readme.txt&#10;stackta&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/war/css/stacktable.css&#10;purl.js&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/war/jquery/purl.js&#10;stackt&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/war/css/stacktable.css&#10;bower&#9;FILE&#9;file://C:/GoogleAppEngine/war/n/bower.json&#10;ServiceRegistryStart.tml&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/src/tapp/pages/sci/ServiceRegistryStart.tml&#10;milli&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/war/js/milligram.css&#10;trix.css&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/war/js/trix.css&#10;movie.html&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/war/mcrud/movie.html&#10;Service&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/src/tapp/pages/sci/ServiceRegistryStart.tml&#10;TemplateSave.tml&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/src/tapp/pages/g/app/TemplateSave.tml&#10;read&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/readme.txt&#10;Servi&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/src/tapp/pages/sci/ServiceRegistrySave.tml&#10;login.jsp&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/war/login.jsp&#10;ServiceRe&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/src/tapp/pages/sci/ServiceRegistrySave.tml&#10;stacktable.js&#9;ACTION&#9;null&#10;workspace&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/.idea/workspace.xml" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
     <property name="LayoutCode.rearrangeEntriesXML" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
@@ -486,9 +407,6 @@
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
       <method />
     </configuration>
-    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
-      <method />
-    </configuration>
     <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" config-file="">
       <envs />
       <method />
@@ -496,14 +414,7 @@
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
       <method />
     </configuration>
-    <configuration default="true" type="JsTestDriver-test-runner" factoryName="JsTestDriver">
-      <setting name="configLocationType" value="CONFIG_FILE" />
-      <setting name="settingsFile" value="" />
-      <setting name="serverType" value="INTERNAL" />
-      <setting name="preferredDebugBrowser" value="Chrome" />
-      <method />
-    </configuration>
-    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" working-dir="">
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
       <method />
     </configuration>
     <configuration default="true" type="cucumber.js" factoryName="Cucumber.js">
@@ -513,6 +424,7 @@
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
       <node-options />
       <gulpfile />
       <tasks />
@@ -522,12 +434,14 @@
       <method />
     </configuration>
     <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-interpreter>$USER_HOME$/.nvm/versions/node/v5.9.0/bin/node</node-interpreter>
       <node-options />
       <working-directory>$PROJECT_DIR$</working-directory>
       <pass-parent-env>true</pass-parent-env>
       <envs />
       <ui>bdd</ui>
       <extra-mocha-options />
+      <test-kind>DIRECTORY</test-kind>
       <test-directory />
       <recursive>false</recursive>
       <method />
@@ -543,7 +457,9 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
   <component name="SvnConfiguration" cleanupOnStartRun="true">
     <configuration>C:\Users\sony\AppData\Roaming\Subversion</configuration>
     <supportedVersion>125</supportedVersion>
@@ -874,49 +790,49 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
+    <frame x="0" y="23" width="1382" height="754" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28111273" sideWeight="0.6026273" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3289256" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3257979" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4148607" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31746033" sideWeight="0.9986413" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32987398" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38196722" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3252688" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31048387" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38962767" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24963397" sideWeight="0.7208672" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28075254" sideWeight="0.6026273" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289256" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3257979" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31746033" sideWeight="0.9986413" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987398" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3252688" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31048387" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38962767" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24963397" sideWeight="0.7208672" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4148607" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38196722" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3252688" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3289256" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31048387" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3257979" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38962767" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31746033" sideWeight="0.9986413" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22626582" sideWeight="0.6026273" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24964131" sideWeight="0.7208672" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4015873" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32987398" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38196722" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3252688" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289256" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31048387" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3257979" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38962767" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31746033" sideWeight="0.9986413" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22626582" sideWeight="0.6026273" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24964131" sideWeight="0.7208672" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4015873" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987398" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38196722" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="UnknownFeatures">
@@ -982,15 +898,17 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/war/html/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="285">
           <caret line="19" column="7" selection-start-line="19" selection-start-column="7" selection-end-line="20" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1458442181000" expanded="true" signature="6988:7106" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/war/ui/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="1905">
           <caret line="127" column="55" selection-start-line="127" selection-start-column="55" selection-end-line="127" selection-end-column="55" />
           <folding />
         </state>
@@ -998,44 +916,73 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/war/parse/init.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="390">
           <caret line="26" column="30" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="30" />
-          <folding />
+          <folding>
+            <marker date="1458442181000" expanded="true" signature="37:181" placeholder="//..." />
+            <marker date="1458442181000" expanded="true" signature="186:338" placeholder="/*...*/" />
+            <marker date="1458442181000" expanded="true" signature="443:678" placeholder="{...}" />
+            <marker date="1458442181000" expanded="true" signature="497:672" placeholder="{...}" />
+            <marker date="1458442181000" expanded="true" signature="1091:1151" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/war/html/channel.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="319" column="48" selection-start-line="319" selection-start-column="48" selection-end-line="319" selection-end-column="48" />
+        <state relative-caret-position="4785">
+          <caret line="319" column="36" selection-start-line="319" selection-start-column="36" selection-end-line="319" selection-end-column="36" />
           <folding>
-            <marker date="1458409410104" expanded="true" signature="26848:26866" placeholder="..." />
-            <marker date="1458409410104" expanded="true" signature="26903:26928" placeholder="..." />
-            <marker date="1458409410104" expanded="true" signature="26981:26999" placeholder="..." />
-            <marker date="1458409410104" expanded="true" signature="27151:27201" placeholder="..." />
+            <marker date="1458442181000" expanded="true" signature="156:212" placeholder="//..." />
+            <marker date="1458442181000" expanded="true" signature="844:973" placeholder="{...}" />
+            <marker date="1458442181000" expanded="true" signature="984:1027" placeholder="{...}" />
+            <marker date="1458442181000" expanded="true" signature="1040:1331" placeholder="{...}" />
+            <marker date="1458442181000" expanded="true" signature="1055:1329" placeholder="{&quot;Accept&quot;: 'application/json, text/plain, */*'...}" />
+            <marker date="1458442181000" expanded="true" signature="1142:1232" placeholder="//..." />
+            <marker date="1458442181000" expanded="true" signature="1349:1380" placeholder="/**...*/" />
+            <marker date="1458442181000" expanded="true" signature="1501:1644" placeholder="//..." />
+            <marker date="1458442181000" expanded="true" signature="1657:12455" placeholder="{&quot;type&quot;: &quot;POST&quot;...}" />
+            <marker date="1458442181000" expanded="true" signature="2019:12278" placeholder="{...}" />
+            <marker date="1458442181000" expanded="true" signature="2157:12268" placeholder="{...}" />
+            <marker date="1458442181000" expanded="true" signature="2225:2325" placeholder="//..." />
+            <marker date="1458442181000" expanded="true" signature="2943:7902" placeholder="{...}" />
+            <marker date="1458442181000" expanded="true" signature="2965:3427" placeholder="//..." />
+            <marker date="1458442181000" expanded="true" signature="3524:3633" placeholder="{...}" />
+            <marker date="1458442181000" expanded="true" signature="3894:4186" placeholder="{...}" />
+            <marker date="1458442181000" expanded="true" signature="12543:12567" placeholder="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/war/js/main-config.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="204" column="36" selection-start-line="204" selection-start-column="12" selection-end-line="204" selection-end-column="36" />
-          <folding />
+        <state relative-caret-position="2220">
+          <caret line="148" column="0" selection-start-line="145" selection-start-column="0" selection-end-line="148" selection-end-column="0" />
+          <folding>
+            <marker date="1458442181000" expanded="true" signature="11895:13259" placeholder="{...}" />
+            <marker date="1458442181000" expanded="true" signature="11895:13267" placeholder="{...}" />
+            <marker date="1458442181000" expanded="true" signature="11896:12319" placeholder="//..." />
+            <marker date="1458442181000" expanded="true" signature="12360:12560" placeholder="{...}" />
+            <marker date="1458442181000" expanded="true" signature="12561:13249" placeholder="//..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/war/mcrud/movie.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="4515">
           <caret line="301" column="0" selection-start-line="301" selection-start-column="0" selection-end-line="301" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1458442181000" expanded="true" signature="551:12597" placeholder="{...}" />
+            <marker date="1458442181000" expanded="true" signature="72349:72407" placeholder="{...}" />
+            <marker date="1458442181000" expanded="true" signature="72349:72408" placeholder="[...]" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/war/mcrud/movie.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="2580">
           <caret line="172" column="42" selection-start-line="172" selection-start-column="42" selection-end-line="172" selection-end-column="42" />
           <folding />
         </state>
@@ -1043,7 +990,123 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/war/js/main-channelshuffle.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/parse/facebook.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="15" selection-start-line="25" selection-start-column="15" selection-end-line="25" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/js/main-config-compiled.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2895">
+          <caret line="193" column="9" selection-start-line="193" selection-start-column="9" selection-end-line="193" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/html/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="19" column="7" selection-start-line="19" selection-start-column="7" selection-end-line="20" selection-end-column="0" />
+          <folding>
+            <marker date="1458442181000" expanded="true" signature="6988:7106" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/ui/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="127" column="55" selection-start-line="127" selection-start-column="55" selection-end-line="127" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/parse/init.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="26" column="30" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="30" />
+          <folding>
+            <marker date="1458442181000" expanded="true" signature="37:181" placeholder="//..." />
+            <marker date="1458442181000" expanded="true" signature="186:338" placeholder="/*...*/" />
+            <marker date="1458442181000" expanded="true" signature="443:678" placeholder="{...}" />
+            <marker date="1458442181000" expanded="true" signature="497:672" placeholder="{...}" />
+            <marker date="1458442181000" expanded="true" signature="1091:1151" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/html/channel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="319" column="48" selection-start-line="319" selection-start-column="48" selection-end-line="319" selection-end-column="48" />
+          <folding>
+            <marker date="1458442181000" expanded="true" signature="156:212" placeholder="//..." />
+            <marker date="1458442181000" expanded="true" signature="844:973" placeholder="{...}" />
+            <marker date="1458442181000" expanded="true" signature="984:1027" placeholder="{...}" />
+            <marker date="1458442181000" expanded="true" signature="1040:1331" placeholder="{...}" />
+            <marker date="1458442181000" expanded="true" signature="1055:1329" placeholder="{&quot;Accept&quot;: 'application/json, text/plain, */*'...}" />
+            <marker date="1458442181000" expanded="true" signature="1142:1232" placeholder="//..." />
+            <marker date="1458442181000" expanded="true" signature="1349:1380" placeholder="/**...*/" />
+            <marker date="1458442181000" expanded="true" signature="1501:1644" placeholder="//..." />
+            <marker date="1458442181000" expanded="true" signature="1657:12455" placeholder="{&quot;type&quot;: &quot;POST&quot;...}" />
+            <marker date="1458442181000" expanded="true" signature="2019:12278" placeholder="{...}" />
+            <marker date="1458442181000" expanded="true" signature="2157:12268" placeholder="{...}" />
+            <marker date="1458442181000" expanded="true" signature="2225:2325" placeholder="//..." />
+            <marker date="1458442181000" expanded="true" signature="2943:7902" placeholder="{...}" />
+            <marker date="1458442181000" expanded="true" signature="2965:3427" placeholder="//..." />
+            <marker date="1458442181000" expanded="true" signature="3524:3633" placeholder="{...}" />
+            <marker date="1458442181000" expanded="true" signature="3894:4186" placeholder="{...}" />
+            <marker date="1458442181000" expanded="true" signature="12543:12567" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/js/main-config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="204" column="36" selection-start-line="204" selection-start-column="12" selection-end-line="204" selection-end-column="36" />
+          <folding>
+            <marker date="1458442181000" expanded="true" signature="11895:13259" placeholder="{...}" />
+            <marker date="1458442181000" expanded="true" signature="11895:13267" placeholder="{...}" />
+            <marker date="1458442181000" expanded="true" signature="11896:12319" placeholder="//..." />
+            <marker date="1458442181000" expanded="true" signature="12360:12560" placeholder="{...}" />
+            <marker date="1458442181000" expanded="true" signature="12561:13249" placeholder="//..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/mcrud/movie.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="301" column="0" selection-start-line="301" selection-start-column="0" selection-end-line="301" selection-end-column="0" />
+          <folding>
+            <marker date="1458442181000" expanded="true" signature="551:12597" placeholder="{...}" />
+            <marker date="1458442181000" expanded="true" signature="72349:72407" placeholder="{...}" />
+            <marker date="1458442181000" expanded="true" signature="72349:72408" placeholder="[...]" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/mcrud/movie.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="172" column="42" selection-start-line="172" selection-start-column="42" selection-end-line="172" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/js/main-channelshuffle.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
           <caret line="91" column="32" selection-start-line="91" selection-start-column="32" selection-end-line="91" selection-end-column="32" />
           <folding />
         </state>
@@ -1051,7 +1114,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/war/parse/facebook.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
@@ -1059,123 +1122,115 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/war/html/channelshuffle.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="0">
           <caret line="106" column="42" selection-start-line="106" selection-start-column="42" selection-end-line="106" selection-end-column="42" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/war/n/react/jsx/sr-update.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/war/n/react/jsx/sr-update.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/war/n/react/jsx/sr-update.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/tapp/pages/sci/ServiceRegistryStart.tml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="0">
           <caret line="126" column="153" selection-start-line="126" selection-start-column="16" selection-end-line="126" selection-end-column="153" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/war/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/war/js/main-calendar.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="0">
           <caret line="44" column="13" selection-start-line="44" selection-start-column="13" selection-end-line="44" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/war/jquery/purl.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/war/html/calendar.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="0">
           <caret line="95" column="171" selection-start-line="95" selection-start-column="146" selection-end-line="95" selection-end-column="171" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/war/css/zframework.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="0">
           <caret line="579" column="5" selection-start-line="579" selection-start-column="5" selection-end-line="579" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/war/n/react/jsx/sr-update.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36710963">
+        <state relative-caret-position="0">
           <caret line="132" column="9" selection-start-line="132" selection-start-column="9" selection-end-line="132" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/war/js/main-index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="0">
           <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/war/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/war/html/channelshuffle.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="0">
           <caret line="106" column="42" selection-start-line="106" selection-start-column="42" selection-end-line="106" selection-end-column="42" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/war/html/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="7" selection-start-line="19" selection-start-column="7" selection-end-line="20" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/war/ui/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="127" column="55" selection-start-line="127" selection-start-column="55" selection-end-line="127" selection-end-column="55" />
-          <folding />
+        <state relative-caret-position="360">
+          <caret line="24" column="7" selection-start-line="24" selection-start-column="7" selection-end-line="24" selection-end-column="7" />
+          <folding>
+            <marker date="1458442181000" expanded="true" signature="6988:7106" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/war/js/main-config-compiled.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="2895">
           <caret line="193" column="9" selection-start-line="193" selection-start-column="9" selection-end-line="193" selection-end-column="9" />
           <folding />
         </state>
@@ -1183,36 +1238,55 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/war/parse/init.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="26" column="30" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="30" />
-          <folding />
+        <state relative-caret-position="390">
+          <caret line="27" column="30" selection-start-line="27" selection-start-column="30" selection-end-line="27" selection-end-column="30" />
+          <folding>
+            <marker date="1458442181000" expanded="true" signature="37:181" placeholder="//..." />
+            <marker date="1458442181000" expanded="true" signature="186:338" placeholder="/*...*/" />
+            <marker date="1458442181000" expanded="true" signature="443:678" placeholder="{...}" />
+            <marker date="1458442181000" expanded="true" signature="497:672" placeholder="{...}" />
+            <marker date="1458442181000" expanded="true" signature="1091:1151" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/war/html/channel.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="319" column="48" selection-start-line="319" selection-start-column="48" selection-end-line="319" selection-end-column="48" />
+        <state relative-caret-position="4785">
+          <caret line="319" column="36" selection-start-line="319" selection-start-column="36" selection-end-line="319" selection-end-column="36" />
           <folding>
-            <marker date="1458409410104" expanded="true" signature="26848:26866" placeholder="..." />
-            <marker date="1458409410104" expanded="true" signature="26903:26928" placeholder="..." />
-            <marker date="1458409410104" expanded="true" signature="26981:26999" placeholder="..." />
-            <marker date="1458409410104" expanded="true" signature="27151:27201" placeholder="..." />
+            <marker date="1458442181000" expanded="true" signature="156:212" placeholder="//..." />
+            <marker date="1458442181000" expanded="true" signature="844:973" placeholder="{...}" />
+            <marker date="1458442181000" expanded="true" signature="984:1027" placeholder="{...}" />
+            <marker date="1458442181000" expanded="true" signature="1040:1331" placeholder="{...}" />
+            <marker date="1458442181000" expanded="true" signature="1055:1329" placeholder="{&quot;Accept&quot;: 'application/json, text/plain, */*'...}" />
+            <marker date="1458442181000" expanded="true" signature="1142:1232" placeholder="//..." />
+            <marker date="1458442181000" expanded="true" signature="1349:1380" placeholder="/**...*/" />
+            <marker date="1458442181000" expanded="true" signature="1501:1644" placeholder="//..." />
+            <marker date="1458442181000" expanded="true" signature="1657:12455" placeholder="{&quot;type&quot;: &quot;POST&quot;...}" />
+            <marker date="1458442181000" expanded="true" signature="2019:12278" placeholder="{...}" />
+            <marker date="1458442181000" expanded="true" signature="2157:12268" placeholder="{...}" />
+            <marker date="1458442181000" expanded="true" signature="2225:2325" placeholder="//..." />
+            <marker date="1458442181000" expanded="true" signature="2943:7902" placeholder="{...}" />
+            <marker date="1458442181000" expanded="true" signature="2965:3427" placeholder="//..." />
+            <marker date="1458442181000" expanded="true" signature="3524:3633" placeholder="{...}" />
+            <marker date="1458442181000" expanded="true" signature="3894:4186" placeholder="{...}" />
+            <marker date="1458442181000" expanded="true" signature="12543:12567" placeholder="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/war/parse/facebook.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="15" selection-start-line="25" selection-start-column="15" selection-end-line="25" selection-end-column="15" />
+        <state relative-caret-position="0">
+          <caret line="0" column="13" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/war/mcrud/movie.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="2580">
           <caret line="172" column="42" selection-start-line="172" selection-start-column="42" selection-end-line="172" selection-end-column="42" />
           <folding />
         </state>
@@ -1220,24 +1294,58 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/war/mcrud/movie.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="4515">
           <caret line="301" column="0" selection-start-line="301" selection-start-column="0" selection-end-line="301" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1458442181000" expanded="true" signature="551:12597" placeholder="{...}" />
+            <marker date="1458442181000" expanded="true" signature="72349:72407" placeholder="{...}" />
+            <marker date="1458442181000" expanded="true" signature="72349:72408" placeholder="[...]" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/war/js/main-config.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.448276">
-          <caret line="148" column="0" selection-start-line="145" selection-start-column="0" selection-end-line="148" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="2265">
+          <caret line="151" column="0" selection-start-line="151" selection-start-column="0" selection-end-line="151" selection-end-column="0" />
+          <folding>
+            <marker date="1458442181000" expanded="true" signature="11895:13259" placeholder="{...}" />
+            <marker date="1458442181000" expanded="true" signature="11895:13267" placeholder="{...}" />
+            <marker date="1458442181000" expanded="true" signature="11896:12319" placeholder="//..." />
+            <marker date="1458442181000" expanded="true" signature="12360:12560" placeholder="{...}" />
+            <marker date="1458442181000" expanded="true" signature="12561:13249" placeholder="//..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/war/js/main-channelshuffle.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33142856">
-          <caret line="80" column="16" selection-start-line="80" selection-start-column="16" selection-end-line="80" selection-end-column="16" />
+        <state relative-caret-position="164">
+          <caret line="81" column="47" selection-start-line="81" selection-start-column="47" selection-end-line="81" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/ui/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="161" selection-start-line="27" selection-start-column="161" selection-end-line="27" selection-end-column="161" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/n/react/app.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" column="44" selection-start-line="29" selection-start-column="44" selection-end-line="29" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/appengine-web.xml.net">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="62" column="26" selection-start-line="62" selection-start-column="24" selection-end-line="62" selection-end-column="26" />
           <folding />
         </state>
       </provider>

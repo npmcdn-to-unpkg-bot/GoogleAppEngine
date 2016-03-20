@@ -1,5 +1,1 @@
-<<<<<<< HEAD
 bower i && cd n && bower i && cd react && npm i && cd .. && cd n && ./swg1
-=======
-npm i bower -g && bower i && cd n && bower i && cd react && npm i && cd ..
->>>>>>> e750d3b92615e37a12837844b0260d8fb1aa3136
