@@ -1,5 +1,6 @@
 "use strict";
 
+var Parse;
 //username = Parse.User && Parse.User.current() && Parse.User.current().getUsername();
 var gRecurringButtonTitle = "Recurring";
 var gCalendar;
@@ -15,11 +16,13 @@ var App = {
     login_url: '/ui/index.html',
     ytplayer: {},
     session_expired_msg: 'Your session is invalid! You should logout and sign in again. ',
-    isValidSession: function() {
+    isValidSession: function(Parse) {
         var ret = false;
         try {
-            var uid = Parse.User.current().getUsername().trim() !== '';
-            ret = true;
+            //if(typeof Parse !== 'undefined') {
+                var uid = Parse.User.current().getUsername().trim() !== '';
+                ret = true;
+            //}
         } catch(e) {
             //whatever, it does not matter
         }
@@ -65,7 +68,7 @@ typeof requirejs !== 'undefined' && requirejs.config({
         //bootstrap: '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min',
         angular: '//ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular',
 //        angularSanitize: '//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-sanitize',    //http://stackoverflow.com/questions/19770156/how-to-output-html-through-angularjs-template
-        angularHint: 'hint',
+//        angularHint: 'hint',
         init: '../parse/init',  //cache and user initialization
         //===used by calendar.html
         jQueryUI: '../jquery/jquery-ui-1.10.2.custom.min',
@@ -91,7 +94,7 @@ typeof requirejs !== 'undefined' && requirejs.config({
             exports: 'Parse'
         },
         facebook: {
-            deps: ["jquery", "parse"],
+            deps: ["jquery", "parse", "storejs"],
             exports: 'facebook'
         },
         google: {
@@ -117,10 +120,10 @@ typeof requirejs !== 'undefined' && requirejs.config({
             deps: ["parse", "purl"],
             exports : 'angular'
         },
-        angularHint: {
-            deps: ["angular"],
-            exports : 'angularHint'
-        },
+        //angularHint: {
+        //    deps: ["angular"],
+        //    exports : 'angularHint'
+        //},
 //        angularSanitize: {
 //            deps: ["angular"],
 //            exports : 'angular'
@@ -214,9 +217,10 @@ typeof requirejs !== 'undefined' && requirejs(
     [
         'jquery',
         'purl',
-        //'parse', 'facebook',
+        'parse', 'facebook',
+        //'init',
         'angular',
-        'angularHint',
+        //'angularHint',
 //        'angularSanitize',  //1.3 does not have this
         'angularBootstrap',
 //        'summernote',
@@ -229,9 +233,10 @@ typeof requirejs !== 'undefined' && requirejs(
     function(
         $,
         purl,
-        //Parse, facebook,
+        parse, facebook,
+        //init,
         angular,
-        angularHint,
+        //angularHint,
 //        angularSanitize,	//1.3 does not have this
         angularBootstrap,
 //        angularAnimate,
@@ -243,7 +248,72 @@ typeof requirejs !== 'undefined' && requirejs(
         appAssert
         ) {
         'use strict';
+        parse.initialize("Ld70ODLxjXFkhhRux6kQqVCiJ4rQeXU8dISafNJa", "dLHhDNKnLimXHzSzxvQcGuwle5iLwnn3bFahDS9q");
+        parse.serverURL = 'https://toshare.herokuapp.com/parse';	//note lower case /parse
+        window.console && console.log("index.html: New Parse initialized. Parse.serverURL [" + parse.serverURL + ']');
+        ////=== https://www.parse.com/tutorials/session-migration-tutorial
+        //Parse.User.enableRevocableSession();
+        Parse = parse;
+        store.set('userid', parse.User.current().getUsername());
+        //debugger
         $(document).ready(function () {
+            (function(d, debug){
+                var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+                if (d.getElementById(id)) {return;}
+                js = d.createElement('script'); js.id = id; js.async = true;
+                js.src = "//connect.facebook.net/en_US/all" + (debug ? "/debug" : "") + ".js";
+                ref.parentNode.insertBefore(js, ref);
+            }(document, false));
+
+            window.fbAsyncInit = function() {
+                //initialize facebook SDK via parse
+                var realAppId;
+                if(location.hostname.indexOf('cbiit') > -1 || location.hostname.indexOf('cadsr') > -1) {
+                    realAppId = '1391742604391122';
+                }
+                else
+                if(location.hostname.indexOf('teev.rhc') > -1) {
+                    realAppId = '395343103935527';
+                }
+                else
+                if(location.hostname.indexOf('oo.tv') > -1 || location.hostname.indexOf('hudoone') > -1) {
+                    realAppId = '522052734496612';
+                }
+                else
+                if(location.hostname.indexOf('service') > -1) {
+                    realAppId = '333890893403449';
+                }
+                else
+                if(location.hostname.indexOf('share') > -1) {
+                    realAppId = '351597214975046';
+                }
+                else
+                if(location.hostname.indexOf('aware') > -1) {
+                    realAppId = '1434646580086725';
+                }
+                else
+                if(location.hostname.indexOf('localhost') > -1) {
+                    realAppId = '149411878572809';
+                }
+                else {
+                    window.console && console.log("ERROR: No appdomain registered with Facebook, please visit https://developers.facebook.com/apps to create one!!!");
+                    realAppId = '149411878572809';
+                }
+
+                Parse.FacebookUtils.init({
+                    status: false,  //https://parse.com/questions/what-does-a-non-null-parseusercurrent-guarantee
+                    'appId'      : realAppId,
+                    'channelUrl' : '/channel.html',
+                    'cookie'     : true,
+                    'xfbml'      : true
+                });
+//  status     : true, // check the login status upon init?
+                //Code to be executed after initializing the Facebook SDK.
+            };
+
+            //=== logout an existing session
+            //logoutWithoutPrompt();
+
 //            //=== begin store.js initialization
 //            (function() {
 //                    try {

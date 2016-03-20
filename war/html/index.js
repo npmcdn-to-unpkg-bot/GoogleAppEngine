@@ -1,7 +1,11 @@
 	gMovieURL = '/mcrud/movie.html';
-    //var UserObject = Parse.Object.extend("UserObject");
-    //var userObject = new UserObject();
-    //https://parse.com/apps/2share/collections#class/_User
+    function fb_logout() {
+        //var UserObject = Parse.Object.extend("UserObject");
+        //var userObject = new UserObject();
+        //https://parse.com/apps/2share/collections#class/_User
+        $("#fb-redirect-for-IE").hide();
+        $("#fb-login-notice").hide();
+    }
     /*
      var TestObject = Parse.Object.extend("TestObject");
      var testObject = new TestObject();
@@ -14,6 +18,7 @@
      }
      });
      */
+
     $.ajaxSetup({headers: { 'Authorization': 'Bearer ' + localStorage.getItem('2shareJWTToken') }}); //JWT support
 
     function handleUser(type) {
@@ -127,11 +132,6 @@
         });
     }
 
-    function fb_logout() {
-        $("#fb-redirect-for-IE").hide();
-        $("#fb-login-notice").hide();
-    }
-
     //http://stackoverflow.com/questions/979662/how-to-detect-pressing-enter-on-keyboard-using-jquery
     $(document).keypress(function(event) {
         var keycode = (event.keyCode ? event.keyCode : event.which);
@@ -142,6 +142,7 @@
             if (document.location.toString().indexOf("index1") > -1) {
                 handleUser('signup');
             } else {
+                $('#notice').text('Contacting ' + Parse.serverURL + ' ...');
                 //alert('You pressed a "enter" key in somewhere');
                 handleUser('login');
             }

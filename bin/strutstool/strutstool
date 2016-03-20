@@ -1,3 +1,0 @@
-#!/bin/bash
-INSTALL_PATH="/media/data/Programming/Java/projects/strutstool/bin"
-java -jar $INSTALL_PATH/StrutsTool.jar $@

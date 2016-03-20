@@ -10,6 +10,7 @@ requirejs.config({
         //===used by index1.html
         index: '../html/index'
         //,
+        //parse: '//www.parsecdn.com/js/parse-latest',	//TODO is this the same js sdk after the parse server retiring???
 //        facebook: '../parse/facebook',
 //        plusone:  '//apis.google.com/js/plusone',
 //        gapi: 'https://apis.google.com/js/client.js?onload=load',
@@ -21,10 +22,15 @@ requirejs.config({
     },
 
     shim: {
-//        jquery: {
-//            exports: '$'
-//        },
+        //jquery: {
+        //    exports: '$'
+        //},
+        //parse: {
+        //    deps: ["jquery"],
+        //    exports: 'Parse'
+        //},
         index: {
+            deps: ["parse"],
             exports: 'index'
         }
 //        //run as specified in the following orders
@@ -72,7 +78,9 @@ require(['./main-config', './app'], function (common, app) {
     require(
         [
 //            'jquery',
-            'purl', 'parse', 'facebook',
+            'purl',
+            //'parse',
+            //'facebook',
 //            'angular',
             'prefs',
         'index', 'google'
@@ -83,7 +91,9 @@ require(['./main-config', './app'], function (common, app) {
         ],
         function(
 //            $,
-            purl, Parse, facebook,
+            purl,
+            //parse,
+            //facebook,
 //            angular,
             prefs,
             index, google
@@ -92,35 +102,9 @@ require(['./main-config', './app'], function (common, app) {
             //loglevel
             ,store
             ) {
+
             $(document).ready(function () {
-                $('#offlineStatus').hide();
-//            $('#captchaForm').show();
-//            requirejs(['//www.google.com/recaptcha/api/js/recaptcha_ajax.js'], function() {
-//                var public_key;
-//                
-//                if(location.hostname.indexOf('cbiit') > -1 || location.hostname.indexOf('cadsr') > -1) {
-//                	public_key = '6Ld4gOYSAAAAAIhBHyv2iH1Zej_1LVmoNdzXgEhp';
-//                }
-//                else
-//                if(location.hostname.indexOf('hudoone') > -1) {
-//                	public_key = '6LfNgeESAAAAAAppEbVa-VNLv2FlNVS0loNmvy-h';
-//                }
-//                else
-//                if(location.hostname.indexOf('service') > -1 || location.hostname.indexOf('share') > -1) {
-//                	public_key = '6LfOiMASAAAAAO3mxDZRXIkA2t16nx4_LJzGWtyF';
-//                }
-//                else
-//                if(location.hostname.indexOf('localhost') > -1) {
-//                	public_key = '6LfOiMASAAAAAO3mxDZRXIkA2t16nx4_LJzGWtyF';
-//                }
-//                
-//                Recaptcha.create(public_key, 'captchadiv', {
-//                    tabindex: 1,
-//                    theme: "clean"
-//                    //,
-//                    //callback: Recaptcha.focus_response_field
-//                });
-//            });
+                    $('#offlineStatus').hide();
 
                     //=== logout an existing session
                     logoutWithoutPrompt();

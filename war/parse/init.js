@@ -19,7 +19,8 @@ var currentUserName;  //global name of Facebook username
     var userid = 'Unknown';
     var logintype;
     //alert('in init.js: Parse.User [' + Parse.User + '] Parse.User.current() [' + Parse.User.current() + '] Parse.User.current().getUsername() [' + Parse.User.current().getUsername() + ']');
-    if(App.isValidSession()) {
+    //debugger
+    if(App.isValidSession(Parse)) {
         userid = Parse.User.current().getUsername();
     } else
     //alert('init.js: userid [' + userid + ']');

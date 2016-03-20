@@ -75,7 +75,7 @@
         });
     </script>
     <script type="text/javascript" src='../js/detectmob.js'></script>
-    <script type="text/javascript" src="//www.parsecdn.com/js/parse-latest.js"></script>
+    <!--<script type="text/javascript" src="//www.parsecdn.com/js/parse-latest.js"></script>-->
     <script>
         /** this has to be BEFOFE requireJS to avoid reloading it twice! */
 //    if ("https:" === document.location.protocol) {
@@ -98,42 +98,6 @@
             }
         }
 
-        //begin of jQuery Roundabout (source: http://stackoverflow.com/questions/21946250/jquery-roundabout-conflicts-with-jquery-easing-1-3-js)
-//        (function($) {
-//
-//            var $descriptions = $('#carousel-descriptions').children('li'),
-//                    $controls = $('#carousel-controls').find('span'),
-//                    $carousel = $('#carousel')
-//                            .roundabout({childSelector:"img", minOpacity:1, autoplay:true, autoplayDuration:5000, autoplayPauseOnHover:true, easing: 'none' })
-//                            .on('focus', 'img', function() {
-//                                var slideNum = $carousel.roundabout("getChildInFocus");
-//
-//                                $descriptions.add($controls).removeClass('current');
-//                                $($descriptions.get(slideNum)).addClass('current');
-//                                $($controls.get(slideNum)).addClass('current');
-//                            });
-//
-//            $controls.on('click dblclick', function() {
-//                var slideNum = -1,
-//                        i = 0, len = $controls.length;
-//
-//                for (; i<len; i++) {
-//                    if (this === $controls.get(i)) {
-//                        slideNum = i;
-//                        break;
-//                    }
-//                }
-//
-//                if (slideNum >= 0) {
-//                    $controls.removeClass('current');
-//                    $(this).addClass('current');
-//                    $carousel.roundabout('animateToChild', slideNum);
-//                }
-//            });
-//
-//        }(jQuery));
-        //end of jQuery Roundabout (source: http://stackoverflow.com/questions/21946250/jquery-roundabout-conflicts-with-jquery-easing-1-3-js)
-
         //begin of centering logic
         $(document).ready(function() {
             //alert(screen.availWidth);
@@ -141,9 +105,9 @@
             $(window).resize(resizeTargets);
             
            	//TBD not able to put this in AMD and make it to work, thus it is here! :(
-           	Parse.initialize("Ld70ODLxjXFkhhRux6kQqVCiJ4rQeXU8dISafNJa", "dLHhDNKnLimXHzSzxvQcGuwle5iLwnn3bFahDS9q");
-           	Parse.serverURL = '//toshare.herokuapp.com/parse';	//note lower case /parse
-           	window.console && console.log("index.html: New Parse initialized.");
+//           	Parse.initialize("Ld70ODLxjXFkhhRux6kQqVCiJ4rQeXU8dISafNJa", "dLHhDNKnLimXHzSzxvQcGuwle5iLwnn3bFahDS9q");
+//           	Parse.serverURL = '//toshare.herokuapp.com/parse';	//note lower case /parse
+//           	window.console && console.log("index.html: New Parse initialized.");
            	//Parse.User.enableRevocableSession();
         });
         function resizeTargets() {
@@ -161,7 +125,7 @@
         console.assert && console.assert(!document.getElementById("username"), "bad: username [" + document.getElementById("username") + "]");
         console.assert && console.assert(!document.getElementById("password"), "bad: password [" + document.getElementById("password") + "]");
     </script>
-    <script>var require = { urlArgs: 'a010' };</script>
+    <script>var require = { urlArgs: 'a011' };</script>
     <script type="text/javascript" src="../js/require.js" data-main="../js/main-index"></script>
     <!-- just for the spreadsheet logics at the bottom!!! -->
     <script type="text/javascript" src="../js/google.js"></script>
