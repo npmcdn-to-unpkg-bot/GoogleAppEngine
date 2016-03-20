@@ -1,1 +1,1 @@
-bower i && cd n && bower i && cd react && npm i && cd ..
+bower i && cd n && bower i && cd react && npm i && cd .. && cd n && ./swg1
