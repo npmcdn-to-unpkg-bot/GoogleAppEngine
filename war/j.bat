@@ -1,0 +1,1 @@
+del ..\lib\mygae.jar && jar cvf ..\lib\mygae.jar WEB-INF\classes
