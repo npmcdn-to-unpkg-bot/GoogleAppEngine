@@ -30,7 +30,14 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="405">
               <caret line="27" column="161" selection-start-line="27" selection-start-column="161" selection-end-line="27" selection-end-column="161" />
-              <folding />
+              <folding>
+                <marker date="1458442181000" expanded="true" signature="2870:3466" placeholder="..." />
+                <marker date="1458442181000" expanded="true" signature="2894:3451" placeholder="{...}" />
+                <marker date="1458442181000" expanded="true" signature="2953:3439" placeholder="{...}" />
+                <marker date="1458442181000" expanded="true" signature="3171:3220" placeholder="/*...*/" />
+                <marker date="1458442181000" expanded="true" signature="3237:3385" placeholder="/*...*/" />
+                <marker date="1458442181000" expanded="true" signature="3645:5950" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -40,7 +47,10 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="435">
               <caret line="29" column="44" selection-start-line="29" selection-start-column="44" selection-end-line="29" selection-end-column="44" />
-              <folding />
+              <folding>
+                <marker date="1458508654000" expanded="true" signature="31:4008" placeholder="..." />
+                <marker date="1458508654000" expanded="true" signature="38:2651" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -142,8 +152,8 @@
       <file leaf-file-name="appengine-web.xml.net" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/bin/appengine-web.xml.net">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="62" column="26" selection-start-line="62" selection-start-column="24" selection-end-line="62" selection-end-column="26" />
+            <state relative-caret-position="285">
+              <caret line="67" column="32" selection-start-line="67" selection-start-column="32" selection-end-line="67" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -910,7 +920,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1905">
           <caret line="127" column="55" selection-start-line="127" selection-start-column="55" selection-end-line="127" selection-end-column="55" />
-          <folding />
+          <folding>
+            <marker date="1458442181000" expanded="true" signature="2870:3466" placeholder="..." />
+            <marker date="1458442181000" expanded="true" signature="2894:3451" placeholder="{...}" />
+            <marker date="1458442181000" expanded="true" signature="2953:3439" placeholder="{...}" />
+            <marker date="1458442181000" expanded="true" signature="3171:3220" placeholder="/*...*/" />
+            <marker date="1458442181000" expanded="true" signature="3237:3385" placeholder="/*...*/" />
+            <marker date="1458442181000" expanded="true" signature="3645:5950" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1026,7 +1043,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="127" column="55" selection-start-line="127" selection-start-column="55" selection-end-line="127" selection-end-column="55" />
-          <folding />
+          <folding>
+            <marker date="1458442181000" expanded="true" signature="2870:3466" placeholder="..." />
+            <marker date="1458442181000" expanded="true" signature="2894:3451" placeholder="{...}" />
+            <marker date="1458442181000" expanded="true" signature="2953:3439" placeholder="{...}" />
+            <marker date="1458442181000" expanded="true" signature="3171:3220" placeholder="/*...*/" />
+            <marker date="1458442181000" expanded="true" signature="3237:3385" placeholder="/*...*/" />
+            <marker date="1458442181000" expanded="true" signature="3645:5950" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1330,7 +1354,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
           <caret line="27" column="161" selection-start-line="27" selection-start-column="161" selection-end-line="27" selection-end-column="161" />
-          <folding />
+          <folding>
+            <marker date="1458442181000" expanded="true" signature="2870:3466" placeholder="..." />
+            <marker date="1458442181000" expanded="true" signature="2894:3451" placeholder="{...}" />
+            <marker date="1458442181000" expanded="true" signature="2953:3439" placeholder="{...}" />
+            <marker date="1458442181000" expanded="true" signature="3171:3220" placeholder="/*...*/" />
+            <marker date="1458442181000" expanded="true" signature="3237:3385" placeholder="/*...*/" />
+            <marker date="1458442181000" expanded="true" signature="3645:5950" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1338,14 +1369,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="435">
           <caret line="29" column="44" selection-start-line="29" selection-start-column="44" selection-end-line="29" selection-end-column="44" />
-          <folding />
+          <folding>
+            <marker date="1458508654000" expanded="true" signature="31:4008" placeholder="..." />
+            <marker date="1458508654000" expanded="true" signature="38:2651" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bin/appengine-web.xml.net">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="62" column="26" selection-start-line="62" selection-start-column="24" selection-end-line="62" selection-end-column="26" />
+        <state relative-caret-position="285">
+          <caret line="67" column="32" selection-start-line="67" selection-start-column="32" selection-end-line="67" selection-end-column="32" />
           <folding />
         </state>
       </provider>
