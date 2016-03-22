@@ -1,0 +1,1 @@
+. ~/.bash_profile && nvm use 5 && npm i bower -g && npm config get prefix > npmbinpath.txt && export NPMBINPATH=< npmbinpath.txt && export PATH=$NPMBINPATH:$PATH
