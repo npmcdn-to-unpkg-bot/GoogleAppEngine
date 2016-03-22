@@ -1,0 +1,26 @@
+{
+  "name": "jest",
+  "version": "0.0.0",
+  "description": "Setup:",
+  "main": "sum.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "jest": {
+    "unmockedModulePathPatterns": [
+      "../../war/js",
+      "../../war/html"
+    ]
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jest-cli": "^0.1.18",
+    "jquery": "^2.1.1",
+    "underscore": "^1.7.0"
+  },
+  "devDependencies": {
+    "datejs": "^1.0.0-rc1",
+    "moment": "^2.8.4"
+  }
+}

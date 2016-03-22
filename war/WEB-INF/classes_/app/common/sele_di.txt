@@ -1,0 +1,47 @@
+
+Delete item
+open https://chudoon3t.appspot.com/n/index.html
+waitForPageToLoad
+waitForElementPresent css=input[type="password"]
+type css=input[type="password"] test1234
+waitForPageToLoad
+waitForElementPresent css=input[type="text"]
+type css=input[type="text"] test
+waitForPageToLoad
+waitForElementPresent css=input[type="submit"]
+click css=input[type="submit"]
+waitForPageToLoad
+
+pause 20000
+
+waitForElementPresent css=#sr-start-table > tbody > tr:nth-of-type(1) > td:nth-of-type(1) > a[href*="#/update"]
+click css=#sr-start-table > tbody > tr:nth-of-type(1) > td:nth-of-type(1) > a[href*="#/update"]
+waitForPageToLoad
+
+pause 3000
+
+waitForElementPresent css=.control-group > div > input[type="button"].form-control.btn.btn-primary:nth-of-type(2)
+assertText css=.control-group > div > input[type="button"].form-control.btn.btn-primary:nth-of-type(2) *Delete*
+waitForPageToLoad
+waitForElementPresent css=.control-group > div > input[type="button"].form-control.btn.btn-primary:nth-of-type(2)
+click css=.control-group > div > input[type="button"].form-control.btn.btn-primary:nth-of-type(2)
+waitForPageToLoad
+
+pause 3000
+
+pause 1
+
+pause 10000
+
+
+waitForElementPresent css=a[href="#/create"]
+assertText css=a[href="#/create"] *Create New*
+waitForPageToLoad
+waitForElementPresent css=a.pull-right
+click css=a.pull-right
+waitForPageToLoad
+
+pause 5000
+
+waitForElementPresent css=input[type="submit"]
+assertText css=input[type="submit"] *Login*

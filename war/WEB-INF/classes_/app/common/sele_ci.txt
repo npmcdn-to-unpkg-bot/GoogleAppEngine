@@ -1,0 +1,140 @@
+
+Create item
+open	/sci	 
+waitForPageToLoad	 	 
+waitForElementPresent	css=.gb_Za	 
+assertElementPresent	css=.gb_Za	 
+
+
+waitForPageToLoad	 	 
+open	https://2-share.appspot.com/login.jsp	 
+waitForPageToLoad	 	 
+waitForElementPresent	css=#passwordField	 
+type	css=#passwordField	admin123
+waitForPageToLoad	 	 
+waitForElementPresent	css=#usernameField	 
+type	css=#usernameField	test
+waitForPageToLoad	 	 
+waitForElementPresent	css=#passwordField	 
+type	css=#passwordField	test1234
+waitForPageToLoad	 	 
+waitForElementPresent	css=#passwordField	 
+keyPress	css=#passwordField	13
+waitForPageToLoad	 	 
+waitForElementPresent	css=#landscape > p > a[href="/sci/serviceregistrysave/0"]	 
+assertText	css=#landscape > p > a[href="/sci/serviceregistrysave/0"]	*Create New*
+waitForPageToLoad	 	 
+waitForElementPresent	css=#geniusstart1	 
+assertText	css=#geniusstart1	*Genius*
+waitForPageToLoad	 	 
+waitForElementPresent	css=#landscape > div:nth-of-type(3) > form[action="/sci/jsp/search_service.jsp"] > input[name="q"].q1	 
+assertElementPresent	css=#landscape > div:nth-of-type(3) > form[action="/sci/jsp/search_service.jsp"] > input[name="q"].q1	 
+waitForPageToLoad	 	 
+waitForElementPresent	css=#landscape > div:nth-of-type(1) > h4 > a[href="#"]	 
+assertText	css=#landscape > div:nth-of-type(1) > h4 > a[href="#"]	*Change to Portrait Mode*
+waitForPageToLoad	 	 
+waitForElementPresent	css=a[href="/sci/serviceregistrystart.logout"]	 
+assertText	css=a[href="/sci/serviceregistrystart.logout"]	*Logout*
+waitForPageToLoad	 	 
+waitForElementPresent	css=#runIndexLink	 
+assertText	css=#runIndexLink	*Run Index Now (Warning: Costly Operation!)*
+waitForPageToLoad	 	 
+waitForElementPresent	css=#portrait > p > a[href="/sci/serviceregistrysave/0"]	 
+click	css=#portrait > p > a[href="/sci/serviceregistrysave/0"]	 
+waitForPageToLoad	 	 
+waitForElementPresent	css=#service	 
+type	css=#service	test_service_1
+waitForPageToLoad	 	 
+waitForElementPresent	css=#endpoint	 
+type	css=#endpoint	http://www.google.com
+waitForPageToLoad	 	 
+waitForElementPresent	css=#summary	 
+type	css=#summary	Google :)
+waitForPageToLoad	 	 
+waitForElementPresent	css=#useDescription	 
+click	css=#useDescription	 
+waitForPageToLoad	 	 
+waitForElementPresent	css=#category	 
+click	css=#category	 
+waitForPageToLoad	 	 
+waitForElementPresent	css=#category	 
+type	css=#category	BUSINESS
+waitForPageToLoad	 	 
+waitForElementPresent	css=#service	 
+assertText	css=#service	*test_service_1*
+waitForPageToLoad	 	 
+waitForElementPresent	css=#endpoint	 
+assertText	css=#endpoint	*http://www.google.com*
+waitForPageToLoad	 	 
+waitForElementPresent	css=#summary	 
+assertText	css=#summary	*Google :)*
+waitForPageToLoad	 	 
+waitForElementPresent	css=#category	 
+assertText	css=#category	*BUSINESS*
+waitForPageToLoad	 	 
+waitForElementPresent	css=#useDescription	 
+assertText	css=#useDescription	*on*
+waitForPageToLoad	 	 
+waitForElementPresent	css=#useHtml	 
+assertText	css=#useHtml	*on*
+waitForPageToLoad	 	 
+waitForElementPresent	css=#hit	 
+assertText	css=#hit	*-1*
+waitForPageToLoad	 	 
+waitForElementPresent	css=#disabled	 
+assertText	css=#disabled	*on*
+waitForPageToLoad	 	 
+waitForElementPresent	css=#backup1_1	 
+assertText	css=#backup1_1	*Backup*
+waitForPageToLoad	 	 
+waitForElementPresent	css=#backup2_1	 
+assertText	css=#backup2_1	*Backup+*
+waitForPageToLoad	 	 
+waitForElementPresent	css=#buttonCancel2	 
+click	css=#buttonCancel2	 
+waitForPageToLoad	 	 
+waitForElementPresent	css=#landscape > p > a[href="/sci/serviceregistrysave/0"]	 
+click	css=#landscape > p > a[href="/sci/serviceregistrysave/0"]	 
+waitForPageToLoad	 	 
+waitForElementPresent	css=#service	 
+type	css=#service	1
+waitForPageToLoad	 	 
+waitForElementPresent	css=#endpoint	 
+type	css=#endpoint	2
+waitForPageToLoad	 	 
+waitForElementPresent	css=#summary	 
+type	css=#summary	3
+waitForPageToLoad	 	 
+waitForElementPresent	css=#category	 
+click	css=#category	 
+waitForPageToLoad	 	 
+waitForElementPresent	css=#category	 
+type	css=#category	SCIENCE
+waitForPageToLoad	 	 
+waitForElementPresent	css=#useDescription	 
+click	css=#useDescription	 
+waitForPageToLoad	 	 
+waitForElementPresent	css=#useHtml	 
+click	css=#useHtml	 
+waitForPageToLoad	 	 
+waitForElementPresent	css=#hit	 
+dragAndDropToObject	css=#hit	css=.t-beaneditor > .t-beaneditor-row:nth-of-type(10)
+waitForPageToLoad	 	 
+waitForElementPresent	css=#hit	 
+type	css=#hit	0
+waitForPageToLoad	 	 
+waitForElementPresent	css=#disabled	 
+click	css=#disabled	 
+waitForPageToLoad	 	 
+waitForElementPresent	css=input[type="submit"].t-beaneditor-submit	 
+click	css=input[type="submit"].t-beaneditor-submit	 
+waitForPageToLoad	 	 
+waitForElementPresent	css=a[href="2"]	 
+assertText	css=a[href="2"]	*2*
+waitForPageToLoad	 	 
+waitForElementPresent	css=a[href="/sci/serviceregistrystart.logout1"]	 
+assertText	css=a[href="/sci/serviceregistrystart.logout1"]	*Logout*
+waitForPageToLoad	 	 
+waitForElementPresent	css=a[href="/sci/serviceregistrystart.logout1"]	 
+click	css=a[href="/sci/serviceregistrystart.logout1"]	 
+ 

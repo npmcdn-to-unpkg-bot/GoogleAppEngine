@@ -1,0 +1,39 @@
+
+Create user (SR)
+open	http://localhost:8888/_ah/login?continue=http%3A%2F%2Flocalhost%3A8888%2Fuserstart
+waitForPageToLoad		
+waitForElementPresent	css=#isAdmin	
+click	css=#isAdmin	
+waitForPageToLoad		
+waitForElementPresent	css=#btn-login	
+click	css=#btn-login	
+waitForPageToLoad		
+waitForElementPresent	css=a[href="/usersave/0"]	
+assertText	css=a[href="/usersave/0"]	*Create a new user*
+waitForPageToLoad		
+waitForElementPresent	css=a[href="/usersave/0"]	
+click	css=a[href="/usersave/0"]	
+waitForPageToLoad		
+waitForElementPresent	css=#userId	
+assertElementPresent	css=#userId	
+waitForPageToLoad		
+waitForElementPresent	css=#password	
+assertElementPresent	css=#password	
+waitForPageToLoad		
+waitForElementPresent	css=#userRole_2	
+assertText	css=#userRole_2	*ROLE_ADMIN*
+waitForPageToLoad		
+waitForElementPresent	css=#userId	
+click	css=#userId	
+waitForPageToLoad		
+waitForElementPresent	css=#userId	
+type	css=#userId	test
+waitForPageToLoad		
+waitForElementPresent	css=#password	
+type	css=#password	test1234
+waitForPageToLoad		
+waitForElementPresent	css=#userRole_2	
+click	css=#userRole_2	
+waitForPageToLoad		
+waitForElementPresent	css=input[type="submit"]	
+click	css=input[type="submit"]	

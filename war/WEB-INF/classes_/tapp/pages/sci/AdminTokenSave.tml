@@ -1,0 +1,29 @@
+<html type="layout" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
+ <head>
+ <title>Token Save</title>
+ </head>
+ <body>
+ 
+ 	<form t:type="beaneditform" object="FiOSToken">
+ 		<t:parameter name="id">
+ 			<!--
+	 		<label t:type="Label" for="id"/>
+	 		<input t:type="TextField" t:id="id" t:value="FiOSToken.id" />
+ 			* used as unique identifier in the system
+ 			-->
+ 			${FiOSToken.id}
+ 		</t:parameter>
+ 		<t:parameter name="userId">
+	 		<label t:type="Label" for="userId"/>
+	 		<input t:type="TextField" t:id="userId" t:value="FiOSToken.userId" size="50"/>
+ 			* The email address registered with Google for Google calendar
+ 		</t:parameter>
+ 		<t:parameter name="magicKey">
+	 		<label t:type="Label" for="magicKey"/>
+	 		<input t:type="TextField" t:id="magicKey" t:value="FiOSToken.magicKey" maxlength="32" size="32"/>
+ 			* The "Private Magic Cookie" of Google calendar (goto https://www.google.com/calendar for details)
+ 		</t:parameter>
+ 	</form>
+ 
+ </body>
+</html>

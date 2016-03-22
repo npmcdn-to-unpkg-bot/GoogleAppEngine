@@ -1,0 +1,68 @@
+
+Update item
+open	/n	
+waitForPageToLoad		
+waitForElementPresent	css=input[type="password"]	
+type	css=input[type="password"]	test1234
+waitForPageToLoad		
+open	https://chudoon3t.appspot.com/n/	
+waitForPageToLoad		
+waitForElementPresent	css=input[type="password"]	
+type	css=input[type="password"]	test1234
+waitForPageToLoad		
+waitForElementPresent	css=input[type="text"]	
+type	css=input[type="text"]	test
+waitForPageToLoad		
+waitForElementPresent	css=input[type="submit"]	
+click	css=input[type="submit"]	
+waitForPageToLoad		
+pause	5000	
+waitForPageToLoad		
+waitForElementPresent	css=#sr-start-table > tbody > tr:nth-child(1) > td:nth-child(1) > a	
+click	css=#sr-start-table > tbody > tr:nth-child(1) > td:nth-child(1) > a	
+waitForPageToLoad		
+waitForElementPresent	css=body > div:nth-of-type(1) > div > div > div[id="sr-update"] > .container > form.form-horizontal > div[id="sr-update-table"] > .control-group:nth-of-type(5) > div > :nth-of-type(1) > div	
+verifyText	css=body > div:nth-of-type(1) > div > div > div[id="sr-update"] > .container > form.form-horizontal > div[id="sr-update-table"] > .control-group:nth-of-type(5) > div > :nth-of-type(1) > div	*updated desc*
+waitForPageToLoad		
+waitForElementPresent	css=#sr-update-table > div:nth-child(5) > div > input.form-control	
+type	css=#sr-update-table > div:nth-child(5) > div > input.form-control	updated desc 1
+waitForPageToLoad		
+waitForElementPresent	css=#sr-update-table > div:nth-child(3) > div > input	
+type	css=#sr-update-table > div:nth-child(3) > div > input	https://www.youtube.com/watch?v=COvnHv42T-A
+waitForPageToLoad		
+waitForElementPresent	css=.control-group > div > input[type="button"].form-control.btn.btn-primary:nth-of-type(3)	
+assertText	css=.control-group > div > input[type="button"].form-control.btn.btn-primary:nth-of-type(3)	*Save*
+waitForPageToLoad		
+waitForElementPresent	css=#sr-update-table > div:nth-child(6) > div > input:nth-child(3)	
+click	css=#sr-update-table > div:nth-child(6) > div > input:nth-child(3)	
+waitForPageToLoad		
+pause	5000	
+waitForPageToLoad		
+waitForElementPresent	css=#sr-start-table > tbody > tr:nth-of-type(1) > td:nth-of-type(3) > div	
+verifyText	css=#sr-start-table > tbody > tr:nth-of-type(1) > td:nth-of-type(3) > div	*updated desc 1*
+waitForPageToLoad		
+waitForElementPresent	css=#sr-start-table > tbody > tr:nth-child(1) > td:nth-child(1) > a	
+click	css=#sr-start-table > tbody > tr:nth-child(1) > td:nth-child(1) > a	
+waitForPageToLoad		
+waitForElementPresent	css=#sr-update-table > .control-group:nth-of-type(4) > div > input[type="text"].form-control	
+type	css=#sr-update-table > .control-group:nth-of-type(4) > div > input[type="text"].form-control	updated summary 1
+waitForPageToLoad		
+waitForElementPresent	css=input[type="url"].form-control	
+type	css=input[type="url"].form-control	http://www.test1.com
+waitForPageToLoad		
+waitForElementPresent	css=input[type="url"].form-control	
+keyPress	css=input[type="url"].form-control	13
+waitForPageToLoad		
+waitForElementPresent	css=#sr-update-table > div:nth-child(6) > div > input:nth-child(3)	
+click	css=#sr-update-table > div:nth-child(6) > div > input:nth-child(3)	
+waitForPageToLoad		
+pause	8000	
+waitForPageToLoad		
+waitForElementPresent	css=#sr-start-table > tbody > tr:nth-of-type(1) > td:nth-of-type(7) > a[href="http://www.test1.com"]	
+assertText	css=#sr-start-table > tbody > tr:nth-of-type(1) > td:nth-of-type(7) > a[href="http://www.test1.com"]	*http://www.test1.com*
+waitForPageToLoad		
+waitForElementPresent	css=a.pull-right	
+click	css=a.pull-right	
+waitForPageToLoad		
+waitForElementPresent	css=input[type="submit"]	
+assertText	css=input[type="submit"]	*Login*

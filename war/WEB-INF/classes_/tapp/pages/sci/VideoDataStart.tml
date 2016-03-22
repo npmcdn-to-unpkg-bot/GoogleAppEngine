@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html t:type="layout" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd" xmlns:sec="http://www.springframework.org/security/tags">
+    <head>
+        <title>Video Admin</title>
+    </head>
+    <body>
+		<form action="/sci/jsp/search_user.jsp">
+			<!--<img src="http://cdn3.infoq.com/styles/i/btn-search.gif" alt="Search"/>--> Search <input type="text" name="q" id="q" value="" size="30"/>
+		</form>
+    
+        <h1>Advertisement Manager</h1>
+                
+                <p><t:pagelink t:page="sci/BuyerSave" context="0">Create a new video event</t:pagelink></p>
+                
+				<table t:type="grid" source="VideoDatas" exclude="title,description, videoId,showDate" row="VideoData" add="delete" rowsPerPage="15">
+					<t:parameter name="idCell">
+						<t:pagelink page="sci/BuyerSave" context="VideoData.id">${VideoData.id}</t:pagelink>
+					</t:parameter>
+					<t:parameter name="deleteCell">
+<sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_SCI_ADMIN">
+             			<t:actionlink t:id="delete" context="VideoData.id">Delete</t:actionlink>
+</sec:ifAnyGranted>
+         			</t:parameter>
+				</table>
+
+    </body>
+
+</html>

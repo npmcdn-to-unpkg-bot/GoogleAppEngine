@@ -1,0 +1,420 @@
+<html t:type="layout" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd" xmlns:sec="http://www.springframework.org/security/tags" xmlns:p="tapestry:parameter">
+ <head>
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+ <meta name="viewport" content="user-scalable=no"/> <!-- source: https://developer.apple.com/library/ios/DOCUMENTATION/AppleApplications/Reference/SafariWebContent/UsingtheViewport/UsingtheViewport.html -->
+ <title>Service Registry</title>
+ <style type="text/css">
+    /* iPhone 2G-4S in portrait and landscape (source: http://stephen.io/mediaqueries/) */
+    @media only screen
+    and (min-device-width : 320px)
+    and (max-device-width : 480px) {
+    	#buttonCancel2, #buttonCancel2:focus {
+    		position:absolute;
+    		left:8px;
+    	}
+        *, .t-beaneditor, label, input[type="submit"], input[type="text"], textarea, .bck {
+        	font-size: 48px;
+        }
+		/** http://stackoverflow.com/questions/7073396/disable-zoom-on-input-focus-in-android-webpage */
+		input:focus, .nozoom {
+			font-size: 48px!important
+		}
+		#nav-section1, #nav-section2, #label1, #label2 {
+			font-size: 16px;
+		}
+		td {
+        	width: 450px;
+		}
+        body {
+            -webkit-text-size-adjust:80%;
+            margin-left: 8px;
+        }
+        DIV.t-beaneditor {
+            padding-left: 5px;
+        }
+		DIV.t-beaneditor-row {
+            font-size: 12px;
+        }
+		DIV.t-beaneditor-row LABEL {
+            font-size: 40px;
+        }
+        h2 {
+            font-size: .75em;
+            margin-top: 10px;
+        }
+    }
+    /** iPhone 5 portrait and landscape (source: http://stephen.io/mediaqueries/) */
+    @media only screen 
+	and (min-device-width : 320px) 
+	and (max-device-width : 568px) { 
+        h2 {
+            font-size: 1.75em;
+        }
+		.cke_toolbar {
+		    zoom: 1.8;
+		}
+		
+		.cke_reset_all, .cke_reset_all * {
+			font-size: 72px;
+		}
+		
+		.cke_skin_kama .cke_format .cke_text, .cke_skin_kama .cke_font .cke_text {
+		   	width: 72px;
+		}
+	}
+ 	.t-beaneditor-submit {
+		color: red;
+ 	}
+ </style>
+ <script id="worker1" type="javascript/worker">
+	self.onmessage = function(e) {
+    	//self.postMessage('msg from worker 1');
+		//saveSettings(e);
+    	backup(e);
+		//resetSettings();
+    };
+ </script>
+<!-- TBD use CDN instead but for now seems like Tapestry 5.3.6 prototype depends on old jquery
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+-->
+<script src="/jquery/jquery-1.3.2.min.js"></script>
+<script src="/jquery/jquery.cookies.2.2.0.min.js"></script>
+<script src="/jquery/jquery.collapsible.min.js"></script>
+<script src="/js/jquery.are-you-sure.js"></script>
+
+ <script type="text/javascript">
+ <![CDATA[
+ 	var keepHtml = false;
+ 	var finalContent = '';
+ 	var xhr2 = requestObject();	//new XMLHttpRequest();
+ 	function requestObject() {
+		if(window.XMLHttpRequest)
+			return new XMLHttpRequest();
+		else if(window.ActiveXObject)
+			return new ActiveXObject("Msxml2.XMLHTTP");
+		else
+			throw new Error("Could not create HTTP request object (XHR Level 2).");
+ 	}
+	function saveSettings() {
+		jQuery("input.bck").attr("disabled","disabled");
+	
+		//alert('saveSettings start');
+	    localStorage.host = jQuery('#host').text();
+	    localStorage.appid = jQuery('#appid').text();
+	    localStorage.service = handlePrimaryKey(jQuery('#service').val()+'-'+jQuery('#appid').text());
+	    localStorage.endpoint = handleText(jQuery('#endpoint').val());
+//		localStorage.description = handleText(jQuery('textarea.editor').val());	//will not work before a form post!
+		localStorage.description = finalContent;
+	    localStorage.updated = jQuery('#lastUpdated').val();
+	    localStorage.summary = handleText(jQuery('#summary').val());
+		//alert('saveSettings end');
+	}
+	function resetSettings() {
+	    localStorage.clear();
+	    //alert('settings cleared');
+		jQuery("input.bck").attr("disabled","");
+	}
+ 	function post_to_url(url, params) {
+    	var form = document.createElement('form');
+    	form.action = url;
+    	form.method = 'POST';
+
+    	for (var i in params) {
+        	if (params.hasOwnProperty(i)) {
+            	var input = document.createElement('input');
+            	input.type = 'hidden';
+            	input.name = i;
+            	input.value = params[i];
+            	//alert("k '" + input.name + "' v '" + input.value + "'");
+            	form.appendChild(input);
+        	}
+    	}
+    	form.submit();
+ 	}
+	function backup() {
+		//alert(localStorage.host);
+		post_to_url("https://"+e.host+"/api/router-sr.php", {
+			'appId': e.appid, 'service': e.service, 'endpoint': e.endpoint,
+			'description': e.description, 'summary': e.summary
+		});
+	}
+	function strip(html) {
+	   var tmp = document.createElement("DIV");
+	   tmp.innerHTML = html;
+	   return tmp.innerText||tmp.textContent;
+	}
+	function nl2br(text) {
+		var retVal = '';
+		retVal = text.replace(/(\r\n|\n|\r)/gm, '_NL_');
+		retVal = retVal.replace(/[\x00-\x1F\x80-\xFF]/g, "");
+		return retVal;
+	}
+	function replaceAll(oldStr, removeStr, replaceStr, caseSenitivity){
+	    if(caseSenitivity == 1){
+	        cs = "g";
+	        }else{
+	        cs = "gi";
+	    }
+	    var myPattern=new RegExp(removeStr,cs);
+	    newStr =oldStr.replace(myPattern,replaceStr);
+	    return newStr;
+	}
+ 	function handlePrimaryKey(text) {
+ 		var retVal = encodeURIComponent(text);	//http://xkr.us/articles/javascript/encode-compare/
+ 		if(text != undefined) {
+			retVal = replaceAll(retVal, "5F", '_');
+			retVal = replaceAll(retVal, "2D", '-');
+ 		}
+ 		return retVal;
+ 	}
+ 	function handleText(text) {
+ 		//alert('handleText = '+text);
+ 		var retVal = text; 		
+ 		if(text != undefined) {
+ 			retVal = encodeURIComponent(retVal);	//http://xkr.us/articles/javascript/encode-compare/
+			if(!keepHtml) {
+				retVal = strip(retVal);
+			}
+// 			retVal = nl2br(retVal);
+//			retVal = retVal.replace(/[^%<>!,"'\/:\.\w]+/g, " ");
+ 		}
+ 		return retVal;
+ 	}
+ 	function sendToBackupServiceWorker() {
+	    var bb = new WebKitBlobBuilder();	//Webkit specific
+	    bb.append(document.querySelector('#worker1').textContent);
+		//note: window.webkitURL.createObjectURL() in Chrome 10+
+	    var worker = new Worker(window.webkitURL.createObjectURL(bb.getBlob()));	//Chrome specific
+	    worker.onmessage = function(e) {
+	      	alert('web worker done!');
+	    }
+	    worker.postMessage({
+	    	host: jQuery('#host').text(),
+		    appid: jQuery('#appid').text(),
+		    service: jQuery('#service').val()+'-'+jQuery('#appid').text(),
+		    endpoint: jQuery('#endpoint').val(),
+//http://docs.cksource.com/FCKeditor_2.x/Developers_Guide/JavaScript_API#Retrieving_an_Editor_Instance
+		    description: handleText(jQuery('textarea.editor').val()),	//TBD - does not work; always get the previous val not the current/changed value
+		    updated: jQuery('#lastUpdated').val(),
+		    summary: jQuery('#summary').val()
+	    }); //start the worker
+	}
+	function xhrBackup() {
+		//alert(localStorage.host);
+		post_to_urlXHR("https://"+localStorage.host+"/api/router-sr.php", {
+			'appId': localStorage.appid, 'service': localStorage.service, 'endpoint': localStorage.endpoint,
+			'description': localStorage.description, 'summary': localStorage.summary
+		});
+	}
+	function normalBackup() {
+		//alert(localStorage.host);
+		post_to_url("https://"+localStorage.host+"/api/router-sr.php", {
+			'appId': localStorage.appid, 'service': localStorage.service, 'endpoint': localStorage.endpoint,
+			'description': localStorage.description, 'summary': localStorage.summary
+		});
+	}
+ 	function handleSendError(xhr2, url) {
+		//alert("handleSendError xhr2.status = " + xhr2.status);
+//  		if(xhr2.status !== 0) { 
+  			if(xhr2.status !== 200) {
+  				alert("Error: Not able to backup properly with '"+url+"' , status: " + xhr2.status + " statusText: " + xhr2.statusText); //not ok
+  			}
+//  		}
+ 	}
+	function post_to_urlXHR(url, params) {
+		var formObject = new FormData();
+		for (var i in params) {
+			formObject.append(i,params[i]);
+    	}
+   
+//		var xhr2 = new XMLHttpRequest();  
+//		xhr2.onerror = handleSendError(xhr2, url);	//does not work, seems like the status is always 0
+//		xhr2.open("POST", url, true);
+		xhr2.open("POST", url, false);
+		xhr2.send(formObject);
+		if (xhr2.status == 200) {
+		    //alert("Completed!\n\nThe response representation was:\n\n" + xhr2.responseText);
+		    if(xhr2.responseText.indexOf('success') != -1) {
+		    	alert("Completed!\n\nThe response representation was:\n\n" + xhr2.responseText);
+				jQuery('#form').submit();
+			}
+		} else {
+		    alert("Failed!\n\nThe response status was: " + xhr2.status + " " + xhr2.statusText + ".");
+	    }
+	}
+ 	function backupSave() {
+		saveSettings();
+		xhrBackup();
+		resetSettings();
+//		alert('Backup done. Hit enter to quit the screen.');
+//		jQuery('#form').submit();
+	}
+ 	function backupOnly() {
+		saveSettings();
+		normalBackup();
+		resetSettings();
+	}
+	function myfunction() {
+		alert('changed');
+	}
+	//http://alfonsoml.blogspot.com.es/2012/05/recipe-live-preview-of-ckeditor.html
+	CKEDITOR.on('instanceCreated', function (e) {
+	    e.editor.on('change', function (ev) {
+			finalContent = handleText(ev.editor.getData());
+			//alert('finalContent changed = "' + finalContent + '"');
+			//alert('localStorage.description changed = "' + localStorage.description + '"');
+	   		//alert('ck changed = "' + ev.editor.getData() + '"');
+	   		//jQuery(".t-beaneditor-submit").removeAttr("disabled");
+	   		jQuery(".t-beaneditor-submit").show();
+	    });
+	});
+	jQuery("input.bck").attr("disabled","");
+
+    function handleSubmitButton() {
+        if (jQuery('#form').hasClass('dirty')) {
+	        //jQuery(".t-beaneditor-submit").removeAttr("disabled");  //enable submit button
+	        jQuery(".t-beaneditor-submit").show();
+        } else {
+            //jQuery(".t-beaneditor-submit").attr("disabled", "disabled");    //disable submit button
+            jQuery(".t-beaneditor-submit").show();
+        }
+    }
+
+  //https://github.com/juven14/Collapsible/blob/master/README
+  jQuery(document).ready(function() {
+    //collapsible management
+    jQuery('.collapsible').collapsible({
+      defaultClose: 'nav-section2',
+      defaultOpen: 'nav-section1'
+    });
+	//jQuery(".t-beaneditor-submit").attr("disabled", "disabled");
+	jQuery(".t-beaneditor-submit").hide();
+	//assign all form inputs the handleSubmitButton() check
+	jQuery('form :input').change(function() {
+	   //alert('<p>Form changed</p>');
+	   handleSubmitButton();
+	});
+
+    //https://github.com/codedance/jquery.AreYouSure
+    // Enable on all forms
+    jQuery('form').areYouSure(); 
+    jQuery('form').areYouSure( {'silent':true} );
+
+    /*
+	jQuery('#buttonCancel').click(function(){ 
+	   if(window.confirm("Are you sure?"))
+	     alert('Your action here');
+	});
+	*/
+  });
+
+ ]]>
+ </script>
+ </head>
+ <body>
+	<sec:ifNotGranted roles="ROLE_ADMIN, ROLE_SCI_ADMIN">
+	</sec:ifNotGranted>
+   	<div style="margin:0px 5px 5px 2px;height:115px;display:${backupServiceDisplay};">
+   		<div id="label1">AppId [<span id="appid">${uniqueSID}</span>] Backup Service [<span id="host">${backupServiceHost}</span>] <a href="https://${backupServiceHost}/api/index.php/ServiceRegistry/${serviceRegistryService}-${uniqueSID}.xml">XML</a>&#160;<a href="https://${backupServiceHost}/api/index.php/ServiceRegistry/${serviceRegistryService}-${uniqueSID}.html">HTML</a>&#160;<a href="https://${backupServiceHost}/api/index.php/ServiceRegistry/${serviceRegistryService}-${uniqueSID}.txt">TXT</a>&#160;:</div>
+	   	<iframe style="width:100%;height:65px;" id="url_iframe" name="url_iframe" src="https://${backupServiceHost}/api/index.php/ServiceRegistry/${serviceRegistryService}-${uniqueSID}.xml"></iframe>
+		<label id="label1" for="backup1_1">ReqBack.:&#160;</label>
+			<input class="bck" name="backup1_1" id="backup1_1" value="Backup" onclick="backupOnly();" type="submit" style="width:18%;" />&#160;&#160;
+		<label id="label2" for="backup2_1">AsncBack.:&#160;</label>
+			<input class="bck" name="backup2_1" id="backup2_1" value="Backup+" onclick="backupSave();" type="submit" style="width:18%;" />
+ 	</div>
+ 	<!--
+	<span style="float:left;padding-left:3px;"><t:actionlink t:id="logout" context="serviceRegistry.service">Save and Logout</t:actionlink></span>
+	-->
+   	<p/>
+   	<form>
+		<input id='buttonCancel1' type='button' value='Exit' onclick='javascript:location.href="/sci/serviceregistrystart";'/>
+   	</form>
+ 	<form id="form" t:id="form" t:type="beaneditform" t:submitLabel="message:submit-label" object="serviceRegistry" reorder="oid,saveOnly,service,endpoint,summary,description,category,usedescription,usehtml" exclude="project,number,organization,owner,id,lastUpdated,lastAccessed,shorturl">
+ 		<t:parameter name="id">
+ 			<!--
+	 		<label t:type="Label" for="id"/>
+	 		<input t:type="TextField" t:id="id" t:value="serviceRegistry.id" />
+ 			* used as unique identifier in the system
+ 			-->
+ 			${serviceRegistry.id}
+ 		</t:parameter>
+<!--
+ 		<t:parameter name="preview">
+	 		<label t:type="Label" for="preview"/>
+	 		<input t:type="TextArea" style="width:70%;height:180px;" t:id="description" t:value="serviceRegistry.description" />
+ 		</t:parameter>
+-->
+ 		<t:parameter name="lastUpdated">
+ 			Last updated: ${serviceRegistry.lastUpdated}
+ 		</t:parameter>
+
+ 		<t:parameter name="service">
+	 		<label t:type="Label" for="service"/>
+ 			<input name="password" t:type="TextField" style="width:50%;" t:id="service" t:value="serviceRegistry.service" autocapitalize="off" />
+ 			* must be unique
+ 		</t:parameter>
+ 		<t:parameter name="endpoint">
+	 		<label t:type="Label" for="endpoint"/>
+ 			<input t:type="TextField" style="width:50%;" t:id="endpoint" t:value="serviceRegistry.endpoint" autocapitalize="off" />
+ 			* e.g. URL/token/plain text
+ 		</t:parameter>
+ 		<t:parameter name="summary">
+	 		<label t:type="Label" for="summary"/>
+ 			<input t:type="TextField" style="width:50%;" t:id="summary" t:value="serviceRegistry.summary" />
+ 		</t:parameter>
+<!--
+Not sure why do I need two of description in order for it to show up :( ???
+-->
+ 		<t:parameter name="description">
+	 		<label t:type="Label" for="description"/>
+	 		<input t:type="TextArea" style="width:70%;height:180px;" t:id="description" t:value="serviceRegistry.description" />
+ 		</t:parameter>
+ 		<t:parameter name="description">
+	<div class="t-beaneditor-row collapsible" id="nav-section1">&#160;[Full Content] - click to toggle between collapse and expand<span></span></div>
+	<div>
+ 	 		<label t:type="Label" for="description"/>
+ 	 		<!-- http://docs.cksource.com/CKEditor_3.x/Developers_Guide/Output_Formatting -->
+			<t:textarea class="editor" id="editor1" name="editor1" t:mixins="pn/ckeditor" parameters="{'toolbar': 'Basic'}" value="serviceRegistry.description" style="width: 640px; height: 400px"/>
+	</div>
+			<!-- http://tynamo.org/tapestry-ckeditor+guide -->
+<!--
+			<t:textarea t:mixins="tynamo/ckeditor" parameters="{'toolbar': 'Full', 'toolbarStartupExpanded': false}" class="editor" id="editor1" name="editor1" value="serviceRegistry.description" />
+-->
+ 		</t:parameter>
+<!--
+ 		<t:parameter name="usedescription">
+	 		<label t:type="Label" for="usedescription"/>
+ 			<input t:type="TextField" style="width:50%;" t:id="usedescription" t:value="serviceRegistry.useDescription" />
+ 			* use the content of the service instead of redirection based on the endpoint
+ 		</t:parameter>
+-->
+ 		<t:parameter name="lastAccessed">
+ 			Last client access: ${serviceRegistry.lastAccessed}
+ 		</t:parameter>
+ 		
+ 		<t:parameter name="oid">
+  			&nbsp;[Owner Id = ${serviceRegistry.oid} Entity Id = ${serviceRegistry.id}]
+ 		</t:parameter>
+ 		
+    	<!--
+   		<t:parameter name="delete">
+     		<input type="submit" name="delete" value="Delete"/>
+  		</t:parameter>
+		<t:parameter name="button">
+			TEST <t:outputraw t:value="cancelButton" />
+		</t:parameter>
+  		--> 
+   	</form>
+   	<form class="nozoom">
+		<input id='buttonCancel2' type='button' value='Exit' onclick='javascript:location.href="/sci/serviceregistrystart";' />
+   	</form>
+   	<p/>
+	<div style="display:${advancedUIDisplay};" lass="t-beaneditor-row collapsible" id="nav-section2">[Raw Content] - click to toggle between collapse and expand<span></span></div>
+	<div style="word-wrap:break-word;">
+		<t:beandisplay object="serviceRegistry" lean="true" include="id,lastUpdated,lastAccessed,description"/>
+	</div>
+ </body>
+ <script>
+  	finalContent = handleText(jQuery('textarea.editor').val());
+ </script>
+</html>

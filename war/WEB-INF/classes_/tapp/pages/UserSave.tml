@@ -1,0 +1,31 @@
+<html t:type="layout" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
+ <head>
+ <title>User</title>
+ </head>
+ <body>
+ 
+ 	<form t:type="beaneditform" object="user">
+ 		<t:parameter name="id">
+ 			<!--
+	 		<label t:type="Label" for="id"/>
+	 		<input t:type="TextField" t:id="id" t:value="user.id" />
+ 			* used as unique identifier in the system
+ 			-->
+ 			${user.id}
+ 		</t:parameter>
+ 		<t:parameter name="userRole">
+	 		<label t:type="Label" for="userRole"/> * select at least one (or more for multiple roles) from below
+         	<t:checklist t:id="userRole" selected='selectedList' encoder="encoder" model="model"/>
+ 		</t:parameter>
+	 	<!--
+	 	Beatiful multiple select component, but does not work with Tapestry 5.3 as at 8/22/2011
+ 		<t:parameter name="userRole">
+	 		<label t:type="Label" for="userRole"/>
+         	<t:ck.MultipleSelect t:id="userRole" value='selectedList' model='model' encoder='encoder'/>
+ 			* select more than once for multiple roles
+ 		</t:parameter>
+        -->
+ 	</form>
+ 
+ </body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html t:type="layout" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
+    <head>
+        <title>Employee</title>
+    </head>
+    <body>
+        <h1>Employee Management</h1>
+                
+                <p><t:pagelink t:page="sgc/EmployeeSave" context="0">Create a new Employee</t:pagelink></p>
+                
+				<table t:type="grid" source="Employees" row="Employee"  add="delete" rowsPerPage="5">
+					<t:parameter name="idCell">
+						<t:pagelink page="sgc/EmployeeSave" context="Employee.id">${Employee.id}</t:pagelink>
+					</t:parameter>
+					<t:parameter name="deleteCell">
+             			<t:actionlink t:id="delete" context="Employee.id">Delete</t:actionlink>
+         			</t:parameter>
+				</table>
+
+         </body>
+</html>

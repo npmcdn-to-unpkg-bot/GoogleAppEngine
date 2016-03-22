@@ -1,0 +1,24 @@
+<html t:type="layout" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
+ <head>
+ <title>Buyer</title>
+ </head>
+ <body>
+ 
+ 	<form t:type="beaneditform" object="videoData">
+ 		<t:parameter name="id">
+ 			<!--
+	 		<label t:type="Label" for="id"/>
+	 		<input t:type="TextField" t:id="id" t:value="videoData.id" />
+ 			* used as unique identifier in the system
+ 			-->
+ 			${videoData.id}
+ 		</t:parameter>
+ 		<t:parameter name="videoId">
+	 		<label t:type="Label" for="videoId"/>
+	 		<input t:type="TextField" t:id="videoId" t:value="videoData.videoId" />
+ 			* the unique id of the video e.g. the URL or the name
+ 		</t:parameter>
+ 	</form>
+ 
+ </body>
+</html>

@@ -1,0 +1,19 @@
+<html t:type="layout" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
+ <head>
+ <title>Client</title>
+ </head>
+ <body>
+ 
+ 	<form t:type="beaneditform" object="client">
+ 		<t:parameter name="id">
+<!--
+	 		<label t:type="Label" for="id"/>
+	 		<input t:type="TextField" t:id="id" t:value="client.id" />
+ 			* used as unique identifier in the system
+-->
+			${client.id}
+ 		</t:parameter>
+ 	</form>
+ 
+ </body>
+</html>
