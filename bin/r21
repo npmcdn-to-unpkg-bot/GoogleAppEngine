@@ -1,0 +1,3 @@
+cd ~ && npm install --save-dev java-osx && node_modules/java-osx/bin/bin/java -version && cd ~/GoogleAppEngine/bin
+cp -rf ../lib/*.jar ../war/WEB-INF/lib/
+cp -rf ../war/WEB-INF/classes_ ../war/WEB-INF/classes
