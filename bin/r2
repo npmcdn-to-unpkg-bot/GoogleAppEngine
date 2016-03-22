@@ -2,7 +2,6 @@
 export JAVA_HOME=/Users/pressenter/node_modules/java-osx/bin export PATH=$JAVA_HOME/bin:$PATH
 export GAEJ_SDK_HOME=/Users/pressenter/Downloads/appengine-java-sdk-1.9.34
 
-cp ../lib/mygae.jar ../war/WEB-INF/lib/
-cp ../lib/geronimo-jpa_2.0_spec-1.0.jar ../war/WEB-INF/lib/
+cp -rf ../lib/*.jar ../war/WEB-INF/lib/
 
 $JAVA_HOME/bin/java -Xmx2048m -javaagent:$GAEJ_SDK_HOME/lib/agent/appengine-agent.jar -classpath $GAEJ_SDK_HOME/lib/appengine-tools-api.jar com.google.appengine.tools.development.DevAppServerMain --port=8888 --address=0.0.0.0 ../war
