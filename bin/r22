@@ -1,5 +1,5 @@
 #change JAVA_HOME accordingly
 export JAVA_HOME=/Users/pressenter/node_modules/java-osx/bin export PATH=$JAVA_HOME/bin:$PATH
-export GAEJ_SDK_HOME=/Users/pressenter/Downloads/appengine-java-sdk-1.9.34
+export GAEJ_SDK_HOME=~/appengine-java-sdk-1.9.34
 
 $JAVA_HOME/bin/java -Xmx2048m -javaagent:$GAEJ_SDK_HOME/lib/agent/appengine-agent.jar -classpath $GAEJ_SDK_HOME/lib/appengine-tools-api.jar com.google.appengine.tools.development.DevAppServerMain --port=8888 --address=0.0.0.0 ../war
