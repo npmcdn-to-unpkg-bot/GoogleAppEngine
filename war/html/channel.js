@@ -50,7 +50,7 @@ function loadMovieScheduled(username) {
 
             ////window.console && console.log("calendar event created, response = [" + data + "]");
             if(data !== undefined) {
-                var obj = jQuery.parseJSON(data);
+                var obj = JSON.parse(JSON.stringify(data));
                 //=== need to sort the obj first based on the datetime!!!
                 //TODO - preview icon bug?
 
@@ -74,7 +74,7 @@ function loadMovieScheduled(username) {
 //                        $scope.serviceCheck($scope.page);
 //                    } else {
                         if (obj[i].search_results && obj[i].search_results.value !== undefined) {
-                            temp = jQuery.parseJSON(obj[i].search_results.value);
+                            temp = JSON.parse(JSON.stringify(obj[i].search_results.value));
                         }
                         var desc;
                         if(typeof obj[i].description !== 'undefined')
@@ -256,12 +256,12 @@ function getNextShuffledUrl(startDatetime) {
         //async: false,
         success: function(data) {
             if(data !== undefined) {
-                var obj = jQuery.parseJSON(data);
+                var obj = JSON.parse(JSON.stringify(data));
                 var temp; var YOUTUBE_INDEX = 1;	//=== assumption: youtube is the second results!!!
                 obj = shuffle(obj);
                 //var j;
                 for (var mcount1 = 0; mcount1 < obj.length; mcount1++) {
-                    temp = jQuery.parseJSON(obj[mcount1].search_results.value);
+                    temp = JSON.parse(JSON.stringify(obj[mcount1].search_results.value));
                     //j = {id: obj[mcount1].id, movie_url:temp[YOUTUBE_INDEX].movie_url, datetime:obj[mcount1].event_pattern, title: obj[mcount1].title, description: obj[mcount1].description, url: obj[mcount1].u_r_l, createDate: obj[mcount1].modified};
                     if(startDatetime === obj[mcount1].datetime && obj[mcount1].shuffled === true) {
                         randomUrl = temp[YOUTUBE_INDEX].movie_url;
@@ -318,16 +318,15 @@ function loadMovie(username, shuffleFlag) {
         if (typeof data !== 'undefined') {
             //console.table(data);
             console.log('channel.js loadMovie() username [' + username + ']');
-            var obj = jQuery.parseJSON(JSON.stringify(data));
+            var obj = JSON.parse(JSON.stringify(data));
             var YOUTUBE_INDEX = 1;	//=== assumption: youtube is the second results!!!
             var filterStr;
             $("#playingOrsoon").attr("data-datetime", "1970,1,1,0,0,0");
             $("#playingOrsoon").val("none");
             shuffleFlag && (obj = shuffle(obj));     //thanks to http://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array-in-javascript
             //console.table(obj);
-            obj = jQuery.parseJSON(JSON.stringify(obj));
-
-
+            obj = JSON.parse(JSON.stringify(obj));
+            
             filterStr = $.url().param('filter');     //support filter/hashtag
             //alert('obj.length = ' + obj.length);
             var j;
@@ -344,7 +343,7 @@ function loadMovie(username, shuffleFlag) {
                     //TODO need to check for empty movie here!!!
                     try {
                         //if(obj[mcount1].search_results && typeof obj[mcount1].search_results.value !== 'undefined') {
-                        //    temp = jQuery.parseJSON(obj[mcount1].search_results.value);
+                        //    temp = JSON.parse(JSON.stringify(obj[mcount1].search_results.value));
                         //}
                         var desc;
                         if (typeof obj[mcount1].description !== 'undefined')
@@ -747,7 +746,7 @@ function handleChannelType(type, username) {
 
                                 ////window.console && console.log("rss event created, response = [" + data + "]");
                                 if(data !== undefined) {
-                                    var obj = jQuery.parseJSON(data);
+                                    var obj = JSON.parse(JSON.stringify(data));
                                     var j = {};
                                     for (var i = 0; i < obj.length; i++) {
                                         //for (var i = 0; i < GALLERIA_LIMIT; i++) {
