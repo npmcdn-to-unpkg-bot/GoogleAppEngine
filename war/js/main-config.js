@@ -10,7 +10,7 @@ var gEventArray = [];
 var gHref;
 var App = {
     major: '9',
-    minor: '0106c',
+    minor: '0107',
     header_index: 0,   //metadata header
     movie_index: 1,     //the real movies data
     login_url: '/ui/index.html',
@@ -205,8 +205,8 @@ function restoreStates(store) {
 function purgeStates() {
     if(typeof store !== 'undefined') {
         try {
-            store.set('userid', '');
-            store.set('logintype', '');
+            store.set('2shareUserid', '');
+            store.set('2shareLogintype', '');
         } catch (e) {
             alert("main-config.js purgeStates error: Not able to purge userid and logintype as storejs, error: " + e);
         }
@@ -257,7 +257,9 @@ typeof requirejs !== 'undefined' && requirejs(
         ////=== https://www.parse.com/tutorials/session-migration-tutorial
         //Parse.User.enableRevocableSession();
         Parse = parse;
-        store.set('userid', parse.User.current().getUsername());
+        if(typeof parse.User !== 'undefined') {
+            parse.User.current() && store.set('2shareUserid', parse.User.current().getUsername());
+        }
         //debugger
         $(document).ready(function () {
             (function(d, debug){

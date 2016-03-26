@@ -10,14 +10,15 @@ This project demonstrates the following features on the Google App Engine for Ja
 ****** Major Highlights ******
 
 Swagger UI 1.5.4
-. http://localhost:8888/index_api.html
+. http://localhost:8888/swagger/index.html
 
 Spring MVC 4.0.7 Simplest Controller
 . http://localhost:8888/web/hello
 
-AngularJS 1.0.8 Client that Consumes a Spring-based RESTful Web Service
+AngularJS Client that Consumes a Spring-based RESTful Web Service
 . http://localhost:8888/html/hello.html
 . It is adaptation from the source http://spring.io/guides/gs/consuming-rest-angularjs/
+. 2Share sample YouTube based web app
 
 Google Datastore API
 . "Genius" Service
@@ -47,6 +48,10 @@ template:delete:genius
 template:delete:secured
 template:delete:social
 and the value of the SR entry will be the token (when a delete action is hit, a prompt will be shown "Please enter your token" to authorize further deletion)
+
+Newer Versions of Web App Based on MV*
+. ReactJS Sample App
+. RiotJS Sample App
 
 $$$$$$ Third-Party/OSS Integrations $$$$$$
 

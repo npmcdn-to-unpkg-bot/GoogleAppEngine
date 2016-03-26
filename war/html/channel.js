@@ -39,11 +39,11 @@ function loadMovieScheduled(username) {
     console.log('loadMovieScheduled ' + gCacheProxy);
     var stat = false;
     //alert('channel.js loadMovie() entered');
-    //window.console && console.log("**************>>>> cBuild = " + cBuild + "<<<<**************");
+    // console && console.log("**************>>>> cBuild = " + cBuild + "<<<<**************");
+    console && console.log("/api/jwt/ws/crud 1");
 
     $.ajax({
         type: "POST",
-//        url: gCacheProxy + "/api/jwt/ws/crud?type=modelCalendar&origin=" + location.hostname + "&uid=" + username + "&filter=next5",
         url: gCacheProxy + "/api/jwt/ws/crud?type=modelMovie&origin=" + location.hostname + "&aid=" + gAppId + "&uid=" + username + "&filter=next5",
         async: false,
         success: function(data) {
@@ -230,10 +230,11 @@ function loadMovieShuffle(username) {
 }
 
 /** load all movies (mine, shared, sheduled or otherwise */
-function loadMovieAll(username, log) {
+function loadMovieAll(username) {
     var stat = false;
+    console.log('channel.js loadMovieAll: username [' + username + ']');
 
-    stat = loadMovie(username);
+    stat = loadMovie(username, false);
 
     return stat;
 }
@@ -241,6 +242,7 @@ function loadMovieAll(username, log) {
 //@ http://jsfromhell.com/array/shuffle
 /** use only by Play Now as well as Play Later functionalities */
 function shuffle(v) {
+    console.log('channel.js shuffle() ...');
     for(var j, x, i = v.length; i; j = parseInt(Math.random() * i), x = v[--i], v[i] = v[j], v[j] = x);
     return v;
 }
@@ -249,6 +251,8 @@ function shuffle(v) {
 function getNextShuffledUrl(startDatetime) {
     var randomUrl = "";
     console.log('getNextShuffledUrl ' + gCacheProxy);
+
+    console && console.log("/api/jwt/ws/crud 2");
 
     $.ajax({
         type: "GET",
@@ -309,6 +313,8 @@ function loadMovie(username, shuffleFlag) {
     var stat = false;
     galleriaData = [];
     //debugger
+    console && console.log("/api/jwt/ws/crud 3");
+
     targetUrl = gCacheProxy + "/api/jwt/ws/crud?type=modelMovie&origin=" + location.hostname + "&aid=" + gAppId + "&uid=" + username + "&filter=next5";
     //alert(targetUrl);
 
@@ -325,7 +331,9 @@ function loadMovie(username, shuffleFlag) {
             $("#playingOrsoon").val("none");
             shuffleFlag && (obj = shuffle(obj));     //thanks to http://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array-in-javascript
             //console.table(obj);
-            obj = JSON.parse(JSON.stringify(obj));
+            if(typeof obj === 'string') {
+                obj = JSON.parse(obj);
+            }
             
             filterStr = $.url().param('filter');     //support filter/hashtag
             //alert('obj.length = ' + obj.length);
@@ -437,13 +445,17 @@ function loadMovie(username, shuffleFlag) {
                     if (e.galleriaData.iframe) {
                         var temp = 'if' + new Date().getTime();
                         e.imageTarget.id = temp;
-                        galleria.player = new YT.Player(temp, {
-                            playerVars: {'autoplay': 1, 'controls': 1},
-                            events: {
-                                'onReady': onPlayerReady,
-                                "onStateChange": onPlayerStateChange
-                            }
-                        });
+                        if(typeof YT !== 'undefined') {
+                            galleria.player = new YT.Player(temp, {
+                                playerVars: {'autoplay': 1, 'controls': 1},
+                                events: {
+                                    'onReady': onPlayerReady,
+                                    "onStateChange": onPlayerStateChange
+                                }
+                            });
+                        } else {
+                            console.log('channel.js YT is undefined!');
+                        }
                     } else {
                         iframe = false;
                     }
@@ -738,6 +750,8 @@ function handleChannelType(type, username) {
                 //window.console && console.log("2handleChannelType: $('#t' + i).val()=" + $('#t' + i).val() + " fetching rss feed ...");
                 if($("#t" + i).val().toLowerCase().indexOf("youtube") == -1) {
                     try {
+                        console && console.log("/api/jwt/ws/crud 4");
+
                         $.ajax({
                             type: "POST",
                             url: gCacheProxy + "/api/jwt/ws/crud?type=modelMovie&origin=" + location.hostname + "&aid=" + gAppId + "&uid=" + username,

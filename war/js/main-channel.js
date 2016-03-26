@@ -4,19 +4,15 @@ requirejs.config({
 //    deps: '../html/channel',
 
     paths: {
-//      jquery: '//ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery',
         jquery: ['//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery', 'jquery-1.9.1'],    //for some reason, this is needed for IE 8 otherwise  'jQuery' is undefined or  '$' is undefined will occur
-        //purl: '../jquery/purl',
-//        parse: 'https://www.parsecdn.com/js/parse-1.2.7.min',
         //===used by channel.html
         galleria: ['../galleria-1.2.9/galleria-1.2.9.min'],
-        //galleria: ['//cdnjs.cloudflare.com/ajax/libs/galleria/1.4.2/galleria'],
-//        channelApp: ['../html/channel'],
         movieApp: ['../mcrud/movie'],
         calendarApp: '../html/calendar',
         angularTouch: '//ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular-touch',
         countDown: '../jquery/jquery.countdown',
-        initUser: ['../parse/init']
+        initUser: ['../parse/init'],
+        channelApp: ['../html/channel']
     },
 
     shim: {
@@ -28,10 +24,10 @@ requirejs.config({
 //            deps: ["jquery"],
 //            exports: 'Parse'
 //        },
-//        purl: {
-//            deps: ["jquery"],
-//            exports : '$'
-//        },
+       purl: {
+           deps: ["jquery"],
+           exports : '$'
+       },
 //        angular: {
 //            deps: ["parse", "purl"],
 //            exports : 'angular'
@@ -44,6 +40,9 @@ requirejs.config({
 //                , 'fullCalendar',
 //                   ,'jQueryUI'
             ]
+        },
+        channelApp: {
+            deps: ['parse', 'prefs', 'galleria']
         },
         angularTouch: {
             deps: ["angular"],
@@ -76,12 +75,16 @@ requirejs(['./main-config', './app'], function (common, app) {
             'movieApp',
             'calendarApp',
             'angularTouch',
-            'initUser', 'galleria', '../html/channel', 'countDown'], function (
+            'initUser',
+            'storejs',
+            'galleria', 'channelApp', 'countDown'], function (
         $, purl, Parse, facebook, angular, loglevel, prefs,
             movie,
             calendar,
             angularTouch,
-            init, galleria, channel, countDown) {
+            init,
+            store,
+            galleria, channel, countDown) {
             $(document).ready(function() {
                 //console.log("ready!");
                 //$('body').attr('ng-controller', 'MovieController');
@@ -94,6 +97,8 @@ requirejs(['./main-config', './app'], function (common, app) {
                 var username = 'Unknown';
                 if(App.isValidSession()) {
                     username = Parse.User.current().getUsername();
+                } else {
+                    username = store.get('2shareUserid');
                 }
                 if(username === 'Unknown') {
 //                    username = $.url().param('username');     //TBD - might have security risk here if subjected to brute force attack

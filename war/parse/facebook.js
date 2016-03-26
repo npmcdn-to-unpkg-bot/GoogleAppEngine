@@ -73,6 +73,7 @@ function doLogout() {
 
     //JWT to clear the token!
     localStorage.removeItem('2shareJWTToken');
+    purgeStates();
 
     window.location=gLogoutURL;
 }

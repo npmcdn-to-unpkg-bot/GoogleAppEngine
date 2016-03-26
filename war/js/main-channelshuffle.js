@@ -94,7 +94,7 @@ require(['./main-config', './app'], function (common, app) {
                     before.parentNode.insertBefore(s, before);
                 })();
                 //noinspection CommaExpressionJS
-                var username = store.get('userid');
+                var username = store.get('2shareUserid');
                 if(typeof username === 'undefined') {
                     alert('main-channelshuffle.js username is undefined!');
                 }

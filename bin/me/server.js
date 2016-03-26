@@ -78,6 +78,7 @@ app.get('/api/jwt/ws/crud', cache('1 day'), function(req,res,next) {
         if (!error && response.statusCode == 200) {
   	        req.apicacheGroup = origin+"-"+aid+"-"+uid+"-"+type+"-"+filter;	//the key is the appId + user
 
+            //console.log(body);
             res.send(body)
             console.log("apicacheGroup [" + req.apicacheGroup + "] added into cache")
             //res.send(body + " type[" + type + "] uid[" + uid + "]")
