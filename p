@@ -1,1 +1,1 @@
-git pull
+./rb && git pull
