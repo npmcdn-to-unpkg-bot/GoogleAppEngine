@@ -1,3 +1,5 @@
+'use strict';
+
 var GALLERIA_VERSION = '1.2.9';
 //var GALLERIA_VERSION = '1.4.2';
 var GALLERIA_LIMIT = 10;     //limit to 10 movies/images only
@@ -315,7 +317,7 @@ function loadMovie(username, shuffleFlag) {
     //debugger
     console && console.log("/api/jwt/ws/crud 3");
 
-    targetUrl = gCacheProxy + "/api/jwt/ws/crud?type=modelMovie&origin=" + location.hostname + "&aid=" + gAppId + "&uid=" + username + "&filter=next5";
+    var targetUrl = gCacheProxy + "/api/jwt/ws/crud?type=modelMovie&origin=" + location.hostname + "&aid=" + gAppId + "&uid=" + username + "&filter=next5";
     //alert(targetUrl);
 
     var doIt = function(data) {
@@ -457,7 +459,7 @@ function loadMovie(username, shuffleFlag) {
                             console.log('channel.js YT is undefined!');
                         }
                     } else {
-                        iframe = false;
+                        e.galleriaData.iframe = false;
                     }
 
                     //=== http://support.galleria.io/discussions/questions/865-extending-galleria-external-play-buttoncaptions-etc
@@ -539,7 +541,7 @@ function loadMovie(username, shuffleFlag) {
                 }
                 //alert(fSubtitle);
                 //TODO http://css-tricks.com/forums/topic/is-it-possible-to-adapt-font-size-to-div-width/
-                $("#subtitleDiv").replaceWith("<div id=\"subtitleDiv\" style=\"top:50px;height:72px;font-size:24px;position: fixed;bottom: 10px;background: rgba(50,50,50,"+ trans +");width: 99%;z-index: 2000;color: rgb(220,220,220);text-align: center;\"><input type=\"text\" value=\"" + fSubtitle + "\" style=\"width:50%;height:70%;\" id=\"srt_url_data\" onfocus=\"if(this.value.length==0){this.value='Enter subtitle here (would not work in fullscreen mode for now).';}\"> <a class=\"btn-reverse\" href=\"#\" onclick=\"hideSubtitle();\" id=\"str_url_added\" style=\"margin-bottom:1px;\" name=\"str_url_added\"><i style=\"vertical-align: baseline;\" class=\"icon-remove-sign\"></i></a><label style=\"padding-left:10px;\" id=\"str_load_info\"></label><div class=\"srt\"></div><input alt=\"Delay of subtitles in seconds, can be postive or negative\" type=\"text\" style=\"width:2.5em;position:absolute;left:89%;bottom:9px;\" placeholder=\"<![CDATA[Delay/s]]>\" id=\"srt_delay\"/></div>");
+                $("#subtitleDiv").replaceWith("<div id=\"subtitleDiv\" style=\"top:50px;height:72px;font-size:24px;position: fixed;bottom: 10px;background: rgba(50,50,50,0);width: 99%;z-index: 2000;color: rgb(220,220,220);text-align: center;\"><input type=\"text\" value=\"" + fSubtitle + "\" style=\"width:50%;height:70%;\" id=\"srt_url_data\" onfocus=\"if(this.value.length==0){this.value='Enter subtitle here (would not work in fullscreen mode for now).';}\"> <a class=\"btn-reverse\" href=\"#\" onclick=\"hideSubtitle();\" id=\"str_url_added\" style=\"margin-bottom:1px;\" name=\"str_url_added\"><i style=\"vertical-align: baseline;\" class=\"icon-remove-sign\"></i></a><label style=\"padding-left:10px;\" id=\"str_load_info\"></label><div class=\"srt\"></div><input alt=\"Delay of subtitles in seconds, can be postive or negative\" type=\"text\" style=\"width:2.5em;position:absolute;left:89%;bottom:9px;\" placeholder=\"<![CDATA[Delay/s]]>\" id=\"srt_delay\"/></div>");
                 $("#srt_url_data").val(fSubtitle);
             });
             //window.console && console.log("2.1.0 galleria loaded");
@@ -822,7 +824,7 @@ function handleChannelType(type, username) {
                         }
                     });
                 } else {
-                    iframe = false;
+                    e.galleriaData.iframe = false;
                 }
             });
             this.bind('thumbnail', function(e) {
