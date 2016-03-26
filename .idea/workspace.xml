@@ -30,14 +30,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="405">
               <caret line="27" column="161" selection-start-line="27" selection-start-column="161" selection-end-line="27" selection-end-column="161" />
-              <folding>
-                <marker date="1458442181000" expanded="true" signature="2870:3466" placeholder="..." />
-                <marker date="1458442181000" expanded="true" signature="2894:3451" placeholder="{...}" />
-                <marker date="1458442181000" expanded="true" signature="2953:3439" placeholder="{...}" />
-                <marker date="1458442181000" expanded="true" signature="3171:3220" placeholder="/*...*/" />
-                <marker date="1458442181000" expanded="true" signature="3237:3385" placeholder="/*...*/" />
-                <marker date="1458442181000" expanded="true" signature="3645:5950" placeholder="..." />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -47,10 +40,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="435">
               <caret line="29" column="44" selection-start-line="29" selection-start-column="44" selection-end-line="29" selection-end-column="44" />
-              <folding>
-                <marker date="1458508654000" expanded="true" signature="31:4008" placeholder="..." />
-                <marker date="1458508654000" expanded="true" signature="38:2651" placeholder="..." />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -60,41 +50,17 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="390">
               <caret line="27" column="30" selection-start-line="27" selection-start-column="30" selection-end-line="27" selection-end-column="30" />
-              <folding>
-                <marker date="1458442181000" expanded="true" signature="37:181" placeholder="//..." />
-                <marker date="1458442181000" expanded="true" signature="186:338" placeholder="/*...*/" />
-                <marker date="1458442181000" expanded="true" signature="443:678" placeholder="{...}" />
-                <marker date="1458442181000" expanded="true" signature="497:672" placeholder="{...}" />
-                <marker date="1458442181000" expanded="true" signature="1091:1151" placeholder="{...}" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="channel.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="channel.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/war/html/channel.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4785">
-              <caret line="319" column="36" selection-start-line="319" selection-start-column="36" selection-end-line="319" selection-end-column="36" />
-              <folding>
-                <marker date="1458442181000" expanded="true" signature="156:212" placeholder="//..." />
-                <marker date="1458442181000" expanded="true" signature="844:973" placeholder="{...}" />
-                <marker date="1458442181000" expanded="true" signature="984:1027" placeholder="{...}" />
-                <marker date="1458442181000" expanded="true" signature="1040:1331" placeholder="{...}" />
-                <marker date="1458442181000" expanded="true" signature="1055:1329" placeholder="{&quot;Accept&quot;: 'application/json, text/plain, */*'...}" />
-                <marker date="1458442181000" expanded="true" signature="1142:1232" placeholder="//..." />
-                <marker date="1458442181000" expanded="true" signature="1349:1380" placeholder="/**...*/" />
-                <marker date="1458442181000" expanded="true" signature="1501:1644" placeholder="//..." />
-                <marker date="1458442181000" expanded="true" signature="1657:12455" placeholder="{&quot;type&quot;: &quot;POST&quot;...}" />
-                <marker date="1458442181000" expanded="true" signature="2019:12278" placeholder="{...}" />
-                <marker date="1458442181000" expanded="true" signature="2157:12268" placeholder="{...}" />
-                <marker date="1458442181000" expanded="true" signature="2225:2325" placeholder="//..." />
-                <marker date="1458442181000" expanded="true" signature="2943:7902" placeholder="{...}" />
-                <marker date="1458442181000" expanded="true" signature="2965:3427" placeholder="//..." />
-                <marker date="1458442181000" expanded="true" signature="3524:3633" placeholder="{...}" />
-                <marker date="1458442181000" expanded="true" signature="3894:4186" placeholder="{...}" />
-                <marker date="1458442181000" expanded="true" signature="12543:12567" placeholder="{...}" />
-              </folding>
+            <state relative-caret-position="357">
+              <caret line="328" column="0" selection-start-line="328" selection-start-column="0" selection-end-line="328" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -102,15 +68,9 @@
       <file leaf-file-name="main-config.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/war/js/main-config.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2265">
+            <state relative-caret-position="582">
               <caret line="151" column="0" selection-start-line="151" selection-start-column="0" selection-end-line="151" selection-end-column="0" />
-              <folding>
-                <marker date="1458442181000" expanded="true" signature="11895:13259" placeholder="{...}" />
-                <marker date="1458442181000" expanded="true" signature="11895:13267" placeholder="{...}" />
-                <marker date="1458442181000" expanded="true" signature="11896:12319" placeholder="//..." />
-                <marker date="1458442181000" expanded="true" signature="12360:12560" placeholder="{...}" />
-                <marker date="1458442181000" expanded="true" signature="12561:13249" placeholder="//..." />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -118,13 +78,9 @@
       <file leaf-file-name="movie.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/war/mcrud/movie.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4515">
+            <state relative-caret-position="5117">
               <caret line="301" column="0" selection-start-line="301" selection-start-column="0" selection-end-line="301" selection-end-column="0" />
-              <folding>
-                <marker date="1458442181000" expanded="true" signature="551:12597" placeholder="{...}" />
-                <marker date="1458442181000" expanded="true" signature="72349:72407" placeholder="{...}" />
-                <marker date="1458442181000" expanded="true" signature="72349:72408" placeholder="[...]" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -132,7 +88,7 @@
       <file leaf-file-name="movie.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/war/mcrud/movie.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2580">
+            <state relative-caret-position="2924">
               <caret line="172" column="42" selection-start-line="172" selection-start-column="42" selection-end-line="172" selection-end-column="42" />
               <folding />
             </state>
@@ -142,18 +98,18 @@
       <file leaf-file-name="main-channelshuffle.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/war/js/main-channelshuffle.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="164">
+            <state relative-caret-position="1377">
               <caret line="81" column="47" selection-start-line="81" selection-start-column="47" selection-end-line="81" selection-end-column="47" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="appengine-web.xml.net" pinned="false" current-in-tab="true">
+      <file leaf-file-name="appengine-web.xml.net" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bin/appengine-web.xml.net">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="67" column="32" selection-start-line="67" selection-start-column="32" selection-end-line="67" selection-end-column="32" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -195,12 +151,12 @@
         <option value="$PROJECT_DIR$/war/mcrud/movie.html" />
         <option value="$PROJECT_DIR$/war/ui/index.html" />
         <option value="$PROJECT_DIR$/war/mcrud/movie.js" />
-        <option value="$PROJECT_DIR$/war/html/channel.js" />
         <option value="$PROJECT_DIR$/war/html/channelshuffle.html" />
         <option value="$PROJECT_DIR$/war/parse/facebook.js" />
         <option value="$PROJECT_DIR$/war/js/main-config.js" />
         <option value="$PROJECT_DIR$/war/js/main-channelshuffle.js" />
         <option value="$PROJECT_DIR$/war/n/react/app.html" />
+        <option value="$PROJECT_DIR$/war/html/channel.js" />
       </list>
     </option>
   </component>
@@ -210,9 +166,10 @@
     <detection-done>true</detection-done>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="23" />
-    <option name="width" value="1382" />
-    <option name="height" value="754" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1296" />
+    <option name="height" value="776" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -276,7 +233,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -341,7 +298,83 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="parse" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GoogleAppEngine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GoogleAppEngine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="war" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="n" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GoogleAppEngine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GoogleAppEngine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="war" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="n" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="react" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GoogleAppEngine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GoogleAppEngine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="war" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GoogleAppEngine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GoogleAppEngine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="war" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="html" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -361,7 +394,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -370,7 +403,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="options.lastSelected" value="vcs.Git" />
     <property name="recentsLimit" value="5" />
-    <property name="last_opened_file_path" value="/Volumes/NONAME/node-js-getting-started" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="restartRequiresConfirmation" value="true" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
     <property name="options.splitter.details.proportions" value="0.2" />
@@ -417,7 +450,9 @@
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
       <method />
     </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" config-file="">
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma">
+      <config-file value="" />
+      <node-interpreter value="project" />
       <envs />
       <method />
     </configuration>
@@ -480,304 +515,358 @@
       <changelist id="acf5117e-d341-47cb-8046-e59dab15ed3d" name="New changelist" comment="" />
       <created>1366230450188</created>
       <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
       <updated>1366230450188</updated>
+      <workItem from="1458959061703" duration="404000" />
     </task>
     <task id="LOCAL-00151" summary="1. Separated calendar's movie list from the managed movie collection list. &#10;2. Moved password change into My Account.">
       <created>1379636582198</created>
       <option name="number" value="00151" />
+      <option name="presentableId" value="LOCAL-00151" />
       <option name="project" value="LOCAL" />
       <updated>1379636582198</updated>
     </task>
     <task id="LOCAL-00152" summary="Exposed shared collections for scheduling.">
       <created>1379804202314</created>
       <option name="number" value="00152" />
+      <option name="presentableId" value="LOCAL-00152" />
       <option name="project" value="LOCAL" />
       <updated>1379804202314</updated>
     </task>
     <task id="LOCAL-00153" summary=".">
       <created>1379869959248</created>
       <option name="number" value="00153" />
+      <option name="presentableId" value="LOCAL-00153" />
       <option name="project" value="LOCAL" />
       <updated>1379869959249</updated>
     </task>
     <task id="LOCAL-00154" summary=".">
       <created>1379882390251</created>
       <option name="number" value="00154" />
+      <option name="presentableId" value="LOCAL-00154" />
       <option name="project" value="LOCAL" />
       <updated>1379882390251</updated>
     </task>
     <task id="LOCAL-00155" summary=".">
       <created>1379906588200</created>
       <option name="number" value="00155" />
+      <option name="presentableId" value="LOCAL-00155" />
       <option name="project" value="LOCAL" />
       <updated>1379906588200</updated>
     </task>
     <task id="LOCAL-00156" summary=".">
       <created>1379981659292</created>
       <option name="number" value="00156" />
+      <option name="presentableId" value="LOCAL-00156" />
       <option name="project" value="LOCAL" />
       <updated>1379981659293</updated>
     </task>
     <task id="LOCAL-00157" summary="Put back Facebook integration.">
       <created>1379993650257</created>
       <option name="number" value="00157" />
+      <option name="presentableId" value="LOCAL-00157" />
       <option name="project" value="LOCAL" />
       <updated>1379993650257</updated>
     </task>
     <task id="LOCAL-00158" summary="Fix some Google Plus issues.">
       <created>1380147315254</created>
       <option name="number" value="00158" />
+      <option name="presentableId" value="LOCAL-00158" />
       <option name="project" value="LOCAL" />
       <updated>1380147315255</updated>
     </task>
     <task id="LOCAL-00159" summary="Fix some Google Plus issues.">
       <created>1380209858236</created>
       <option name="number" value="00159" />
+      <option name="presentableId" value="LOCAL-00159" />
       <option name="project" value="LOCAL" />
       <updated>1380209858236</updated>
     </task>
     <task id="LOCAL-00160" summary=".">
       <created>1380234740275</created>
       <option name="number" value="00160" />
+      <option name="presentableId" value="LOCAL-00160" />
       <option name="project" value="LOCAL" />
       <updated>1380234740276</updated>
     </task>
     <task id="LOCAL-00161" summary="Fixed some Google Plus issues.">
       <created>1380245465310</created>
       <option name="number" value="00161" />
+      <option name="presentableId" value="LOCAL-00161" />
       <option name="project" value="LOCAL" />
       <updated>1380245465311</updated>
     </task>
     <task id="LOCAL-00162" summary=".">
       <created>1380420308202</created>
       <option name="number" value="00162" />
+      <option name="presentableId" value="LOCAL-00162" />
       <option name="project" value="LOCAL" />
       <updated>1380420308202</updated>
     </task>
     <task id="LOCAL-00163" summary=".">
       <created>1380480117266</created>
       <option name="number" value="00163" />
+      <option name="presentableId" value="LOCAL-00163" />
       <option name="project" value="LOCAL" />
       <updated>1380480117266</updated>
     </task>
     <task id="LOCAL-00164" summary=".">
       <created>1380594109256</created>
       <option name="number" value="00164" />
+      <option name="presentableId" value="LOCAL-00164" />
       <option name="project" value="LOCAL" />
       <updated>1380594109256</updated>
     </task>
     <task id="LOCAL-00165" summary="Added events purging test feature for user.">
       <created>1380651430260</created>
       <option name="number" value="00165" />
+      <option name="presentableId" value="LOCAL-00165" />
       <option name="project" value="LOCAL" />
       <updated>1380651430260</updated>
     </task>
     <task id="LOCAL-00166" summary="Initial codes to add channel pattern of movies.">
       <created>1380756730250</created>
       <option name="number" value="00166" />
+      <option name="presentableId" value="LOCAL-00166" />
       <option name="project" value="LOCAL" />
       <updated>1380756730250</updated>
     </task>
     <task id="LOCAL-00167" summary=".">
       <created>1380757096236</created>
       <option name="number" value="00167" />
+      <option name="presentableId" value="LOCAL-00167" />
       <option name="project" value="LOCAL" />
       <updated>1380757096236</updated>
     </task>
     <task id="LOCAL-00168" summary=".">
       <created>1380774910303</created>
       <option name="number" value="00168" />
+      <option name="presentableId" value="LOCAL-00168" />
       <option name="project" value="LOCAL" />
       <updated>1380774910304</updated>
     </task>
     <task id="LOCAL-00169" summary=".">
       <created>1380814519257</created>
       <option name="number" value="00169" />
+      <option name="presentableId" value="LOCAL-00169" />
       <option name="project" value="LOCAL" />
       <updated>1380814519257</updated>
     </task>
     <task id="LOCAL-00170" summary="Fixed the scheduler issue (sorted by the movie's event start date in ascending order).">
       <created>1380829711242</created>
       <option name="number" value="00170" />
+      <option name="presentableId" value="LOCAL-00170" />
       <option name="project" value="LOCAL" />
       <updated>1380829711242</updated>
     </task>
     <task id="LOCAL-00171" summary=".">
       <created>1380890679262</created>
       <option name="number" value="00171" />
+      <option name="presentableId" value="LOCAL-00171" />
       <option name="project" value="LOCAL" />
       <updated>1380890679262</updated>
     </task>
     <task id="LOCAL-00172" summary="You to Me.">
       <created>1380938273215</created>
       <option name="number" value="00172" />
+      <option name="presentableId" value="LOCAL-00172" />
       <option name="project" value="LOCAL" />
       <updated>1380938273216</updated>
     </task>
     <task id="LOCAL-00173" summary="Made calendar event non-resizable and set the duration to YT video.">
       <created>1381022141256</created>
       <option name="number" value="00173" />
+      <option name="presentableId" value="LOCAL-00173" />
       <option name="project" value="LOCAL" />
       <updated>1381022141256</updated>
     </task>
     <task id="LOCAL-00174" summary=".">
       <created>1381268164252</created>
       <option name="number" value="00174" />
+      <option name="presentableId" value="LOCAL-00174" />
       <option name="project" value="LOCAL" />
       <updated>1381268164253</updated>
     </task>
     <task id="LOCAL-00175" summary=".">
       <created>1381296248208</created>
       <option name="number" value="00175" />
+      <option name="presentableId" value="LOCAL-00175" />
       <option name="project" value="LOCAL" />
       <updated>1381296248208</updated>
     </task>
     <task id="LOCAL-00176" summary=".">
       <created>1381323352240</created>
       <option name="number" value="00176" />
+      <option name="presentableId" value="LOCAL-00176" />
       <option name="project" value="LOCAL" />
       <updated>1381323352241</updated>
     </task>
     <task id="LOCAL-00177" summary=".">
       <created>1381358151254</created>
       <option name="number" value="00177" />
+      <option name="presentableId" value="LOCAL-00177" />
       <option name="project" value="LOCAL" />
       <updated>1381358151255</updated>
     </task>
     <task id="LOCAL-00178" summary="Provided temporary workarounds for Google Plus and Twitter accounts usage with the app (security holes to be addressed later on!!!).">
       <created>1381439885249</created>
       <option name="number" value="00178" />
+      <option name="presentableId" value="LOCAL-00178" />
       <option name="project" value="LOCAL" />
       <updated>1381439885250</updated>
     </task>
     <task id="LOCAL-00179" summary="More fixes/changes related to Facebook and Google Plus.">
       <created>1381445474250</created>
       <option name="number" value="00179" />
+      <option name="presentableId" value="LOCAL-00179" />
       <option name="project" value="LOCAL" />
       <updated>1381445474251</updated>
     </task>
     <task id="LOCAL-00180" summary=".">
       <created>1381705349224</created>
       <option name="number" value="00180" />
+      <option name="presentableId" value="LOCAL-00180" />
       <option name="project" value="LOCAL" />
       <updated>1381705349224</updated>
     </task>
     <task id="LOCAL-00181" summary=".">
       <created>1381705374199</created>
       <option name="number" value="00181" />
+      <option name="presentableId" value="LOCAL-00181" />
       <option name="project" value="LOCAL" />
       <updated>1381705374199</updated>
     </task>
     <task id="LOCAL-00182" summary=".">
       <created>1381712358282</created>
       <option name="number" value="00182" />
+      <option name="presentableId" value="LOCAL-00182" />
       <option name="project" value="LOCAL" />
       <updated>1381712358282</updated>
     </task>
     <task id="LOCAL-00183" summary=".">
       <created>1381718619238</created>
       <option name="number" value="00183" />
+      <option name="presentableId" value="LOCAL-00183" />
       <option name="project" value="LOCAL" />
       <updated>1381718619238</updated>
     </task>
     <task id="LOCAL-00184" summary=".">
       <created>1381807468285</created>
       <option name="number" value="00184" />
+      <option name="presentableId" value="LOCAL-00184" />
       <option name="project" value="LOCAL" />
       <updated>1381807468286</updated>
     </task>
     <task id="LOCAL-00185" summary="Added overflow-y into large vertical Accordian panel with auto scroll.">
       <created>1381840511255</created>
       <option name="number" value="00185" />
+      <option name="presentableId" value="LOCAL-00185" />
       <option name="project" value="LOCAL" />
       <updated>1381840511256</updated>
     </task>
     <task id="LOCAL-00186" summary="Some codes related to scheduled movies.">
       <created>1381878646302</created>
       <option name="number" value="00186" />
+      <option name="presentableId" value="LOCAL-00186" />
       <option name="project" value="LOCAL" />
       <updated>1381878646302</updated>
     </task>
     <task id="LOCAL-00187" summary=".">
       <created>1381888811252</created>
       <option name="number" value="00187" />
+      <option name="presentableId" value="LOCAL-00187" />
       <option name="project" value="LOCAL" />
       <updated>1381888811252</updated>
     </task>
     <task id="LOCAL-00188" summary=".">
       <created>1381964851247</created>
       <option name="number" value="00188" />
+      <option name="presentableId" value="LOCAL-00188" />
       <option name="project" value="LOCAL" />
       <updated>1381964851247</updated>
     </task>
     <task id="LOCAL-00189" summary=".">
       <created>1381989425240</created>
       <option name="number" value="00189" />
+      <option name="presentableId" value="LOCAL-00189" />
       <option name="project" value="LOCAL" />
       <updated>1381989425240</updated>
     </task>
     <task id="LOCAL-00190" summary=".">
       <created>1382047196248</created>
       <option name="number" value="00190" />
+      <option name="presentableId" value="LOCAL-00190" />
       <option name="project" value="LOCAL" />
       <updated>1382047196248</updated>
     </task>
     <task id="LOCAL-00191" summary=".">
       <created>1382051085274</created>
       <option name="number" value="00191" />
+      <option name="presentableId" value="LOCAL-00191" />
       <option name="project" value="LOCAL" />
       <updated>1382051085275</updated>
     </task>
     <task id="LOCAL-00192" summary="Tagged backend with top 3 worst performers based on JProfiler analysis.">
       <created>1382063057286</created>
       <option name="number" value="00192" />
+      <option name="presentableId" value="LOCAL-00192" />
       <option name="project" value="LOCAL" />
       <updated>1382063057286</updated>
     </task>
     <task id="LOCAL-00193" summary="Hide social icons by default.">
       <created>1382571014261</created>
       <option name="number" value="00193" />
+      <option name="presentableId" value="LOCAL-00193" />
       <option name="project" value="LOCAL" />
       <updated>1382571014262</updated>
     </task>
     <task id="LOCAL-00194" summary="Hide social icons by default.">
       <created>1382571435248</created>
       <option name="number" value="00194" />
+      <option name="presentableId" value="LOCAL-00194" />
       <option name="project" value="LOCAL" />
       <updated>1382571435249</updated>
     </task>
     <task id="LOCAL-00195" summary=".">
       <created>1383003789207</created>
       <option name="number" value="00195" />
+      <option name="presentableId" value="LOCAL-00195" />
       <option name="project" value="LOCAL" />
       <updated>1383003789208</updated>
     </task>
     <task id="LOCAL-00196" summary=".">
       <created>1383076977275</created>
       <option name="number" value="00196" />
+      <option name="presentableId" value="LOCAL-00196" />
       <option name="project" value="LOCAL" />
       <updated>1383076977276</updated>
     </task>
     <task id="LOCAL-00197" summary=".">
       <created>1383084074263</created>
       <option name="number" value="00197" />
+      <option name="presentableId" value="LOCAL-00197" />
       <option name="project" value="LOCAL" />
       <updated>1383084074263</updated>
     </task>
     <task id="LOCAL-00198" summary=".">
       <created>1383085095260</created>
       <option name="number" value="00198" />
+      <option name="presentableId" value="LOCAL-00198" />
       <option name="project" value="LOCAL" />
       <updated>1383085095260</updated>
     </task>
     <task id="LOCAL-00199" summary="Initial build purely for JDK 1.7 (u45).">
       <created>1383707949293</created>
       <option name="number" value="00199" />
+      <option name="presentableId" value="LOCAL-00199" />
       <option name="project" value="LOCAL" />
       <updated>1383707949293</updated>
     </task>
     <option name="localTasksCounter" value="200" />
     <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="404000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -800,10 +889,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1382" height="754" extended-state="0" />
+    <frame x="-8" y="-8" width="1296" height="776" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28075254" sideWeight="0.6026273" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27734375" sideWeight="0.6026273" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289256" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3257979" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31746033" sideWeight="0.9986413" order="8" side_tool="false" content_ui="tabs" />
@@ -906,13 +995,58 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/war/js/main-config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2567">
+          <caret line="151" column="0" selection-start-line="151" selection-start-column="0" selection-end-line="151" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/mcrud/movie.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5117">
+          <caret line="301" column="0" selection-start-line="301" selection-start-column="0" selection-end-line="301" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/mcrud/movie.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2924">
+          <caret line="172" column="42" selection-start-line="172" selection-start-column="42" selection-end-line="172" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/js/main-channelshuffle.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1377">
+          <caret line="81" column="47" selection-start-line="81" selection-start-column="47" selection-end-line="81" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/appengine-web.xml.net">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/parse/facebook.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="13" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/war/html/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="19" column="7" selection-start-line="19" selection-start-column="7" selection-end-line="20" selection-end-column="0" />
-          <folding>
-            <marker date="1458442181000" expanded="true" signature="6988:7106" placeholder="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -920,14 +1054,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1905">
           <caret line="127" column="55" selection-start-line="127" selection-start-column="55" selection-end-line="127" selection-end-column="55" />
-          <folding>
-            <marker date="1458442181000" expanded="true" signature="2870:3466" placeholder="..." />
-            <marker date="1458442181000" expanded="true" signature="2894:3451" placeholder="{...}" />
-            <marker date="1458442181000" expanded="true" signature="2953:3439" placeholder="{...}" />
-            <marker date="1458442181000" expanded="true" signature="3171:3220" placeholder="/*...*/" />
-            <marker date="1458442181000" expanded="true" signature="3237:3385" placeholder="/*...*/" />
-            <marker date="1458442181000" expanded="true" signature="3645:5950" placeholder="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -935,13 +1062,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
           <caret line="26" column="30" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="30" />
-          <folding>
-            <marker date="1458442181000" expanded="true" signature="37:181" placeholder="//..." />
-            <marker date="1458442181000" expanded="true" signature="186:338" placeholder="/*...*/" />
-            <marker date="1458442181000" expanded="true" signature="443:678" placeholder="{...}" />
-            <marker date="1458442181000" expanded="true" signature="497:672" placeholder="{...}" />
-            <marker date="1458442181000" expanded="true" signature="1091:1151" placeholder="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -949,25 +1070,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4785">
           <caret line="319" column="36" selection-start-line="319" selection-start-column="36" selection-end-line="319" selection-end-column="36" />
-          <folding>
-            <marker date="1458442181000" expanded="true" signature="156:212" placeholder="//..." />
-            <marker date="1458442181000" expanded="true" signature="844:973" placeholder="{...}" />
-            <marker date="1458442181000" expanded="true" signature="984:1027" placeholder="{...}" />
-            <marker date="1458442181000" expanded="true" signature="1040:1331" placeholder="{...}" />
-            <marker date="1458442181000" expanded="true" signature="1055:1329" placeholder="{&quot;Accept&quot;: 'application/json, text/plain, */*'...}" />
-            <marker date="1458442181000" expanded="true" signature="1142:1232" placeholder="//..." />
-            <marker date="1458442181000" expanded="true" signature="1349:1380" placeholder="/**...*/" />
-            <marker date="1458442181000" expanded="true" signature="1501:1644" placeholder="//..." />
-            <marker date="1458442181000" expanded="true" signature="1657:12455" placeholder="{&quot;type&quot;: &quot;POST&quot;...}" />
-            <marker date="1458442181000" expanded="true" signature="2019:12278" placeholder="{...}" />
-            <marker date="1458442181000" expanded="true" signature="2157:12268" placeholder="{...}" />
-            <marker date="1458442181000" expanded="true" signature="2225:2325" placeholder="//..." />
-            <marker date="1458442181000" expanded="true" signature="2943:7902" placeholder="{...}" />
-            <marker date="1458442181000" expanded="true" signature="2965:3427" placeholder="//..." />
-            <marker date="1458442181000" expanded="true" signature="3524:3633" placeholder="{...}" />
-            <marker date="1458442181000" expanded="true" signature="3894:4186" placeholder="{...}" />
-            <marker date="1458442181000" expanded="true" signature="12543:12567" placeholder="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -975,13 +1078,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2220">
           <caret line="148" column="0" selection-start-line="145" selection-start-column="0" selection-end-line="148" selection-end-column="0" />
-          <folding>
-            <marker date="1458442181000" expanded="true" signature="11895:13259" placeholder="{...}" />
-            <marker date="1458442181000" expanded="true" signature="11895:13267" placeholder="{...}" />
-            <marker date="1458442181000" expanded="true" signature="11896:12319" placeholder="//..." />
-            <marker date="1458442181000" expanded="true" signature="12360:12560" placeholder="{...}" />
-            <marker date="1458442181000" expanded="true" signature="12561:13249" placeholder="//..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -989,11 +1086,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4515">
           <caret line="301" column="0" selection-start-line="301" selection-start-column="0" selection-end-line="301" selection-end-column="0" />
-          <folding>
-            <marker date="1458442181000" expanded="true" signature="551:12597" placeholder="{...}" />
-            <marker date="1458442181000" expanded="true" signature="72349:72407" placeholder="{...}" />
-            <marker date="1458442181000" expanded="true" signature="72349:72408" placeholder="[...]" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1025,7 +1118,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2895">
           <caret line="193" column="9" selection-start-line="193" selection-start-column="9" selection-end-line="193" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1033,9 +1125,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="19" column="7" selection-start-line="19" selection-start-column="7" selection-end-line="20" selection-end-column="0" />
-          <folding>
-            <marker date="1458442181000" expanded="true" signature="6988:7106" placeholder="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1043,14 +1132,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="127" column="55" selection-start-line="127" selection-start-column="55" selection-end-line="127" selection-end-column="55" />
-          <folding>
-            <marker date="1458442181000" expanded="true" signature="2870:3466" placeholder="..." />
-            <marker date="1458442181000" expanded="true" signature="2894:3451" placeholder="{...}" />
-            <marker date="1458442181000" expanded="true" signature="2953:3439" placeholder="{...}" />
-            <marker date="1458442181000" expanded="true" signature="3171:3220" placeholder="/*...*/" />
-            <marker date="1458442181000" expanded="true" signature="3237:3385" placeholder="/*...*/" />
-            <marker date="1458442181000" expanded="true" signature="3645:5950" placeholder="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1058,13 +1140,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="26" column="30" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="30" />
-          <folding>
-            <marker date="1458442181000" expanded="true" signature="37:181" placeholder="//..." />
-            <marker date="1458442181000" expanded="true" signature="186:338" placeholder="/*...*/" />
-            <marker date="1458442181000" expanded="true" signature="443:678" placeholder="{...}" />
-            <marker date="1458442181000" expanded="true" signature="497:672" placeholder="{...}" />
-            <marker date="1458442181000" expanded="true" signature="1091:1151" placeholder="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1072,25 +1148,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="319" column="48" selection-start-line="319" selection-start-column="48" selection-end-line="319" selection-end-column="48" />
-          <folding>
-            <marker date="1458442181000" expanded="true" signature="156:212" placeholder="//..." />
-            <marker date="1458442181000" expanded="true" signature="844:973" placeholder="{...}" />
-            <marker date="1458442181000" expanded="true" signature="984:1027" placeholder="{...}" />
-            <marker date="1458442181000" expanded="true" signature="1040:1331" placeholder="{...}" />
-            <marker date="1458442181000" expanded="true" signature="1055:1329" placeholder="{&quot;Accept&quot;: 'application/json, text/plain, */*'...}" />
-            <marker date="1458442181000" expanded="true" signature="1142:1232" placeholder="//..." />
-            <marker date="1458442181000" expanded="true" signature="1349:1380" placeholder="/**...*/" />
-            <marker date="1458442181000" expanded="true" signature="1501:1644" placeholder="//..." />
-            <marker date="1458442181000" expanded="true" signature="1657:12455" placeholder="{&quot;type&quot;: &quot;POST&quot;...}" />
-            <marker date="1458442181000" expanded="true" signature="2019:12278" placeholder="{...}" />
-            <marker date="1458442181000" expanded="true" signature="2157:12268" placeholder="{...}" />
-            <marker date="1458442181000" expanded="true" signature="2225:2325" placeholder="//..." />
-            <marker date="1458442181000" expanded="true" signature="2943:7902" placeholder="{...}" />
-            <marker date="1458442181000" expanded="true" signature="2965:3427" placeholder="//..." />
-            <marker date="1458442181000" expanded="true" signature="3524:3633" placeholder="{...}" />
-            <marker date="1458442181000" expanded="true" signature="3894:4186" placeholder="{...}" />
-            <marker date="1458442181000" expanded="true" signature="12543:12567" placeholder="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1098,13 +1156,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="204" column="36" selection-start-line="204" selection-start-column="12" selection-end-line="204" selection-end-column="36" />
-          <folding>
-            <marker date="1458442181000" expanded="true" signature="11895:13259" placeholder="{...}" />
-            <marker date="1458442181000" expanded="true" signature="11895:13267" placeholder="{...}" />
-            <marker date="1458442181000" expanded="true" signature="11896:12319" placeholder="//..." />
-            <marker date="1458442181000" expanded="true" signature="12360:12560" placeholder="{...}" />
-            <marker date="1458442181000" expanded="true" signature="12561:13249" placeholder="//..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1112,11 +1164,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="301" column="0" selection-start-line="301" selection-start-column="0" selection-end-line="301" selection-end-column="0" />
-          <folding>
-            <marker date="1458442181000" expanded="true" signature="551:12597" placeholder="{...}" />
-            <marker date="1458442181000" expanded="true" signature="72349:72407" placeholder="{...}" />
-            <marker date="1458442181000" expanded="true" signature="72349:72408" placeholder="[...]" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1246,9 +1294,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="24" column="7" selection-start-line="24" selection-start-column="7" selection-end-line="24" selection-end-column="7" />
-          <folding>
-            <marker date="1458442181000" expanded="true" signature="6988:7106" placeholder="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1256,47 +1301,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2895">
           <caret line="193" column="9" selection-start-line="193" selection-start-column="9" selection-end-line="193" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/war/parse/init.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="27" column="30" selection-start-line="27" selection-start-column="30" selection-end-line="27" selection-end-column="30" />
-          <folding>
-            <marker date="1458442181000" expanded="true" signature="37:181" placeholder="//..." />
-            <marker date="1458442181000" expanded="true" signature="186:338" placeholder="/*...*/" />
-            <marker date="1458442181000" expanded="true" signature="443:678" placeholder="{...}" />
-            <marker date="1458442181000" expanded="true" signature="497:672" placeholder="{...}" />
-            <marker date="1458442181000" expanded="true" signature="1091:1151" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/war/html/channel.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4785">
-          <caret line="319" column="36" selection-start-line="319" selection-start-column="36" selection-end-line="319" selection-end-column="36" />
-          <folding>
-            <marker date="1458442181000" expanded="true" signature="156:212" placeholder="//..." />
-            <marker date="1458442181000" expanded="true" signature="844:973" placeholder="{...}" />
-            <marker date="1458442181000" expanded="true" signature="984:1027" placeholder="{...}" />
-            <marker date="1458442181000" expanded="true" signature="1040:1331" placeholder="{...}" />
-            <marker date="1458442181000" expanded="true" signature="1055:1329" placeholder="{&quot;Accept&quot;: 'application/json, text/plain, */*'...}" />
-            <marker date="1458442181000" expanded="true" signature="1142:1232" placeholder="//..." />
-            <marker date="1458442181000" expanded="true" signature="1349:1380" placeholder="/**...*/" />
-            <marker date="1458442181000" expanded="true" signature="1501:1644" placeholder="//..." />
-            <marker date="1458442181000" expanded="true" signature="1657:12455" placeholder="{&quot;type&quot;: &quot;POST&quot;...}" />
-            <marker date="1458442181000" expanded="true" signature="2019:12278" placeholder="{...}" />
-            <marker date="1458442181000" expanded="true" signature="2157:12268" placeholder="{...}" />
-            <marker date="1458442181000" expanded="true" signature="2225:2325" placeholder="//..." />
-            <marker date="1458442181000" expanded="true" signature="2943:7902" placeholder="{...}" />
-            <marker date="1458442181000" expanded="true" signature="2965:3427" placeholder="//..." />
-            <marker date="1458442181000" expanded="true" signature="3524:3633" placeholder="{...}" />
-            <marker date="1458442181000" expanded="true" signature="3894:4186" placeholder="{...}" />
-            <marker date="1458442181000" expanded="true" signature="12543:12567" placeholder="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1310,7 +1314,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/war/mcrud/movie.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2580">
+        <state relative-caret-position="2924">
           <caret line="172" column="42" selection-start-line="172" selection-start-column="42" selection-end-line="172" selection-end-column="42" />
           <folding />
         </state>
@@ -1318,34 +1322,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/war/mcrud/movie.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4515">
+        <state relative-caret-position="5117">
           <caret line="301" column="0" selection-start-line="301" selection-start-column="0" selection-end-line="301" selection-end-column="0" />
-          <folding>
-            <marker date="1458442181000" expanded="true" signature="551:12597" placeholder="{...}" />
-            <marker date="1458442181000" expanded="true" signature="72349:72407" placeholder="{...}" />
-            <marker date="1458442181000" expanded="true" signature="72349:72408" placeholder="[...]" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/war/js/main-config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2265">
-          <caret line="151" column="0" selection-start-line="151" selection-start-column="0" selection-end-line="151" selection-end-column="0" />
-          <folding>
-            <marker date="1458442181000" expanded="true" signature="11895:13259" placeholder="{...}" />
-            <marker date="1458442181000" expanded="true" signature="11895:13267" placeholder="{...}" />
-            <marker date="1458442181000" expanded="true" signature="11896:12319" placeholder="//..." />
-            <marker date="1458442181000" expanded="true" signature="12360:12560" placeholder="{...}" />
-            <marker date="1458442181000" expanded="true" signature="12561:13249" placeholder="//..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/war/js/main-channelshuffle.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
+        <state relative-caret-position="1377">
           <caret line="81" column="47" selection-start-line="81" selection-start-column="47" selection-end-line="81" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/appengine-web.xml.net">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1354,14 +1348,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
           <caret line="27" column="161" selection-start-line="27" selection-start-column="161" selection-end-line="27" selection-end-column="161" />
-          <folding>
-            <marker date="1458442181000" expanded="true" signature="2870:3466" placeholder="..." />
-            <marker date="1458442181000" expanded="true" signature="2894:3451" placeholder="{...}" />
-            <marker date="1458442181000" expanded="true" signature="2953:3439" placeholder="{...}" />
-            <marker date="1458442181000" expanded="true" signature="3171:3220" placeholder="/*...*/" />
-            <marker date="1458442181000" expanded="true" signature="3237:3385" placeholder="/*...*/" />
-            <marker date="1458442181000" expanded="true" signature="3645:5950" placeholder="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1369,17 +1356,30 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="435">
           <caret line="29" column="44" selection-start-line="29" selection-start-column="44" selection-end-line="29" selection-end-column="44" />
-          <folding>
-            <marker date="1458508654000" expanded="true" signature="31:4008" placeholder="..." />
-            <marker date="1458508654000" expanded="true" signature="38:2651" placeholder="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bin/appengine-web.xml.net">
+    <entry file="file://$PROJECT_DIR$/war/parse/init.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="67" column="32" selection-start-line="67" selection-start-column="32" selection-end-line="67" selection-end-column="32" />
+        <state relative-caret-position="390">
+          <caret line="27" column="30" selection-start-line="27" selection-start-column="30" selection-end-line="27" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/js/main-config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="582">
+          <caret line="151" column="0" selection-start-line="151" selection-start-column="0" selection-end-line="151" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/html/channel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="328" column="0" selection-start-line="328" selection-start-column="0" selection-end-line="328" selection-end-column="0" />
           <folding />
         </state>
       </provider>

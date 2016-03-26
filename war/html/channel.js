@@ -325,6 +325,8 @@ function loadMovie(username, shuffleFlag) {
             $("#playingOrsoon").val("none");
             shuffleFlag && (obj = shuffle(obj));     //thanks to http://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array-in-javascript
             //console.table(obj);
+            obj = jQuery.parseJSON(JSON.stringify(obj));
+
 
             filterStr = $.url().param('filter');     //support filter/hashtag
             //alert('obj.length = ' + obj.length);
