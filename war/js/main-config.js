@@ -83,6 +83,9 @@ typeof requirejs !== 'undefined' && requirejs.config({
     },
 
     shim: {
+        appAssert: {
+            exports: 'assert'
+        },
         gapi: {
             exports: 'gapi'
         },
