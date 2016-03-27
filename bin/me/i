@@ -1,1 +1,1 @@
-npm i && npm nodemon
+. ~/.bash_profile && nvm use 5 && npm i && npm nodemon
