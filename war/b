@@ -1,1 +1,1 @@
-. ~/.bash_profile && $NVM_BIN/bower i && cd n && $NVM_BIN/bower i && cd react && npm i && cd .. && ./swg1
+. ~/.bash_profile && nvm use 5 && $NVM_BIN/bower i && cd n && $NVM_BIN/bower i && cd react && npm i && cd .. && ./swg1

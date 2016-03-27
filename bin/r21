@@ -1,5 +1,5 @@
 cd ../war && ./i && cd ../bin
-cd ~ && . ./.bash_profile && nvm use 5 && npm install --save-dev java-osx && node_modules/java-osx/bin/bin/java -version && cd ~/GoogleAppEngine/bin
+cd ~ && . ./.bash_profile && nvm i 5 && nvm use 5 && npm install --save-dev java-osx && node_modules/java-osx/bin/bin/java -version && cd ~/GoogleAppEngine/bin
 cp -rf ../lib/*.jar ../war/WEB-INF/lib/
 cp -rf ../war/WEB-INF/classes_ ../war/WEB-INF/classes
-cd ../war/b && cd ../bin
+cd ../war && ./i && ./b && cd ../bin
