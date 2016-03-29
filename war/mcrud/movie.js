@@ -1489,6 +1489,11 @@ angular.module('app', [
     //'angularLeap',    //it breaks LeapStrap!!! :(
     'ngTouch'
     ])
+.factory('$exceptionHandler', function() {
+    return function(exception, cause) {
+        console.error('movie.js AngularJS exception: ' + exception.message + ' (caused by ' + cause + ')');
+    };
+})
 .config(['$httpProvider', '$controllerProvider',function ($httpProvider, $controllerProvider) {
     //var sessionId = "{!$Api.Session_ID}";
     $controllerProvider.allowGlobals();     //thanks to 1.3
