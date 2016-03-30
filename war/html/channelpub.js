@@ -107,6 +107,9 @@ function loadMoviePub(username, log) {
                 $("#playingOrsoon").attr("data-datetime", "1970,1,1,0,0,0");
                 $("#playingOrsoon").val("none");
                 obj = shuffle(obj);     //thanks to http://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array-in-javascript
+                if(typeof obj === 'string') {
+                    obj = JSON.parse(obj);
+                }
                 filterStr = $.url().param('filter');     //support filter/hashtag
                 var j;
                 var temp = {};

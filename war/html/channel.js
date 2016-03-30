@@ -243,10 +243,29 @@ function loadMovieAll(username) {
 
 //@ http://jsfromhell.com/array/shuffle
 /** use only by Play Now as well as Play Later functionalities */
-function shuffle(v) {
+function shuffle1(v) {
     console.log('channel.js shuffle() ...');
     for(var j, x, i = v.length; i; j = parseInt(Math.random() * i), x = v[--i], v[i] = v[j], v[j] = x);
     return v;
+}
+
+function shuffle(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex;
+
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+
+        // And swap it with the current element.
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+    }
+
+    return array;
 }
 
 /** use by Play Later (scheduled play) in the Channel UI functionality */
@@ -304,6 +323,16 @@ function getSubTitle(text) {
         alert('getSubTitle: ' + e);
     }
     return ret;
+}
+
+function loadMoviePub(username) {
+    //playNow();  //just a test
+
+    var stat = false;
+    galleriaData = [];
+    // username = "pub";
+    console.log('channel.js loadMoviePub() username [' + username + ']');
+    return loadMovie(username, true);
 }
 
 /** load movies in a random order for playback */

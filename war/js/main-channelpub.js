@@ -4,7 +4,7 @@ requirejs.config({
         purl: '../jquery/purl',
         galleria: ['../galleria-1.2.9/galleria-1.2.9.min'],
         subsTitle: ['../jquery/YoutubeSubtitiles'],
-        channelApp: ['../html/channelpub']
+        channelApp: ['../html/channel']
     },
 
     shim: {
@@ -55,7 +55,7 @@ require(['./main-config', './app'], function (common, app) {
                 })();
 
                 //noinspection CommaExpressionJS
-                if(loadMoviePub('pub', log)) {
+                if(loadMoviePub('pub')) {
                     $('#progress').hide();
                     //console && console.log("main-channelpub: channel UI loaded");
                 }
