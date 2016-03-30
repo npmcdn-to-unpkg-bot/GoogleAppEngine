@@ -1,0 +1,1 @@
+curl http://download-keycdn.ej-technologies.com/perfino/perfino_macos_2_0_2.dmg > ~/perfino_macos_2_0_2.dmg && open ~/perfino_macos_2_0_2.dmg
