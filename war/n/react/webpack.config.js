@@ -9,7 +9,7 @@ module.exports = {
         // mcss: "../js/bower_components/milligram/dist/milligram.min.css",
         // bcss: "../js/bower_components/bootstrap/dist/css/bootstrap.min.css",
         // directives: "./www/js/directives.js",
-        // js: ["../ng/app.js"],
+        js: ["../ng/app.js"],
         jsx: ["./jsx/sr-start.jsx", "./jsx/sr-create.jsx", "./jsx/sr-update.jsx", "./jsx/mount-sr-create.jsx", "./jsx/mount-sr-update.jsx"],
         // app: ["./www/js/_app.js", "./www/js/_controllers.js", "./www/js/_routes.js", "./www/js/_services.js"]
         swaggerclient: "../js/swagger-client.js.SWG1"
@@ -21,11 +21,11 @@ module.exports = {
     module: {
         noParse: path.resolve("../js/swagger-client.js.SWG1"),
         loaders: [
+            // {
+            //   test   : /\.css$/,
+            //   loader : 'style!css'
+            // }, 
             { test: /\.css$/, loader: "style-loader!css-loader" },
-            {
-              test   : /\.css$/,
-              loader : 'style!css'
-            }, 
             // {
             //   test   : /\.html$/,
             //   loader : 'html'
@@ -58,9 +58,17 @@ module.exports = {
                 test: /\.jsx?$/,
                 exclude: /(node_modules|bower_components)/,
                 loader: 'babel', // 'babel-loader' is also a legal name to reference
+                // query: {
+                //     presets: ['react', 'es2015']
+                // }
+                // ,
                 query: {
-                    presets: ['react', 'es2015']
-                }
+                  presets: [
+                    'babel-preset-es2015',
+                    'babel-preset-react',
+                    'babel-preset-stage-0',
+                  ].map(require.resolve),
+                }                
             }
         ]
     },

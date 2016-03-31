@@ -1,5 +1,8 @@
 var gVersion = "0.0.1R5d";
 
+// var angular = require('angular');
+// require('angular-ui-router');
+
 function redirectNonSSL(url) {
     if(typeof url !== 'undefined'  && url.trim().indexOf('localhost') == -1 && url.trim().startsWith('http://')) {
         if (window.location.protocol != "https:")
@@ -19,7 +22,7 @@ function handleSSL(url) {
 //console.log("app.js 2 $state:");
 //console.log($state);
 
-<!-- JWT and navigations stuff -->
+//=== JWT and navigations stuff
 angular.module('myApp', ['ui.router'])
     .config(function($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise('/home');
