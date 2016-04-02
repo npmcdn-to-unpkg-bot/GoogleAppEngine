@@ -1,1 +1,1 @@
-npm install webpack -g
+nodist use 5 && npm i && npm install webpack-dev-server@1.12.1 -g
