@@ -2,15 +2,11 @@ var path = require('path');
 // var $script = require("scriptjs");
 
 module.exports = {
+    devtool: 'inline-source-map', // in-line source maps instead of the default
     entry: {
-        ng: 'angular',
-        main: './entry.js',
-        // ionic: './www/lib/ionic/js/ionic.bundle.js',
-        // ioniccss: './www/lib/ionic/css/ionic.css',
-        // mcss: "../js/bower_components/milligram/dist/milligram.min.css",
-        // bcss: "../js/bower_components/bootstrap/dist/css/bootstrap.min.css",
-        // directives: "./www/js/directives.js",
-        js: ["../ng/app.js"],
+        main: "./entry.js",
+        app: "../ng/app.js"
+        ,
         jsx: ["./jsx/sr-start.jsx", "./jsx/sr-create.jsx", "./jsx/sr-update.jsx", "./jsx/mount-sr-create.jsx", "./jsx/mount-sr-update.jsx"],
         // app: ["./www/js/_app.js", "./www/js/_controllers.js", "./www/js/_routes.js", "./www/js/_services.js"]
         swaggerclient: "../js/swagger-client.js.SWG1"
@@ -22,20 +18,21 @@ module.exports = {
     module: {
         noParse: path.resolve("../js/swagger-client.js.SWG1"),
         loaders: [
+            { test: /[\/]angular\.js$/, loader: "exports?angular" },
             { test: /\.css$/, loader : 'style!css' },
             //{ test: /\.css$/, loader: "style-loader!css-loader" },
-	    {
-        test: /.jsx?$/,
-        loader: 'babel-loader',
-        exclude: ['/node_modules/', '/bower_components/', '../ng'],
-        query: {
-          presets: [
-         	require.resolve('babel-preset-es2015'),
-        	require.resolve('babel-preset-react')
- 		//, require.resolve('babel-preset-stage-0')
-	  ]
-        }
-      	    }
+            {
+                test: /.jsx?$/,
+                loader: 'babel-loader',
+                exclude: ['/node_modules/', '/bower_components/', '../ng'],
+                query: {
+                  presets: [
+                    require.resolve('babel-preset-es2015'),
+                    require.resolve('babel-preset-react')
+                    //, require.resolve('babel-preset-stage-0')
+                  ]
+                }
+            }
         ],
     },
     resolve: {

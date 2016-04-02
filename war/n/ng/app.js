@@ -1,3 +1,6 @@
+// import angular from 'angular';
+// var angular = require('angular');
+
 var gVersion = "0.0.1R5d";
 
 // var angular = require('angular');
@@ -26,7 +29,7 @@ console.log('redirectNonSSL invoked');
 //console.log($state);
 
 //=== JWT and navigations stuff
-angular.module('myApp', ['ui.router'])
+var demoModule = angular.module('myApp', ['ui.router'])
     .config(function($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise('/home');
 
@@ -159,3 +162,5 @@ angular.module('myApp').directive('focus',
         };
     }
 );
+
+export default demoModule;
