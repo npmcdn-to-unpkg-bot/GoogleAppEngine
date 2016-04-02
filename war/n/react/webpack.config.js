@@ -3,14 +3,14 @@ var path = require('path');
 
 module.exports = {
     entry: {
-        main: 'entry.js',
+        main: './entry.js',
         // ionic: './www/lib/ionic/js/ionic.bundle.js',
         // ioniccss: './www/lib/ionic/css/ionic.css',
         // mcss: "../js/bower_components/milligram/dist/milligram.min.css",
         // bcss: "../js/bower_components/bootstrap/dist/css/bootstrap.min.css",
         // directives: "./www/js/directives.js",
-        // js: ["../ng/app.js"],
-        //jsx: ["./jsx/sr-start.jsx", "./jsx/sr-create.jsx", "./jsx/sr-update.jsx", "./jsx/mount-sr-create.jsx", "./jsx/mount-sr-update.jsx"],
+        //js: ["../ng/app.js"],
+        jsx: ["./jsx/sr-start.jsx", "./jsx/sr-create.jsx", "./jsx/sr-update.jsx", "./jsx/mount-sr-create.jsx", "./jsx/mount-sr-update.jsx"],
         // app: ["./www/js/_app.js", "./www/js/_controllers.js", "./www/js/_routes.js", "./www/js/_services.js"]
         swaggerclient: "../js/swagger-client.js.SWG1"
     },
@@ -36,6 +36,13 @@ module.exports = {
     resolve: {
         root: __dirname,
         modulesDirectories: ['../js/bower_components', 'node_modules', 'js', 'css']
+    },
+    resolve: {
+        extensions: [ '', '.js', '.jsx' ],
+        fallback: path.join(__dirname, "node_modules")
+    },
+    resolveLoader: {
+        root: path.join(__dirname, "node_modules")
     }
 };
 
