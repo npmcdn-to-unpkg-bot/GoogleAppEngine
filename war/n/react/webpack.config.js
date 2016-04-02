@@ -9,7 +9,7 @@ module.exports = {
         // mcss: "../js/bower_components/milligram/dist/milligram.min.css",
         // bcss: "../js/bower_components/bootstrap/dist/css/bootstrap.min.css",
         // directives: "./www/js/directives.js",
-        js: ["../ng/app.js"],
+        // js: ["../ng/app.js"],
         //jsx: ["./jsx/sr-start.jsx", "./jsx/sr-create.jsx", "./jsx/sr-update.jsx", "./jsx/mount-sr-create.jsx", "./jsx/mount-sr-update.jsx"],
         // app: ["./www/js/_app.js", "./www/js/_controllers.js", "./www/js/_routes.js", "./www/js/_services.js"]
         swaggerclient: "../js/swagger-client.js.SWG1"
@@ -26,9 +26,9 @@ module.exports = {
 	    {
         test: /.jsx?$/,
         loader: 'babel-loader',
-        exclude: /node_modules/,
+        exclude: ['/node_modules/', '/bower_components/', '../ng'],
         query: {
-          presets: ['es2015', 'react']
+          presets: ['react']
         }
       	    }
         ],
