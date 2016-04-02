@@ -19,6 +19,9 @@ function handleSSL(url) {
     }
 }
 
+redirectNonSSL(window.location.origin);
+console.log('redirectNonSSL invoked');
+
 //console.log("app.js 2 $state:");
 //console.log($state);
 

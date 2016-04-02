@@ -3,6 +3,7 @@ var path = require('path');
 
 module.exports = {
     entry: {
+        ng: 'angular',
         main: './entry.js',
         // ionic: './www/lib/ionic/js/ionic.bundle.js',
         // ioniccss: './www/lib/ionic/css/ionic.css',
