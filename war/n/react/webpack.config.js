@@ -3,12 +3,13 @@
 var ngAnnotatePlugin = require('ng-annotate-webpack-plugin');
 var path = require('path');
 // var $script = require("scriptjs");
+// const angular = require('angular');
 
 module.exports = {
     devtool: 'inline-source-map', // in-line source maps instead of the default
     entry: {
+        app: "../ng/app.js",
         main: "./entry.js",
-        // app: "../ng/app.js",
         jsx: ["./jsx/sr-start.jsx", "./jsx/sr-create.jsx", "./jsx/sr-update.jsx", "./jsx/mount-sr-create.jsx", "./jsx/mount-sr-update.jsx"],
         // app: ["./www/js/_app.js", "./www/js/_controllers.js", "./www/js/_routes.js", "./www/js/_services.js"]
         swaggerclient: "../js/swagger-client.js.SWG1"
@@ -20,6 +21,11 @@ module.exports = {
     module: {
         noParse: path.resolve("../js/swagger-client.js.SWG1"),
         loaders: [
+            {
+                test: /\.js$/,
+                loader: 'babel',
+                exclude: /node_modules/
+            },
             { test: /[\/]angular\.js$/, loader: "exports?angular" },
             { test: /\.css$/, loader : 'style!css' },
             //{ test: /\.css$/, loader: "style-loader!css-loader" },
