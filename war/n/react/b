@@ -6,4 +6,4 @@
 #Caused "Cannot find module './lib/auth'" by concatenify
 #browserify -t reactify -t concatenify app.js -t [ babelify --presets [ react ] ] jsx/*.jsx -t brfs insert_css.js -o bundle.js
 
-. ~/.bash_profile && nvm i 5 && nvm use 5 && ./node_modules/.bin/webpack --display-modules --display-reasons --display-chunks $*
+. ~/.bash_profile && nvm i 5 && nvm use 5 && webpack --display-modules --display-reasons --display-chunks $*
