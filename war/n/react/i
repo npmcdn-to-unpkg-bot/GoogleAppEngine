@@ -1,1 +1,1 @@
-. ~/.bash_profile && nvm i 5 && nvm use 5 && npm i && npm install webpack-dev-server@1.12.1 -g
+. ~/.bash_profile && nvm i 5 && nvm use 5 && npm i && npm i webpack -g && npm install webpack-dev-server@1.12.1 -g
