@@ -31,6 +31,8 @@ var SRUpdate = React.createClass({
     },
     getInitialState: function() {
         var component = this;
+        // component.state.$scope = this.props.$scope;
+
         var qs = URI(location.href).query(true); // == e.g. { id : 4529987906437120 }
         if(typeof qs.id === 'undefined') {
             if(typeof this.props.id !== 'undefined') {
@@ -223,8 +225,9 @@ var SRUpdate = React.createClass({
         };
         //console.log('sr-update.jsx saveNow(): ' + component.state);
         //console.log(srJson.sr);
+        document.getElementById("mydata").innerHTML = 'Working on it...';   //TODO poor man version of splash!
         swagger.sr.saveSR(srJson, {responseContentType: 'application/json'}, function (data) {
-            //document.getElementById("mydata").innerHTML = JSON.stringify(data.obj);
+            // document.getElementById("mydata").innerHTML = JSON.stringify(data.obj);
             //console.log(data.obj);
             component.goHome();
         });
@@ -291,6 +294,7 @@ var SRUpdate = React.createClass({
                 if(data.obj && data.obj.service != component.state.service) {
                     //hmm...
                 } else {
+                    // debugger
                     //yes or no?
                     if(confirm('Replace the current item? If you choose Ok, you will loose the changes if any!')) {
                         //replace it with the one found if yes
@@ -299,6 +303,10 @@ var SRUpdate = React.createClass({
                         component.state.summary = json.summary;
                         component.state.desc = json.description;
                         component.state.endpoint = json.endpoint;
+                    } else {
+                        // component.state.$scope.$pply(function() {
+                            document.getElementById("mydata").innerHTML = '';   //TODO poor man version of splash!
+                        // });
                     }
                 }
             } else {

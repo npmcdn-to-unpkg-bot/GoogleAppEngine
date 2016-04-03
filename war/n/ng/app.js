@@ -114,7 +114,7 @@ angular.module('myApp', ['ui.router'])
                 if(token !== null) {
                     // Save the JWT token.
                     localStorage.setItem('userJWTToken', token);
-                    // location.href = "app.html";
+                    location.href = "app.html";
                 }
                 return token !== null;
             }
@@ -168,7 +168,8 @@ window.onerror = function(msg, url, line, col, error) {
     extra += !error ? '' : '\nerror: ' + error;
 
     // You can view the information in an alert to see things working like this:
-    alert("channel.js onerror: " + msg + "\nurl: " + url + "\nline: " + line + extra);
+    // alert("n/ng/app.js onerror: " + msg + "\nurl: " + url + "\nline: " + line + extra);
+    console.error("n/ng/app.js onerror: " + msg + "\nurl: " + url + "\nline: " + line + extra);
 
     // TODO: Report this error via ajax so you can keep track
     //       of what pages have JS issues

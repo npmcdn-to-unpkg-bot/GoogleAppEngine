@@ -1,11 +1,13 @@
 var SRCreate = React.createClass({
     render: function() {
         return (
+            // <SRUpdate title="Create" $state={this.props.$state} $scope={this.props.$scope} createItemCallback={this.createItem} />
             <SRUpdate title="Create" $state={this.props.$state} createItemCallback={this.createItem} />
         )
     },
     createItem: function(component) {
         var key = localStorage.getItem('userJWTToken');
+        document.getElementById("mydata").innerHTML = 'Working on it...';   //TODO poor man version of splash!
         window.swagger = new SwaggerClient({
             url: location.origin + "/swagger/swagger.json",
             success: function() {
@@ -37,6 +39,9 @@ var SRCreate = React.createClass({
                 someHeaderAuth: new SwaggerClient.ApiKeyAuthorization('Authorization', "Bearer " + key, 'header')
             }
         });
+        // component.state.$scope.$pply(function() {
+            document.getElementById("mydata").innerHTML = '';   //TODO poor man version of splash!
+        // });;
         //console.log('SRCreate invoked');
     }
 });
