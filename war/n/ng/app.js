@@ -28,7 +28,7 @@ console.log('redirectNonSSL invoked');
 
 //=== JWT and navigations stuff
 angular.module('myApp', ['ui.router'])
-    .config(function($stateProvider, $urlRouterProvider) {
+    .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise('/home');
 
         $stateProvider
@@ -66,7 +66,7 @@ angular.module('myApp', ['ui.router'])
             });
 
 
-    })
+    }])
     .controller('MainCtrl', ['mainService','$scope','$http', '$state',
         function(mainService, $scope, $http, $compile, $state) {
             $scope.version = gVersion;
@@ -114,7 +114,7 @@ angular.module('myApp', ['ui.router'])
                 if(token !== null) {
                     // Save the JWT token.
                     localStorage.setItem('userJWTToken', token);
-                    location.href = "app.html";
+                    // location.href = "app.html";
                 }
                 return token !== null;
             }
@@ -124,7 +124,7 @@ angular.module('myApp', ['ui.router'])
             }
 
         } ])
-    .service('mainService', function($http) {
+    .service('mainService', ['$http', function($http) {
         return {
             login : function(username, pwd) {
                 return $http.post('/api/user/login', {name: username, password: pwd}).then(function(response) {
@@ -139,10 +139,10 @@ angular.module('myApp', ['ui.router'])
                 });
             }
         };
-    });
+    }]);
 
 // Common directive for Focus
-angular.module('myApp').directive('focus',
+angular.module('myApp').directive('focus', ['$timeout',
     function ($timeout) {
         return {
             scope: {
@@ -158,7 +158,7 @@ angular.module('myApp').directive('focus',
                 });
             }
         };
-    }
+    }]
 );
 
 window.onerror = function(msg, url, line, col, error) {
