@@ -1,11 +1,8 @@
 'use strict';
-// import angular from 'angular';
-// var angular = require('angular');
-
-var gVersion = "0.0.1R5d";
-
 // var angular = require('angular');
 // require('angular-ui-router');
+
+var gVersion = "0.0.1R6";
 
 function redirectNonSSL(url) {
     if(typeof url !== 'undefined'  && url.trim().indexOf('localhost') == -1 && url.trim().startsWith('http://')) {
@@ -30,7 +27,7 @@ console.log('redirectNonSSL invoked');
 //console.log($state);
 
 //=== JWT and navigations stuff
-var demoModule = angular.module('myApp', ['ui.router'])
+angular.module('myApp', ['ui.router'])
     .config(function($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise('/home');
 
@@ -182,4 +179,4 @@ window.onerror = function(msg, url, line, col, error) {
     return suppressErrorAlert;
 };
 
-export default demoModule;
+// angular.bootstrap(document, ['myApp']);
