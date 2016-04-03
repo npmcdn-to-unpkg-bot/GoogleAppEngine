@@ -26,11 +26,41 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="webpack.config.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="channel.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/war/html/channel.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="228">
+              <caret line="937" column="0" selection-start-line="920" selection-start-column="0" selection-end-line="937" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="webpack.config.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/war/n/react/webpack.config.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+            <state relative-caret-position="17">
+              <caret line="51" column="12" selection-start-line="51" selection-start-column="12" selection-end-line="51" selection-end-column="12" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="b.bat" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/war/n/react/b.bat">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" column="100" selection-start-line="8" selection-start-column="100" selection-end-line="8" selection-end-column="100" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="i.bat" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/war/n/react/i.bat">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="65" selection-start-line="0" selection-start-column="65" selection-end-line="0" selection-end-column="65" />
               <folding />
             </state>
           </provider>
@@ -56,6 +86,16 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/war/n/react/package.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="205">
+              <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/war/n/react/index.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -69,11 +109,9 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/war/n/ng/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="245">
-              <caret line="28" column="22" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="22" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
+            <state relative-caret-position="228">
+              <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -81,48 +119,8 @@
       <file leaf-file-name="entry.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/war/n/react/entry.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="3" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main-movie.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/war/js/main-movie.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="119" column="0" selection-start-line="114" selection-start-column="0" selection-end-line="119" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="fusrstart.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/war/n/react/fusrstart.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="fusrcreate.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/war/n/react/fusrcreate.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="insert_css.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/war/n/react/insert_css.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="51">
+              <caret line="3" column="24" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -168,10 +166,12 @@
         <option value="$PROJECT_DIR$/war/mcrud/movie.html" />
         <option value="$PROJECT_DIR$/war/n/react/package.json" />
         <option value="$PROJECT_DIR$/war/n/react/index.html" />
-        <option value="$PROJECT_DIR$/war/n/ng/app.js" />
         <option value="$PROJECT_DIR$/war/n/react/readme.txt" />
         <option value="$PROJECT_DIR$/war/n/react/entry.js" />
+        <option value="$PROJECT_DIR$/war/n/ng/app.js" />
         <option value="$PROJECT_DIR$/war/n/react/webpack.config.js" />
+        <option value="$PROJECT_DIR$/war/n/react/i.bat" />
+        <option value="$PROJECT_DIR$/war/n/react/b.bat" />
       </list>
     </option>
   </component>
@@ -339,32 +339,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="react" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GoogleAppEngine" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GoogleAppEngine" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="war" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="n" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="ng" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -387,6 +361,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GoogleAppEngine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GoogleAppEngine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="war" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="html" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
@@ -404,7 +396,7 @@
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
-    <property name="SearchEverywhereHistoryKey" value="movie&#9;FILE&#9;file:///Users/macbook/GoogleAppEngine/war/mcrud/movie.js&#10;server.js&#9;FILE&#9;file:///Users/macbook/GoogleAppEngine/bin/me/server.js&#10;readme.txt&#9;FILE&#9;file:///Users/macbook/GoogleAppEngine/readme.txt&#10;main-con&#9;FILE&#9;file:///Users/macbook/GoogleAppEngine/war/js/main-config.js&#10;face&#9;FILE&#9;file:///Users/macbook/GoogleAppEngine/war/parse/facebook.js&#10;index&#9;FILE&#9;file:///Users/macbook/GoogleAppEngine/war/html/index.js&#10;purl&#9;FILE&#9;file:///Users/macbook/GoogleAppEngine/war/jquery/purl.js&#10;main-channelall&#9;FILE&#9;file:///Users/macbook/GoogleAppEngine/war/js/main-channelall.js&#10;appeng&#9;FILE&#9;file:///Users/macbook/GoogleAppEngine/bin/appengine-web.xml.net&#10;app.ht&#9;FILE&#9;file:///Users/macbook/GoogleAppEngine/war/n/react/app.html&#10;appengine-web.xml.ne&#9;FILE&#9;file:///Users/macbook/GoogleAppEngine/bin/appengine-web.xml.net&#10;channelsh&#9;FILE&#9;file://C:/GoogleAppEngine/war/html/channelshuffle.html&#10;index.html&#9;FILE&#9;file://C:/GoogleAppEngine/war/ui/index.html&#10;app.js&#9;FILE&#9;file://C:/GoogleAppEngine/war/js/app.js&#10;movie.js&#9;FILE&#9;file://C:/GoogleAppEngine/war/mcrud/movie.js&#10;main-conf&#9;FILE&#9;file://C:/GoogleAppEngine/war/js/main-config.js&#10;main-channel&#9;FILE&#9;file://C:/GoogleAppEngine/war/js/main-channelshuffle.js&#10;channel.js&#9;FILE&#9;file://C:/GoogleAppEngine/war/html/channel.js&#10;index.js&#9;FILE&#9;file://C:/GoogleAppEngine/war/html/index.js&#10;main-in&#9;FILE&#9;file://C:/GoogleAppEngine/war/js/main-index.js&#10;sr-u&#9;FILE&#9;file://C:/GoogleAppEngine/war/n/react/jsx/sr-update.jsx&#10;stack&#9;FILE&#9;file:///Users/macbook/GoogleAppEngine/war/css/stacktable.css&#10;stackta&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/war/css/stacktable.css&#10;purl.js&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/war/jquery/purl.js&#10;stackt&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/war/css/stacktable.css&#10;bower&#9;FILE&#9;file://C:/GoogleAppEngine/war/n/bower.json&#10;ServiceRegistryStart.tml&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/src/tapp/pages/sci/ServiceRegistryStart.tml&#10;milli&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/war/js/milligram.css&#10;trix.css&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/war/js/trix.css&#10;movie.html&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/war/mcrud/movie.html&#10;Service&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/src/tapp/pages/sci/ServiceRegistryStart.tml&#10;TemplateSave.tml&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/src/tapp/pages/g/app/TemplateSave.tml&#10;read&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/readme.txt&#10;Servi&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/src/tapp/pages/sci/ServiceRegistrySave.tml&#10;login.jsp&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/war/login.jsp&#10;ServiceRe&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/src/tapp/pages/sci/ServiceRegistrySave.tml&#10;stacktable.js&#9;ACTION&#9;null&#10;workspace&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/.idea/workspace.xml" />
+    <property name="SearchEverywhereHistoryKey" value="channel&#9;FILE&#9;file://D:/GoogleAppEngine/war/html/channel.js&#10;movie&#9;FILE&#9;file:///Users/macbook/GoogleAppEngine/war/mcrud/movie.js&#10;server.js&#9;FILE&#9;file:///Users/macbook/GoogleAppEngine/bin/me/server.js&#10;readme.txt&#9;FILE&#9;file:///Users/macbook/GoogleAppEngine/readme.txt&#10;main-con&#9;FILE&#9;file:///Users/macbook/GoogleAppEngine/war/js/main-config.js&#10;face&#9;FILE&#9;file:///Users/macbook/GoogleAppEngine/war/parse/facebook.js&#10;index&#9;FILE&#9;file:///Users/macbook/GoogleAppEngine/war/html/index.js&#10;purl&#9;FILE&#9;file:///Users/macbook/GoogleAppEngine/war/jquery/purl.js&#10;main-channelall&#9;FILE&#9;file:///Users/macbook/GoogleAppEngine/war/js/main-channelall.js&#10;appeng&#9;FILE&#9;file:///Users/macbook/GoogleAppEngine/bin/appengine-web.xml.net&#10;app.ht&#9;FILE&#9;file:///Users/macbook/GoogleAppEngine/war/n/react/app.html&#10;appengine-web.xml.ne&#9;FILE&#9;file:///Users/macbook/GoogleAppEngine/bin/appengine-web.xml.net&#10;channelsh&#9;FILE&#9;file://C:/GoogleAppEngine/war/html/channelshuffle.html&#10;index.html&#9;FILE&#9;file://C:/GoogleAppEngine/war/ui/index.html&#10;app.js&#9;FILE&#9;file://C:/GoogleAppEngine/war/js/app.js&#10;movie.js&#9;FILE&#9;file://C:/GoogleAppEngine/war/mcrud/movie.js&#10;main-conf&#9;FILE&#9;file://C:/GoogleAppEngine/war/js/main-config.js&#10;main-channel&#9;FILE&#9;file://C:/GoogleAppEngine/war/js/main-channelshuffle.js&#10;channel.js&#9;FILE&#9;file://C:/GoogleAppEngine/war/html/channel.js&#10;index.js&#9;FILE&#9;file://C:/GoogleAppEngine/war/html/index.js&#10;main-in&#9;FILE&#9;file://C:/GoogleAppEngine/war/js/main-index.js&#10;sr-u&#9;FILE&#9;file://C:/GoogleAppEngine/war/n/react/jsx/sr-update.jsx&#10;stack&#9;FILE&#9;file:///Users/macbook/GoogleAppEngine/war/css/stacktable.css&#10;stackta&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/war/css/stacktable.css&#10;purl.js&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/war/jquery/purl.js&#10;stackt&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/war/css/stacktable.css&#10;bower&#9;FILE&#9;file://C:/GoogleAppEngine/war/n/bower.json&#10;ServiceRegistryStart.tml&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/src/tapp/pages/sci/ServiceRegistryStart.tml&#10;milli&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/war/js/milligram.css&#10;trix.css&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/war/js/trix.css&#10;movie.html&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/war/mcrud/movie.html&#10;Service&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/src/tapp/pages/sci/ServiceRegistryStart.tml&#10;TemplateSave.tml&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/src/tapp/pages/g/app/TemplateSave.tml&#10;read&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/readme.txt&#10;Servi&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/src/tapp/pages/sci/ServiceRegistrySave.tml&#10;login.jsp&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/war/login.jsp&#10;ServiceRe&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/src/tapp/pages/sci/ServiceRegistrySave.tml&#10;stacktable.js&#9;ACTION&#9;null&#10;workspace&#9;FILE&#9;file:///Users/tanj3/GoogleAppEngine/.idea/workspace.xml" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
     <property name="LayoutCode.rearrangeEntriesXML" value="false" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
@@ -531,7 +523,7 @@
       <workItem from="1459258478463" duration="676000" />
       <workItem from="1459350518994" duration="2159000" />
       <workItem from="1459617650760" duration="720000" />
-      <workItem from="1459633885425" duration="7297000" />
+      <workItem from="1459633885425" duration="10008000" />
     </task>
     <task id="LOCAL-00151" summary="1. Separated calendar's movie list from the managed movie collection list. &#10;2. Moved password change into My Account.">
       <created>1379636582198</created>
@@ -880,7 +872,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24700000" />
+    <option name="totallyTimeSpent" value="27411000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1014,13 +1006,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/war/html/calendar.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="95" column="171" selection-start-line="95" selection-start-column="146" selection-end-line="95" selection-end-column="171" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/war/css/zframework.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1241,26 +1226,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/war/html/channel.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15266">
-          <caret line="898" column="69" selection-start-line="898" selection-start-column="69" selection-end-line="898" selection-end-column="69" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/war/n/i">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/war/n/react/i.bat">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="65" selection-start-line="0" selection-start-column="65" selection-end-line="0" selection-end-column="65" />
           <folding />
         </state>
       </provider>
@@ -1323,14 +1292,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/war/n/react/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/war/n/react/fusrcreate.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1355,16 +1316,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/war/n/ng/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="28" column="22" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="22" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/war/n/react/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="277">
@@ -1373,18 +1324,58 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/war/html/channel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="937" column="0" selection-start-line="920" selection-start-column="0" selection-end-line="937" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/war/n/react/entry.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="3" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
+        <state relative-caret-position="51">
+          <caret line="3" column="24" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/n/ng/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/n/react/i.bat">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="65" selection-start-line="0" selection-start-column="65" selection-end-line="0" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/n/react/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="205">
+          <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/war/n/react/webpack.config.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+        <state relative-caret-position="17">
+          <caret line="51" column="12" selection-start-line="51" selection-start-column="12" selection-end-line="51" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/n/react/b.bat">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="100" selection-start-line="8" selection-start-column="100" selection-end-line="8" selection-end-column="100" />
           <folding />
         </state>
       </provider>

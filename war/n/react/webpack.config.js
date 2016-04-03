@@ -1,3 +1,6 @@
+'use strict';
+// You can use this with angular.
+var ngAnnotatePlugin = require('ng-annotate-webpack-plugin');
 var path = require('path');
 // var $script = require("scriptjs");
 
@@ -5,8 +8,7 @@ module.exports = {
     devtool: 'inline-source-map', // in-line source maps instead of the default
     entry: {
         main: "./entry.js",
-        app: "../ng/app.js"
-        ,
+        // app: "../ng/app.js",
         jsx: ["./jsx/sr-start.jsx", "./jsx/sr-create.jsx", "./jsx/sr-update.jsx", "./jsx/mount-sr-create.jsx", "./jsx/mount-sr-update.jsx"],
         // app: ["./www/js/_app.js", "./www/js/_controllers.js", "./www/js/_routes.js", "./www/js/_services.js"]
         swaggerclient: "../js/swagger-client.js.SWG1"
@@ -38,7 +40,8 @@ module.exports = {
     resolve: {
         root: __dirname,
         modulesDirectories: ['../js/bower_components', 'node_modules', 'js', 'css'],
-        extensions: ['', '.js']
+        // extensions: ['', '.js']
+        extensions: [ '', '.js', '.jsx' ],
         // ,
         // alias: {
         //     angular: __dirname + '/app/vendor/angular/angular',
@@ -47,14 +50,20 @@ module.exports = {
         //     moment: __dirname + '/app/vendor/moment/min/moment-with-locales.min',
         //     'angular-moment': __dirname + '/app/vendor/angular-moment/angular-moment',
         // }
-    },
-    resolve: {
-        extensions: [ '', '.js', '.jsx' ],
         fallback: [path.join(__dirname, "node_modules"), path.resolve(__dirname, '../ng')]
     },
+    // resolve: {
+    //     extensions: [ '', '.js', '.jsx' ],
+    //     fallback: [path.join(__dirname, "node_modules"), path.resolve(__dirname, '../ng')]
+    // },
     resolveLoader: {
         root: path.join(__dirname, "node_modules")
-    }
+    },
+    plugins: [
+        new ngAnnotatePlugin({
+            add: true
+        })
+    ]
 };
 
 // $script("//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js", function() {
