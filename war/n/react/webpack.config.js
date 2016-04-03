@@ -37,11 +37,20 @@ module.exports = {
     },
     resolve: {
         root: __dirname,
-        modulesDirectories: ['../js/bower_components', 'node_modules', 'js', 'css']
+        modulesDirectories: ['../js/bower_components', 'node_modules', 'js', 'css'],
+        extensions: ['', '.js']
+        // ,
+        // alias: {
+        //     angular: __dirname + '/app/vendor/angular/angular',
+        //     lodash: __dirname + '/app/vendor/lodash/lodash',
+        //     angularRoute: __dirname + '/app/vendor/angular-ui-router/release/angular-ui-router',
+        //     moment: __dirname + '/app/vendor/moment/min/moment-with-locales.min',
+        //     'angular-moment': __dirname + '/app/vendor/angular-moment/angular-moment',
+        // }
     },
     resolve: {
         extensions: [ '', '.js', '.jsx' ],
-        fallback: path.join(__dirname, "node_modules")
+        fallback: [path.join(__dirname, "node_modules"), path.resolve(__dirname, '../ng')]
     },
     resolveLoader: {
         root: path.join(__dirname, "node_modules")
