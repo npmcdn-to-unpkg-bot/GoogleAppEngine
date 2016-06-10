@@ -1,9 +1,17 @@
-******************************************** SETUP NOTES ********************************************
-Unfortunately, until MS fix its Windows path limitation, you need to checkout this into c:\ e.g.
-c:\GooglAppEngine. Otherwise datanucleus enhancer will fail with message "CreateProcess error=87, The parameter is incorrect Google App Engine 1.7.4".
-******************************************** SETUP NOTES ********************************************
-
 Google App Engine for Java (GAE4J) Showcase
+
+How to launch?
+
+cd bin
+r
+
+What URL?
+
+http://localhost:8888
+
+How to add users?
+
+http://localhost:8888/userstart
 
 This project demonstrates the following features on the Google App Engine for Java -
 
