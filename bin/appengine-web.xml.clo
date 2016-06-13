@@ -71,8 +71,9 @@
     </static-files>
     <!-- on the same server as the app server -->
 	<resource-files>
-       	<!-- n stuff -->
+       	<include path="/error/forbidden_error.html" />
        	<include path="/error/custom_error.html" />
+       	<!-- n stuff -->
 	    <include path="/fusr/**" />
       	<!-- swagger stuff -->
       	<include path="/index_api.html" />

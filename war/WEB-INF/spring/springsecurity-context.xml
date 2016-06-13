@@ -140,8 +140,10 @@
 	</http>
 	
 	<authentication-manager alias="authenticationManager">
-		<authentication-provider user-service-ref="userSecurityManagerService" />
-	</authentication-manager>	
+		<authentication-provider user-service-ref="userSecurityManagerService">
+	        <!-- password-encoder ref="encoder" -->
+		</authentication-provider>
+	</authentication-manager>
 	
 	<beans:bean lazy-init="true" id="userSecurityDAO"
 		class="com.appspot.cloudserviceapi.security.spring.UserSecurityDAO" />
@@ -149,6 +151,8 @@
 	<beans:bean lazy-init="true" id="GaeUserDetailsService" class="com.appspot.cloudserviceapi.security.spring.GaeUserDetailsService">
 	    <beans:property name="userSecurityDAO" ref="userSecurityDAO" />
 	</beans:bean>
+
+	<beans:bean id="encoder" class="org.springframework.security.crypto.password.StandardPasswordEncoder"/>
 
 	<!-- http://tojava13.appspot.com/question/5080f7ab4f1eba38a4d3ee62 -->
 <beans:bean id="userSecurityManagerService" class="org.springframework.aop.framework.ProxyFactoryBean">

@@ -2,10 +2,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page import="com.appspot.cloudserviceapi.common.Constants" %>
-
+<%@ page import="org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter"%>
 <html>
 <head>
-    <title>C7i106b</title>
+    <title>C7i106c</title>
     <meta name="viewport" content="initial-scale=2.3, user-scalable=no, width=device-width"> <!-- source: https://developer.apple.com/library/ios/DOCUMENTATION/AppleApplications/Reference/SafariWebContent/UsingtheViewport/UsingtheViewport.html -->
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<style>
@@ -80,6 +80,13 @@
 	</div>
 	<div data-role="content" data-theme="c">
 
+ 	<% if (session.getAttribute(AbstractAuthenticationProcessingFilter.SPRING_SECURITY_LAST_EXCEPTION_KEY) != null) { %>
+ 		<div class="errors">
+			Your login attempt was not successful, try again.<br />
+			Reason: <%=session.getAttribute(AbstractAuthenticationProcessingFilter.SPRING_SECURITY_LAST_EXCEPTION_KEY)%>
+		</div>
+ 	<% } %>
+ 		
 <form id="loginForm" name="loginForm" action="j_spring_security_check" method="post">
         <table>
 <tr><td><span class="label">ID</span></td><td><input name="password" autocapitalize="off" autocorrect="off" id="usernameField" type="text" /></td></tr>
