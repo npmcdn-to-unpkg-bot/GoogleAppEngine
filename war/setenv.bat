@@ -1,1 +1,1 @@
-npm config get prefix > npmbinpath.txt && set /P NPMBINPATH=< npmbinpath.txt && set PATH=%NPMBINPATH%;%PATH%
+nodist use stable && npm i bower -g && npm config get prefix > npmbinpath.txt && set /P NPMBINPATH=< npmbinpath.txt && set PATH=%NPMBINPATH%;%PATH%

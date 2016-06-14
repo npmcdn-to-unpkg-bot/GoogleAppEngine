@@ -31,7 +31,11 @@ public class GaeDaoAuthenticationProvider extends DaoAuthenticationProvider {
 //	}
 
 	// @Autowired
-	UserDetailsDAO userDetailsDao;
+	UserDetailsDAO userDetailsDAO;
+
+	public void setUserDetailsDAO(UserDetailsDAO userDetailsDAO) {
+		this.userDetailsDAO = userDetailsDAO;
+	}
 
 	// @Autowired
 	// @Qualifier("userDetailsService")
@@ -50,21 +54,21 @@ public class GaeDaoAuthenticationProvider extends DaoAuthenticationProvider {
 			// if reach here, means login success, else an exception will be
 			// thrown
 			// reset the user_attempts
-			userDetailsDao.resetFailAttempts(authentication.getName());
+			userDetailsDAO.resetFailAttempts(authentication.getName());
 
 			return auth;
 
 		} catch (BadCredentialsException e) {
 
 			// invalid login, update to user_attempts
-			userDetailsDao.updateFailAttempts(authentication.getName());
+			userDetailsDAO.updateFailAttempts(authentication.getName());
 			throw e;
 
 		} catch (LockedException e) {
 
 			// this user is locked!
 			String error = "";
-			UserAttempts userAttempts = userDetailsDao.getUserAttempts(authentication.getName());
+			UserAttempts userAttempts = userDetailsDAO.getUserAttempts(authentication.getName());
 
 			if (userAttempts != null) {
 				Date lastAttempts = userAttempts.getLastModified();

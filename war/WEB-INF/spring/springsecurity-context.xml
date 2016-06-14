@@ -138,13 +138,38 @@
 		<!-- http://www.baeldung.com/spring-security-session -->
 		<session-management session-fixation-protection="newSession"/>
 	</http>
-	
+
+	<!--
 	<authentication-manager alias="authenticationManager">
 		<authentication-provider user-service-ref="userSecurityManagerService">
-	        <!-- password-encoder ref="encoder" -->
+	        // password-encoder ref="encoder"
 		</authentication-provider>
 	</authentication-manager>
-	
+	-->
+<!-- http://stackoverflow.com/questions/31826233/custom-authentication-manager-with-spring-security-and-java-configuration -->	
+<authentication-manager alias="authenticationManager">
+	<authentication-provider ref="preauthAuthProvider">
+	</authentication-provider>
+	<authentication-provider ref="gaeDAOAuthenticationProvider">
+	</authentication-provider>
+</authentication-manager>
+
+<beans:bean id="preauthAuthProvider" class="org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationProvider">
+	<beans:property name="preAuthenticatedUserDetailsService">
+	  <beans:bean id="userDetailsServiceWrapper" class="org.springframework.security.core.userdetails.UserDetailsByNameServiceWrapper">
+	    <beans:property name="userDetailsService" ref="GaeUserDetailsService"/>
+	  </beans:bean>
+	</beans:property>
+</beans:bean>
+
+<!-- Bean implementing AuthenticationProvider of Spring Security -->
+<beans:bean id="gaeDAOAuthenticationProvider" class="com.appspot.cloudserviceapi.security.spring.GaeDaoAuthenticationProvider">
+	<beans:property name="userDetailsDAO" ref="userDetailsDAOImpl"/>
+    <beans:property name="userDetailsService" ref="GaeUserDetailsService"/>
+</beans:bean>
+
+<beans:bean lazy-init="true" id="userDetailsDAOImpl" class="com.appspot.cloudserviceapi.security.spring.UserDetailsDAOImpl" />
+
 	<beans:bean lazy-init="true" id="userSecurityDAO"
 		class="com.appspot.cloudserviceapi.security.spring.UserSecurityDAO" />
 
