@@ -17,83 +17,80 @@ import com.google.common.cache.LoadingCache;
 import com.google.gdata.data.ExtensionDescription.Default;
 
 /**
- * https://www.javacodegeeks.com/2012/10/spring-security-prevent-brute-force.html
+ * https://www.javacodegeeks.com/2012/10/spring-security-prevent-brute-force.
+ * html
  */
 public class UserDetailsDAOImpl implements UserDetailsDAO {
 
-	private static final String SQL_USERS_UPDATE_LOCKED = "UPDATE USERS SET accountNonLocked = ? WHERE username = ?";
-	private static final String SQL_USERS_COUNT = "SELECT count(*) FROM USERS WHERE username = ?";
+//	private static final String SQL_USERS_UPDATE_LOCKED = "UPDATE USERS SET accountNonLocked = ? WHERE username = ?";
+//	private static final String SQL_USERS_COUNT = "SELECT count(*) FROM USERS WHERE username = ?";
+//
+//	private static final String SQL_USER_ATTEMPTS_GET = "SELECT * FROM USER_ATTEMPTS WHERE username = ?";
+//	private static final String SQL_USER_ATTEMPTS_INSERT = "INSERT INTO USER_ATTEMPTS (USERNAME, ATTEMPTS, LASTMODIFIED) VALUES(?,?,?)";
+//	private static final String SQL_USER_ATTEMPTS_UPDATE_ATTEMPTS = "UPDATE USER_ATTEMPTS SET attempts = attempts + 1, lastmodified = ? WHERE username = ?";
+//	private static final String SQL_USER_ATTEMPTS_RESET_ATTEMPTS = "UPDATE USER_ATTEMPTS SET attempts = 0, lastmodified = null WHERE username = ?";
 
-	private static final String SQL_USER_ATTEMPTS_GET = "SELECT * FROM USER_ATTEMPTS WHERE username = ?";
-	private static final String SQL_USER_ATTEMPTS_INSERT = "INSERT INTO USER_ATTEMPTS (USERNAME, ATTEMPTS, LASTMODIFIED) VALUES(?,?,?)";
-	private static final String SQL_USER_ATTEMPTS_UPDATE_ATTEMPTS = "UPDATE USER_ATTEMPTS SET attempts = attempts + 1, lastmodified = ? WHERE username = ?";
-	private static final String SQL_USER_ATTEMPTS_RESET_ATTEMPTS = "UPDATE USER_ATTEMPTS SET attempts = 0, lastmodified = null WHERE username = ?";
+	private static final int MAX_ATTEMPTS = 5;
 
-	private static final int MAX_ATTEMPTS = 3;
-	
-	private LoadingCache attempts;
+	private GaeCacheLoader attempts;
 	private int allowedNumberOfAttempts;
 
-
-//	@Autowired
-//	private DataSource dataSource;
-//
-//	@PostConstruct
+	// @Autowired
+	// private DataSource dataSource;
+	//
+	// @PostConstruct
 	UserDetailsDAOImpl() {
-//		setDataSource(dataSource);
+		// setDataSource(dataSource);
 		allowedNumberOfAttempts = MAX_ATTEMPTS;
-        int time = 5; //'account block configured for $time minutes
-        //TODO use http://www.ehcache.org/documentation/2.8/integrations/googleappengine.html !!!
-//        attempts = (LoadingCache)CacheBuilder.newBuilder()
-//        			.maximumSize(3)
-//        			.expireAfterAccess(time, TimeUnit.SECONDS)
-//        			.build(new CacheLoader<Key, Graph>());
+		int time = 5; // 'account block configured for $time minutes
+		// TODO use
+		// http://www.ehcache.org/documentation/2.8/integrations/googleappengine.html
+		// !!!
+//		attempts = (LoadingCache) CacheBuilder.newBuilder().maximumSize(3).expireAfterAccess(time, TimeUnit.SECONDS).build();
+		attempts = new GaeCacheLoader();
 	}
-
 
 	@Override
 	public void updateFailAttempts(String username) {
 
-		UserAttempts user = null;
-		user = getUserAttempts(username);
-		if (user == null) {
-			if (isUserExists(username)) {
+//		UserAttempts user = null;
+//		user = getUserAttempts(username);
+//		if (user == null) {
+//			if (isUserExists(username)) {
 				// if no record, insert a new
-//				getJdbcTemplate().update(SQL_USER_ATTEMPTS_INSERT, new Object[] { username, 1, new Date() });
+				// getJdbcTemplate().update(SQL_USER_ATTEMPTS_INSERT, new
+				// Object[] { username, 1, new Date() });
 
-//	            attempts.put(username, new Integer(1));
-//	            try {
-//	            	if(attempts.get(username) == null) {
-//						attempts.put(username, 1);
-//	            	} else {
-//						attempts.put(username, ((Integer)(attempts.get(username, null))).intValue() + 1);
-//	            	}
-//				} catch (ExecutionException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
-			}
-		} else {
-
-			if (isUserExists(username)) {
-				// update attempts count, +1
-//				getJdbcTemplate().update(SQL_USER_ATTEMPTS_UPDATE_ATTEMPTS, new Object[] { new Date(), username });
-	            try {
-					attempts.put(username, ((Integer)(attempts.get(username, null))).intValue() + 1);
-				} catch (ExecutionException e) {
+				try {
+					attempts.put(username, attempts.get(username) + 1);
+				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-			}
+//			}
+//		} else {
+//
+//			if (isUserExists(username)) {
+//				// update attempts count, +1
+//				// getJdbcTemplate().update(SQL_USER_ATTEMPTS_UPDATE_ATTEMPTS,
+//				// new Object[] { new Date(), username });
+//				try {
+//					attempts.put(username, attempts.get(username) + 1);
+//				} catch (Exception e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+//			}
 
-			if (user.getAttempts() + 1 >= MAX_ATTEMPTS) {
+			if (attempts.get(username) + 1 >= MAX_ATTEMPTS) {
 				// locked user
-//				getJdbcTemplate().update(SQL_USERS_UPDATE_LOCKED, new Object[] { false, username });
+				// getJdbcTemplate().update(SQL_USERS_UPDATE_LOCKED, new
+				// Object[] { false, username });
 				// throw exception
 				throw new LockedException("User Account is locked!");
 			}
 
-		}
+//		}
 
 	}
 
@@ -102,21 +99,22 @@ public class UserDetailsDAOImpl implements UserDetailsDAO {
 
 		try {
 
-			UserAttempts userAttempts = null;	//getJdbcTemplate().queryForObject(SQL_USER_ATTEMPTS_GET,
-//					new Object[] { username }, new RowMapper<UserAttempts>() {
-//						public UserAttempts mapRow(ResultSet rs, int rowNum) throws SQLException {
-//
-//							UserAttempts user = new UserAttempts();
-//							user.setId(rs.getInt("id"));
-//							user.setUsername(rs.getString("username"));
-//							user.setAttempts(rs.getInt("attempts"));
-//							user.setLastModified(rs.getDate("lastModified"));
-//
-//							return user;
-//						}
-//
-//					});
-			
+			UserAttempts userAttempts = null; // getJdbcTemplate().queryForObject(SQL_USER_ATTEMPTS_GET,
+			// new Object[] { username }, new RowMapper<UserAttempts>() {
+			// public UserAttempts mapRow(ResultSet rs, int rowNum) throws
+			// SQLException {
+			//
+			// UserAttempts user = new UserAttempts();
+			// user.setId(rs.getInt("id"));
+			// user.setUsername(rs.getString("username"));
+			// user.setAttempts(rs.getInt("attempts"));
+			// user.setLastModified(rs.getDate("lastModified"));
+			//
+			// return user;
+			// }
+			//
+			// });
+
 			return userAttempts;
 
 		} catch (Exception e) {
@@ -127,9 +125,10 @@ public class UserDetailsDAOImpl implements UserDetailsDAO {
 
 	@Override
 	public void resetFailAttempts(String username) {
-//		getJdbcTemplate().update(SQL_USER_ATTEMPTS_RESET_ATTEMPTS, new Object[] { username });
+		// getJdbcTemplate().update(SQL_USER_ATTEMPTS_RESET_ATTEMPTS, new
+		// Object[] { username });
 
-//		attempts.invalidate(username);
+		attempts.invalidate(username);
 	}
 
 	private boolean isUserExists(String username) {
@@ -138,14 +137,16 @@ public class UserDetailsDAOImpl implements UserDetailsDAO {
 		GaeUserDetails t;
 		try {
 			t = (new UserSecurityDAO()).findUserDetailsByLoginId(username);
-			if(t != null) result = true;
+			if (t != null)
+				result = true;
 		} catch (Exception e) {
 			result = false;
 		}
-//		int count = getJdbcTemplate().queryForObject(SQL_USERS_COUNT, new Object[] { username }, Integer.class);
-//		if (count > 0) {
-//			result = true;
-//		}
+		// int count = getJdbcTemplate().queryForObject(SQL_USERS_COUNT, new
+		// Object[] { username }, Integer.class);
+		// if (count > 0) {
+		// result = true;
+		// }
 
 		return result;
 	}
