@@ -68,15 +68,16 @@ public class GaeDaoAuthenticationProvider extends DaoAuthenticationProvider {
 
 			// this user is locked!
 			String error = "";
-			UserAttempts userAttempts = userDetailsDAO.getUserAttempts(authentication.getName());
-
-			if (userAttempts != null) {
-				Date lastAttempts = userAttempts.getLastModified();
+//			UserAttempts userAttempts = userDetailsDAO.getUserAttempts(authentication.getName());
+//
+//			if (userAttempts != null) {
+//				Date lastAttempts = userAttempts.getLastModified();
 				error = "User account is locked! <br><br>Username : " + authentication.getName()
-						+ "<br>Last Attempts : " + lastAttempts;
-			} else {
-				error = e.getMessage();
-			}
+//						+ "<br>Last Attempts : " + lastAttempts
+				;
+//			} else {
+//				error = e.getMessage();
+//			}
 
 			throw new LockedException(error);
 		}

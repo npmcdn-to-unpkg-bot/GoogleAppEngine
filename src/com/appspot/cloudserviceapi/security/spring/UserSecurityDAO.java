@@ -30,7 +30,7 @@ public class UserSecurityDAO {
 			q.setParameter(1, username);
 			gud = (GaeUserDetails) q.getSingleResult();
 		} catch (Exception e) {
-			e.printStackTrace();
+//			e.printStackTrace();
 			gud = null;
 		} finally {
 			em.close();

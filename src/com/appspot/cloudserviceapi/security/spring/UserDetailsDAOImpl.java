@@ -1,8 +1,24 @@
 package com.appspot.cloudserviceapi.security.spring;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
+
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.security.authentication.LockedException;
 
+import com.google.appengine.api.datastore.Key;
+import com.google.common.cache.Cache;
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
+import com.google.gdata.data.ExtensionDescription.Default;
+
+/**
+ * https://www.javacodegeeks.com/2012/10/spring-security-prevent-brute-force.html
+ */
 public class UserDetailsDAOImpl implements UserDetailsDAO {
 
 	private static final String SQL_USERS_UPDATE_LOCKED = "UPDATE USERS SET accountNonLocked = ? WHERE username = ?";
@@ -14,29 +30,60 @@ public class UserDetailsDAOImpl implements UserDetailsDAO {
 	private static final String SQL_USER_ATTEMPTS_RESET_ATTEMPTS = "UPDATE USER_ATTEMPTS SET attempts = 0, lastmodified = null WHERE username = ?";
 
 	private static final int MAX_ATTEMPTS = 3;
+	
+	private LoadingCache attempts;
+	private int allowedNumberOfAttempts;
+
 
 //	@Autowired
 //	private DataSource dataSource;
 //
 //	@PostConstruct
-//	private void initialize() {
+	UserDetailsDAOImpl() {
 //		setDataSource(dataSource);
-//	}
+		allowedNumberOfAttempts = MAX_ATTEMPTS;
+        int time = 5; //'account block configured for $time minutes
+        //TODO use http://www.ehcache.org/documentation/2.8/integrations/googleappengine.html !!!
+//        attempts = (LoadingCache)CacheBuilder.newBuilder()
+//        			.maximumSize(3)
+//        			.expireAfterAccess(time, TimeUnit.SECONDS)
+//        			.build(new CacheLoader<Key, Graph>());
+	}
+
 
 	@Override
 	public void updateFailAttempts(String username) {
 
-		UserAttempts user = getUserAttempts(username);
+		UserAttempts user = null;
+		user = getUserAttempts(username);
 		if (user == null) {
 			if (isUserExists(username)) {
 				// if no record, insert a new
 //				getJdbcTemplate().update(SQL_USER_ATTEMPTS_INSERT, new Object[] { username, 1, new Date() });
+
+//	            attempts.put(username, new Integer(1));
+//	            try {
+//	            	if(attempts.get(username) == null) {
+//						attempts.put(username, 1);
+//	            	} else {
+//						attempts.put(username, ((Integer)(attempts.get(username, null))).intValue() + 1);
+//	            	}
+//				} catch (ExecutionException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
 			}
 		} else {
 
 			if (isUserExists(username)) {
 				// update attempts count, +1
 //				getJdbcTemplate().update(SQL_USER_ATTEMPTS_UPDATE_ATTEMPTS, new Object[] { new Date(), username });
+	            try {
+					attempts.put(username, ((Integer)(attempts.get(username, null))).intValue() + 1);
+				} catch (ExecutionException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 
 			if (user.getAttempts() + 1 >= MAX_ATTEMPTS) {
@@ -69,9 +116,10 @@ public class UserDetailsDAOImpl implements UserDetailsDAO {
 //						}
 //
 //					});
+			
 			return userAttempts;
 
-		} catch (EmptyResultDataAccessException e) {
+		} catch (Exception e) {
 			return null;
 		}
 
@@ -79,19 +127,25 @@ public class UserDetailsDAOImpl implements UserDetailsDAO {
 
 	@Override
 	public void resetFailAttempts(String username) {
-
 //		getJdbcTemplate().update(SQL_USER_ATTEMPTS_RESET_ATTEMPTS, new Object[] { username });
 
+//		attempts.invalidate(username);
 	}
 
 	private boolean isUserExists(String username) {
-
 		boolean result = false;
-
-		int count = 0;	//getJdbcTemplate().queryForObject(SQL_USERS_COUNT, new Object[] { username }, Integer.class);
-		if (count > 0) {
-			result = true;
+		int count = -1;
+		GaeUserDetails t;
+		try {
+			t = (new UserSecurityDAO()).findUserDetailsByLoginId(username);
+			if(t != null) result = true;
+		} catch (Exception e) {
+			result = false;
 		}
+//		int count = getJdbcTemplate().queryForObject(SQL_USERS_COUNT, new Object[] { username }, Integer.class);
+//		if (count > 0) {
+//			result = true;
+//		}
 
 		return result;
 	}
