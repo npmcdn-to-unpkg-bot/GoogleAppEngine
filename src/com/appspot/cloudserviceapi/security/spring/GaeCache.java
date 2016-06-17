@@ -4,11 +4,11 @@ import com.google.appengine.api.memcache.Expiration;
 import com.google.appengine.api.memcache.MemcacheService;
 import com.google.appengine.api.memcache.MemcacheServiceFactory;
 
-public class GaeCacheLoader {
+public class GaeCache {
 
     private MemcacheService memcacheService = MemcacheServiceFactory.getMemcacheService();
 
-    GaeCacheLoader() {
+    GaeCache() {
     	
     }
 

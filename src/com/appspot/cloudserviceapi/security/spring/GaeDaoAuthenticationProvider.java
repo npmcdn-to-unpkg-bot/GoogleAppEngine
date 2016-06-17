@@ -51,10 +51,17 @@ public class GaeDaoAuthenticationProvider extends DaoAuthenticationProvider {
 
 			Authentication auth = super.authenticate(authentication);
 
+			String username = authentication.getName();
 			// if reach here, means login success, else an exception will be
 			// thrown
-			// reset the user_attempts
-			userDetailsDAO.resetFailAttempts(authentication.getName());
+			// reset the user_attempts only if it is not previously locked!
+			GaeUserDetails user = userDetailsDAO.loadUserByUsername(username);
+			if(user != null && user.getAccountNonLocked())  {
+				userDetailsDAO.resetFailAttempts(username);
+				System.out.println("User account [" + username + "] attempts reset");
+			} else {
+				System.out.println("User account [" + username + "] is still locked!");
+			}
 
 			return auth;
 
@@ -72,7 +79,7 @@ public class GaeDaoAuthenticationProvider extends DaoAuthenticationProvider {
 //
 //			if (userAttempts != null) {
 //				Date lastAttempts = userAttempts.getLastModified();
-				error = "User account is locked! <br><br>Username : " + authentication.getName()
+				error = "User account [" + authentication.getName() + "] is locked!"
 //						+ "<br>Last Attempts : " + lastAttempts
 				;
 //			} else {

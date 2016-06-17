@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.security.authentication.LockedException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import com.google.appengine.api.datastore.Key;
 import com.google.common.cache.Cache;
@@ -32,7 +33,7 @@ public class UserDetailsDAOImpl implements UserDetailsDAO {
 
 	private static final int MAX_ATTEMPTS = 5;
 
-	private GaeCacheLoader attempts;
+	private GaeCache attempts;
 	private int allowedNumberOfAttempts;
 
 	// @Autowired
@@ -47,7 +48,7 @@ public class UserDetailsDAOImpl implements UserDetailsDAO {
 		// http://www.ehcache.org/documentation/2.8/integrations/googleappengine.html
 		// !!!
 //		attempts = (LoadingCache) CacheBuilder.newBuilder().maximumSize(3).expireAfterAccess(time, TimeUnit.SECONDS).build();
-		attempts = new GaeCacheLoader();
+		attempts = new GaeCache();
 	}
 
 	@Override
@@ -87,7 +88,10 @@ public class UserDetailsDAOImpl implements UserDetailsDAO {
 				// getJdbcTemplate().update(SQL_USERS_UPDATE_LOCKED, new
 				// Object[] { false, username });
 				// throw exception
-				throw new LockedException("User Account is locked!");
+				GaeUserDetails user = loadUserByUsername(username);
+				user.setAccountNonLocked(false);  //lock the account!
+				saveUser(user);
+				throw new LockedException("User account [" + username + "] is locked!");
 			}
 
 //		}
@@ -129,6 +133,20 @@ public class UserDetailsDAOImpl implements UserDetailsDAO {
 		// Object[] { username });
 
 		attempts.invalidate(username);
+	}
+
+	public GaeUserDetails loadUserByUsername(String username)
+			throws UsernameNotFoundException {
+		GaeUserDetails d = (new UserSecurityDAO()).findUserDetailsByLoginId(username);
+		if (d == null) {
+			throw new UsernameNotFoundException("Invalid user credentials");
+		}
+		return d;
+	}
+
+	private void saveUser(GaeUserDetails user)
+			throws UsernameNotFoundException {
+		(new UserSecurityDAO()).save(user);
 	}
 
 	private boolean isUserExists(String username) {

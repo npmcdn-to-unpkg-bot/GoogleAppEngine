@@ -8,4 +8,6 @@ public interface UserDetailsDAO {
 
 	UserAttempts getUserAttempts(String username);
 
+	GaeUserDetails loadUserByUsername(String username);
+
 }
