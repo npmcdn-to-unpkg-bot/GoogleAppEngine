@@ -31,7 +31,7 @@ public class UserDetailsDAOImpl implements UserDetailsDAO {
 //	private static final String SQL_USER_ATTEMPTS_UPDATE_ATTEMPTS = "UPDATE USER_ATTEMPTS SET attempts = attempts + 1, lastmodified = ? WHERE username = ?";
 //	private static final String SQL_USER_ATTEMPTS_RESET_ATTEMPTS = "UPDATE USER_ATTEMPTS SET attempts = 0, lastmodified = null WHERE username = ?";
 
-	private static final int MAX_ATTEMPTS = 5;
+	public static final int MAX_ATTEMPTS = 5;
 
 	private GaeCache attempts;
 //	private int allowedNumberOfAttempts;
@@ -42,7 +42,6 @@ public class UserDetailsDAOImpl implements UserDetailsDAO {
 	// @PostConstruct
 	UserDetailsDAOImpl() {
 		// setDataSource(dataSource);
-//		allowedNumberOfAttempts = MAX_ATTEMPTS;
 		int time = 5; // 'account block configured for $time minutes
 		// TODO use
 		// http://www.ehcache.org/documentation/2.8/integrations/googleappengine.html
@@ -82,20 +81,25 @@ public class UserDetailsDAOImpl implements UserDetailsDAO {
 //				// new Object[] { new Date(), username });
 //			}
 
-		try {
-			attempts.put(username, attempts.get(username) + 1);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//			if (attempts.get(username) + 1 >= MAX_ATTEMPTS) {
+//				// locked user
+//				// getJdbcTemplate().update(SQL_USERS_UPDATE_LOCKED, new
+//				// Object[] { false, username });
+//				// throw exception
+				GaeUserDetails user = loadUserByUsername(username);
+				int attempted = attempts.get(username);
+				attempts.put(username, attempted + 1);
+
+//		}
 	}
 
 	@Override
-	public UserAttempts getUserAttempts(String username) {
+//	public UserAttempts getUserAttempts(String username) {
+	public GaeCache getUserAttempts() {
 
 		try {
 
-			UserAttempts userAttempts = null; // getJdbcTemplate().queryForObject(SQL_USER_ATTEMPTS_GET,
+//			UserAttempts userAttempts = null; // getJdbcTemplate().queryForObject(SQL_USER_ATTEMPTS_GET,
 			// new Object[] { username }, new RowMapper<UserAttempts>() {
 			// public UserAttempts mapRow(ResultSet rs, int rowNum) throws
 			// SQLException {
@@ -111,7 +115,8 @@ public class UserDetailsDAOImpl implements UserDetailsDAO {
 			//
 			// });
 
-			return userAttempts;
+//			return userAttempts;
+			return attempts;
 
 		} catch (Exception e) {
 			return null;
@@ -134,11 +139,10 @@ public class UserDetailsDAOImpl implements UserDetailsDAO {
 	    int lastCount = attempts.get(username);
 	    System.out.println("handleTooManyAttempts locked status " + !d.isAccountNonLocked() + " attempted " + lastCount);
 	    if(d != null && d.isAccountNonLocked() && lastCount >= MAX_ATTEMPTS) {
-			GaeUserDetails user = loadUserByUsername(username);
-			user.setAccountNonLocked(false);  //lock the account!
-			saveUser(user);
+			d.setAccountNonLocked(false);  //lock the account!
+			saveUser(d);
 	        done = true;
-		    System.out.println("handleTooManyAttempts user locked - user locked status set to " + !user.isAccountNonLocked());
+		    System.out.println("handleTooManyAttempts user locked - user locked status set to " + !d.isAccountNonLocked());
 	    }
 	    return done;
     }
