@@ -34,7 +34,7 @@ public class UserDetailsDAOImpl implements UserDetailsDAO {
 	private static final int MAX_ATTEMPTS = 5;
 
 	private GaeCache attempts;
-	private int allowedNumberOfAttempts;
+//	private int allowedNumberOfAttempts;
 
 	// @Autowired
 	// private DataSource dataSource;
@@ -42,7 +42,7 @@ public class UserDetailsDAOImpl implements UserDetailsDAO {
 	// @PostConstruct
 	UserDetailsDAOImpl() {
 		// setDataSource(dataSource);
-		allowedNumberOfAttempts = MAX_ATTEMPTS;
+//		allowedNumberOfAttempts = MAX_ATTEMPTS;
 		int time = 5; // 'account block configured for $time minutes
 		// TODO use
 		// http://www.ehcache.org/documentation/2.8/integrations/googleappengine.html
@@ -52,7 +52,19 @@ public class UserDetailsDAOImpl implements UserDetailsDAO {
 	}
 
 	@Override
-	public void updateFailAttempts(String username) {
+    public void trackFailAttempts(String username) {
+    	updateFailAttempts(username);
+    	int lastCount = attempts.get(username);
+//	    if(handleUnlocked(username)) {
+//	        println "${username} is already unlocked with login attempts reset to ${lastCount}"
+//	    }
+	    if(handleTooManyAttempts(username)) {
+	        lastCount = attempts.get(username);
+	        System.out.println(username + " locked due to " + lastCount + " failed login attempts!");
+	    }
+    }
+	
+	private void updateFailAttempts(String username) {
 
 //		UserAttempts user = null;
 //		user = getUserAttempts(username);
@@ -61,13 +73,6 @@ public class UserDetailsDAOImpl implements UserDetailsDAO {
 				// if no record, insert a new
 				// getJdbcTemplate().update(SQL_USER_ATTEMPTS_INSERT, new
 				// Object[] { username, 1, new Date() });
-
-				try {
-					attempts.put(username, attempts.get(username) + 1);
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
 //			}
 //		} else {
 //
@@ -75,27 +80,14 @@ public class UserDetailsDAOImpl implements UserDetailsDAO {
 //				// update attempts count, +1
 //				// getJdbcTemplate().update(SQL_USER_ATTEMPTS_UPDATE_ATTEMPTS,
 //				// new Object[] { new Date(), username });
-//				try {
-//					attempts.put(username, attempts.get(username) + 1);
-//				} catch (Exception e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
 //			}
 
-			if (attempts.get(username) + 1 >= MAX_ATTEMPTS) {
-				// locked user
-				// getJdbcTemplate().update(SQL_USERS_UPDATE_LOCKED, new
-				// Object[] { false, username });
-				// throw exception
-				GaeUserDetails user = loadUserByUsername(username);
-				user.setAccountNonLocked(false);  //lock the account!
-				saveUser(user);
-				throw new LockedException("User account [" + username + "] is locked!");
-			}
-
-//		}
-
+		try {
+			attempts.put(username, attempts.get(username) + 1);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override
@@ -132,8 +124,24 @@ public class UserDetailsDAOImpl implements UserDetailsDAO {
 		// getJdbcTemplate().update(SQL_USER_ATTEMPTS_RESET_ATTEMPTS, new
 		// Object[] { username });
 
-		attempts.invalidate(username);
+//		attempts.invalidate(username);
+		attempts.put(username, 0);
 	}
+
+    private boolean handleTooManyAttempts(String username) {
+    	boolean done = false;
+		GaeUserDetails d = (new UserSecurityDAO()).findUserDetailsByLoginId(username);
+	    int lastCount = attempts.get(username);
+	    System.out.println("handleTooManyAttempts locked status " + !d.isAccountNonLocked() + " attempted " + lastCount);
+	    if(d != null && d.isAccountNonLocked() && lastCount >= MAX_ATTEMPTS) {
+			GaeUserDetails user = loadUserByUsername(username);
+			user.setAccountNonLocked(false);  //lock the account!
+			saveUser(user);
+	        done = true;
+		    System.out.println("handleTooManyAttempts user locked - user locked status set to " + !user.isAccountNonLocked());
+	    }
+	    return done;
+    }
 
 	public GaeUserDetails loadUserByUsername(String username)
 			throws UsernameNotFoundException {

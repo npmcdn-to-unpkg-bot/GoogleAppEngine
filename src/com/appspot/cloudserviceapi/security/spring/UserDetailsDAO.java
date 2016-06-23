@@ -2,9 +2,9 @@ package com.appspot.cloudserviceapi.security.spring;
 
 public interface UserDetailsDAO {
 
-	void updateFailAttempts(String username);
+	public void trackFailAttempts(String username);
 
-	void resetFailAttempts(String username);
+	public void resetFailAttempts(String username);
 
 	UserAttempts getUserAttempts(String username);
 

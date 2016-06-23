@@ -55,20 +55,20 @@ public class GaeDaoAuthenticationProvider extends DaoAuthenticationProvider {
 			// if reach here, means login success, else an exception will be
 			// thrown
 			// reset the user_attempts only if it is not previously locked!
-			GaeUserDetails user = userDetailsDAO.loadUserByUsername(username);
-			if(user != null && user.getAccountNonLocked())  {
+//			GaeUserDetails user = userDetailsDAO.loadUserByUsername(username);
+//			if(user != null && user.getAccountNonLocked())  {
 				userDetailsDAO.resetFailAttempts(username);
 				System.out.println("User account [" + username + "] attempts reset");
-			} else {
-				System.out.println("User account [" + username + "] is still locked!");
-			}
+//			} else {
+//				System.out.println("User account [" + username + "] is still locked!");
+//			}
 
 			return auth;
 
 		} catch (BadCredentialsException e) {
 
 			// invalid login, update to user_attempts
-			userDetailsDAO.updateFailAttempts(authentication.getName());
+			userDetailsDAO.trackFailAttempts(authentication.getName());
 			throw e;
 
 		} catch (LockedException e) {
