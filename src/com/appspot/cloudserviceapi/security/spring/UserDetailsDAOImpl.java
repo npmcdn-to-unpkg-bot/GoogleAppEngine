@@ -31,7 +31,7 @@ public class UserDetailsDAOImpl implements UserDetailsDAO {
 //	private static final String SQL_USER_ATTEMPTS_UPDATE_ATTEMPTS = "UPDATE USER_ATTEMPTS SET attempts = attempts + 1, lastmodified = ? WHERE username = ?";
 //	private static final String SQL_USER_ATTEMPTS_RESET_ATTEMPTS = "UPDATE USER_ATTEMPTS SET attempts = 0, lastmodified = null WHERE username = ?";
 
-	private static final int MAX_ATTEMPTS = 5;
+	public static final int MAX_ATTEMPTS = 5;
 
 	private GaeCache attempts;
 	private int allowedNumberOfAttempts;
@@ -42,7 +42,6 @@ public class UserDetailsDAOImpl implements UserDetailsDAO {
 	// @PostConstruct
 	UserDetailsDAOImpl() {
 		// setDataSource(dataSource);
-		allowedNumberOfAttempts = MAX_ATTEMPTS;
 		int time = 5; // 'account block configured for $time minutes
 		// TODO use
 		// http://www.ehcache.org/documentation/2.8/integrations/googleappengine.html
@@ -89,8 +88,11 @@ public class UserDetailsDAOImpl implements UserDetailsDAO {
 				// Object[] { false, username });
 				// throw exception
 				GaeUserDetails user = loadUserByUsername(username);
-				user.setAccountNonLocked(false);  //lock the account!
-				saveUser(user);
+				int attempted = attempts.get(username);
+				if(user.isAccountNonLocked() && attempted < MAX_ATTEMPTS) {
+					user.setAccountNonLocked(false);  //lock the account! THIS IS NOT OPTIMIZED - IT IS INVOKED EVEN IF IT IS ALREADY LOCKED!!!
+					saveUser(user);
+				}
 				throw new LockedException("User account [" + username + "] is locked!");
 			}
 
@@ -99,11 +101,12 @@ public class UserDetailsDAOImpl implements UserDetailsDAO {
 	}
 
 	@Override
-	public UserAttempts getUserAttempts(String username) {
+//	public UserAttempts getUserAttempts(String username) {
+	public GaeCache getUserAttempts() {
 
 		try {
 
-			UserAttempts userAttempts = null; // getJdbcTemplate().queryForObject(SQL_USER_ATTEMPTS_GET,
+//			UserAttempts userAttempts = null; // getJdbcTemplate().queryForObject(SQL_USER_ATTEMPTS_GET,
 			// new Object[] { username }, new RowMapper<UserAttempts>() {
 			// public UserAttempts mapRow(ResultSet rs, int rowNum) throws
 			// SQLException {
@@ -119,7 +122,8 @@ public class UserDetailsDAOImpl implements UserDetailsDAO {
 			//
 			// });
 
-			return userAttempts;
+//			return userAttempts;
+			return attempts;
 
 		} catch (Exception e) {
 			return null;

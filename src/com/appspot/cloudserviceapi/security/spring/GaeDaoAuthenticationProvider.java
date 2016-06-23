@@ -52,26 +52,20 @@ public class GaeDaoAuthenticationProvider extends DaoAuthenticationProvider {
 			Authentication auth = super.authenticate(authentication);
 
 			String username = authentication.getName();
-			// if reach here, means login success, else an exception will be
-			// thrown
-			// reset the user_attempts only if it is not previously locked!
-			GaeUserDetails user = userDetailsDAO.loadUserByUsername(username);
-			if(user != null && user.getAccountNonLocked())  {
-				userDetailsDAO.resetFailAttempts(username);
-				System.out.println("User account [" + username + "] attempts reset");
-			} else {
-				System.out.println("User account [" + username + "] is still locked!");
-			}
+			handleReset(authentication, username);
 
 			return auth;
 
 		} catch (BadCredentialsException e) {
 
-			// invalid login, update to user_attempts
-			userDetailsDAO.updateFailAttempts(authentication.getName());
+			String username = authentication.getName();
+			handleReset(authentication, username);
 			throw e;
 
 		} catch (LockedException e) {
+
+			String username = authentication.getName();
+			handleReset(authentication, username);
 
 			// this user is locked!
 			String error = "";
@@ -89,6 +83,23 @@ public class GaeDaoAuthenticationProvider extends DaoAuthenticationProvider {
 			throw new LockedException(error);
 		}
 
+	}
+
+	private void handleReset(Authentication authentication, String username) {
+		GaeCache attempts = userDetailsDAO.getUserAttempts();
+		int attempted = attempts.get(username);
+		// reset the user_attempts only if the maximum retries were reached and yet it has been unlocked!
+		GaeUserDetails user = userDetailsDAO.loadUserByUsername(username);
+		boolean locked = !user.getAccountNonLocked();
+		if(!locked && attempted >= UserDetailsDAOImpl.MAX_ATTEMPTS) {
+			//=== reset the cache to 0 as it is no longer locked
+			userDetailsDAO.resetFailAttempts(authentication.getName());
+		} else {
+			if(attempted < UserDetailsDAOImpl.MAX_ATTEMPTS) {
+				// invalid login, update to user_attempts
+				userDetailsDAO.updateFailAttempts(authentication.getName());
+			}
+		}
 	}
 
 }

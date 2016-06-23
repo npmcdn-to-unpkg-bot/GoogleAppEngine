@@ -6,7 +6,10 @@ public interface UserDetailsDAO {
 
 	void resetFailAttempts(String username);
 
-	UserAttempts getUserAttempts(String username);
+//	UserAttempts getUserAttempts(String username);
+	
+	GaeCache getUserAttempts();
+	
 
 	GaeUserDetails loadUserByUsername(String username);
 
